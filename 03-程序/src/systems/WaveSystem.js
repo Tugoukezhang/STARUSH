@@ -31,9 +31,10 @@ export class WaveSystem {
    * @param {Phaser.Scene} scene
    * @param {Function} spawnFn - (type, x?) => void 实际生成敌人的回调
    */
-  constructor(scene, spawnFn) {
+  constructor(scene, spawnFn, waveDefs = WAVE_DEFS) {
     this.scene = scene;
     this.spawnFn = spawnFn;
+    this.waveDefs = waveDefs;
 
     this.currentWave = 0;
     this.waveActive = false;
@@ -49,12 +50,12 @@ export class WaveSystem {
 
   /** 开始下一波 */
   startNextWave() {
-    if (this.currentWave >= WAVE_DEFS.length) {
+    if (this.currentWave >= this.waveDefs.length) {
       if (this.onAllClear) this.onAllClear();
       return;
     }
 
-    const def = WAVE_DEFS[this.currentWave];
+    const def = this.waveDefs[this.currentWave];
     this.waveActive = true;
 
     // 计算本波总敌人数
@@ -112,6 +113,10 @@ export class WaveSystem {
   /** 当前波次编号（1-based） */
   getWaveNumber() {
     return this.currentWave + 1;
+  }
+
+  getTotalWaves() {
+    return this.waveDefs.length;
   }
 
   /** 是否正在战斗 */

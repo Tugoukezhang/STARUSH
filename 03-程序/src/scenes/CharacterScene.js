@@ -8,6 +8,7 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '../utils/config.js';
 import { CHARACTERS, calcStats, getUnlockedForms, FILTERS, SORT_OPTIONS } from '../data/characters.js';
+import { setBattleHudVisible } from '../utils/ui.js';
 
 export class CharacterScene extends Phaser.Scene {
   constructor() {
@@ -19,6 +20,7 @@ export class CharacterScene extends Phaser.Scene {
   }
 
   create() {
+    setBattleHudVisible(false);
     this.cameras.main.setBackgroundColor('#0a0a1a');
     this._createUI();
     this._renderCardList();
@@ -312,7 +314,7 @@ export class CharacterScene extends Phaser.Scene {
     overlay.querySelector('.cancel-btn').onclick = () => this._closeDetail();
     overlay.querySelector('.deploy-btn').onclick = () => {
       this._closeDetail();
-      this.scene.start('StageScene');
+      this.scene.start('StageScene', this._createBattleData());
     };
 
     // 等级输入
@@ -335,6 +337,34 @@ export class CharacterScene extends Phaser.Scene {
   }
 
   // ===================== 卡片列表渲染 =====================
+
+  _createBattleData() {
+    const char = this.selectedChar || CHARACTERS[0];
+    const level = this.selectedLevel || 1;
+    const stats = calcStats(char, level);
+    const unlockedForms = getUnlockedForms(char, level);
+    const form = unlockedForms[0] || char.forms[0];
+
+    return {
+      battleData: {
+        characterId: char.id,
+        characterName: char.name,
+        color: char.color,
+        colorHex: char.colorHex,
+        level,
+        formType: 'attack',
+        formName: form?.name || '',
+        atk: stats.atk,
+        team: [{
+          id: char.id,
+          name: char.name,
+          level,
+          atk: stats.atk,
+          color: char.color,
+        }],
+      },
+    };
+  }
 
   _getFilteredChars() {
     let chars = [...CHARACTERS];

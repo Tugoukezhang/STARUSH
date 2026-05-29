@@ -4,6 +4,9 @@
 
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLOR_HEX, COLORS } from '../utils/config.js';
+import { setBattleHudVisible } from '../utils/ui.js';
+import { CHARACTERS, calcStats, getUnlockedForms } from '../data/characters.js';
+import { getStageById } from '../data/stages.js';
 
 export class TitleScene extends Phaser.Scene {
   constructor() {
@@ -11,9 +14,11 @@ export class TitleScene extends Phaser.Scene {
   }
 
   create() {
+    setBattleHudVisible(false);
+
     // 🔧 DEBUG: URL加 ?debug 可跳过标题直接进战斗
     if (new URLSearchParams(window.location.search).has('debug')) {
-      this.scene.start('BattleScene');
+      this.scene.start('BattleScene', this._buildRecommendedBattleData());
       return;
     }
 
@@ -54,9 +59,9 @@ export class TitleScene extends Phaser.Scene {
       });
     });
     
-    // 开始按钮
+    // 推荐开演：首玩最快路径
     const startBtn = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT * 0.65, 
-      '▶ 开始公演', {
+      '▶ 立即开演', {
       fontSize: '20px',
       color: '#FFFFFF',
       backgroundColor: '#FF69B4',
@@ -72,6 +77,21 @@ export class TitleScene extends Phaser.Scene {
       startBtn.setStyle({ backgroundColor: '#FF69B4' });
     });
     startBtn.on('pointerdown', () => {
+      this.scene.start('BattleScene', this._buildRecommendedBattleData());
+    });
+
+    const memberBtn = this.add.text(GAME_WIDTH / 2, GAME_HEIGHT * 0.74,
+      '成员管理', {
+      fontSize: '13px',
+      color: '#FFB6D9',
+      backgroundColor: 'rgba(255,255,255,0.08)',
+      padding: { x: 14, y: 7 },
+    });
+    memberBtn.setOrigin(0.5);
+    memberBtn.setInteractive({ useHandCursor: true });
+    memberBtn.on('pointerover', () => memberBtn.setStyle({ color: '#FFFFFF' }));
+    memberBtn.on('pointerout', () => memberBtn.setStyle({ color: '#FFB6D9' }));
+    memberBtn.on('pointerdown', () => {
       this.scene.start('CharacterScene');
     });
     
@@ -87,5 +107,38 @@ export class TitleScene extends Phaser.Scene {
       fontSize: '10px',
       color: '#666666',
     }).setOrigin(0.5);
+  }
+
+  _buildRecommendedBattleData() {
+    const character = CHARACTERS.find((item) => item.id === 'sakura') || CHARACTERS[0];
+    const level = 1;
+    const stats = calcStats(character, level);
+    const form = getUnlockedForms(character, level)[0] || character.forms[0];
+    const stage = getStageById(1);
+    const member = {
+      characterId: character.id,
+      id: character.id,
+      name: character.name,
+      color: character.color,
+      colorHex: character.colorHex,
+      level,
+      atk: stats.atk,
+      form: form?.type || '输出型',
+      formName: form?.name || '',
+    };
+
+    return {
+      characterId: member.characterId,
+      name: member.name,
+      color: member.color,
+      colorHex: member.colorHex,
+      level: member.level,
+      atk: member.atk,
+      team: [member],
+      stageId: stage?.id || 1,
+      stageName: stage?.name || '第1关·登台',
+      stageWaves: stage?.waves || 2,
+      defenseMode: false,
+    };
   }
 }

@@ -7,15 +7,22 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '../utils/config.js';
 import { CHAPTERS, RESONANCE_GATES, STAR_CRITERIA, getRewards } from '../data/stages.js';
+import { setBattleHudVisible } from '../utils/ui.js';
 
 export class StageScene extends Phaser.Scene {
   constructor() {
     super({ key: 'StageScene' });
     this.chapterIndex = 0; // 默认第1章
     this.starData = {};    // { stageId: stars }
+    this.battleData = {};
+  }
+
+  init(data = {}) {
+    this.battleData = data.battleData || data;
   }
 
   create() {
+    setBattleHudVisible(false);
     this.cameras.main.setBackgroundColor('#0a0a1a');
     this._createUI();
     this._render();
@@ -212,6 +219,7 @@ export class StageScene extends Phaser.Scene {
       // B5防御关：章节2的关卡进入保卫战模式
       const isDefense = [8, 9, 10].includes(this.selectedStageId);
       this.scene.start('BattleScene', {
+        ...this.battleData,
         stageId: this.selectedStageId || 1,
         defenseMode: isDefense,
       });

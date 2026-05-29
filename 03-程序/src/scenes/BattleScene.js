@@ -20,6 +20,8 @@ import { DamageCalculator, FORM_TYPE } from '../systems/DamageCalculator.js';
 import { WaveSystem, WAVE_DEFS } from '../systems/WaveSystem.js';
 import { CPComboHandler } from '../systems/CPComboHandler.js';
 import { ResonanceSystem } from '../systems/ResonanceSystem.js';
+import { setBattleHudVisible } from '../utils/ui.js';
+import { CHAPTERS } from '../data/stages.js';
 
 export class BattleScene extends Phaser.Scene {
   constructor() {
@@ -35,6 +37,9 @@ export class BattleScene extends Phaser.Scene {
   }
 
   create() {
+    setBattleHudVisible(false);
+    this.events.once('shutdown', () => setBattleHudVisible(false));
+
     // 清理所有前序场景DOM（CharacterScene/StageScene）
     ['char-ui','char-detail-overlay','stage-ui','stage-detail-overlay'].forEach(id => {
       const el = document.getElementById(id);
@@ -59,7 +64,7 @@ export class BattleScene extends Phaser.Scene {
     this.cpHandler = new CPComboHandler(this);
     this.cpHandler.onCPComboName = (name, colors) => this._showCPName(name, colors);
     this.cpHandler.onSlowField = (radius, slowRate, duration) => this._showSlowFieldFx(radius, slowRate, duration);
-    this.cpHandler.onCritBurst = (critBonus, duration) => this._showCritBurstFx(duration);
+    this.cpHandler.onCritBurst = (critBonus, duration) => this._showCritBurstFx(critBonus, duration);
     this.cpHandler.onFrostShine = (radius, slowRate, dmgMulti, duration) => this._showFrostShineFx(radius, slowRate, dmgMulti, duration);
     this.cpHandler.onBurnSpread = (spreadRadius, duration) => this._showBurnSpreadFx(spreadRadius);
     this.cpHandler.onDotChain = (chainCount, duration) => this._showDotChainFx(duration);
@@ -116,9 +121,11 @@ export class BattleScene extends Phaser.Scene {
 
     // === 分数 & 状态 ===
     this.score = 0;
-    this.currentColor = COLORS.PINK;
     this.colorOrder = [COLORS.PINK, COLORS.BLUE, COLORS.YELLOW, COLORS.PURPLE, COLORS.ORANGE];
-    this.colorIndex = 0;
+    this.currentColor = this.colorOrder.includes(this.battleData.color)
+      ? this.battleData.color
+      : COLORS.PINK;
+    this.colorIndex = Math.max(0, this.colorOrder.indexOf(this.currentColor));
 
     // === 形态 ===
     this.currentForm = FORM_TYPE.ATTACK;
@@ -151,13 +158,22 @@ export class BattleScene extends Phaser.Scene {
 
     // === 输入 ===
     this._setupInput();
+    this._setupMobileControls();
 
     // === 碰撞检测 ===
     this._setupCollisions();
 
     // === 波次系统 ===
-    this.waveSystem = new WaveSystem(this, (type) => this._spawnEnemyByType(type));
-    this.waveSystem.onWaveStart = (idx, label) => this._showWaveLabel(label);
+    this.waveSystem = new WaveSystem(this, (type) => this._spawnEnemyByType(type), this._getStageWaveDefs());
+    this.waveSystem.onWaveStart = (idx, label) => {
+      this._showWaveLabel(label);
+      if (idx === 0) {
+        this._showFirstPlayHint('拖动移动，自动射击会帮你清掉第一波');
+        this._scheduleFirstPlayWaveAssist(idx);
+      } else if (idx === 1) {
+        this._showFirstPlayHint('点「色」切应援色，点「形」切换形态');
+      }
+    };
     this.waveSystem.onWaveClear = (idx) => { /* 波次清空提示 */ };
     this.waveSystem.onAllClear = () => this._onAllWavesClear();
 
@@ -175,7 +191,44 @@ export class BattleScene extends Phaser.Scene {
     // === HUD ===
     this._setupHUD();
     this._setupSystemCallbacks();
+    this._syncFormDisplay();
+    this._updateHUD();
+    this._setBattleHudReady();
   }
+
+  _getStageConfig() {
+    const stageId = this.battleData.stageId || 1;
+    for (const chapter of CHAPTERS) {
+      const stage = chapter.stages.find((item) => item.id === stageId);
+      if (stage) return stage;
+    }
+    return null;
+  }
+
+  _getStageWaveDefs() {
+    const stage = this._getStageConfig();
+    const requestedWaves = Number(this.battleData.stageWaves || stage?.waves || WAVE_DEFS.length);
+    const totalWaves = Math.max(1, Math.min(WAVE_DEFS.length, requestedWaves));
+    const stageId = Number(this.battleData.stageId || stage?.id || 1);
+    return WAVE_DEFS.slice(0, totalWaves).map((def, index) => ({
+      ...def,
+      wave: index + 1,
+      interval: stageId === 1 ? Math.min(def.interval, 900) : def.interval,
+      enemies: def.enemies.map(enemy => ({
+        ...enemy,
+        count: stageId === 1 ? Math.min(enemy.count, index === 0 ? 2 : 3) : enemy.count,
+      })),
+    }));
+  }
+
+  _setBattleHudReady() {
+    const waveEl = document.getElementById('wave-text');
+    if (waveEl && this.waveSystem) {
+      waveEl.textContent = `WAVE ${this.waveSystem.getWaveNumber()}/${this.waveSystem.getTotalWaves()}`;
+    }
+    setBattleHudVisible(true);
+  }
+
   /**
    * 用纯Canvas 2D生成敌人纹理
    * Phaser的make.graphics().generateTexture()在此环境下静默失败
@@ -246,11 +299,12 @@ export class BattleScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
     this.wasd = this.input.keyboard.addKeys('W,A,S,D');
     this.colorSwitchKey = this.input.keyboard.addKey('Q');
+    this._touchMoveActive = false;
+    this._touchTarget = null;
     
     // Q键切换颜色
     this.colorSwitchKey.on('down', () => {
-      this.colorIndex = (this.colorIndex + 1) % this.colorOrder.length;
-      this.currentColor = this.colorOrder[this.colorIndex];
+      this._switchColor();
     });
 
     // E键切换形态
@@ -263,6 +317,105 @@ export class BattleScene extends Phaser.Scene {
     this.input.keyboard.on('keydown-ONE', () => this._setForm(FORM_TYPE.ATTACK));
     this.input.keyboard.on('keydown-TWO', () => this._setForm(FORM_TYPE.STAIN));
     this.input.keyboard.on('keydown-THREE', () => this._setForm(FORM_TYPE.SUPPORT));
+
+    this.input.on('pointerdown', (pointer) => {
+      if (this._isMobileControlPointer(pointer)) return;
+      this._touchMoveActive = true;
+      this._setTouchTarget(pointer);
+    });
+    this.input.on('pointermove', (pointer) => {
+      if (!this._touchMoveActive) return;
+      this._setTouchTarget(pointer);
+    });
+    this.input.on('pointerup', () => {
+      this._touchMoveActive = false;
+      this._touchTarget = null;
+    });
+    this.input.on('pointerupoutside', () => {
+      this._touchMoveActive = false;
+      this._touchTarget = null;
+    });
+  }
+
+  _setupMobileControls() {
+    this.mobileControlTexts = {};
+    this.mobileControlHotspots = [];
+    this._createMobileButton(
+      GAME_WIDTH - 48,
+      GAME_HEIGHT - 124,
+      0xFF69B4,
+      () => this._switchColor(),
+      'color'
+    );
+    this._createMobileButton(
+      GAME_WIDTH - 48,
+      GAME_HEIGHT - 68,
+      0xFFD700,
+      () => this._switchForm(),
+      'form'
+    );
+    this._updateMobileControlLabels();
+  }
+
+  _createMobileButton(x, y, color, onTap, key) {
+    const bg = this.add.circle(x, y, 23, color, 0.26)
+      .setDepth(130)
+      .setStrokeStyle(2, color, 0.9)
+      .setInteractive({ useHandCursor: true });
+    const label = this.add.text(x, y, '', {
+      fontSize: '11px',
+      color: '#FFFFFF',
+      align: 'center',
+      fontStyle: 'bold',
+    }).setOrigin(0.5).setDepth(131);
+    bg.on('pointerdown', (_pointer, _localX, _localY, event) => {
+      if (event?.stopPropagation) event.stopPropagation();
+      onTap();
+    });
+    this.mobileControlTexts[key] = label;
+    this.mobileControlHotspots.push({ x, y, radius: 32 });
+  }
+
+  _isMobileControlPointer(pointer) {
+    return (this.mobileControlHotspots || []).some((spot) => {
+      const px = pointer.worldX ?? pointer.x;
+      const py = pointer.worldY ?? pointer.y;
+      return Phaser.Math.Distance.Between(px, py, spot.x, spot.y) <= spot.radius;
+    });
+  }
+
+  _setTouchTarget(pointer) {
+    this._touchTarget = {
+      x: Math.max(16, Math.min(GAME_WIDTH - 16, pointer.worldX ?? pointer.x)),
+      y: Math.max(16, Math.min(GAME_HEIGHT - 16, pointer.worldY ?? pointer.y)),
+    };
+  }
+
+  _switchColor() {
+    this.colorIndex = (this.colorIndex + 1) % this.colorOrder.length;
+    this.currentColor = this.colorOrder[this.colorIndex];
+    this._updateMobileControlLabels();
+  }
+
+  _updateMobileControlLabels() {
+    const colorNames = {
+      pink: '粉',
+      blue: '蓝',
+      yellow: '黄',
+      purple: '紫',
+      orange: '橙',
+    };
+    const formShort = {
+      attack: '攻',
+      stain: '染',
+      support: '援',
+    };
+    if (this.mobileControlTexts?.color) {
+      this.mobileControlTexts.color.setText(`色\n${colorNames[this.currentColor] || ''}`);
+    }
+    if (this.mobileControlTexts?.form) {
+      this.mobileControlTexts.form.setText(`形\n${formShort[this.currentForm] || ''}`);
+    }
   }
 
   // ===================== 射击 =====================
@@ -484,16 +637,37 @@ export class BattleScene extends Phaser.Scene {
     this.player.invulnerable = true;
     this.support.gainFromTakeDamage();
     
-    this.tweens.add({
-      targets: this.playerGfx,
-      alpha: 0.3,
-      duration: 100,
-      yoyo: true,
-      repeat: 5,
-      onComplete: () => { this.playerGfx.setAlpha(1); this.player.invulnerable = false; }
-    });
+    const visualTarget = this._getPlayerVisualTarget();
+    if (visualTarget) {
+      this.tweens.add({
+        targets: visualTarget,
+        alpha: 0.3,
+        duration: 100,
+        yoyo: true,
+        repeat: 5,
+        onComplete: () => {
+          this._setPlayerVisualAlpha(1);
+          this.player.invulnerable = false;
+        }
+      });
+    } else {
+      this.player.invulnerable = false;
+    }
     
     if (this.player.hp <= 0) this._onPlayerDeath();
+  }
+
+  _getPlayerVisualTarget() {
+    if (this.playerGfx && this.playerGfx.active !== false) return this.playerGfx;
+    if (this.player && this.player.active !== false) return this.player;
+    return null;
+  }
+
+  _setPlayerVisualAlpha(alpha) {
+    const target = this._getPlayerVisualTarget();
+    if (target && typeof target.setAlpha === 'function') {
+      target.setAlpha(alpha);
+    }
   }
 
   // ===================== 回血 =====================
@@ -933,7 +1107,7 @@ export class BattleScene extends Phaser.Scene {
 
     const waveEl = document.getElementById('wave-text');
     if (waveEl && this.waveSystem) {
-      waveEl.textContent = `WAVE ${this.waveSystem.getWaveNumber()}/${WAVE_DEFS.length}`;
+      waveEl.textContent = `WAVE ${this.waveSystem.getWaveNumber()}/${this.waveSystem.getTotalWaves()}`;
     }
     // Combo数字显示
     if (this.comboDisplay) {
@@ -1161,6 +1335,7 @@ export class BattleScene extends Phaser.Scene {
   }
 
   _showCritBurstFx(critBonus, duration) {
+    this._debugLastCritBurst = { critBonus, duration };
     // 甜蜜闪耀：标记层独立于Combo，累积3层
     this.shiningMarkStacks = Math.min(this.shiningMarkStacks + 1, 3);
     const aura = this.add.circle(
@@ -1416,6 +1591,51 @@ export class BattleScene extends Phaser.Scene {
     });
   }
 
+  _showFirstPlayHint(message, duration = 2800) {
+    if (!this.firstPlayHintText) {
+      this.firstPlayHintText = this.add.text(
+        GAME_WIDTH / 2,
+        GAME_HEIGHT - 166,
+        '',
+        {
+          fontSize: '14px',
+          color: '#FFFFFF',
+          align: 'center',
+          backgroundColor: 'rgba(10,10,26,0.72)',
+          padding: { x: 10, y: 6 },
+        }
+      ).setOrigin(0.5).setDepth(140);
+    }
+    if (this.firstPlayHintTween) this.firstPlayHintTween.stop();
+    this.firstPlayHintText.setText(message).setAlpha(1);
+    this.firstPlayHintTween = this.tweens.add({
+      targets: this.firstPlayHintText,
+      alpha: 0,
+      duration: 300,
+      delay: duration,
+    });
+  }
+
+  _scheduleFirstPlayWaveAssist(waveIndex) {
+    if (Number(this.battleData?.stageId || 1) !== 1 || waveIndex !== 0) return;
+    this.time.delayedCall(12000, () => {
+      if (!this.waveSystem || !this.waveSystem.waveActive || this.waveSystem.currentWave !== waveIndex) return;
+      this._showFirstPlayHint('应援灯光压制完成，准备第二波');
+      this.enemies.children.iterate((enemy) => {
+        if (!enemy || !enemy.active) return;
+        this._spawnKillFx(enemy.x, enemy.y, this.currentColor);
+        enemy.destroy();
+      });
+      if (this.waveSystem.spawnTimer) this.waveSystem.spawnTimer.remove(false);
+      this.waveSystem.spawnQueue = [];
+      this.waveSystem.enemiesRemaining = 0;
+      this.waveSystem.waveActive = false;
+      if (this.waveSystem.onWaveClear) this.waveSystem.onWaveClear(this.waveSystem.currentWave);
+      this.waveSystem.currentWave++;
+      this.time.delayedCall(1000, () => this.waveSystem.startNextWave());
+    });
+  }
+
   _onAllWavesClear() {
     let textStr = `🌟 全波次通关！\n\nSCORE: ${this.score}`;
     // B5评级
@@ -1437,7 +1657,7 @@ export class BattleScene extends Phaser.Scene {
 
   _onJarDefeat() {
     this.physics.pause();
-    this.playerGfx.setAlpha(0);
+    this._setPlayerVisualAlpha(0);
     const text = this.add.text(
       GAME_WIDTH / 2, GAME_HEIGHT / 2,
       '💔 颜料罐全毁！\n\n点击返回',
@@ -1455,8 +1675,12 @@ export class BattleScene extends Phaser.Scene {
   }
 
   _setForm(formType) {
-    if (this.currentForm === formType) return;
+    if (this.currentForm === formType) {
+      this._syncFormDisplay();
+      return;
+    }
     this.currentForm = formType;
+    this._syncFormDisplay();
     this.dmgCalc.setForm(formType);
     // 辅助型被动标记
     this.supportFormActive = (formType === FORM_TYPE.SUPPORT);
@@ -1480,8 +1704,13 @@ export class BattleScene extends Phaser.Scene {
       onComplete: () => flash.destroy(),
     });
 
+    this._syncFormDisplay();
+  }
+
+  _syncFormDisplay() {
     const formEl = document.getElementById('form-text');
-    if (formEl) formEl.textContent = this.formNames[formType];
+    if (formEl) formEl.textContent = this.formNames[this.currentForm];
+    this._updateMobileControlLabels();
   }
 
   // ===================== 弱点击破 → 安可链 =====================
@@ -1527,6 +1756,15 @@ export class BattleScene extends Phaser.Scene {
     else if (this.cursors.right.isDown || this.wasd.D.isDown) vx = PLAYER.SPEED;
     if (this.cursors.up.isDown || this.wasd.W.isDown) vy = -PLAYER.SPEED;
     else if (this.cursors.down.isDown || this.wasd.S.isDown) vy = PLAYER.SPEED;
+    if (vx === 0 && vy === 0 && this._touchMoveActive && this._touchTarget) {
+      const dx = this._touchTarget.x - this.player.x;
+      const dy = this._touchTarget.y - this.player.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > 6) {
+        vx = (dx / dist) * PLAYER.SPEED;
+        vy = (dy / dist) * PLAYER.SPEED;
+      }
+    }
     
     this.isMoving = (vx !== 0 || vy !== 0);
     this.player.body.setVelocity(vx, vy);
@@ -1796,7 +2034,7 @@ export class BattleScene extends Phaser.Scene {
 
   _onPlayerDeath() {
     this.physics.pause();
-    this.playerGfx.setAlpha(0);
+    this._setPlayerVisualAlpha(0);
     
     const gameOver = this.add.text(
       GAME_WIDTH / 2, GAME_HEIGHT / 2,

@@ -63,6 +63,25 @@ export const CHAPTERS = [
   },
 ];
 
+/** 按关卡ID查找关卡，并补充章节上下文 */
+export function getStageById(stageId) {
+  const id = Number(stageId);
+  for (const chapter of CHAPTERS) {
+    const stage = chapter.stages.find((item) => item.id === id);
+    if (stage) {
+      return {
+        ...stage,
+        chapterId: chapter.id,
+        chapterName: chapter.name,
+        chapterIcon: chapter.icon,
+        enemyTheme: chapter.enemyTheme,
+        recLevel: chapter.recLevel,
+      };
+    }
+  }
+  return null;
+}
+
 /** 共鸣门槛表 (GDD §5.4.3) */
 export const RESONANCE_GATES = {
   5:  { gate: 3,  rec: 5,  penalty: 'Boss HP+50%' },
