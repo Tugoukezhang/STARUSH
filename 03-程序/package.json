@@ -4,6 +4,7 @@
   "description": "ST☆RUSH 偶像弹幕射击 - Phase 1 原型",
   "scripts": {
     "dev": "vite",
+    "test:phase1-art": "node scripts/check-phase1-art-integration.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

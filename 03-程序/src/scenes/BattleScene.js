@@ -23,6 +23,38 @@ import { ResonanceSystem } from '../systems/ResonanceSystem.js';
 import { setBattleHudVisible } from '../utils/ui.js';
 import { CHAPTERS } from '../data/stages.js';
 
+const STAGE_BACKGROUND_KEY = 'stage-combat-idol-v5-1';
+const NOTE_ART_ATLAS_KEY = 'bullet-note-v5-1';
+const NOTE_ART_BASE_PATH = 'art/phase1/v5-1';
+
+const NOTE_ART_FRAMES = {
+  [COLORS.PINK]: {
+    bullet: 'bullet_note_pink_0',
+    charge: 'charge_note_pink_0',
+    impact: 'impact_note_pink_0',
+  },
+  [COLORS.BLUE]: {
+    bullet: 'bullet_note_blue_0',
+    charge: 'charge_note_blue_0',
+    impact: 'impact_note_blue_0',
+  },
+  [COLORS.YELLOW]: {
+    bullet: 'bullet_note_yellow_0',
+    charge: 'charge_note_yellow_0',
+    impact: 'impact_note_yellow_0',
+  },
+  [COLORS.PURPLE]: {
+    bullet: 'bullet_note_purple_0',
+    charge: 'charge_note_purple_0',
+    impact: 'impact_note_purple_0',
+  },
+  [COLORS.ORANGE]: {
+    bullet: 'bullet_note_orange_0',
+    charge: 'charge_note_orange_0',
+    impact: 'impact_note_orange_0',
+  },
+};
+
 export class BattleScene extends Phaser.Scene {
   constructor() {
     super({ key: 'BattleScene' });
@@ -33,7 +65,10 @@ export class BattleScene extends Phaser.Scene {
     this.load.atlas('particles-impact', 'particles-impact-atlas.png', 'particles-impact-atlas.json');
     this.load.image('particles-burst', 'particles-burst-v1-clear.png');
     this.load.image('particles-trail', 'particles-trail-v1-clear.png');
-    this.load.image('bullets-sheet', 'bullets-v4-clear.png');
+    this.load.image(STAGE_BACKGROUND_KEY, `${NOTE_ART_BASE_PATH}/stage-combat-idol-v5-1-a-gameplay-polish-750x1334.png`);
+    this.load.atlas(NOTE_ART_ATLAS_KEY,
+      `${NOTE_ART_BASE_PATH}/bullet-note-vfx-v5-1-gameplay-512x256.png`,
+      `${NOTE_ART_BASE_PATH}/bullet-note-vfx-v5-1-gameplay-512x256.json`);
   }
 
   create() {
@@ -48,6 +83,7 @@ export class BattleScene extends Phaser.Scene {
 
     // 背景
     this.cameras.main.setBackgroundColor('#0a0a1a');
+    this._createStageBackground();
 
     // 预生成敌人纹理（Canvas2D方式，兼容性最佳）
     this._generateEnemyTextures();
@@ -428,8 +464,6 @@ export class BattleScene extends Phaser.Scene {
     const colorHex = COLOR_HEX[this.currentColor] || 0xFFFFFF;
     
     // 用Graphics画弹幕（5色特色形状）
-    const bGfx = this.add.graphics();
-    this._drawBulletShape(bGfx, this.currentColor, colorHex);
     
     // 自动瞄准：找最近敌人方向（加预判偏移，补偿敌人移动）
     let aimVx = 0, aimVy = -1;  // 默认向上
@@ -477,9 +511,14 @@ export class BattleScene extends Phaser.Scene {
     bullet.setDepth(5);
     bullet.color = this.currentColor;
     bullet.isCrit = this.dmgCalc.rollCrit();
+    const bulletVisual = this._createPlayerBulletVisual(bullet.x, bullet.y, bullet.color, colorHex);
+    const bGfx = bulletVisual.node;
+    bullet.gfxOffsetX = bulletVisual.offsetX;
+    bullet.gfxOffsetY = bulletVisual.offsetY;
     bullet.gfx = bGfx; // 关联视觉
     
     this.playerBullets.add(bullet);
+    this._spawnChargeNoteFx(this.player.x, this.player.y - 18, this.currentColor);
     
     if (bullet.isCrit) {
       this._spawnCritFx(bullet.x, bullet.y, bullet.color);
@@ -558,6 +597,7 @@ export class BattleScene extends Phaser.Scene {
     }
 
     this.atmosphere.triggerFromHit();
+    this._spawnImpactNoteFx(enemy.x, enemy.y, bullet.color);
 
     // 染色型AOE溅射（GDD v1.4 §4.2.1b）
     if (this.currentForm === FORM_TYPE.STAIN) {
@@ -1575,6 +1615,98 @@ export class BattleScene extends Phaser.Scene {
     }
   }
 
+  _createStageBackground() {
+    if (!this.textures.exists(STAGE_BACKGROUND_KEY)) return;
+    this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, STAGE_BACKGROUND_KEY)
+      .setDisplaySize(GAME_WIDTH, GAME_HEIGHT)
+      .setDepth(-10);
+  }
+
+  _hasNoteArtFrame(frame) {
+    return Boolean(frame)
+      && this.textures.exists(NOTE_ART_ATLAS_KEY)
+      && Boolean(this.textures.getFrame(NOTE_ART_ATLAS_KEY, frame));
+  }
+
+  _createPlayerBulletVisual(x, y, color, hex) {
+    const frame = NOTE_ART_FRAMES[color]?.bullet;
+    if (this._hasNoteArtFrame(frame)) {
+      const note = this.add.image(x, y, NOTE_ART_ATLAS_KEY, frame)
+        .setDepth(6)
+        .setScale(0.32)
+        .setAlpha(0.96);
+      return { node: note, offsetX: 0, offsetY: 0 };
+    }
+
+    const gfx = this.add.graphics().setDepth(6);
+    this._drawBulletShape(gfx, color, hex);
+    gfx.setPosition(x - 3, y - 3);
+    return { node: gfx, offsetX: -3, offsetY: -3 };
+  }
+
+  _spawnChargeNoteFx(x, y, color) {
+    const frame = NOTE_ART_FRAMES[color]?.charge;
+    if (this._hasNoteArtFrame(frame)) {
+      const charge = this.add.image(x, y, NOTE_ART_ATLAS_KEY, frame)
+        .setDepth(8)
+        .setScale(0.24)
+        .setAlpha(0.68);
+      this.tweens.add({
+        targets: charge,
+        y: y - 10,
+        alpha: 0,
+        scaleX: 0.34,
+        scaleY: 0.34,
+        duration: 180,
+        onComplete: () => charge.destroy(),
+      });
+      return;
+    }
+
+    const hex = COLOR_HEX[color] || 0xFFFFFF;
+    const ring = this.add.circle(x, y, 5, hex, 0.18)
+      .setStrokeStyle(1, hex, 0.55)
+      .setDepth(8);
+    this.tweens.add({
+      targets: ring,
+      alpha: 0,
+      scaleX: 1.8,
+      scaleY: 1.8,
+      duration: 180,
+      onComplete: () => ring.destroy(),
+    });
+  }
+
+  _spawnImpactNoteFx(x, y, color) {
+    const frame = NOTE_ART_FRAMES[color]?.impact;
+    if (this._hasNoteArtFrame(frame)) {
+      const impact = this.add.image(x, y, NOTE_ART_ATLAS_KEY, frame)
+        .setDepth(16)
+        .setScale(0.28)
+        .setAlpha(0.86);
+      this.tweens.add({
+        targets: impact,
+        alpha: 0,
+        scaleX: 0.46,
+        scaleY: 0.46,
+        duration: 220,
+        onComplete: () => impact.destroy(),
+      });
+      return;
+    }
+
+    const hex = COLOR_HEX[color] || 0xFFFFFF;
+    const spark = this.add.circle(x, y, 4, hex, 0.5).setDepth(16);
+    this.tweens.add({
+      targets: spark,
+      alpha: 0,
+      scaleX: 2.2,
+      scaleY: 2.2,
+      duration: 220,
+      onComplete: () => spark.destroy(),
+    });
+  }
+
   _showWaveLabel(label) {
     const text = this.add.text(
       GAME_WIDTH / 2, GAME_HEIGHT / 2 - 60,
@@ -1833,7 +1965,7 @@ export class BattleScene extends Phaser.Scene {
         b.y += b.moveVy * dt;
         b.body.reset(b.x, b.y);
       }
-      if (b.gfx) b.gfx.setPosition(b.x - 3, b.y - 3);
+      if (b.gfx) b.gfx.setPosition(b.x + (b.gfxOffsetX ?? -3), b.y + (b.gfxOffsetY ?? -3));
       // 弹幕拖尾粒子
       if (this.textures.exists('particles-trail') && (!b._lastTrail || time - b._lastTrail > 80)) {
         b._lastTrail = time;

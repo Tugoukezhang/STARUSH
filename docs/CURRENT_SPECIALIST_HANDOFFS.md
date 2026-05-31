@@ -17,6 +17,7 @@ Accepted in master control:
 - Program report for P1-3 / recommended start / P1-4 is accepted for QA entry, but the patch was executed in `D:\GameProjects\STARUSH`.
 - Program minimal rework for QA blockers is returned in the shared workspace and accepted for QA re-run.
 - QA re-run accepts P1-3 / `立即开演` / P1-4 minimal mobile controls.
+- Art v5.1 gameplay polish is accepted as the current first-battle integration candidate, pending program integration and in-game QA.
 
 Acceptance evidence is archived in:
 
@@ -27,12 +28,13 @@ Acceptance evidence is archived in:
 - `docs/QA_P1-3_P1-4_REGRESSION_REPORT_2026-05-28.md`
 - `docs/P1-3_P1-4_MINIMAL_REFIX_REPORT_2026-05-28.md`
 - `docs/QA_P1-3_P1-4_ACCEPTANCE_REPORT_2026-05-29.md`
+- `docs/ART_V5_1_GAMEPLAY_POLISH_ACCEPTANCE_2026-05-30.md`
 
 Non-blocking residuals:
 
 - Re-entering BattleScene multiple times can warn that Phaser animation keys already exist.
 - Death and defense-fail were not force-reproduced as runtime failures in QA; they only received static-path and normal battle regression coverage.
-- Art assets are not generated or integrated yet; program can use CSS/DOM placeholders for mobile controls and continue the interaction slice.
+- Art v5.1 candidates exist for background and note-bullet gameplay atlas, but they are not integrated yet.
 - The program patch report was produced from `D:\GameProjects\STARUSH`; do not run QA against `C:\Users\1\Documents\ouxiang\STARUSH` unless the patch is synced there first.
 - Prior QA on `D:\GameProjects\STARUSH` found P1 blockers; current QA re-run on `C:\Users\1\Documents\ouxiang\STARUSH` confirmed those blockers cleared.
 
@@ -48,8 +50,42 @@ Current constraints:
 - Goal: Make the first 3 minutes playable for a non-programmer on a phone.
 - Player promise: Idol-stage bullet shooting where movement, color, form, and support build into a visible stage high point.
 - Recommended next slice: P1-3 CP crit-burst parameter fix, title-page recommended start, and P1-4 minimal mobile controls.
-- Current next slice: pre-commit file-list review and commit/push decision.
-- Main risks: accidentally staging generated artifacts or unrelated work.
+- Current next slice: program integration of accepted v5.1 art candidates, followed by in-game QA.
+- Main risks: visual readability regression, asset path mistakes, and accidentally staging older v4/v5 candidate directories.
+
+## Art v5.1 Gameplay Polish Return: 2026-05-30
+
+Producer decision: Accepted as current integration candidate, not final shipped art.
+
+Accepted archive:
+
+- `docs/ART_V5_1_GAMEPLAY_POLISH_ACCEPTANCE_2026-05-30.md`
+
+Source directory:
+
+- `01-美术/phase1-p0-candidates-v5-1-gameplay-polish-2026-05-30`
+
+Accepted candidate files:
+
+- `stage-combat-idol-v5-1-a-gameplay-polish-750x1334.png`
+- `stage-combat-idol-v5-1-a-gameplay-polish-375x667-preview.png`
+- `bullet-note-vfx-v5-1-gameplay-512x256.png`
+- `bullet-note-vfx-v5-1-gameplay-512x256.json`
+- `bullet-note-vfx-v5-1-gameplay-32px-preview.png`
+- `v5-1-gameplay-polish-contact-sheet.png`
+
+Producer rationale:
+
+- v5.1 reduces center-lane visual pressure and is better suited for overlaying player, enemies, bullets, and first-play UI.
+- The note-bullet atlas now separates gameplay projectile, charge cue, and impact rows clearly.
+- Validation reported `V5_1_VALIDATION_OK frames=15 atlas_cells=15/15 transparent_nonblack=0 pure_green_key=0`.
+
+Ruling:
+
+- Send Program only the v5.1 candidate for integration.
+- Do not integrate v4 or v5 older candidates unless comparison is explicitly reopened.
+- Send QA after program integration; image review alone is not enough.
+- Art holds unless integration QA finds a visual blocker.
 
 ## QA Acceptance Return: 2026-05-29
 
