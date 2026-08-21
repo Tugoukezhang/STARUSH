@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>试玩反馈</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe8;
+      --card: #fffdf8;
+      --ink: #241c16;
+      --muted: #6b5c50;
+      --line: #e4d5c4;
+      --accent: #b4532a;
+      --accent-press: #8f3e1d;
+      --ok: #2f6f4e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 20px 16px 112px;
+    }
+    h1 { font-size: 1.35rem; margin: 0 0 8px; }
+    .lead, .note { color: var(--muted); font-size: 0.95rem; }
+    .note {
+      background: #fff4e5;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin: 14px 0 22px;
+    }
+    fieldset {
+      border: 0;
+      margin: 0 0 22px;
+      padding: 0;
+    }
+    legend {
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding: 0;
+    }
+    .hint {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-top: 4px;
+    }
+    label.opt {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      margin: 8px 0 0;
+    }
+    label.opt:has(input:checked) {
+      border-color: var(--accent);
+      box-shadow: inset 0 0 0 1px var(--accent);
+    }
+    input[type="radio"], input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      flex: 0 0 auto;
+      accent-color: var(--accent);
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    textarea { min-height: 88px; resize: vertical; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; }
+    }
+    .bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: linear-gradient(to top, var(--bg) 78%, transparent);
+    }
+    .bar inner, .bar .inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    button[type="submit"] {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 16px;
+      font: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+    }
+    button[type="submit"]:disabled { opacity: 0.55; }
+    .err { color: #a12626; font-size: 0.9rem; margin-top: 8px; min-height: 1.2em; }
+    .honey { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>试玩反馈</h1>
+    <p class="lead">大约 2 分钟。没有对错。没玩明白也可以填，选最接近的一项就行。</p>
+    <p class="note">填完点最下面「提交」。不用复制，不用发截图。</p>
+
+    <form id="survey" action="https://formsubmit.co/1135638409@qq.com" method="POST">
+      <input type="hidden" name="_subject" value="STARUSH试玩问卷" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://tugoukezhang.github.io/STARUSH/thanks.html" />
+      <input type="hidden" name="_url" value="https://tugoukezhang.github.io/STARUSH/survey.html" />
+      <input type="hidden" name="build" value="p15-400-public" />
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" />
+
+      <div class="row">
+        <fieldset>
+          <legend>你用的手机</legend>
+          <label class="opt"><input type="radio" name="手机" value="苹果" required />苹果</label>
+          <label class="opt"><input type="radio" name="手机" value="安卓" />安卓</label>
+        </fieldset>
+        <fieldset>
+          <legend>是不是竖着玩的</legend>
+          <label class="opt"><input type="radio" name="竖屏" value="是" required />是</label>
+          <label class="opt"><input type="radio" name="竖屏" value="不是" />不是</label>
+          <label class="opt"><input type="radio" name="竖屏" value="记不清" />记不清</label>
+        </fieldset>
+      </div>
+
+      <fieldset>
+        <legend>1. 刚玩完，你觉得自己主要在干什么？</legend>
+        <label class="opt"><input type="radio" name="1_主要在干什么" value="拖着角色躲开，攻击是顺便发生的" required />拖着角色躲开，攻击是顺便发生的</label>
+        <label class="opt"><input type="radio" name="1_主要在干什么" value="在打一场演出/公演" />在打一场演出 / 公演</label>
+        <label class="opt"><input type="radio" name="1_主要在干什么" value="在过关、做任务、拿奖励" />在过关、做任务、拿奖励</label>
+        <label class="opt"><input type="radio" name="1_主要在干什么" value="还没玩明白" />还没玩明白</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. 你觉得射击是怎么发出去的？</legend>
+        <label class="opt"><input type="radio" name="2_射击怎么发出" value="自动打的，我不用点开火" required />自动打的，我不用点开火</label>
+        <label class="opt"><input type="radio" name="2_射击怎么发出" value="要我自己点才会打" />要我自己点才会打</label>
+        <label class="opt"><input type="radio" name="2_射击怎么发出" value="找过开火按钮，没找到" />找过开火按钮，没找到</label>
+        <label class="opt"><input type="radio" name="2_射击怎么发出" value="没注意" />没注意</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. 你是怎么知道自己有危险的？</legend>
+        <label class="opt"><input type="radio" name="3_怎么知道危险" value="被碰到或掉血了才知道" required />被碰到或掉血了才知道</label>
+        <label class="opt"><input type="radio" name="3_怎么知道危险" value="被打到前，画面就有提示" />被打到前，画面就有提示</label>
+        <label class="opt"><input type="radio" name="3_怎么知道危险" value="一直凭感觉躲" />一直凭感觉躲</label>
+        <label class="opt"><input type="radio" name="3_怎么知道危险" value="没觉得有危险" />没觉得有危险</label>
+        <label class="opt"><input type="radio" name="3_怎么知道危险" value="没注意/没玩明白" />没注意 / 没玩明白</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. 有没有去点「色」或「形」？</legend>
+        <label class="opt"><input type="radio" name="4_色或形" value="点了，觉得有差别" required />点了，觉得有差别</label>
+        <label class="opt"><input type="radio" name="4_色或形" value="点了，但没看懂有什么用" />点了，但没看懂有什么用</label>
+        <label class="opt"><input type="radio" name="4_色或形" value="看见了，但没点" />看见了，但没点</label>
+        <label class="opt"><input type="radio" name="4_色或形" value="完全没注意到" />完全没注意到</label>
+        <label class="opt"><input type="radio" name="4_色或形" value="没玩明白，不确定" />没玩明白，不确定</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>5. 前面一段和后面一段，感觉一样吗？</legend>
+        <label class="opt"><input type="radio" name="5_两段感觉" value="后面更难/更有压力" required />后面更难 / 更有压力</label>
+        <label class="opt"><input type="radio" name="5_两段感觉" value="后面不一样，但说不清哪里不同" />后面不一样，但说不清哪里不同</label>
+        <label class="opt"><input type="radio" name="5_两段感觉" value="差不多，没感觉分段" />差不多，没感觉分段</label>
+        <label class="opt"><input type="radio" name="5_两段感觉" value="没注意到分两段" />没注意到分两段</label>
+        <label class="opt"><input type="radio" name="5_两段感觉" value="没玩明白" />没玩明白</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>6. 场上如果有一道扫过来的东西，你觉得它是什么？</legend>
+        <label class="opt"><input type="radio" name="6_扫过来的东西" value="舞台/场地自己的效果" required />舞台 / 场地自己的效果</label>
+        <label class="opt"><input type="radio" name="6_扫过来的东西" value="敌人打出来的" />敌人打出来的</label>
+        <label class="opt"><input type="radio" name="6_扫过来的东西" value="一种惩罚或任务" />一种惩罚或任务</label>
+        <label class="opt"><input type="radio" name="6_扫过来的东西" value="看见了，说不清" />看见了，说不清</label>
+        <label class="opt"><input type="radio" name="6_扫过来的东西" value="没注意到" />没注意到</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>7. 你觉得它会一直跟着你吗？</legend>
+        <label class="opt"><input type="radio" name="7_会不会一直跟" value="会一直追着我" required />会一直追着我</label>
+        <label class="opt"><input type="radio" name="7_会不会一直跟" value="扫过去就过了，不会一直跟" />扫过去就过了，不会一直跟</label>
+        <label class="opt"><input type="radio" name="7_会不会一直跟" value="躲不掉" />躲不掉</label>
+        <label class="opt"><input type="radio" name="7_会不会一直跟" value="说不清" />说不清</label>
+        <label class="opt"><input type="radio" name="7_会不会一直跟" value="没注意到这个" />没注意到这个</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>8. 结果页让你觉得怎样？</legend>
+        <label class="opt"><input type="radio" name="8_结果页" value="这局打完了，还想再来" required />这局打完了，还想再来</label>
+        <label class="opt"><input type="radio" name="8_结果页" value="这局打完了，不想再来" />这局打完了，不想再来</label>
+        <label class="opt"><input type="radio" name="8_结果页" value="不像结束，好像还没打完" />不像结束，好像还没打完</label>
+        <label class="opt"><input type="radio" name="8_结果页" value="没看懂结果页" />没看懂结果页</label>
+        <label class="opt"><input type="radio" name="8_结果页" value="没玩到结果页" />没玩到结果页</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>
+          9. 有没有哪句话或图标让你觉得像下面这些？
+          <span class="hint">可多选</span>
+        </legend>
+        <input type="hidden" name="9_误读" id="misreadJoined" value="" />
+        <label class="opt"><input type="checkbox" name="misread_opt" value="任务" />任务</label>
+        <label class="opt"><input type="checkbox" name="misread_opt" value="奖励/领奖" />奖励 / 领奖</label>
+        <label class="opt"><input type="checkbox" name="misread_opt" value="抽卡/招募" />抽卡 / 招募</label>
+        <label class="opt"><input type="checkbox" name="misread_opt" value="还有下一关" />还有下一关</label>
+        <label class="opt"><input type="checkbox" name="misread_opt" value="都没有" />都没有</label>
+        <label class="opt"><input type="checkbox" name="misread_opt" value="没注意文案" />没注意文案</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>10. 如果再玩，你最希望先改善哪一件？</legend>
+        <label class="opt"><input type="radio" name="10_最希望先改善" value="先让我看懂现在在干什么、危不危险" required />先让我看懂现在在干什么、危不危险</label>
+        <label class="opt"><input type="radio" name="10_最希望先改善" value="让我自己决定什么时候开火" />让我自己决定什么时候开火</label>
+        <label class="opt"><input type="radio" name="10_最希望先改善" value="内容再多一点变化" />内容再多一点变化</label>
+        <label class="opt"><input type="radio" name="10_最希望先改善" value="操作再简单一点" />操作再简单一点</label>
+        <label class="opt"><input type="radio" name="10_最希望先改善" value="现在这样就行" />现在这样就行</label>
+        <label class="opt"><input type="radio" name="10_最希望先改善" value="还没想好" />还没想好</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>还有想说的吗？<span class="hint">选填</span></legend>
+        <textarea name="补充" placeholder="没有就空着"></textarea>
+      </fieldset>
+
+      <p class="err" id="err"></p>
+    </form>
+  </main>
+  <div class="bar">
+    <div class="inner">
+      <button type="submit" form="survey" id="submitBtn">提交</button>
+    </div>
+  </div>
+  <script>
+    const form = document.getElementById("survey");
+    const err = document.getElementById("err");
+    const submitBtn = document.getElementById("submitBtn");
+    form.addEventListener("submit", (event) => {
+      const boxes = [...form.querySelectorAll('input[name="misread_opt"]')];
+      const picked = boxes.filter((box) => box.checked).map((box) => box.value);
+      if (picked.length === 0) {
+        event.preventDefault();
+        err.textContent = "第 9 题至少选一项。没有就选「都没有」或「没注意文案」。";
+        boxes[0].closest("fieldset").scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      document.getElementById("misreadJoined").value = picked.join("；");
+      boxes.forEach((box) => { box.disabled = true; });
+      err.textContent = "";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "正在提交…";
+    });
+  </script>
+</body>
+</html>
