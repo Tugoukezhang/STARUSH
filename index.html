@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a1a'/%3E%3Cpath d='M32 8l5.9 17.3H56L41.4 36l5.8 17.4L32 42.6 16.8 53.4 22.6 36 8 25.3h18.1L32 8z' fill='%23ff69b4'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23ffd700'/%3E%3C/svg%3E" />
+  <title>ST☆RUSH - 偶像舞台应援行动</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    #game-container {
+      position: relative;
+    }
+    #hud {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 8px 6px;
+      gap: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .hud-item {
+      color: #fff;
+      font-size: 14px;
+      text-shadow: 0 0 6px rgba(255,255,255,0.5);
+    }
+    .atmosphere-bar {
+      display: flex;
+      gap: 4px;
+    }
+    .atmo-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      opacity: 0.3;
+      transition: opacity 0.3s, box-shadow 0.3s;
+    }
+    .atmo-dot.active {
+      opacity: 1;
+      box-shadow: 0 0 8px currentColor;
+    }
+    .atmo-dot.pink { background: #FF69B4; color: #FF69B4; }
+    .atmo-dot.blue { background: #00CED1; color: #00CED1; }
+    .atmo-dot.yellow { background: #FFD700; color: #FFD700; }
+    .atmo-dot.purple { background: #9370DB; color: #9370DB; }
+    .atmo-dot.orange { background: #FF8C00; color: #FF8C00; }
+    #support-gauge {
+      width: 100px; height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    #support-gauge-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #FF69B4, #FFD700);
+      border-radius: 4px;
+      transition: width 0.2s;
+    }
+    #combo-display {
+      position: absolute;
+      top: 50px; right: 12px;
+      color: #FFD700;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,215,0,0.5);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    #encore-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #FF8C00;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 0 0 20px rgba(255,140,0,0.8);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+    }
+    #center-stage-indicator {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #FF69B4;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 0 0 15px rgba(255,105,180,0.8);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-Df9OtKrg.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <div id="hud" style="display:none">
+      <div class="hud-item">
+        <span id="wave-text" style="color:#FFD700;font-size:12px;">WAVE 1/2</span>
+      </div>
+      <div class="hud-item" style="display:flex;align-items:center;gap:4px;">
+        <span style="color:#FF4444;font-size:12px;">HP</span>
+        <div id="hp-bar" style="display:flex;gap:2px;">
+          <div class="hp-pip" id="hp-1" style="width:14px;height:8px;background:#FF4444;border-radius:2px;transition:opacity 0.3s;"></div>
+          <div class="hp-pip" id="hp-2" style="width:14px;height:8px;background:#FF4444;border-radius:2px;transition:opacity 0.3s;"></div>
+          <div class="hp-pip" id="hp-3" style="width:14px;height:8px;background:#FF4444;border-radius:2px;transition:opacity 0.3s;"></div>
+          <div class="hp-pip" id="hp-4" style="width:14px;height:8px;background:#FF4444;border-radius:2px;transition:opacity 0.3s;"></div>
+          <div class="hp-pip" id="hp-5" style="width:14px;height:8px;background:#FF4444;border-radius:2px;transition:opacity 0.3s;"></div>
+        </div>
+      </div>
+      <div class="atmosphere-bar">
+        <div class="atmo-dot pink" id="atmo-pink"></div>
+        <div class="atmo-dot blue" id="atmo-blue"></div>
+        <div class="atmo-dot yellow" id="atmo-yellow"></div>
+        <div class="atmo-dot purple" id="atmo-purple"></div>
+        <div class="atmo-dot orange" id="atmo-orange"></div>
+      </div>
+      <div class="hud-item">
+        <span id="support-text">0</span>/100
+        <div id="support-gauge"><div id="support-gauge-fill"></div></div>
+      </div>
+    </div>
+    <div id="combo-display" style="display:none"></div>
+    <div id="encore-indicator" style="display:none">★ ENCORE ★</div>
+    <div id="center-stage-indicator" style="display:none">✦ C位登场 ✦</div>
+    <div id="form-display" style="display:none;position:absolute;bottom:12px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;text-shadow:0 0 6px rgba(255,255,255,0.5);pointer-events:none;z-index:10;">
+      <span id="form-text">🎤 输出</span>
+    </div>
+  </div>
+</body>
+</html>

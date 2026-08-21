@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>试玩后几个问题</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f1ea;
+      --card: #fffdf8;
+      --ink: #241c16;
+      --muted: #6b5c50;
+      --line: #e4d5c4;
+      --accent: #b4532a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 8px;
+    }
+    .lead, .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .note {
+      background: #fff4e5;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin: 16px 0 24px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin: 18px 0 8px;
+    }
+    input, textarea {
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; }
+    }
+    .actions {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      gap: 10px;
+      padding: 12px 0 8px;
+      background: linear-gradient(to top, var(--bg) 70%, transparent);
+    }
+    button {
+      flex: 1;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.copy {
+      background: var(--accent);
+      color: white;
+    }
+    button.clear {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    #status {
+      min-height: 1.4em;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>试玩后几个问题</h1>
+    <p class="lead">没有标准答案。用你自己的话写。不知道、没注意、没区别，都可以照实写。</p>
+    <p class="note">请先玩完再填。一次只填一份。填完点下面「复制全部回答」，发给主持人。</p>
+
+    <div class="row">
+      <div>
+        <label for="tester">编号（主持人填，如 T1）</label>
+        <input id="tester" autocomplete="off" />
+      </div>
+      <div>
+        <label for="date">日期</label>
+        <input id="date" autocomplete="off" />
+      </div>
+    </div>
+    <label for="device">手机型号和浏览器（如：iPhone 13 / Safari）</label>
+    <input id="device" autocomplete="off" />
+
+    <label for="q1">1. 你刚才觉得这局最主要是在做什么？</label>
+    <textarea id="q1"></textarea>
+    <label for="q2">2. 你什么时候觉得自己处在危险里？你是怎么判断的？</label>
+    <textarea id="q2"></textarea>
+    <label for="q3">3. 被打到的时候，画面有没有告诉你发生了什么？</label>
+    <textarea id="q3"></textarea>
+    <label for="q4">4. 你觉得自己的攻击是怎么发出去、怎么命中的？</label>
+    <textarea id="q4"></textarea>
+    <label for="q5">5. 你有没有去点「色」或「形」？为什么点，或者为什么没点？</label>
+    <textarea id="q5"></textarea>
+    <label for="q6">6. 不同颜色的弹，或「输出 / 染色 / 辅助」，对你来说有差别吗？</label>
+    <textarea id="q6"></textarea>
+    <label for="q7">7. 上方的条或计量，你觉得它代表什么？</label>
+    <textarea id="q7"></textarea>
+    <label for="q8">8. 第一波和第二波给你的感觉有什么不同？如果没区别也可以说没区别。</label>
+    <textarea id="q8"></textarea>
+    <label for="q9">9. 第二波里，你有没有改过自己的移动？当时为什么这么做？</label>
+    <textarea id="q9"></textarea>
+    <label for="q10">10. 你觉得那道经过场地的东西是谁或者什么发出来的？</label>
+    <textarea id="q10"></textarea>
+    <label for="q11">11. 你觉得它的方向是怎么决定的？</label>
+    <textarea id="q11"></textarea>
+    <label for="q12">12. 如果再遇到一次，你觉得自己能做什么改变结果？</label>
+    <textarea id="q12"></textarea>
+    <label for="q13">13. 你觉得它会一直跟着你吗？为什么？</label>
+    <textarea id="q13"></textarea>
+    <label for="q14">14. 这局里有没有某个瞬间像舞台高光？是什么让你这么觉得？</label>
+    <textarea id="q14"></textarea>
+    <label for="q15">15. 结果页让你觉得自己表现如何？</label>
+    <textarea id="q15"></textarea>
+    <label for="q16">16. 第二局你有没有改变打法？为什么？</label>
+    <textarea id="q16"></textarea>
+    <label for="q17">17. 如果你主动选择了再演一次，你当时想验证什么？</label>
+    <textarea id="q17"></textarea>
+    <label for="q18">18. 有没有什么文案像任务、奖励、或者下一关提示？</label>
+    <textarea id="q18"></textarea>
+    <label for="q19">19. 如果再玩几局，你最希望战斗多出什么变化？为什么？</label>
+    <textarea id="q19"></textarea>
+    <label for="q20">20. 现在有哪些部分让你觉得重复，或者还没形成区别？</label>
+    <textarea id="q20"></textarea>
+    <label for="q21">21. 还有没有你想自己决定、但现在只能看着它自动发生的事情？</label>
+    <textarea id="q21"></textarea>
+    <label for="q22">22. 哪个画面反馈最帮你理解发生了什么？哪个最看不懂？</label>
+    <textarea id="q22"></textarea>
+
+    <div class="actions">
+      <button type="button" class="copy" id="copyBtn">复制全部回答</button>
+      <button type="button" class="clear" id="clearBtn">清空</button>
+    </div>
+    <div id="status"></div>
+  </main>
+  <script>
+    const FIELDS = [
+      ["tester", "编号"],
+      ["date", "日期"],
+      ["device", "设备"],
+      ["q1", "1"],
+      ["q2", "2"],
+      ["q3", "3"],
+      ["q4", "4"],
+      ["q5", "5"],
+      ["q6", "6"],
+      ["q7", "7"],
+      ["q8", "8"],
+      ["q9", "9"],
+      ["q10", "10"],
+      ["q11", "11"],
+      ["q12", "12"],
+      ["q13", "13"],
+      ["q14", "14"],
+      ["q15", "15"],
+      ["q16", "16"],
+      ["q17", "17"],
+      ["q18", "18"],
+      ["q19", "19"],
+      ["q20", "20"],
+      ["q21", "21"],
+      ["q22", "22"],
+    ];
+    const QUESTIONS = {
+      q1: "你刚才觉得这局最主要是在做什么？",
+      q2: "你什么时候觉得自己处在危险里？你是怎么判断的？",
+      q3: "被打到的时候，画面有没有告诉你发生了什么？",
+      q4: "你觉得自己的攻击是怎么发出去、怎么命中的？",
+      q5: "你有没有去点「色」或「形」？为什么点，或者为什么没点？",
+      q6: "不同颜色的弹，或「输出 / 染色 / 辅助」，对你来说有差别吗？",
+      q7: "上方的条或计量，你觉得它代表什么？",
+      q8: "第一波和第二波给你的感觉有什么不同？如果没区别也可以说没区别。",
+      q9: "第二波里，你有没有改过自己的移动？当时为什么这么做？",
+      q10: "你觉得那道经过场地的东西是谁或者什么发出来的？",
+      q11: "你觉得它的方向是怎么决定的？",
+      q12: "如果再遇到一次，你觉得自己能做什么改变结果？",
+      q13: "你觉得它会一直跟着你吗？为什么？",
+      q14: "这局里有没有某个瞬间像舞台高光？是什么让你这么觉得？",
+      q15: "结果页让你觉得自己表现如何？",
+      q16: "第二局你有没有改变打法？为什么？",
+      q17: "如果你主动选择了再演一次，你当时想验证什么？",
+      q18: "有没有什么文案像任务、奖励、或者下一关提示？",
+      q19: "如果再玩几局，你最希望战斗多出什么变化？为什么？",
+      q20: "现在有哪些部分让你觉得重复，或者还没形成区别？",
+      q21: "还有没有你想自己决定、但现在只能看着它自动发生的事情？",
+      q22: "哪个画面反馈最帮你理解发生了什么？哪个最看不懂？",
+    };
+
+    function gather() {
+      const lines = ["局后问卷原话"];
+      for (const [id, label] of FIELDS) {
+        const value = document.getElementById(id).value.trim() || "（空）";
+        if (id.startsWith("q")) {
+          lines.push("");
+          lines.push(label + ". " + QUESTIONS[id]);
+          lines.push(value);
+        } else {
+          lines.push(label + ": " + value);
+        }
+      }
+      return lines.join("\n");
+    }
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const text = gather();
+      const status = document.getElementById("status");
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = "已复制。发给主持人即可。";
+      } catch {
+        window.prompt("复制失败时，请手动全选复制：", text);
+        status.textContent = "请手动复制上面的内容。";
+      }
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      if (!window.confirm("清空这一页已经填的内容？")) return;
+      for (const [id] of FIELDS) document.getElementById(id).value = "";
+      document.getElementById("status").textContent = "已清空。";
+    });
+  </script>
+</body>
+</html>
