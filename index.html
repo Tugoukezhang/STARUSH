@@ -108,12 +108,47 @@
       opacity: 1;
       box-shadow: 0 0 18px rgba(212,175,119,.7);
     }
-    .skill-orb.portrait-orb {
-      background-image: url('art/hud/sakura-avatar.jpg'), url('art/hud/skill-disc.jpg');
-      background-size: 70% 70%, cover;
-      background-position: center 28%, center;
+    .skill-orb.special {
+      width: 52px; height: 52px;
+      background: url('art/hud/special-disc.jpg') center / cover no-repeat;
+      pointer-events: auto;
+      position: relative;
+      overflow: hidden;
+      color: #2A1C0C;
+    }
+    .skill-orb.special.ready {
+      box-shadow: 0 0 16px rgba(255, 214, 90, .8);
+    }
+    #special-fill {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      height: 0%;
+      background: rgba(255, 214, 90, .45);
+      pointer-events: none;
+    }
+    .switch-roster {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      pointer-events: auto;
+    }
+    .switch-idol {
+      width: 44px; height: 44px; border-radius: 50%;
+      padding: 0; margin: 0; cursor: pointer;
+      appearance: none; -webkit-appearance: none;
+      border: 3px solid rgba(212,175,119,.45);
+      background-color: #141820;
+      background-position: center 18%;
+      background-size: cover;
       background-repeat: no-repeat;
-      color: transparent;
+      box-shadow: 0 4px 10px rgba(0,0,0,.4);
+      opacity: .78;
+    }
+    .switch-idol[data-id="sakura"] { background-image: url('art/hud/sakura-avatar.jpg'); }
+    .switch-idol[data-id="kai"] { background-image: url('art/hud/kai-avatar.jpg'); }
+    .switch-idol[data-id="venus"] { background-image: url('art/hud/venus-avatar.jpg'); }
+    .switch-idol.active {
+      opacity: 1;
+      border-color: #ffd76a;
+      box-shadow: 0 0 12px rgba(255, 215, 106, .7);
+      transform: scale(1.08);
     }
     .atmosphere-bar, #form-display { display: none !important; }
     #combo-display, #encore-indicator, #center-stage-indicator {
@@ -153,7 +188,7 @@
       text-shadow: 0 3px 0 #c43a7a, 0 0 16px #ff6fae;
     }
   </style>
-  <script type="module" crossorigin src="./assets/index-C3Mrw3hu.js"></script>
+  <script type="module" crossorigin src="./assets/index-BqBlx2QU.js"></script>
 </head>
 <body>
   <div id="game-container">
@@ -186,7 +221,12 @@
       </div>
       <div class="mihoyo-skills">
         <div class="skill-orb ult" id="skill-encore">安可</div>
-        <div class="skill-orb portrait-orb" id="skill-support" title="绯樱"> </div>
+        <div class="skill-orb special" id="skill-special">应援<div id="special-fill"></div></div>
+        <div class="switch-roster">
+          <button type="button" class="switch-idol active" data-id="sakura" aria-label="绯樱"></button>
+          <button type="button" class="switch-idol" data-id="kai" aria-label="苍海"></button>
+          <button type="button" class="switch-idol" data-id="venus" aria-label="金星"></button>
+        </div>
       </div>
       <div class="atmosphere-bar">
         <div class="atmo-dot pink" id="atmo-pink"></div>
