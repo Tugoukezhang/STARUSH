@@ -19,12 +19,11 @@
       position: absolute; inset: 0; z-index: 12; pointer-events: none;
     }
     .cw-objective {
-      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-      min-width: 228px; padding: 7px 16px 8px;
-      background: linear-gradient(180deg, rgba(18,16,22,.92), rgba(8,8,12,.88));
-      border: 1px solid rgba(212,175,119,.45);
-      box-shadow: 0 6px 16px rgba(0,0,0,.35);
-      clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 12px 100%, 0 50%);
+      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      width: 268px; height: 64px; padding: 14px 28px 10px;
+      background: url('art/hud/objective-plaque.jpg') center / 100% 100% no-repeat;
+      border: none;
+      box-shadow: none;
     }
     .cw-objective-kicker {
       text-align: center; color: #f8e7c3; font-size: 12px; font-weight: 800;
@@ -39,37 +38,40 @@
       color: #e8d19a; font-size: 13px; font-variant-numeric: tabular-nums; font-weight: 700;
     }
     .mihoyo-player {
-      position: absolute; top: 54px; left: 8px;
+      position: absolute; top: 74px; left: 8px;
       display: flex; align-items: center; gap: 6px;
-      padding: 4px 8px 5px 4px;
-      background: linear-gradient(180deg, rgba(16,20,30,.9), rgba(8,10,16,.8));
-      border: 1px solid rgba(212,175,119,.5);
+      padding: 0;
+      background: none;
+      border: none;
     }
     .mihoyo-portrait, .cw-portrait {
-      width: 40px; height: 40px; border-radius: 50%;
-      border: 2px solid #d4af77;
-      background: radial-gradient(circle at 38% 28%, #ffe1ef 0%, #e45a8c 46%, #6b1d3c 78%);
-      box-shadow: 0 0 0 1px #3a2a12;
+      width: 52px; height: 52px; border-radius: 50%;
+      border: none;
+      background: url('art/hud/sakura-avatar.jpg') center top / cover no-repeat;
+      box-shadow: none;
       flex-shrink: 0;
     }
     .mihoyo-player-meta { display: flex; flex-direction: column; gap: 3px; min-width: 78px; }
     .mihoyo-name { color: #f8e7c3; font-size: 12px; font-weight: 700; }
     .hp-track {
-      height: 7px; width: 78px;
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(248,231,195,.28);
+      height: 16px; width: 92px;
+      background: url('art/hud/hp-frame.jpg') center / 100% 100% no-repeat;
+      border: none;
       overflow: hidden;
+      position: relative;
     }
     #hp-fill {
-      height: 100%; width: 100%;
+      position: absolute; left: 8px; top: 4px; bottom: 4px;
+      width: calc(100% - 16px);
       background: linear-gradient(90deg, #7adf7a, #3fae4a);
+      border-radius: 8px;
     }
     #hp-bar { display: none; }
     .heat-card {
-      position: absolute; top: 54px; right: 46px;
-      min-width: 108px; padding: 5px 8px 6px;
-      background: linear-gradient(180deg, rgba(16,20,30,.9), rgba(8,10,16,.8));
-      border: 1px solid rgba(212,175,119,.42);
+      position: absolute; top: 74px; right: 46px;
+      min-width: 108px; padding: 8px 10px 8px;
+      background: url('art/hud/objective-plaque.jpg') center / 140% 180% no-repeat;
+      border: none;
     }
     #heat-level { display: block; color: #d4af77; font-size: 10px; margin-bottom: 3px; }
     #heat-gauge, #support-gauge {
@@ -88,31 +90,30 @@
       display: flex; flex-direction: column; align-items: center; gap: 10px;
     }
     .skill-orb {
-      width: 52px; height: 52px; border-radius: 50%;
+      width: 56px; height: 56px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: #f8e7c3;
-      background: radial-gradient(circle at 40% 32%, rgba(80,90,110,.9), rgba(12,14,22,.92));
-      border: 2px solid rgba(212,175,119,.6);
-      box-shadow: 0 0 0 1px #000, 0 8px 14px rgba(0,0,0,.4);
+      font-size: 11px; font-weight: 800; color: #2A1C0C;
+      background: url('art/hud/skill-disc.jpg') center / cover no-repeat;
+      border: none;
+      box-shadow: 0 8px 14px rgba(0,0,0,.4);
       overflow: hidden;
     }
     .skill-orb.ult {
-      width: 58px; height: 58px; opacity: .75;
-      border-color: rgba(212,175,119,.3);
+      width: 64px; height: 64px; opacity: .8;
+      background: url('art/hud/burst-orb.jpg') center / cover no-repeat;
       pointer-events: auto;
+      color: #2A1C0C;
     }
     .skill-orb.ult.ready {
       opacity: 1;
-      border-color: #f8e7c3;
-      box-shadow: 0 0 0 1px #000, 0 0 18px rgba(212,175,119,.6);
+      box-shadow: 0 0 18px rgba(212,175,119,.7);
     }
     .skill-orb.portrait-orb {
-      background-image: url('art/phase1/p1-6/sakura-hud-portrait.jpg');
-      background-size: cover;
-      background-position: center top;
+      background-image: url('art/hud/sakura-avatar.jpg'), url('art/hud/skill-disc.jpg');
+      background-size: 70% 70%, cover;
+      background-position: center 28%, center;
+      background-repeat: no-repeat;
       color: transparent;
-      border-color: #c084fc;
-      box-shadow: 0 0 0 2px rgba(168,85,247,.45), 0 8px 14px rgba(0,0,0,.4);
     }
     .atmosphere-bar, #form-display { display: none !important; }
     #combo-display, #encore-indicator, #center-stage-indicator {
@@ -126,7 +127,7 @@
     #center-stage-indicator { top: 164px; font-size: 16px; }
     #support-text { display: none; }
   </style>
-  <script type="module" crossorigin src="./assets/index-By7wpEku.js"></script>
+  <script type="module" crossorigin src="./assets/index-CNDp-QH1.js"></script>
 </head>
 <body>
   <div id="game-container">
