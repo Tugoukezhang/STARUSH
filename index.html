@@ -126,8 +126,34 @@
     #encore-indicator { top: 136px; font-size: 20px; }
     #center-stage-indicator { top: 164px; font-size: 16px; }
     #support-text { display: none; }
+    #ult-prompt {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 22;
+      pointer-events: auto;
+      background: linear-gradient(90deg, rgba(0,0,0,0.15), rgba(0,0,0,0.45));
+    }
+    #ult-prompt.show { display: block; }
+    #ult-prompt img {
+      position: absolute;
+      right: -8px;
+      top: 72px;
+      height: 420px;
+      pointer-events: none;
+    }
+    #ult-prompt .ult-call {
+      position: absolute;
+      left: 18px;
+      top: 292px;
+      color: #fff8e8;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-shadow: 0 3px 0 #c43a7a, 0 0 16px #ff6fae;
+    }
   </style>
-  <script type="module" crossorigin src="./assets/index-CNDp-QH1.js"></script>
+  <script type="module" crossorigin src="./assets/index-C3Mrw3hu.js"></script>
 </head>
 <body>
   <div id="game-container">
@@ -170,6 +196,10 @@
         <div class="atmo-dot orange" id="atmo-orange"></div>
       </div>
       <span id="support-text">0</span>
+    </div>
+    <div id="ult-prompt">
+      <img src="art/hud/encore-cutin.jpg" alt="" />
+      <div class="ult-call">释放安可!</div>
     </div>
     <div id="combo-display" style="display:none"></div>
     <div id="encore-indicator" style="display:none">安可</div>
