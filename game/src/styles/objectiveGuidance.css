@@ -1,0 +1,16 @@
+#public-objective-guidance {position:absolute;inset:0;z-index:24;pointer-events:none;user-select:none;font-family:"Starush UI","Microsoft YaHei",sans-serif;letter-spacing:0;}
+#public-objective-guidance[hidden],#public-objective-guidance [hidden] {display:none;}
+#public-objective-guidance [data-part=ring] {position:absolute;box-sizing:border-box;padding:8px;object-fit:contain;filter:drop-shadow(0 1px 2px #101c22);}
+#public-objective-guidance [data-part=tag] {position:absolute;box-sizing:border-box;display:flex;align-items:center;gap:5px;padding:3px 6px;background:none;color:#fff;border:0;box-shadow:none;text-shadow:0 1px 2px #101c22,0 0 4px #101c22,1px 0 #101c22,-1px 0 #101c22;--guide-ink:#79e0df;}
+#public-objective-guidance [data-part=copy] {min-width:0;flex:1;}
+#public-objective-guidance [data-part=label] {display:block;min-width:0;font-size:14px;line-height:20px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#public-objective-guidance [data-part=hint] {font-size:14px;line-height:20px;font-weight:700;white-space:nowrap;color:#d9f743;}
+#public-objective-guidance [data-part=detail] {display:flex;align-items:center;gap:3px;}
+#public-objective-guidance [data-part=supply] {width:18px;height:18px;flex:none;object-fit:contain;}
+#public-objective-guidance[data-supply=charging] [data-part=supply] {opacity:.6;}
+#public-objective-guidance[data-supply=ready] [data-part=hint] {color:#9bf3d8;}
+#public-objective-guidance [data-part=arrow] {flex:none;display:grid;place-items:center;width:20px;height:20px;font-size:20px;line-height:20px;font-weight:900;color:var(--guide-ink);transform-origin:center;}
+#public-objective-guidance[data-state=destination] [data-part=tag],#public-objective-guidance[data-state=boss-body] [data-part=tag] {--guide-ink:#ff9ebc;}
+#public-objective-guidance[data-motion=arrive] [data-part=tag] {animation:objective-arrive 220ms ease-out both;}
+@keyframes objective-arrive {from{opacity:.4}to{opacity:1}}
+@media (prefers-reduced-motion: reduce) {#public-objective-guidance [data-part=tag] {animation:none;}}

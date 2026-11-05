@@ -1,0 +1,149 @@
+#game-container #public-shell .product-module-screen {
+ --pm-ink:#1c2325;--pm-surface:#292e30;--pm-line:#50585a;--pm-paper:#f2f5f2;--pm-muted:#bdc8c6;
+ --pm-accent:#d9ec46;--pm-cyan:#57d6df;--pm-rose:#f08ba7;
+ position:relative;isolation:isolate;margin:0 -20px -12px;padding:0 12px 16px;min-height:100%;
+ background:var(--pm-ink);color:var(--pm-paper);font-size:13px;line-height:1.5;letter-spacing:0;
+}
+#game-container #public-shell .product-module-screen * {box-sizing:border-box;min-width:0;letter-spacing:0;}
+#game-container #public-shell .product-module-screen :is(h2,h3,strong,p,span,small,label,summary) {color:inherit;}
+#game-container #public-shell .product-module-screen button :is(span,strong,small) {color:inherit;}
+#game-container #public-shell .product-module-screen :is(h2,h3,p,figure) {margin:0;}
+#game-container #public-shell .product-module-screen :is(button,select,summary) {font:inherit;letter-spacing:0;touch-action:manipulation;}
+#game-container #public-shell .product-module-screen :is(button,select,summary):focus-visible {outline:3px solid var(--pm-cyan);outline-offset:-3px;}
+#game-container #public-shell .product-module-screen :is(button,select):disabled {opacity:.5;cursor:default;}
+#game-container #public-shell .product-module-screen button.pm-entry,
+#game-container #public-shell .product-module-screen button.pm-cast-option,
+#game-container #public-shell .product-module-screen button.pm-topic,
+#game-container #public-shell .product-module-screen button.pm-command,
+#game-container #public-shell .product-module-screen button.pm-service-command {
+ border:0;border-radius:3px;border-image:none;box-shadow:none;color:var(--pm-paper);background:var(--pm-surface);
+ min-height:44px;font-size:13px;line-height:1.5;text-align:left;cursor:pointer;
+}
+#game-container #public-shell .product-module-screen button:hover:not(:disabled) {filter:brightness(1.12);}
+#game-container #public-shell .product-module-screen [hidden] {display:none;}
+#game-container #public-shell .product-module-screen .pm-scene {
+ position:relative;isolation:isolate;height:212px;margin:0 -12px;overflow:hidden;border-bottom:4px solid var(--pm-accent);
+ background:#819496;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
+}
+#game-container #public-shell .product-module-screen .pm-scene-art {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 51%;z-index:0;}
+#game-container #public-shell .product-module-screen .pm-scene-copy {align-self:start;z-index:2;margin:16px 0 0 12px;max-width:154px;}
+#game-container #public-shell .product-module-screen .pm-scene-code {display:table;background:var(--pm-accent);color:var(--pm-ink);font-size:10px;font-weight:800;padding:3px 6px;}
+#game-container #public-shell .product-module-screen .pm-scene h2 {color:var(--pm-paper);font-size:23px;line-height:1.35;font-weight:900;padding:7px 9px;background:var(--pm-ink);width:fit-content;max-width:100%;overflow-wrap:anywhere;}
+#game-container #public-shell .product-module-screen .pm-scene-member {display:table;padding:4px 7px;margin-top:12px;color:var(--pm-ink);background:var(--pm-paper);font-size:15px;}
+#game-container #public-shell .product-module-screen .pm-scene-role {display:table;padding:2px 7px;background:var(--pm-ink);color:var(--pm-paper);font-size:11px;}
+#game-container #public-shell .product-module-screen .pm-scene-portrait {position:relative;grid-column:2;grid-row:1;height:190px;align-self:end;z-index:1;margin:0 3px 21px -12px;}
+#game-container #public-shell .product-module-screen .pm-scene .member-mark.member-mark-full {display:block;position:relative;width:100%;height:100%;max-width:none;min-width:0;border:0;background:transparent;border-radius:0;overflow:visible;}
+#game-container #public-shell .product-module-screen .pm-scene .member-portrait {display:block;inset:0;position:absolute;width:100%;height:100%;object-fit:contain;background:transparent;object-position:center bottom;}
+#game-container #public-shell .product-module-screen .pm-scene-portrait :is(canvas,.menu-portrait-stage,.home-portrait-stage) {max-width:100%;max-height:100%;}
+#game-container #public-shell .product-module-screen .pm-scene-caption {position:absolute;bottom:0;left:0;right:0;z-index:3;min-height:26px;padding:4px 12px;display:flex;justify-content:space-between;gap:8px;font-size:10px;background:var(--pm-ink);color:var(--pm-paper);}
+#game-container #public-shell .product-module-screen:not([data-product-page=lounge]) .pm-scene {height:126px;grid-template-columns:minmax(0,1fr) 96px;}
+#game-container #public-shell .product-module-screen:not([data-product-page=lounge]) .pm-scene-copy {margin-top:8px;max-width:190px;}
+#game-container #public-shell .product-module-screen:not([data-product-page=lounge]) .pm-scene h2 {font-size:20px;padding:3px 7px;}
+#game-container #public-shell .product-module-screen:not([data-product-page=lounge]) .pm-scene-member {margin-top:3px;padding:1px 7px;font-size:11px;}
+#game-container #public-shell .product-module-screen:not([data-product-page=lounge]) .pm-scene-role {display:none;}
+#game-container #public-shell .product-module-screen:not([data-product-page=lounge]) .pm-scene-portrait {height:94px;margin:0 6px 24px -4px;}
+#game-container #public-shell .product-module-screen .pm-shortcuts {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:12px 0 16px;}
+#game-container #public-shell .product-module-screen .pm-shortcuts .pm-entry {min-height:62px;grid-template-columns:25px minmax(0,1fr);padding:7px 8px;border-left:3px solid var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-shortcuts .pm-entry > svg:last-child {display:none;}
+#game-container #public-shell .product-module-screen .pm-shortcuts .pm-entry strong {font-size:13px;}
+#game-container #public-shell .product-module-screen .pm-shortcuts [data-category=lounge] {border-color:var(--pm-rose);}
+#game-container #public-shell .product-module-screen .pm-shortcuts [data-category=venue] {border-color:var(--pm-cyan);}
+#game-container #public-shell .product-module-screen .pm-shortcuts [data-category=recruitment] {border-color:var(--pm-rose);}
+#game-container #public-shell .product-module-screen .pm-shortcuts [data-category=services] {border-color:#bdc8c6;}
+#game-container #public-shell .product-module-screen .pm-entry {display:grid;grid-template-columns:24px minmax(0,1fr) 20px;align-items:center;width:100%;gap:8px;padding:12px 4px;}
+#game-container #public-shell .product-module-screen .pm-entry svg {width:20px;height:20px;}
+#game-container #public-shell .product-module-screen .pm-entry-copy {display:flex;flex-direction:column;gap:3px;}
+#game-container #public-shell .product-module-screen .pm-entry-copy strong {font-size:14px;line-height:1.4;overflow-wrap:anywhere;}
+#game-container #public-shell .product-module-screen .pm-entry-copy small {font-size:10px;line-height:1.5;color:var(--pm-muted);overflow-wrap:anywhere;}
+#game-container #public-shell .product-module-screen .pm-section-heading {display:flex;align-items:center;gap:8px;min-height:42px;border-bottom:1px solid var(--pm-line);padding:7px 0;}
+#game-container #public-shell .product-module-screen .pm-section-heading h3 {color:var(--pm-paper);flex:1;font-size:15px;line-height:1.4;}
+#game-container #public-shell .product-module-screen .pm-section-heading > small {font-size:10px;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-section-heading svg {width:19px;height:19px;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-directory-section {border-bottom:1px solid var(--pm-line);}
+#game-container #public-shell .product-module-screen .pm-category-heading {min-height:46px;display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;}
+#game-container #public-shell .product-module-screen .pm-category-heading::-webkit-details-marker {display:none;}
+#game-container #public-shell .product-module-screen .pm-category-heading::after {content:'+';font-size:22px;width:20px;text-align:center;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-directory-section[open] > .pm-category-heading::after {content:'-';}
+#game-container #public-shell .product-module-screen .pm-category-heading strong {flex:1;font-size:13px;}
+#game-container #public-shell .product-module-screen .pm-category-heading small {font-size:10px;color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-category-heading svg {width:20px;height:20px;}
+#game-container #public-shell .product-module-screen .pm-directory-section[data-category=members] .pm-category-heading {color:var(--pm-rose);}
+#game-container #public-shell .product-module-screen .pm-directory-section[data-category=venue] .pm-category-heading {color:var(--pm-cyan);}
+#game-container #public-shell .product-module-screen .pm-directory-section button.pm-entry {background:transparent;border-top:1px solid #3c4446;border-radius:0;padding:10px 3px;}
+#game-container #public-shell .product-module-screen .pm-entry-state {grid-column:2;font-size:9px;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen [data-availability=service-required] .pm-entry-state {color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-ledger {display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:12px 0;font-size:11px;color:var(--pm-muted);border-bottom:1px solid var(--pm-line);}
+#game-container #public-shell .product-module-screen .pm-ledger strong {color:var(--pm-paper);font-size:13px;}
+#game-container #public-shell .product-module-screen .pm-cast-strip {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:10px 0 0;}
+#game-container #public-shell .product-module-screen button.pm-cast-option {display:grid;grid-template-columns:32px minmax(0,1fr);align-items:center;gap:4px;padding:5px 4px;min-height:48px;font-size:10px;border-bottom:3px solid transparent;}
+#game-container #public-shell .product-module-screen .pm-cast-option[aria-pressed=true] {border-bottom-color:var(--pm-rose);background:#42474a;}
+#game-container #public-shell .product-module-screen .pm-cast-option .member-mark {width:30px;height:32px;border:0;min-width:0;background:transparent;font-size:0;}
+#game-container #public-shell .product-module-screen .pm-cast-option .member-portrait {object-fit:contain;background:transparent;}
+#game-container #public-shell .product-module-screen .pm-dialogue {position:relative;padding:13px 0;border-bottom:1px solid var(--pm-line);min-height:118px;}
+#game-container #public-shell .product-module-screen .pm-speaker {color:var(--pm-rose);font-weight:800;font-size:11px;}
+#game-container #public-shell .product-module-screen .pm-response {margin-top:6px;font-size:14px;line-height:1.8;color:var(--pm-paper);}
+#game-container #public-shell .product-module-screen .pm-topics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:12px 0 4px;}
+#game-container #public-shell .product-module-screen button.pm-topic {padding:7px 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;min-height:57px;}
+#game-container #public-shell .product-module-screen .pm-topic svg {width:18px;height:18px;}
+#game-container #public-shell .product-module-screen .pm-topic[aria-pressed=true] {box-shadow:inset 0 -3px 0 var(--pm-rose);color:var(--pm-rose);}
+#game-container #public-shell .product-module-screen .pm-save-status {font-size:11px;line-height:1.7;color:var(--pm-accent);padding:10px 0;overflow-wrap:anywhere;}
+#game-container #public-shell .product-module-screen .pm-room {padding:6px 0 12px;border-bottom:2px solid var(--pm-line);}
+#game-container #public-shell .product-module-screen .pm-room:nth-child(2) {--pm-accent:var(--pm-cyan);}
+#game-container #public-shell .product-module-screen .pm-room:nth-child(3) {--pm-accent:var(--pm-rose);}
+#game-container #public-shell .product-module-screen .pm-room .pm-section-heading {border-bottom:0;}
+#game-container #public-shell .product-module-screen .pm-room-fields {display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px;}
+#game-container #public-shell .product-module-screen .pm-room-fields label {display:flex;flex-direction:column;gap:4px;font-size:10px;color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-room-fields select {width:100%;height:42px;min-width:0;max-width:100%;padding:0 6px;border:1px solid var(--pm-line);border-radius:3px;background:var(--pm-surface);color:var(--pm-paper);font-size:12px;}
+#game-container #public-shell .product-module-screen .pm-room-saved {padding:9px 0 7px;font-size:11px;color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-room-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+#game-container #public-shell .product-module-screen button.pm-command {display:flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:6px;font-size:12px;border:1px solid var(--pm-line);}
+#game-container #public-shell .product-module-screen button.pm-prepare {color:var(--pm-accent);border-color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-command svg {width:17px;height:17px;}
+#game-container #public-shell .product-module-screen .pm-room-draft {display:block;margin-top:5px;font-size:10px;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-program {padding-top:7px;}
+#game-container #public-shell .product-module-screen .pm-goal,
+#game-container #public-shell .product-module-screen .pm-offline-service {display:grid;grid-template-columns:22px minmax(0,1fr);gap:9px;padding:11px 0;border-bottom:1px solid var(--pm-line);align-items:start;}
+#game-container #public-shell .product-module-screen .pm-goal svg,
+#game-container #public-shell .product-module-screen .pm-offline-service svg {width:18px;height:18px;margin-top:2px;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-goal strong,
+#game-container #public-shell .product-module-screen .pm-offline-service strong {display:block;font-size:13px;}
+#game-container #public-shell .product-module-screen .pm-goal small,
+#game-container #public-shell .product-module-screen .pm-offline-service small {display:block;font-size:11px;color:var(--pm-muted);line-height:1.6;margin-top:3px;}
+#game-container #public-shell .product-module-screen .pm-goal[data-availability=locked] {color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-goal[data-availability=locked] svg {color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-goals + .pm-entry,
+#game-container #public-shell .product-module-screen[data-product-page=sideplay] .pm-entry {margin-top:6px;}
+#game-container #public-shell .product-module-screen .pm-dossier {padding:8px 0 16px;}
+#game-container #public-shell .product-module-screen .pm-role-name {display:block;padding-top:12px;font-size:18px;color:var(--pm-rose);}
+#game-container #public-shell .product-module-screen .pm-dossier p {padding-top:5px;font-size:13px;line-height:1.8;color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-local-state {display:flex;flex-direction:column;gap:5px;padding:12px 0;border-bottom:1px solid var(--pm-line);margin-bottom:8px;}
+#game-container #public-shell .product-module-screen .pm-local-state strong {font-size:14px;color:var(--pm-accent);}
+#game-container #public-shell .product-module-screen .pm-local-state :is(span,small) {font-size:11px;color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen button.pm-service-command {display:flex;align-items:center;gap:10px;width:100%;padding:10px;margin-top:6px;}
+#game-container #public-shell .product-module-screen .pm-service-command svg {width:20px;height:20px;color:var(--pm-cyan);}
+#game-container #public-shell .product-module-screen .pm-offline-services {padding-top:12px;}
+#game-container #public-shell .product-module-screen .pm-offline-service svg {color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-unavailable-reason {display:block;font-size:11px;color:var(--pm-muted);}
+#game-container #public-shell .product-module-screen .pm-footer {padding-top:14px;margin-top:8px;border-top:1px solid var(--pm-line);}
+#game-container #public-shell .product-module-screen .pm-footer .pm-entry {background:transparent;color:var(--pm-muted);min-height:44px;padding:7px 3px;}
+#game-container #public-shell .product-module-screen[data-product-page=lounge],
+#game-container #public-shell .product-module-screen[data-product-page=recruitment] {--pm-accent:var(--pm-rose);}
+#game-container #public-shell .product-module-screen[data-product-page=venue],
+#game-container #public-shell .product-module-screen[data-product-page=services] {--pm-accent:var(--pm-cyan);}
+@media (max-width:340px) {
+ #game-container #public-shell .product-module-screen {padding-inline:10px;}
+ #game-container #public-shell .product-module-screen .pm-scene {margin-inline:-10px;height:194px;}
+ #game-container #public-shell .product-module-screen .pm-scene-copy {margin-left:10px;max-width:136px;}
+ #game-container #public-shell .product-module-screen .pm-scene h2 {font-size:21px;padding-inline:6px;}
+ #game-container #public-shell .product-module-screen .pm-scene-portrait {height:174px;margin-left:-8px;}
+ #game-container #public-shell .product-module-screen .pm-shortcuts {gap:4px;}
+ #game-container #public-shell .product-module-screen .pm-shortcuts .pm-entry {gap:5px;padding:7px 5px;grid-template-columns:20px minmax(0,1fr);}
+ #game-container #public-shell .product-module-screen .pm-shortcuts .pm-entry strong {font-size:12px;}
+ #game-container #public-shell .product-module-screen button.pm-cast-option {grid-template-columns:26px minmax(0,1fr);gap:2px;font-size:9px;}
+ #game-container #public-shell .product-module-screen .pm-cast-option .member-mark {width:25px;height:30px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell .product-module-screen *,
+ #game-container #public-shell .product-module-screen *::before,
+ #game-container #public-shell .product-module-screen *::after {animation:none!important;transition:none!important;}
+}

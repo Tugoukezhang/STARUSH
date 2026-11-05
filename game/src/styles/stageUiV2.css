@@ -1,0 +1,112 @@
+/* Stage UI V2: native type and controls; home composition stays untouched. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) {
+ --stage-ink:#17181c;--stage-panel:#26282e;--stage-paper:#f5f5ef;--stage-muted:#b8bcc6;
+ --stage-lime:#d9f743;--stage-cyan:#5fd8e7;--stage-pink:#f291b8;
+ letter-spacing:0;font-synthesis:none;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-header {
+ min-height:58px;padding:6px 12px;gap:9px;background:var(--stage-ink);color:var(--stage-paper);border:0;border-bottom:1px solid #42444c;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-brand {
+ display:flex;flex-direction:column;justify-content:center;gap:1px;min-width:0;flex:1;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-brand h1 {
+ position:static;width:auto;min-width:0;max-width:100%;height:auto;min-height:0;padding:0;margin:0;color:var(--stage-paper);background:none;border:0;font-size:21px;line-height:27px;font-weight:850;text-align:left;white-space:normal;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-brand .shell-eyebrow {
+ position:static;display:block;width:auto;height:auto;margin:0;color:var(--stage-cyan);font-size:9px;line-height:12px;letter-spacing:0;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-header :is(.shell-icon-button,.shell-wallet) {
+ display:flex;align-items:center;justify-content:center;gap:5px;width:44px;min-width:44px;min-height:44px;height:44px;padding:5px;background:transparent;color:var(--stage-paper);border:0;border-image:none;border-radius:4px;box-shadow:none;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-header .shell-wallet {width:auto;min-width:45px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-header :is(button svg,.shell-wallet strong) {color:var(--stage-paper);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-header .menu-art {display:none;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-session-context {
+ min-height:28px;margin:0;padding:5px 12px;background:#26282e;color:var(--stage-muted);font-size:11px;line-height:18px;border:0;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-session-context strong {color:var(--stage-paper);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-session-context > span {color:var(--stage-muted);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-navigation {
+ min-height:60px;gap:0;padding:3px 6px max(4px,env(safe-area-inset-bottom));background:var(--stage-ink);color:var(--stage-muted);border-top:1px solid #45474f;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-navigation button {
+ position:relative;min-height:50px;min-width:0;padding:4px 2px;border:0;border-image:none;border-radius:0;background:transparent;color:var(--stage-muted);box-shadow:none;gap:3px;font-size:10px;line-height:15px;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-navigation button:is([aria-current=page],[aria-current=location]) {background:#34382d;color:var(--stage-lime);box-shadow:inset 0 3px var(--stage-lime);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-navigation :is(button span,button svg) {color:inherit;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-navigation .menu-art {display:none;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-navigation svg {display:block;width:22px;height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) button {transition:background-color 160ms ease,color 160ms ease,box-shadow 160ms ease;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) button:focus-visible {outline:2px solid var(--stage-cyan);outline-offset:-3px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) button:active:not(:disabled) {filter:brightness(1.15);}
+
+/* The cast dossier is one unframed stage, not a stack of floating panels. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] {--cast-accent:#6dd4ed;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster][data-presentation-member=kai] {--cast-accent:#f3a1c6;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster][data-presentation-member=enjo] {--cast-accent:#ffb96f;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-content {padding:0 0 12px;background:var(--stage-ink);color:var(--stage-paper);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-performer-detail {padding:0;margin:0;border:0;background:transparent;box-shadow:none;border-radius:0;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-portrait-stage {
+ position:relative;isolation:isolate;height:248px;min-height:0;margin:0;overflow:hidden;border:0;border-bottom:4px solid var(--cast-accent);background-color:#292c34;background-position:center;background-size:cover;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-portrait-stage > .member-mark-full {inset:0;width:100%;height:100%;background:none;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-portrait-stage :is(.home-portrait-rig[data-static=true],.menu-portrait-image) {
+ left:61%;top:8px;height:151%;width:auto;max-width:none;object-fit:contain;object-position:center top;transform:translateX(-50%);
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-strip {
+ position:absolute;left:10px;top:12px;display:grid;grid-template-columns:60px;grid-template-rows:repeat(3,66px);gap:7px;width:60px;margin:0;z-index:4;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-option {
+ position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:45px 17px;width:60px;height:66px;min-height:66px;gap:0;padding:2px;border:1px solid #7e8490;border-radius:3px;background:#25272d;box-shadow:none;overflow:hidden;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-headshot {display:block;width:100%;height:45px;min-width:0;object-fit:cover;object-position:50% 12%;background:#626674;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-option > span {color:var(--stage-paper);font-size:10px;line-height:17px;text-align:center;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-option[aria-pressed=true] {border:2px solid var(--stage-lime);padding:1px;box-shadow:3px 0 var(--stage-lime);background:var(--stage-lime);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-option[aria-pressed=true] > span {color:#17181c;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .member-option-state {position:absolute;right:1px;top:1px;min-width:24px;padding:1px 3px;background:#17181c;color:var(--stage-lime);font-size:9px;line-height:14px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-stage-stamp {right:12px;top:14px;padding:5px 8px;min-width:54px;color:var(--stage-paper);background:#17181ce8;border:0;border-left:3px solid var(--cast-accent);transform:none;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-stage-stamp :is(span,strong) {color:var(--cast-accent);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-performer-name {
+ display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 8px;inset:auto;width:auto;padding:12px 14px 13px;margin:0;border:0;background:#202227;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-performer-name h2 {
+ display:block;position:static;width:auto;height:auto;max-width:100%;margin:0;padding:0;grid-column:1;grid-row:1;color:var(--stage-paper);font-size:27px;line-height:35px;font-weight:900;letter-spacing:0;
+}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-performer-name > p {grid-column:2;grid-row:1;margin:0;padding:3px 0 3px 7px;border:0;border-left:2px solid var(--cast-accent);color:var(--stage-muted);font-size:10px;line-height:17px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-role {grid-column:1 / -1;grid-row:2;color:var(--cast-accent);font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-inspector {background:var(--stage-ink);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-inspector-tabs {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:0;border-bottom:1px solid #444750;background:#26282f;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-inspector-tab {display:block;min-height:44px;padding:8px 3px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#aab0bb;font-size:12px;line-height:22px;font-weight:700;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-inspector-tab[aria-selected=true] {background:#363933;color:var(--stage-lime);box-shadow:inset 0 -3px var(--stage-lime);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] [data-roster-panel] {min-height:113px;animation:cast-panel-enter 180ms ease-out both;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] :is(.shell-action-detail,.shell-member-preparation,.shell-dossier) {margin:0;padding:13px 14px 15px;border:0;background:transparent;color:var(--stage-paper);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-action-detail .shell-eyebrow {color:var(--stage-muted);font-size:10px;line-height:17px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] :is(.shell-action-detail h3,.shell-dossier h3) {color:var(--cast-accent);font-size:18px;line-height:26px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] :is(.shell-action-detail p,.shell-dossier p) {color:#d2d5df;font-size:13px;line-height:22px;margin:5px 0 0;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-preparation {gap:7px;font-size:13px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-preparation :is(span,strong) {color:var(--stage-paper);}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-preparation button {min-height:44px;padding:7px 10px;color:var(--stage-cyan);background:#30343a;border:1px solid #59616c;border-radius:3px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-dossier blockquote {margin:12px 0 0;padding:10px;border-left:3px solid var(--cast-accent);background:#303239;color:var(--stage-paper);font-size:13px;line-height:23px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-selection-context {display:none;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-selection-footer {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);align-items:center;gap:10px;min-height:68px;padding:9px 12px;background:var(--stage-ink);border-top:1px solid #5b6067;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-confirm-context {color:var(--stage-paper);font-size:14px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-confirm-context > span {color:var(--stage-muted);font-size:10px;line-height:17px;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-selection-footer .shell-primary {display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;padding:9px 6px;border:0;border-image:none;border-radius:4px;background:var(--stage-lime);color:#17181c;box-shadow:0 3px #53621f;font-size:14px;line-height:22px;font-weight:850;}
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-primary :is(span,svg) {color:#17181c;}
+@keyframes cast-panel-enter {from {opacity:0;transform:translateY(6px);}to {opacity:1;transform:translateY(0);}}
+@media (max-width:340px) {
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-header {padding-inline:9px;gap:6px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) .shell-brand h1 {font-size:19px;line-height:25px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-portrait-stage {height:205px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-strip {grid-template-columns:52px;grid-template-rows:repeat(3,58px);gap:5px;width:52px;top:9px;left:8px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-member-option {width:52px;height:58px;min-height:58px;grid-template-rows:38px 16px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .roster-headshot {height:38px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-performer-name {padding:9px 12px;}
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-shell-family=venue][data-page=roster] .shell-performer-name h2 {font-size:25px;line-height:32px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) *,
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) *::before,
+ #game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page]:not([data-page=desk]) *::after {animation:none!important;transition:none!important;}
+}

@@ -1,0 +1,134 @@
+/* Logical 375x667 coordinates share the accepted viewport transform. */
+#game-container[data-battle-mode="public"] #hud::before {
+  content: ''; position: absolute; inset: 0 0 auto; height: 104px;
+  background: linear-gradient(to bottom,#f7faf8f5 0%,#f7faf8ed 78%,#f7faf800 100%); border-bottom: 0;
+  /* The pause button is canvas-owned and must remain visible through this DOM backing. */
+  mask-image: radial-gradient(circle 22px at 347px 78px, transparent 99%, #000 100%);
+}
+#game-container[data-battle-mode="public"] .cw-objective {
+  top: 6px; left: 8px; width: 359px; height: 28px; border: 0;
+  background: transparent; box-shadow: none; border-radius: 0; padding: 3px 0;
+}
+#game-container[data-battle-mode="public"] #wave-text { color: #263840; text-shadow: none; font-size: 15px; line-height: 21px; }
+#game-container[data-battle-mode="public"] #round-clock { color: #236654; }
+#game-container[data-battle-mode="public"] .mihoyo-player { top: 40px; gap: 8px; background: transparent; padding-right:0; border-radius:0; }
+#game-container[data-battle-mode="public"] .mihoyo-portrait { width: 32px; height: 36px; border-radius: 4px; font-size: 24px; border: 1px solid #889b9e; }
+#game-container[data-battle-mode="public"] .mihoyo-portrait { position: relative; overflow: hidden; }
+#game-container[data-battle-mode="public"] .mihoyo-portrait::after { content: ''; position: absolute; inset: 0; background: var(--actor-portrait) center / cover no-repeat; }
+#game-container[data-battle-mode="public"] .mihoyo-player-meta { position: relative; width: 110px; height: 34px; gap: 2px; background: transparent; padding: 0; border-radius: 0; }
+#game-container[data-battle-mode="public"] .mihoyo-name { color: #263840; text-shadow: none; font-size: 14px; line-height: 18px; }
+#game-container[data-battle-mode="public"] .hp-track { position: absolute; bottom: 3px; width: 110px; height: 5px; border: 0; border-radius: 1px; background: #c4d6cf; }
+#game-container[data-battle-mode="public"] #hp-fill { background: #287a63; }
+#hp-value { display: none; }
+#game-container[data-battle-mode="public"] #hp-value { display: block; position: absolute; top: 0; right: 0; color: #354d57; font-size: 12px; line-height: 18px; font-variant-numeric: tabular-nums; }
+#game-container[data-battle-mode="public"] .heat-card { left: 172px; top: 40px; width: 145px; height: 36px; border: 0; border-radius: 0; background: transparent; padding: 0; }
+#game-container[data-battle-mode="public"] #heat-level { color: #354d57; font-size: 12px; line-height: 18px; margin-bottom: 10px; }
+#game-container[data-battle-mode="public"] #heat-gauge { height: 5px; background: #dfc6d1; }
+#game-container[data-battle-mode="public"] #heat-fill { background: #b73162; }
+#game-container[data-battle-mode="public"] #support-gauge { display: none; }
+#battle-chapter { display: none; }
+#game-container[data-battle-mode="public"] #battle-chapter { display: block; position: absolute; top: 78px; left: 8px; max-width:148px; padding: 0; border-left:0; background: transparent; color: #354d57; font-size: 12px; line-height: 18px; }
+#game-container[data-battle-mode="public"] #run-build { top: 78px; left: 172px; max-width: 195px; font-size: 12px; line-height: 18px; padding: 0; border-left: 0; background: transparent; color: #354d57; text-shadow: none; }
+#game-container[data-battle-mode="public"] .mihoyo-skills { right: 8px; bottom: 109px; gap: 6px; padding-bottom: 0; }
+#game-container[data-battle-mode="public"] .skill-orb { width: 54px; height: 54px; display: grid; grid-template-columns: 16px 24px; grid-template-rows: 18px 13px; column-gap: 4px; row-gap: 2px; align-content: center; justify-content: center; align-items: center; padding: 2px; border: 1px solid #91a5a9; border-radius: 8px; background: #26383ce8; color: #f6f9f8; box-shadow: none; opacity: 1; font-size: 12px; line-height: 15px; position: relative; }
+#game-container[data-battle-mode="public"] .skill-orb svg { width: 16px; height: 16px; grid-column: 1; grid-row: 1; }
+#game-container[data-battle-mode="public"] #special-label, #game-container[data-battle-mode="public"] #encore-label { grid-column: 2; grid-row: 1; white-space: nowrap; text-align: center; }
+#game-container[data-battle-mode="public"] .skill-orb.ready { color: #fff; background: #c93768; border-color: #b92e5d; box-shadow: none; }
+#game-container[data-battle-mode="public"] .skill-orb.active { border-color: #ed9fc3; box-shadow: inset 0 -3px #ed9fc3; }
+#special-state, #encore-state { font-size: 10px; line-height: 13px; z-index: 1; font-variant-numeric: tabular-nums; }
+#game-container[data-battle-mode="public"] #special-state, #game-container[data-battle-mode="public"] #encore-state { grid-column: 1 / -1; grid-row: 2; white-space: nowrap; text-align: center; font-size: 12px; line-height: 13px; }
+#game-container[data-battle-mode="public"] #special-fill { height: 3px !important; width: 0%; right: auto; background: #f096b8; opacity: 1; }
+#game-container[data-battle-mode="public"] #ult-prompt { display: none !important; }
+#game-container[data-battle-mode="public"] #combo-display { top: 187px; font-size: 14px; color: #f4f8f6; text-shadow: 0 1px 3px #111; }
+#game-container[data-battle-mode="public"] #encore-indicator { top: 210px; font-size: 18px; }
+#game-container[data-battle-mode="public"] #center-stage-indicator { top: 237px; font-size: 16px; }
+#game-container[data-battle-mode="public"] #battle-notice {
+  top: 120px; right: auto; width: fit-content; max-width: calc(100% - 16px);
+  padding: 4px 8px; background:#26383ce8; color:#f6f9f8; border-left-color:#a4ead3;
+  border-radius:3px; box-shadow:none; font-size:13px; line-height:20px; font-weight:600; text-shadow:none;
+}
+#game-container[data-battle-mode="public"] #battle-notice[data-kind="danger"] { background:#432633ed; color:#ffdae6; border-left-color:#ef91b4; }
+#game-container[data-battle-mode="public"] #center-stage-indicator,
+#game-container[data-battle-mode="public"] #encore-indicator,
+#game-container[data-battle-mode="public"] #combo-display {
+  color:#ffdae6; text-shadow:none; background:#432633ed; padding:3px 9px;
+  border-left:2px solid #ef91b4; border-radius:2px; font-size:14px; line-height:20px; white-space:nowrap;
+}
+#game-container[data-battle-mode="public"] .skill-orb.active:not(.ready) { background:#432633ed; border-color:#ef91b4; color:#ffdae6; }
+
+/* Public choices, pause and result are full surfaces, not nested decorative cards. */
+#run-choice.battle-surface, .battle-surface {
+  position: absolute; inset: 0; z-index: 100; padding: 0; gap: 0;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  color: #f5f8f6; background: #151c1e; text-align: left;
+}
+.battle-surface * { min-width: 0; }
+.battle-surface-content { flex: 1; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; padding: 25px 22px 18px; }
+.battle-surface .battle-eyebrow { margin: 0 0 12px; font-size: 12px; line-height: 19px; color: #b7c5c4; }
+.battle-surface h2, #run-choice.battle-surface h2 { font-size: 28px; line-height: 38px; margin: 0 0 12px; }
+.battle-surface .battle-lead, #run-choice.battle-surface .battle-lead { color: #b7c5c4; font-size: 14px; line-height: 22px; margin: 0 0 20px; }
+.battle-surface button, #run-choice.battle-surface button { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px; padding: 12px 14px; border: 1px solid #4a5d60; border-radius: 6px; background: #202a2d; color: #f5f8f6; font-size: 16px; line-height: 24px; font-weight: 700; text-align: center; touch-action: pan-y; }
+.battle-surface button:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+.battle-surface button:hover, #run-choice.battle-surface button:hover { background: #334342; }
+.battle-surface button.battle-primary { background: #a4ead3; border-color: #b8f0de; color: #122822; }
+.battle-surface button.battle-primary:hover { background: #c8f6e6; }
+.battle-surface button svg { flex: none; }
+.battle-surface-footer { padding: 14px 22px 20px; flex: none; display: grid; gap: 8px; background: #202a2d; border-top: 1px solid #39474a; }
+.battle-choice-list { display: grid; gap: 12px; }
+#run-choice.battle-surface .battle-choice-row { position: relative; display: grid; grid-template-columns:44px minmax(0,1fr) 18px; gap:12px; min-height:102px; padding:12px; text-align:left; border-left:3px solid #a4ead3; align-items:center; }
+#run-choice.battle-surface .battle-choice-row strong { font-size: 18px; line-height: 26px; margin: 0 0 6px; }
+#run-choice.battle-surface .battle-choice-row span { font-size: 14px; line-height: 22px; color: #c7d6d2; font-weight: 400; }
+#run-choice.battle-surface .battle-choice-row > svg { position:static; width:18px; height:18px; color:#a4ead3; }
+#run-choice.battle-surface .battle-choice-symbol { display:grid; place-items:center; width:44px; height:44px; background:#fcecf1; border-radius:6px; }
+#run-choice.battle-surface .battle-choice-symbol svg { position:static; width:28px; height:28px; }
+#run-choice.battle-surface .battle-choice-copy { display:block; }
+#run-choice.battle-surface .battle-choice-copy > span { display:block; }
+#run-choice.battle-surface [data-choice=relay] .battle-choice-symbol,
+#run-choice.battle-surface [data-choice=recovery] .battle-choice-symbol { background:#e3f2ec; }
+#run-choice.battle-surface [data-choice=tempo] .battle-choice-symbol,
+#run-choice.battle-surface [data-choice=echo] .battle-choice-symbol { background:#e5edf6; }
+.battle-result-chapter { color: #a4ead3; font-size: 21px; line-height: 30px; margin-bottom: 18px; }
+.battle-result-member { display: flex; gap: 12px; align-items: center; font-size: 15px; line-height: 23px; border-block: 1px solid #39474a; padding: 12px 0; }
+.battle-member-mark { font-size: 28px; line-height: 36px; border-left: 3px solid currentColor; padding-left: 10px; }
+.battle-member-mark.has-portrait { display: block; flex: 0 0 42px; width: 42px; height: 44px; padding: 0; border-left: 0; border-bottom: 3px solid currentColor; border-radius: 4px; overflow: hidden; background: #f5e5ec; }
+.battle-member-mark.has-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.battle-result-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); padding: 17px 0; border-bottom: 1px solid #39474a; }
+.battle-result-stats dt { font-size: 12px; line-height: 20px; color: #b7c5c4; }
+.battle-result-stats dd { font-size: 23px; line-height: 32px; font-variant-numeric: tabular-nums; }
+.battle-result-build { padding: 15px 0 8px; }
+.battle-result-build h3 { font-size: 12px; line-height: 20px; color: #b7c5c4; margin: 0 0 5px; }
+.battle-result-build p { display: inline-block; font-size: 14px; line-height: 22px; margin: 0 12px 5px 0; }
+.battle-highlight { color: #ecc0d4; font-size: 14px; line-height: 22px; margin: 4px 0 12px; }
+.battle-result-next { color: #e3ebe7; font-size: 15px; line-height: 24px; }
+.battle-save { color: #b7c5c4; font-size: 12px; line-height: 20px; margin-top: 8px; }
+.battle-save.is-warning { color: #ffce81; }
+#battle-result .battle-surface-content { padding: 20px 22px 14px; }
+#battle-result .battle-eyebrow { margin-bottom: 8px; }
+#battle-result h2 { font-size: 26px; line-height: 34px; margin-bottom: 4px; }
+#battle-result .battle-result-chapter { font-size: 20px; line-height: 28px; margin-bottom: 12px; }
+#battle-result .battle-result-member { padding: 10px 0; }
+#battle-result .battle-result-stats { padding: 12px 0; }
+#battle-pause .battle-surface-content { display: flex; flex-direction: column; justify-content: center; }
+#battle-pause button { margin-top: 12px; }
+.battle-result-reward { padding:16px 0; margin:10px 0; border-block:1px solid #53685f; }
+.battle-result-reward h3 { font-size:16px; margin-bottom:8px; }
+.battle-result-reward > strong { color:#ffdb95; font-size:22px; line-height:30px; }
+.battle-result-reward > p { font-size:14px; line-height:22px; color:#cce9e1; margin:6px 0; }
+.battle-result-reward button { margin-top:12px; width:100%; }
+
+/* B70 public boss strip: one existing70px band below the player HUD; arrival shares it instead of covering the arena twice. */
+.public-boss-strip {
+  position: absolute; top: 106px; left: 8px; right: 8px; width: auto; height: 70px; box-sizing: border-box; padding: 3px 6px 2px;
+  display: grid; grid-template-columns: minmax(0,1fr) auto; grid-template-rows: 18px 18px 20px 4px; column-gap: 4px; align-items: center;
+  background: #fffffff2; color: #101c22; border-left: 3px solid #ff2bd6; border-bottom: 2px solid #101c22;
+  pointer-events: none; user-select: none; text-shadow: none; overflow: hidden;
+}
+.public-boss-title { grid-row: 1; grid-column: 1; display: flex; gap: 4px; align-items: baseline; font-size: 14px; line-height: 18px; font-weight: 700; white-space: nowrap; }
+.public-boss-tag { color: #101c22; font-size: 14px; }
+.public-boss-name { overflow: hidden; text-overflow: ellipsis; }
+.public-boss-status { grid-row: 2; grid-column: 1 / -1; font-size: 14px; line-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.public-boss-count { grid-row: 1; grid-column: 2; color: #101c22; font-size: 14px; line-height: 18px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.public-boss-instruction {grid-row:3;grid-column:1 / -1;color:#101c22;font-size:16px;line-height:20px;font-weight:700;white-space:nowrap;}
+.public-boss-meter { grid-row: 4; grid-column: 1 / -1; height: 4px; background: #dce4e6; overflow: hidden; }
+.public-boss-fill { display: block; width: 0%; height: 100%; background: #008c9e; }
+@media (prefers-reduced-motion: reduce) { .public-boss-strip { animation: none; transition: none; } }

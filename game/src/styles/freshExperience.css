@@ -1,0 +1,254 @@
+/* One public presentation system; diagnostic routes keep their base styles. */
+#game-container {
+  --ui-paper:#f6f8fb; --ui-white:#fff; --ui-ink:#242931; --ui-muted:#52616d;
+  --ui-line:#d7dfe7; --ui-rose:#b92759; --ui-rose-wash:#fff0f5;
+  --ui-green:#17664e; --ui-amber:#815518; --ui-dark:#242931;
+}
+#public-shell {
+  inset:auto; left:0; top:0; width:var(--public-shell-width,375px); height:var(--public-shell-height,667px);
+  transform:scale(var(--public-shell-compensation,1)); transform-origin:0 0;
+  background:var(--ui-paper); color:var(--ui-ink); letter-spacing:0;
+  --shell-muted:var(--ui-muted); --shell-line:var(--ui-line); --shell-mint:var(--ui-green);
+}
+#public-shell button {min-height:44px; cursor:pointer;}
+#public-shell button:disabled {cursor:default;}
+#public-shell button:focus-visible {outline:3px solid var(--ui-green); outline-offset:-3px;}
+#public-shell .shell-header {height:68px; padding:10px 18px; gap:10px; background:var(--ui-white); border-bottom:1px solid var(--ui-line);}
+#public-shell .shell-brand h1 {color:var(--ui-ink); font-size:25px; line-height:30px;}
+#public-shell .shell-brand h1::after {content:''; display:inline-block; width:18px; height:4px; background:var(--ui-rose); margin:0 0 4px 8px;}
+#public-shell .shell-brand > div {color:var(--ui-ink); font-size:20px; line-height:27px;}
+#public-shell .shell-eyebrow {font-size:12px; line-height:18px; color:var(--ui-muted);}
+#public-shell .shell-icon-button {width:44px; height:44px; border:1px solid var(--ui-line); border-radius:6px; background:var(--ui-paper); color:var(--ui-ink);}
+#public-shell .shell-session-context {flex:none; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:36px; padding:7px 18px; border-bottom:1px solid var(--ui-line); background:#fff; font-size:12px; line-height:20px; color:var(--ui-muted);}
+#public-shell .shell-session-context strong {flex:none; color:var(--ui-rose); font-size:13px;}
+#public-shell .shell-content {padding:0 18px 14px; min-height:0; flex:1 1 0;}
+#public-shell .shell-main-map {height:164px; margin:0 -18px; border:0; background:#e5ebf0;}
+#public-shell .shell-map-world {position:absolute; left:0; top:0; width:100%; aspect-ratio:1000/1778; transform:translateY(-56%);}
+#public-shell .shell-map-ground {position:absolute; inset:0; width:100%; height:100%; object-fit:fill;}
+#public-shell .shell-map-prop {position:absolute; object-fit:fill; transform:translate(-50%,-100%);}
+#public-shell span.shell-map-ground,#public-shell span.shell-map-prop {display:block; background-size:100% 100%; background-repeat:no-repeat;}
+#public-shell .shell-map:not([data-chapter=opening]) .shell-map-world {top:-100px; transform:none;}
+#public-shell .shell-map figcaption {top:12px; left:18px; bottom:auto; padding:5px 9px; color:#fff; background:var(--ui-dark); border-left:3px solid var(--ui-rose); font-size:12px; line-height:18px;}
+#public-shell .shell-desk-chapter {position:absolute; left:0; bottom:0; width:calc(100% - 134px); padding:10px 12px 10px 18px; background:#fffffff5; border-top:3px solid var(--ui-rose);}
+#public-shell .shell-desk-chapter h2 {font-size:25px; line-height:33px;}
+#public-shell .shell-desk-chapter p {font-size:12px; line-height:19px; color:var(--ui-muted);}
+#public-shell .shell-stage-performer {position:absolute; right:14px; bottom:0; width:104px; height:156px; z-index:2; background-size:contain; background-position:center bottom; background-repeat:no-repeat; pointer-events:none;}
+#public-shell .shell-current-member {gap:12px; padding:12px 0; border-color:var(--ui-line);}
+#public-shell .member-mark {width:46px; height:48px; border:1px solid var(--ui-line); border-bottom:3px solid var(--member-color); background:#fff; border-radius:6px;}
+#public-shell .member-portrait {background:#e5ebf0;}
+#public-shell .shell-member-copy small {font-size:12px; line-height:18px; color:var(--ui-muted);}
+#public-shell .shell-member-copy strong {font-size:16px; line-height:24px;}
+#public-shell .shell-preparation-link {min-height:76px; padding:12px 0; gap:8px; color:var(--ui-ink); font-size:12px; line-height:20px; border-color:var(--ui-line);}
+#public-shell .shell-preparation-link svg {width:18px; height:18px;}
+#public-shell .shell-preparation-values {flex:1; display:grid; grid-template-columns:0.9fr 1.5fr 0.7fr; gap:10px;}
+#public-shell .shell-preparation-values > span {display:flex; flex-direction:column; gap:4px;}
+#public-shell .shell-preparation-values small {font-size:12px; line-height:18px; color:var(--ui-muted);}
+#public-shell .shell-preparation-values strong {font-size:14px; line-height:22px; color:var(--ui-green); overflow-wrap:anywhere;}
+#public-shell .shell-progress {padding:10px 0 0;}
+#public-shell .shell-progress-heading {font-size:12px; line-height:18px;}
+#public-shell .shell-progress-heading strong {color:var(--ui-ink);}
+#public-shell .shell-progress-route {min-height:50px; padding-top:5px; gap:8px;}
+#public-shell .shell-progress-step {font-size:12px; line-height:20px; gap:0; flex-direction:column; justify-content:center; align-items:flex-start; border-bottom:2px solid var(--ui-line); padding-bottom:4px;}
+#public-shell .shell-progress-step b {font-size:12px; color:var(--ui-muted);}
+#public-shell .shell-progress-step.is-current {color:var(--ui-rose); border-color:var(--ui-rose);}
+#public-shell .shell-progress-step[data-state=cleared] b {color:var(--ui-green);}
+#public-shell .shell-progress-step[data-state=locked] {color:#64727d; border-bottom-style:dashed;}
+#public-shell .shell-primary {min-height:52px; padding:11px 14px; border:1px solid var(--ui-rose); border-radius:6px; background:var(--ui-rose); color:#fff; font-size:16px; line-height:24px; box-shadow:0 3px 0 #87183e;}
+#public-shell .shell-primary:hover {background:#982047;}
+#public-shell .shell-start {flex:none; display:grid; grid-template-columns:minmax(0,1fr) 110px; gap:4px 8px; padding:12px 18px 0; border-top:1px solid var(--ui-line); background:#fff;}
+#public-shell .shell-start .shell-primary,#public-shell .shell-start .shell-save-notice {grid-column:1 / -1;}
+#public-shell .shell-record {font-size:12px; line-height:18px; margin:0; align-self:center; text-align:left;}
+#public-shell .shell-save-notice {color:var(--ui-amber);}
+#public-shell .shell-pending-save {padding:12px 0; border-bottom:1px solid var(--ui-line); color:var(--ui-amber);}
+#public-shell .shell-pending-save[data-state=saved] {color:var(--ui-green);}
+#public-shell .shell-save-status {margin:0; font-size:13px; line-height:21px; overflow-wrap:anywhere;}
+#public-shell .shell-save-retry {display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:8px; padding:8px 12px; border:1px solid var(--ui-amber); border-radius:6px; background:var(--ui-white); color:var(--ui-amber); font-size:14px; line-height:22px;}
+#public-shell .shell-journal-link {display:flex; align-items:center; justify-content:center; gap:6px; width:100%; min-height:44px; color:var(--ui-muted); font-size:12px;}
+#public-shell .shell-journal-link svg {width:18px; height:18px;}
+#public-shell .shell-navigation {height:60px; padding:3px 12px; background:var(--ui-dark); border:0;}
+#public-shell .shell-navigation button {font-size:12px; line-height:18px; min-height:54px; color:#d1d8e0; gap:2px; border-radius:0; border-top:2px solid transparent;}
+#public-shell .shell-navigation button svg {width:20px; height:20px;}
+#public-shell .shell-navigation [aria-current=page] {background:#ffffff10; color:#fff; border-top-color:#f28caf;}
+#public-shell .shell-page-heading {font-size:22px; line-height:30px; margin:16px 0 12px;}
+#public-shell .shell-member-strip {gap:5px; padding-bottom:12px; border-bottom:1px solid var(--ui-line);}
+#public-shell .shell-member-option {font-size:12px; padding:7px 2px; gap:6px; border-radius:6px;}
+#public-shell .shell-member-option[aria-pressed=true] {border-color:var(--ui-rose); background:var(--ui-rose-wash); color:var(--ui-rose);}
+#public-shell .shell-performer-detail {margin-top:8px; min-height:132px; gap:18px; border:0;}
+#public-shell .shell-performer-detail:has(.member-mark-full) {min-height:250px; gap:14px; align-items:center;}
+#public-shell .member-mark.member-mark-full {flex:0 0 160px; width:160px; height:240px; overflow:hidden; border:0; border-radius:0; background:transparent;}
+#public-shell .member-mark-full::after {content:''; position:absolute; left:50%; bottom:calc(3.385417% - 4.5px); width:72px; height:9px; transform:translateX(-50%); border-radius:50%; background:#56707724; pointer-events:none; z-index:0;}
+#public-shell .member-mark-full > .member-portrait {background:transparent; object-fit:contain; z-index:1;}
+#public-shell .member-cel-frame {position:absolute; width:224px; height:224px; left:50%; bottom:8px; transform:translateX(-50%); overflow:hidden;}
+#public-shell .member-cel-frame .member-portrait {width:400%; height:1600%; max-width:none; left:calc(var(--cel-column) * -100%); top:calc(var(--cel-row) * -100%); object-fit:fill; background:transparent;}
+#public-shell .shell-performer-name {flex:1; min-width:0;}
+#public-shell .shell-performer-name h2 {font-size:28px; line-height:36px; color:var(--ui-ink);}
+#public-shell .shell-performer-name p {font-size:12px; line-height:20px; color:var(--ui-muted);}
+#public-shell .shell-performer-detail[data-selection=current] .shell-performer-name > p {color:var(--ui-green); font-weight:700;}
+#public-shell .shell-action-detail {padding:12px 0 0; min-height:0; margin-top:10px; border-top:2px solid var(--member-color);}
+#public-shell .shell-action-detail h3 {font-size:17px; line-height:25px; color:var(--ui-rose); margin:3px 0 6px;}
+#public-shell .shell-action-detail p {font-size:13px; line-height:21px; color:var(--ui-ink); margin-top:6px;}
+#public-shell .shell-dossier {padding:14px 0; border-block:1px solid var(--ui-line);}
+#public-shell .shell-dossier h3 {font-size:13px; line-height:21px; color:var(--ui-green);}
+#public-shell .shell-dossier p {font-size:13px; line-height:23px; color:var(--ui-muted); margin:9px 0;}
+#public-shell .shell-dossier blockquote {font-size:14px; line-height:24px; border-left:3px solid #d783a0; padding-left:12px; margin:12px 0 0; color:#85354f;}
+#public-shell .shell-selection-context {font-size:12px; line-height:20px; color:var(--ui-muted); margin:10px 0 14px;}
+#public-shell .shell-member-preparation {display:flex; flex-direction:column; gap:4px; padding:12px 0; border-top:1px solid var(--ui-line); font-size:12px; line-height:20px; color:var(--ui-muted);}
+#public-shell .shell-member-preparation strong {font-size:14px; line-height:22px; color:var(--ui-green);}
+#public-shell .shell-tour-reward {padding:12px 0; border-block:1px solid var(--ui-line); font-size:14px; line-height:22px; color:var(--ui-green);}
+#public-shell .shell-tour-reward p {font-size:13px; line-height:21px; margin:4px 0;}
+#public-shell .shell-tour-reward small {display:block; font-size:12px; line-height:20px; color:var(--ui-muted);}
+#public-shell .shell-selection-footer {flex:none; padding:12px 18px; background:#fff; border-top:1px solid var(--ui-line);}
+#public-shell .shell-preparation-footer p {font-size:12px; line-height:20px; color:var(--ui-muted); margin:0 0 8px;}
+#public-shell .shell-tour-heading > span {font-size:12px; color:var(--ui-green);}
+#public-shell .shell-chapter-option {position:relative; min-height:120px; background:transparent; border:0; border-bottom:1px solid var(--ui-line); border-radius:0; padding:12px 0; margin:0; gap:12px;}
+#public-shell .shell-chapter-option[aria-pressed=true] {background:var(--ui-rose-wash); border-left:3px solid var(--ui-rose); padding-left:9px; padding-right:8px;}
+#public-shell .shell-chapter-option:disabled {background:transparent; color:var(--ui-muted);}
+#public-shell .shell-route-preview {flex:0 0 76px; width:76px; height:96px; border:0; background:#e5ebf0;}
+#public-shell .shell-route-preview .shell-map-world {width:170px; left:-50px; transform:translateY(-48%);}
+#public-shell .shell-route-preview:not([data-chapter=opening]) .shell-map-world {top:-86px; transform:none;}
+#public-shell .shell-chapter-number {position:absolute; left:4px; top:16px; background:#fff; padding:1px 4px; font-size:12px; line-height:18px; z-index:1; color:var(--ui-ink);}
+#public-shell .shell-chapter-copy strong {font-size:18px; line-height:26px;}
+#public-shell .shell-chapter-copy > span {font-size:12px; line-height:19px; color:var(--ui-muted);}
+#public-shell .shell-chapter-state {font-size:12px; line-height:19px; color:var(--ui-green); font-weight:700;}
+#public-shell .shell-chapter-option[data-state=locked] .shell-chapter-copy .shell-chapter-state {color:var(--ui-amber); font-weight:400;}
+#public-shell .shell-chapter-option[data-state=cleared] .shell-chapter-state {color:var(--ui-green);}
+#public-shell .workshop-wallet {padding:18px 0 14px; margin-bottom:12px; border-color:var(--ui-line);}
+#public-shell .workshop-wallet > span {font-size:14px; color:var(--ui-muted);}
+#public-shell .workshop-wallet strong {font-size:28px; line-height:34px; color:var(--ui-amber); font-variant-numeric:tabular-nums;}
+#public-shell .workshop-training {padding:16px 0; border-color:var(--ui-line);}
+#public-shell .workshop-member-context {display:flex; align-items:center; gap:12px; padding:14px 0 0;}
+#public-shell .workshop-member-context > div {display:flex; flex-direction:column; gap:3px;}
+#public-shell .workshop-member-context small {font-size:12px; line-height:20px; color:var(--ui-green);}
+#public-shell .workshop-member-context[data-selection=candidate] small {color:var(--ui-amber);}
+#public-shell .workshop-member-context strong {font-size:15px; line-height:23px; color:var(--ui-ink);}
+#public-shell .workshop-training h2,#public-shell .workshop-inventory h2 {font-size:18px; line-height:26px;}
+#public-shell .workshop-training p {color:var(--ui-green); font-size:14px; line-height:22px;}
+#public-shell .workshop-training .shell-primary {font-size:14px; line-height:22px;}
+#public-shell .workshop-training .shell-primary:disabled {color:var(--ui-muted); background:#e5ebf0; border-color:var(--ui-line); box-shadow:none;}
+#public-shell .workshop-muted {font-size:12px; line-height:20px; color:var(--ui-muted);}
+#public-shell .workshop-inventory {padding-top:16px;}
+#public-shell .workshop-equipment {min-height:98px; padding:14px 4px; gap:12px; border-color:var(--ui-line);}
+#public-shell .workshop-item-copy strong {font-size:15px; line-height:23px;}
+#public-shell .workshop-item-copy span {font-size:13px; line-height:21px; color:var(--ui-muted);}
+#public-shell .workshop-equipment[data-state=equipped] {color:var(--ui-green); border-left:3px solid var(--ui-green); padding-left:9px;}
+#public-shell .workshop-equipment:disabled {opacity:1; color:var(--ui-muted);}
+#public-shell .workshop-equipment-state {font-size:12px; line-height:20px; color:var(--ui-green);}
+#public-shell .workshop-equipment[data-state=locked] .workshop-equipment-state {color:var(--ui-amber);}
+#public-shell .workshop-status {color:var(--ui-amber); font-size:12px; line-height:20px; padding:14px 0;}
+#public-shell .shell-preparation-footer .workshop-status {margin:0 0 8px; padding:0; color:var(--ui-amber); overflow-wrap:anywhere;}
+
+/* Gameplay input is still owned by the existing surfaces and session leases. */
+#game-container .battle-surface {color:var(--ui-ink); background:var(--ui-paper); letter-spacing:0;}
+#game-container .battle-surface-content {min-height:0; padding:20px 22px 18px;}
+#game-container .battle-surface .battle-eyebrow {font-size:12px; line-height:19px; color:var(--ui-muted);}
+#game-container .battle-surface h2 {font-size:25px; line-height:34px; color:var(--ui-ink);}
+#game-container .battle-surface .battle-lead {font-size:13px; line-height:21px; color:var(--ui-muted);}
+#game-container .battle-surface button {background:#fff; color:var(--ui-ink); border-color:var(--ui-line); border-radius:6px; font-size:15px; line-height:23px; min-height:48px;}
+#game-container .battle-surface button:hover {background:#edf1f5;}
+#game-container .battle-surface button.battle-primary {background:var(--ui-rose); border-color:var(--ui-rose); color:#fff;}
+#game-container .battle-surface button:focus-visible {outline:3px solid #176854; outline-offset:-3px;}
+#game-container .battle-surface .battle-surface-footer {padding:12px 22px 16px; background:#fff; border-color:var(--ui-line);}
+#game-container .battle-surface h2[tabindex="-1"]:focus,#game-container #player-session-dialog h2[tabindex="-1"]:focus {outline:none;}
+#game-container .battle-performer-visual {position:relative; min-height:90px; margin:0 -22px 12px; padding:14px 22px; background:#eaf0f1; border-block:1px solid var(--ui-line); overflow:hidden;}
+#game-container .battle-performer-visual img {position:absolute; right:22px; bottom:0; width:66px; height:99px; object-fit:contain;}
+#game-container .battle-visual-copy {display:flex; flex-direction:column; gap:3px; max-width:calc(100% - 96px);}
+#game-container .battle-visual-copy strong {font-size:20px; line-height:28px; color:var(--ui-ink);}
+#game-container .battle-surface .battle-visual-copy span {font-size:16px; line-height:24px; font-weight:600; color:#70233f;}
+#game-container #run-choice.battle-surface {background:#15282d80; padding-top:170px;}
+#game-container #run-choice .battle-choice-context {position:absolute; top:106px; left:22px; right:22px; margin:0; color:#fff; font-size:15px; line-height:24px; font-weight:700; pointer-events:none;}
+#game-container #run-choice .battle-surface-content {min-height:0; padding:8px 22px; background:var(--ui-paper); border-top:3px solid var(--performer-color); overflow-y:auto;}
+#game-container #run-choice h2 {font-size:24px; line-height:32px; margin-bottom:4px;}
+#game-container #run-choice .battle-eyebrow {margin:0 0 3px;}
+#game-container #run-choice .battle-lead {margin:0; margin-bottom:6px; font-size:12px; line-height:19px;}
+#game-container #run-choice .battle-performer-visual {min-height:64px; padding:9px 22px; margin-bottom:4px; background:#edf1f5;}
+#game-container #run-choice .battle-performer-visual img {width:56px; height:56px; bottom:4px; object-fit:cover; border-radius:6px;}
+#game-container #run-choice .battle-visual-copy {gap:0;}
+#game-container #run-choice .battle-visual-copy strong {font-size:17px; line-height:24px;}
+#game-container #run-choice .battle-visual-copy span {font-size:13px; line-height:20px;}
+#game-container #run-choice .battle-choice-list {gap:6px;}
+#game-container #run-choice.battle-surface .battle-choice-row {min-height:78px; padding:8px 10px; gap:10px; background:#fff; border-left:3px solid var(--performer-color);}
+#game-container #run-choice .battle-choice-row strong {display:block; font-size:17px; line-height:24px; margin:0 0 2px; color:var(--ui-ink);}
+#game-container #run-choice .battle-choice-row .battle-choice-copy > span {font-size:13px; line-height:20px; color:var(--ui-muted);}
+#game-container #run-choice .battle-choice-row > svg {color:var(--ui-rose);}
+#game-container #run-choice .battle-choice-symbol {width:40px; height:40px; background:var(--performer-color); border-radius:6px;}
+#game-container #run-choice.battle-surface .battle-choice-row .battle-choice-symbol svg {color:#162622;}
+#game-container #run-choice .battle-surface-footer {padding-block:10px;}
+#game-container #run-choice .battle-surface-footer button {min-height:44px; padding:8px 14px;}
+#game-container #run-choice.battle-surface .battle-surface-footer button > span {font-size:16px; line-height:24px; color:inherit;}
+#game-container #battle-result .battle-performance-header {position:relative; min-height:188px; margin:-20px -22px 0; padding:18px 22px 60px; background:var(--ui-dark); border-bottom:3px solid var(--performer-color); overflow:hidden;}
+#game-container #battle-result .battle-performance-header > .battle-eyebrow,#game-container #battle-result .battle-performance-header > h2,#game-container #battle-result .battle-performance-header > .battle-result-chapter {position:relative; z-index:1; max-width:calc(100% - 100px);}
+#game-container #battle-result .battle-performance-header > .battle-eyebrow {color:#cdd6df; font-size:12px; line-height:19px; margin:0 0 6px;}
+#game-container #battle-result .battle-performance-header > h2 {font-size:26px; line-height:34px; color:#fff; margin:0 0 4px; overflow-wrap:anywhere;}
+#game-container #battle-result .battle-result-chapter {font-size:14px; line-height:22px; color:#d9e1e8; margin:0;}
+#game-container #battle-result .battle-performance-header .battle-performer-visual {position:absolute; inset:0; min-height:0; margin:0; padding:0; background:transparent; border:0;}
+#game-container #battle-result .battle-performance-header .battle-performer-visual img {width:140px; height:210px; right:0; bottom:-16px;}
+#game-container #battle-result .battle-performance-header .battle-visual-copy {position:absolute; left:22px; bottom:12px; max-width:calc(100% - 130px); gap:0;}
+#game-container #battle-result .battle-visual-copy strong {font-size:18px; line-height:26px; color:#fff;}
+#game-container #battle-result .battle-visual-copy span {font-size:13px; line-height:20px; color:#d9e1e8;}
+#game-container #battle-result[data-outcome=defeat] .battle-performance-header {border-bottom-color:#a7b2bc;}
+#game-container #battle-result .battle-result-member[hidden],#game-container #battle-result .battle-story-ending[hidden] {display:none;}
+#game-container #battle-result .battle-result-stats {margin:0; padding:14px 0; border-color:var(--ui-line);}
+#game-container #battle-result .battle-result-stats dt {font-size:12px; line-height:20px; color:var(--ui-muted);}
+#game-container #battle-result .battle-result-stats dd {margin:0; font-size:21px; line-height:29px; font-weight:700; color:var(--ui-ink);}
+#game-container #battle-result .battle-result-reward {padding:12px 0; margin:0; border-top:0; border-bottom:1px solid var(--ui-line);}
+#game-container #battle-result .battle-result-reward h3,#game-container #battle-result .battle-result-build h3 {font-size:12px; line-height:20px; color:var(--ui-muted);}
+#game-container #battle-result .battle-result-reward > strong {font-size:21px; line-height:29px; color:var(--ui-green);}
+#game-container #battle-result .battle-result-reward > p {font-size:13px; line-height:21px; color:var(--ui-green);}
+#game-container #battle-result .battle-earned-equipment {display:flex; flex-direction:column; gap:3px;}
+#game-container #battle-result .battle-earned-equipment span {font-size:12px; line-height:20px; color:var(--ui-muted);}
+#game-container #battle-result .battle-result-reward button {min-height:44px; padding:8px 12px; font-size:14px;}
+#game-container #battle-result .battle-result-build {padding:12px 0 8px;}
+#game-container #battle-result .battle-result-build p {color:var(--ui-ink); font-size:14px; line-height:22px;}
+#game-container #battle-result .battle-highlight {color:var(--ui-rose); font-size:14px; line-height:22px;}
+#game-container #battle-result .battle-result-next {font-size:14px; line-height:23px; color:var(--ui-ink);}
+#game-container #battle-result .battle-save {font-size:12px; line-height:20px; color:var(--ui-muted);}
+#game-container #battle-result .battle-save.is-warning {color:var(--ui-amber);}
+#game-container #battle-result [data-action=result-story] {min-height:44px; padding:8px 0; background:transparent; border:0; border-block:1px solid var(--ui-line); justify-content:flex-start; font-size:14px;}
+#game-container #battle-result [data-action=result-story][aria-expanded=true] {color:var(--ui-rose);}
+#game-container #battle-result .battle-story-ending {padding:12px 0 15px; border-bottom:1px solid var(--ui-line); margin-bottom:13px;}
+#game-container #battle-result .battle-story-ending h3 {font-size:15px; line-height:23px; color:var(--ui-rose); margin:0 0 9px;}
+#game-container #battle-result .battle-story-ending p {font-size:13px; line-height:23px; margin:7px 0; color:var(--ui-ink);}
+#game-container #battle-result .battle-story-ending .story-narration {color:var(--ui-muted);}
+#game-container #battle-result .battle-surface-footer {grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px;}
+#game-container #battle-result .battle-surface-footer button {min-height:48px; padding:9px 8px; font-size:14px; line-height:22px; white-space:normal;}
+#game-container #battle-result .battle-surface-footer .battle-primary {grid-column:1 / -1;}
+#game-container #battle-result .battle-surface-footer button:only-child {grid-column:1 / -1;}
+#game-container #battle-pause .battle-surface-content {justify-content:center;}
+#game-container #player-session-dialog {inset:auto; left:0; top:0; width:var(--public-shell-width,375px); height:var(--public-shell-height,667px); transform:scale(var(--public-shell-compensation,1)); transform-origin:0 0; background:#242931a6; padding:18px; letter-spacing:0;}
+#game-container #player-session-dialog .session-panel {background:var(--ui-paper); color:var(--ui-ink); border:0; border-radius:8px; padding:22px 20px; max-height:100%; overflow:auto;}
+#game-container #player-session-dialog .session-panel h2 {font-size:23px; line-height:32px; margin:0 0 14px;}
+#game-container #player-session-dialog .session-panel p {font-size:13px; line-height:22px; margin:10px 0;}
+#game-container #player-session-dialog .session-goal {color:var(--ui-green);}
+#game-container #player-session-dialog .session-note {font-size:12px; line-height:19px; color:var(--ui-muted);}
+#game-container #player-session-dialog .session-member {color:var(--ui-rose); border-left-color:var(--ui-rose);}
+#game-container #player-session-dialog .session-performer {display:flex; align-items:center; gap:12px; min-height:60px; padding:8px 0 14px; border-bottom:1px solid var(--ui-line);}
+#game-container #player-session-dialog .session-performer img {flex:0 0 46px; width:46px; height:46px; object-fit:cover; border-radius:6px;}
+#game-container #player-session-dialog .session-performer strong {font-size:15px; line-height:23px;}
+#game-container #player-session-dialog .session-primary {background:var(--ui-rose); border-color:var(--ui-rose); color:#fff; border-radius:6px; min-height:48px;}
+#game-container #player-session-dialog .session-secondary {background:#fff; border-color:var(--ui-line); color:var(--ui-ink); border-radius:6px; min-height:46px; text-align:left;}
+#game-container #player-session-dialog .session-setting {font-size:14px; line-height:22px;}
+#game-container #player-session-dialog input {accent-color:var(--ui-green);}
+#game-container #player-session-dialog .story-place {font-size:12px; line-height:19px; color:var(--ui-muted); border-bottom:1px solid var(--ui-line); padding-bottom:10px;}
+#game-container #player-session-dialog .story-narration {color:var(--ui-muted);}
+#game-container #player-session-dialog .story-dialogue {margin:13px 0; border-left:2px solid #d783a0; padding-left:12px;}
+#game-container #player-session-dialog .story-dialogue strong {font-size:12px; line-height:19px; color:var(--ui-rose);}
+#game-container #player-session-dialog .story-dialogue p {margin-top:4px;}
+#game-container #player-session-dialog .story-passage {margin-bottom:16px;}
+#game-container #player-session-dialog[data-mode=first-briefing] .story-passage {border-bottom:1px solid var(--ui-line); padding-bottom:12px;}
+@media (max-width:340px) {
+  #public-shell .shell-desk-chapter {width:calc(100% - 122px); padding-right:8px;}
+  #public-shell .shell-desk-chapter h2 {font-size:23px; line-height:31px;}
+  #public-shell .shell-stage-performer {width:100px; height:150px; right:10px;}
+  #public-shell .shell-start {grid-template-columns:minmax(0,1fr) 96px;}
+  #public-shell .shell-performer-detail:has(.member-mark-full) {min-height:224px; gap:10px;}
+  #public-shell[data-page=roster] .member-mark.member-mark-full {flex-basis:144px; width:144px; height:216px;}
+  #public-shell .shell-performer-name h2 {font-size:25px; line-height:33px;}
+}
+@media (max-height:610px) {
+  #public-shell .shell-header {height:58px; padding-block:6px;}
+  #public-shell[data-page=desk] .shell-main-map {height:160px;}
+  #public-shell[data-page=desk] .shell-stage-performer {width:106px; height:159px;}
+  #public-shell .shell-start {padding-top:8px;}
+  #game-container #run-choice[data-mode=choice] {padding-top:106px;}
+  #game-container #run-choice .battle-choice-context {top:74px;}
+}

@@ -1,0 +1,488 @@
+{
+  "buildId": "home-8f86f198ee85",
+  "files": [
+    {
+      "file": "companion.html",
+      "sha256": "6a948c72f583a427352e7fbc6bbceb4644be9265b10f08782222f28c8363d28d"
+    },
+    {
+      "file": "public/animations/idle_loop.vrma",
+      "sha256": "ace95ba6dcc0bdf2ed1081c002332b4184441117c8d543b6f642b3d2c5cf99be"
+    },
+    {
+      "file": "public/assets/computer.webp",
+      "sha256": "eeb8532313f1a2db2ea3d506b338eccd07352d4b6e3c5d8856c73a94543ad5b1"
+    },
+    {
+      "file": "public/assets/icon-computer.webp",
+      "sha256": "4400878edcd42cbd5d1121f8ad179c98f7b256ea977431395b4257850648d760"
+    },
+    {
+      "file": "public/assets/icon-fan.webp",
+      "sha256": "e650d4d646281b916c20452566ac9e33c5c3d2046a872847289b093891fe8aa4"
+    },
+    {
+      "file": "public/assets/icon-lamp.webp",
+      "sha256": "94505e26c62536e9b2d3506e486643a591aa3d42251873c0e7f9321b31a7e6b9"
+    },
+    {
+      "file": "public/assets/icon-tv.webp",
+      "sha256": "b1e7553d000cf2d5a48497650027f1ea7e1b4907c7c0e526e5dfe60e92778c85"
+    },
+    {
+      "file": "public/assets/model-source.json",
+      "sha256": "df7df50cda45eb78ee4d789883ba202a6870d6c6e92e807e68320820341b112b"
+    },
+    {
+      "file": "public/assets/poster.webp",
+      "sha256": "303ad22114c7e100c40bb7d314aa5f56097126c7ebe1a19e3d608a44abdf3a3e"
+    },
+    {
+      "file": "public/assets/tv.webp",
+      "sha256": "4bc77cc68bc95e586d6875b9ecd67347a0d2239720d01e0a4a2acff8c08360c9"
+    },
+    {
+      "file": "public/chibi/action-hammer-v2.webp",
+      "sha256": "1fc6b4a4d38a2f7981438a34f0ab64901e496a63fc7ba9a7ae4bfecf0567535f"
+    },
+    {
+      "file": "public/chibi/action-hammer.webp",
+      "sha256": "07db073e5d7c59428e3b2d5092489b6ee702593d85b637251153f3e43c724794"
+    },
+    {
+      "file": "public/chibi/action-sit-v2.webp",
+      "sha256": "eef4c8478776b5414394a91345146cd9c9d23143ff04e8a9e37768c7e026890a"
+    },
+    {
+      "file": "public/chibi/action-sit.webp",
+      "sha256": "ec453502f1d9b790dc0e9f9642882dce6dbf0d08151f31428665de71da98276d"
+    },
+    {
+      "file": "public/chibi/action-wave-v2.webp",
+      "sha256": "357b26eba3cf396b460e29ce2980f993404f096422446a5f5303c8ac07559d9a"
+    },
+    {
+      "file": "public/chibi/action-wave.webp",
+      "sha256": "df52d92ffaf8499d6f1c6b397d0f762a9e6d1ad2edd015d92afc621518b8dc1a"
+    },
+    {
+      "file": "public/chibi/CombatMelee.glb",
+      "sha256": "17bc6369cb6d6ea84de66aa3fdaaafe4541bc9758287979bd4f070462f48f8e5"
+    },
+    {
+      "file": "public/chibi/enjo-blink.webp",
+      "sha256": "960a51d42812038970d624d64582575f177b8ac143212e98549a031ece662126"
+    },
+    {
+      "file": "public/chibi/enjo-face.webp",
+      "sha256": "b082aa996aa240aabe08b28de7f0bfbdf7867ba11aaaf7146a92dcda94d9c301"
+    },
+    {
+      "file": "public/chibi/General.glb",
+      "sha256": "628e5fa41d82787f2d779320b49946c318dd8564ec2611b2a1bba1c0f33a6819"
+    },
+    {
+      "file": "public/chibi/KayKit-CC0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "file": "public/chibi/mannequin_texture.png",
+      "sha256": "b417f933486ca047f9d171d0142c68d30cd401037f69653acf13cdb812d09828"
+    },
+    {
+      "file": "public/chibi/manny_med_mod.bin",
+      "sha256": "351e13dc00e07e15ccfb6250f4c7cde58c65e7320dfeb78cb46f71ad72a3dd2f"
+    },
+    {
+      "file": "public/chibi/MovementBasic.glb",
+      "sha256": "c41504f433ca9e8e07e765f1a24f307895cd571b714b43ac1d97b9e9ac8d0f82"
+    },
+    {
+      "file": "public/chibi/rig.gltf",
+      "sha256": "cdaf09a79d6759682977859d1d12a8e1f0888022e5c4c613bf88f1aa7db994df"
+    },
+    {
+      "file": "public/chibi/Simulation.glb",
+      "sha256": "3269acda0b96f5f80f812f82560538d69cb5a5f40438347dbabf5721217b1204"
+    },
+    {
+      "file": "public/companion/greet-0.webp",
+      "sha256": "0d82b37a9fd99f709f2f1f073396809b2756d8b7e6a6059be0d785d73a40d139"
+    },
+    {
+      "file": "public/companion/greet-1.webp",
+      "sha256": "91d658315848d211e85ef494870b3e1b3f6580ca235ffa93f794b3407bcb7e89"
+    },
+    {
+      "file": "public/companion/greet-2.webp",
+      "sha256": "2d97202e536a683439645b5f8bfbcaa891fdb69ff07a6a5f253cf38c297b3952"
+    },
+    {
+      "file": "public/companion/greet-3.webp",
+      "sha256": "17cdd643d1303124e86c1d1a6c43523a022468d65b68a8885557b3399a4c9c1e"
+    },
+    {
+      "file": "public/companion/greet-4.webp",
+      "sha256": "11c85846c571f86deaadbd4fc710bc5c9d7e8866aba9fbab08f8ee1b80528e37"
+    },
+    {
+      "file": "public/companion/greet-5.webp",
+      "sha256": "e218dcf7f2efbcdd0c19a583583e8e2d5a6a11487643982f01dbff835fdb5285"
+    },
+    {
+      "file": "public/companion/greet-6.webp",
+      "sha256": "339b8cca0859bf7e82ff87fdaa3f4f3f336b8212c3753d25dac4c725af476949"
+    },
+    {
+      "file": "public/companion/greet-7.webp",
+      "sha256": "966ef95bfc4cdf47ba61ca455fed40398bfd69b1b35b89a0c1f2ac8298c80057"
+    },
+    {
+      "file": "public/companion/greet-8.webp",
+      "sha256": "3c792855fe2d817bf38d1c0aa5d1745ad753e973f06404cc549672d1bfbbe7ab"
+    },
+    {
+      "file": "public/companion/manifest.json",
+      "sha256": "9fff97b4c528f3cf1208eaed5a5b10c3dc3e47e11de42102af7dc7b7de944f0b"
+    },
+    {
+      "file": "public/companion/rest-0.webp",
+      "sha256": "0759a0236d6c47879d4a0f1f2df7044003d0098090a29670c34aba4ab30c3009"
+    },
+    {
+      "file": "public/companion/rest-1.webp",
+      "sha256": "6c45e95b716ac13d978e8615dbf98e3c03cd93f7df65d9afcf33b728273b4051"
+    },
+    {
+      "file": "public/companion/rest-2.webp",
+      "sha256": "ebd3df3338d29d8d9c8ebc00566b331552dbcb20b610a0d3d97f54e86801cae7"
+    },
+    {
+      "file": "public/companion/rest-3.webp",
+      "sha256": "ecf7c4f7670cb056998f667aacd075202bd6e1e4c4c47592b3e2fbf47b6271ec"
+    },
+    {
+      "file": "public/companion/rest-4.webp",
+      "sha256": "3ca8e934e4a283eecd10f63acd54d51e7bba4d15b93cb04d6bf8d4d5a636889d"
+    },
+    {
+      "file": "public/companion/rest-5.webp",
+      "sha256": "4feadd9b4b196361a095b7a5bab1e3d628a755e3b7e12d108f3b874f33b0d477"
+    },
+    {
+      "file": "public/companion/rest-6.webp",
+      "sha256": "40dc5a2b160583cea54cf1571edcce10a390ad33107bc267ce8f878a1e10a95b"
+    },
+    {
+      "file": "public/companion/rest-7.webp",
+      "sha256": "bca438257615db22f449a1eb3c845bce99340625c62b1f23f0be88606be5d1de"
+    },
+    {
+      "file": "public/companion/rest-8.webp",
+      "sha256": "5fa39815f7b2f64ca5847698b7507278fc72920ed3f4102aa3838da6e6292532"
+    },
+    {
+      "file": "public/companion/walk-0.webp",
+      "sha256": "05d4ed34ce22d02b239757ae88c72d0087d09166b58cb9e638540b5993ce3baa"
+    },
+    {
+      "file": "public/companion/walk-1.webp",
+      "sha256": "694786623deddad24774424047199528904bd9bc249ce72ac9f8e9c7086ff1dc"
+    },
+    {
+      "file": "public/companion/walk-10.webp",
+      "sha256": "f1310b4ae9d027e354b4a202996b69f6168d028643c88d1e84921213b31f6bb7"
+    },
+    {
+      "file": "public/companion/walk-11.webp",
+      "sha256": "45a86fe292c43b10235aa4ddd13e05ed250e84d77fd44287ab1ce68c4b2e1fca"
+    },
+    {
+      "file": "public/companion/walk-12.webp",
+      "sha256": "a46abe914a9e7c47ed6776d977e8f63e345fce179e81f5c8addcc2af3ad86ac1"
+    },
+    {
+      "file": "public/companion/walk-13.webp",
+      "sha256": "58d08c61c9fea52f341bb0008a1327ea99ed0fa03e2168f34b6e4c71c062a610"
+    },
+    {
+      "file": "public/companion/walk-14.webp",
+      "sha256": "b170f338fdfe3bce1730c4decfea04a67b2483d2ef3da53f20d7c1cb3d1eb2b1"
+    },
+    {
+      "file": "public/companion/walk-15.webp",
+      "sha256": "58fdadc34d1985baca47a15fecd37434455d43797fd40979a14932f3828903a2"
+    },
+    {
+      "file": "public/companion/walk-2.webp",
+      "sha256": "cc0fe284d6dba9e7b608448c6bdfac2593c75bdd5fd788637d53739f374fa514"
+    },
+    {
+      "file": "public/companion/walk-3.webp",
+      "sha256": "99b3a2b68d0fbdc4029b9fb082306d0abe49a09884bfc6fe40c92b153b1f0d31"
+    },
+    {
+      "file": "public/companion/walk-4.webp",
+      "sha256": "0a2dec8e3e24d56c38d9d41cf24b2615c4afaf981d95164de63bf50564509969"
+    },
+    {
+      "file": "public/companion/walk-5.webp",
+      "sha256": "d49e855a2a8f31d603ad2fa80c438b9cf8afa392ce9b196eb189a756ee109f3d"
+    },
+    {
+      "file": "public/companion/walk-6.webp",
+      "sha256": "c883208d40f5994f9f500b053803f413bb8905eaa669a2374a71688b200cbb3b"
+    },
+    {
+      "file": "public/companion/walk-7.webp",
+      "sha256": "a205ecc3c65bed314cc92b82d6b5b68dab1007baa286128f3bef3d995e6efb91"
+    },
+    {
+      "file": "public/companion/walk-8.webp",
+      "sha256": "42e78f747c150445652ec6980f86285a03051c6c6267529d6f239b81da913230"
+    },
+    {
+      "file": "public/companion/walk-9.webp",
+      "sha256": "8297fcfedbb4ba395a2efb1abf967593093a49f1a95f4d8a726975b18d2f9e0e"
+    },
+    {
+      "file": "public/illustrated/idle-0.webp",
+      "sha256": "2b35437fdbb3a13fba54e747189debb6db0e0fa77786ed7e6881f5214dd84a65"
+    },
+    {
+      "file": "public/illustrated/idle-1.webp",
+      "sha256": "a9b2b1f4ca6a7f70dda3b9d111a95f3310e701ec58ebe948e6df7362526ae336"
+    },
+    {
+      "file": "public/illustrated/idle-2.webp",
+      "sha256": "2af53a40f07bc581650d47916f602d4103181ff5cd5536f7d93412d5445acb0a"
+    },
+    {
+      "file": "public/illustrated/idle-3.webp",
+      "sha256": "ecf6ac62e3ebbb383a991c7fcdbbd3e330fc7b6405ac26ea47e72e857361af82"
+    },
+    {
+      "file": "public/illustrated/manifest.json",
+      "sha256": "6a9bfb0edf0b67e8f0c814849596918ec0097d8378f630e6cb5aff2747ebbeee"
+    },
+    {
+      "file": "public/illustrated/master.webp",
+      "sha256": "1445db256bfa8332a92317a1fd40f17ad9a3c808691f275a62dbc9eeb1e9bdb7"
+    },
+    {
+      "file": "public/illustrated/walk-0.webp",
+      "sha256": "65be5bfac87e140b5edc3b5387b595c452fbc91f754056550c691437614f78ab"
+    },
+    {
+      "file": "public/illustrated/walk-1.webp",
+      "sha256": "4bec286a0d8097fc43764479c887b2b27cce27b0703a5adb27a3877f7e8b5175"
+    },
+    {
+      "file": "public/illustrated/walk-2.webp",
+      "sha256": "e9e37d5f88294d19120a48ab1d9fde85b16f9aaafa8052b8459ee3c8716fade3"
+    },
+    {
+      "file": "public/illustrated/walk-3.webp",
+      "sha256": "5dd0e3b322f7f0d90e34ab39741c772dc7cdff27a28f4f1939434e27fac5d792"
+    },
+    {
+      "file": "public/illustrated/walk-4.webp",
+      "sha256": "bb3a7b03537d49c4703292874eb509ea898ab57b8fc286f613ca935a9cb5702a"
+    },
+    {
+      "file": "public/illustrated/walk-5.webp",
+      "sha256": "dd84224d46e6d96a7dc912db78b852cb5f205bf6dc3ce6005374c38a08476005"
+    },
+    {
+      "file": "public/illustrated/wave-0.webp",
+      "sha256": "affddbe77551fd3a72d486b9803b99fc2803167c16c062aae87dc0a473ecd989"
+    },
+    {
+      "file": "public/illustrated/wave-1.webp",
+      "sha256": "746eeb916895f34236ee72d479423289ec4cd276b9ee7b4f917f1da3a5180cfe"
+    },
+    {
+      "file": "public/illustrated/wave-2.webp",
+      "sha256": "a967304d86cbad5a2fc7fc91d2274e2744c2cf90617f2d7d92273a6415ee80ef"
+    },
+    {
+      "file": "public/illustrated/wave-3.webp",
+      "sha256": "3b86c35ff7b55dde0c3be34d2a9a71f7f9863c4e70dde552a7b14110578e8ae8"
+    },
+    {
+      "file": "public/illustrated/wave-4.webp",
+      "sha256": "29e6931e2d2c29a8446dafed738e5c4b8887bb988d6b30b1a9424e822ea1cf27"
+    },
+    {
+      "file": "public/illustrated/wave-5.webp",
+      "sha256": "dc1d2dc10d3e21b5ed66451c56153fe94fcd7cd48a4e43cf594a6b22e97ddf82"
+    },
+    {
+      "file": "public/licenses/ChatVRM-MIT.txt",
+      "sha256": "8f2598cf184ec846806eb75ae7fffbc341b9c07ae0acca914731ecbff1df2ca9"
+    },
+    {
+      "file": "public/licenses/three-vrm-animation-MIT.txt",
+      "sha256": "279ec82987aec7e72ecb9850bb704a87e352d577bc7581454c30f3551a88ea92"
+    },
+    {
+      "file": "public/materials/linen.webp",
+      "sha256": "649da425867142f56aa37591a377dc50566150b0bf84fddf390aa4de24503f35"
+    },
+    {
+      "file": "public/materials/plaster.webp",
+      "sha256": "225442cdcfafe78fd3e44cc61b7fb93d725b3741a6a946b54c12190df34a01ec"
+    },
+    {
+      "file": "public/materials/velvet.webp",
+      "sha256": "93cbbf36939349e63f821df5dadb69600a0456361253b6948147fea14ba8106f"
+    },
+    {
+      "file": "public/materials/wood.webp",
+      "sha256": "57f70776a46e7baee0dca18ca054863287f0ff808a725204ec05a0a0a2dc4760"
+    },
+    {
+      "file": "public/portraits/enjo-v2.webp",
+      "sha256": "ea820931a3143d92e20be3fc4d096212b69f80bd444730e33951d11a4e281328"
+    },
+    {
+      "file": "public/portraits/enjo.webp",
+      "sha256": "bb7b1df2782ea91cd196c6d8928e8617c3b1785e3390103110d37d540fce1dcf"
+    },
+    {
+      "file": "public/portraits/index.html",
+      "sha256": "90b3383903de118e62f7f5e7cd0b435bebc837cda7c9b916bcdf864bc990631d"
+    },
+    {
+      "file": "public/portraits/kai-v2.webp",
+      "sha256": "6be7d0c7a7790a02243f6e5060b632b390694a9a702e91feb3e4c0a75a64a8e3"
+    },
+    {
+      "file": "public/portraits/kai.webp",
+      "sha256": "5217a0f30a31e23b4b5b58bcfe06fea20cd112c244d1d2aac5bc78efd345b8f1"
+    },
+    {
+      "file": "public/studio/back.webp",
+      "sha256": "512f06e08cb9d465a2946691071ccdf96a947f316a140e9236285f8ec8841442"
+    },
+    {
+      "file": "public/studio/close.webp",
+      "sha256": "cd3f8317f3d82c7dbf597df06117ee234fb46060a4f409485e0b88a954f970a4"
+    },
+    {
+      "file": "public/studio/enjo-study.webp",
+      "sha256": "b917cd1213501617cf7d1506cc3c6a3244c5fb60bd0dec17a29f0ea8907a2f62"
+    },
+    {
+      "file": "public/studio/materials/linen.webp",
+      "sha256": "13acab7f919c6761b65db15f0759ad1255e2abc1b618ef62d2730fd1cc5600e0"
+    },
+    {
+      "file": "public/studio/materials/plaster.webp",
+      "sha256": "b54da1435585f1bfcf44fa899d708677c6bec2ca529a2f3140c76d629d398508"
+    },
+    {
+      "file": "public/studio/materials/velvet.webp",
+      "sha256": "2bc8976166d610c34a85d8b7ddfd58fb8e648b6ce3e8cf211c4302943f2df2c9"
+    },
+    {
+      "file": "public/studio/materials/wood.webp",
+      "sha256": "d8fcf6a09b114cf56bd575f41d6f2b2a3b4c18e0f99991a90505cafd28f21fd0"
+    },
+    {
+      "file": "public/studio/portrait-icon.webp",
+      "sha256": "154719884c8eaf69f6aa834010e7b9b0fdb7b13661a4f50b58163c0932d1e199"
+    },
+    {
+      "file": "src/actorMotion.mjs",
+      "sha256": "e921a1d050067b24dde24cab87bd3ec78b403489481a73e3bc114bbc82f26b62"
+    },
+    {
+      "file": "src/chibiEffects.mjs",
+      "sha256": "19943cf6be106c00be319e79ee04357455a2589e0e94cfc4cbfe17327f02d4f9"
+    },
+    {
+      "file": "src/chibiMaterials.mjs",
+      "sha256": "01a9ab59a1e012627001a98e5f8fb795c9249fad694e267b07bd78f2059fc673"
+    },
+    {
+      "file": "src/chibiModel.mjs",
+      "sha256": "de69887bfb1f12d69a987903007f8a6ded97089a1a5ff919f342fb69cab71e96"
+    },
+    {
+      "file": "src/chibiMotion.mjs",
+      "sha256": "1d091d9b8b3bd5ba8f22b4632a8ba17e0ae176fb7220d988d86fc76b157522a6"
+    },
+    {
+      "file": "src/companion.mjs",
+      "sha256": "458b50342a93f3af9729c274d3045b466d3fce4c6bd03aa5bb06c7e22b20c3ef"
+    },
+    {
+      "file": "src/companionAction.mjs",
+      "sha256": "c95643bd615405aee865c935991bb7da0ae4584ad283901eee79f6163b4913ca"
+    },
+    {
+      "file": "src/companionActor.mjs",
+      "sha256": "725b3fec62f84c2bef078ebce15aff5a7d793ad2aabb87d64bfebed60d0af2ff"
+    },
+    {
+      "file": "src/homeView.mjs",
+      "sha256": "55da631f3d16252f59081a8dca2da466598559ed8e89c2d7693233b18164e226"
+    },
+    {
+      "file": "src/illustrated.mjs",
+      "sha256": "d19ab02981b42a3dd7ab41152d2be6179d2ff7e03c1a430cd3c135e74381cfec"
+    },
+    {
+      "file": "src/illustratedActor.mjs",
+      "sha256": "7a9d3d9508a1d13f69295e3427a00832d67dd1edf586c33558d0a1bbb6854406"
+    },
+    {
+      "file": "src/illustratedTimeline.mjs",
+      "sha256": "777440023670920ef08e4e24c4db54d6ee8199351c24a60b9f3804f56928ce2c"
+    },
+    {
+      "file": "src/integration.css",
+      "sha256": "d6187281904c024656b1c1d2c0cb0f4f1fb7c222cce3fd1089dcb03e42946fe8"
+    },
+    {
+      "file": "src/main.mjs",
+      "sha256": "5caf1fa2ed74796ee1514ce4273a6a2e580944bf34fd46a9c5e78841f58abc2e"
+    },
+    {
+      "file": "src/navigation.mjs",
+      "sha256": "838769b595c7eeaaf2c1e3d8673f6920cc520866931f271aaf12e2d61be4664c"
+    },
+    {
+      "file": "src/portrait.css",
+      "sha256": "f8df07313c73a5bc3ba71d957feff9bd2aff18e74ed5117d73181cfeb67613af"
+    },
+    {
+      "file": "src/portrait.mjs",
+      "sha256": "4a2a88428a0ed0d739045c68f08bcc5ee927659e080bc763d563bf0113cd12e2"
+    },
+    {
+      "file": "src/room.mjs",
+      "sha256": "172a621b2dfcce95c6ad411756f8783492d8c1c6efd91c1229259a86ad20afbf"
+    },
+    {
+      "file": "src/staticRoomBatch.mjs",
+      "sha256": "4f48965976cec11fd50dccf9867820b364cf3f58cde589ee6e70677dba68a739"
+    },
+    {
+      "file": "src/style.css",
+      "sha256": "cbf69e87d0648e8dda6c4e479d8d8f232ea9932e4bc38e99516e9b0945b4bff3"
+    },
+    {
+      "file": "src/vendor/three-vrm-animation.mjs",
+      "sha256": "8b3985e9420efb549a1dc8f72bc88fd3b257979f769e0b23ff9f723b61ca3ecf"
+    },
+    {
+      "file": "src/worldBillboard.mjs",
+      "sha256": "58e8f2d79f05ef2ba88cc5e840b45697e48dbde0034cc9b078deba0ca716db68"
+    }
+  ],
+  "artAccepted": false,
+  "originalCastModel": false,
+  "presentation": "3D room, original 2.5D frame character, same-origin game integration"
+}

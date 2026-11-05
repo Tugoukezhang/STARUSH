@@ -1,0 +1,192 @@
+{
+  "rows": [
+    {
+      "group": "sakura-refined-20261006",
+      "file": "public/art/sakura-refined-20261006/parts.webp",
+      "data": "public/art/sakura-refined-20261006/views.json",
+      "sha": "ee740b939830c683f07459fb0b785bead0b4fe475730021314c19e561a568397",
+      "bytes": 776908,
+      "geometrySha": "94d177bbe8e3e38732b55a6949468451bbded7f40540b0a76c71b88d0bd0f8a1",
+      "alphaSha": "1f2d2e2b5f7868da19ce5424f476d43b5d694d8565e6f76548c63f6d585b2c20",
+      "protectedSha": "361541b911c47833e67f4c1e42bc6aa40bd2cc6f6cb0249564badbfe4b799cfc",
+      "maskSha": "8e2e2090cc597c966fd56e8184661915e04f1480e43d5207db969c3d83135077",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "front",
+          "name": "torso",
+          "region": [
+            1860,
+            530,
+            127,
+            131
+          ]
+        },
+        {
+          "direction": "front",
+          "name": "pelvis",
+          "region": [
+            1638,
+            530,
+            190,
+            132
+          ]
+        },
+        {
+          "direction": "left",
+          "name": "torso",
+          "region": [
+            1255,
+            530,
+            88,
+            138
+          ]
+        },
+        {
+          "direction": "left",
+          "name": "pelvis",
+          "region": [
+            541,
+            720,
+            149,
+            117
+          ]
+        },
+        {
+          "direction": "right",
+          "name": "torso",
+          "region": [
+            404,
+            720,
+            105,
+            119
+          ]
+        },
+        {
+          "direction": "right",
+          "name": "pelvis",
+          "region": [
+            722,
+            720,
+            148,
+            115
+          ]
+        },
+        {
+          "direction": "back",
+          "name": "torso",
+          "region": [
+            1469,
+            530,
+            137,
+            136
+          ]
+        },
+        {
+          "direction": "back",
+          "name": "pelvis",
+          "region": [
+            169,
+            720,
+            203,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "group": "sakura-oblique-20261006",
+      "file": "public/art/sakura-oblique-20261006/parts.webp",
+      "data": "public/art/sakura-oblique-20261006/views.json",
+      "sha": "5ca7bad71992fb2cd12b73f6dc538c5ad4d385d6487f859c102b5de8ff371553",
+      "bytes": 822298,
+      "geometrySha": "1c3c778cedceeed09c1ef69a8a22ef996cf6baeeead36e6126e5a0a47a15a200",
+      "alphaSha": "f5492c33a6828a2c9d1adc4a0976b6de9167e638fc37c211cbd9b90090c08637",
+      "protectedSha": "7e4790d5009fc99a366ef7e2faed80f0e228fa100dfb17b9d36a2e4ea7356e55",
+      "maskSha": "7b8eb572377e9b65199cd76f6819c33cae69e6d2b61f1055570de45edf497568",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "front-right",
+          "name": "torso",
+          "region": [
+            378,
+            527,
+            143,
+            156
+          ]
+        },
+        {
+          "direction": "front-right",
+          "name": "pelvis",
+          "region": [
+            1475,
+            527,
+            198,
+            141
+          ]
+        },
+        {
+          "direction": "front-left",
+          "name": "torso",
+          "region": [
+            847,
+            527,
+            137,
+            148
+          ]
+        },
+        {
+          "direction": "front-left",
+          "name": "pelvis",
+          "region": [
+            16,
+            720,
+            195,
+            140
+          ]
+        },
+        {
+          "direction": "back-right",
+          "name": "torso",
+          "region": [
+            1705,
+            527,
+            125,
+            141
+          ]
+        },
+        {
+          "direction": "back-right",
+          "name": "pelvis",
+          "region": [
+            559,
+            720,
+            177,
+            125
+          ]
+        },
+        {
+          "direction": "back-left",
+          "name": "torso",
+          "region": [
+            1016,
+            527,
+            121,
+            147
+          ]
+        },
+        {
+          "direction": "back-left",
+          "name": "pelvis",
+          "region": [
+            768,
+            720,
+            180,
+            124
+          ]
+        }
+      ]
+    }
+  ]
+}

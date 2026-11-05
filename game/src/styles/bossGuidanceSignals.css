@@ -1,0 +1,29 @@
+/* Read-only boss state uses the same edge band, with the arena visible behind it. */
+#game-container[data-battle-mode="public"] .public-boss-strip {
+  top: 104px; left: 10px; right: 10px; height: 68px; padding: 0 0 3px 28px;
+  grid-template-rows: 18px 18px 23px 3px; border: 0; border-radius: 0;
+  color: #fff; background: none; box-shadow: none;
+  text-shadow: 1px 1px 0 #17272e,-1px -1px 0 #17272e,1px -1px 0 #17272e,-1px 1px 0 #17272e,0 2px 3px #17272e;
+}
+#game-container[data-battle-mode="public"] .public-boss-strip::before {
+  content: ''; position: absolute; left: 0; top: 0; width: 24px; height: 24px;
+  background: url('/art/battle-signals-b293/danger.webp') center / contain no-repeat;
+}
+#game-container[data-battle-mode="public"] .public-boss-tag {color: #ffb7aa; font-size: 13px;}
+#game-container[data-battle-mode="public"] .public-boss-name {color: #fff; font-size: 14px;}
+#game-container[data-battle-mode="public"] .public-boss-count {color: #fff; font-size: 13px;}
+#game-container[data-battle-mode="public"] .public-boss-status {font-size: 13px; color: #fff;}
+#game-container[data-battle-mode="public"] .public-boss-instruction {font-size: 15px; color: #f5ebad; line-height: 21px;}
+#game-container[data-battle-mode="public"] .public-boss-meter {height: 3px; background: #1c343baf; border: 0;}
+#game-container[data-battle-mode="public"] .public-boss-fill {background: #8cf5d8;}
+#game-container[data-battle-mode="public"] #public-objective-guidance [data-part=ring] {padding: 5px;}
+#game-container[data-battle-mode="public"] #public-objective-guidance [data-part=arrow] {
+  font-size: 0; background: url('/art/battle-signals-b293/action.webp') center / contain no-repeat;
+}
+/* Keep the hit read stationary while a notice enters or expires. */
+#game-container[data-battle-mode="public"] #combat-feedback #combat-hit {top:228px;}
+#game-container[data-battle-mode="public"]:has(#hud > .public-boss-strip) #combat-feedback #combat-hit,
+#game-container[data-battle-mode="public"] #combat-feedback[data-boss="true"] #combat-hit {top:282px;}
+/* Expanded details are intentionally requested by the player; transient copy waits behind that disclosure. */
+#game-container[data-battle-mode="public"]:has(#battle-hud-detail:not([hidden])) #battle-notice:not([data-kind="danger"]) {visibility:hidden;}
+#game-container[data-battle-mode="public"]:has(#battle-hud-detail:not([hidden])) #battle-notice[data-kind="danger"] {top:210px;}

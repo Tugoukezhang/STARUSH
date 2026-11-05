@@ -1,0 +1,54 @@
+import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { OldStreetState, OLD_STREET_DEVICES, OLD_STREET_PROPS } from '../src/utils/oldStreetMap.mjs';
+import { OldStreetScene } from '../src/systems/OldStreetScene.mjs';
+import { RUNTIME_PAYLOAD } from '../scripts/runtime-payload.mjs';
+const url=new URL('../src/systems/StreetRestorationSurface.mjs',import.meta.url);
+const module=existsSync(url)?await import(url):{};
+assert.equal(typeof module.paintStreetPatch,'function','RED: bounded restoration surface is missing');
+const {paintStreetPatch,restorationProgress,StreetPaintSurface}=module;
+assert(RUNTIME_PAYLOAD.some(a=>a.file==='art/street-perspective-20261009/ground.webp'),'new playable ground must survive the build boundary');
+assert(!RUNTIME_PAYLOAD.some(a=>a.file.startsWith('art/fresh-oldstreet/')),'retired street media must not ship');
+
+const state=new OldStreetState();
+const theater=OLD_STREET_PROPS.find(p=>p.id==='theater');
+assert(theater.y-theater.height>=0&&theater.y<=270,'theater must fit the map and leave a visible finale performance apron');
+const owner=Object.create(OldStreetScene.prototype);owner.config=null;
+const origin=owner.finaleOrigin?.();assert(origin&&state.clearLine(origin,origin,32),'finale actor must spawn on clear ground, not be displaced behind the theater');
+assert.equal(restorationProgress('theater',OLD_STREET_DEVICES),0);
+const devices=OLD_STREET_DEVICES.map(d=>({...d,paint:0}));
+devices.find(d=>d.id==='oldstreet-stage-left').paint=52;
+assert.equal(restorationProgress('theater',devices),0.5,'one fixture must not restore a two-fixture place');
+devices.find(d=>d.id==='oldstreet-stage-right').paint=26;
+assert.equal(restorationProgress('theater',devices),0.75);
+assert.equal(restorationProgress('unknown',devices),0);
+
+const operations=[];
+const context={save(){operations.push('save');},restore(){operations.push('restore');},beginPath(){},moveTo(){},quadraticCurveTo(...a){operations.push(['edge',...a]);},closePath(){},arc(...a){operations.push(['arc',...a]);},fill(){operations.push(['fill',this.globalAlpha,this.globalCompositeOperation]);},clearRect(...a){operations.push(['erase',...a]);}};
+const options={width:1000,height:1778,blockers:state.blockers()};
+assert.equal(paintStreetPatch(context,{x:340,y:1400,radius:40,color:0xFF70AD},options),false,'stamp origin in a solid building cannot paint');
+assert.equal(paintStreetPatch(context,{x:500,y:1500,radius:80,color:0xFF70AD},options),true);
+assert.deepEqual(operations.find(o=>o[0]==='fill'),['fill',1,'source-over'],'repeated stamps replace opaque pigment, never compound dark translucent blobs');
+assert(operations.some(o=>o[0]==='edge'),'pigment has a continuous brush edge, not a perfect circular range indicator');
+assert(operations.some(o=>o[0]==='erase'&&o[1]===220&&o[2]===1290&&o[3]===240&&o[4]===116));
+assert.equal(paintStreetPatch(context,{x:NaN,y:1,radius:20,color:0},options),false);
+assert.equal(paintStreetPatch(context,{x:-1,y:1,radius:20,color:0},options),false);
+
+let refresh=0,removed=0,destroyed=0;
+const texture={context,refresh(){refresh++;}};
+context.setTransform=()=>{};
+context.createImageData=(w,h)=>({data:new Uint8ClampedArray(w*h*4),width:w,height:h});
+context.putImageData=()=>{};
+const image={setOrigin(){return this;},setDisplaySize(){return this;},setDepth(){return this;},setAlpha(){return this;},setBlendMode(){return this;},destroy(){destroyed++;}};
+const scene={textures:{createCanvas:()=>texture,exists:()=>true,remove(){removed++;}},add:{image:()=>image}};
+const surface=new StreetPaintSurface(scene,()=>state.blockers());
+surface.stamp(500,1500,40,0xFF70AD);surface.stamp(510,1500,40,0xFF70AD);
+surface.flush();surface.flush();assert.equal(refresh,1,'upload once per dirty frame, not once per shot');
+surface.destroy();surface.destroy();assert.equal(destroyed,1);assert.equal(removed,1);
+
+assert.equal(state.isOpen('loading-gate'),false);
+state.restore('record-shop');
+assert.equal(state.isOpen('loading-gate'),true,'restoring the place must release the real alley blocker');
+assert.equal(state.clearLine({x:175,y:1070},{x:175,y:975}),true);
+assert.equal(new OldStreetState().isOpen('loading-gate'),false,'retry must start un-restored');
+console.log('street restoration: bounded paint, partial place progress, real route release and bounded texture lifecycle passed');

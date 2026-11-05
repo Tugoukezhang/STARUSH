@@ -1,0 +1,20 @@
+/* AI wordmarks are decorative; native dynamic choices and values remain readable. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=preflight]{
+ & [data-flight-letter]{font-size:0;line-height:0}
+ & .shell-content[data-preflight-studio=b271] [data-flight-letter]{font-size:0;line-height:0}
+ & .flight-letter-art{display:block;position:static;width:auto;height:21px;max-width:100%;object-fit:contain;object-position:left center;clip-path:none;pointer-events:none}
+ & .shell-brand h1[data-flight-letter]{display:flex;align-items:center;min-width:0;height:34px}
+ & .shell-brand h1 .flight-letter-art{height:27px;max-width:160px}
+ & .ui-preflight-footer [data-flight-letter=start]{display:flex;align-items:center;justify-content:center;gap:0}
+ & .ui-preflight-footer [data-flight-letter=start]>.flight-letter-art{display:block;position:static;width:auto;height:27px;clip-path:none;overflow:visible;object-position:center}
+ & .ui-preflight-footer [data-flight-letter=start]>:not(.flight-letter-art){display:none}
+ & .ui-sheet-title[data-flight-letter]{flex:1 1 auto;width:auto;min-width:0;min-height:27px;display:flex;align-items:center}
+ & .ui-sheet-title .flight-letter-art{height:23px}
+ & .home-start-actions [data-flight-letter]{display:flex;align-items:center;justify-content:center}
+ & .home-start-actions [data-flight-letter]>.flight-letter-art{height:23px;object-position:center}
+ & .home-start-actions [data-flight-letter]>:not(.flight-letter-art){display:none}
+ & .home-start-panel p{color:#e3ede6;line-height:1.55}
+ & .flight-loading-status{position:absolute;left:50%;top:50%;translate:-50% -50%;display:none;align-items:center;gap:8px;padding:6px 10px;background:#17383be8;color:#fff1d4;font-size:12px;line-height:18px;pointer-events:none}
+ & .ui-preflight-stage:has([data-portrait-state=loading],[data-menu-portrait-state=loading]) .flight-loading-status{display:flex}
+ & .flight-loading-glyph{width:28px;height:28px;object-fit:contain}
+}

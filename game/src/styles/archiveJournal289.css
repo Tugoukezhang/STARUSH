@@ -1,0 +1,86 @@
+/* B289 chapter journal. Scoped to the studio 289 chapter page and its footer. CSS handles layout and states; decoration comes from art. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] .shell-content[data-archive-studio="289"][data-archive-page=chapter]{
+ display:flex;flex-direction:column;gap:10px;padding:8px 0 14px;overflow-x:hidden;overflow-y:auto;
+ background:#f5f8f1 url(/art/archive-journal-20261104/paper.webp) center top/cover no-repeat;color:#21413f;
+
+ /* The 269 rule that hid the system frame no longer matches this studio. */
+ & > :is(.system-screen-frame,.shell-page-heading){display:none}
+ & > *{flex:none;min-width:0;margin:0 12px}
+ & :is(button,summary):focus-visible{outline:2px solid #0f6f66;outline-offset:2px}
+
+ /* Column count follows the rendered chapters. */
+ & > .chapter-report-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;padding:0}
+ & > .chapter-report-tabs button{position:relative;display:flex;align-items:center;justify-content:center;width:auto;min-width:0;min-height:46px;margin:0;padding:17px 3px 5px;border:1px solid transparent;border-radius:4px;background:transparent url(/art/archive-studio-20261102/ticket.webp) center/cover no-repeat;color:#21413f;box-shadow:none}
+ & > .chapter-report-tabs button span{display:block;width:100%;min-width:0}
+ & > .chapter-report-tabs button .archive-letter-art{width:100%;max-width:100%;height:18px;object-fit:contain;object-position:center}
+ & > .chapter-report-tabs button svg{position:absolute;top:3px;left:50%;width:12px;height:12px;transform:translateX(-50%);color:#0f6f66;pointer-events:none}
+ & > .chapter-report-tabs button[aria-pressed=true]{padding:16px 2px 4px;border:2px solid #0f6f66;box-shadow:inset 0 -3px 0 #d9583c}
+ & > .chapter-report-tabs button[data-chapter-state=locked]{border-style:dashed;border-color:#9cc4b8}
+ & > .chapter-report-tabs button[data-chapter-state=locked] svg{color:#56625f}
+ & > .chapter-report-tabs button[data-chapter-state=locked] .archive-letter-art{filter:grayscale(1);opacity:.72}
+
+ /* Full-width venue band. */
+ & > .chapter-report-heading{position:relative;display:block;margin:0;padding:0;border:0;border-radius:0;background:#173a3e;overflow:hidden}
+ & .chapter-report-venue{position:relative;display:block;width:100%;height:auto;aspect-ratio:3/2;min-height:150px;max-height:30dvh;margin:0;padding:0;border:0;border-radius:0;background:#173a3e;overflow:hidden}
+ & .chapter-report-venue .chapter-venue-art{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+ & .chapter-report-venue .chapter-venue-art[hidden]{display:none}
+ & .chapter-report-venue svg{position:absolute;top:50%;left:50%;width:28px;height:28px;transform:translate(-50%,-50%);color:#b7d8cf}
+ & .chapter-report-venue[data-venue-state=ready] svg{display:none}
+ & .chapter-report-heading[data-chapter-state=locked] .chapter-venue-art{filter:grayscale(.85) brightness(.9)}
+ & .chapter-report-heading > small{position:absolute;top:8px;left:12px;margin:0;padding:2px 6px;border-radius:3px;background:#12363ce6;color:#fff;font-size:12px;line-height:17px}
+ & .chapter-report-heading > h3{position:absolute;right:12px;bottom:36px;left:12px;margin:0;padding:0}
+ & .chapter-report-heading > h3 .archive-letter-art{height:30px;max-width:100%;filter:drop-shadow(0 1px 2px #071415)}
+ & .chapter-report-heading > h3[data-archive-letter=chapter-raincheck] .archive-letter-art{filter:drop-shadow(0 1px 2px #f8f8ef)}
+ & .chapter-report-heading > .chapter-report-status{position:absolute;bottom:8px;left:12px;margin:0;padding:2px 8px;border-radius:3px;background:#12363c;color:#fff;font-size:13px;line-height:18px;font-weight:700}
+ & .chapter-report-heading[data-chapter-state=cleared] > .chapter-report-status{background:#0f6f66}
+ & .chapter-report-heading[data-chapter-state=locked] > .chapter-report-status{background:#3d4744}
+
+ /* Primary content: story replays. */
+ & > .chapter-report-stories{display:flex;flex-direction:column;gap:6px;padding:0;border:0;border-radius:0;background:none;color:#21413f}
+ & > .chapter-report-stories > h3{min-height:24px;margin:0;padding:0}
+ & > .chapter-report-stories > h3 .archive-letter-art{height:22px}
+ & > .chapter-report-stories > .story-save-notice{margin:0;padding:6px 8px;border-radius:4px;background:#fff0dc;color:#6f3a12;font-size:12px;line-height:18px}
+ & > .chapter-report-stories > button{display:flex;align-items:center;gap:8px;width:100%;height:auto;aspect-ratio:6.34;min-height:60px;margin:0;padding:6px 20px 6px 14%;border:0;border-radius:0;background:transparent url(/art/archive-journal-20261104/story-tab.webp) center/100% auto no-repeat;color:#21413f;font-size:14px;line-height:20px;font-weight:700;text-align:left;box-shadow:none}
+ & > .chapter-report-stories > button:active{filter:brightness(.96)}
+ & > .chapter-report-stories > button > svg{display:none}
+ & .chapter-story-title{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+ & .chapter-story-status{display:inline-flex;flex:none;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;background:#ffe3cf;color:#7a3216;font-size:12px;line-height:16px;font-weight:700}
+ & .chapter-story-status svg{flex:none;width:12px;height:12px}
+ & [data-story-state=read] .chapter-story-status{flex-direction:row-reverse;background:#d9efe3;color:#1f5a48}
+ & [data-story-state=resume] .chapter-story-status{background:#fff0bd;color:#5a4700}
+
+ /* Locked chapters show the real gate only. */
+ & > .chapter-report-locked{padding:10px 12px;border:0;border-left:3px solid #7f8b88;border-radius:0;background:#ffffffd9;color:#2f403d;font-size:14px;line-height:21px}
+
+ /* Secondary content: collapsed records. The guide takes its inset from the direct-child rule; the field sits inside its wrapper. */
+ & > .chapter-report-recent{padding:0;border:0;border-radius:0;background:none}
+ & > .chapter-report-recent > .chapter-report-field{margin:0}
+ & :is(.chapter-report-field,.chapter-report-guide){padding:0 12px;border:0;border-block:1px solid #21413f2e;border-radius:0;background:#fffffff0;color:#21413f}
+ & :is(.chapter-report-field,.chapter-report-guide)[open]{padding-bottom:10px}
+ & :is(.chapter-report-field,.chapter-report-guide) > summary{display:flex;align-items:center;justify-content:flex-start;gap:12px;min-height:48px;margin:0;padding:6px 0;background:none;color:#21413f;font-size:14px;line-height:20px;list-style:none;cursor:pointer}
+ & :is(.chapter-report-field,.chapter-report-guide) > summary::-webkit-details-marker{display:none}
+ & .chapter-report-field > summary > h3{display:flex;align-items:center;flex:1 1 auto;min-width:0;min-height:22px;margin:0;padding:0;color:#21413f;font-size:14px;line-height:20px;font-weight:700}
+ & :is(.chapter-report-field,.chapter-report-guide) > summary .archive-letter-art{height:22px;margin:0;object-position:left;order:-1}
+ & :is(.chapter-report-field,.chapter-report-guide) > summary .archive-disclosure-glyph{width:18px;height:18px;filter:none;margin-left:auto;transform:none}
+ & :is(.chapter-report-field,.chapter-report-guide)[open] > summary .archive-disclosure-glyph{transform:rotate(180deg)}
+ & .chapter-report-field .chapter-report-result{margin:0 0 6px;color:#21413f;font-size:14px;line-height:20px;font-weight:700}
+ & .chapter-report-field .chapter-report-field-label{margin:8px 0 4px;color:#21413f;font-size:13px;line-height:18px;font-weight:700}
+ & .chapter-report-field .system-context{margin:0 0 6px;color:#45605d;font-size:12px;line-height:18px}
+ & .chapter-report-facts{margin:0 0 6px;padding:0}
+ & .chapter-report-facts dt{margin:0;color:#45605d;font-size:12px;line-height:17px}
+ & .chapter-report-facts dd{margin:0 0 6px;color:#21413f;font-size:13px;line-height:19px;overflow-wrap:anywhere}
+ & .chapter-report-guide .chapter-report-map{max-width:100%;margin:0 0 8px}
+ & .chapter-report-guide > p{margin:0 0 6px;color:#2f4d4a;font-size:13px;line-height:19px;overflow-wrap:anywhere}
+
+ @media (max-width:340px){
+  & > *{margin-right:8px;margin-left:8px}
+  & > .chapter-report-tabs{gap:3px}
+  & > .chapter-report-stories > button{gap:6px;padding:6px 16px 6px 14%;font-size:13px}
+ }
+}
+
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] .shell-content[data-archive-studio="289"][data-archive-page=chapter]~.shell-selection-footer{
+ & [data-action=report-prepare]{min-height:48px}
+ & [data-action=report-prepare]:disabled{filter:grayscale(1);opacity:.6;cursor:not-allowed}
+ & [data-action=report-prepare]:focus-visible{outline:2px solid #fff;outline-offset:2px}
+}

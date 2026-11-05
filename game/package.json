@@ -1,0 +1,26 @@
+{
+  "name": "starush-prototype",
+  "version": "0.1.0",
+  "description": "ST☆RUSH 偶像弹幕射击 - Phase 1 原型",
+  "scripts": {
+    "dev": "vite",
+    "test:all": "node scripts/run-all-tests.mjs",
+    "test:phase1-art": "node scripts/check-phase1-art-integration.mjs",
+    "build": "vite build",
+    "preview": "vite preview",
+    "qa:serve-dist": "node scripts/qa-static-server.mjs",
+    "qa:health": "node scripts/qa-url-health.mjs",
+    "analyze:build": "node scripts/analyze-build.mjs",
+    "qa:gpu": "node scripts/qa-gpu-capture.mjs"
+  },
+  "devDependencies": {
+    "rollup-plugin-visualizer": "7.1.1",
+    "spectorjs": "0.9.33",
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "fflate": "0.8.2",
+    "pathfinding": "0.4.18",
+    "phaser": "^3.80.0"
+  }
+}

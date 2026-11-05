@@ -1,0 +1,53 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {ContactInkFragments} from '../src/systems/ContactInkFragments.mjs';
+import {UserWeaponFx} from '../src/systems/UserWeaponFx.mjs';
+
+function fixture(id='sakura'){
+ let time=500;const nodes=[],triangles=[];
+ const node=()=>{const n={active:true,visible:true,clear(){triangles.length=0;return this;},setDepth(v){this.depth=v;return this;},fillStyle(c,a){this.ink=c;this.opacity=a;return this;},fillTriangle(...points){triangles.push({points,color:this.ink,alpha:this.opacity});return this;},setOrigin(){return this;},setDisplaySize(){return this;},setTint(){return this;},setAlpha(){return this;},setRotation(){return this;},setFrame(){return this;},setVisible(v){this.visible=v;return this;},setPosition(){return this;},destroy(){this.active=false;}};nodes.push(n);return n;};
+ const scene={_userCastPresentation:true,player:{active:true,hp:5,x:100,y:100},publicPerformerRun:{now:()=>time},oldStreet:{clearLine:()=>true},textures:{exists:()=>true},add:{graphics(){const n=node();n.lineStyle=n.lineBetween=()=>n;return n;},image:node}};
+ return{scene,nodes,triangles,clock:t=>time=t,fx:new UserWeaponFx(scene,id)};
+}
+test('only accepted ordinary contact creates directional pigment; miss, blocked and skills do not',()=>{
+ for(const id of ['sakura','kai','enjo']){
+  const {fx,scene}=fixture(id);fx.impact({x:120,y:100,color:'pink',hit:false});fx.blocked({x:120,y:100});
+  fx.impact({x:120,y:100,color:'pink',hit:true,skillContact:true});assert.equal(fx.contactFragments.rows.length,0);
+  fx.impact({x:120,y:100,color:'pink',hit:true,angle:.6,contacts:[{x:122,y:105,direct:true},{x:140,y:100}]});
+  assert.deepEqual(fx.contactFragments.rows.map(r=>[r.x,r.y,r.angle,r.color]),[[122,105,.6,0xff69b4],[140,100,.6,0xff69b4]]);
+  const before=fx.contactFragments.rows.length;scene.oldStreet.clearLine=()=>false;
+  assert.equal(fx.impact({x:999,y:999,color:'pink',hit:true}),false);assert.equal(fx.contactFragments.rows.length,before);
+ }
+});
+test('real attack direction rotates the whole bounded drawing and pigment is not member color',()=>{
+ const a=fixture(),b=fixture();const fa=new ContactInkFragments(a.scene),fb=new ContactInkFragments(b.scene);
+ fa.add({x:100,y:100,angle:0,color:0x123456,start:500});fb.add({x:100,y:100,angle:Math.PI/2,color:0x123456,start:500});
+ fa.update(570,12);fb.update(570,12);assert(a.triangles.length>=10);assert(a.triangles.some(t=>t.color===0x123456));
+ assert.equal(fa.graphics.depth,12.00001);assert.equal(a.nodes.length,1);
+ assert(a.triangles.some(t=>Math.hypot(t.points[0]-100,t.points[1]-100)>=38),'Separate from the large authored contact core during its peak');
+ a.triangles.forEach((t,i)=>{for(let p=0;p<6;p+=2){const x=t.points[p]-100,y=t.points[p+1]-100;assert(Math.hypot(x,y)<=48);assert(Math.abs(b.triangles[i].points[p]-(100-y))<1e-8);assert(Math.abs(b.triangles[i].points[p+1]-(100+x))<1e-8);}});
+});
+test('cover removes entire obstructed shards rather than painting through walls',()=>{
+ const {scene,triangles}=fixture(),f=new ContactInkFragments(scene);scene.oldStreet.clearLine=(a,b)=>b.x<=112;
+ f.add({x:100,y:100,angle:0,color:0xff69b4,start:500});f.update(610,10);
+ for(const t of triangles)for(let i=0;i<6;i+=2)assert(t.points[i]<=112);
+ scene.oldStreet.clearLine=()=>false;f.update(620,10);assert.equal(triangles.length,0);
+});
+test('pool is capped, rejects invalid values, expires at220ms and clear releases one owner',()=>{
+ const {scene,nodes,triangles}=fixture(),f=new ContactInkFragments(scene);
+ for(let i=0;i<40;i++)f.add({x:i,y:100,angle:0,color:0x123456,start:500});assert.equal(f.rows.length,12);
+ for(const bad of [{x:NaN},{angle:Infinity},{color:undefined},{start:NaN}])f.add({x:100,y:100,angle:0,color:0x123456,start:500,...bad});assert.equal(f.rows.length,12);
+ f.update(570,10);assert.equal(nodes.length,1);f.update(720,10);assert.equal(f.rows.length,0);assert.equal(triangles.length,0);
+ f.clear();f.clear();assert.equal(nodes[0].active,false);assert.equal(f.graphics,null);
+});
+test('pause freezes fragments on existing clock; battle end and navigation clear without gameplay work',()=>{
+ const {fx,scene,clock,triangles}=fixture();fx.impact({x:120,y:100,color:'pink',hit:true});clock(570);fx.update(570,{depth:12});const snapshot=structuredClone(triangles);
+ scene._battlePaused=true;clock(999);fx.update(999,{depth:12});assert.deepEqual(triangles,snapshot);assert.equal(fx.contactFragments.rows.length,1);
+ scene._battlePaused=false;clock(720);fx.update(720,{depth:12});assert.equal(fx.contactFragments.rows.length,0);
+ fx.impact({x:120,y:100,color:'pink',hit:true});scene._battleEnded=true;fx.update(721,{depth:12});assert.equal(fx.contactFragments.graphics,null);assert.equal(fx.contactFragments.rows.length,0);assert.equal(scene.player.hp,5);
+});
+test('helper has no damage, paint, physics, preload, timer, RNG or extra scene update owner',()=>{
+ const source=fs.readFileSync(new URL('../src/systems/ContactInkFragments.mjs',import.meta.url),'utf8');
+ assert(!/Math\.random|setTimeout|setInterval|\.time\.|\.physics\.|\.paint\(|takeDamage|\.load\.|events\.on|tweens/.test(source));
+});

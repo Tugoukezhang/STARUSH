@@ -1,0 +1,31 @@
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] .ui-sheet[data-sheet-kind=chapter][data-chapter-presentation=briefing286]{
+ width:min(390px,calc(100vw - 20px));padding:12px;background:#16383a;color:#f2f5e9;
+ & .ui-sheet-header{height:32px;margin:0 0 8px;flex:none}
+ & .ui-sheet-title .ui-letter-art{height:25px;max-width:230px}
+ & .ui-sheet-body{padding:0;min-width:0}
+ & .journey-detail{gap:12px}
+ & .journey-detail-heading{display:grid;grid-template-columns:minmax(0,1fr);gap:0;overflow:hidden}
+ & .journey-detail-landmark{width:100%;max-width:100%;height:auto;aspect-ratio:2.35;object-fit:cover;object-position:center 56%;display:block}
+ & .journey-place{font-size:12px;line-height:18px;text-align:left;padding:7px 0 0;color:#cce2dd}
+ & .journey-stories{gap:7px}
+ & .journey-story{min-height:50px;padding:5px 3px;gap:3px}
+ & .journey-story .journey-letter{height:18px}
+ & .journey-story small{font-size:11px;line-height:15px}
+ & .journey-objective-section>.journey-letter,& .journey-reward-strip>.journey-letter{height:18px;margin:0 0 7px}
+ & .journey-objectives{font-size:13px;line-height:21px;color:#f2f5e9;margin:0;padding-left:21px}
+ & .journey-objectives li::marker{color:#78d8d1;font-weight:700}
+ & .journey-reward-strip{margin:0;padding:0;background:none}
+ & .journey-reward-items{display:flex;gap:10px;align-items:start}
+ & .journey-reward-item{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:start;gap:2px;flex:0 1 94px;min-width:0;min-height:82px;padding:4px 2px;background:none;border:0;color:#f5f2df;box-shadow:none;letter-spacing:0}
+ & .journey-reward-item[aria-expanded=true]{background:#245354;border-radius:4px}
+ & .journey-reward-item:focus-visible{outline:2px solid #7ae1d7;outline-offset:2px}
+ & .journey-reward-icon{width:42px;height:42px;display:block;object-fit:contain;flex:none}
+ & .journey-reward-value{font-size:12px;line-height:17px;font-weight:700;white-space:normal;overflow-wrap:anywhere;color:#fff5ce}
+ & .journey-reward-item[data-reward=notes] .journey-reward-value{font-size:15px}
+ & .journey-reward-state{font-size:11px;line-height:15px;color:#a8c9c1}
+ & .journey-reward-description{margin:7px 0 0;padding:7px 9px;font-size:12px;line-height:19px;background:#21484a;color:#e0f2eb;border-left:2px solid #76d9cf}
+ & .journey-reward-description[hidden]{display:none}
+ & .journey-commands{position:sticky;bottom:0;grid-template-columns:58px minmax(0,1fr);gap:10px;padding:9px 0 0;background:#16383a;z-index:1}
+ & .journey-prepare,& .journey-goals{min-height:46px;padding:7px 9px}
+ & .journey-prepare .ui-letter-art{height:24px}
+}

@@ -1,0 +1,118 @@
+/* B263 member training -> growth (SecondaryMenuHierarchy compactTrainingPage/growth). One flow, two levels:
+   workshop = portrait-first scene, three rank tokens, one grouped before/after with the single required cost,
+   one owned balance, ONE train command; growth = second-level plan (saved rank vs planned rank), grouped
+   comparison, one cost line, explicit apply -> confirm/cancel. B296: the workshop figure is framed from stage
+   size, and a compact translucent rail replaces the stretched console plate. Growth keeps the original AI thin
+   surfaces (art/thin-ui-20261101). Phone stays full size, main is the only scroller, numbers/status remain
+   native text. Must load after secondaryHierarchy.css. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=workshop]{
+  /* Scene: the stage spans both rows, so the figure continues behind the rail. Height fits the art top to just
+     below the knee above the rail, capped so the figure's frame never exceeds the stage width. Tall phones
+     therefore reveal down to the boots, and short phones stop at the knee. Fractions are of each source frame. */
+  & [data-secondary-page=workshop]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(160px,1fr) auto}
+  & [data-secondary-page=workshop] .sec-training-stage{grid-column:1;grid-row:1/3;flex:none;min-height:0;container-type:size;--tr296-rail:104px;--tr296-pad:8px;--tr296-eye-x:54cqw;--tr296-height:min(150cqw,calc((100cqh - var(--tr296-rail) - var(--tr296-pad)) / var(--tr296-span)));--tr296-width:calc(var(--tr296-height) * var(--tr296-ratio))}
+  & [data-secondary-page=workshop] .sec-training-stage[data-performer=sakura]{--tr296-ratio:.66641;--tr296-span:.624;--tr296-top:.006;--tr296-eye-fx:.525}
+  & [data-secondary-page=workshop] .sec-training-stage[data-performer=kai]{--tr296-ratio:.66667;--tr296-span:.684;--tr296-top:.016;--tr296-eye-fx:.565}
+  & [data-secondary-page=workshop] .sec-training-stage[data-performer=enjo]{--tr296-ratio:.66667;--tr296-span:.634;--tr296-top:.036;--tr296-eye-fx:.56}
+  /* The rail's own fade replaces the inherited mask, so no mask sits between the stage and the portrait. */
+  & [data-secondary-page=workshop] .sec-training-stage .workshop-portrait-stage{-webkit-mask-image:none;mask-image:none}
+  & [data-secondary-page=workshop] .sec-training-stage .menu-portrait-surface{inset:0;width:100%;height:100%}
+  /* Current registered renderers share one frame. !important covers geometry written by the renderer. */
+  & [data-secondary-page=workshop] .sec-training-stage :is(.menu-portrait-image,.home-portrait-rig){left:calc(var(--tr296-eye-x) - var(--tr296-width) * var(--tr296-eye-fx))!important;top:calc(var(--tr296-pad) - var(--tr296-height) * var(--tr296-top))!important;width:var(--tr296-width)!important;height:var(--tr296-height)!important;max-width:none;aspect-ratio:auto;transform:none;object-fit:contain;object-position:center top}
+  & [data-secondary-page=workshop] .sec-training-stage .workshop-member-copy{left:12px;top:8px;bottom:auto;gap:3px;max-width:112px}
+  & [data-secondary-page=workshop] .sec-training-stage .workshop-member-copy strong{filter:drop-shadow(0 1px 2px #14272b)}
+  & [data-secondary-page=workshop] .sec-training-stage .workshop-member-copy :is(small,.workshop-member-role){padding:1px 6px;white-space:normal;background:#0e1b1ee0}
+  & [data-secondary-page=workshop] .sec-training-stage .ui-workshop-tools{right:8px;top:8px;gap:6px}
+  & [data-secondary-page=workshop] .sec-training-stage .ui-workshop-tools .ui-icon-command{width:48px;min-width:48px;height:52px;min-height:52px;padding:2px}
+  & [data-secondary-page=workshop] .sec-training-stage .ui-workshop-tools .ui-glyph{width:44px;height:48px}
+
+  /* Rail: rank tokens, current -> next, then cost beside owned balance. The dl joins this grid, so every state
+     keeps the same columns; compaction's re-append order does not affect placement. */
+  & [data-secondary-page=workshop] .sec-training-body{grid-column:1;grid-row:2;align-self:end;z-index:1;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);align-items:end;gap:3px 6px;margin:0;padding:6px 12px;color:#f2f7f5;background:linear-gradient(180deg,#0e1b1ec4,#0e1b1eeb);border-top:1px solid #7cedde59}
+  & [data-secondary-page=workshop] .sec-training-body::before{content:'';position:absolute;inset:auto 0 100%;height:32px;pointer-events:none;background:linear-gradient(180deg,#0e1b1e00,#0e1b1ec4)}
+  & [data-secondary-page=workshop] .sec-training-body>.sec-training-rank{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);padding:0}
+  & [data-secondary-page=workshop] .sec-training-body>.workshop-rank-track{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li{max-width:none;height:auto;min-height:24px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;padding:0;outline:0;background:none;border-top:0;border-bottom:2px solid #ffffff2e}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li b{font-size:14px;line-height:18px;font-weight:800;color:#c9d6d3;font-variant-numeric:tabular-nums}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li span{position:static;width:auto;height:auto;overflow:visible;clip-path:none;font-size:11px;line-height:16px;color:#c9d6d3;white-space:nowrap}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li[data-state=complete] :is(b,span){color:#8bd8c8}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li[data-state=current]{border-bottom-color:#7cedde}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li[data-state=current] :is(b,span){color:#fff3d0}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li[data-state=next]{border-bottom-color:#ff8f7a}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-rank-track li[data-state=next] :is(b,span){color:#ffb4a0}
+
+  & [data-secondary-page=workshop] .sec-training-body>.workshop-effects{display:contents}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects::before{grid-column:2;grid-row:2;align-self:end;line-height:24px;color:#7cedde}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects [data-training-effect=current]{grid-column:1;grid-row:2}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects [data-training-effect=next]{grid-column:3;grid-row:2}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects>div{min-width:0}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects dt{color:#c9d6d3;justify-content:flex-start}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects dd{font-size:20px;line-height:24px;color:#f2f7f5}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects [data-training-effect=next] dd{color:#7cedde}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects [data-training-effect=cost]{grid-column:1/3;grid-row:3;align-items:center;justify-content:space-between;min-height:22px;padding:1px 0 0;border-top:1px solid #ffffff1f}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects [data-training-effect=cost] dt{font-size:12px;line-height:20px;color:#c9d6d3}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects [data-training-effect=cost] dd{font-size:14px;line-height:20px;color:#ffe39a}
+  /* Both columns keep their caption so the upgrade comparison remains symmetric. */
+  & [data-secondary-page=workshop] .sec-training-body .workshop-effects .member-effect-caption{color:#c9d6d3}
+  & [data-secondary-page=workshop] .sec-training-body .member-studio-letter{filter:none}
+  & [data-secondary-page=workshop] .sec-training-body>.workshop-wallet{grid-column:3;grid-row:3;display:flex;align-items:center;justify-content:space-between;min-height:22px;padding:1px 0 0;background:none;border-top:1px solid #ffffff1f}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-wallet span{font-size:12px;color:#c9d6d3}
+  & [data-secondary-page=workshop] .sec-training-body .workshop-wallet strong{font-size:14px;line-height:20px;color:#ffe39a}
+  & [data-secondary-page=workshop] .sec-training-body .training-notes-icon{width:24px;height:24px;object-fit:contain;flex:none}
+  & [data-secondary-page=workshop] .sec-training-body>.workshop-wallet{gap:4px}
+  & .ui-sheet .workshop-equipment-feedback{margin:0 0 8px;color:#9ce4cb;font-size:13px;line-height:20px}
+  & .ui-sheet .workshop-equipment{scroll-margin-block:8px}
+  & .ui-sheet-body{padding-bottom:8px}
+  & [data-secondary-page=workshop] .sec-training-body[data-training-state=insufficient] :is([data-training-effect=cost] dd,.workshop-wallet strong){color:#ff9d8a;font-weight:800}
+  /* Recovery offers, retry-save and storage notices extend the rail below its fixed rows. */
+  & [data-secondary-page=workshop] .sec-training-body>:is(.workshop-status,.shell-save-recovery,.workshop-training){grid-column:1/-1;order:4;font-size:12px;line-height:18px;padding:4px 0 0;color:#f2f7f5;background:none;border-top:1px solid #ffffff1f}
+  & [data-secondary-page=workshop] .sec-training-body>.shell-save-recovery :is(h2,h3,p,small){color:#f2f7f5}
+  & [data-secondary-page=workshop] .sec-training-body>[data-action=retry-save]{grid-column:1/-1;order:5;min-height:44px;border:0;border-radius:0;box-shadow:none;color:#fff8e6;background:url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat}
+
+  /* Footer: continues the rail's surface with ONE train command. Cost lives in the rail; the command's cost span
+     is screen-reader only. Reason and save status share one row, and long messages wrap inside their own cell. */
+  & .shell-preparation-footer[data-training-state]{grid-template-columns:auto minmax(0,1fr);align-items:baseline;gap:4px 10px;padding:6px 12px 8px;background:#0e1b1e;color:#e7efec}
+  & .shell-preparation-footer[data-training-state] [data-action=train]{grid-column:1/-1;grid-row:1;height:48px;min-height:48px;border:0;border-radius:0;box-shadow:none;background:url('/art/member-training-20261103/command.webp') center/100% 100% no-repeat}
+  & .shell-preparation-footer[data-training-state]:not([data-training-state=ready]) [data-action=train]{filter:saturate(.4) brightness(.85);opacity:1;color:#e1eeea;background-image:url('/art/member-training-20261103/command.webp')}
+  & .shell-preparation-footer[data-training-state=complete] [data-action=train]{color:#8bd8c8}
+  & .shell-preparation-footer[data-training-state] .sec-training-reason{grid-column:1;grid-row:2;font-size:12px;line-height:16px;text-align:left;white-space:nowrap;color:#ffb4a0}
+  & .shell-preparation-footer[data-training-state] .workshop-status{grid-column:2;grid-row:2;min-height:0;font-size:12px;line-height:16px;text-align:right;color:#c9d6d3}
+  & .shell-preparation-footer[data-training-state=unsaved] .workshop-status{color:#ffb4a0}
+  & .shell-preparation-footer[data-training-state] .workshop-status:empty{display:none}
+  & .shell-preparation-footer[data-commands='train deploy'] .sec-training-deploy{grid-column:1/-1;grid-row:3;min-height:44px;padding:4px;border:0;outline:0;border-radius:0;box-shadow:none;background:url('/art/thin-ui-20261101/tab.webp') center/100% 100% no-repeat}
+  & .shell-preparation-footer[data-commands='train deploy'] .sec-training-deploy .sec-letter-art{display:block;width:auto;height:20px;max-width:100%;object-fit:contain}
+  & .shell-preparation-footer[data-commands='train deploy'] .sec-training-deploy>span{display:none}
+}
+
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=growth]{
+  & [data-secondary-page=growth]{padding:10px 14px}
+  /* Planning has no second portrait renderer. Do not reserve a phantom artwork column. */
+  & [data-secondary-page=growth] .sec-growth-stage{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;gap:6px 10px;min-height:0;margin:0 0 10px}
+  & [data-secondary-page=growth] .sec-growth-caption{grid-column:1;grid-row:1}
+  & [data-secondary-page=growth] .sec-growth-tools{grid-column:1;grid-row:2}
+  & [data-secondary-page=growth] .sec-growth-portrait{display:block;position:relative;grid-column:2;grid-row:1/4;min-height:112px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+  & [data-secondary-page=growth] .sec-growth-portrait .menu-portrait-image{object-fit:cover;object-position:top center}
+  & [data-secondary-page=growth] .sec-growth-stages{grid-column:1/-1;grid-row:3;gap:6px;padding:0;background:none}
+  & [data-secondary-page=growth] .sec-growth-stages [data-growth-rank]{min-height:44px;border:0;border-radius:0;box-shadow:none;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & [data-secondary-page=growth] .sec-growth-stages [data-growth-rank] :is(strong,small){color:#c9d6d3}
+  & [data-secondary-page=growth] .sec-growth-stages [data-rank-state=complete]{opacity:.72}
+  & [data-secondary-page=growth] .sec-growth-stages [data-rank-state=current] small{color:#ffe39a}
+  & [data-secondary-page=growth] .sec-growth-stages [data-growth-rank][aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+  & [data-secondary-page=growth] .sec-growth-stages [data-growth-rank][aria-pressed=true] :is(strong,small){color:#fff3d0}
+  & [data-secondary-page=growth] .sec-growth-stages [data-rank-state=plan][aria-pressed=true] small{color:#7cedde}
+
+  /* Grouped before/after: the native heading states current vs unapplied plan; one cost line follows. */
+  & [data-secondary-page=growth] .sec-growth-body{gap:8px}
+  & [data-secondary-page=growth] .sec-growth-body .sec-growth-compare{padding:10px 14px 12px;background:url('/art/thin-ui-20261101/panel.webp') center/100% 100% no-repeat}
+  & [data-secondary-page=growth] .sec-growth-compare h2{font-size:13px;line-height:18px;color:#fff3d0}
+  & [data-secondary-page=growth] .sec-growth-compare .growth-effects{gap:8px;margin-top:6px}
+  & [data-secondary-page=growth] .sec-growth-compare .growth-effects dd{font-variant-numeric:tabular-nums}
+  & [data-secondary-page=growth] .sec-growth-plan .sec-growth-cost{min-height:34px;padding:7px 14px;font-size:13px;line-height:20px;color:#ffe39a;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & [data-secondary-page=growth] .sec-growth-plan .workshop-muted{font-size:12px;line-height:18px;color:#ffd7a0;margin:4px 0 0}
+
+  /* Footer: apply (draft) or confirm + cancel (confirm step); status and preflight route stay. */
+  & .planning-command-footer :is([data-secondary-letter=apply],[data-action=growth-confirm]){border:0;border-radius:0;box-shadow:none;background:url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat}
+  & .planning-command-footer [data-secondary-letter=apply]:disabled{color:#d8e0dd;background-image:url('/art/thin-ui-20261101/row.webp')}
+  & .planning-command-footer [data-secondary-letter=cancel]{border:0;border-radius:0;box-shadow:none;background:url('/art/thin-ui-20261101/tab.webp') center/100% 100% no-repeat}
+  & .planning-command-footer[data-plan-state=current]>.workshop-status{color:#8bd8c8}
+}

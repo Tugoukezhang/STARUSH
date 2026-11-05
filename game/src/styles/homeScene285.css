@@ -1,0 +1,35 @@
+/* The room covers the display; controls retain their safe-area rectangle. */
+#game-container > .ui-home-scene {
+  position:absolute;
+  left:var(--menu-shell-left);
+  top:var(--menu-scene-top);
+  width:var(--menu-shell-width);
+  height:var(--menu-scene-height);
+  transform:scale(var(--menu-shell-compensation));
+  transform-origin:0 0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:29;
+  background:#152c2b;
+}
+#game-container > .ui-home-scene > .ui-room-background {
+  position:absolute;
+  top:0;
+  left:-7.5%;
+  width:115%;
+  height:115%;
+  max-width:none;
+  object-fit:cover;
+  object-position:50% 0;
+  filter:brightness(1.1) saturate(.92);
+}
+#game-container > .ui-home-scene::after {
+  content:'';
+  position:absolute;
+  inset:auto 0 0;
+  height:var(--menu-safe-bottom);
+  background:#0b1c1f;
+}
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo=true][data-core-journey=true][data-page=desk] {
+  background:transparent;
+}

@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const source=readFileSync(new URL('../scripts/qa-static-server.mjs',import.meta.url),'utf8');
+const body=source.slice(source.indexOf('function sendText('),source.indexOf('function sendHealth('));
+const sendText=new Function(`${body};return sendText;`)();
+let destroyed=0,headers=0,ended=0;
+const sent={headersSent:true,destroy(){destroyed++;},writeHead(){throw Error('ERR_HTTP_HEADERS_SENT');},end(){throw Error('already sent');}};
+assert.doesNotThrow(()=>sendText(sent,404,'file vanished'));
+assert.equal(destroyed,1);
+const fresh={headersSent:false,writeHead(status){assert.equal(status,404);headers++;},end(value){assert.equal(value,'not found');ended++;},destroy(){throw Error('should send normal404');}};
+sendText(fresh,404,'not found');assert.equal(headers,1);assert.equal(ended,1);
+console.log('static response recovery: committed stream closes without duplicate headers; normal404 preserved');

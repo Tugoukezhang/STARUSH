@@ -1,0 +1,4 @@
+#game-container #public-shell[data-page=lounge] .product-module-screen[data-companion-studio="265"] .pm-home-entry{position:absolute;left:12px;top:62px;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;width:52px;height:62px;margin:0;padding:0;border:0;background:none;text-decoration:none;color:#fff;-webkit-tap-highlight-color:transparent}
+#game-container #public-shell[data-page=lounge] .pm-home-entry:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#game-container #public-shell[data-page=lounge] .pm-home-glyph{display:block;position:static;width:44px;height:44px;object-fit:contain;pointer-events:none}
+#game-container #public-shell[data-page=lounge] .pm-home-label{display:block;font-size:11px;line-height:16px;font-weight:700;letter-spacing:0;white-space:nowrap;text-shadow:0 1px 3px #071415,0 0 3px #071415}

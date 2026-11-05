@@ -1,0 +1,62 @@
+/* Challenge menus share the existing owner family; no trial rules are changed. */
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) {--challenge-ink:#19242a;--challenge-muted:#526168;--challenge-line:#d3dce0;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .shell-content {padding-top:12px;animation:challenge-enter 160ms ease-out;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .shell-content > .shell-page-heading {display:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) button {border-image:none;letter-spacing:0;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .system-context {font-size:12px;line-height:21px;color:var(--challenge-muted);}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .shell-content > .system-context {margin:0 0 12px;}
+#game-container #public-shell[data-cast=owner-three][data-page=finaleTrial] .challenge-brief {margin:0 0 14px;border-block:1px solid var(--challenge-line);}
+#game-container #public-shell[data-cast=owner-three][data-page=finaleTrial] .challenge-brief > div {display:grid;grid-template-columns:60px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--challenge-line);font-size:12px;line-height:21px;}
+#game-container #public-shell[data-cast=owner-three][data-page=finaleTrial] .challenge-brief > div:last-child {border-bottom:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=finaleTrial] .challenge-brief dt {font-weight:700;color:var(--challenge-ink);}
+#game-container #public-shell[data-cast=owner-three][data-page=finaleTrial] .challenge-brief dd {margin:0;color:var(--challenge-muted);}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-arrangements {display:block;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .arrangement-pool {padding:12px 0;border-top:2px solid var(--challenge-ink);}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .arrangement-pool :is(h2,h3) {margin:0 0 9px;font-size:15px;line-height:23px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .arrangement-options {display:grid;grid-template-columns:minmax(0,1fr);gap:7px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-arrangements .arrangement-option {display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;min-height:70px;padding:9px 10px;border:1px solid var(--challenge-line);border-radius:4px;background:#fff;box-shadow:none;text-align:left;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .arrangement-option[aria-pressed=true] {border:2px solid var(--challenge-ink);background:#e1f9f8;box-shadow:0 2px 0 #00bcd2;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-arrangements .arrangement-option[aria-pressed=true] {padding:8px 9px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-arrangements .menu-art {width:32px;height:32px;object-fit:contain;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .system-entry-copy strong {font-size:15px;line-height:23px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .system-entry-copy small {position:static;display:block;width:auto;height:auto;margin:2px 0 0;padding:0;clip-path:none;overflow:visible;white-space:normal;font-size:12px;line-height:20px;color:var(--challenge-muted);}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-command-footer {display:grid;gap:4px;padding:8px 12px;border-top:1px solid var(--challenge-line);background:#fff;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-command-footer .shell-primary {min-height:48px;padding:8px;border:2px solid var(--challenge-ink);border-radius:4px;background:#dff6f6;color:var(--challenge-ink);box-shadow:0 3px 0 #00bcd2;font-size:15px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-command-footer :is(img,.menu-art) {width:24px;height:24px;object-fit:contain;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .challenge-command-footer button:disabled {opacity:1;filter:none;background:#eef1f3;color:#596971;border-color:var(--challenge-line);box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) :is(.challenge-guide,.rehearsal-build) {border:0;border-top:1px solid var(--challenge-line);border-radius:0;background:transparent;box-shadow:none;margin-top:8px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) summary {min-height:44px;padding:10px 0;font-size:13px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] .rehearsal-member {gap:10px;margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid var(--challenge-line);}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] .rehearsal-member .shell-member-mark {width:48px;height:48px;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] .rehearsal-member :is(strong,span) {display:block;font-size:14px;line-height:23px;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] .rehearsal-member span {font-size:12px;color:var(--challenge-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] :is(.rehearsal-stage-tabs,.rehearsal-focus-options) {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] :is(.rehearsal-stage-tabs,.rehearsal-focus-options) button {display:flex;align-items:center;justify-content:center;gap:4px;min-height:44px;padding:5px 3px;border:1px solid var(--challenge-line);border-radius:4px;background:#fff;box-shadow:none;font-size:12px;line-height:20px;word-break:keep-all;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] :is(.rehearsal-stage-tabs,.rehearsal-focus-options) [aria-pressed=true] {border:2px solid var(--challenge-ink);padding:4px 2px;background:#e1f9f8;box-shadow:0 2px 0 #00bcd2;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] .rehearsal-stage-tabs svg {width:16px;height:16px;flex:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=rehearsal] .rehearsal-focus h3 {margin:14px 0 8px;font-size:15px;line-height:23px;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header {display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:6px 8px;align-content:start;min-height:144px;padding-bottom:12px;border-bottom:2px solid #19242a;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header > :is(h2,.battle-eyebrow) {grid-column:1 / -1;max-width:none;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header > h2 {min-height:40px;margin:0;padding-inline:0;border-inline-width:10px;border-image-width:6px 16px;font-size:20px;line-height:28px;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header > .battle-eyebrow {margin:0;font-size:12px;line-height:20px;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header .battle-performer-visual {display:contents;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header .battle-performer-visual img {position:static;inset:auto;grid-column:2;grid-row:3;width:88px;height:76px;max-width:100%;object-fit:contain;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header .battle-visual-copy {position:static;inset:auto;grid-column:1;grid-row:3;align-self:center;max-width:none;}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header .battle-visual-copy strong {font-size:17px;line-height:25px;}
+#game-container #battle-result[data-challenge-family=true] .battle-lead {font-size:13px;line-height:22px;}
+#game-container #battle-result[data-challenge-family=true] .challenge-result-stats {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:12px 0;border-block:1px solid #d3dce0;}
+#game-container #battle-result[data-challenge-family=true] .challenge-result-stats > div {padding:10px 0;}
+#game-container #battle-result[data-challenge-family=true] .challenge-result-stats dt {font-size:12px;line-height:20px;color:#526168;}
+#game-container #battle-result[data-challenge-family=true] .challenge-result-stats dd {margin:3px 0 0;font-size:20px;line-height:27px;font-weight:700;font-variant-numeric:tabular-nums;color:#087480;}
+#game-container #battle-result[data-challenge-family=true] .challenge-round-list {margin:0;padding:0 0 0 20px;}
+#game-container #battle-result[data-challenge-family=true] .challenge-round-list li {padding:10px 0 10px 3px;border-bottom:1px solid #d3dce0;font-size:13px;line-height:22px;}
+#game-container #battle-result[data-challenge-family=true] .challenge-round-heading {display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+#game-container #battle-result[data-challenge-family=true] .challenge-round-heading span {font-size:12px;color:#526168;}
+#game-container #battle-result[data-challenge-family=true] .challenge-round-list p {margin:4px 0 0;font-size:12px;line-height:21px;color:#526168;}
+#game-container #battle-result[data-challenge-family=true] .battle-save {grid-column:1 / -1;margin:0 0 2px;padding:6px 8px;border-left:3px solid #00bcd2;background:#fff;color:#526168;font-size:12px;line-height:21px;}
+#game-container #battle-result[data-challenge-family=true] .battle-surface-footer {grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+#game-container #battle-result[data-challenge-family=true] .battle-surface-footer button {border-image:none;border:1px solid #d3dce0;border-radius:4px;background:#fff;color:#19242a;box-shadow:none;min-height:44px;font-size:14px;line-height:22px;}
+#game-container #battle-result[data-challenge-family=true] .battle-surface-footer .battle-primary {grid-column:1 / -1;border:2px solid #19242a;background:#dff6f6;box-shadow:0 3px 0 #00bcd2;}
+#game-container #battle-result[data-challenge-family=true] .battle-surface-footer .battle-secondary:last-child:nth-child(3) {grid-column:1 / -1;}
+@keyframes challenge-enter {from {opacity:.6;transform:translateY(3px);}to {opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce) {#game-container #public-shell[data-cast=owner-three]:is([data-page=finaleTrial],[data-page=rehearsal]) .shell-content {animation:none;}}

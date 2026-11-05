@@ -1,0 +1,193 @@
+/* Game screen hierarchy; battle controls and model ownership remain unchanged. */
+#public-shell .shell-header {height:64px; padding:8px 12px; gap:10px;}
+#public-shell .shell-brand h1 {font-size:23px; line-height:29px; color:#252932;}
+#public-shell .shell-brand > div {font-size:18px; line-height:24px;}
+#public-shell .shell-eyebrow {font-size:11px; line-height:15px;}
+#public-shell .shell-icon-button {width:44px; height:44px;}
+#public-shell .shell-wallet {
+  display:flex; align-items:center; justify-content:center; gap:5px; padding:6px;
+  min-height:44px; max-width:92px; border:1px solid #a4b5bd; border-radius:6px;
+  background:#e8f9fb; color:#20313b;
+}
+#public-shell .shell-wallet svg {width:19px; height:19px;}
+#public-shell .shell-wallet strong {font-size:14px; max-width:48px; overflow:hidden; text-overflow:ellipsis;}
+#public-shell .shell-navigation {height:62px; padding:3px 8px;}
+#public-shell .shell-navigation button {flex-direction:column; gap:2px; min-height:52px; font-size:11px; line-height:16px;}
+#public-shell .shell-navigation svg {width:22px; height:22px;}
+
+#public-shell[data-page=desk] .shell-content {
+  position:relative; isolation:isolate; display:flex; flex-direction:column; padding:0;
+  background:#e8f0f3; min-height:0;
+}
+#public-shell[data-page=desk] .lobby-background {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
+  z-index:-1; pointer-events:none;
+}
+#public-shell .lobby-shortcuts {position:absolute; top:8px; right:10px; display:grid; gap:5px; z-index:2;}
+#public-shell .lobby-shortcuts button {
+  width:66px; height:48px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; padding:4px; border:2px solid #252932; border-radius:7px; background:#fffffff2;
+  box-shadow:0 2px 0 #252932; color:#252932; font-size:12px; line-height:17px;
+}
+#public-shell .lobby-stage {position:relative; flex:1; min-height:238px; display:grid; place-items:center; padding:0 80px 0 12px;}
+#public-shell .lobby-member-visual.shell-current-member {
+  display:block; width:190px; height:234px; padding:0; margin:0; border:0; border-radius:0;
+  background:transparent; box-shadow:none;
+}
+#public-shell .lobby-character {width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 5px 2px #172e3230);}
+#public-shell .lobby-member-name {position:absolute; left:12px; top:12px; display:flex; flex-direction:column; align-items:flex-start; gap:2px; color:#252932;}
+#public-shell .lobby-member-name strong {font-size:26px; line-height:32px; font-weight:900;}
+#public-shell .lobby-member-name span {font-size:12px; line-height:20px; background:#fffef0; padding:2px 7px; border:1px solid #252932; border-radius:4px;}
+#public-shell .lobby-preparation.shell-preparation-values {display:flex; justify-content:center; gap:14px; padding:6px 12px; font-size:12px; line-height:18px; background:#ffffffe8; border-block:1px solid #bbc6cf;}
+#public-shell .lobby-mission {display:grid; grid-template-columns:62px minmax(0,1fr) 44px; gap:10px; align-items:center; padding:10px 12px; background:#fffffff2;}
+#public-shell .lobby-mission .shell-main-map {width:62px; height:68px; margin:0; border:1px solid #a9b8c2; border-radius:4px;}
+#public-shell .lobby-mission h2 {font-size:19px; line-height:25px; font-weight:900;}
+#public-shell .lobby-mission small {font-size:11px; color:#3d5d64; line-height:16px;}
+#public-shell .lobby-mission p {font-size:12px; line-height:17px; color:#56616d;}
+#public-shell .lobby-mission button {width:44px; height:48px; display:grid; place-items:center;}
+#public-shell .lobby-progress.shell-progress {flex:none; padding:2px 12px 4px; background:#fffffff2; border-top:1px solid #c7d0d9;}
+#public-shell .lobby-progress > span {font-size:11px; line-height:16px; color:#3e535c;}
+#public-shell .lobby-progress .shell-progress-route {min-height:44px; height:auto; padding:0;}
+#public-shell .lobby-progress .shell-progress-step {flex-direction:row; font-size:11px; line-height:22px; color:#5a646f; gap:3px;}
+#public-shell .lobby-progress .is-current {color:#09686e;}
+#public-shell .lobby-start.shell-start {padding:8px 12px; background:#fff; border-top:2px solid #252932;}
+#public-shell .lobby-start .shell-primary {min-height:48px; padding:8px 12px;}
+#public-shell .lobby-start .shell-record {margin-top:5px; font-size:11px; line-height:16px;}
+
+#public-shell .screen-heading {padding:12px 0;}
+#public-shell .screen-heading .shell-page-heading {margin:0;}
+#public-shell .screen-heading p {font-size:13px; color:#56616d; line-height:22px;}
+#public-shell .preflight-map {height:160px; margin:0 -16px; border-block:2px solid #252932;}
+#public-shell .preflight-member {display:flex; gap:12px; align-items:center; padding:14px 0; border-bottom:1px solid #c7d0d9;}
+#public-shell .preflight-member h2 {font-size:20px; line-height:28px;}
+#public-shell .preflight-member p {font-size:12px; line-height:19px;}
+#public-shell .preflight-effects {margin:10px 0; display:grid; gap:8px;}
+#public-shell .preflight-effects > div {display:flex; justify-content:space-between; gap:12px; font-size:13px; line-height:21px;}
+#public-shell .preflight-effects dt {color:#56616d;}
+#public-shell .preflight-effects dd {margin:0; font-weight:700; text-align:right;}
+#public-shell .preflight-links {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding:10px 0 14px;}
+#public-shell .preflight-links button {display:flex; align-items:center; justify-content:center; gap:6px; min-height:44px; border:1px solid #a8bbc2; background:#fff; font-size:13px;}
+#public-shell .preflight-confirmation {font-size:12px; line-height:20px; text-align:center; margin:0 0 6px;}
+#public-shell .inventory-context {font-size:13px; line-height:22px; margin:12px 0;}
+#public-shell .inventory-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;}
+#public-shell .inventory-item {
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-height:122px;
+  border:2px solid #a9b8c2; background:#fff; padding:10px 4px; border-radius:7px;
+}
+#public-shell .inventory-item svg {width:32px; height:32px;}
+#public-shell .inventory-item strong {font-size:13px; line-height:19px; text-align:center;}
+#public-shell .inventory-item small {font-size:11px; line-height:17px; color:#56616d;}
+#public-shell .inventory-item[aria-pressed=true] {border-color:#09686e; background:#e8fafb;}
+#public-shell .inventory-item[data-state=locked] {background:#e8edf1; color:#60727a;}
+#public-shell .inventory-detail {margin-top:18px; padding:16px 0; border-block:1px solid #c7d0d9;}
+#public-shell .inventory-detail h2 {font-size:19px; line-height:27px; margin:0 0 8px;}
+#public-shell .inventory-detail p {font-size:13px; line-height:22px; margin:5px 0;}
+#public-shell .inventory-status {font-size:12px; line-height:20px; margin:0 0 8px;}
+#public-shell .archive-summary {font-size:14px; line-height:23px; margin:12px 0;}
+#public-shell .archive-record,#public-shell .archive-last-run {padding:14px 0; border-top:1px solid #c7d0d9;}
+#public-shell .archive-record h2,#public-shell .archive-last-run h2 {font-size:17px; line-height:25px; margin:0 0 6px;}
+#public-shell .archive-record p,#public-shell .archive-last-run p {font-size:13px; line-height:22px; margin:4px 0;}
+#public-shell .archive-history summary {box-sizing:border-box; min-height:44px; padding:11px 0; font-size:12px; line-height:22px; cursor:pointer;}
+#public-shell .archive-history summary:focus-visible {outline:2px solid #176b83; outline-offset:2px;}
+#public-shell .archive-empty {color:#56616d;}
+#public-shell .shell-content button {min-width:44px; min-height:44px; scroll-margin-block:12px;}
+#public-shell .shell-content {scroll-padding-block:12px;}
+#public-shell .system-context,#public-shell .preflight-goal {font-size:13px; line-height:22px; color:#465961; margin:8px 0 12px;}
+#public-shell .lobby-goal {background:#fff; font-size:12px; line-height:20px; text-align:center; padding:4px 12px;}
+#public-shell .system-entry {width:100%; display:flex; align-items:center; gap:12px; padding:16px 4px; border-bottom:1px solid #bac7ce; text-align:left;}
+#public-shell .system-entry-copy {flex:1; display:grid; gap:5px;}
+#public-shell .system-entry strong {font-size:17px; line-height:25px;}
+#public-shell .system-entry small {font-size:12px; line-height:20px; color:#52616c;}
+#public-shell .run-goal-options {display:grid; gap:10px; margin-block:14px;}
+#public-shell .run-goal-option {display:flex; align-items:center; gap:10px; width:100%; padding:14px 10px; border:2px solid #a9b8c2; text-align:left; border-radius:6px; background:#fff;}
+#public-shell .run-goal-option span {display:grid; gap:5px;}
+#public-shell .run-goal-option strong {font-size:17px; line-height:25px;}
+#public-shell .run-goal-option small {font-size:12px; line-height:20px;}
+#public-shell .run-goal-option[aria-pressed=true],#public-shell .arrangement-option[aria-pressed=true] {border-color:#09676f; background:#e8fafb;}
+#public-shell .run-goal-option:disabled {background:#e8edf1; color:#546470;}
+#public-shell .arrangement-pool {padding:12px 0; border-bottom:1px solid #bac7ce;}
+#public-shell .arrangement-pool h2 {font-size:17px; line-height:25px; margin-bottom:8px;}
+#public-shell .arrangement-options {display:grid; gap:8px;}
+#public-shell .arrangement-option {display:grid; gap:5px; text-align:left; padding:10px; border:1px solid #a9b8c2; background:#fff; border-radius:6px;}
+#public-shell .arrangement-option strong {font-size:14px; line-height:22px;}
+#public-shell .arrangement-option small {font-size:12px; line-height:20px;}
+#public-shell .arrangement-effects {padding-block:12px;}
+#public-shell .arrangement-effects > div {display:flex; justify-content:space-between; gap:12px; font-size:13px; line-height:24px;}
+#public-shell .arrangement-effects dd {margin:0; font-weight:700;}
+#public-shell .growth-ranks {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;}
+#public-shell .growth-ranks .arrangement-option {text-align:center;}
+#public-shell .growth-preview {padding:12px 0;}
+#public-shell .growth-preview h2 {font-size:17px; line-height:25px;}
+#public-shell .growth-effects > div {display:grid; grid-template-columns:minmax(0,1fr) 58px 58px; gap:8px; font-size:13px; line-height:24px; padding:6px 0; border-bottom:1px solid #bac7ce;}
+#public-shell .growth-effects dd {margin:0; text-align:right; font-weight:700;}
+#public-shell .growth-source {font-size:13px; line-height:22px;}
+#game-container .battle-run-goal {padding:12px 0; border-block:1px solid #bac7ce; font-size:13px; line-height:22px;}
+#game-container .battle-run-goal h3 {font-size:15px; line-height:24px;}
+#game-container .battle-run-goal strong {color:#09676f;}
+@media (max-height:620px) {
+  #public-shell .lobby-stage {min-height:208px; padding-block:0;}
+  #public-shell .lobby-member-visual.shell-current-member {width:146px; height:181px;}
+  #public-shell .lobby-shortcuts {gap:5px; top:8px;}
+  #public-shell .lobby-shortcuts button {height:44px;}
+  #public-shell .lobby-mission {padding-block:7px;}
+  #public-shell .lobby-mission .shell-main-map {height:56px;}
+}
+
+/* Explicit vertical-study skin; defaults, world camera and input geometry are unchanged. */
+#public-shell[data-visual-study=enjo] {background:#f6f7f4;}
+#public-shell[data-visual-study=enjo] .shell-header {height:58px; background:#f8faf7; border-bottom:2px solid #27312f;}
+#public-shell[data-visual-study=enjo] .shell-brand h1 {font-size:21px; line-height:28px; font-weight:900;}
+#public-shell[data-visual-study=enjo] .shell-eyebrow {font-size:11px; line-height:15px; color:#53706b;}
+#public-shell[data-visual-study=enjo] .shell-brand h1::after {background:#ee6859; width:16px; height:4px;}
+#public-shell[data-visual-study=enjo] .shell-icon-button {box-shadow:none; border-radius:6px; border-color:#27312f; background:#fff;}
+#public-shell[data-visual-study=enjo] .shell-session-context {min-height:26px; padding:3px 14px; background:#e0eee8; color:#27312f; font-size:11px;}
+#public-shell[data-visual-study=enjo] .shell-session-context strong {color:#a82f29;}
+#public-shell[data-visual-study=enjo][data-page=desk] .shell-session-context {display:none;}
+#public-shell[data-visual-study=enjo] .shell-content {background:#f6f7f4;}
+#public-shell[data-visual-study=enjo][data-page=desk] .shell-content {background:#eaf0ee;}
+#public-shell[data-visual-study=enjo] .lobby-background {object-position:center 36%;}
+#public-shell[data-visual-study=enjo] .lobby-stage {min-height:248px; padding-right:64px;}
+#public-shell[data-visual-study=enjo] .lobby-member-visual.shell-current-member {width:178px; height:222px;}
+#public-shell[data-visual-study=enjo] .lobby-character {filter:none;}
+#public-shell[data-visual-study=enjo] .lobby-member-name {top:14px; left:14px;}
+#public-shell[data-visual-study=enjo] .lobby-member-name strong {font-size:24px; line-height:31px; color:#27312f;}
+#public-shell[data-visual-study=enjo] .lobby-member-name span {font-size:11px; background:#fff; border:0; padding:2px 5px;}
+#public-shell[data-visual-study=enjo] .lobby-shortcuts {right:10px; top:12px; gap:6px;}
+#public-shell[data-visual-study=enjo] .lobby-shortcuts button {width:60px; height:46px; border:0; box-shadow:none; border-radius:4px; background:#ffffffed; color:#27312f; font-size:11px;}
+#public-shell[data-visual-study=enjo] .lobby-shortcuts svg {width:19px; height:19px;}
+#public-shell[data-visual-study=enjo] .lobby-preparation {background:#f8faf7; border-block:1px solid #afc5bc;}
+#public-shell[data-visual-study=enjo] .lobby-mission {background:#f8faf7; padding:10px 14px; border-left:5px solid #7bbaa6;}
+#public-shell[data-visual-study=enjo] .lobby-mission h2 {font-size:20px; line-height:27px;}
+#public-shell[data-visual-study=enjo] .lobby-progress {background:#f8faf7;}
+#public-shell[data-visual-study=enjo] .shell-primary {background:#ffe16d; border:2px solid #27312f; border-radius:6px; box-shadow:0 2px 0 #27312f; min-height:48px;}
+#public-shell[data-visual-study=enjo] .shell-navigation {height:60px; background:#f8faf7; border-top:2px solid #27312f;}
+#public-shell[data-visual-study=enjo] .shell-navigation [aria-current=page] {background:#d1e9de; color:#27312f; border-bottom:4px solid #34816c;}
+#public-shell[data-visual-study=enjo] .shell-navigation button {min-height:52px;}
+#public-shell[data-visual-study=enjo] .member-mark {border:1px solid #7f9790; border-bottom:3px solid var(--member-color); border-radius:5px;}
+#public-shell[data-visual-study=enjo] .shell-member-option[aria-pressed=true] {background:#d1e9de; box-shadow:none; border-color:#27312f;}
+#public-shell[data-visual-study=enjo] .shell-performer-detail:has(.member-mark-full) {min-height:248px; border-bottom:2px solid #27312f;}
+#public-shell[data-visual-study=enjo] .member-mark-full .member-portrait {filter:none;}
+#public-shell[data-visual-study=enjo] .shell-performer-name h2 {font-size:27px; line-height:34px; color:#27312f;}
+#public-shell[data-visual-study=enjo] .shell-action-detail h3 {color:#ac352b;}
+#public-shell[data-visual-study=enjo][data-page=preflight] .screen-heading {display:none;}
+#public-shell[data-visual-study=enjo] .shell-selection-footer {border-top:2px solid #27312f; background:#f8faf7;}
+#game-container .battle-surface[data-visual-study=enjo] {background:#f6f7f4; color:#27312f;}
+#game-container #run-choice[data-visual-study=enjo] {background:#25342ec4;}
+#game-container #run-choice[data-visual-study=enjo] .battle-surface-content {background:#f6f7f4; border-top:4px solid #ee6859; padding:16px;}
+#game-container #run-choice[data-visual-study=enjo] .battle-choice-row {border:0; border-bottom:2px solid #a4bcb1; border-radius:0; box-shadow:none; background:#fff;}
+#game-container #run-choice[data-visual-study=enjo] .battle-choice-symbol {background:#d1e9de; border:1px solid #27312f;}
+#game-container #battle-result[data-visual-study=enjo] .battle-performance-header {background:#e0eee8; color:#27312f; border-bottom:4px solid #ee6859;}
+#game-container #battle-result[data-visual-study=enjo] .battle-performance-header h2 {color:#27312f;}
+#game-container #battle-result[data-visual-study=enjo] .battle-performance-header > .battle-eyebrow {color:#46665c;}
+#game-container #battle-result[data-visual-study=enjo] .battle-result-chapter {color:#46665c;}
+#game-container #battle-result[data-visual-study=enjo] .battle-visual-copy strong {color:#27312f;}
+#game-container #battle-result[data-visual-study=enjo] .battle-visual-copy span {color:#46665c;}
+#game-container #battle-result[data-visual-study=enjo] .battle-performer-visual img {width:138px; height:176px;}
+#game-container .battle-surface[data-visual-study=enjo] .battle-surface-footer {border-top:2px solid #27312f; background:#f8faf7;}
+#game-container .battle-surface[data-visual-study=enjo] button.battle-primary {background:#ffe16d; color:#27312f; box-shadow:0 2px 0 #27312f; border-radius:6px;}
+#game-container .battle-surface[data-visual-study=enjo] .battle-run-goal[data-status=missed] strong {color:#a82f29;}
+#game-container .battle-surface[data-visual-study=enjo] .battle-run-goal[data-status=unmeasured] strong {color:#5b6661;}
+@media (max-height:620px) {
+ #public-shell[data-visual-study=enjo] .lobby-stage {min-height:208px;}
+ #public-shell[data-visual-study=enjo] .lobby-member-visual.shell-current-member {width:146px; height:182px;}
+}

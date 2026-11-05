@@ -1,0 +1,31 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+import {loadScenes,plain} from './helpers/publicShellHarness.mjs';
+const KEY='starush.public-profile';
+function setup(){const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.profile.selectPublicPerformer('sakura');const {PublicStage1PerformerRun:R}=e.loadRuntime('systems/PublicStage1PerformerRun.mjs');const scene={_userCastPresentation:true,battleData:{stageId:1,performerId:'sakura',campaignChapterId:'opening'},time:{now:0},battleRecord:{playerHitCount:1},player:{hp:4}};return{e,scene,run:new R(scene)};}
+const api=e=>fs.existsSync(new URL('../src/systems/PublicRunSettlement.mjs',import.meta.url))?e.loadRuntime('systems/PublicRunSettlement.mjs'):{};
+function pending(){const f=setup(),set=f.e.storage.setItem;f.run.growth.choose('relay');f.run.actions=2;f.scene.time.now=1000;f.e.storage.setItem=()=>{throw Error('quota');};const result=f.run.finish(true);return{...f,result,restore:()=>{f.e.storage.setItem=set;}};}
+
+test('actual result carries one immutable saved receipt and unchanged first-clear reward',()=>{
+ const {e,run}=setup(),r=run.finish(true);assert.equal(r.settlement?.status,'saved');assert.equal(r.settlement.runId,r.runId);assert.equal(r.settlement.modeId,'campaign');assert.equal(r.settlement.performerId,'sakura');assert.equal(r.settlement.chapterId,'opening');assert(Object.isFrozen(r.settlement));assert(Object.isFrozen(r.reward));assert(Object.isFrozen(r.reward.equipmentIds));assert.equal(r.reward.notes,6);assert.deepEqual(plain(r.reward.equipmentIds),['wide_nozzle','travelling_nozzle']);const raw=e.storage.getItem(KEY);assert.equal(run.finish(false),r);assert.equal(e.storage.getItem(KEY),raw);assert.equal(e.profile.loadPublicProfile().attempts,1);assert(!raw.includes('settlement'));run.destroy();
+});
+test('pending retry uses captured result after source state changes or scene destruction, not a second reward grant',()=>{
+ const f=pending(),a=api(f.e);assert.equal(typeof a.retryPublicRunSettlement,'function');assert.equal(f.result.settlement.status,'pending');const reward=plain(f.result.reward);f.scene.time.now=99000;f.run.growth.choose('echo');f.run.actions=88;f.run.destroy();f.restore();const r=a.retryPublicRunSettlement(f.result);assert.equal(r,f.result);assert.equal(r.settlement.status,'saved');assert.equal(r.durationMs,1000);assert.equal(r.actions,2);assert.deepEqual(plain(r.choices),['relay']);assert.deepEqual(plain(r.reward),reward);const p=f.e.profile.loadPublicProfile();assert.equal(p.attempts,1);assert.equal(p.clears,1);assert.equal(p.lastRun.durationMs,1000);assert.deepEqual(plain(p.lastRun.choices),['relay']);const raw=f.e.storage.getItem(KEY);assert.equal(a.retryPublicRunSettlement(r),r);assert.equal(f.e.storage.getItem(KEY),raw);
+});
+test('same owner finish retry never resurrects an externally removed or incompatible profile',()=>{
+ for(const raw of [null,'{"version":99}']){const f=pending();f.restore();if(raw===null)f.e.storage.removeItem(KEY);else f.e.storage.setItem(KEY,raw);const r=f.run.finish(true);assert.equal(r.persisted,false);assert.equal(r.recorded,false);assert.equal(r.settlement?.status,'rejected');assert.equal(f.e.storage.getItem(KEY),raw);f.run.destroy();}
+});
+test('unowned result copies cannot enqueue a settlement or write rewards',()=>{
+ const {e,run}=setup(),a=api(e);assert.equal(typeof a.retryPublicRunSettlement,'function');const raw=e.storage.getItem(KEY);assert.equal(a.retryPublicRunSettlement({runId:'invented',recorded:true}),null);assert.equal(e.storage.getItem(KEY),raw);const r=run.finish(true),saved=e.storage.getItem(KEY);assert.equal(a.retryPublicRunSettlement({...r}),null);assert.equal(e.storage.getItem(KEY),saved);run.destroy();
+});
+test('actual Scene can retry its existing pending settlement after an incompatible profile is restored',()=>{
+ const f=pending(),raw=f.e.storage.getItem(KEY),{BattleScene}=f.e.loadRuntime('scenes/BattleScene.js');let finished=0;const s={_userCastPresentation:true,_publicRunResult:f.result,_publicBattleCheckpoint:{finish(){finished++;}},_publicBattleDialog:{rejectResultSave(){}},_showBattleResultPanel(){}};
+ f.restore();f.e.storage.setItem(KEY,'{"version":99}');assert.equal(BattleScene.prototype._handleBattleResultAction.call(s,'retry-save-result'),false);assert.equal(f.result.settlement.status,'rejected');assert.equal(finished,0);
+ f.e.storage.setItem(KEY,raw);BattleScene.prototype._handleBattleResultAction.call(s,'retry-save-result');assert.equal(f.result.settlement.status,'saved');assert.equal(f.result.recorded,true);assert.equal(f.result.persisted,true);assert.equal(finished,1);assert.equal(f.e.profile.loadPublicProfile().attempts,1);f.run.destroy();
+});
+test('real Scene save-retry updates the receipt and finishes only the matching checkpoint after persistence',()=>{
+ const f=pending(),{BattleScene}=f.e.loadRuntime('scenes/BattleScene.js');let finished=0,refreshed=0,rejected=0;const s={_userCastPresentation:true,_publicRunResult:f.result,_publicBattleCheckpoint:{finish(r){assert.equal(r,f.result);finished++;}},_publicBattleDialog:{rejectResultSave(){rejected++;}},_showBattleResultPanel(){refreshed++;}};
+ assert.equal(BattleScene.prototype._handleBattleResultAction.call(s,'retry-save-result'),false);assert.equal(finished,0);assert.equal(rejected,1);f.restore();BattleScene.prototype._handleBattleResultAction.call(s,'retry-save-result');assert.equal(finished,1);assert.equal(refreshed,1);assert.equal(f.result.settlement?.status,'saved');assert.equal(f.e.profile.loadPublicProfile().attempts,1);f.run.destroy();
+});
+test('campaign saved-result proof rejects an inconsistent new receipt while preserving explicit legacy compatibility',()=>{
+ const {e,run}=setup(),r=run.finish(true),{hasSavedPublicResult}=e.loadRuntime('utils/publicCampaignResult.mjs'),profile=e.profile.loadPublicProfile();assert(hasSavedPublicResult(r,profile));for(const patch of [{status:'pending'},{version:9},{runId:'foreign'},{chapterId:'neon'},{performerId:'kai'},{modeId:'rehearsal'}])assert.equal(hasSavedPublicResult({...r,settlement:{...r.settlement,...patch}},profile),false);const {settlement,...legacy}=r;assert(hasSavedPublicResult(legacy,profile));run.destroy();
+});

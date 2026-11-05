@@ -1,0 +1,368 @@
+/* B283 preflight revision (replaces preflightStudio271.css; same owner root, DOM and b271 dataset).
+   Portrait-first: venue + unframed actor above, one compact band below (tools / saved loadout once / three tickets),
+   one start command, plus second-level route, arrangement and venue sheets. Music-backstage teal / porcelain / coral.
+   One owner root, nested; outranks interfaceHierarchy, screenRebuild and thinMenu262 by specificity (no important flags).
+   main is the only scroller. Ticket text sizes were checked against the real state strings; see production-notes.md. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=preflight] {
+  --pf-ink: #f6efe2; --pf-muted: #b9d3cb; --pf-teal: #173a3c;
+  --pf-deep: #142c2f; --pf-raised: #21474a; --pf-coral: #ff6b57;
+  --pf-coral-ink: #c2442f; --pf-paper-ink: #17302f; --pf-paper-muted: #3f5558;
+  --pf-footer-bg: #eaf2ed;
+  /* Ticket geometry follows the art: the first row must equal the dark band of choice.webp. */
+  --pf-ticket-h: 96px; --pf-ticket-dark: .43;
+
+  & .shell-content[data-preflight-studio=b271] {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--pf-deep);
+
+    /* Stage: the scene and actor take every pixel the band does not need. */
+    & .ui-preflight-stage {
+      flex: 1 1 0;
+      min-height: 236px;
+    }
+    & .ui-preflight-venue { opacity: .62; }
+    & .ui-preflight-caption { left: 12px; top: 8px; }
+    & .ui-preflight-actor { left: 12px; bottom: 8px; }
+    & .ui-preflight-caption .ui-letter-art { height: 24px; filter: drop-shadow(0 1px 2px #0a1f20); }
+    & .ui-preflight-actor .ui-letter-art { height: 28px; filter: drop-shadow(0 1px 2px #0a1f20); }
+
+    & .portrait-load-error {
+      position: absolute;
+      left: 50%;
+      top: 46%;
+      z-index: 3;
+      transform: translateX(-50%);
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #142c2fe6;
+      color: var(--pf-ink);
+      font-size: 13px;
+    }
+
+    /* Configuration band. */
+    & .ui-preflight-brief {
+      flex: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 4px;
+      padding: 6px 10px 10px;
+      background: var(--pf-teal);
+      border-top: 2px solid var(--pf-coral);
+      color: var(--pf-ink);
+    }
+    & .ui-preflight-brief-head {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      min-width: 0;
+      min-height: 48px;
+    }
+    & .ui-preflight-brief-title {
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0;
+      color: var(--pf-ink);
+    }
+    & .ui-preflight-brief-title .flight-letter-art { height: 20px; }
+
+    /* The base glyph is 42x50, larger than a 44px widget; size it to the hit box so it no longer spills. */
+    & .ui-preflight-tools {
+      flex: none;
+      display: flex;
+      gap: 0;
+      padding: 0;
+      background: none;
+      & [data-ui-widget=true] { width: 46px; min-width: 46px; height: 48px; min-height: 48px; padding: 2px; }
+      & [data-ui-widget=true] .ui-glyph { width: 42px; height: 44px; object-fit: contain; }
+    }
+    & [data-action=preflight-info] { flex: none; width: 44px; min-width: 44px; height: 48px; min-height: 48px; padding: 6px; }
+
+    /* Saved loadout, once. The actor name stays on the stage bitmap; this copy of it is the duplicate. */
+    & .ui-preflight-loadout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 10px;
+      row-gap: 0;
+      min-width: 0;
+      padding: 0 2px;
+    }
+    & .ui-preflight-member-name { display: none; }
+    & .ui-preflight-member-action {
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--pf-muted);
+    }
+    & .ui-preflight-facts {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      background: none;
+      font-size: 12px;
+      line-height: 18px;
+      color: #ffd9c9;
+      overflow-wrap: anywhere;
+    }
+
+    /* Three tickets. Fixed height keeps the header row on the dark band and the state on the porcelain.
+       keep-all breaks at the spaces in the real strings; anywhere is the fallback, so text cannot collide. */
+    & .ui-preflight-plans {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 5px;
+      margin-top: 2px;
+    }
+    & .ui-preflight-entry {
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      grid-template-rows: calc(var(--pf-ticket-h) * var(--pf-ticket-dark)) 1fr auto;
+      align-content: start;
+      column-gap: 3px;
+      row-gap: 0;
+      min-width: 0;
+      height: var(--pf-ticket-h);
+      min-height: var(--pf-ticket-h);
+      padding: 0 7px 4px;
+      text-align: left;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent url('/art/preflight-console-20261103/choice.webp') center / 100% 100% no-repeat;
+      color: var(--pf-paper-ink);
+      &:focus-visible { outline: 2px solid var(--pf-coral); outline-offset: 1px; }
+    }
+    & .ui-preflight-entry-icon {
+      align-self: center;
+      width: 16px;
+      height: 16px;
+      & .ui-glyph { width: 16px; height: 16px; }
+    }
+    & .ui-preflight-entry-label {
+      display: block;
+      align-self: center;
+      min-width: 0;
+      & .flight-letter-art { height: 16px; max-width: 100%; }
+    }
+    & .ui-preflight-entry-state {
+      grid-column: 1 / -1;
+      align-self: center;
+      min-width: 0;
+      padding-top: 3px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 16px;
+      color: var(--pf-paper-ink);
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    & .ui-preflight-entry-pair {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 3px;
+      min-width: 0;
+      padding-top: 1px;
+      & img { display: block; flex: none; width: 16px; height: 16px; object-fit: contain; }
+    }
+
+    @media (min-width: 360px) {
+      & .ui-preflight-entry { grid-template-columns: 18px minmax(0, 1fr); }
+      & .ui-preflight-entry-icon { width: 18px; height: 18px; }
+      & .ui-preflight-entry-icon .ui-glyph { width: 18px; height: 18px; }
+      & .ui-preflight-entry-label .flight-letter-art { height: 18px; }
+      
+    }
+  }
+
+  /* One start command, same skin as member training; the existing start bitmap is untouched. */
+  & .ui-preflight-footer {
+    position: static;
+    flex: none;
+    padding: 6px 14px 8px;
+    background: var(--pf-deep);
+  }
+  & .ui-preflight-footer [data-action=start] {
+    height: 50px;
+    min-height: 50px;
+    padding: 0 30px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent url('/art/thin-ui-20261101/primary.webp') center / 100% 100% no-repeat;
+    &:focus-visible { outline: 2px solid var(--pf-coral); outline-offset: 1px; }
+  }
+
+  /* Second-level sheets opened from this page only. */
+  & .ui-sheet:has(:is(.ui-route-options, .ui-arrangement-summary, .ui-preflight-info)) {
+    padding: 12px;
+    border-radius: 4px;
+    background: var(--pf-deep);
+    box-shadow: inset 0 2px 0 var(--pf-coral);
+
+    & .ui-sheet-header { height: 44px; margin: 0 0 8px; }
+    & .ui-sheet-close { width: 44px; min-width: 44px; min-height: 44px; }
+
+    /* Route: three options in one column; selected is shown by fill, edge and tick, not by colour alone. */
+    & .ui-route-options {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+    & .ui-route-choice {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      width: 100%;
+      min-height: 64px;
+      padding: 10px 38px 10px 14px;
+      border: 0;
+      border-radius: 4px;
+      background: var(--pf-raised);
+      color: var(--pf-ink);
+      text-align: left;
+      &:focus-visible { outline: 2px solid var(--pf-coral); outline-offset: -2px; }
+      & > span { font-size: 14px; font-weight: 700; line-height: 20px; color: var(--pf-ink); }
+      & > small { font-size: 12px; line-height: 17px; color: var(--pf-muted); }
+    }
+    & .ui-route-choice[aria-pressed=true] {
+      background: var(--pf-footer-bg);
+      box-shadow: inset 4px 0 var(--pf-coral);
+      &:focus-visible { outline-color: var(--pf-coral-ink); }
+      & > span { color: var(--pf-paper-ink); }
+      & > small { color: var(--pf-paper-muted); }
+      &::after {
+        content: "";
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        width: 7px;
+        height: 13px;
+        border-right: 2px solid var(--pf-coral-ink);
+        border-bottom: 2px solid var(--pf-coral-ink);
+        transform: translateY(-60%) rotate(45deg);
+      }
+    }
+
+    /* Arrangement: small hierarchy, largest native text 14px. Empty state is one line plus the library icon. */
+    & .ui-arrangement-summary {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 44px;
+      align-items: center;
+      gap: 8px;
+      & > p { margin: 0; font-size: 13px; line-height: 20px; color: var(--pf-muted); }
+    }
+    & .preflight-plan {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+    & .preflight-plan-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 44px;
+      & h3 { margin: 0; font-size: 14px; font-weight: 700; line-height: 20px; color: var(--pf-ink); }
+    }
+    & [data-action=plan-clear] {
+      flex: none;
+      width: 88px;
+      min-width: 44px;
+      height: 44px;
+      min-height: 44px;
+      padding: 0 4px;
+      border: 0;
+      background: none;
+      color: var(--pf-ink);
+      & > :not(.plan-clear-label) { display: none; }
+      & .plan-clear-label { display: block; width: 80px; height: 22px; object-fit: contain; }
+    }
+    & .preflight-plan-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+    & .preflight-plan-choice {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      padding: 0;
+      & img { display: block; width: 36px; height: 36px; object-fit: contain; }
+      & > div { display: grid; min-width: 0; }
+      & small { font-size: 12px; line-height: 16px; color: var(--pf-muted); }
+      & strong { font-size: 14px; line-height: 20px; color: var(--pf-ink); overflow-wrap: anywhere; }
+    }
+    & .preflight-plan .system-context {
+      margin: 0;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--pf-muted);
+    }
+    & .preflight-plan-effects > summary {
+      min-height: 44px;
+      padding: 12px 0;
+      font-size: 13px;
+      line-height: 20px;
+      color: var(--pf-ink);
+      cursor: pointer;
+    }
+    & .preflight-effects {
+      display: grid;
+      gap: 4px;
+      margin: 0 0 6px;
+      & > div { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; line-height: 18px; }
+      & dt { min-width: 0; color: var(--pf-muted); }
+      & dd { margin: 0; font-size: 13px; font-weight: 700; color: var(--pf-ink); text-align: right; }
+    }
+    /* plan-adjust and the library icon share one row; the icon stays a sibling of the section in the DOM. */
+    & .preflight-links {
+      display: block;
+      padding: 0 52px 0 0;
+      & button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        min-height: 44px;
+        border: 0;
+        border-radius: 4px;
+        background: var(--pf-raised);
+        color: var(--pf-ink);
+        font-size: 13px;
+        line-height: 18px;
+      }
+      & svg { width: 18px; height: 18px; }
+    }
+    & .ui-arrangement-summary:has(.preflight-plan) [data-action=preflight-library] {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    /* Venue rules share the same sheet surface. */
+    & .ui-preflight-info p {
+      margin: 0 0 8px;
+      font-size: 13px;
+      line-height: 20px;
+      color: var(--pf-ink);
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+}

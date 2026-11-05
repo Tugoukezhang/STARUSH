@@ -1,0 +1,118 @@
+/* Screen ownership beats legacy showcase selectors without changing the battle plane. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] {
+  left:var(--menu-shell-left);top:var(--menu-shell-top);width:var(--menu-shell-width);height:var(--menu-shell-height);max-height:none;max-width:none;
+  transform:scale(var(--menu-shell-compensation));transform-origin:0 0;font-family:'Starush UI','Microsoft YaHei',sans-serif;
+  & .ui-sheet{width:min(380px,calc(100vw - 24px));max-width:calc(100vw - 24px);max-height:calc(100dvh - 48px);margin:auto;padding:14px;border:0;border-image:none;background:#172d30 url('/art/hierarchy-ui-20261101/skin-panel.webp') center/100% 100% no-repeat;color:#f2f2e7;overflow:hidden}
+  & .ui-sheet-header{display:flex;align-items:center;justify-content:space-between;height:42px;padding:0;margin:0 0 14px;gap:12px;background:none}
+  & .ui-sheet-body{overflow-y:auto;max-height:calc(100dvh - 160px);padding:0;touch-action:pan-y}
+  & .ui-sheet-title{font-size:16px;line-height:24px;height:28px;margin:0}
+  & .ui-sheet-title .ui-letter-art{height:24px;max-width:180px}
+  &:not(:is([data-page=roster],[data-page=workshop],[data-page=growth])){
+  & .ui-actor-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;margin:0;padding:0;overflow:visible;position:static;height:auto}
+  & .ui-actor-grid>button{position:relative;inset:auto;display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;width:100%;height:124px;min-height:124px;padding:9px 3px 4px;overflow:hidden;background:transparent url('/art/hierarchy-ui-20261101/skin-slot.webp') center top/100% 90% no-repeat;border:0;transform:none}
+  & .ui-actor-grid>button[aria-pressed=true]{background-image:url('/art/hierarchy-ui-20261101/skin-selected.webp')}
+  & .ui-actor-grid img:not(.ui-letter-art){position:relative!important;inset:auto!important;display:block;width:64px!important;height:64px!important;max-width:100%!important;object-fit:contain;transform:none!important;flex:none;margin:0}
+  & .ui-actor-grid .member-mark{position:relative;inset:auto;width:64px;height:64px;max-width:64px;overflow:hidden;border:0;background:none;flex:none}
+  & .ui-actor-grid>button>span:not(.ui-actor-name):not(.member-option-state):not(.member-mark),& .ui-actor-grid>button>.pm-cast-label{display:none}
+  & .ui-actor-name{display:block;height:19px;min-height:19px;width:100%;font-size:0;line-height:0}
+  & .ui-actor-name .ui-letter-art{position:static!important;width:100%!important;height:19px!important;object-fit:contain;transform:none!important}
+  & .ui-actor-grid .member-option-state{position:static;font-size:10px;line-height:13px;color:#9af0d9;background:none;padding:0;margin:0}
+  }
+  &[data-page=desk]{background:#152c2b}
+  &[data-page=desk] .ui-room-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
+  &[data-page=desk] .shell-header{background:none;height:56px;min-height:56px}
+  &[data-page=desk] .shell-content{isolation:auto;overflow:visible;background:none}
+  &[data-page=desk] .ui-home-stage{overflow:visible;container-type:size}
+  &[data-page=desk] .ui-home-portrait{inset:12px 0 0;height:calc(100% - 12px);overflow:visible}
+  &[data-page=desk] .ui-home-portrait>.member-mark{inset:auto 0 0;width:100%;height:min(100cqh,160cqw)}
+  &[data-page=desk] .ui-home-portrait .home-portrait-rig{height:100%;top:0;bottom:auto}
+  &[data-page=desk] .ui-home-portrait .menu-portrait-image{height:100%;top:0;bottom:auto}
+  & .ui-home-spaces{left:8px;top:8px;gap:10px}
+  & .ui-home-spaces [data-ui-widget=true]{width:52px;height:56px;min-width:52px;min-height:56px;padding:3px;background:none}
+  & .ui-home-spaces [data-ui-widget=true] .ui-glyph{width:42px;height:50px;object-fit:contain;filter:drop-shadow(0 1px 2px #071415)}
+  &[data-page=desk] .ui-home-dock{background:none;min-height:88px;padding:8px 16px 10px;grid-template-columns:minmax(85px,.65fr) minmax(170px,1.35fr);gap:8px;align-items:end}
+  & .ui-home-identity .ui-letter-art{height:27px;filter:drop-shadow(0 2px 2px #0a1f20)}
+  & .ui-home-chapter .ui-letter-art{height:18px;filter:drop-shadow(0 2px 2px #0a1f20)}
+  & .ui-start-illustration{background:none!important;border:0;outline:0;height:60px;min-height:60px;padding:0!important;overflow:visible}
+  & .ui-start-art{display:block;position:static;width:100%;height:100%;object-fit:contain;pointer-events:none}
+  &[data-page=desk] .ui-root-nav{background:#0b1c1f80;backdrop-filter:blur(6px)}
+  &[data-page=backstage]{background:#152c2b url('/art/hierarchy-ui-20261101/backstage.webp') center/cover no-repeat}
+  &[data-page=backstage] .shell-content{background:#10252b80;padding:18px 16px;overflow-y:auto}
+  &[data-page=backstage] .product-module-screen{display:flex;flex-direction:column;gap:20px;min-height:100%;width:100%;margin:0;padding:0;background:none}
+  & .ui-backstage-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px;padding:0;margin:0;background:none}
+  & .ui-backstage-grid>button.ui-backstage-entry{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;width:100%;height:auto;min-height:114px;aspect-ratio:1.2;padding:10px 8px;gap:8px;border:0;background:transparent url('/art/hierarchy-ui-20261101/skin-secondary.webp') center/100% 100% no-repeat;color:#e5eee6;box-shadow:none}
+  & .ui-play-modes button{color:#f3f5e8;background:#17383c}
+  & .ui-play-modes button :is(strong,span){color:#f3f5e8}
+  & .ui-play-modes button small{color:#d2e1dc}
+  & .ui-backstage-entry>.ui-glyph{display:block;position:static;width:60px;height:70px;object-fit:contain;order:0}
+  & .ui-backstage-entry>.pm-entry-copy{display:block;position:static;order:1;padding:0;text-align:center;min-height:16px}
+  & .ui-backstage-caption{display:block;font-size:11px;line-height:16px;color:#d8e5df;margin:0;white-space:normal}
+  &[data-page=backstage] .pm-ledger{display:flex;justify-content:space-between;gap:12px;font-size:11px;line-height:18px;color:#bfd7d1;background:none;border:0;padding:0 4px}
+  &[data-page=backstage] .pm-footer{margin-top:auto;padding:8px 0 0;background:none;border:0}
+  &[data-page=backstage] .pm-footer .ui-icon-command{width:44px;height:44px;min-height:44px;padding:6px;background:none;border:0}
+  &[data-page=backstage] .pm-footer .ui-glyph{display:block;width:30px;height:30px;object-fit:contain}
+  & .ui-root-nav button[aria-current]{background:none}
+  & .ui-root-nav button .ui-glyph{width:29px;height:29px}
+  & .portrait-dialogue{inset:auto 16px 10px;max-width:calc(100% - 32px);width:auto;min-height:0;padding:12px 16px;background:transparent url('/art/hierarchy-ui-20261101/skin-dialogue.webp') center/100% 100% no-repeat;border:0;box-shadow:none;z-index:6}
+  & .portrait-dialogue-heading{display:none}
+  & .portrait-dialogue-line{font-family:'Starush UI',sans-serif;font-size:13px;line-height:21px;color:#eef5e9;margin:0}
+  &[data-page=roster] .shell-content{background:none;padding:0;overflow:hidden}
+  & .ui-roster-lane{top:8px;height:auto;left:auto;right:8px;width:48px;display:flex;flex-direction:column;gap:8px;padding:0;bottom:auto}
+  & .ui-roster-actions{display:flex;flex-direction:column;gap:8px}
+  & .ui-roster-lane [data-ui-widget=true]{width:44px;height:48px;min-height:48px;min-width:44px;padding:3px}
+  & .ui-roster-lane [data-ui-widget=true] .ui-glyph{width:36px;height:42px}
+  & .roster-portrait-stage{container-type:size}
+  & .roster-portrait-stage>.member-mark{inset:auto 0 0;width:100%;height:min(100cqh,155cqw)}
+  & .roster-portrait-stage .home-portrait-rig{top:0;bottom:auto;height:100%}
+  & .roster-portrait-stage .menu-portrait-image{top:0;bottom:auto;height:100%}
+  &[data-page=roster] .shell-selection-footer{background:#10272cb3;min-height:60px;padding:6px 14px;align-items:center;gap:14px}
+  & .roster-stage-identity.ui-footer-caption{max-width:135px;flex:1}
+  & .roster-stage-identity .ui-letter-art{height:30px}
+  &[data-page=inventory]{background:#152c2b url('/art/screen-rebuild-20261101/storage.webp') center/cover no-repeat}
+  &[data-page=inventory] .shell-header{background:#102529b0}
+  &[data-page=inventory] .shell-content{background:#0b1e2580;padding:8px 12px;overflow-y:auto}
+  & .ui-bag-summary{font-size:11px;line-height:17px;gap:4px;display:flex;flex-direction:column;padding:0 2px 7px;background:none}
+  & .ui-bag-categories{display:flex;justify-content:flex-start;gap:12px;padding:3px 0 12px}
+  & .ui-bag-categories .ui-icon-command{width:auto;min-width:64px;height:52px;min-height:52px;padding:3px 8px;display:flex;flex-direction:column;gap:3px;background:none}
+  & .ui-bag-categories .ui-glyph{width:25px;height:25px}
+  & .ui-icon-command[data-ui-decorated=true]>.ui-filter-label{display:block;order:2;font-family:'Starush UI',sans-serif;position:static;font-size:11px;line-height:16px;white-space:nowrap;color:#d4e8e1}
+  & .ui-bag-categories [aria-pressed=true]{background:#62b7b52a;border-bottom:2px solid #8cf1d0}
+  & .ui-item-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 8px}
+  & .ui-item-slot{aspect-ratio:.72;padding:6px 3px 0;background-size:100% 72%}
+  & .ui-item-slot>.equipment-art-slot{width:100%;height:auto;aspect-ratio:1}
+  & .ui-item-name{font-size:10px;line-height:14px;margin-top:7px}
+  & .ui-item-count{top:47%;right:5px;font-size:10px}
+  & .ui-item-equipped{top:0;left:3px;font-size:8px;line-height:12px}
+  & .ui-item-detail>.equipment-art-slot{width:86px;height:86px}
+  & .ui-item-detail [data-action=inventory-catalog]{display:flex;width:auto;gap:6px;margin:8px auto 0}
+  & .ui-inventory-empty{padding:28px 18px;font-size:12px;line-height:21px;text-align:center;color:#d4e8e1;background:#10232a99}
+  & .ui-current-deploy{margin-left:auto;white-space:nowrap;font-size:12px;line-height:18px;color:#9af0d9}
+  & .ui-sheet .workshop-inventory{margin:0;padding:0;background:none;border:0}
+  & .ui-sheet .workshop-inventory>.workshop-muted{font-size:11px;line-height:18px;margin:0 0 8px;color:#d4e8e1}
+  & .ui-sheet .workshop-equipment{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;align-items:center;min-height:85px;height:auto;margin:0;padding:10px 2px;text-align:left;opacity:1;background:none;border:0;border-bottom:1px solid #486367}
+  & .ui-sheet .workshop-equipment>.equipment-art-slot{display:block;position:relative;width:48px;height:48px;grid-column:1;grid-row:1}
+  & .ui-sheet .workshop-equipment .equipment-art{display:block;width:48px;height:48px;object-fit:contain}
+  & .ui-sheet .workshop-item-copy{display:flex;flex-direction:column;gap:3px;grid-column:2;grid-row:1;min-width:0}
+  & .ui-sheet .workshop-item-copy strong{color:#f2f2e7;font-size:13px;line-height:19px}
+  & .ui-sheet .workshop-item-copy span{color:#ccded7;font-size:11px;line-height:18px}
+  & .ui-sheet .workshop-equipment-state{color:#d5c79f;font-size:10px;line-height:17px}
+  &[data-page=tour] .shell-content{display:flex;flex-direction:column;gap:10px;padding:8px 14px;background:#12272bdc;overflow-y:auto}
+  & .ui-tour-progress{font-size:11px;color:#d5e8de;text-align:right}
+  & .ui-chapter-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;order:0}
+  & .ui-chapter-tabs .shell-chapter-option{height:70px;min-height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:5px;background:transparent url('/art/hierarchy-ui-20261101/skin-secondary.webp') center/100% 100% no-repeat;box-shadow:none}
+  & .ui-chapter-tabs .shell-chapter-option[aria-pressed=true]{background-image:url('/art/hierarchy-ui-20261101/skin-primary.webp')}
+  & .ui-chapter-tabs .shell-chapter-number{display:block;position:static;font-size:12px;line-height:15px;background:none;padding:0;margin:0;color:#ffd884}
+  & .ui-chapter-tabs .shell-chapter-copy{position:static;background:none;padding:0;display:block;width:100%}
+  & .ui-chapter-tabs .shell-chapter-copy .ui-letter-art{height:17px;max-width:100%;margin:auto}
+  & .ui-chapter-tabs .shell-chapter-state{display:none}
+  & .ui-tour-map{display:flex;flex-direction:column;position:relative;flex:1;min-height:260px;padding:0;margin:0;background:none;border:0;overflow:hidden}
+  & .ui-tour-map .tour-venue-stage{position:relative;inset:auto;display:block;width:100%;height:auto;min-height:180px;flex:1;padding:0;margin:0;border:0;background:none;overflow:hidden;opacity:1}
+  & .ui-tour-map .tour-venue-stage img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+  & .ui-tour-map .tour-venue-caption{position:relative;inset:auto;padding:12px 8px;background:#143039;font-size:12px;line-height:20px;border:0}
+  & .ui-tour-map .tour-venue-caption h2 .ui-letter-art{height:25px;margin:6px 0}
+  & .ui-tour-map .tour-venue-caption :is(p,small){color:#d4e5e0;font-size:11px;line-height:18px;opacity:1}
+  &[data-page=roster]{background:#1c3438 url('/art/roster-studio-20261031/stage.webp') center/cover no-repeat}
+  &[data-page=workshop]{background:#1c3438 url('/art/roster-studio-20261031/stage.webp') center/cover no-repeat}
+  & .ui-tour-tools{padding:0 20px;flex:none;min-height:50px}
+  &[data-page=tour] .shell-selection-footer{background:#10272b;padding:8px 14px;min-height:64px}
+}

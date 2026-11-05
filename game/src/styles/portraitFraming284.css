@@ -1,0 +1,139 @@
+/* B284 home portrait framing: desk page only. Rationale and calibration: portrait-production-notes.md.
+   Frames existing art by its eye line. No art, mask, rig, motion or button changes.
+   --pf284-height is calibrated so the eye spacing and head height of all three actors stay close.
+   Do not swap in --portrait-head: the registered face boxes are not one consistent measure.
+   !important is limited to geometry that JS writes inline (Enjo rig height/top) or that canvas sizing can overwrite.
+   Never set display on the rig or image: the shell's [hidden] rule controls when they appear.
+   The two extra root attributes outrank screenRebuild.css whatever order the import lands in. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo=true][data-core-journey=true][data-page=desk] {
+  /* The figure deliberately overflows. Clip at the native menu column so it cannot reach past the
+     480px desktop cap or into the safe-area strips. Shell geometry is untouched. */
+  overflow:hidden;
+  overflow:clip;
+
+  /* Room: enlarged by box size because Sakura's clock writes an inline transform on this image every frame.
+     Anchored to the top, so the extra height discards empty floor rather than the lit stage.
+     Tone only, never blur. This filter reaches the room and not the figure. */
+  & .ui-room-background {
+    inset:0 auto auto -7.5%;
+    width:115%;
+    height:115%;
+    max-width:none;
+    object-fit:cover;
+    object-position:50% 0;
+    filter:brightness(1.1) saturate(.92);
+  }
+
+  /* Coordinates below are stage pixels: the button and mark fill the stage exactly. */
+  & .ui-home-portrait {
+    /* Scale unit: 60cqh keeps the thigh crop stable on short stages; 112cqw limits narrow tall ones. */
+    --pf284-unit:min(112cqw,60cqh);
+    /* One eye line for every actor, set by Enjo: the tallest ear clearance at her height. */
+    --pf284-eye-y:calc(10px + var(--pf284-unit) * .34);
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:visible;
+  }
+  /* The shared button press applied brightness and a 1px shift to the whole figure on every tap. */
+  & .ui-home-portrait:active:not(:disabled) {
+    translate:none;
+    filter:none;
+  }
+  & .ui-home-portrait[data-performer=sakura] {
+    --pf284-height:calc(var(--pf284-unit) * 2.5);
+    --pf284-ratio:.66641;
+    --pf284-aspect:853 / 1280;
+    --pf284-eye-fx:.525;
+    --pf284-eye-fy:.121;
+    --pf284-eye-x:54cqw;
+  }
+  & .ui-home-portrait[data-performer=kai] {
+    --pf284-height:calc(var(--pf284-unit) * 2.65);
+    --pf284-ratio:.66667;
+    --pf284-aspect:1024 / 1536;
+    --pf284-eye-fx:.56543;
+    --pf284-eye-fy:.155924;
+    --pf284-eye-x:54cqw;
+  }
+  /* Sits further right so the hammer grip and hand stay in frame. */
+  & .ui-home-portrait[data-performer=enjo] {
+    --pf284-height:calc(var(--pf284-unit) * 3.0);
+    --pf284-ratio:.66667;
+    --pf284-aspect:1024 / 1536;
+    --pf284-eye-fx:.5605;
+    --pf284-eye-fy:.1507;
+    --pf284-eye-x:58cqw;
+  }
+  & .ui-home-portrait>.member-mark {
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:visible;
+  }
+  /* Static source displays use the same coordinates as the animated surface. */
+  & .ui-home-portrait .menu-portrait-surface {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:visible;
+    transform:none;
+  }
+  /* The rig or image moves as one rectangle at its source aspect, so hit-testing maps stay valid. */
+  & .ui-home-portrait :is(.home-portrait-rig,.menu-portrait-image) {
+    position:absolute;
+    right:auto;
+    bottom:auto;
+    left:calc(var(--pf284-eye-x) - var(--pf284-height) * var(--pf284-ratio) * var(--pf284-eye-fx))!important;
+    top:calc(var(--pf284-eye-y) - var(--pf284-height) * var(--pf284-eye-fy))!important;
+    width:calc(var(--pf284-height) * var(--pf284-ratio))!important;
+    height:var(--pf284-height)!important;
+    min-width:0;
+    min-height:0;
+    max-width:none;
+    max-height:none;
+    margin:0;
+    aspect-ratio:var(--pf284-aspect)!important;
+    transform:none;
+    translate:none;
+    object-fit:contain;
+    object-position:center;
+  }
+  & .ui-home-portrait .home-portrait-rig>.home-portrait-canvas {
+    position:absolute;
+    inset:0;
+    width:100%!important;
+    height:100%!important;
+  }
+
+  /* Soft floor falloff in two matching parts, so the crop has no hard edge and the dock art stays readable.
+     The stage part stays under .portrait-dialogue (z-index 6). The dock part follows the dock's own height,
+     including the taller resume state. */
+  & .ui-home-stage::after {
+    content:'';
+    position:absolute;
+    inset:auto 0 0;
+    z-index:1;
+    height:88px;
+    pointer-events:none;
+    background:linear-gradient(180deg,#0b1c1f00 0%,#0b1c1f26 45%,#0b1c1f94 100%);
+  }
+  & .ui-home-dock::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background:linear-gradient(180deg,#0b1c1f94 0%,#0b1c1fd1 55%,#0b1c1ff0 100%);
+  }
+
+  /* The figure now runs behind the nav, so its backdrop blur would blur the character.
+     An opaque bar in the same colour replaces it. Buttons and icons are untouched. */
+  & .ui-root-nav {
+    background:#0b1c1f;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+}
+

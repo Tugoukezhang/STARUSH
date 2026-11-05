@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import vm from 'node:vm';
+import {EventEmitter} from 'node:events';
+const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const url=new URL('../src/systems/GameLoadRecovery.mjs',import.meta.url);
+const helper=existsSync(url)?await import(url):{};
+test('boot recovery works even when the bundled module never downloads',()=>{
+ const script=html.match(/<script id="game-loading-bootstrap">([\s\S]*?)<\/script>/)?.[1];
+ assert.ok(script,'missing independent HTML boot recovery');
+ const nodes=Object.fromEntries(['game-loading','game-loading-message','game-loading-retry','game-container'].map(id=>[id,{hidden:false,inert:false,dataset:{},addEventListener(type,cb){this[type]=cb;}}]));
+ const listeners={},timers=new Map();let id=0,reloads=0;
+ const win={addEventListener:(type,cb)=>listeners[type]=cb,location:{reload:()=>reloads++}};
+ vm.runInNewContext(script,{window:win,document:{getElementById:id=>nodes[id]},setTimeout:cb=>{timers.set(++id,cb);return id;},clearTimeout:n=>timers.delete(n)});
+ listeners.error({target:{tagName:'SCRIPT',type:'module'}});
+ assert.equal(nodes['game-loading'].dataset.state,'error');assert.equal(nodes['game-loading-retry'].hidden,false);
+ assert.equal(nodes['game-container'].inert,true);win.starushLoading.ready();assert.equal(nodes['game-loading'].hidden,false,'error is sticky');
+ nodes['game-loading-retry'].click();assert.equal(reloads,1);assert.equal(timers.size,0);
+});
+test('asset failure blocks scene creation and successful cached entry clears the surface',()=>{
+ assert.equal(typeof helper.beginSceneLoading,'function');
+ const events=[],ui={start:()=>events.push('start'),progress:p=>events.push(p),fail:()=>events.push('fail'),ready:()=>events.push('ready')};
+ const scene={load:new EventEmitter(),events:new EventEmitter(),scene:{pause:()=>events.push('pause')}};
+ const state=helper.beginSceneLoading(scene,ui);scene._loadRecovery=state;
+ scene.load.emit('progress',0.5);scene.load.emit('loaderror',{key:'chapter-ground-opening'});
+ assert.equal(helper.finishSceneLoading(scene),false);assert.equal(scene._battleEnded,true);assert.ok(events.includes('pause'));assert.ok(events.includes('fail'));
+ assert.equal(scene.load.listenerCount('progress')+scene.load.listenerCount('loaderror'),0);
+ scene._loadRecovery=helper.beginSceneLoading(scene,ui);assert.equal(helper.finishSceneLoading(scene),true);assert.equal(events.at(-1),'ready');
+ scene.events.emit('shutdown');assert.equal(scene.load.listenerCount('progress'),0);
+});

@@ -1,0 +1,30 @@
+/* Member sheets retain the actor on stage; existing AI surfaces and glyphs are reused. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=roster] {
+  & .ui-sheet:is([data-sheet-kind=member-ability],[data-sheet-kind=member-dossier]) {
+    width:min(400px,calc(100vw - 24px));
+    max-width:calc(100vw - 24px);
+    max-height:calc(100dvh - 80px);
+    margin:auto auto max(12px,env(safe-area-inset-bottom));
+    padding:14px 18px 20px;
+    background-color:#15282c;
+    background-image:url('/art/thin-ui-20261101/panel.webp');
+    color:#f3f6ec;
+    &::backdrop {background:#06121738;}
+    & .ui-sheet-header {height:36px;min-height:36px;margin:0 0 8px;}
+    & .ui-sheet-title {height:auto;font-size:14px;line-height:20px;color:#d0e2df;}
+    & .ui-sheet-close {width:44px;height:44px;min-width:44px;min-height:44px;padding:6px;}
+    & .ui-sheet-body {max-height:calc(100dvh - 160px);overflow:auto;scrollbar-width:thin;}
+    & .member-sheet-identity {display:grid;grid-template-columns:60px minmax(0,1fr) 60px;align-items:center;gap:10px;margin:0 0 14px;}
+    & .member-sheet-avatar {display:block;width:60px;height:60px;object-fit:cover;}
+    & .member-sheet-name {display:block;min-width:0;}
+    & .member-sheet-name .ui-letter-art {display:block;width:100%;height:25px;max-width:148px;object-fit:contain;object-position:left;}
+    & .member-sheet-weapon {display:block;width:60px;height:44px;object-fit:contain;}
+    & :is(.shell-action-detail,.shell-dossier) {position:static;display:block;width:auto;height:auto;min-height:0;max-height:none;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible;}
+    & .roster-action-copy {display:block;margin:0;padding:0;}
+    & .roster-action-copy>.shell-eyebrow {display:none;}
+    & :is(.roster-action-copy,.shell-dossier)>h3 {position:static;margin:0 0 8px;font-size:18px;line-height:26px;color:#ffe0a0;font-weight:700;}
+    & :is(.roster-action-copy,.shell-dossier)>p {margin:0;font-size:14px;line-height:23px;color:#eef3eb;overflow-wrap:anywhere;}
+    & .shell-dossier>p+p {margin-top:12px;color:#d0e0dd;}
+    & .shell-dossier>blockquote {margin:16px 0 0;padding:0;border:0;font-size:14px;line-height:23px;color:#ffe0a0;font-style:normal;}
+  }
+}

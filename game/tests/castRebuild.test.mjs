@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import crypto from 'node:crypto';
+import {getMenuPortraitExpressionArt} from '../src/systems/MenuPortraitExpression.mjs';
+import {menuPortraitPoint} from '../src/systems/MenuPortraitMotion.mjs';
+const hashes={kai:'01909e967b2837265ae5e989cb287b1b115ed5e4655cd7b9da30e3054969707e',enjo:'88ad56d3f0ad3c84b2af76e8af82d6c04efbf0e5ae49374a7ee090b2983b8775'};
+test('rebuilt masters are exact reviewed AI exports, not the rejected blue menu pair',async()=>{for(const[id,hash]of Object.entries(hashes)){const b=await fs.readFile(new URL('../public/art/menu-series-cast-20261031/'+id+'.webp',import.meta.url));assert.equal(crypto.createHash('sha256').update(b).digest('hex'),hash);}});
+test('expressions use current generated faces with padded source coordinates',()=>{for(const[id,x,y,w]of[['kai',534,164,310],['enjo',394,244,330]]){const a=getMenuPortraitExpressionArt(id);assert.deepEqual([a.x,a.y,a.width,a.height],[x,y,w,w]);}});
+test('new source face, hands, weapon and feet stay fixed; cloth and breath move',()=>{const p={breath:8,hair:.0315,tail:.079,lookX:1,acknowledge:1};for(const[id,points]of[['kai',[[664,280],[440,800],[850,760],[680,1500]]],['enjo',[[550,385],[850,240],[925,610],[530,665],[625,1550]]]])for(const[x,y]of points)assert.deepEqual(menuPortraitPoint(id,x,y,p),{x,y});for(const[id,x,y]of[['kai',690,560],['kai',930,1100],['enjo',610,540],['enjo',240,950]]){const q=menuPortraitPoint(id,x,y,p);assert(Math.hypot(q.x-x,q.y-y)>2);}});

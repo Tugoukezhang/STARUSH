@@ -1,0 +1,77 @@
+/* B264 inventory studio (CompactMenuPages renderCompactInventory). Owner inventory only:
+   one context row, three 44px labelled filters, a 3-column object catalogue and the item detail sheet.
+   Reuses the B262 original AI thin surfaces (art/thin-ui-20261101); no bespoke icons or gradients.
+   Names, states, counts and errors stay native text. .shell-content stays the only scroller.
+   [data-inventory-letter] hosts show their native short label until an <img> wordmark is mounted. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=inventory]{
+  & .shell-content[data-inventory-studio]{display:flex;flex-direction:column;gap:8px;padding:8px 12px 12px}
+  & .shell-content[data-inventory-studio]>*{margin:0;flex:none}
+
+  /* Context: whose single slot this page edits, and whether that actor is the saved deployment. */
+  & .inv-context{display:flex;align-items:center;gap:8px;min-height:36px;padding:4px 12px;font-size:12px;line-height:18px;color:#b7cccb;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & .inv-context-actor{font-size:14px;line-height:20px;color:#fff3d0;white-space:nowrap}
+  & .inv-context-deploy{flex:none;padding:0 6px;font-size:11px;color:#8bd8c8;border:1px solid #8bd8c866}
+  & .inv-context[data-deployed=false] .inv-context-deploy{color:#ffd7a0;border-color:#ffd7a066}
+  & .inv-context-slot{flex:1 1 auto;min-width:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* Filters: equal thirds, never icon-only. */
+  & .inv-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  & .inv-filter{display:flex;align-items:center;justify-content:center;gap:6px;width:auto;min-width:0;height:44px;min-height:44px;padding:0 8px;border:0;border-radius:0;box-shadow:none;color:#d4e8e1;background:url('/art/thin-ui-20261101/tab.webp') center/100% 100% no-repeat}
+  & .inv-filter[aria-pressed=true]{color:#fff3d0;background-image:url('/art/thin-ui-20261101/selected.webp')}
+  & .inv-filter-label{font-size:13px;line-height:18px;white-space:nowrap}
+  & .inv-filter-count{order:2;font-size:12px;line-height:18px;font-weight:700;color:#8bd8c8;font-variant-numeric:tabular-nums}
+  & .inv-filter>img{display:block;width:auto;height:20px;max-width:calc(100% - 24px);object-fit:contain}
+  & [data-inventory-letter]:has(>img)>:is(.inv-command-label,.inv-filter-label){display:none}
+
+  & .ui-command-status{font-size:12px;line-height:18px;color:#f2da88;padding:6px 12px;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & .ui-command-status:empty{display:none}
+
+  /* Catalogue: 3 columns, emblem keeps its square aspect, name and state stay readable native text. */
+  & .ui-item-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:start}
+  & .ui-item-slot{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;min-width:0;min-height:44px;aspect-ratio:auto;padding:8px 4px 6px;border:0;border-radius:0;box-shadow:none;opacity:1;overflow:hidden;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & .ui-item-slot[hidden]{display:none}
+  & .ui-item-slot[data-state=equipped]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+  & .ui-item-slot>.equipment-art-slot{display:block;width:100%;max-width:72px;height:auto;aspect-ratio:1;margin:0 auto;background:none;border:0}
+  & .ui-item-slot .equipment-art{display:block;width:100%;height:100%;object-fit:contain}
+  & .ui-item-slot[data-state=locked]>.equipment-art-slot{filter:grayscale(.85);opacity:.45}
+  & .ui-item-name{max-width:100%;margin:2px 0 0;font-size:12px;line-height:16px;color:#e7efe9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  & .ui-item-state{max-width:100%;font-size:11px;line-height:15px;color:#cfe3de;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  & .ui-item-slot[data-state=equipped] .ui-item-state{color:#8df5d5;font-weight:700}
+  & .ui-item-slot[data-state=locked] .ui-item-state{color:#b9b2a6}
+  & .ui-item-slot[data-state=incompatible] .ui-item-state{color:#ffd7a0}
+  & .ui-item-lock{position:absolute;top:4px;right:4px;width:20px;height:20px}
+  & .ui-item-lock .ui-glyph{display:block;width:20px;height:20px;object-fit:contain}
+  & .ui-inventory-empty{padding:10px 12px;font-size:12px;line-height:20px;text-align:left;color:#d4e8e1;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+
+  /* Detail sheet (native dialog appended to the shell root). */
+  & .ui-sheet[data-inventory-sheet=item] .inv-detail{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;background:none;border:0}
+  & .inv-detail p{margin:0}
+  & .inv-detail-head{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:center}
+  & .inv-detail-emblem{display:block;width:72px;height:72px;margin:0;background:none;border:0}
+  & .inv-detail-emblem .equipment-art{display:block;width:100%;height:100%;object-fit:contain}
+  & .inv-detail[data-state=locked] .inv-detail-emblem{filter:grayscale(.85);opacity:.5}
+  & .inv-detail-facts{display:flex;flex-direction:column;gap:2px;min-width:0}
+  & .inv-detail-role{font-size:12px;line-height:18px;color:#b7cccb}
+  & .inv-detail-state{font-size:14px;line-height:20px;font-weight:700;color:#fff3d0}
+  & .inv-detail[data-state=equipped] .inv-detail-state{color:#8df5d5}
+  & .inv-detail-target{font-size:12px;line-height:18px;color:#b7cccb}
+  & .inv-effects{display:flex;flex-direction:column;margin:0;padding:6px 12px;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & .inv-effect-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-height:28px}
+  & .inv-effect-row dt{font-size:12px;line-height:18px;color:#d4e8e1}
+  & .inv-effect-row dd{margin:0;font-size:15px;line-height:20px;font-weight:700;color:#7cedde;font-variant-numeric:tabular-nums}
+  & .inv-detail-description{font-size:13px;line-height:20px;color:#e7efe9}
+  & .inv-detail-reason{font-size:12px;line-height:18px;color:#ffd7a0}
+  & .inv-equip{display:flex;align-items:center;justify-content:center;width:100%;height:48px;min-height:48px;margin:4px 0 0;color:#fff8e6}
+  & .inv-equip .inv-command-label{font-size:15px;line-height:20px;font-weight:700}
+  & .inv-equip>img{display:block;width:auto;height:24px;max-width:70%;object-fit:contain}
+  & .inv-equip:disabled{color:#9fb2af;background-image:url('/art/thin-ui-20261101/row.webp');cursor:not-allowed}
+  & .inv-equip:disabled>img{opacity:.5}
+  & .inv-detail [data-action=prepared-preflight]{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:44px;padding:4px 12px;border:0;border-radius:0;box-shadow:none;font-size:13px;line-height:18px;color:#e7efe9;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & .inv-detail [data-action=prepared-preflight] :is(svg,img){flex:none;width:20px;height:20px}
+  & .inv-source>summary{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;list-style:none;cursor:pointer;font-size:13px;line-height:18px;color:#d4e8e1;background:url('/art/thin-ui-20261101/tab.webp') center/100% 100% no-repeat}
+  & .inv-source>summary::-webkit-details-marker{display:none}
+  & .inv-source>summary>img{display:block;width:auto;height:20px;max-width:70%;object-fit:contain}
+  & .inv-source[open]>summary{background-image:url('/art/thin-ui-20261101/selected.webp')}
+  & .inv-source-unlock{padding:8px 4px 6px;font-size:12px;line-height:18px;color:#b7cccb}
+  & .inv-compare{width:100%;min-height:44px;font-size:13px}
+}

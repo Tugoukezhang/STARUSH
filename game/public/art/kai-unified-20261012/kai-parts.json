@@ -1,0 +1,2179 @@
+{
+  "frames": {
+    "down/hairCap": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 104,
+        "h": 101
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 101
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 101
+      }
+    },
+    "down/face": {
+      "frame": {
+        "x": 116,
+        "y": 4,
+        "w": 104,
+        "h": 100
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 100
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 100
+      }
+    },
+    "down/torso": {
+      "frame": {
+        "x": 228,
+        "y": 4,
+        "w": 94,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 94,
+        "h": 104
+      }
+    },
+    "down/pelvis": {
+      "frame": {
+        "x": 340,
+        "y": 4,
+        "w": 104,
+        "h": 65
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 65
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 65
+      }
+    },
+    "down/upperArmL": {
+      "frame": {
+        "x": 452,
+        "y": 4,
+        "w": 58,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 104
+      }
+    },
+    "down/forearmL": {
+      "frame": {
+        "x": 564,
+        "y": 4,
+        "w": 36,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 36,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 36,
+        "h": 104
+      }
+    },
+    "down/upperArmR": {
+      "frame": {
+        "x": 676,
+        "y": 4,
+        "w": 55,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 55,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 55,
+        "h": 104
+      }
+    },
+    "down/forearmR": {
+      "frame": {
+        "x": 788,
+        "y": 4,
+        "w": 45,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 45,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 45,
+        "h": 104
+      }
+    },
+    "down/thighL": {
+      "frame": {
+        "x": 4,
+        "y": 116,
+        "w": 68,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 104
+      }
+    },
+    "down/shinL": {
+      "frame": {
+        "x": 116,
+        "y": 116,
+        "w": 49,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 104
+      }
+    },
+    "down/thighR": {
+      "frame": {
+        "x": 228,
+        "y": 116,
+        "w": 67,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 67,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 67,
+        "h": 104
+      }
+    },
+    "down/shinR": {
+      "frame": {
+        "x": 340,
+        "y": 116,
+        "w": 48,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 104
+      }
+    },
+    "down/bootL": {
+      "frame": {
+        "x": 452,
+        "y": 116,
+        "w": 85,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 104
+      }
+    },
+    "down/bootR": {
+      "frame": {
+        "x": 564,
+        "y": 116,
+        "w": 85,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 104
+      }
+    },
+    "down/closedFace": {
+      "frame": {
+        "x": 676,
+        "y": 116,
+        "w": 104,
+        "h": 99
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 99
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 99
+      }
+    },
+    "down/hurtFace": {
+      "frame": {
+        "x": 788,
+        "y": 116,
+        "w": 104,
+        "h": 99
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 99
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 99
+      }
+    },
+    "left/hairCap": {
+      "frame": {
+        "x": 4,
+        "y": 228,
+        "w": 104,
+        "h": 100
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 100
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 100
+      }
+    },
+    "left/face": {
+      "frame": {
+        "x": 116,
+        "y": 228,
+        "w": 104,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 104
+      }
+    },
+    "left/torso": {
+      "frame": {
+        "x": 228,
+        "y": 228,
+        "w": 77,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 77,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 77,
+        "h": 104
+      }
+    },
+    "left/pelvis": {
+      "frame": {
+        "x": 340,
+        "y": 228,
+        "w": 104,
+        "h": 67
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 67
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 67
+      }
+    },
+    "left/upperArmL": {
+      "frame": {
+        "x": 452,
+        "y": 228,
+        "w": 50,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 104
+      }
+    },
+    "left/forearmL": {
+      "frame": {
+        "x": 564,
+        "y": 228,
+        "w": 48,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 104
+      }
+    },
+    "left/upperArmR": {
+      "frame": {
+        "x": 676,
+        "y": 228,
+        "w": 49,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 104
+      }
+    },
+    "left/forearmR": {
+      "frame": {
+        "x": 788,
+        "y": 228,
+        "w": 43,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 43,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 43,
+        "h": 104
+      }
+    },
+    "left/thighL": {
+      "frame": {
+        "x": 4,
+        "y": 340,
+        "w": 56,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 104
+      }
+    },
+    "left/shinL": {
+      "frame": {
+        "x": 116,
+        "y": 340,
+        "w": 52,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 52,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 52,
+        "h": 104
+      }
+    },
+    "left/thighR": {
+      "frame": {
+        "x": 228,
+        "y": 340,
+        "w": 59,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 59,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 104
+      }
+    },
+    "left/shinR": {
+      "frame": {
+        "x": 340,
+        "y": 340,
+        "w": 49,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 104
+      }
+    },
+    "left/bootL": {
+      "frame": {
+        "x": 452,
+        "y": 340,
+        "w": 104,
+        "h": 57
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 57
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 57
+      }
+    },
+    "left/bootR": {
+      "frame": {
+        "x": 564,
+        "y": 340,
+        "w": 104,
+        "h": 57
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 57
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 57
+      }
+    },
+    "left/closedFace": {
+      "frame": {
+        "x": 676,
+        "y": 340,
+        "w": 104,
+        "h": 103
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 103
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 103
+      }
+    },
+    "left/hurtFace": {
+      "frame": {
+        "x": 788,
+        "y": 340,
+        "w": 104,
+        "h": 103
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 103
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 103
+      }
+    },
+    "up/hairCap": {
+      "frame": {
+        "x": 4,
+        "y": 452,
+        "w": 104,
+        "h": 94
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 94
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 94
+      }
+    },
+    "up/face": {
+      "frame": {
+        "x": 116,
+        "y": 452,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "up/torso": {
+      "frame": {
+        "x": 228,
+        "y": 452,
+        "w": 85,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 85,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 85,
+        "h": 104
+      }
+    },
+    "up/pelvis": {
+      "frame": {
+        "x": 340,
+        "y": 452,
+        "w": 104,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 63
+      }
+    },
+    "up/upperArmL": {
+      "frame": {
+        "x": 452,
+        "y": 452,
+        "w": 60,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 60,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 60,
+        "h": 104
+      }
+    },
+    "up/forearmL": {
+      "frame": {
+        "x": 564,
+        "y": 452,
+        "w": 36,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 36,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 36,
+        "h": 104
+      }
+    },
+    "up/upperArmR": {
+      "frame": {
+        "x": 676,
+        "y": 452,
+        "w": 59,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 59,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 104
+      }
+    },
+    "up/forearmR": {
+      "frame": {
+        "x": 788,
+        "y": 452,
+        "w": 39,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 39,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 39,
+        "h": 104
+      }
+    },
+    "up/thighL": {
+      "frame": {
+        "x": 4,
+        "y": 564,
+        "w": 66,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 66,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 66,
+        "h": 104
+      }
+    },
+    "up/shinL": {
+      "frame": {
+        "x": 116,
+        "y": 564,
+        "w": 47,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 47,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 47,
+        "h": 104
+      }
+    },
+    "up/thighR": {
+      "frame": {
+        "x": 228,
+        "y": 564,
+        "w": 65,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 104
+      }
+    },
+    "up/shinR": {
+      "frame": {
+        "x": 340,
+        "y": 564,
+        "w": 47,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 47,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 47,
+        "h": 104
+      }
+    },
+    "up/bootL": {
+      "frame": {
+        "x": 452,
+        "y": 564,
+        "w": 104,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 98
+      }
+    },
+    "up/bootR": {
+      "frame": {
+        "x": 564,
+        "y": 564,
+        "w": 104,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 98
+      }
+    },
+    "up/closedFace": {
+      "frame": {
+        "x": 676,
+        "y": 564,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "up/hurtFace": {
+      "frame": {
+        "x": 788,
+        "y": 564,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "right/hairCap": {
+      "frame": {
+        "x": 4,
+        "y": 676,
+        "w": 104,
+        "h": 99
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 99
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 99
+      }
+    },
+    "right/face": {
+      "frame": {
+        "x": 116,
+        "y": 676,
+        "w": 104,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 98
+      }
+    },
+    "right/torso": {
+      "frame": {
+        "x": 228,
+        "y": 676,
+        "w": 72,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 72,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 72,
+        "h": 104
+      }
+    },
+    "right/pelvis": {
+      "frame": {
+        "x": 340,
+        "y": 676,
+        "w": 104,
+        "h": 103
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 103
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 103
+      }
+    },
+    "right/upperArmL": {
+      "frame": {
+        "x": 452,
+        "y": 676,
+        "w": 55,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 55,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 55,
+        "h": 104
+      }
+    },
+    "right/forearmL": {
+      "frame": {
+        "x": 564,
+        "y": 676,
+        "w": 34,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 34,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 34,
+        "h": 104
+      }
+    },
+    "right/upperArmR": {
+      "frame": {
+        "x": 676,
+        "y": 676,
+        "w": 53,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 104
+      }
+    },
+    "right/forearmR": {
+      "frame": {
+        "x": 788,
+        "y": 676,
+        "w": 34,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 34,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 34,
+        "h": 104
+      }
+    },
+    "right/thighL": {
+      "frame": {
+        "x": 4,
+        "y": 788,
+        "w": 53,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 104
+      }
+    },
+    "right/shinL": {
+      "frame": {
+        "x": 116,
+        "y": 788,
+        "w": 50,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 104
+      }
+    },
+    "right/thighR": {
+      "frame": {
+        "x": 228,
+        "y": 788,
+        "w": 53,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 104
+      }
+    },
+    "right/shinR": {
+      "frame": {
+        "x": 340,
+        "y": 788,
+        "w": 49,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 104
+      }
+    },
+    "right/bootL": {
+      "frame": {
+        "x": 452,
+        "y": 788,
+        "w": 104,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 59
+      }
+    },
+    "right/bootR": {
+      "frame": {
+        "x": 564,
+        "y": 788,
+        "w": 104,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 60
+      }
+    },
+    "right/closedFace": {
+      "frame": {
+        "x": 676,
+        "y": 788,
+        "w": 104,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 98
+      }
+    },
+    "right/hurtFace": {
+      "frame": {
+        "x": 788,
+        "y": 788,
+        "w": 104,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 98
+      }
+    }
+  },
+  "meta": {
+    "image": "kai-parts.webp",
+    "size": {
+      "w": 1024,
+      "h": 1024
+    },
+    "scale": "1"
+  },
+  "rig": {
+    "identity": "kai",
+    "version": 1,
+    "views": [
+      "down",
+      "left",
+      "up",
+      "right"
+    ],
+    "independentArt": true,
+    "independentBind": true,
+    "sourceOnly": false,
+    "directions": {
+      "front": {
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 16,
+              "y": 26,
+              "width": 276,
+              "height": 268
+            },
+            "frame": "down/hairCap",
+            "width": 276,
+            "height": 268
+          },
+          "face": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 327,
+              "y": 23,
+              "width": 290,
+              "height": 280
+            },
+            "frame": "down/face",
+            "width": 290,
+            "height": 280
+          },
+          "torso": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 684,
+              "y": 60,
+              "width": 201,
+              "height": 222
+            },
+            "frame": "down/torso",
+            "width": 201,
+            "height": 222
+          },
+          "pelvis": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 984,
+              "y": 130,
+              "width": 223,
+              "height": 140
+            },
+            "frame": "down/pelvis",
+            "width": 223,
+            "height": 140
+          },
+          "upperArmL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 74,
+              "y": 333,
+              "width": 127,
+              "height": 226
+            },
+            "frame": "down/upperArmL",
+            "width": 127,
+            "height": 226
+          },
+          "forearmL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 421,
+              "y": 330,
+              "width": 98,
+              "height": 284
+            },
+            "frame": "down/forearmL",
+            "width": 98,
+            "height": 284
+          },
+          "upperArmR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 733,
+              "y": 331,
+              "width": 98,
+              "height": 184
+            },
+            "frame": "down/upperArmR",
+            "width": 98,
+            "height": 184
+          },
+          "forearmR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1052,
+              "y": 330,
+              "width": 125,
+              "height": 288
+            },
+            "frame": "down/forearmR",
+            "width": 125,
+            "height": 288
+          },
+          "thighL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 73,
+              "y": 640,
+              "width": 165,
+              "height": 252
+            },
+            "frame": "down/thighL",
+            "width": 165,
+            "height": 252
+          },
+          "shinL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 405,
+              "y": 640,
+              "width": 118,
+              "height": 250
+            },
+            "frame": "down/shinL",
+            "width": 118,
+            "height": 250
+          },
+          "thighR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 706,
+              "y": 638,
+              "width": 163,
+              "height": 252
+            },
+            "frame": "down/thighR",
+            "width": 163,
+            "height": 252
+          },
+          "shinR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1041,
+              "y": 638,
+              "width": 117,
+              "height": 251
+            },
+            "frame": "down/shinR",
+            "width": 117,
+            "height": 251
+          },
+          "bootL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 79,
+              "y": 990,
+              "width": 139,
+              "height": 171
+            },
+            "frame": "down/bootL",
+            "width": 139,
+            "height": 171
+          },
+          "bootR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 402,
+              "y": 990,
+              "width": 139,
+              "height": 171
+            },
+            "frame": "down/bootR",
+            "width": 139,
+            "height": 171
+          },
+          "closedFace": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 629,
+              "y": 929,
+              "width": 292,
+              "height": 277
+            },
+            "frame": "down/closedFace",
+            "width": 292,
+            "height": 277
+          },
+          "hurtFace": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 942,
+              "y": 929,
+              "width": 293,
+              "height": 279
+            },
+            "frame": "down/hurtFace",
+            "width": 293,
+            "height": 279
+          }
+        }
+      },
+      "left": {
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 26,
+              "y": 40,
+              "width": 276,
+              "height": 266
+            },
+            "frame": "left/hairCap",
+            "width": 276,
+            "height": 266
+          },
+          "face": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 338,
+              "y": 26,
+              "width": 289,
+              "height": 289
+            },
+            "frame": "left/face",
+            "width": 289,
+            "height": 289
+          },
+          "torso": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 677,
+              "y": 56,
+              "width": 186,
+              "height": 252
+            },
+            "frame": "left/torso",
+            "width": 186,
+            "height": 252
+          },
+          "pelvis": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 978,
+              "y": 130,
+              "width": 224,
+              "height": 144
+            },
+            "frame": "left/pelvis",
+            "width": 224,
+            "height": 144
+          },
+          "upperArmL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 117,
+              "y": 341,
+              "width": 116,
+              "height": 242
+            },
+            "frame": "left/upperArmL",
+            "width": 116,
+            "height": 242
+          },
+          "forearmL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 394,
+              "y": 332,
+              "width": 131,
+              "height": 281
+            },
+            "frame": "left/forearmL",
+            "width": 131,
+            "height": 281
+          },
+          "upperArmR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 709,
+              "y": 341,
+              "width": 114,
+              "height": 242
+            },
+            "frame": "left/upperArmR",
+            "width": 114,
+            "height": 242
+          },
+          "forearmR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1047,
+              "y": 333,
+              "width": 116,
+              "height": 280
+            },
+            "frame": "left/forearmR",
+            "width": 116,
+            "height": 280
+          },
+          "thighL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 98,
+              "y": 627,
+              "width": 147,
+              "height": 271
+            },
+            "frame": "left/thighL",
+            "width": 147,
+            "height": 271
+          },
+          "shinL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 406,
+              "y": 637,
+              "width": 131,
+              "height": 263
+            },
+            "frame": "left/shinL",
+            "width": 131,
+            "height": 263
+          },
+          "thighR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 698,
+              "y": 627,
+              "width": 144,
+              "height": 256
+            },
+            "frame": "left/thighR",
+            "width": 144,
+            "height": 256
+          },
+          "shinR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1038,
+              "y": 638,
+              "width": 120,
+              "height": 255
+            },
+            "frame": "left/shinR",
+            "width": 120,
+            "height": 255
+          },
+          "bootL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 46,
+              "y": 1013,
+              "width": 235,
+              "height": 129
+            },
+            "frame": "left/bootL",
+            "width": 235,
+            "height": 129
+          },
+          "bootR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 359,
+              "y": 1016,
+              "width": 233,
+              "height": 127
+            },
+            "frame": "left/bootR",
+            "width": 233,
+            "height": 127
+          },
+          "closedFace": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 631,
+              "y": 914,
+              "width": 291,
+              "height": 287
+            },
+            "frame": "left/closedFace",
+            "width": 291,
+            "height": 287
+          },
+          "hurtFace": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 940,
+              "y": 913,
+              "width": 292,
+              "height": 288
+            },
+            "frame": "left/hurtFace",
+            "width": 292,
+            "height": 288
+          }
+        }
+      },
+      "back": {
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 26,
+              "y": 39,
+              "width": 277,
+              "height": 250
+            },
+            "frame": "up/hairCap",
+            "width": 277,
+            "height": 250
+          },
+          "face": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 347,
+              "y": 31,
+              "width": 263,
+              "height": 259
+            },
+            "frame": "up/face",
+            "width": 263,
+            "height": 259
+          },
+          "torso": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 695,
+              "y": 75,
+              "width": 175,
+              "height": 214
+            },
+            "frame": "up/torso",
+            "width": 175,
+            "height": 214
+          },
+          "pelvis": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 972,
+              "y": 144,
+              "width": 244,
+              "height": 147
+            },
+            "frame": "up/pelvis",
+            "width": 244,
+            "height": 147
+          },
+          "upperArmL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 119,
+              "y": 360,
+              "width": 110,
+              "height": 192
+            },
+            "frame": "up/upperArmL",
+            "width": 110,
+            "height": 192
+          },
+          "forearmL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 439,
+              "y": 358,
+              "width": 85,
+              "height": 246
+            },
+            "frame": "up/forearmL",
+            "width": 85,
+            "height": 246
+          },
+          "upperArmR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 722,
+              "y": 358,
+              "width": 90,
+              "height": 158
+            },
+            "frame": "up/upperArmR",
+            "width": 90,
+            "height": 158
+          },
+          "forearmR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1037,
+              "y": 358,
+              "width": 92,
+              "height": 246
+            },
+            "frame": "up/forearmR",
+            "width": 92,
+            "height": 246
+          },
+          "thighL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 81,
+              "y": 647,
+              "width": 147,
+              "height": 232
+            },
+            "frame": "up/thighL",
+            "width": 147,
+            "height": 232
+          },
+          "shinL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 428,
+              "y": 648,
+              "width": 102,
+              "height": 224
+            },
+            "frame": "up/shinL",
+            "width": 102,
+            "height": 224
+          },
+          "thighR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 708,
+              "y": 647,
+              "width": 145,
+              "height": 233
+            },
+            "frame": "up/thighR",
+            "width": 145,
+            "height": 233
+          },
+          "shinR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1034,
+              "y": 647,
+              "width": 102,
+              "height": 225
+            },
+            "frame": "up/shinR",
+            "width": 102,
+            "height": 225
+          },
+          "bootL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 78,
+              "y": 1012,
+              "width": 152,
+              "height": 143
+            },
+            "frame": "up/bootL",
+            "width": 152,
+            "height": 143
+          },
+          "bootR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 397,
+              "y": 1012,
+              "width": 152,
+              "height": 143
+            },
+            "frame": "up/bootR",
+            "width": 152,
+            "height": 143
+          },
+          "closedFace": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 659,
+              "y": 935,
+              "width": 264,
+              "height": 259
+            },
+            "frame": "up/closedFace",
+            "width": 264,
+            "height": 259
+          },
+          "hurtFace": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 971,
+              "y": 935,
+              "width": 264,
+              "height": 259
+            },
+            "frame": "up/hurtFace",
+            "width": 264,
+            "height": 259
+          }
+        }
+      },
+      "right": {
+        "rawWidth": 1254,
+        "rawHeight": 1254,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 24,
+              "y": 22,
+              "width": 289,
+              "height": 276
+            },
+            "frame": "right/hairCap",
+            "width": 289,
+            "height": 276
+          },
+          "face": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 325,
+              "y": 24,
+              "width": 306,
+              "height": 289
+            },
+            "frame": "right/face",
+            "width": 306,
+            "height": 289
+          },
+          "torso": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 693,
+              "y": 57,
+              "width": 174,
+              "height": 250
+            },
+            "frame": "right/torso",
+            "width": 174,
+            "height": 250
+          },
+          "pelvis": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 1000,
+              "y": 101,
+              "width": 187,
+              "height": 186
+            },
+            "frame": "right/pelvis",
+            "width": 187,
+            "height": 186
+          },
+          "upperArmL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 96,
+              "y": 350,
+              "width": 115,
+              "height": 217
+            },
+            "frame": "right/upperArmL",
+            "width": 115,
+            "height": 217
+          },
+          "forearmL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 425,
+              "y": 355,
+              "width": 80,
+              "height": 244
+            },
+            "frame": "right/forearmL",
+            "width": 80,
+            "height": 244
+          },
+          "upperArmR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 733,
+              "y": 353,
+              "width": 109,
+              "height": 212
+            },
+            "frame": "right/upperArmR",
+            "width": 109,
+            "height": 212
+          },
+          "forearmR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1050,
+              "y": 353,
+              "width": 82,
+              "height": 250
+            },
+            "frame": "right/forearmR",
+            "width": 82,
+            "height": 250
+          },
+          "thighL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 95,
+              "y": 637,
+              "width": 124,
+              "height": 245
+            },
+            "frame": "right/thighL",
+            "width": 124,
+            "height": 245
+          },
+          "shinL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 411,
+              "y": 648,
+              "width": 115,
+              "height": 238
+            },
+            "frame": "right/shinL",
+            "width": 115,
+            "height": 238
+          },
+          "thighR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 719,
+              "y": 636,
+              "width": 124,
+              "height": 245
+            },
+            "frame": "right/thighR",
+            "width": 124,
+            "height": 245
+          },
+          "shinR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1039,
+              "y": 648,
+              "width": 111,
+              "height": 238
+            },
+            "frame": "right/shinR",
+            "width": 111,
+            "height": 238
+          },
+          "bootL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 49,
+              "y": 1020,
+              "width": 224,
+              "height": 126
+            },
+            "frame": "right/bootL",
+            "width": 224,
+            "height": 126
+          },
+          "bootR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 359,
+              "y": 1016,
+              "width": 223,
+              "height": 129
+            },
+            "frame": "right/bootR",
+            "width": 223,
+            "height": 129
+          },
+          "closedFace": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 623,
+              "y": 935,
+              "width": 300,
+              "height": 284
+            },
+            "frame": "right/closedFace",
+            "width": 300,
+            "height": 284
+          },
+          "hurtFace": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 936,
+              "y": 935,
+              "width": 300,
+              "height": 284
+            },
+            "frame": "right/hurtFace",
+            "width": 300,
+            "height": 284
+          }
+        }
+      }
+    },
+    "headHeight": 31.5,
+    "upperLegLength": 8.1,
+    "lowerLegLength": 8.1,
+    "stance": 0.27,
+    "stride": 42,
+    "splitUpperLowerFacing": true,
+    "pantsBind": true,
+    "actions": [
+      "idle",
+      "walk",
+      "attack",
+      "action",
+      "hurt",
+      "defeat"
+    ],
+    "originalization": "generated original Kai source; no competitor/Sakura anatomy or weights"
+  }
+}

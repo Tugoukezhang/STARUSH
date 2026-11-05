@@ -1,0 +1,31 @@
+/* AI lettering and existing house materials; values, names and error states remain native. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=venue]{
+ & [data-venue-letter]{display:inline-flex;align-items:center;justify-content:center;min-width:0;font-size:0;line-height:0}
+ & .venue-letter-art{display:block;position:static;inset:auto;width:auto;height:21px;max-width:100%;object-fit:contain;transform:none;pointer-events:none}
+ & .venue-glyph-art{display:block;position:static;inset:auto;width:26px;height:26px;object-fit:contain;transform:none;pointer-events:none}
+ & .product-module-screen[data-venue-studio="266"]{
+  & .pm-room-hotspot{border-image:none;background:#182f34 url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+  & .pm-room-hotspot[aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+  & .pm-room-hotspot .venue-letter-art{height:20px}
+  & .vs-room-identity .venue-letter-art{height:28px}
+  & .sec-venue-edit{border-image:none;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;box-shadow:none}
+  & .sec-venue-edit .venue-letter-art{height:18px}
+  & .sec-venue-dock .pm-prepare{border-image:none;background:#9b3437 url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat;box-shadow:none}
+  & .sec-venue-dock .pm-prepare .venue-letter-art{height:24px}
+ }
+ & dialog[data-venue-sheet=editor]{border-image:none;background:#f4edda url('/art/thin-ui-20261101/panel.webp') center/100% 100% no-repeat;color:#233b40}
+ & dialog[data-venue-sheet=editor] .ui-sheet-title .venue-letter-art{height:25px}
+ & dialog[data-venue-sheet=editor] .vs-group-label .venue-letter-art{height:19px}
+ & dialog[data-venue-sheet=editor] .pm-room-member{border-image:none;background:#f4edda url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+ & dialog[data-venue-sheet=editor] .pm-room-member[aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+ & dialog[data-venue-sheet=editor] .pm-room-program{border-image:none;background:#f4edda url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat}
+ & dialog[data-venue-sheet=editor] .pm-room-program[aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+ & dialog[data-venue-sheet=editor] .pm-command{border-image:none;background:#96363a url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat}
+ & dialog[data-venue-sheet=editor] .pm-command .venue-letter-art{height:24px}
+ & dialog[data-venue-sheet=editor] .pm-room-member [data-ui-letter]{font-size:0;line-height:0}
+ & dialog[data-venue-sheet=editor] .pm-room-member .ui-letter-art{display:block;position:static;width:auto;max-width:100%;height:19px;object-fit:contain;transform:none}
+ & dialog[data-venue-sheet=editor] .pm-room-program .venue-letter-art{height:21px;max-width:100%}
+ & dialog[data-venue-sheet=editor] :is(.pm-room-member,.pm-room-program)>span{color:#223f43!important}
+ & dialog[data-venue-sheet=editor] :is(.pm-room-member,.pm-room-program)[aria-pressed=true]>span{color:#fffcf1!important}
+ & .product-module-screen[data-venue-studio="266"] button.pm-room-hotspot>span{justify-self:start;width:100%;justify-content:flex-start}
+}

@@ -1,0 +1,847 @@
+{
+  "source": "01-美术/team-costume-20261012",
+  "finalArt": false,
+  "humanPaintover": false,
+  "rows": [
+    {
+      "id": "venus",
+      "asset": "public/art/venus-layered-20261006/venus-parts.webp",
+      "atlas": "public/art/venus-layered-20261006/venus-parts.json",
+      "sha": "a37bb6be53528a18ac262d9e72e4f7cc21c2d289359d8c5924063ee1d4370efe",
+      "oldSha": "29bbe67e5e2f6817eb371382710d9741fd62d27f7f0ce9686b6e93564b7f8cfd",
+      "geometrySha": "1ca8d6f672e6b20a8c30f63d49e1402b7272cc87f52f76948abc7324d1aded63",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "a75439d8589671ae53b27ca83007dc892af36466f8996b54362e58fdd1fac0dd",
+      "protectedSha": "0c211a4c4b91612f64abff90eba939584afaafe079242ec2fa488efbfc87aa07",
+      "mask": "W///D2IKIAAevrXKkFqa8KwLIOjF6gDR7gHAGBehEpU8fztdcDBwHABWgF6xjhRV897vnhEVLjkBPKIOCCEI/q1f63NuGhgbLZl5+5/thtsrE4YvziIATEL6xCw/rZuB5u1/pPEDAIXBpLkHAHjcLdyegHvzuFu4vQXcm8fdPO4EmVPy6bMehCNoogWZo9gfz3hoQT/IRJVF+ImCCFzm67nK0g0y0UF+2wgzNy3seQH8Fk36Ib7CzE1NuXuhbhBmbhq9XYHIh5mbPmIBb9Gl/DYpzNyUaFcgyvEwE0l6m6sHsBZ55UpP96gKMu+UvPxuUkHmVvIycNR3/m0bG4DmCDK3siKiMYLMTb7Ht4Ttg6cAQNNHDTD2AaW3JRYylfvAKAKXpm8yBd3cY5RlTQWAz2E4QxWoq4FCZNL9awMQtodx/3I8fmb7FPxjrwratXuH4gk0t/lPOWaUbz7khqqx53sifEn6eELNux7mTvWApVRQmpbfoQrpUPZC1UFseXDq0sM9tleg05RqL+p9syp14ezN7uM31dnH92Tly+vE1vqVw/xQ/gMHY+n1/0P9S4xYOvtfnKJZHqH05r8yiuAiqBuW3v2HkqI5SMYjfRKgQCR7hdZ7AI9B6N0VzC/dAAjzugIGlrIXn3oQDZQylH6ZVLxwffo/pmkZ2eZOnOu3CdA+/X9JrvP2DXZfAFCFTrKC7gsA1IZsh9z/+5d7aCLmN5rFR1ctjyxjZABBJKWbSlKdmZg3I78RclcOTsuDqt3bXEU1A6vkEXK9YKKXD04Zwkh97wDw9Yyf6RK5RW+S3U8DJL0D7osBwN0AYLsRoPHsv5Q/AcDvLbwrvBuBNARQoMDvXb5fW2FhnB/UQpi4tx7svhHY3QWC8T1Tc4FksD+kggAAFcRKcoeZoT+R1gEAgGFnZKQPWU2aAgCQ/ysQDCxj/shmOJ8AID7HnfmX7P9OhuC4lq4JQKLjwzEHMXcJfKCAw9wRGCjAMHcONotAD0wdeTaDwAhMZsPsJmDEj8ZTeekzOQjGWYCwGcBiJkeRzRpgvAz7x1l82WgC+JoBLGbpKjJOA3hlFhfDzhC6CWgbQ9WNbM0AFiV1/5nJ+TMOhawZAEOK1QkYLZFiXAdgFUlGEfjLAii0lNGEPmCN01KyjBC4G7A7MwA2NwG704MbH2npFcp55NfIbG3OB+cVqEYBrjR7pQe2dOBMARwaVF0TUoOAWFkKf8so4EwBHKp0I4EyQA0CaI1IogGYpgCPSh0VMOu8lCYUXQGgogV1jEFMNDALMzuuolq1IQ9OowBerdbNAtMcAGL9jLZUrV8dnKZ5QKAGQE1cAqU5AKSRVIMQ9TSAJsFU1Qa2B20A1Q1WGnu9gqZZAEO31gcG5tApf5hmAQ1ytwAuD/DEkY6m8//Fc35gs9cZaHrrv1sBqxKBpnf+UWTckx8QiKZ3/VeUPHXVcHrXv0qoOI1RwBQ0feSPGOqx8fSBP2OpvwbUB/43TL8z9Yl/WQ9Yn/hr7eDXknCRvyI3AqD2ZX8WeBjz4l9ITHc3CpD2Zb8X+PJhcP1/v5lL943XsgQBz/BfC3tltQ3F0/OKHuy4B/BGdk6bksm+ZCHYhSY/9LV1mkUnAmFy+Qjrk/iAtz2VF3yxewAwiR8A/BoAeoPrtiDgPp93/JZ7zgkQaL9NgJ987Nf/JcTD69l/0igYAeD4LiB1gFQEACAKkL1glsYPADQBDO7IDSrfC8RJElDxXf/uIOkJAcAiwD/pueD2/cC+CQAn3PrfLv6BkJl1lYEO2RigtrAJWOk5NseGrmBzZroD0HT8USOeZvaCJdA1BqDtrU2w8R814hu3ZtewKkIQuxiwbeSjx1mN3ALNWWWxcXUR4L8POAwz6yYYrEQNAWQnKDvYHGfiLv7m0tpesBoMULZvg9NDANgV+hHOnXda+4DLo7dZjd6oSaOcBQ+mEcBr0569iwFxyxgKTBcB/kNl313w7jWkRgHlPlAJu8uP54INSSOAt/DxsmANEJwOIKPUDwLQgj4YCcAqpaE4M0SS7iUOtMsN6t7uauCTWgT4aw7690ppJq4OMFUlNwLlknQTQ9KTALJtQDn6FaTAlYeLm3cMsKj82zANAOQni75oH+/0gIJYVIauWuWvHJH0+r+KagTeJrCXx6k6++9DsLeQbBAWxdUHdiK7Ke8fftdB/jGoBgFvJ+JcyVea/xpQ7wBs1AGdkP6jz4YaZQGqdwB+7bAvyP7ZN0OwiRdXHwCsd4cDuT86QqDSdtg89S+7uR0aBehEwigDSP323+MyYHjAc2VxGKuB4JIL/uQZC4HRADD12f82wCZAtQscwdqy/AmorwDIDf+1KaQALnkiINfRNAOI2bJd/lQxnQ8pBwD+MGLbx4OHRgh4fk7xF+e2hIjvxNQFBLjMjLvVoN43pWLZoD+TUZnc43eBKt8aABQ55NrmmW3AnXA6XafVA28SUGA3U75zu2nyIDfDDrhFnqvj+3hAza8II+RFne5ZRcPr6p0Z7xE6WAbwtG0MAcqn/u15rM7iYqnkkXJTh2wGzqTvwNRl9MB3yzznaGuD8/WkfwrHKSDKvrtwzeMpegOw1zRwGO8XjpDs3wTAMQIA0isIAKAY9i8uA/gkoJDkngQYEvuBL8yt/K+JzTIV9DdPkhyw6wAFGjkNwUmQs8HjHMDQiUPBmRBw2wQIPW83jAE2JfCCuA7I2BzgYCzeb/4RdA5wLOAtAjppi/CyP1tPOeQAiOMBRWnlLcsBDicCDoDjAJgtIp0EyDPWAv4mE2qUgQxaIAVAiHRSwEGQMQsg1EkBRwE8NwG3EHMW2OHYiynPvGKshKqAdQMFPQ5OiTV80PMCAZZWJr3XTa7CDAvB2cl0BayVYc5ePn9VFMAaQ96zWEFmqqrLa2VRNX4agJnRv+2CwlVjALlK6df2UE0BEmZR76gaBNQGtlqdpxkAYlWGZKcGowDcBZjqRmitrUOpJIN/UN294aZ9+aAvREYp6Krf4x8oXgKga8PTJACwrH81n/kmIMs0aNdZVhFgMM0ADKr1kYUyS4MMILEM6e2FT4yjU5VyziBeWoZsUmDRt7LecE9BNmkgAVhoDtnxGIlK0hQgcZJYw96EskmDiwB4/UfdJsTSmwCYOvduQv7oLABh9vhbXJhi9ADM3iSgY3KvEZ7eCbi5Q7Gi6JoFIHRWI38buKsAJhLS/HfRmgKw9B+v6tnzNQuIfbnfwjUPuNkHal8E0CYREFATAYM7r8SFpmONTMV3DDy378BYb8S+C/pc2LF3lSAgHvbd7a6lShRoAth/GqBpFysFBdQ+9y/vVwgwdyOcmsiACXoXJPIStOonXK66NziAD8/Ie1GgLOol4HWd4EFCInq+EwFDiSc8K+C+U4HNFwKqwOaZAHzupwFktL4zoYSIsl5uXDOokEEf2F2g4BuXl9zE9FGn/xsl5NDGerjnrsAlFULzGADoXhPXMtAUpMoDAEsUeeTOAqhAgv5iRT/NHQC4FiBNkhAA",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "torso",
+          "frame": {
+            "x": 262,
+            "y": 6,
+            "w": 116,
+            "h": 99
+          },
+          "changed": 4306
+        },
+        {
+          "direction": "down",
+          "name": "skirt",
+          "frame": {
+            "x": 390,
+            "y": 6,
+            "w": 116,
+            "h": 75
+          },
+          "changed": 5987
+        },
+        {
+          "direction": "left",
+          "name": "torso",
+          "frame": {
+            "x": 262,
+            "y": 262,
+            "w": 80,
+            "h": 116
+          },
+          "changed": 3720
+        },
+        {
+          "direction": "left",
+          "name": "skirt",
+          "frame": {
+            "x": 390,
+            "y": 262,
+            "w": 116,
+            "h": 94
+          },
+          "changed": 7142
+        },
+        {
+          "direction": "up",
+          "name": "torso",
+          "frame": {
+            "x": 262,
+            "y": 518,
+            "w": 116,
+            "h": 88
+          },
+          "changed": 5552
+        },
+        {
+          "direction": "up",
+          "name": "skirt",
+          "frame": {
+            "x": 390,
+            "y": 518,
+            "w": 116,
+            "h": 74
+          },
+          "changed": 5889
+        },
+        {
+          "direction": "right",
+          "name": "torso",
+          "frame": {
+            "x": 262,
+            "y": 774,
+            "w": 116,
+            "h": 115
+          },
+          "changed": 6087
+        },
+        {
+          "direction": "right",
+          "name": "skirt",
+          "frame": {
+            "x": 390,
+            "y": 774,
+            "w": 116,
+            "h": 80
+          },
+          "changed": 6191
+        }
+      ]
+    },
+    {
+      "id": "venus",
+      "asset": "public/art/team-oblique-20261007/venus-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/venus-oblique.json",
+      "sha": "115bfa9af8b6c41a9df53dd1de759c226b9df1e31a94356186615273f8ed2b04",
+      "oldSha": "aad8eaeb94e4b4dcf5e6ff12bcb8666f9980bebe36b5af957d9a905cc6761482",
+      "geometrySha": "4b47dafcc565c34d3f8a55cdb5cebf8783ac419d60e39177d7a0f5199a86206e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "e548c34afe57829910ce57dc5423b111254afac8d32688d21980f37a1d866190",
+      "protectedSha": "f24419a45b7f7a85efdbf856c117916f4c190ae6c6f7d6d4a5d5f31fbbb6d4cf",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 96,
+            "h": 104
+          },
+          "changed": 3364
+        },
+        {
+          "direction": "down-left",
+          "name": "skirt",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 104,
+            "h": 76
+          },
+          "changed": 5085
+        },
+        {
+          "direction": "down-right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 228,
+            "w": 100,
+            "h": 104
+          },
+          "changed": 3693
+        },
+        {
+          "direction": "down-right",
+          "name": "skirt",
+          "frame": {
+            "x": 340,
+            "y": 228,
+            "w": 104,
+            "h": 76
+          },
+          "changed": 4995
+        },
+        {
+          "direction": "up-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 452,
+            "w": 100,
+            "h": 104
+          },
+          "changed": 5091
+        },
+        {
+          "direction": "up-left",
+          "name": "skirt",
+          "frame": {
+            "x": 340,
+            "y": 452,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 6550
+        },
+        {
+          "direction": "up-right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 676,
+            "w": 103,
+            "h": 104
+          },
+          "changed": 5129
+        },
+        {
+          "direction": "up-right",
+          "name": "skirt",
+          "frame": {
+            "x": 340,
+            "y": 676,
+            "w": 104,
+            "h": 100
+          },
+          "changed": 6683
+        }
+      ]
+    },
+    {
+      "id": "genya",
+      "asset": "public/art/genya-layered-20261006/genya-parts.webp",
+      "atlas": "public/art/genya-layered-20261006/genya-parts.json",
+      "sha": "e590bc823f2834423d8625a9fe541bec9325ca64bb3199d147874b0824bf881c",
+      "oldSha": "6004067b54d2a1341552aa34e039c6e688865647248534f0dab0e188bbe362f2",
+      "geometrySha": "02721d78c3cb21e16c1279e5bca3aff4dd07cd0334df6868f1c9c87c2bc821b7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "23913d7e2d0cc97757694f3c030801f2121614c6181feac5b28be8bf8a7167d9",
+      "protectedSha": "24a505ae88864521b3ba284b2402f3622602eae0c375e35a96a4c7ab59fa23e2",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 104,
+            "h": 78
+          },
+          "changed": 4994
+        },
+        {
+          "direction": "down",
+          "name": "skirt",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 104,
+            "h": 64
+          },
+          "changed": 4764
+        },
+        {
+          "direction": "left",
+          "name": "torso",
+          "frame": {
+            "x": 452,
+            "y": 228,
+            "w": 104,
+            "h": 102
+          },
+          "changed": 6341
+        },
+        {
+          "direction": "left",
+          "name": "skirt",
+          "frame": {
+            "x": 564,
+            "y": 228,
+            "w": 104,
+            "h": 68
+          },
+          "changed": 4968
+        },
+        {
+          "direction": "up",
+          "name": "torso",
+          "frame": {
+            "x": 676,
+            "y": 452,
+            "w": 104,
+            "h": 71
+          },
+          "changed": 4673
+        },
+        {
+          "direction": "up",
+          "name": "skirt",
+          "frame": {
+            "x": 788,
+            "y": 452,
+            "w": 104,
+            "h": 70
+          },
+          "changed": 5262
+        },
+        {
+          "direction": "right",
+          "name": "torso",
+          "frame": {
+            "x": 4,
+            "y": 788,
+            "w": 97,
+            "h": 104
+          },
+          "changed": 6214
+        },
+        {
+          "direction": "right",
+          "name": "skirt",
+          "frame": {
+            "x": 116,
+            "y": 788,
+            "w": 104,
+            "h": 67
+          },
+          "changed": 4949
+        }
+      ]
+    },
+    {
+      "id": "genya",
+      "asset": "public/art/team-oblique-20261007/genya-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/genya-oblique.json",
+      "sha": "2006b0f503074801e0b0acda2898b2c0929bc6c89a2e1c223a9944a327941185",
+      "oldSha": "1b6cd5e74b42d9850840a398a6df8933a8aa6b754bd15f2f53d24c0394f26e1d",
+      "geometrySha": "92cb15c32ceb1f3cbfd9f05506c034c6c73af49d5b26b4c150bcc21d637287bd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "08acd546b63e0f3183d343e993444515423d9810f497c2cbbb63d5a79db73d5b",
+      "protectedSha": "585fa5869a7a8ea15ce2b62744adcada88b8b74fdc33b4a1d6156d813501db58",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 78,
+            "h": 104
+          },
+          "changed": 4924
+        },
+        {
+          "direction": "down-left",
+          "name": "skirt",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 104,
+            "h": 90
+          },
+          "changed": 6172
+        },
+        {
+          "direction": "down-right",
+          "name": "torso",
+          "frame": {
+            "x": 452,
+            "y": 228,
+            "w": 84,
+            "h": 104
+          },
+          "changed": 5128
+        },
+        {
+          "direction": "down-right",
+          "name": "skirt",
+          "frame": {
+            "x": 564,
+            "y": 228,
+            "w": 104,
+            "h": 88
+          },
+          "changed": 5899
+        },
+        {
+          "direction": "up-left",
+          "name": "torso",
+          "frame": {
+            "x": 676,
+            "y": 452,
+            "w": 94,
+            "h": 104
+          },
+          "changed": 6267
+        },
+        {
+          "direction": "up-left",
+          "name": "skirt",
+          "frame": {
+            "x": 788,
+            "y": 452,
+            "w": 104,
+            "h": 82
+          },
+          "changed": 5377
+        },
+        {
+          "direction": "up-right",
+          "name": "torso",
+          "frame": {
+            "x": 4,
+            "y": 788,
+            "w": 87,
+            "h": 104
+          },
+          "changed": 5937
+        },
+        {
+          "direction": "up-right",
+          "name": "skirt",
+          "frame": {
+            "x": 116,
+            "y": 788,
+            "w": 104,
+            "h": 83
+          },
+          "changed": 5515
+        }
+      ]
+    },
+    {
+      "id": "kai",
+      "asset": "public/art/kai-layered-20261006/kai-parts.webp",
+      "atlas": "public/art/kai-layered-20261006/kai-parts.json",
+      "sha": "ba44c4f52d8aaeab094fc8c84dc7c857afb999719afe7ec17b8edf412507e6b1",
+      "oldSha": "80fa471ba7ce135f2ba84cf9751682dd2d9411872b6e413ee78616dfd8ba0ea8",
+      "geometrySha": "c2c3a4ce890026eba01d0dfcd858f84cebb5da4b5a9184f085fd0a92b64b1aae",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "037958f125b3420e1d63747f3f99faa6f134a0124a16ad2d7f804ba99f48ef24",
+      "protectedSha": "6c00adeb1a3178ce8773df2aea2da89f6d5a1b32efde0b803204d23f933b5577",
+      "mask": "W///D34KIAD+v5b95M8gNMJjzMYfksJSPtnosSJOQ3YIaZLVPVN13mvCfa0a1MiVK7+k8GpBYDlLkBPl9aK6OZRVjQQA5bIb5Y5Sgtu6/0ZpXevJnWoCAkBQK7lV7pjuM33hHmoDAcBAWesDAECR5wcv+xa+CBkdSqvHAADIu9wzZ7b/wZ39MpDOT0MC8Fzfcw8AgtCiT1mbh7BeqBkAAKGd6PZHgTinGgAAYFSLrX5nROkbvSNoh9wDdvbDpQbkXH+QrG8DACgrwoifUSrIAACKyuV3XQsMtx+geIK//OywvLITVu1g7t6VqLzc/e6N/yHdIXe23G24l9w23Gu523AvuW2413K35V5yv7E7KDfQvdMf3if6123A+0z/6I7oXugHd3DeB4CA7p3++H7+De4EcGsY5eK0vq9S+b8EAPIGhADc+i4n5g4o6G1JGF2I6ycYnt8NjZDYbQzILGhneLzNDjsAUOmlO+TOnrsAoHQH3MYE5avq2qfLfQNRbJepId7rP4cRw370XvELtDPMrJe3yRqFO0lF71Y/codDDd61/sC9h19q9fk1E94igtrvnERt/A8QAABQ5GXh7+L+SC0RQpAq+VVeBAipHgAAwZ3k9jBXvAMA9CN57gCASD3Xb16Ctt//llLc3u7f3OXqQX8m/Rd07/T3jzmuZ4LKPgQ+CAAk0NewuLEfAJyPP6FcPJHNcMjOjW5p5f483/Zf5je8Q8N9ttxtuNcBCACErp47AKByh9zJgwcAbLJhl2qj6QbpxpXXACS99u2+F3SH9W6Q/9UNQHIn3fY22kZa1Ya0OTQAmMc7DXdAQXVLo7iB+Gzyj5kI+W6/R9EWv/nKugIHQKUPCIJYlTtedABgUQtpBxoASySwLpcVdMvZXv8XipR00VqwYgAABHQ6CwCAVQMAIJzTVwAArBwEAMGclrvRQAKBtLQwt0A6PzdE+6CcAycYl/rRbWbGAVRusHHQP3QVAgC/UwDIw839gz32zoNuwZ7r433NE732A6DSK3dMAWiX3YYBwIZ7XXcAQHQP+KXofum9YAuc60dqReEGuR9741Vu+PqrewFAgHfX3+Z4l798tjB4ud6RsAOEb1OhWOMHxxroxxK70fGQu9KHBaFrVu547gGAFfcCILF0PsGCYIU7hxHBC/3kNrfE2SE/Zyn1WFjOEXe4OSDAWNrzL896/RO6nS9mRbcFhrGjflgqQ/eE7pkRteYoY0f9LsPfuSJ2nd/0V3nLbsMRSCcYe55/eHuIpDe2O4E/ZoXsVX7YCqK00y9b7wo/ZsTsbf7JTdLe5E9PIQAQpnf5jdweZikPae/yO7mNFcLRo37GYTO7LSugfcx/MhO0j/kTuT30Oh7QvtTY9BcAAEU0RQG06/x5idp5ftONh26LtKf5XeWGoNu2+cE7gnufn/MeAMju78un2eWQX5ZS/PY01AQuF1Z7Gl63pvTd35A5+hc/CACSy8aj+kUqU1d4Ar/gL0HeDep3u+OBAg==",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 94,
+            "h": 104
+          },
+          "changed": 6662
+        },
+        {
+          "direction": "down",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 104,
+            "h": 65
+          },
+          "changed": 5652
+        },
+        {
+          "direction": "left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 228,
+            "w": 77,
+            "h": 104
+          },
+          "changed": 5007
+        },
+        {
+          "direction": "left",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 228,
+            "w": 104,
+            "h": 67
+          },
+          "changed": 5997
+        },
+        {
+          "direction": "up",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 452,
+            "w": 85,
+            "h": 104
+          },
+          "changed": 6566
+        },
+        {
+          "direction": "up",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 452,
+            "w": 104,
+            "h": 63
+          },
+          "changed": 5632
+        },
+        {
+          "direction": "right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 676,
+            "w": 72,
+            "h": 104
+          },
+          "changed": 5014
+        },
+        {
+          "direction": "right",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 676,
+            "w": 104,
+            "h": 103
+          },
+          "changed": 9474
+        }
+      ]
+    },
+    {
+      "id": "kai",
+      "asset": "public/art/team-oblique-20261007/kai-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/kai-oblique.json",
+      "sha": "91ae3d7007c28bd41cd074779637aec5f1ecc44477a9e77289177441d5734e24",
+      "oldSha": "61abbe97751c6111debacc02a4b388eab625ba86b388f7d7efc2e45f682b8640",
+      "geometrySha": "3115c71fdac0ff5a58485e559bfb794e09a40e912322cd01e9cfa2f05b5880e9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "e3742e98c41f900ea535aed43f54bbd54bc9c835b7f317710fe50de52a783f50",
+      "protectedSha": "4dc6ca1dd31158d434a95977e302532eefc20b000ca039387ca0b1e10165ce04",
+      "mask": "W///D2IKIAD+X5efvGVYFsCPeJrTGupdfGkUyLc66YAlgC0L4Nz+0rFnVrrvpfQ2IDJVyYR0LI6za+OmnlIBYL5ihRnLSOmDgvPF9aHAuQJ79YL2DwJe2Q4AnAe4rzV3AUDbP+CVql5ua2wP0e0DytNcT/X3ZYBXME4HkL5x3UrfiwBzCKbWSoYAIBANVXxpuacLYKrUV+NhjmdVgap1fgBA/UXr82Dqlty1D6LGkF+IfvB7FkD1i18LG3KwOu4AQIO1vdGZ0NSaOwBgwJZ3TI4AUO2v2Z3Ryo1wRTeWe9B9FiCvqqRBd/Bfzz0AKHzvA8R9VReeewAQdF8EuBk2Jhx+EpCzA4Dd9wEytbzOwAul/ChQnrR9Nt/T+yImho7+hN73+7xcRjgIaJ3G0vUTgbF/FMQO4HFXINQBdIvIPNavPuwBkrED4A0padoLEBKXml2AImvJ2QU48hWbXQAsc8FpdwlPnwTI8WTAY2kfgElbxGYCyawtAxwEQLQPcJU7ZG6tTAcAXmJr7Bqi2weRp7n+LkneTCC40qsVz9+43HaY8Ide0BHor1Pl12FA1AG9pc4BAEjAUk4Qpf0AudwhAEuYtj6lOzSV+drf6E5gajbKcOxvSH5WMWM6jjsAEEMhLDVMsactnQ6FpZJboz+rHEotKCilcdwBgNxBq6SpuQMABuzqAwB5gHSDrroHAApvFiU8UA/AtJUk7GmAFFVYWAWQR2Q0rBL8VlvRyjCylCd8IJbzAAx28YE4YkQPNsBSnnwwAR6HCR5bDDcOQc0PBDrBWDgQvHRqSckFAoWc89cMZrcKMP+BE7BD6IyGz1wAnBJ3VoHN5aRju4xJXfU9gNDs+gdpiPipAiAou/5opmI8CfDA2fmXsxKykwO0WVoJAAAOAqQ75K7lf6krubX/o7llqNdr690F0gBPuEe4Y6GbBnTXv9A1GXGbBmwld8N/IJdVCjK3oFuLARK61PwBAKUX4b2QizRAK/crvggKvRbdDUTFAd0sAEO3QTjuAQC8CAAAsgdyXwNY/JB7ldw6CgBAlDSSH/8bAIjRH+UOfnOA0+0HAArflasAAFSHg94coLT8i96LAMivrQ8hjekO6UZ4H+BCDoCWQVRO8PYewGnI3AzAjy50X/37zcUSue/9L2rJZPnhIMxjR4TQSZfup76nhO8ff42M1pDM7dsU1+Ex9ADgSwRbfq7/pMAVO81/LZHWboUeoLHzW4DPQ0z+ykcPDxk+9b8rAyQBGHVnwn3wAACABwHEDR9AAChvqxcQABS3YtTrtZF72Zc7yAGyyKV3d5gOkMVUuvPBbkwGvJyPAKDYK7YCHXEAID26wHSAquiu8AO9y6ii1xf2oXKDvYLfBnO7ATL2NdzhuAMAGACtbwI0AOjeBcjiHw3uhuFexx0ASPgv4iILIMitDwIAhHfVUqiQJlzTO447ABBbId43AJBg6Gsp3AhCX0s6hn+EG8INZx8AAErvAtQqovZBQNpE2D4JSHvI21cBkZeHCGD5r+AiO08IYOa/AowsnXmll+bDIiTTOvMlJKf/k7OJjAOgEwDCNNec/REQnMkuauzb1nTnAQE=",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 78,
+            "h": 104
+          },
+          "changed": 4772
+        },
+        {
+          "direction": "down-left",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 82,
+            "h": 104
+          },
+          "changed": 6745
+        },
+        {
+          "direction": "down-right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 228,
+            "w": 72,
+            "h": 104
+          },
+          "changed": 4524
+        },
+        {
+          "direction": "down-right",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 228,
+            "w": 97,
+            "h": 104
+          },
+          "changed": 7605
+        },
+        {
+          "direction": "up-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 452,
+            "w": 70,
+            "h": 104
+          },
+          "changed": 4735
+        },
+        {
+          "direction": "up-left",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 452,
+            "w": 96,
+            "h": 104
+          },
+          "changed": 7622
+        },
+        {
+          "direction": "up-right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 676,
+            "w": 76,
+            "h": 104
+          },
+          "changed": 4785
+        },
+        {
+          "direction": "up-right",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 676,
+            "w": 101,
+            "h": 104
+          },
+          "changed": 8167
+        }
+      ]
+    },
+    {
+      "id": "enjo",
+      "asset": "public/art/enjo-layered-20261007/enjo-parts.webp",
+      "atlas": "public/art/enjo-layered-20261007/enjo-parts.json",
+      "sha": "8248a1a2d017f8728769d12ecdbb4bf477ffc9bbc53db377cbbad2f9c9f7522b",
+      "oldSha": "f7dcd8fdd1001349f139c30eab24d591d5aed7d7ab6b5992daa7c51ffd0ae4d3",
+      "geometrySha": "ad6824d5523e2e0c864408a58da885f7d43ebdc4268a04d70710b65f1b64c712",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "48f67e43c7dd867ad2ecbbfb954f3def3386b42fe93ba007d9421819fdf7a7d2",
+      "protectedSha": "20c2468db65ab9ec3ceb0d65ff752139343663ff2aa38046cf45f4950181f2ae",
+      "mask": "W///D34KIAD+qSVOpxsRZ0qnKs1gSz/pU1cFJEIjTBDe7t3M+//IbKEtrrSTyJPxEihZrp2knCivV82B1owEAI9xVQ5LO8vnGr/h/uHcA4Aq6y5y49wLABruITeFgyIdoxzlvLWlm3UPAHhfVN+S4tYv+zcUvPrIbCfw6TP/EQnApz+EiCicqP9sHBaeXeHniPkPAGr6jFtl3gcAqL0BzoqAerYBQGJgml/QBuVuDfdBudNwD7kpERRhabgXuWm3p+Fezh0AoORe1h0AGOin3REGR+CtcA10z/Rv3gMAyL3aj7F9zswChtAdcO4bkYV8Vkv/QfyAeDG25d+1Q94Nv5XFNP/sPgLvsqCmz2A5uV/43urXyTb87g3g/gB0PA9Gh6W3G2pH8RuMOwASn070cwDKqQrglMA6hRHgO50RcDudMbTbJzOKgvuavmYAABRagzcYACAr7joA4LIcI4q5TE84zMsQm4y73vSBunn+MoCBl8BsmbltfXFAtlr7Mlik6KpAB601y2GnaZ4AHD6uNQQIw8m8IERXa811A/QWANd8wwdd7TXdBmEvtbFCeUH7+t6IiYUAAEAmDgIAAJov+QF7K+Hfzc9eA/N2tnl7AADnHwD08zvvAADnHgCA5+NsYQwAAANvUO7k/oVd7L8AQKGb0D3Nn/kHAOb5r3sTAAze+/v4TTf4phuackP1rTRuND/xLt7hDoiATmoYJ8DrJMeB6vKF+DHIzvJHAC9nxCn7lQM1PVYJj3LI93vOugBAuL++4fabpDauUT1AOZcKFKRrbJ32hCl/1KnLz4MwlpihH4Ac4iZIAK17AQIA1OIEBACK2lR1BwAI2pvebgYAAIDrHiAAALlgG/Uuco/zs/ADAPuFenltPh4wX/AOxUL+S8Ce66/h/r3PyVfaFgSG+i39hnuUQIVaigIhLeSm5F7o7uhn90B/7b7Rj94dANjoP3KD7oF+i6m92R/PEq4jYEIL1/m+I7zjXVxI2At94cUUki+gLG9f+krXQ4Lc9f6cYLwscHN6aRcf15hxAGCmv2k2PCbhUOrndBzZNTsMC9Ifg2MHGLNPNjaykxtI13Cd5pCehdq1vXMfAG5Zd5E7WHcBAHUw1s/sAgC8gnEdV2xMXfbirZ7n1mvIt79mFFnF2an+ywBtLWQz/eXXAqSyDQBUTBgIAADIMUIPxmb6US8AAHj9AQAoyIWdpnOm31UD1syW6f9jg7OF/kNvwGlyA48N0F50dCIjn33FsRgCrhkEGKEfAm52g0cA5bP9shxo6+ts0+6IgYw/AVqDd86/0O4uBbL+B7sdtSbd0QJD/aw2ANDX7wUAACMtZiAAgLPUBgKAUJb6AAAQyAZBQCbL7QAAQCGbtPvLuQMANNy7ICC3pplaQHcZAF5574fzfzow28F/FCT31Z8fNB6qFwIGD9U/GTYWqVPGOx6I",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 97,
+            "h": 104
+          },
+          "changed": 6984
+        },
+        {
+          "direction": "down",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 104,
+            "h": 34
+          },
+          "changed": 3060
+        },
+        {
+          "direction": "left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 228,
+            "w": 72,
+            "h": 104
+          },
+          "changed": 5005
+        },
+        {
+          "direction": "left",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 228,
+            "w": 104,
+            "h": 41
+          },
+          "changed": 2985
+        },
+        {
+          "direction": "up",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 452,
+            "w": 84,
+            "h": 104
+          },
+          "changed": 6094
+        },
+        {
+          "direction": "up",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 452,
+            "w": 104,
+            "h": 31
+          },
+          "changed": 2577
+        },
+        {
+          "direction": "right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 676,
+            "w": 94,
+            "h": 104
+          },
+          "changed": 6489
+        },
+        {
+          "direction": "right",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 676,
+            "w": 104,
+            "h": 49
+          },
+          "changed": 4517
+        }
+      ]
+    },
+    {
+      "id": "enjo",
+      "asset": "public/art/team-oblique-20261007/enjo-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/enjo-oblique.json",
+      "sha": "5e71ac074336a184c12dc1a6ecf57562d8f965e883df5feb391ea952c139bd16",
+      "oldSha": "9b5afd2941c39aa25aef8c8fb386b92530c2d0eb54e40521728a40bec7214a90",
+      "geometrySha": "28d6fe575a6594adbe3a1d3d1a498664b9c1d41532e93cb7f65ecf8abe711c20",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alphaSha": "1e29f22794aca4478f34e168fe615e5f37934b351f3b3501315dd787a732f476",
+      "protectedSha": "85cbf9a4987126ac057280eb694b63f92ad352a4aa7a4671946c3d0a1097ffee",
+      "mask": "W///D2IKIAAev2VK7VSUF4IDUHhpncBaIfa4yO7Q0ACaxTCchWLNvvelPaCdtIEHDy48uBwGKtZ0BySNxPD4YoNUTiwfEQAupzci0wmSOi9YHlzHj6F2PvApzI4fgu3xQ7AdW5YwK64ZSq8PCNzzgIK7AHAI3UVu0A1OlwFWmS7iIyF63Wl+LGTuIsAbDjnpmFyLHcaaT72tfgMVUnvjA+QFM4Gu8ToLGIrpzohQwQAAKOIhSJCnAjUAUKNBREWMgnsAQCeC6jIASXBbBlDPhba1gHRB2lcBFgO/7wKunrmMA4NtKvFzvG2czCvOHnLes/9GLtAcs88Ceprgkj89STA2ED1GQBPOgDPyJu9b2oGvXJ+0A+QauJyh5rZ3Sex/Bcy1bk0I2Fn+XhrwVsCxG4Dmy27aD3DzoQbg/xYXNsBv8eG5CwAu4lIBYACgsE3js/j93RLcNfRowe9vN4ezdWAXYBZg2wO6KwF+sKM7dlcCvrrcCRwGyvfoV4rEpe8LNgKK3BFcCCDJGDXKAJ3gMDSAEoD3wvokHBf/PR7A+gDjwv8pXrE+wHjOfwkhcI0/tn4aR/9FD3BQbm4I6waimx1NGmC3PhyGNgDeDAmgG/+zIhBvBHSMHRwNACALMLFdwV0ASOgucgeQso7pwXgzcpdTedInH4/rpE8nbFcBbnWHXRR52BoAh68AAFAsCAAKdkHPCbcGwOMoBAC+ZAAAFC495YnGVfIOAKgYAgBQ4CTemgCyEmD7DkBq4K353wkDXoSJu9lRAN4oDHj5naV3CS6NwaQlkGZkhWmHgGJ+S+JGvaYDAgr4NjODhQAXkBsBGTIHM8RjF/sf6GK4E7lHE4CAK1TczwMcHdO74B9r4AZcP/sAXi8D4Nu5AABAFhBtqeQOAFCne5H7NQAi9zcB2v+pAXTNgE/azwi6deSrCHBfA2xfwTgV1+DQY4AzajJX6gAkTv1pRJpAjdi9DOCS0/sFfjfAIj187z9JAECwAVAuJhsA5wfzy/yRZuIXDP90MaB3nZ67kgckVP9t4dBthkjr6Q4DczOkWDWkhtxZQMEAACi2Bs9dAKBoAABcBUhWV5YOALqWTAI3cPrWdK67AHCLtb0uSFsAQBG0ff1/PdDW+I/1AFvrf1EEbU2PIVP6naDPIdAIYnv/phOC5sK4NLRvBLzobgTIvjsAkAWQuxEwG+/dAI/pbgUkLoAAELvcCbrBApgFYK4jdxkgGyALIG5wAgAAgAu56Qoo3GK5U3GPJQBq6XBP6C5yQ246Boqzg+WONbAFELSA29P7YBzBFKgBbLn7uE287Qr8dMDbeKAs6EXuSV++a4DAi534k5R2+q+RPft3/HHI3Qj47WWIGkD3ICdagAe9RYBOEqV76IQsI41/fnei7wQQ6LkbvsjdM7rWH893w4EJx+Ka/h5GHpCI3M5gSN72cBKwOhuouL9Y7kPFPW7BAABdKUwTAGnJVNliApitCWx9i4JaWhWuU5Ue/IQAgLp07H/+l/b/JsCaD9G5QFsASBmsPQAo1QRrGx64ImBrdyyZAdK9fYEiOHvsz6getu7SGxYAITfAZ4ZhYAMoHdtgtw0A+e4BAKa7EYChe/ACBACH29D5nwHbfwruAEAq7iE3FfeQm3p7ugcCWVx3AwB0VwFgN+iuAuy8CwCA2wwQX7hnFgC3VkC4Z8dryHU8ELpb/4nensFtaX+5l7VAXTNAlF9z38MF2wBWm1htBoRr54xgbxXA00Jn+2AD9sjxjkAY3gcCxvA8EFduioTit/peFJDu7RNdXHkA",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 4,
+            "w": 77,
+            "h": 104
+          },
+          "changed": 5017
+        },
+        {
+          "direction": "down-left",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 4,
+            "w": 104,
+            "h": 63
+          },
+          "changed": 4902
+        },
+        {
+          "direction": "down-right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 228,
+            "w": 81,
+            "h": 104
+          },
+          "changed": 5310
+        },
+        {
+          "direction": "down-right",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 228,
+            "w": 104,
+            "h": 62
+          },
+          "changed": 4795
+        },
+        {
+          "direction": "up-left",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 452,
+            "w": 87,
+            "h": 104
+          },
+          "changed": 5801
+        },
+        {
+          "direction": "up-left",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 452,
+            "w": 104,
+            "h": 36
+          },
+          "changed": 2957
+        },
+        {
+          "direction": "up-right",
+          "name": "torso",
+          "frame": {
+            "x": 228,
+            "y": 676,
+            "w": 91,
+            "h": 104
+          },
+          "changed": 6116
+        },
+        {
+          "direction": "up-right",
+          "name": "pelvis",
+          "frame": {
+            "x": 340,
+            "y": 676,
+            "w": 104,
+            "h": 42
+          },
+          "changed": 3507
+        }
+      ]
+    }
+  ]
+}

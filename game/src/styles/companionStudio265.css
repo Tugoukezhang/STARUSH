@@ -1,0 +1,55 @@
+/* B265 companion studio: full room + rig untouched; one paper dialogue dock stacked in flow at the bottom.
+   Scoped to the lounge screen marker so older owner/hierarchy skins cannot double-decorate it. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=lounge] .product-module-screen[data-companion-studio="265"] {
+ --studio-ink:#24343a;--studio-accent:#0f6f86;--studio-tab:#d9475f;
+ display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:0 10px 8px;
+ /* Scene stays absolute behind the stack; its thigh-up geometry and canvas hit testing are unchanged. */
+ & .pm-scene {z-index:0;}
+ & .pm-dialogue,& .pm-choices,& .pm-save-status {position:relative;inset:auto;z-index:4;}
+ /* Paper speech dock: name tab + native line. Grows with text, scrolls only past a viewport-relative cap. */
+ & .pm-dialogue {left:auto;right:auto;bottom:auto;display:block;min-height:0;max-height:none;margin:0;padding:22px 16px 12px;border:0;border-radius:0;
+  background:url('/art/companion-studio-20261101/dialogue.webp') center/100% 100% no-repeat;color:var(--studio-ink);box-shadow:none;overflow:visible;}
+ & .pm-dialogue-heading {position:absolute;left:14px;top:-10px;display:flex;align-items:center;gap:6px;height:26px;min-height:26px;margin:0;padding:0 10px 0 4px;border-radius:13px;background:var(--studio-tab);}
+ & .pm-dialogue .pm-speaker {color:#fff;font-size:13px;line-height:18px;font-weight:800;}
+ & .pm-speaker-avatar {width:20px;height:20px;border-radius:50%;overflow:hidden;}
+ /* Saved visits/topic live in the record drawer; the band only speaks. */
+ & .pm-dialogue-heading .pm-ledger {display:none;}
+ & .pm-dialogue .pm-response {display:block;max-height:min(132px,22dvh);margin:0;overflow-y:auto;overscroll-behavior:contain;
+  color:var(--studio-ink);font-size:15px;line-height:23px;font-weight:500;white-space:normal;overflow-wrap:anywhere;text-shadow:none;}
+ /* One contextual row: topics, or the open question's return + two replies. */
+ & .pm-choices {left:auto;right:auto;bottom:auto;height:auto;margin:0;padding:0;background:none;}
+ & .pm-topics {position:static;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0;background:none;}
+ & button.pm-topic {display:flex;align-items:center;justify-content:center;gap:4px;width:auto;height:48px;min-height:48px;margin:0;padding:4px 6px;border:0;border-radius:24px;background:#fffdf6;box-shadow:0 1px 0 #0003;color:var(--studio-ink);}
+ & button.pm-topic[aria-pressed=true] {box-shadow:inset 0 -3px var(--studio-tab),0 1px 0 #0003;}
+ & button.pm-topic:disabled {opacity:.55;}
+ /* Generated glyph + wordmark are the visible label; the native label stays as the sr text. */
+ & button.pm-topic[data-companion-glyph] img:first-of-type {flex:none;width:28px;height:28px;object-fit:contain;}
+ & button.pm-topic[data-companion-letter] img:last-of-type {flex:0 1 auto;min-width:0;height:22px;max-width:70%;object-fit:contain;}
+ & .pm-question {position:static;display:grid;grid-template-columns:44px minmax(0,1fr);align-items:stretch;gap:8px;height:auto;padding:0;background:none;}
+ & button.pm-question-back {width:44px;min-width:44px;min-height:48px;height:auto;margin:0;padding:0;border:0;border-radius:24px;background:#fffdf6;box-shadow:0 1px 0 #0003;}
+ & .pm-answers {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:0;background:none;}
+ /* Authored replies wrap; never a one-line clip at 320-390. */
+ & button.pm-answer {display:flex;align-items:center;justify-content:center;min-width:0;min-height:48px;max-height:none;height:auto;margin:0;padding:6px 10px;border:0;border-radius:24px;
+  background:#fffdf6;box-shadow:0 1px 0 #0003;color:var(--studio-ink);font-size:14px;line-height:19px;font-weight:700;text-align:center;white-space:normal;overflow-wrap:anywhere;}
+ & button.pm-answer[aria-pressed=true] {background:#ffe7ec;box-shadow:inset 0 -3px var(--studio-tab);}
+ & button.pm-answer[aria-pressed=true]:disabled {opacity:1;}
+ & .pm-save-status {min-height:0;margin:0;padding:0 4px;background:none;color:#fff;font-size:11px;line-height:15px;text-shadow:0 1px 2px #000a;}
+ /* Secondary record tool under the actor switch; its wordmark host is mounted by key. */
+ & .pm-record-tool {position:absolute;right:12px;top:62px;z-index:5;width:44px;height:44px;min-height:44px;margin:0;padding:0;border:0;border-radius:22px;background:#fffdf6;box-shadow:0 1px 0 #0003;}
+ & .pm-record-tool img {width:100%;height:100%;object-fit:contain;}
+ @media(max-height:700px) {
+  gap:5px;padding-bottom:6px;
+  & .pm-dialogue {padding:20px 14px 10px;}
+  & .pm-dialogue .pm-response {font-size:14px;line-height:21px;max-height:min(105px,19dvh);}
+ }
+}
+/* Record drawer body (re-parented into the hierarchy sheet while open). */
+#game-container #public-shell[data-page=lounge] dialog.ui-sheet .pm-companion-record {
+ display:grid;gap:8px;margin:0;padding:0;color:#24343a;
+ & :is(.pm-record-status,.pm-record-empty) {margin:0;font-size:14px;line-height:21px;}
+ & .pm-record-rows {display:grid;gap:8px;margin:0;}
+ & .pm-record-row {display:grid;gap:2px;padding:8px 10px;border-left:3px solid #d9475f;background:#fffdf6;}
+ & dt {font-size:14px;line-height:20px;font-weight:800;}
+ & dd {margin:0;font-size:13px;line-height:19px;overflow-wrap:anywhere;}
+ & .pm-record-response {color:#3d4f55;}
+}

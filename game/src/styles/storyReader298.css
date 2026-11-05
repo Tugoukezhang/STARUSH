@@ -1,0 +1,47 @@
+/* Dialogue staging follows the reviewed Azur Lane scene/overlay hierarchy. */
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] {left:var(--menu-shell-left);top:var(--menu-shell-top);width:var(--menu-shell-width);height:var(--menu-shell-height);transform:scale(var(--menu-shell-compensation));transform-origin:0 0;max-width:none;max-height:none;background:#152b30;--story-ink:#f5f5ed;--story-accent:#6de1e7;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-panel {background:#152b30;isolation:isolate;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-header {inset:0 0 auto;z-index:2;padding:18px 116px 0 20px;background:linear-gradient(#102429aa,transparent);pointer-events:none;min-height:88px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-header h2 {background:none;border:0;min-height:0;padding:0;margin:0;font-size:17px;line-height:26px;font-weight:700;color:#fff;text-align:left;text-shadow:0 2px 6px #10242a;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-header h2::before,
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-header h2::after {display:none;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-content {position:absolute;inset:0;display:block;padding:0;overflow:hidden;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-stage {position:absolute;inset:0;min-height:0;background:#24464a;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-venue {opacity:1;object-position:50% 50%;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-portrait {inset:74px -8% auto;width:116%;height:calc(100% - 116px);object-fit:contain;object-position:center top;filter:drop-shadow(0 12px 14px #11273370);animation:story-actor-arrive 240ms ease-out both;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-location {top:56px;left:20px;bottom:auto;padding:0;background:none;text-shadow:0 2px 5px #152b30;color:#f4ede0;font-size:11px;line-height:18px;max-width:calc(100% - 134px);}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-dialogue {position:absolute;inset:auto 0 64px;min-height:148px;max-height:45%;overflow-y:auto;padding:42px 24px 8px;border:0;background:linear-gradient(transparent,#132b36ed 35%,#132b36fa);color:var(--story-ink);}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-speaker {font-size:15px;line-height:24px;color:var(--story-accent);font-weight:700;padding-right:50px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-line {margin:8px 0 0;color:var(--story-ink);font-size:16px;line-height:28px;font-weight:450;text-shadow:0 1px 2px #10232b;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-count {top:44px;right:24px;font-size:11px;color:#bdd3d8;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-save-status {margin:6px 0 0;padding:0;color:#ffcf87;font-size:12px;line-height:18px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-footer {position:absolute;inset:auto 0 0;height:64px;min-height:64px;padding:8px 20px 12px;background:#132b36fa;z-index:3;gap:8px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-footer button {width:auto;min-width:44px;min-height:44px;height:44px;padding:8px 4px;border:0;border-image:none;border-radius:0;box-shadow:none;background:none;color:#d6e4e8;font-size:12px;line-height:22px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-footer .session-primary {color:#93edf0;display:flex;flex-direction:row-reverse;gap:8px;align-items:center;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .session-footer .session-primary svg {width:20px;height:20px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-toolbar {position:absolute;top:12px;right:12px;z-index:4;display:flex;gap:6px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] button.story-icon {display:grid;place-items:center;position:relative;min-width:44px;width:44px;min-height:44px;height:44px;padding:10px;margin:0;border:0;border-image:none;border-radius:0;box-shadow:none;background:url('/art/story-reader-298/control.webp') center/44px 44px no-repeat;color:#e3f4ef;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] button.story-icon svg {width:22px;height:22px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] button.story-icon[aria-pressed=true] {color:#85f6d1;filter:brightness(1.35);}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] button:focus-visible {outline:2px solid #9aebe2;outline-offset:2px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history {position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;padding:16px 20px 20px;background:#10262cf5;color:#eaf4f4;backdrop-filter:blur(12px);}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history[hidden] {display:none;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-header {display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-header h3 {font-size:17px;line-height:26px;margin:0;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-lines {overflow-y:auto;flex:1;min-height:0;padding:12px 0;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-row {margin:0 0 24px;padding:0;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-row strong {color:#90ddd9;font-size:13px;line-height:22px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-row p {font-size:15px;line-height:26px;margin:5px 0;color:#edf3ed;overflow-wrap:anywhere;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-footer {flex:none;padding-top:8px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-footer button {width:auto;height:44px;min-height:44px;margin:0;padding:6px 0;background:none;border:0;border-image:none;box-shadow:none;color:#b9d6d9;font-size:13px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] [data-action=story-directory] {position:absolute;bottom:12px;left:50%;z-index:4;transform:translateX(-50%);height:44px;min-height:44px;width:auto;min-width:44px;padding:10px 6px;margin:0;background:none;border:0;border-image:none;box-shadow:none;color:#bdd3d8;font-size:11px;}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true][data-story-history=true] .session-footer,
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true][data-story-history=true] [data-action=story-directory] {visibility:hidden;}
+@keyframes story-actor-arrive {from {opacity:.5;transform:translateX(10px);}to {opacity:1;transform:none;}}
+@media(max-height:620px){
+ #game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-portrait {top:68px;height:calc(100% - 94px);}
+ #game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-dialogue {padding:30px 20px 6px;min-height:140px;}
+ #game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-count {top:32px;right:20px;}
+ #game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-line {font-size:15px;line-height:25px;}
+}
+@media(prefers-reduced-motion:reduce){#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-portrait {animation:none;}}

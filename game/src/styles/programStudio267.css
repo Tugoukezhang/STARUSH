@@ -1,0 +1,79 @@
+/* B267 program studio — events (公演企划) and sideplay (练习广场) from ProgramMenuPages.mjs, plus their two info sheets.
+   Same full screenRebuild root as programMenu.css, then the page's own data-*-studio attribute, so these rules
+   beat the older .pg-* owner rules (programMenu.css, thinMenu262.css) without removing them for playhub/goals.
+   Stage and entry pictures are <img> elements; controls use the thin AI skins and existing AI glyphs/wordmarks.
+   Fixed 13-15px type, no ellipsis on labels, no animation. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] {
+  /* Shared stage: a dimmed photograph behind a calm single column. */
+  & .product-module-screen[data-program-studio="267"], & .product-module-screen[data-practice-studio="267"]{position:relative;isolation:isolate;display:flex;flex-direction:column;gap:10px;min-height:100%;padding:8px 12px 12px;background:none;letter-spacing:0}
+  & .product-module-screen[data-program-studio="267"] .ps-stage, & .product-module-screen[data-practice-studio="267"] .ps-stage{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.42) saturate(.85);pointer-events:none}
+  & .product-module-screen[data-program-studio="267"] .pm-footer, & .product-module-screen[data-practice-studio="267"] .pm-footer{margin-top:0}
+
+  /* Events: current chapter, actual progress, one tour command, two equal on-demand commands. */
+  & .product-module-screen[data-program-studio="267"] .pg-venue{margin:0;border-radius:8px;aspect-ratio:2/1}
+  & .product-module-screen[data-program-studio="267"] .pg-venue-plate p{font-size:13px;line-height:18px;white-space:normal;overflow:visible;text-overflow:clip}
+  & .product-module-screen[data-program-studio="267"] .ps-status{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0;padding:0 2px;color:#d3e1dd;font-size:14px;line-height:20px}
+  & .product-module-screen[data-program-studio="267"] .ps-chapter-state{padding:2px 8px;border-radius:4px;background:#0d1a1ce6;color:#fffaf0;font-size:14px;line-height:20px;font-weight:800}
+  & .product-module-screen[data-program-studio="267"] .ps-chapter-state[data-state=cleared]{color:#b8ee8a}
+  & .product-module-screen[data-program-studio="267"] .ps-chapter-state[data-state=locked]{color:#93a8a5}
+  & .product-module-screen[data-program-studio="267"] .ps-progress{color:#d3e1dd;font-size:14px;line-height:20px}
+  & .product-module-screen[data-program-studio="267"] .pg-track-count{color:#e4f76a;font-size:15px;line-height:20px;font-weight:900}
+  & .product-module-screen[data-program-studio="267"] .pg-command.pg-primary{min-height:60px;padding:8px 18px;background:transparent url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat}
+  & .product-module-screen[data-program-studio="267"] .pg-command .pg-glyph{width:34px;height:34px}
+  & .product-module-screen[data-program-studio="267"] .pg-command-copy small{font-size:13px;line-height:17px;white-space:normal;overflow:visible;text-overflow:clip}
+  & .product-module-screen[data-program-studio="267"] .ps-more-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  & .product-module-screen[data-program-studio="267"] .ps-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:44px;margin:0;padding:4px 10px;border:0;border-image:none;border-radius:0;box-shadow:none;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;color:#fff7e6;cursor:pointer}
+  & .product-module-screen[data-program-studio="267"] .ps-more .pg-glyph{flex:none;width:26px;height:26px}
+  & .product-module-screen[data-program-studio="267"] .ps-more .pg-command-letter{display:block;height:22px}
+  & .product-module-screen[data-program-studio="267"] .ps-more .pg-letter{height:22px}
+
+  /* Sideplay: one performer line, then two stacked horizontal entries at the foot of the stage. */
+  & .product-module-screen[data-practice-studio="267"] .ps-actor{display:flex;align-items:baseline;gap:8px;width:fit-content;max-width:100%;margin:0;padding:6px 10px;border-radius:6px;background:#0d1a1ce6}
+  & .product-module-screen[data-practice-studio="267"] .ps-actor small{color:#c9dad6;font-size:13px;line-height:18px}
+  & .product-module-screen[data-practice-studio="267"] .ps-actor strong{color:#fffaf0;font-size:15px;line-height:20px;font-weight:900}
+  & .product-module-screen[data-practice-studio="267"] .ps-entries{display:grid;gap:10px;margin:auto 0 0;padding:0;background:none;border:0}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry{display:grid;grid-template-columns:96px 28px minmax(0,1fr);align-items:center;column-gap:10px;width:100%;min-height:88px;margin:0;padding:8px 14px 8px 8px;border:0;border-image:none;border-radius:0;box-shadow:none;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;color:#fff7e6;text-align:left;cursor:pointer}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry-art{display:block;width:96px;height:72px;object-fit:cover;border-radius:6px;background:#162b2e;pointer-events:none}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry .pg-glyph{width:28px;height:28px}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry .pg-command-copy{display:grid;gap:4px;min-width:0}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry .pg-command-letter{display:block;height:24px}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry .pg-letter{height:24px;object-position:left center}
+  & .product-module-screen[data-practice-studio="267"] .ps-entry .pg-command-copy small{color:#e4f76a;font-size:13px;line-height:18px;font-weight:700;white-space:normal;overflow:visible;text-overflow:clip}
+
+  & .product-module-screen[data-program-studio="267"] :is(.pg-command,.ps-more):focus-visible, & .product-module-screen[data-practice-studio="267"] .ps-entry:focus-visible{outline:3px solid #7fe3f0;outline-offset:2px}
+  & .product-module-screen[data-program-studio="267"] :is(.pg-command,.ps-more):active, & .product-module-screen[data-practice-studio="267"] .ps-entry:active{transform:translateY(1px)}
+
+  /* Info sheets: opaque compact panel; the shared header keeps the title and close command. */
+  & .ui-sheet[data-program-sheet]{width:min(340px,calc(100% - 24px));max-height:calc(100% - 48px);overflow:auto;padding:12px;border:0;border-image:none;border-radius:8px;background:#151d20 url('/art/thin-ui-20261101/panel.webp') center/100% 100% no-repeat;opacity:1;color:#eef2e9;box-shadow:0 12px 36px #0009}
+  & .ui-sheet[data-program-sheet] .ui-sheet-title{font-size:15px;line-height:22px;height:auto}
+  & .ui-sheet[data-program-sheet] .ui-sheet-close{min-width:44px;min-height:44px}
+  & .ui-sheet[data-program-sheet] .ps-sheet-content{display:grid;gap:8px;margin:0;padding:0;background:none;border:0;box-shadow:none}
+  & .ui-sheet[data-program-sheet] .pg-heading{margin:0 0 2px}
+  & .ui-sheet[data-program-sheet] .ps-sheet-count{color:#e4f76a;font-size:15px;line-height:20px;font-weight:900}
+  & .ui-sheet[data-program-sheet] .pg-stops{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin:0}
+  & .ui-sheet[data-program-sheet] .pg-stop{grid-template-columns:24px minmax(0,1fr) auto;column-gap:8px;min-height:44px;padding:4px 2px;border-bottom:1px solid #35504f}
+  & .ui-sheet[data-program-sheet] .pg-stop[aria-current=step]{border-bottom:2px solid #e4f76a}
+  & .ui-sheet[data-program-sheet] .pg-stop-index{grid-row:auto;font-size:15px;line-height:20px}
+  & .ui-sheet[data-program-sheet] .pg-stop strong{font-size:14px;line-height:19px;white-space:normal;overflow:visible;text-overflow:clip}
+  & .ui-sheet[data-program-sheet] .pg-stop small{font-size:13px;line-height:18px;white-space:nowrap}
+  & .ui-sheet[data-program-sheet] .pg-goal-list{margin:0}
+  & .ui-sheet[data-program-sheet] .pg-goal{display:grid;gap:2px;padding:8px 2px}
+  & .ui-sheet[data-program-sheet] .pg-goal strong{font-size:14px;line-height:19px}
+  & .ui-sheet[data-program-sheet] .pg-goal small{font-size:13px;line-height:18px;white-space:normal;overflow:visible;text-overflow:clip}
+  & .ui-sheet[data-program-sheet] .pg-command.pg-primary{min-height:56px;margin-top:4px;padding:8px 16px;background:transparent url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat}
+  & .ui-sheet[data-program-sheet] .pg-command .pg-glyph{width:30px;height:30px}
+  & .ui-sheet[data-program-sheet] .pg-command-copy small{font-size:13px;line-height:17px;white-space:normal;overflow:visible;text-overflow:clip}
+  & .ui-sheet[data-program-sheet] .pg-command:focus-visible{outline:3px solid #7fe3f0;outline-offset:2px}
+
+  /* Narrow phones change structure only; type sizes stay fixed. */
+  @media (max-width:340px){
+    & .product-module-screen[data-program-studio="267"], & .product-module-screen[data-practice-studio="267"]{padding:6px 8px 10px}
+    & .product-module-screen[data-practice-studio="267"] .ps-entry{grid-template-columns:72px 24px minmax(0,1fr);column-gap:8px;padding-right:10px}
+    & .product-module-screen[data-practice-studio="267"] .ps-entry-art{width:72px;height:60px}
+    & .product-module-screen[data-practice-studio="267"] .ps-entry .pg-glyph{width:24px;height:24px}
+    & .product-module-screen[data-program-studio="267"] .ps-more{padding:4px 6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    & .product-module-screen[data-program-studio="267"] :is(.pg-command,.ps-more):active, & .product-module-screen[data-practice-studio="267"] .ps-entry:active{transform:none}
+  }
+}

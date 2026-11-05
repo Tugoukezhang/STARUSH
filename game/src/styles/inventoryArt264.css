@@ -1,0 +1,22 @@
+/* Original AI lettering/glyph integration; inventory flow owns the native commands. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=inventory]{
+  & [data-inventory-letter]{position:relative}
+  & .inventory-letter-art{display:block;flex:none;width:auto;height:20px;max-width:90%;object-fit:contain;pointer-events:none}
+  & .inv-filter{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:3px;padding:0 6px;background-image:url('/art/thin-ui-20261101/row.webp')}
+  & .inv-filter .inventory-filter-glyph{grid-column:1;grid-row:1;width:24px;height:24px;max-width:24px;object-fit:contain}
+  & .inv-filter .inventory-letter-art{grid-column:2;grid-row:1;width:auto;height:15px;max-width:100%;justify-self:center}
+  & .inv-filter .inv-filter-count{grid-column:3;grid-row:1;font-size:11px}
+  & .ui-sheet[data-inventory-sheet=item]{background:#151d20 url('/art/thin-ui-20261101/panel.webp') center/100% 100% no-repeat;opacity:1;color:#eef2e9;border:0;border-image:none;box-shadow:0 12px 36px #0009}
+  & .ui-sheet[data-inventory-sheet=item][data-refresh=true]{animation:none}
+  & .ui-sheet[data-inventory-sheet=item] .ui-sheet-close{width:44px;min-height:44px}
+  & .ui-sheet[data-inventory-sheet=item] .inv-detail-feedback{color:#f4d887;font-size:12px;line-height:18px;margin:0}
+  & .ui-sheet[data-inventory-sheet=item] .ui-sheet-header{min-height:36px;height:auto;margin:0 0 10px}
+  & .ui-sheet[data-inventory-sheet=item] .ui-sheet-title{font-size:16px;line-height:22px;height:auto}
+  & .ui-sheet[data-inventory-sheet=item] .ui-sheet-body{max-height:calc(100dvh - 160px)}
+  & .ui-item-detail [data-action=equip-selected]{display:flex;align-items:center;justify-content:center;gap:8px}
+  & .ui-item-detail [data-action=equip-selected]>.ui-glyph{display:none}
+  & .inv-detail [data-action=prepared-preflight]>:not(.inv-preflight-letter){position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+  & .inv-detail .inv-preflight-letter{display:block;max-width:48%}
+  & .inv-detail .inv-preflight-letter .ui-letter-art{display:block;width:auto;height:18px;max-width:100%;object-fit:contain}
+  & .ui-item-detail [data-action=inventory-catalog] .inventory-letter-art{height:17px}
+}

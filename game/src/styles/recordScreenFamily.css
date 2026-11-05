@@ -1,0 +1,76 @@
+/* Shared record/directory family; scores and locked states remain native data. */
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) {--record-ink:#19242a;--record-muted:#526168;--record-line:#d3dce0;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-content {padding-top:12px;animation:record-enter 160ms ease-out;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-content > .shell-page-heading {display:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) button {border-image:none;letter-spacing:0;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-selection-footer {display:grid;gap:4px;padding:8px 12px;background:#fff;border-top:1px solid var(--record-line);}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-selection-footer .shell-primary {min-height:48px;padding:8px;border:2px solid var(--record-ink);border-image:none;border-radius:4px;background:#dff6f6;color:var(--record-ink);box-shadow:0 3px 0 #00bcd2;font-size:15px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-selection-footer .shell-primary:disabled {background:#eef1f3;border-color:var(--record-line);box-shadow:none;color:#596971;opacity:1;filter:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-selection-footer :is(img,.menu-art) {width:24px;height:24px;object-fit:contain;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .archive-history {border:0;border-block:1px solid var(--record-line);border-image:none;border-radius:0;background:transparent;box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .archive-history > summary {min-height:44px;padding:10px 0;font-size:13px;line-height:22px;font-weight:700;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .system-context {font-size:13px;line-height:22px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) button:not(:disabled):active {translate:0 1px;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive]) :is(.archive-record-venue,.chapter-report-venue) {position:relative;inset:auto;display:grid;place-items:center;overflow:hidden;margin:0;width:76px;height:72px;border:0;border-radius:4px;background:#e5edef;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive]) :is(.archive-record-venue,.chapter-report-venue) > svg {width:28px;height:28px;color:#526168;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive]) .chapter-venue-art {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive]) .chapter-venue-art[hidden] {display:none;}
+#game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive]) [data-venue-state=ready] > svg {visibility:hidden;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .shell-member-strip {margin-bottom:12px;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-summary {margin:0;font-size:12px;line-height:20px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-current-records {margin-top:12px;border-top:2px solid var(--record-ink);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record {display:grid;grid-template-columns:76px minmax(0,1fr);grid-template-rows:auto auto;gap:4px 12px;align-content:center;align-items:center;min-height:106px;padding:12px 0;border-bottom:1px solid var(--record-line);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-venue {grid-column:1;grid-row:1 / span 2;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record h2 {grid-column:2;grid-row:1;margin:0;font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record > .archive-empty {grid-column:2;grid-row:2;margin:0;font-size:12px;line-height:20px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-stats {grid-column:2;grid-row:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-stats dt {font-size:11px;line-height:18px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-stats dd {margin:0;font-size:15px;line-height:22px;font-weight:700;color:#087480;font-variant-numeric:tabular-nums;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record > .archive-history {grid-column:1 / -1;grid-row:auto;margin-top:4px;border-bottom:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record .archive-history p {margin:6px 0;font-size:12px;line-height:21px;overflow-wrap:anywhere;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-last-run {padding:14px 0;border-bottom:1px solid var(--record-line);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-last-run h2 {margin:0 0 6px;font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .archive-last-run p {margin:4px 0;font-size:13px;line-height:21px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=records] [data-action=archive-chapters] {width:100%;min-height:44px;margin-top:10px;padding:8px;border:1px solid var(--record-line);border-radius:4px;box-shadow:none;background:#fff;font-size:14px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-page=records] .tour-coverage-table {font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-tabs {gap:6px;margin-bottom:12px;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-tabs button {display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 4px;border:1px solid var(--record-line);border-radius:4px;background:#fff;box-shadow:none;font-size:13px;line-height:20px;white-space:normal;word-break:keep-all;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-tabs [aria-pressed=true] {border:2px solid var(--record-ink);padding:5px 3px;background:#e1f9f8;box-shadow:0 2px 0 #00bcd2;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-heading {display:grid;grid-template-columns:76px minmax(0,1fr);align-items:center;gap:0 12px;margin:0;padding:0 0 12px;border-bottom:2px solid var(--record-ink);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-heading:not(:has(.chapter-report-venue)) {grid-template-columns:minmax(0,1fr);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-venue {grid-column:1;grid-row:1 / span 3;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-heading > :not(.chapter-report-venue) {grid-column:2;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-heading:not(:has(.chapter-report-venue)) > * {grid-column:1;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-heading > small {font-size:11px;line-height:18px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-heading h3 {margin:0;font-size:19px;line-height:27px;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-status {justify-self:start;margin:2px 0 0;padding-left:6px;border-left:3px solid #00bcd2;font-size:12px;line-height:20px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] :is(.chapter-report-recent,.chapter-report-stories) {padding:14px 0;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] :is(.chapter-report-recent,.chapter-report-stories) h3 {margin:0 0 8px;font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-result {font-size:14px;line-height:23px;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-facts {margin:0;gap:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-facts > div {display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--record-line);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-facts dt {font-size:12px;line-height:21px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-facts dd {margin:0;font-size:13px;line-height:22px;color:var(--record-ink);}
+#game-container #public-shell[data-cast=owner-three][data-page=chapterArchive] .chapter-report-stories button {width:100%;min-height:44px;margin:0;padding:10px 0;border:0;border-bottom:1px solid var(--record-line);border-radius:0;background:transparent;box-shadow:none;text-align:left;font-size:13px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .shell-content > .system-context {margin:0 0 10px;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .hub-categories {top:-12px;margin:0 0 6px;background:#f7f9fa;border-bottom:2px solid var(--record-ink);}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .hub-category {min-height:48px;background:transparent;color:var(--record-muted);border-radius:0;font-size:13px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .hub-category[aria-selected=true] {background:#fff;color:var(--record-ink);border-bottom-color:#ec378a;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-hub-heading {display:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-hub-group[hidden] {display:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-entry {grid-template-columns:36px minmax(0,1fr) 18px;gap:10px;min-height:72px;padding:12px 0;border-bottom:1px solid var(--record-line);border-radius:0;box-shadow:none;background:transparent;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-entry .menu-art {width:36px;height:36px;object-fit:contain;}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-entry-copy strong {font-size:15px;line-height:23px;color:var(--record-ink);}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-entry-copy small {font-size:12px;line-height:20px;color:var(--record-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=playhub] .system-entry:not(:disabled):active {background:#e1f9f8;}
+@keyframes record-enter {from {opacity:.6;transform:translateY(3px);}to {opacity:1;transform:translateY(0);}}
+@media (max-width:340px) {
+ #game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record {grid-template-columns:64px minmax(0,1fr);gap:4px 10px;}
+ #game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-venue {width:64px;height:68px;}
+ #game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-stats {gap:6px;}
+ #game-container #public-shell[data-cast=owner-three][data-page=records] .archive-record-stats dd {font-size:14px;line-height:21px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) .shell-content {animation:none;}
+ #game-container #public-shell[data-cast=owner-three]:is([data-page=records],[data-page=chapterArchive],[data-page=playhub]) button:not(:disabled):active {translate:none;}
+}

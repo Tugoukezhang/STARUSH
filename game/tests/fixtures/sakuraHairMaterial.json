@@ -1,0 +1,122 @@
+{
+  "rows": [
+    {
+      "group": "sakura-refined-20261006",
+      "file": "public/art/sakura-refined-20261006/parts.webp",
+      "data": "public/art/sakura-refined-20261006/views.json",
+      "sha": "ee740b939830c683f07459fb0b785bead0b4fe475730021314c19e561a568397",
+      "bytes": 776908,
+      "geometrySha": "94d177bbe8e3e38732b55a6949468451bbded7f40540b0a76c71b88d0bd0f8a1",
+      "alphaSha": "1f2d2e2b5f7868da19ce5424f476d43b5d694d8565e6f76548c63f6d585b2c20",
+      "protectedSha": "5bf18cd17c3e20f09b80f116e5151eccc633e1e0e8922fcd5d512bde632dfa8a",
+      "maskSha": "1b8488da323eebf9cec064c4343fd9e4909e1d28441b2bfe97c70f6f25fb4918",
+      "mask": "m///H2CmAAKgTparUEyL2fC3KVIBOrjvSRjIIYi75DsAvValSl+uyF/3HL1xV6hvWas8KljcJhwcAJMfUpIB0JLDHQYA6hd0DwBA9x6A8FZqvwwE3ecCo3oGYQ==",
+      "parts": [
+        {
+          "direction": "front",
+          "name": "hair",
+          "region": [
+            16,
+            16,
+            157,
+            262
+          ]
+        },
+        {
+          "direction": "left",
+          "name": "hair",
+          "region": [
+            977,
+            16,
+            134,
+            227
+          ]
+        },
+        {
+          "direction": "right",
+          "name": "hair",
+          "region": [
+            205,
+            16,
+            146,
+            259
+          ]
+        },
+        {
+          "direction": "back",
+          "name": "head-open",
+          "region": [
+            16,
+            310,
+            207,
+            188
+          ]
+        },
+        {
+          "direction": "back",
+          "name": "hair",
+          "region": [
+            383,
+            16,
+            150,
+            254
+          ]
+        }
+      ]
+    },
+    {
+      "group": "sakura-oblique-20261006",
+      "file": "public/art/sakura-oblique-20261006/parts.webp",
+      "data": "public/art/sakura-oblique-20261006/views.json",
+      "sha": "5ca7bad71992fb2cd12b73f6dc538c5ad4d385d6487f859c102b5de8ff371553",
+      "bytes": 822298,
+      "geometrySha": "1c3c778cedceeed09c1ef69a8a22ef996cf6baeeead36e6126e5a0a47a15a200",
+      "alphaSha": "f5492c33a6828a2c9d1adc4a0976b6de9167e638fc37c211cbd9b90090c08637",
+      "protectedSha": "fbf3a224389c303b9b74c39e3ecb2704a30441b77e68d859275d9605ceb7d4b4",
+      "maskSha": "ee2cb154e0385d3ad39d31109060422f10864f26b7d7f9c6adb4c7dfd683ce1f",
+      "mask": "m///H+CnAAKgJgdAmcLX9re9BHngCTOCp6p9k+8AXKYSmNt/p7Xy/1kyVcXJt75B+zp4+p4swGQBYCKBDgIAAwy6HwCg+nQB",
+      "parts": [
+        {
+          "direction": "front-right",
+          "name": "hair",
+          "region": [
+            16,
+            16,
+            154,
+            261
+          ]
+        },
+        {
+          "direction": "front-left",
+          "name": "hair",
+          "region": [
+            202,
+            16,
+            156,
+            255
+          ]
+        },
+        {
+          "direction": "back-right",
+          "name": "hair",
+          "region": [
+            390,
+            16,
+            145,
+            251
+          ]
+        },
+        {
+          "direction": "back-left",
+          "name": "hair",
+          "region": [
+            567,
+            16,
+            147,
+            238
+          ]
+        }
+      ]
+    }
+  ]
+}

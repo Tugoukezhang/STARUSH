@@ -1,0 +1,71 @@
+/* Bitmap control family, scoped to this console and non-battle settings/backup. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey]{
+ &[data-page=backstage],&[data-page=services]{background-image:none}
+ & .shell-brand h1:is([data-ui-letter=backstage],[data-ui-letter=services]){font-size:0;line-height:0}
+ & .shell-brand h1:is([data-ui-letter=backstage],[data-ui-letter=services]) .ui-letter-art{display:block;width:auto;height:28px;max-width:165px;object-fit:contain}
+ & [data-console-letter]{font-size:0!important;line-height:0}
+ & .console-letter-art{display:block;width:auto;height:25px;max-width:100%;object-fit:contain;object-position:left center;pointer-events:none}
+ & .console-icon-art{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+ & .product-module-screen[data-console-studio="268"] .ui-backstage-grid{padding:0;background:none;border-radius:0;box-shadow:none}
+ & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-primary .pm-entry{background-color:transparent;color:#243d42}
+ & .product-module-screen[data-console-studio="268"] .cs-primary .pm-entry:first-child{background-image:url('/art/console-studio-20261102/skin-primary.webp');color:#fff8ed}
+ & .product-module-screen[data-console-studio="268"] .cs-primary .pm-entry:last-child{background-image:url('/art/console-studio-20261102/skin-row.webp')}
+ & .product-module-screen[data-console-studio="268"] .cs-primary .pm-entry small{color:inherit;font-weight:650}
+ & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-utility .pm-entry{background-color:transparent;background-image:url('/art/console-studio-20261102/skin-tile.webp')}
+ & .product-module-screen[data-console-studio="268"] .cs-utility .console-letter-art{height:22px;object-position:center}
+ & .product-module-screen[data-console-studio="268"] .cs-readout{padding-top:6px;color:#fffaf1;text-shadow:0 1px 2px #09262b}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services]{justify-content:flex-end;background:#163437;color:#243d42}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-desk{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:center 32%}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-local-console{display:flex;flex-direction:column;gap:10px;width:100%;padding:14px;background:#edf3ef url('/art/console-studio-20261102/skin-panel.webp') center/100% 100% no-repeat;border-radius:6px}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-heading{padding:4px 0 0}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state{background:none;border-radius:0;padding:10px 8px;border-left-color:#59767a}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state :is(strong,span,small){color:#304b51}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=saved]{border-left-color:#287354}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=saved] strong{color:#206446}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=pending] strong{color:#875817}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=recovery] strong{color:#9a3040}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=none] strong{color:#304b51}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-service-command{min-height:60px;background-color:transparent;background-image:url('/art/console-studio-20261102/skin-row.webp')}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-network{background:transparent url('/art/console-studio-20261102/skin-tile.webp') center/100% 100% no-repeat;align-self:flex-end;width:160px}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-network .console-letter-art{height:22px}
+ & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-footer{display:none}
+ & .ui-sheet:has(.pm-offline-services){padding:16px 18px;background:#142e32;max-height:calc(100% - 32px);overflow:auto}
+ & .ui-sheet:has(.pm-offline-services)::backdrop{background:#06171ce6}
+}
+#game-container #player-session-dialog[data-console-skin="268"]{
+ padding:12px;background:#06171cdd;color:#253d42;
+ & [hidden]{display:none!important}
+ & .session-panel{position:relative;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:0;width:min(430px,100%);max-height:100%;min-height:0;overflow:hidden;margin:0;padding:0;border:0;border-radius:6px;background:#edf3ef url('/art/console-studio-20261102/skin-panel.webp') center/100% 100% no-repeat;box-shadow:0 12px 36px #0006}
+ & :is(.session-panel,.session-header,.session-footer,button,h2)::before,& :is(.session-panel,.session-header,.session-footer,button,h2)::after{content:none!important}
+ & .session-header{padding:24px 26px 10px;margin:0;border:0;background:none;min-height:62px}
+ & .session-header h2{margin:0;padding:0;max-width:calc(100% - 48px);font-size:0!important;line-height:0;border:0;background:none}
+ & [data-console-letter]{font-size:0!important;line-height:0}
+ & .console-letter-art{display:block;width:auto;height:26px;max-width:100%;object-fit:contain;object-position:left center;pointer-events:none}
+ & .session-content{min-height:0;max-height:none;overflow:auto;overscroll-behavior:contain;padding:4px 18px 12px;margin:0;background:none;color:#253d42;font-size:14px;line-height:21px}
+ & .session-settings-group{margin:0 0 12px;padding:0;border:0;background:none}
+ & .session-settings-group[data-settings-group=audio] h3{display:none}
+ & .session-settings-group h3{font-size:14px;line-height:21px;margin:6px 0;color:#253d42}
+ & .session-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px;padding:0;margin:0;color:#253d42;font-size:14px;line-height:21px}
+ & input[type=checkbox]{width:24px;height:24px;accent-color:#146d70;flex:none}
+ & input[type=range]{display:block;width:100%;height:28px;margin:0 0 8px;padding:0;accent-color:#146d70;cursor:pointer}
+ & output{font-variant-numeric:tabular-nums;font-size:14px;color:#244d54}
+ & .session-note{margin:6px 0;padding:0;border:0;color:#49616a;font-size:13px;line-height:20px;overflow-wrap:anywhere}
+ & :is(.session-primary,.session-secondary){min-height:44px;max-width:100%;margin:0;padding:8px 12px;border:0;border-radius:4px;background:transparent url('/art/console-studio-20261102/skin-row.webp') center/100% 100% no-repeat;box-shadow:none;color:#253d42;font-size:14px;line-height:21px;white-space:normal;overflow-wrap:anywhere;letter-spacing:0;text-shadow:none}
+ & :is(.session-primary,.session-secondary):disabled{opacity:.5;cursor:not-allowed}
+ & :is(button,input):focus-visible{outline:3px solid #b44b49;outline-offset:2px}
+ & .session-shortcut{display:flex;align-items:center;gap:8px;width:100%;margin:5px 0;text-align:left}
+ & .session-shortcut img{width:30px;height:30px;object-fit:contain}
+ & .session-footer{padding:8px 18px 14px;min-height:0;border:0;background:none}
+ & .session-footer .session-primary{display:flex;align-items:center;justify-content:center;width:100%}
+ & .session-primary[data-console-return=close]{position:absolute;top:8px;right:10px;display:grid;place-items:center;width:44px;height:44px;min-height:44px;padding:8px;background:none}
+ & .session-primary[data-console-return=close] span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ & .console-close-art{width:24px;height:24px;object-fit:contain}
+ & .profile-backup{display:grid;gap:10px;margin:0;padding:0;border:0;background:none}
+ & .profile-backup-file{display:block;margin:4px 0 0;padding:0;border:0}
+ & input[type=file]{width:100%;max-width:100%;font-size:13px;color:#304b51}
+ & input[type=file]::file-selector-button{min-height:38px;padding:6px 10px;border:0;color:#253d42;background:transparent url('/art/console-studio-20261102/skin-row.webp') center/100% 100% no-repeat;cursor:pointer}
+ & .profile-backup-preview{display:grid;gap:8px;min-width:0}
+ & .profile-backup-warning{padding:8px 10px;margin:0;background:#f6e8bb;color:#65481a;font-size:13px;line-height:20px;border:0;border-radius:4px;overflow-wrap:anywhere}
+ & [data-action=backup-restore]{background-image:url('/art/console-studio-20261102/skin-primary.webp');color:#fff8ed;font-weight:700}
+ @media(max-width:340px){& .session-content{padding:4px 14px 10px}& .session-header{padding-left:24px}& .session-footer{padding:8px 14px 12px}}
+}

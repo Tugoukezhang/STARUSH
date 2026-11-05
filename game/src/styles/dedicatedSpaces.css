@@ -1,0 +1,91 @@
+/* Scene-first spaces: selected objects own the details, not a directory of forms. */
+#game-container #public-shell[data-page=desk] .home-space-entrances {position:absolute;right:10px;top:158px;display:grid;gap:10px;z-index:5;}
+#game-container #public-shell[data-page=desk] button.home-space-entry {width:50px;min-height:52px;padding:5px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;border-bottom:3px solid #27b8c6;border-radius:4px;background:#f1faf7ed;color:#173c42;box-shadow:0 2px 8px #16252c30;font-size:11px;line-height:16px;}
+#game-container #public-shell[data-page=desk] button.home-space-entry:last-child {border-color:#eea654;color:#654018;}
+#game-container #public-shell[data-page=desk] .home-space-entry svg {width:23px;height:23px;}
+#game-container #public-shell[data-page=desk] .home-space-entry span {color:inherit;}
+#game-container #public-shell .product-module-screen .pm-member-headshot {width:34px;height:34px;object-fit:cover;border-radius:3px;background:#e5edee;}
+#game-container #public-shell:is([data-page=lounge],[data-page=venue]) .shell-content {padding:0 12px;}
+#game-container #public-shell:is([data-page=lounge],[data-page=venue]) .product-module-screen {margin-inline:-12px;}
+#game-container #public-shell[data-page=lounge] .product-module-screen {--pm-accent:#f78da2;background:#f0f5f2;color:#243333;min-height:100%;padding-bottom:8px;}
+#game-container #public-shell[data-page=lounge] .pm-scene {height:310px;border:0;display:block;background:#dbe8e6;}
+#game-container #public-shell[data-page=lounge] .pm-scene-art {object-position:center 64%;}
+#game-container #public-shell[data-page=lounge] .pm-scene-copy {position:absolute;top:12px;left:74px;margin:0;max-width:190px;z-index:3;pointer-events:none;}
+#game-container #public-shell[data-page=lounge] .pm-scene-copy :is(h2,.pm-scene-code,.pm-scene-role) {display:none;}
+#game-container #public-shell[data-page=lounge] .pm-scene-member {font-size:17px;background:#f5faf4e8;color:#294649;padding:4px 9px;border-left:3px solid #21a9b7;margin:0;}
+#game-container #public-shell[data-page=lounge] button.pm-scene-portrait {position:absolute;inset:20px 0 auto 66px;width:calc(100% - 66px);height:calc(100% - 20px);min-height:0;align-self:stretch;display:block;grid-column:auto;grid-row:auto;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;touch-action:pan-y;}
+#game-container #public-shell[data-page=lounge] .pm-scene-portrait .member-mark.member-mark-full {width:100%;height:100%;}
+#game-container #public-shell[data-page=lounge] .pm-scene-portrait .home-portrait-rig {left:50%;top:0;width:300px;max-width:none;height:auto;max-height:none;aspect-ratio:853 / 1280;transform:translateX(-50%);}
+#game-container #public-shell[data-page=lounge] .pm-scene-portrait :is(.menu-portrait-image,.menu-portrait-motion) {position:absolute;inset:0;width:100%;height:420px;max-height:none;object-fit:contain;object-position:center top;}
+#game-container #public-shell[data-page=lounge] .pm-scene-portrait .menu-portrait-motion canvas {width:100%;height:100%;max-height:none;}
+#game-container #public-shell[data-page=lounge] .pm-cast-strip {position:absolute;top:10px;left:8px;display:flex;flex-direction:column;gap:5px;width:58px;padding:0;z-index:4;}
+#game-container #public-shell[data-page=lounge] button.pm-cast-option {display:flex;flex-direction:column;gap:2px;padding:4px 2px;min-height:64px;border:1px solid #b9d0d3;border-bottom:3px solid transparent;border-radius:4px;background:#f8faf5e8;color:#33494d;font-size:10px;line-height:14px;}
+#game-container #public-shell[data-page=lounge] .pm-cast-option[aria-pressed=true] {border-color:#26a9ba;border-bottom-color:#26a9ba;background:#d8f4ef;color:#184e53;}
+#game-container #public-shell[data-page=lounge] .pm-cast-option .pm-member-headshot {width:40px;height:40px;}
+#game-container #public-shell[data-page=lounge] .pm-scene-caption {display:none;}
+#game-container #public-shell[data-page=lounge] .pm-ledger {padding:6px 0;border-bottom:0;color:#49636a;font-size:11px;}
+#game-container #public-shell[data-page=lounge] .pm-ledger strong {color:#2a454a;}
+#game-container #public-shell[data-page=lounge] .pm-dialogue {min-height:104px;padding:9px 12px;background:#fff;border:0;border-left:3px solid #f08ba7;box-shadow:0 3px 10px #1b414910;}
+#game-container #public-shell[data-page=lounge] .pm-speaker {font-size:11px;color:#955367;}
+#game-container #public-shell[data-page=lounge] .pm-response {color:#293e43;font-size:13px;line-height:1.7;margin-top:4px;}
+#game-container #public-shell[data-page=lounge] .pm-topics {margin:9px 0 0;gap:6px;}
+#game-container #public-shell[data-page=lounge] button.pm-topic {flex-direction:row;min-height:44px;font-size:11px;padding:6px 3px;border:1px solid #b1d0d4;border-radius:3px;background:#e1eff1;color:#24535d;}
+#game-container #public-shell[data-page=lounge] .pm-topic[aria-pressed=true] {background:#f7dce5;border-color:#d07b95;color:#713b52;box-shadow:none;}
+#game-container #public-shell[data-page=lounge] .pm-save-status {color:#3d6464;font-size:10px;padding:5px 0;}
+#game-container #public-shell[data-page=lounge] .pm-footer {margin-top:0;padding-top:0;border-color:#c6dadb;}
+#game-container #public-shell[data-page=lounge] .pm-footer button {color:#385a60;}
+#game-container #public-shell[data-page=lounge] .portrait-dialogue {position:absolute;inset:auto 12px 12px 72px;z-index:6;max-width:none;padding:10px 12px;border:0;border-left:3px solid #ef8ba6;border-radius:4px;background:#fffef8f5;box-shadow:0 4px 14px #13303933;pointer-events:none;}
+#game-container #public-shell[data-page=lounge] .portrait-dialogue[hidden] {display:none;}
+#game-container #public-shell[data-page=lounge] .portrait-dialogue-heading {display:flex;align-items:center;gap:6px;}
+#game-container #public-shell[data-page=lounge] .portrait-dialogue-avatar {display:none;}
+#game-container #public-shell[data-page=lounge] .portrait-dialogue-speaker {color:#a44c6c;font-size:11px;}
+#game-container #public-shell[data-page=lounge] .portrait-dialogue-line {font-size:13px;line-height:1.7;color:#273d42;margin:4px 0 0;}
+#game-container #public-shell[data-page=venue] .product-module-screen {background:#e9f0f1;color:#24383f;}
+#game-container #public-shell[data-page=venue] .product-module-screen .pm-scene {height:258px;display:block;border-bottom:3px solid #4dbac4;}
+#game-container #public-shell[data-page=venue] .pm-scene-art {object-position:center 56%;}
+#game-container #public-shell[data-page=venue] .pm-scene-copy {position:absolute;top:10px;left:12px;margin:0;max-width:none;}
+#game-container #public-shell[data-page=venue] .pm-scene-copy :is(h2,.pm-scene-member,.pm-scene-role) {display:none;}
+#game-container #public-shell[data-page=venue] .pm-scene-code {font-size:11px;background:#163e4ce6;color:#d7faff;border-left:3px solid #56c5d3;}
+#game-container #public-shell[data-page=venue] .pm-scene-portrait {display:none;}
+#game-container #public-shell[data-page=venue] .pm-scene-caption {font-size:10px;background:#14313ed9;color:#eafaff;}
+#game-container #public-shell[data-page=venue] .pm-room-map {position:absolute;inset:0;z-index:3;}
+#game-container #public-shell[data-page=venue] button.pm-room-hotspot {position:absolute;min-width:90px;min-height:54px;padding:6px 9px;display:grid;grid-template-columns:20px 1fr;align-items:center;gap:1px 5px;border:1px solid #c9e7eb;border-left:3px solid #7ecbd4;border-radius:4px;background:#153b4deb;color:#edfbff;font-size:13px;line-height:18px;box-shadow:0 4px 10px #071b3340;}
+#game-container #public-shell[data-page=venue] .pm-room-hotspot svg {grid-row:1/3;width:19px;height:19px;color:#8de6e7;}
+#game-container #public-shell[data-page=venue] .pm-room-hotspot small {grid-column:2;color:#bdd7de;font-size:10px;}
+#game-container #public-shell[data-page=venue] .pm-room-hotspot[aria-pressed=true] {background:#d7f6f2;color:#164951;border-color:#fff;border-left-color:#1f9fae;}
+#game-container #public-shell[data-page=venue] .pm-room-hotspot[aria-pressed=true] :is(svg,small) {color:#35616a;}
+#game-container #public-shell[data-page=venue] [data-room-target=stage] {top:57px;left:52%;}
+#game-container #public-shell[data-page=venue] [data-room-target=rehearsal] {top:119px;left:10%;}
+#game-container #public-shell[data-page=venue] [data-room-target=lounge] {top:177px;right:12%;}
+#game-container #public-shell[data-page=venue] .pm-room {padding-top:0;border-bottom:0;}
+#game-container #public-shell[data-page=venue] .pm-section-heading {color:#234550;min-height:39px;padding:4px 0;border-color:#bed2d7;}
+#game-container #public-shell[data-page=venue] .pm-section-heading h3 {color:#234550;font-size:17px;}
+#game-container #public-shell[data-page=venue] .pm-section-heading :is(svg,small) {color:#207889;}
+#game-container #public-shell[data-page=venue] .pm-room-fields {display:block;}
+#game-container #public-shell[data-page=venue] .pm-room-members {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+#game-container #public-shell[data-page=venue] button.pm-room-member {min-height:49px;padding:5px;display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid #bacfd4;border-radius:4px;background:#fff;color:#38545e;font:inherit;font-size:11px;}
+#game-container #public-shell[data-page=venue] .pm-room-member[aria-pressed=true] {background:#d5f1ec;border-color:#3ca6a8;color:#185b5c;box-shadow:inset 0 -2px #3ca6a8;}
+#game-container #public-shell[data-page=venue] .pm-room-programs {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;padding:3px;background:#d4e1e5;margin-top:8px;border-radius:4px;}
+#game-container #public-shell[data-page=venue] button.pm-room-program {min-height:38px;border:0;border-radius:3px;background:transparent;color:#45616b;font:inherit;font-size:12px;}
+#game-container #public-shell[data-page=venue] .pm-room-program[aria-pressed=true] {background:#fff;color:#23566a;box-shadow:0 1px 4px #264d5920;}
+#game-container #public-shell[data-page=venue] .pm-room-saved {color:#42616e;font-size:11px;padding:7px 0;}
+#game-container #public-shell[data-page=venue] button.pm-command {min-height:42px;border:1px solid #8ab7c2;background:#fff;color:#305b68;}
+#game-container #public-shell[data-page=venue] button.pm-prepare {background:#285e70;color:#f1ffff;border-color:#285e70;}
+#game-container #public-shell[data-page=venue] :is(.pm-room-draft,.pm-save-status) {font-size:10px;color:#326777;}
+#game-container #public-shell[data-page=venue] .pm-footer {margin:0;border-color:#bacfd4;padding-top:0;}
+#game-container #public-shell[data-page=venue] .pm-footer button {color:#385e69;}
+#game-container #public-shell:is([data-page=venue],[data-page=lounge]) button:active:not(:disabled) {translate:0 1px;}
+@media (max-width:340px) {
+ #game-container #public-shell[data-page=lounge] .pm-scene {height:230px;}
+ #game-container #public-shell[data-page=lounge] .pm-dialogue {min-height:96px;}
+ #game-container #public-shell[data-page=lounge] .pm-scene-portrait .home-portrait-rig {width:270px;}
+ #game-container #public-shell[data-page=lounge] .pm-cast-strip {width:52px;}
+ #game-container #public-shell[data-page=lounge] .pm-response {font-size:12px;}
+ #game-container #public-shell[data-page=venue] .product-module-screen .pm-scene {height:228px;}
+ #game-container #public-shell[data-page=venue] [data-room-target=lounge] {top:154px;}
+ #game-container #public-shell[data-page=venue] .pm-room-member .pm-member-headshot {width:26px;height:26px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell .home-space-entrances *,
+ #game-container #public-shell:is([data-page=lounge],[data-page=venue]) .product-module-screen * {animation:none!important;transition:none!important;translate:none!important;}
+}

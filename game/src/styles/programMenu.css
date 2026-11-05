@@ -1,0 +1,92 @@
+/* Program (events), practice (sideplay) and challenge catalog (playhub) — ProgramMenuPages.mjs.
+   Nested under the full screenRebuild root so local rules beat owner-three/hierarchy specificity.
+   Controls use the existing AI skins (skin-primary/skin-secondary/skin-panel) and AI icons/lettering;
+   sections stay unframed. Fixed type sizes only. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] {
+  & .pg-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  & .pg-letter{display:block;width:auto;height:24px;max-width:100%;object-fit:contain;pointer-events:none}
+
+  & .pg-venue{position:relative;display:block;margin:0 0 14px;border-radius:8px;overflow:hidden;aspect-ratio:2/1;background:#162b2e}
+  & .pg-venue-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  & .pg-venue-plate{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;background:linear-gradient(transparent,rgba(9,18,20,.94) 50%)}
+  & .pg-venue-plate h2{margin:0;color:#fffaf0;font-size:20px;line-height:26px;font-weight:900;text-shadow:0 2px 0 #0c1416}
+  & .pg-venue-plate p{margin:2px 0 0;color:#e2ece8;font-size:13px;line-height:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  & .pg-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 2px 8px;padding:0;background:none;border:0}
+  & .pg-heading h3{margin:0;height:26px;display:flex;align-items:center}
+  & .pg-heading b{color:#e4f76a;font-size:15px;line-height:20px;font-weight:900}
+  & .pg-track, & .pg-goals{margin:0 0 14px;padding:0;background:none;border:0;box-shadow:none}
+
+  & .pg-stops{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 10px;padding:0;list-style:none}
+  & .pg-stop{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:6px;align-items:center;padding:4px 2px;border-bottom:2px solid #3d5a5c;background:none}
+  & .pg-stop[aria-current=step]{border-bottom-color:#e4f76a}
+  & .pg-stop-index{grid-row:span 2;color:#e4f76a;font-size:18px;line-height:22px;font-weight:900}
+  & .pg-stop strong{min-width:0;color:#fffaf0;font-size:13px;line-height:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  & .pg-stop small{color:#c9dad6;font-size:12px;line-height:16px}
+  & .pg-stop[data-state=cleared] small{color:#b8ee8a;font-weight:700}
+  & .pg-stop[data-state=locked] :is(strong,small,.pg-stop-index){color:#93a8a5}
+
+  & :is(.pg-command,.pg-tool){display:flex;align-items:center;gap:10px;width:100%;min-height:66px;margin:0;padding:8px 18px;border:0;border-radius:0;background:transparent url('/art/hierarchy-ui-20261101/skin-secondary.webp') center/100% 100% no-repeat;box-shadow:none;color:#fff7e6;text-align:left;cursor:pointer}
+  & .pg-command.pg-primary{background-image:url('/art/hierarchy-ui-20261101/skin-primary.webp')}
+  & .pg-command::after, & .pg-tool::after{content:none}
+  & .pg-glyph{flex:none;display:block;width:38px;height:38px}
+  & .pg-glyph img{width:100%;height:100%;object-fit:contain}
+  & .pg-command-copy{display:grid;gap:2px;min-width:0}
+  & .pg-command-letter{display:block;height:24px}
+  & .pg-command-copy small{color:#eef4ea;font-size:13px;line-height:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  & .pg-goal-list{display:grid;gap:0;margin:0 0 10px;padding:0;list-style:none}
+  & .pg-goal{display:flex;align-items:baseline;gap:10px;padding:7px 2px;border-bottom:1px solid #35504f;background:none}
+  & .pg-goal strong{flex:none;color:#fffaf0;font-size:14px;line-height:19px;font-weight:800}
+  & .pg-goal small{min-width:0;color:#d3e1dd;font-size:13px;line-height:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  & .pg-goal[data-availability=locked] :is(strong,small){color:#93a8a5}
+
+  & .pg-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:4px 0 14px;padding:0;background:none;border:0}
+  & .pg-tool{flex-direction:column;justify-content:center;gap:8px;min-height:160px;padding:16px 12px;text-align:center}
+  & .pg-tool .pg-glyph{width:64px;height:64px}
+  & .pg-tool .pg-command-copy{justify-items:center;width:100%}
+  & .pg-tool .pg-command-letter .pg-letter{height:28px}
+  & .pg-tool .pg-command-copy small{color:#e4f76a;font-weight:700;white-space:normal;text-wrap:balance;max-width:100%}
+
+  & .pg-modes{display:grid;gap:14px;padding:4px 0 14px;background:none;border:0}
+  & .pg-mode{position:relative;display:block;width:100%;margin:0;padding:10px;border:0;border-radius:0;background:transparent url('/art/hierarchy-ui-20261101/skin-panel.webp') center/100% 100% no-repeat;box-shadow:none;text-align:left;cursor:pointer}
+  & .pg-mode-art{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;background:#162b2e}
+  & .pg-mode-plate{display:grid;gap:3px;padding:8px 24px 2px}
+  & .pg-mode-letter{display:block;height:28px}
+  & .pg-mode-letter .pg-letter{height:28px}
+  & .pg-mode-plate small{color:#eef4ea;font-size:13px;line-height:18px}
+  & .pg-mode[data-availability=ready] .pg-mode-plate small{color:#b8ee8a;font-weight:700}
+  & .pg-mode:not([data-availability=ready]) .pg-mode-art{filter:saturate(.45) brightness(.72)}
+  & .pg-mode-lock{position:absolute;top:18px;right:18px;width:42px;height:42px}
+  & .pg-mode-lock img{width:100%;height:100%;object-fit:contain}
+
+  /* Goals: pre-run selector rows (icon | wordmark + record requirement | state), no progress or reward. */
+  & .pg-goal-context{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 2px 10px;color:#d3e1dd;font-size:13px;line-height:18px}
+  & .pg-goal-info{flex:none;width:32px;height:32px;min-height:0;padding:0;border:0;background:none;box-shadow:none}
+  & .pg-goal-choice{position:relative;display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:10px;width:100%;min-height:72px;padding:10px 16px;border:0;border-image:none;border-radius:0;background:transparent url('/art/hierarchy-ui-20261101/skin-secondary.webp') center/100% 100% no-repeat;box-shadow:none;color:#fff7e6;text-align:left;cursor:pointer}
+  & .pg-goal-choice[aria-pressed=true]{background-image:url('/art/hierarchy-ui-20261101/skin-primary.webp')}
+  & .pg-goal-choice:disabled{filter:saturate(.4) brightness(.8);cursor:not-allowed}
+  & .pg-goal-choice > span{display:grid;gap:3px;min-width:0}
+  & .pg-goal-mark{display:block;width:auto;height:26px;max-width:100%;object-fit:contain;object-position:left center;pointer-events:none}
+  & .pg-goal-choice small{color:#eef4ea;font-size:12px;line-height:16px}
+  & .pg-goal-state{color:#e4f76a;font-size:12px;line-height:16px;font-weight:800;white-space:nowrap}
+  & .pg-goal-choice:disabled .pg-goal-state{color:#c9dad6}
+  & .pg-goal-status{display:grid;gap:2px;margin:10px 2px 0;padding:6px 0 0;border-top:1px solid #35504f}
+  & .pg-goal-status p{margin:0;color:#d3e1dd;font-size:12px;line-height:17px}
+  & .pg-goal-status .challenge-selection{color:#fffaf0;font-weight:700}
+  & .pg-goal-choice:focus-visible{outline:3px solid #7fe3f0;outline-offset:2px}
+
+  & :is(.pg-mode,.pg-command,.pg-tool):focus-visible{outline:3px solid #7fe3f0;outline-offset:2px}
+  & :is(.pg-mode,.pg-command,.pg-tool):active{transform:translateY(2px)}
+
+  /* Narrow layout changes structure only; type sizes stay fixed. */
+  @media (max-width:340px){
+    & .pg-stop{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+    & .pg-stop-index{grid-row:auto}
+    & .pg-tool{min-height:140px}
+    & .pg-tool .pg-glyph{width:52px;height:52px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    & :is(.pg-mode,.pg-command,.pg-tool):active{transform:none}
+  }
+}

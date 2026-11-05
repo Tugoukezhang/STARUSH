@@ -1,0 +1,681 @@
+{
+  "variants": {
+    "frontage-east-entry": "tailor",
+    "frontage-east-records": "bookshop",
+    "frontage-east-middle": "cafe",
+    "frontage-west-middle": "rehearsal"
+  },
+  "props": [
+    {
+      "id": "record-shop",
+      "art": "shop",
+      "x": 339,
+      "y": 1420,
+      "width": 280,
+      "height": 260,
+      "footprint": {
+        "x": 220,
+        "y": 1290,
+        "width": 240,
+        "height": 116
+      },
+      "restorable": true
+    },
+    {
+      "id": "repair-shop",
+      "art": "repair",
+      "x": 350,
+      "y": 1080,
+      "width": 240,
+      "height": 201,
+      "footprint": {
+        "x": 240,
+        "y": 980,
+        "width": 210,
+        "height": 100
+      },
+      "restorable": true
+    },
+    {
+      "id": "ticket-kiosk",
+      "art": "kiosk",
+      "x": 820,
+      "y": 1050,
+      "width": 172,
+      "height": 184,
+      "footprint": {
+        "x": 738,
+        "y": 962,
+        "width": 150,
+        "height": 80
+      },
+      "restorable": true
+    },
+    {
+      "id": "garden-shop",
+      "art": "garden",
+      "x": 184,
+      "y": 482,
+      "width": 170,
+      "height": 164,
+      "footprint": {
+        "x": 100,
+        "y": 420,
+        "width": 156,
+        "height": 62
+      },
+      "restorable": true
+    },
+    {
+      "id": "theater",
+      "art": "canopy",
+      "x": 500,
+      "y": 176,
+      "width": 352,
+      "height": 166,
+      "footprint": {
+        "x": 335,
+        "y": 105,
+        "width": 330,
+        "height": 71
+      },
+      "restorable": true
+    },
+    {
+      "id": "frontage-east-entry",
+      "art": "repair",
+      "x": 805,
+      "y": 1740,
+      "width": 240,
+      "height": 201,
+      "footprint": {
+        "x": 695,
+        "y": 1640,
+        "width": 210,
+        "height": 100
+      },
+      "restorable": true,
+      "restorationId": "ticket-kiosk"
+    },
+    {
+      "id": "frontage-east-records",
+      "art": "shop",
+      "x": 790,
+      "y": 1515,
+      "width": 280,
+      "height": 260,
+      "footprint": {
+        "x": 670,
+        "y": 1385,
+        "width": 240,
+        "height": 116
+      },
+      "restorable": true,
+      "restorationId": "record-shop"
+    },
+    {
+      "id": "frontage-east-middle",
+      "art": "shop",
+      "x": 790,
+      "y": 1305,
+      "width": 280,
+      "height": 260,
+      "footprint": {
+        "x": 670,
+        "y": 1175,
+        "width": 240,
+        "height": 116
+      },
+      "restorable": true,
+      "restorationId": "repair-shop"
+    },
+    {
+      "id": "frontage-west-middle",
+      "art": "repair",
+      "x": 350,
+      "y": 1250,
+      "width": 240,
+      "height": 201,
+      "footprint": {
+        "x": 240,
+        "y": 1150,
+        "width": 210,
+        "height": 100
+      },
+      "restorable": true,
+      "restorationId": "repair-shop"
+    },
+    {
+      "id": "frontage-west-entry",
+      "art": "repair",
+      "x": 350,
+      "y": 1660,
+      "width": 240,
+      "height": 201,
+      "footprint": {
+        "x": 240,
+        "y": 1560,
+        "width": 210,
+        "height": 100
+      },
+      "restorable": true,
+      "restorationId": "record-shop"
+    },
+    {
+      "id": "frontage-east-forecourt",
+      "art": "garden",
+      "x": 820,
+      "y": 790,
+      "width": 220,
+      "height": 212,
+      "footprint": {
+        "x": 710,
+        "y": 708,
+        "width": 202,
+        "height": 82
+      },
+      "restorable": true,
+      "restorationId": "garden-shop"
+    },
+    {
+      "id": "loading-gate",
+      "art": "gate",
+      "x": 175,
+      "y": 1020,
+      "width": 80,
+      "height": 45,
+      "footprint": {
+        "x": 135,
+        "y": 1005,
+        "width": 80,
+        "height": 15
+      },
+      "interaction": "open",
+      "label": "推开装卸门",
+      "openedLabel": "装卸巷已通",
+      "near": 155
+    },
+    {
+      "id": "acoustic-panel",
+      "art": "panel",
+      "x": 530,
+      "y": 640,
+      "width": 150,
+      "height": 64,
+      "footprint": {
+        "x": 455,
+        "y": 625,
+        "width": 150,
+        "height": 15
+      },
+      "interaction": "fold",
+      "label": "收起展板",
+      "openedLabel": "展板已收拢",
+      "near": 155
+    },
+    {
+      "id": "records-tree",
+      "art": "tree",
+      "x": 158,
+      "y": 1400,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 146,
+        "y": 1380,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "record-shop"
+    },
+    {
+      "id": "repair-tree",
+      "art": "tree",
+      "x": 490,
+      "y": 1080,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 478,
+        "y": 1060,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "repair-shop"
+    },
+    {
+      "id": "kiosk-tree",
+      "art": "tree",
+      "x": 927,
+      "y": 1050,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 915,
+        "y": 1030,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "ticket-kiosk"
+    },
+    {
+      "id": "garden-tree",
+      "art": "tree",
+      "x": 65,
+      "y": 520,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 53,
+        "y": 500,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "garden-shop"
+    },
+    {
+      "id": "crossing-tree",
+      "art": "tree",
+      "x": 170,
+      "y": 785,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 158,
+        "y": 765,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "repair-shop"
+    },
+    {
+      "id": "south-tree",
+      "art": "tree",
+      "x": 945,
+      "y": 1520,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 933,
+        "y": 1500,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "ticket-kiosk"
+    },
+    {
+      "id": "theater-tree-l",
+      "art": "tree",
+      "x": 245,
+      "y": 210,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 233,
+        "y": 190,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "theater"
+    },
+    {
+      "id": "theater-tree-r",
+      "art": "tree",
+      "x": 745,
+      "y": 210,
+      "width": 90,
+      "height": 120,
+      "footprint": {
+        "x": 733,
+        "y": 190,
+        "width": 24,
+        "height": 16
+      },
+      "restorable": true,
+      "restorationId": "theater"
+    }
+  ],
+  "devices": [
+    {
+      "id": "oldstreet-welcome",
+      "x": 510,
+      "y": 1635,
+      "zone": 0,
+      "label": "南口音箱",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "speaker",
+      "purpose": "集合与首个涂染反馈",
+      "restores": null,
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-records",
+      "x": 350,
+      "y": 1460,
+      "zone": 0,
+      "label": "唱片店灯箱",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "lamp",
+      "purpose": "恢复唱片店门面",
+      "restores": "record-shop",
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-tickets",
+      "x": 820,
+      "y": 1100,
+      "zone": 0,
+      "label": "票亭电源",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "power",
+      "purpose": "打开外街视野中的场所锚点",
+      "restores": "ticket-kiosk",
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-repair",
+      "x": 350,
+      "y": 1120,
+      "zone": 0,
+      "label": "音响铺音箱",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "speaker",
+      "purpose": "外街与装卸巷汇合",
+      "restores": "repair-shop",
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-crossing",
+      "x": 550,
+      "y": 970,
+      "zone": 0,
+      "label": "街口路灯",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "lamp",
+      "purpose": "南街恢复后开放剧场前庭",
+      "restores": null,
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-north",
+      "x": 490,
+      "y": 820,
+      "zone": 1,
+      "label": "前庭配电",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "power",
+      "purpose": "北区入口与第二组节奏",
+      "restores": null,
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-garden",
+      "x": 184,
+      "y": 520,
+      "zone": 1,
+      "label": "花店门灯",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "lamp",
+      "purpose": "引导侧面绕行而非穿楼",
+      "restores": "garden-shop",
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-mix",
+      "x": 735,
+      "y": 580,
+      "zone": 1,
+      "label": "露天调音箱",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "speaker",
+      "purpose": "前庭外侧交战位置",
+      "restores": null,
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-stage-left",
+      "x": 370,
+      "y": 270,
+      "zone": 1,
+      "label": "舞台左灯",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "lamp",
+      "purpose": "露天剧场的左侧准备",
+      "restores": "theater",
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    },
+    {
+      "id": "oldstreet-stage-right",
+      "x": 630,
+      "y": 270,
+      "zone": 1,
+      "label": "舞台右灯",
+      "kind": "light",
+      "required": true,
+      "paintMax": 52,
+      "sceneArt": "lamp",
+      "purpose": "露天剧场的右侧准备",
+      "restores": "theater",
+      "colorSequence": [],
+      "paintPolicy": "performer"
+    }
+  ],
+  "rows": [
+    {
+      "name": "bookshop",
+      "base": "shop",
+      "file": "public/art/street-perspective-20261009/bookshop.webp",
+      "width": 560,
+      "height": 520,
+      "originalSha": "c017dacd2cd87ba0a43f76288c240423f8f4405bfc22e59760b31bc73dbbfd53",
+      "sha": "40b60abf2b8350ae887fd480922a80c610f5ade5e8214f90abafb272bba7e6a0",
+      "bytes": 187566,
+      "alphaSha": "1338c7b5348666e851b66d96a14b4be1ed4ded711f7528ea93b79b704bf66d6a",
+      "changedPixels": 190840,
+      "bounds": {
+        "left": 2,
+        "top": 144,
+        "width": 556,
+        "height": 374
+      },
+      "muted": {
+        "file": "public/art/street-perspective-20261009/bookshop-muted.webp",
+        "sha": "5655dbb8ace7f07b94e85ff2ab2b21a6c7c2b8e7a734df6bb45ed1942ad17f88",
+        "bytes": 77254
+      }
+    },
+    {
+      "name": "cafe",
+      "base": "shop",
+      "file": "public/art/street-perspective-20261009/cafe.webp",
+      "width": 560,
+      "height": 520,
+      "originalSha": "c017dacd2cd87ba0a43f76288c240423f8f4405bfc22e59760b31bc73dbbfd53",
+      "sha": "4386caf64f9a08318b496620541ae2d0d9690463077c69626a3d4745c41e9c17",
+      "bytes": 187524,
+      "alphaSha": "1338c7b5348666e851b66d96a14b4be1ed4ded711f7528ea93b79b704bf66d6a",
+      "changedPixels": 190809,
+      "bounds": {
+        "left": 2,
+        "top": 144,
+        "width": 556,
+        "height": 374
+      },
+      "muted": {
+        "file": "public/art/street-perspective-20261009/cafe-muted.webp",
+        "sha": "5db17f773e7492678dd65cbd158e3f4bfa3f1333affa82a44a34f399dc1d3282",
+        "bytes": 78346
+      }
+    },
+    {
+      "name": "tailor",
+      "base": "repair",
+      "file": "public/art/street-perspective-20261009/tailor.webp",
+      "width": 480,
+      "height": 402,
+      "originalSha": "b3fe339076fb2fc2296b746f62cbfbec1851033c68ee150593ced7eea416aade",
+      "sha": "cfbbc1bd4b5f218b18cbfb5c3e3c137ae3ba3e22f5e74d453a135236cd78a357",
+      "bytes": 128492,
+      "alphaSha": "0c0f63e346a7c4a8119f67ab14aac05a5d5dc29aa7fe10eecda759100b81d97d",
+      "changedPixels": 113247,
+      "bounds": {
+        "left": 19,
+        "top": 117,
+        "width": 442,
+        "height": 283
+      },
+      "muted": {
+        "file": "public/art/street-perspective-20261009/tailor-muted.webp",
+        "sha": "41cfcf2fa21414a5eefda7070a913749b204e2673b4e3b952407cdb5e4a8622c",
+        "bytes": 55466
+      }
+    },
+    {
+      "name": "rehearsal",
+      "base": "repair",
+      "file": "public/art/street-perspective-20261009/rehearsal.webp",
+      "width": 480,
+      "height": 402,
+      "originalSha": "b3fe339076fb2fc2296b746f62cbfbec1851033c68ee150593ced7eea416aade",
+      "sha": "33975da0a00e2ae62f78d82c95df6e943dc90ea053b08a2308908aac924ff4f7",
+      "bytes": 126838,
+      "alphaSha": "0c0f63e346a7c4a8119f67ab14aac05a5d5dc29aa7fe10eecda759100b81d97d",
+      "changedPixels": 113264,
+      "bounds": {
+        "left": 19,
+        "top": 117,
+        "width": 442,
+        "height": 283
+      },
+      "muted": {
+        "file": "public/art/street-perspective-20261009/rehearsal-muted.webp",
+        "sha": "95c3d3bb37c88f34d95e1a8fffaa1dc9c575ee2d8e9e7e507d67b43745232e74",
+        "bytes": 55358
+      }
+    },
+    {
+      "name": "gate",
+      "base": "gate",
+      "file": "public/art/street-volume-20260913/gate.webp",
+      "width": 290,
+      "height": 136,
+      "originalSha": "52f8eac650c53a6f7b53eb5feb4fdf7180fa2d5fa020924222561e97cb968381",
+      "sha": "7ce7f49d33e0a5ea93833dad9cae5ab2fc03e8855448eb51d5643321dce1d51d",
+      "bytes": 31978,
+      "alphaSha": "52ab6135cb0b1120814e1c14cc4ae2c6fcab4913c074f1a5289f16bfd08e1909",
+      "changedPixels": 32566,
+      "bounds": {
+        "left": 1,
+        "top": 2,
+        "width": 288,
+        "height": 132
+      }
+    },
+    {
+      "name": "panel",
+      "base": "panel",
+      "file": "public/art/street-volume-20260913/panel.webp",
+      "width": 300,
+      "height": 128,
+      "originalSha": "cdbae787959e3a21c64b61a831723d26761203759a88198a68ff161ac8e58274",
+      "sha": "0ed5540f6dad1469c18d35099453d0aae2d575d5c23e204fd0191180be28613f",
+      "bytes": 31282,
+      "alphaSha": "0982d2080db60a7e725e1cb0290be76f16f959f139c122e442e07414c167a9ef",
+      "changedPixels": 30890,
+      "bounds": {
+        "left": 1,
+        "top": 1,
+        "width": 298,
+        "height": 125
+      }
+    },
+    {
+      "name": "lamp",
+      "base": "lamp",
+      "file": "public/art/street-volume-20260913/lamp.webp",
+      "width": 84,
+      "height": 120,
+      "originalSha": "326e42945c9cd20ee7f4f7498ba60c4bc99c455eba0131248218bfa8acdd84d9",
+      "sha": "d04ef36cc31bc6c002233276a9c8a921715215dbf485c2fccaa13e50be90fd7b",
+      "bytes": 5388,
+      "alphaSha": "bc3f6a3ef2c39e7e3facf694e6da4c5466cf49e87f378c05410d2d62a94b36e4",
+      "changedPixels": 2649,
+      "bounds": {
+        "left": 21,
+        "top": 1,
+        "width": 32,
+        "height": 117
+      }
+    },
+    {
+      "name": "speaker",
+      "base": "speaker",
+      "file": "public/art/street-volume-20260913/speaker.webp",
+      "width": 84,
+      "height": 120,
+      "originalSha": "60280d26997d681d7752d462104b49df0192fe3975ceefeda23bf1b14e2e05c6",
+      "sha": "f59cc6d3135e5689b5e3a2b806706a69b7dca1a6ade95e8574b7a90654d31218",
+      "bytes": 7326,
+      "alphaSha": "f1c36ac2b31de2ff5b1908d7f4964dd3c9c99e0adb4a849839afc5db3097c7ae",
+      "changedPixels": 4116,
+      "bounds": {
+        "left": 7,
+        "top": 1,
+        "width": 52,
+        "height": 104
+      }
+    },
+    {
+      "name": "power",
+      "base": "power",
+      "file": "public/art/street-volume-20260913/power.webp",
+      "width": 84,
+      "height": 120,
+      "originalSha": "516f434732a3b29ee33ab7924ddffc5e67b3e6532ecea7bb24f36bb3fba659ac",
+      "sha": "57e9f4b6f7c4a20c648861ab9b01c58ac7a4955f425352d1c891eb52392878cc",
+      "bytes": 6736,
+      "alphaSha": "bea161e1184398dee1a9454d804744fe623c733b792c13fb0e374e4c2e67d9e0",
+      "changedPixels": 3845,
+      "bounds": {
+        "left": 12,
+        "top": 13,
+        "width": 53,
+        "height": 106
+      }
+    }
+  ]
+}

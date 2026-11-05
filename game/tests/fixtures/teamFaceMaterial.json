@@ -1,0 +1,577 @@
+{
+  "rows": [
+    {
+      "asset": "public/art/venus-layered-20261006/venus-parts.webp",
+      "atlas": "public/art/venus-layered-20261006/venus-parts.json",
+      "sha": "820b8283831cb7b31948da1e2f6b5f4ba1fb2c2f95cf85dadcdea6a1da8a4c83",
+      "oldSha": "53935c528b8688bdb178b019166cc49d37cffb49e596996556e78323771b4315",
+      "geometrySha": "1ca8d6f672e6b20a8c30f63d49e1402b7272cc87f52f76948abc7324d1aded63",
+      "alphaSha": "a75439d8589671ae53b27ca83007dc892af36466f8996b54362e58fdd1fac0dd",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "face",
+          "frame": {
+            "x": 134,
+            "y": 6,
+            "w": 116,
+            "h": 112
+          },
+          "changed": 8011
+        },
+        {
+          "direction": "left",
+          "name": "face",
+          "frame": {
+            "x": 134,
+            "y": 262,
+            "w": 116,
+            "h": 114
+          },
+          "changed": 7774
+        },
+        {
+          "direction": "right",
+          "name": "face",
+          "frame": {
+            "x": 134,
+            "y": 774,
+            "w": 113,
+            "h": 116
+          },
+          "changed": 7936
+        },
+        {
+          "direction": "down",
+          "name": "closedFace",
+          "frame": {
+            "x": 774,
+            "y": 134,
+            "w": 116,
+            "h": 114
+          },
+          "changed": 8267
+        },
+        {
+          "direction": "left",
+          "name": "closedFace",
+          "frame": {
+            "x": 774,
+            "y": 390,
+            "w": 116,
+            "h": 113
+          },
+          "changed": 7753
+        },
+        {
+          "direction": "right",
+          "name": "closedFace",
+          "frame": {
+            "x": 774,
+            "y": 902,
+            "w": 115,
+            "h": 116
+          },
+          "changed": 7947
+        },
+        {
+          "direction": "down",
+          "name": "hurtFace",
+          "frame": {
+            "x": 902,
+            "y": 134,
+            "w": 116,
+            "h": 112
+          },
+          "changed": 7907
+        },
+        {
+          "direction": "left",
+          "name": "hurtFace",
+          "frame": {
+            "x": 902,
+            "y": 390,
+            "w": 116,
+            "h": 111
+          },
+          "changed": 7542
+        },
+        {
+          "direction": "right",
+          "name": "hurtFace",
+          "frame": {
+            "x": 902,
+            "y": 902,
+            "w": 116,
+            "h": 112
+          },
+          "changed": 7616
+        }
+      ],
+      "id": "venus",
+      "source": "01-美术/team-face-20261012/venus"
+    },
+    {
+      "asset": "public/art/team-oblique-20261007/venus-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/venus-oblique.json",
+      "sha": "a237539c81cbb891b81ebd119aa73b430b48b60315139f9877793a6154b0c62c",
+      "oldSha": "18b2a2c2e68f77e56e1a7d9c6a3f119888acb2d8cc7585fd8524d4e6008ef60f",
+      "geometrySha": "4b47dafcc565c34d3f8a55cdb5cebf8783ac419d60e39177d7a0f5199a86206e",
+      "alphaSha": "e548c34afe57829910ce57dc5423b111254afac8d32688d21980f37a1d866190",
+      "mask": "W///D2QKIAD+v5b9fACsjkF4yiNcSFZsmO0mzkiH0Pr1rzqve8XtIT3IcuUgcR/+bZn1n2RSaejFh+uQZQMLmNmLAsD5qF7TxZfQoDJ4x7D5GsHLELsSeBZm52ehdv5b+/bX9onbK2yvv7avuL0C9xLuittLuG9xezoAQS5xe3XcE7iH3MTt6bgncA+56bhX4B50w26UuxwCIAu4zx7BDQDIuucu6S5yu0cAYr3nTujGd38GUI0gAMDHLuxOHQLmY5v3/iHg7G4ECLu9DVpsAwH3+AC4Aig2CS5dyOgn/j6C393/8QC6/6W5TLVtBO/993Ww2AZG3Kf8b+UhAg5xIW/jHOmmCM19fkN3dFvgZltyAy25gc7mBiDlpmiNqvQBALhGt514+6l+9VQIYOfoG1S+IbaB6KdUl9RGVJC2SjVfu5HYG6HCUe48ZrRcZyAto+Y6IqmPHAr7+GEwU4TATJNrj6RMFfoyXdjLlLmGUNpLpWnD3QgVThzslslzjZDUGwhyvYUgt5PaTWRZCyJU2EZ4W1rJzihplfQvUkmzCq5rgKZD1ggVWgK1pZi83UlcAwht2gpnj0/hPkWcS2WrucLsASq1DVkj1LUVTF8F8AcQ2Ueo2ja4vgcgcI/GugbQdPyDOwDZCeIfAFDSdAhKw4us8SmxAHKvALCbjgLB9B2AKiABACjNkI1QHbqtqCSlZQCSvwMgZTH5xW02OVoD1OYpGLrbAOQEQMCD2WmDfywAKSidg9oA9RniMsgaoTpTkBZ09/6pbRtZR6enAbgboD7D33Adm65ZYW+A6gqqAGIpaQoR4xuffYAGJzr6HtG9gZHBKxivXxZ6I9RXjkdT8k7kBa6DU99CBUDfCPVZZftOUi5JqntJRFJYh9Zsoc4eACRe2yP8AyA8Cg2qUxHAfi5MAy1oHRx2obQgQNzGEtsgfBRQ0bEv9SUB3fgKlgUzKR9o5vIhpxcNNCkfiGKfejwAMAMQtbiwG2BBA0C3WAC5tATUdrLcNCQfBLzCvQTuE7lrgMA95CZwD7mJ2yflDruvAlQHAAA4izsAZgH3yR+4AVDLBgB8xn0AqPkBAaAY692ByKyd3LnuLgAYuhsAUXcHAHDdlwAHeLcAlKVDLC4nrG8CNL0XARJ0LwIm7F4DXNhdA6B0jIVmAPudgD2ghqm/usWEWLZfEBlqvVPo729czPzToTD55f6Jfsk9D/AuDNdssjrEemUB6Gv9AyF3BVB3FwBS5TICmAR01WgAANH+vtFDzCiPeIRuaojecLNmHO2G9q6WwHi7ShUkseEwd4EaTWY0JiEoLonhMOmBMDkgMJlIAVhD1JfN6EtO0EtewEtmuEt2sEtyWD4MSNk9BQAVt/sASHcpdyl3hfZrACVtg80bGAHsSlq2CLOn/EB3DuAZTJB1C47cOUDTdLH1CJWTu9QIAIAaALL3ATgECDeh+7dODwAwQwAAFPNSByTgdK97DhDW3AEA+5hPZJ0BcDbPgPWSiKTyY0NkfQmAbcg6PiWcAeazAwC6PEovAQjoht1LAMNBN3BZhG4A6AMBqdcAjpuAdRcA4O3o7gPM/eevXHAC2V0A/IFx4muECi07XP+T2sjAGb5Auuauh4BKLug2ODTn/uqpEDE+bN7nN4hmC64RKvxkzrH0wwC3P11PLwFgJToSX+WbCdOJrAEqrLoLADXA/ySAS7WDSdgB",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 4,
+            "w": 104,
+            "h": 100
+          },
+          "changed": 6042
+        },
+        {
+          "direction": "down-right",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 228,
+            "w": 104,
+            "h": 97
+          },
+          "changed": 5833
+        },
+        {
+          "direction": "down-left",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 116,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 5937
+        },
+        {
+          "direction": "down-right",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 340,
+            "w": 104,
+            "h": 96
+          },
+          "changed": 5868
+        },
+        {
+          "direction": "down-left",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 116,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 5970
+        },
+        {
+          "direction": "down-right",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 340,
+            "w": 104,
+            "h": 97
+          },
+          "changed": 5975
+        }
+      ],
+      "id": "venus",
+      "source": "01-美术/team-face-20261012/venus"
+    },
+    {
+      "asset": "public/art/kai-layered-20261006/kai-parts.webp",
+      "atlas": "public/art/kai-layered-20261006/kai-parts.json",
+      "sha": "92d2d1188a8465c5b2942b0334290fc44369606ab219dca29fcd99487e29b22a",
+      "oldSha": "bb54eb0fd2c4ce1fd90c14961377887bf89da4ba672dd8f1120e47718911e1ac",
+      "geometrySha": "c2c3a4ce890026eba01d0dfcd858f84cebb5da4b5a9184f085fd0a92b64b1aae",
+      "alphaSha": "037958f125b3420e1d63747f3f99faa6f134a0124a16ad2d7f804ba99f48ef24",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 4,
+            "w": 104,
+            "h": 100
+          },
+          "changed": 5710
+        },
+        {
+          "direction": "left",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 228,
+            "w": 104,
+            "h": 104
+          },
+          "changed": 5671
+        },
+        {
+          "direction": "right",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 676,
+            "w": 104,
+            "h": 98
+          },
+          "changed": 5282
+        },
+        {
+          "direction": "down",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 116,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 5679
+        },
+        {
+          "direction": "left",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 340,
+            "w": 104,
+            "h": 103
+          },
+          "changed": 5613
+        },
+        {
+          "direction": "right",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 788,
+            "w": 104,
+            "h": 98
+          },
+          "changed": 5375
+        },
+        {
+          "direction": "down",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 116,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 5677
+        },
+        {
+          "direction": "left",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 340,
+            "w": 104,
+            "h": 103
+          },
+          "changed": 5553
+        },
+        {
+          "direction": "right",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 788,
+            "w": 104,
+            "h": 98
+          },
+          "changed": 5352
+        }
+      ],
+      "id": "kai",
+      "source": "01-美术/team-face-20261012/kai"
+    },
+    {
+      "asset": "public/art/team-oblique-20261007/kai-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/kai-oblique.json",
+      "sha": "2d5f3f9b90addff010c915cec33eb1133279719b4d74e208e5f0b6dc295e1818",
+      "oldSha": "b15f96dff9ee58ed071f833b543aa426828fc09198bb02d88c185708dbfdd1b0",
+      "geometrySha": "3115c71fdac0ff5a58485e559bfb794e09a40e912322cd01e9cfa2f05b5880e9",
+      "alphaSha": "e3742e98c41f900ea535aed43f54bbd54bc9c835b7f317710fe50de52a783f50",
+      "mask": "W///D2IKIICHr2XNk6IVKIQK0ei9g2zN5YYsURJhHFL/pur17Io/RxpCyivx8uA/rvQ/pJGy55wipRnDrn7BANjv7jlnad3N1h4twKuAEQsxpF57laxrx7N4zVyQrghGQe3DzNHsPJvNZga0mUFtRqjNCLZz3p6G2ytxV+4veBlwv8ncydyVt2u4fUzclbgrcVd/QFlL5o7dZO5qCyAtjQGcZcC94N73DHgA0M6Odr8E0ByA2U33QAAAs8hNz0ClWUvTndbAb4B3agcA4N0KALrbANMKCPmW0jY136W3EQB0GwFitxFAdNsAhrcNgGlbei8b9v+7BrBdkzUAbC9iYfq4OGQ/+Re8+z/ewwYG4fT/zfvacOsfHd7rhl3mlqZyAxpqE6d0A+EF8VC+JrmD0h1/2rVJASyg/jHNZLyJCnq5qX0AHvn9f6rFPcY37pKg7VI7RUUeI1w4bEzlCwPLio8+rpRMV1WOQi0J0/bp1hIsbZ56TUhqlGp0VG2leknktVKhtsKokTqVwaiNWsVR10WNBaGXGiDVROUYiGujfgjI9VFbaditAcZARtdDbeWhuwrIuRWiiNtFPdELqz4qDIK3TuqLArdEy8w6qS4O2JZYGVoflYXK2HZSdSCofQgQa9d0rwJ63SvR1nhVmu2jymAZ2txyj2NWzp6iwSyZO/EO0Pqoqqaw2kAAUOwxATH1J4AXoP2vLFt97hXtkGe9BXAHsEV1lMpUAKp/AR6Ifm1VwAsVIEqHqFb7nynrh1AdpHo1wKqPCovjbp7FbBOAHi8AadoK2ibAPQ7AVB/1FQv+lhIYTAHmQm8PIIxCXXkYyvZ2J8Hqorb6aoDhJpv6HcYoZ6gfOm/9dQNoFXAnkr7vBNtfFhCl7QK4yYOko9O+Rqx832/ZlN9Y66K2yQuc1Iqn81LCXtr/6hSbABLdv+maqtcF5y6bpNUeVwzHpnRXAQn7UAAitI119YH3JADU0qyqeADsZcECtPaT3KOAUeKjuyaWFYZdDwvWxPvXkAgfAKgcn8ztYIHKAtWheyAAmAOE6Ab+HwCguxtur8S9Chhuv+kLiLYk7gy4h24g7WH91gfWxqYA0gL33u6wijsAUD3u1TNQzIbMndb7e4BNd+iW2/m5bqgl8BvA2dbSFRAAxL5tsluNgDWARZMb/WcAYb+3JLcJYHgj9woAh28LwOm2AL75PgsQtT7rOsyyQwfLN3b3AdTgmuf+kk8DQq7ztFLAJAuIh++zgJDtm3/zvQqg1MeaYVDer3tc5+7LCGCh+6cpM+jRgPK5PTLo4cfxG/t/OT6D/qe6Kn1G+N7njzyYi1zCPi34XvaPAqjb76ub6gk0TqtYa/HwbaBaWUNx3PVQYfxC6iDAu8MQo+3TfsR/QtVBjVf9sgG+LVS/JpnKC1ioca2yYoi6hip9bvszgHACCFUbFYvD7hCAZZv3tkHHEujto4aywFsFlIZd4oPqSuo0AuTmEIibw6PqFEAMArid1BcEcL1UFgRwu6g0CODGKMXbTup1Oz6/De1DyDsD+O4wgHQtFVtTyaTnAEkoqI2xgJYFofpNgMZCFbC6AABQ7NFWIDNXnu2ltjGLszOAMdrOWcLj6kuA0WD2GwCxSLS+AdS5AABUAW7/ApjMUwDP7rCntDqprVshAEBSF1UVgt8JQNjmwMAYAnYHqFhoaHVRnf7QO0QVqzk+Z8o11GeAgi6xoXWIeq4IHs8AwlcbhOsIlQ0eTF0D8NyQwJbedYDQ9STK2wcQdxZ8Hwo0ZRuYBoQrVzTOnyHY+fiV/1uWz/jgfOK/AsfIBz/v/X87gDhdTX3GKdpOAsKDQZqWXhnYcTvv4MKdmV1PbVaFpdOAkGQ6QSkAlxF2SMIICw==",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 4,
+            "w": 104,
+            "h": 103
+          },
+          "changed": 5377
+        },
+        {
+          "direction": "down-right",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 228,
+            "w": 99,
+            "h": 104
+          },
+          "changed": 5379
+        },
+        {
+          "direction": "down-left",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 116,
+            "w": 102,
+            "h": 104
+          },
+          "changed": 5416
+        },
+        {
+          "direction": "down-right",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 340,
+            "w": 102,
+            "h": 104
+          },
+          "changed": 5294
+        },
+        {
+          "direction": "down-left",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 116,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 5241
+        },
+        {
+          "direction": "down-right",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 340,
+            "w": 104,
+            "h": 100
+          },
+          "changed": 5221
+        }
+      ],
+      "id": "kai",
+      "source": "01-美术/team-face-20261012/kai"
+    },
+    {
+      "asset": "public/art/enjo-layered-20261007/enjo-parts.webp",
+      "atlas": "public/art/enjo-layered-20261007/enjo-parts.json",
+      "sha": "83baa3f3098c06d6fa844cbb48b5fe5eb8f51040b9642c1f887b21aa9d527dc8",
+      "oldSha": "dd092fb9d568c83cf90bedc8540ec3ed37957677f3c9b5fb4d7dc7ebcb89191c",
+      "geometrySha": "ad6824d5523e2e0c864408a58da885f7d43ebdc4268a04d70710b65f1b64c712",
+      "alphaSha": "48f67e43c7dd867ad2ecbbfb954f3def3386b42fe93ba007d9421819fdf7a7d2",
+      "mask": "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",
+      "parts": [
+        {
+          "direction": "down",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 4,
+            "w": 104,
+            "h": 101
+          },
+          "changed": 5479
+        },
+        {
+          "direction": "left",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 228,
+            "w": 104,
+            "h": 100
+          },
+          "changed": 5072
+        },
+        {
+          "direction": "right",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 676,
+            "w": 104,
+            "h": 95
+          },
+          "changed": 5563
+        },
+        {
+          "direction": "down",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 116,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 5372
+        },
+        {
+          "direction": "left",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 340,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 4955
+        },
+        {
+          "direction": "right",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 788,
+            "w": 104,
+            "h": 95
+          },
+          "changed": 5608
+        },
+        {
+          "direction": "down",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 116,
+            "w": 104,
+            "h": 100
+          },
+          "changed": 5427
+        },
+        {
+          "direction": "left",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 340,
+            "w": 104,
+            "h": 99
+          },
+          "changed": 4978
+        },
+        {
+          "direction": "right",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 788,
+            "w": 104,
+            "h": 95
+          },
+          "changed": 5587
+        }
+      ],
+      "id": "enjo",
+      "source": "01-美术/team-face-20261012/enjo"
+    },
+    {
+      "asset": "public/art/team-oblique-20261007/enjo-oblique.webp",
+      "atlas": "public/art/team-oblique-20261007/enjo-oblique.json",
+      "sha": "31cad1a1b458049ec7681504b63ec0430d7e5734617524e863ae21925f4b1481",
+      "oldSha": "acf0eaaee51abdcb708b7ef2b6e96a7b5b3a882d38b940e25060760377813d95",
+      "geometrySha": "28d6fe575a6594adbe3a1d3d1a498664b9c1d41532e93cb7f65ecf8abe711c20",
+      "alphaSha": "1e29f22794aca4478f34e168fe615e5f37934b351f3b3501315dd787a732f476",
+      "mask": "W///D2IKIICHr2lKA5iZIbtzakGsFgrcN/2gAQlgIYCsMvN2lfKlS1FKaeygOQiULa1pgS85FI/naUMCBO6xOACUwXbqawcAeoDAXW9ve4nbNVPbfyTwFGhfG7gy4bpWLEj7gq+23wsMtM+XJ7LtUrze/9XuXUDgrre2//3W9jXcPg+010ztH7qJ3KV/dpfB9ulr7VeHewvcFbirPwAAKGwtclfNHQAgcFe3QDlL10CYJXJX0Z0CwZ2AzOJ2rrwDAPQNAADl7FIdAAAeA3QWt7fKgADwF20VtSm+VwHM7ipAlt1tUM0LfyxvA8C7/GGxVzGfCAy5/+huAvhQG/zuA4TDBJI7CFPsy/6zvC2NR/1WBdHcKQCdj9sFbF5ldwFvM+PHdt7qhuTOUVtGuwdgq3wPQGl1XA1Q457/q1sIUlvR3QO0orgNUd+tvTr8xvRX5xFQiIaqdil7ZnFD1NesiBFKWg/dRkFphZRTQm+IChMAMI1C0orpNwpGq6efO66GqLDk7gKSGrwt1EgLvC1Uyh1WQ1SYjNCbtMjbPN1mIWnX1OSOqyFqTE3YTcuvrnZRRbPSYPS1UcwK/fuAXPC2i6ouh2wXkAvc9lBbXkAbosJ80JbF4O8CQnd9RRshasyJUBu56VKoQFqtLllDVCg3Laswm+yIssmPIJt76RpJK/cfrG8DVBUCgL2nNwCgiF5GPwUgu29oQ1RYGEhxu77aBpPW6u4AgOVk0VaQCnNhFcg6SJXy/oeUNUSFZ6myBwAu4EhjBi5QCeD0yNsMmA5/jIGqISpMiL4k4RSlBEwkxSFwG6B3OxDb+kIx60QOGHr7/ygBUJk1YjNrgWeadRvcUlZOSkO3C9geXpMad0PUhzhgp7OUEaB7nurUlBwAAH2jtXWjJPCGS4K+1fKaKRP4ALih+0YAoZ+22Bje3v6gIDF7TgBaWbPSuwZerplhcD2rGoKaVatuFIrPAUC65wCh9S5A429La1meBnzjLNgoHN02BvxdE4JvG+sSYm8bS0sKG559q5MT7kZZMTnqBlmwUQTSXayRNWWCMcAN7lILEACM2yVwZ7g9A+5Vcx8AGG5P10CYpTYQABBnlZq7AADcTwCqDgAAQIvc1AUAgElAHmsVuE3TQZaUjpJDFcDq7QAAIVdxG8HPAiR0NwCo7G5unwRg+MbvaQCI96L9IjFwOwC4TwJMixLc9vY1MuRnAq0C/DwADNmu/nPuAsK1Qjd6TwRAvnv/vbrnADC2HL9LzW7afx9A6dKlEEs/p6LFsTVAdS2OrVPWG+y/+edvm4MO+KjKn+bbJpwH640to5I3RIU3nJGxOxUIbyIwH3tifGuod6vaHAbXULWY7wLmNriG6hv2Lm8LFeAeB4gTWL76hRgVTixjJmn71CeX8ZJ0nWBGA2sjlSeZkcA6BmAnmlHAGqLCWx31ZwGhpH3U0eq42kkl0zHgdlFPIvwdBOxV9wDABbRl0Zb2xNoQFbYp0jLZlLtnAd8WPQICQBcQZ2uhszsNIDM3V4PUcAMhehYw0p3pvgpQHHABUdY9gHbTMxAAELPPALSbngEAoKIsLXh15wDqfgH1O4BMF0c5IcU+hW6mGtkaocJU+FsFsCpAAAC4FYCdh9cVAAa8ASALqNtb6jYgWBsAN81ga4gK1T4J0CzC7SYANy1khJZ6gOkmyzpGhZMZvWcBpf8IANImpAR6sZFlPVOFLgvX8wCw3aB1gNon2IvhKcEvw1+30Fc5wAWET9DNHPkTS/FhwxetfX9dvyESCg==",
+      "parts": [
+        {
+          "direction": "down-left",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 4,
+            "w": 103,
+            "h": 104
+          },
+          "changed": 5455
+        },
+        {
+          "direction": "down-right",
+          "name": "face",
+          "frame": {
+            "x": 116,
+            "y": 228,
+            "w": 102,
+            "h": 104
+          },
+          "changed": 5364
+        },
+        {
+          "direction": "down-left",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 116,
+            "w": 102,
+            "h": 104
+          },
+          "changed": 5426
+        },
+        {
+          "direction": "down-right",
+          "name": "closedFace",
+          "frame": {
+            "x": 676,
+            "y": 340,
+            "w": 103,
+            "h": 104
+          },
+          "changed": 5374
+        },
+        {
+          "direction": "down-left",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 116,
+            "w": 103,
+            "h": 104
+          },
+          "changed": 5478
+        },
+        {
+          "direction": "down-right",
+          "name": "hurtFace",
+          "frame": {
+            "x": 788,
+            "y": 340,
+            "w": 102,
+            "h": 104
+          },
+          "changed": 5370
+        }
+      ],
+      "id": "enjo",
+      "source": "01-美术/team-face-20261012/enjo"
+    }
+  ]
+}

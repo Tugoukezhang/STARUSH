@@ -1,0 +1,230 @@
+[
+  {
+    "id": "opening",
+    "encounter": {
+      "phases": [
+        {
+          "id": "opening-light-check",
+          "label": "开场校灯",
+          "requiredCompleted": 0,
+          "unlitMax": 2,
+          "unlitSpawnMs": 1800,
+          "danmakuIntervalMs": 2200,
+          "stageCueEmitterIntervalMs": null,
+          "objectiveDisruptorIntervalMs": null,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "movement-build",
+          "label": "走位升温",
+          "requiredCompleted": 2,
+          "unlitMax": 3,
+          "unlitSpawnMs": 1500,
+          "danmakuIntervalMs": 1750,
+          "stageCueEmitterIntervalMs": 18000,
+          "objectiveDisruptorIntervalMs": null,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "pressure-stack",
+          "label": "压力叠加",
+          "requiredCompleted": 5,
+          "unlitMax": 4,
+          "unlitSpawnMs": 1250,
+          "danmakuIntervalMs": 1400,
+          "stageCueEmitterIntervalMs": 15000,
+          "objectiveDisruptorIntervalMs": 22000,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "high-point-chase",
+          "label": "压轴追光",
+          "requiredCompleted": 8,
+          "unlitMax": 4,
+          "unlitSpawnMs": 1100,
+          "danmakuIntervalMs": 1200,
+          "stageCueEmitterIntervalMs": 12000,
+          "objectiveDisruptorIntervalMs": 16000,
+          "spotlightCaptainEnabled": true
+        }
+      ],
+      "roles": [
+        {
+          "role": "stage-cue-emitter",
+          "at": 2
+        },
+        {
+          "role": "objective-disruptor",
+          "at": 5
+        },
+        {
+          "role": "spotlight-captain",
+          "at": 8
+        }
+      ]
+    },
+    "event": null,
+    "patterns": [
+      "captured-line",
+      "momentum-cutoff",
+      "captured-line"
+    ],
+    "summary": "旧街压轴以定点锁定为主，中段加入横向预判；三段后进入涂染窗口。"
+  },
+  {
+    "id": "neon",
+    "encounter": {
+      "phases": [
+        {
+          "id": "opening-light-check",
+          "label": "街口试听",
+          "requiredCompleted": 0,
+          "unlitMax": 2,
+          "unlitSpawnMs": 1800,
+          "danmakuIntervalMs": 2200,
+          "stageCueEmitterIntervalMs": null,
+          "objectiveDisruptorIntervalMs": null,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "movement-build",
+          "label": "守住声部",
+          "requiredCompleted": 2,
+          "unlitMax": 3,
+          "unlitSpawnMs": 1500,
+          "danmakuIntervalMs": 1750,
+          "stageCueEmitterIntervalMs": null,
+          "objectiveDisruptorIntervalMs": 22000,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "pressure-stack",
+          "label": "交错声浪",
+          "requiredCompleted": 5,
+          "unlitMax": 4,
+          "unlitSpawnMs": 1250,
+          "danmakuIntervalMs": 1400,
+          "stageCueEmitterIntervalMs": 15000,
+          "objectiveDisruptorIntervalMs": 22000,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "high-point-chase",
+          "label": "合声汇聚",
+          "requiredCompleted": 8,
+          "unlitMax": 4,
+          "unlitSpawnMs": 1100,
+          "danmakuIntervalMs": 1200,
+          "stageCueEmitterIntervalMs": 12000,
+          "objectiveDisruptorIntervalMs": 16000,
+          "spotlightCaptainEnabled": true
+        }
+      ],
+      "roles": [
+        {
+          "role": "objective-disruptor",
+          "at": 2
+        },
+        {
+          "role": "stage-cue-emitter",
+          "at": 5
+        },
+        {
+          "role": "spotlight-captain",
+          "at": 8
+        }
+      ]
+    },
+    "event": {
+      "id": "neon-linked-cue",
+      "partner": "stage-cue-emitter",
+      "secondary": "stage-cue-emitter",
+      "label": "街口联动",
+      "hint": "及时涂满干扰者，可取消尚未发出的声浪。"
+    },
+    "patterns": [
+      "momentum-cutoff",
+      "captured-line",
+      "momentum-cutoff"
+    ],
+    "summary": "霓虹压轴交替预判与定点锁定；末段弹路净空且距离足够时折返，预告后不追踪。"
+  },
+  {
+    "id": "encore",
+    "encounter": {
+      "phases": [
+        {
+          "id": "opening-light-check",
+          "label": "港湾试音",
+          "requiredCompleted": 0,
+          "unlitMax": 2,
+          "unlitSpawnMs": 1800,
+          "danmakuIntervalMs": 2200,
+          "stageCueEmitterIntervalMs": null,
+          "objectiveDisruptorIntervalMs": null,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "movement-build",
+          "label": "甲板走位",
+          "requiredCompleted": 2,
+          "unlitMax": 3,
+          "unlitSpawnMs": 1500,
+          "danmakuIntervalMs": 1750,
+          "stageCueEmitterIntervalMs": 18000,
+          "objectiveDisruptorIntervalMs": null,
+          "spotlightCaptainEnabled": false
+        },
+        {
+          "id": "pressure-stack",
+          "label": "领舞合拍",
+          "requiredCompleted": 5,
+          "unlitMax": 4,
+          "unlitSpawnMs": 1250,
+          "danmakuIntervalMs": 1400,
+          "stageCueEmitterIntervalMs": 15000,
+          "objectiveDisruptorIntervalMs": null,
+          "spotlightCaptainEnabled": true
+        },
+        {
+          "id": "high-point-chase",
+          "label": "终场合奏",
+          "requiredCompleted": 8,
+          "unlitMax": 4,
+          "unlitSpawnMs": 1100,
+          "danmakuIntervalMs": 1200,
+          "stageCueEmitterIntervalMs": 12000,
+          "objectiveDisruptorIntervalMs": 16000,
+          "spotlightCaptainEnabled": true
+        }
+      ],
+      "roles": [
+        {
+          "role": "stage-cue-emitter",
+          "at": 2
+        },
+        {
+          "role": "spotlight-captain",
+          "at": 5
+        },
+        {
+          "role": "objective-disruptor",
+          "at": 8
+        }
+      ]
+    },
+    "event": {
+      "id": "harbor-cue-relay",
+      "partner": "spotlight-captain",
+      "secondary": "objective-disruptor",
+      "label": "港湾接力",
+      "hint": "领舞预告时及时涂满干扰者，可打断这次落击并打开收势窗口。"
+    },
+    "patterns": [
+      "momentum-vector",
+      "captured-line",
+      "momentum-vector"
+    ],
+    "summary": "港湾压轴按二维走位预判；首末段弹路净空且距离足够时折返，离开弹路后等回程通过。"
+  }
+]

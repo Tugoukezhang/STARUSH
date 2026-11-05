@@ -1,0 +1,21 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {getChapterScenePresentation} from '../src/systems/ChapterScenePresentation.mjs';
+import {oldStreetMaterialPath} from '../src/systems/StreetMaterialPresentation.mjs';
+import {RUNTIME_PAYLOAD} from '../scripts/runtime-payload.mjs';
+const floor='art/street-perspective-20261009/ground.webp';
+test('approved flush street floor replaces model-board pixels through the existing single export',()=>{
+ const bytes=fs.readFileSync(new URL('../public/'+floor,import.meta.url));
+ const sha=crypto.createHash('sha256').update(bytes).digest('hex');
+ assert.notEqual(sha,'632caa7af3b9b614bc2ca57cf34c6bc17674c1697879f5cc2f63405fb7a400f1','RED: retired thick model-board floor still ships');
+ assert.equal(bytes.subarray(0,4).toString(),'RIFF');assert.equal(bytes.subarray(8,12).toString(),'WEBP');
+ assert.equal(getChapterScenePresentation({stageId:1}).groundPath,'art/map-presentation-20261018/opening-neutral.webp');
+ assert.equal(oldStreetMaterialPath('ground'),floor);
+ assert.equal(RUNTIME_PAYLOAD.filter(r=>r.file===floor).length,1);
+ assert(!RUNTIME_PAYLOAD.some(r=>/street-floor.*\.(png|json|md)$/.test(r.file)));
+ assert.equal(getChapterScenePresentation({practiceMode:true}),null);
+ assert.equal(getChapterScenePresentation({stageId:1,campaignChapterId:'neon'}).groundPath,'art/map-presentation-20261018/neon-neutral.webp');
+ assert.equal(getChapterScenePresentation({stageId:1,campaignChapterId:'encore'}).groundPath,'art/map-presentation-20261018/encore-neutral.webp');
+});

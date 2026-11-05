@@ -1,0 +1,71 @@
+/* B268 console studio — backstage (MenuHierarchy.backstage) and services (ProductModuleScreens.services), plus the
+   read-only 服务状态 sheet. Same full screenRebuild root as programStudio267.css, then data-console-studio="268",
+   so these rules beat productModuleScreens.css (margin:0 -20px) and screenRebuild.css (.ui-backstage-grid 2x2)
+   without touching any other page. Letter/glyph hosts ([data-console-letter]/[data-console-icon]) are decorated by
+   Codex; here they only get boxes. Fixed 13-15px native type, <=8px radii, 44px controls, no animation. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] {
+  & .shell-content:has(> .product-module-screen[data-console-studio="268"]){padding:0;background:#10272b;overflow-x:hidden}
+  & .product-module-screen[data-console-studio="268"]{position:relative;isolation:isolate;display:flex;flex-direction:column;gap:10px;min-height:100%;width:100%;margin:0;padding:12px 12px 14px;background:#10272b;color:#f4efe2;letter-spacing:0}
+  & .product-module-screen[data-console-studio="268"] [hidden]{display:none!important}
+  & .product-module-screen[data-console-studio="268"] :is(button,[role=status]) :is(strong,span,small){color:inherit}
+
+  /* Backstage: full-bleed desk scene, controls docked at its foot. */
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage]{justify-content:flex-end;padding-bottom:16px;background:#10272b}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-desk{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;object-fit:cover;object-position:center 32%;pointer-events:none}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .ui-backstage-grid{display:flex;flex-direction:column;gap:8px;margin:0;padding:10px;border-radius:8px;background:#0d2125d9}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-primary{display:flex;flex-direction:column;gap:8px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-utility{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .pm-entry{position:relative;display:flex;align-items:center;gap:12px;width:100%;min-width:0;height:auto;margin:0;padding:8px 14px;border:0;border-image:none;border-radius:8px;box-shadow:none;color:#f4efe2;text-align:left;cursor:pointer}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-primary .pm-entry{min-height:68px;background:#173a3e url('/art/console-studio-20261102/skin-primary.webp') center/100% 100% no-repeat}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-utility .pm-entry{justify-content:center;min-height:44px;padding:6px 10px;background:#1b3134 url('/art/console-studio-20261102/skin-row.webp') center/100% 100% no-repeat;text-align:center}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-glyph{flex:none;display:block;width:48px;height:48px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .pm-entry-copy{display:flex;flex-direction:column;gap:2px;position:static;min-width:0;padding:0}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .pm-entry-copy strong{display:block;font-size:15px;line-height:22px;font-weight:900;white-space:normal}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-utility .pm-entry-copy strong{font-size:14px;line-height:20px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .pm-entry-copy small{display:block;color:#cfe0da;font-size:13px;line-height:18px;white-space:normal;overflow:visible;text-overflow:clip}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .pm-entry:focus-visible{outline:3px solid #ff8a6b;outline-offset:-3px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-readout{display:flex;justify-content:space-between;gap:12px;margin:0;padding:0 4px;border:0;background:none;color:#e6efe9;font-size:13px;line-height:18px}
+
+  /* Services: one status block, two real commands, one quiet 服务状态 entry, return at the foot. */
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-heading{margin:2px 2px 0;color:#f4efe2;font-size:15px;line-height:22px;font-weight:900}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state{display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:10px;row-gap:2px;align-items:center;margin:0;padding:10px 12px;border:0;border-left:4px solid #9fb3ad;border-radius:8px;background:#173a3e url('/art/console-studio-20261102/skin-panel.webp') center/100% 100% no-repeat}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state>:not(.cs-state-icon){grid-column:2}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-state-icon{grid-column:1;grid-row:1 / span 3;display:block;width:36px;height:36px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-state-icon .ui-glyph{display:block;width:36px;height:36px;object-fit:contain}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state strong{font-size:15px;line-height:22px;font-weight:900}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state :is(span,small){color:#d6e3de;font-size:13px;line-height:18px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=saved]{border-left-color:#b8ee8a}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=saved] strong{color:#b8ee8a}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=pending]{border-left-color:#ffd27a}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=pending] strong{color:#ffd27a}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=recovery]{border-left-color:#ff8a6b}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=recovery] strong{color:#ff8a6b}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-local-state[data-save-state=none] strong{color:#f4efe2}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] :is(.pm-service-command,.cs-network){display:flex;align-items:center;gap:12px;width:100%;margin:0;padding:6px 14px;border:0;border-image:none;border-radius:8px;box-shadow:none;color:#f4efe2;font-size:15px;line-height:22px;font-weight:800;text-align:left;cursor:pointer}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-service-command{min-height:52px;background:#173a3e url('/art/console-studio-20261102/skin-primary.webp') center/100% 100% no-repeat}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-service-command:disabled{opacity:.55;cursor:not-allowed}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-service-command .cs-glyph{flex:none;display:block;width:34px;height:34px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-unavailable-reason{margin:-4px 4px 0;color:#ffb9a6;font-size:13px;line-height:18px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .cs-network{justify-content:center;min-height:44px;margin-top:4px;background:#1b3134 url('/art/console-studio-20261102/skin-row.webp') center/100% 100% no-repeat;color:#d6e3de;font-size:14px;line-height:20px;text-align:center}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] :is(.pm-service-command,.cs-network):focus-visible{outline:3px solid #ff8a6b;outline-offset:-3px}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-footer{margin-top:auto;padding:4px 0 0;border:0;background:none}
+  & .product-module-screen[data-console-studio="268"][data-console-page=services] .pm-footer .pm-entry{min-height:44px}
+
+  /* 服务状态 sheet: the shared opaque dialog, one heading + close; three non-interactive rows. */
+  & .ui-sheet:has(.pm-offline-services) [hidden]{display:none!important}
+  & .ui-sheet:has(.pm-offline-services) .pm-offline-services{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;border:0;background:none}
+  & .ui-sheet:has(.pm-offline-services) .pm-offline-service{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;margin:0;padding:8px 12px;border:0;border-radius:6px;background:#1d3a3e}
+  & .ui-sheet:has(.pm-offline-services) .pm-offline-service strong{display:block;color:#f4efe2;font-size:14px;line-height:20px}
+  & .ui-sheet:has(.pm-offline-services) .pm-offline-service small{display:block;color:#c6d6d1;font-size:13px;line-height:18px}
+  & .ui-sheet:has(.pm-offline-services) .cs-service-state{flex:none;padding:2px 8px;border-radius:4px;background:#0d2125;color:#ffb9a6;font-size:13px;line-height:18px;font-weight:800}
+
+  @media (max-width:340px){
+    & .product-module-screen[data-console-studio="268"]{padding:10px 8px 12px;gap:8px}
+    & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-primary .pm-entry{min-height:60px;padding:6px 10px;gap:8px}
+    & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-glyph{width:40px;height:40px}
+  }
+  @media (min-width:480px){
+    & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .ui-backstage-grid{padding:12px}
+    & .product-module-screen[data-console-studio="268"][data-console-page=backstage] .cs-primary .pm-entry{min-height:72px}
+  }
+}

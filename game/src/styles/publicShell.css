@@ -1,0 +1,104 @@
+#public-shell {
+  position: absolute; inset: 0; z-index: 30;
+  display: flex; flex-direction: column; background: #151c1e; color: #f5f8f6;
+  --shell-muted: #b7c5c4; --shell-line: #39474a; --shell-mint: #a4ead3;
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+}
+#public-shell * { min-width: 0; }
+#public-shell button { color: inherit; background: transparent; border: 0; border-radius: 6px; }
+#public-shell button:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+#public-shell button:disabled { cursor: default; }
+#public-shell svg { flex: none; }
+.shell-header { height: 74px; flex: none; padding: 12px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--shell-line); }
+.shell-brand { flex: 1; }
+.shell-brand h1, .shell-brand > div { font-size: 24px; font-weight: 800; line-height: 30px; }
+.shell-brand h1 { color: #f5f8f6; }
+.shell-eyebrow { display: block; font-size: 12px; line-height: 18px; color: var(--shell-muted); }
+#public-shell .shell-icon-button { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid #4a5d60; }
+.shell-content { flex: 1; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; padding: 0 20px 12px; scrollbar-width: thin; }
+.shell-content button { touch-action: pan-y; }
+.shell-map { position: relative; overflow: hidden; border-bottom: 3px solid var(--chapter-accent); background: #667776; }
+.shell-map img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+.shell-main-map { height: 150px; margin: 0 -20px; }
+.shell-map figcaption { position: absolute; left: 20px; top: 16px; padding: 5px 9px; color: #fff; background: #151c1e; font-size: 13px; line-height: 19px; }
+.shell-map[data-chapter=neon] img { transform: none; }
+.shell-desk-chapter { padding: 17px 0 16px; }
+.shell-desk-chapter h2 { font-size: 27px; line-height: 36px; }
+.shell-desk-chapter p { margin-top: 3px; color: var(--shell-muted); font-size: 14px; line-height: 21px; }
+#public-shell .shell-current-member { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 0; border-block: 1px solid var(--shell-line); border-radius: 0; }
+.member-mark { --member-color: #ff69b4; display: grid; place-items: center; width: 44px; height: 48px; flex: none; color: var(--member-color); font-size: 25px; line-height: 1; font-weight: 800; border: 1px solid var(--member-color); border-bottom-width: 4px; border-radius: 4px; background: #20282b; }
+.shell-member-copy { display: flex; flex: 1; flex-direction: column; gap: 3px; }
+.shell-member-copy small { color: var(--shell-muted); font-size: 12px; line-height: 18px; }
+.shell-member-copy strong { font-size: 16px; line-height: 24px; }
+.shell-progress { padding: 14px 0 12px; }
+.shell-progress-heading { display: flex; justify-content: space-between; font-size: 13px; line-height: 20px; color: var(--shell-muted); }
+.shell-progress-heading strong { color: #f5f8f6; }
+#public-shell .shell-progress-route { width: 100%; min-height: 52px; display: flex; padding-top: 9px; text-align: left; }
+.shell-progress-step { display: flex; flex: 1; gap: 5px; align-items: center; color: var(--shell-muted); font-size: 12px; line-height: 26px; }
+.shell-progress-step b { font-size: 13px; color: #9caeae; }
+.shell-progress-step.is-current { color: #fff; font-weight: bold; }
+.shell-progress-step.is-cleared b { color: var(--shell-mint); }
+#public-shell .shell-primary { display: flex; justify-content: center; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 12px 16px; background: var(--shell-mint); color: #122822; font-size: 18px; line-height: 26px; font-weight: 800; border: 1px solid #b8f0de; }
+#public-shell .shell-primary:hover { background: #c8f6e6; }
+.shell-record, .shell-save-notice { font-size: 12px; line-height: 18px; text-align: center; margin-top: 8px; color: var(--shell-muted); }
+.shell-save-notice { color: #ffce81; }
+.shell-save-recovery { padding: 12px 0; border-bottom: 1px solid currentColor; font-size: 14px; line-height: 22px; }
+.shell-save-recovery p { margin: 0 0 8px; }
+.shell-save-recovery button { min-height: 44px; padding: 8px 12px; display: inline-flex; align-items: center; gap: 6px; }
+.shell-recovery-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.shell-navigation { height: 66px; flex: none; display: flex; background: #202a2d; border-top: 1px solid var(--shell-line); padding: 4px 14px; }
+#public-shell .shell-navigation button { display: flex; flex: 1; align-items: center; justify-content: center; gap: 8px; min-height: 54px; font-size: 14px; color: #b7c5c4; }
+#public-shell .shell-navigation [aria-current=page] { color: #a4ead3; background: #2c3c3b; }
+.shell-page-heading { font-size: 24px; line-height: 34px; margin: 18px 0 14px; }
+.shell-member-strip { display: flex; gap: 7px; }
+#public-shell .shell-member-option { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 2px; gap: 7px; font-size: 13px; line-height: 20px; border: 1px solid transparent; }
+#public-shell .shell-member-option[aria-pressed=true] { border-color: #a4ead3; background: #293938; }
+.shell-member-option .member-mark { width: 42px; height: 45px; font-size: 22px; }
+.shell-performer-detail { display: flex; align-items: center; gap: 22px; min-height: 128px; margin-top: 14px; border-block: 1px solid var(--shell-line); }
+#public-shell .shell-performer-detail:has(.member-mark-full) { gap: 16px; min-height: 248px; }
+.shell-performer-name { min-width: 0; overflow-wrap: anywhere; }
+#public-shell .member-mark.member-mark-full { flex: 0 0 160px; width: 160px; height: 240px; border: 0; background: transparent; border-radius: 0; }
+#public-shell .member-mark-full .member-portrait { object-fit: contain; background: transparent; }
+@media (max-width: 340px) { #public-shell .member-mark.member-mark-full { flex-basis: 144px; width: 144px; height: 216px; } }
+.member-mark-large { width: 91px; height: 104px; font-size: 54px; background: #243031; }
+.member-mark { position: relative; overflow: hidden; }
+.member-portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #243031; }
+.shell-performer-name h2 { font-size: 34px; line-height: 44px; color: var(--member-color); }
+.shell-performer-name p { font-size: 13px; line-height: 20px; color: var(--shell-muted); margin-top: 4px; }
+.shell-action-detail { min-height: 97px; padding: 12px 0 8px; }
+.shell-action-detail h3 { font-size: 20px; line-height: 28px; margin: 3px 0 6px; }
+.shell-action-detail p { font-size: 15px; line-height: 23px; color: #e2eae7; }
+.shell-selection-context { display: flex; flex-direction: column; gap: 3px; margin: 8px 0 14px; color: var(--shell-muted); font-size: 12px; line-height: 19px; }
+.shell-tour-heading { display: flex; align-items: center; justify-content: space-between; }
+.shell-tour-heading > span { color: var(--shell-mint); font-size: 13px; }
+#public-shell .shell-chapter-option { width: 100%; min-height: 110px; display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px; margin-bottom: 10px; border: 1px solid var(--shell-line); background: #202a2d; }
+#public-shell .shell-chapter-option[aria-pressed=true] { border-color: var(--chapter-accent); border-left-width: 4px; padding-left: 9px; background: #293638; }
+#public-shell .shell-chapter-option:disabled { background: #1a2325; color: #abb8b8; }
+.shell-chapter-number { align-self: flex-start; color: var(--chapter-accent); font-size: 23px; font-weight: 800; line-height: 30px; }
+.shell-chapter-copy { flex: 1; display: flex; flex-direction: column; gap: 7px; }
+.shell-chapter-copy strong { font-size: 20px; line-height: 28px; }
+.shell-chapter-copy > span { color: #b7c5c4; font-size: 13px; line-height: 19px; }
+.shell-chapter-copy small { font-size: 12px; line-height: 18px; color: #c7d2d0; }
+#public-shell .shell-chapter-option:disabled .shell-chapter-number { color: #9aaaa9; }
+#public-shell .shell-chapter-option:disabled .shell-chapter-copy small { color: #a5b4b4; }
+
+#public-shell .shell-preparation-link { display:flex; align-items:center; gap:9px; width:100%; min-height:48px; text-align:left; font-size:12px; line-height:19px; color:#ceded8; border-bottom:1px solid var(--shell-line); border-radius:0; }
+#public-shell .shell-navigation button { flex-direction:column; gap:3px; font-size:12px; line-height:17px; }
+.workshop-wallet { display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 12px; padding:18px 0; border-bottom:1px solid var(--shell-line); margin-bottom:12px; }
+.workshop-wallet > span { font-size:15px; color:#ffdb95; }
+.workshop-wallet strong { font-size:28px; line-height:34px; color:#ffdb95; }
+.workshop-wallet small { grid-column:1 / -1; font-size:12px; line-height:18px; color:var(--shell-muted); }
+.workshop-training { padding:18px 0; border-bottom:1px solid var(--shell-line); }
+.workshop-training h2,.workshop-inventory h2 { font-size:19px; line-height:28px; }
+.workshop-training p { margin:5px 0 14px; font-size:14px; line-height:21px; color:#cce9e1; }
+#public-shell .workshop-training .shell-primary { min-height:50px; font-size:15px; line-height:22px; padding:10px; }
+#public-shell .workshop-training .shell-primary:disabled { background:#2e393c; color:#afbfbd; border-color:#46595a; }
+.workshop-muted { display:block; color:var(--shell-muted); font-size:12px; line-height:19px; margin-top:6px; }
+.workshop-inventory { padding-top:18px; }
+#public-shell .workshop-equipment { display:flex; gap:14px; align-items:center; width:100%; min-height:92px; padding:13px 4px; text-align:left; border-radius:0; border-bottom:1px solid var(--shell-line); }
+#public-shell .workshop-equipment[aria-pressed=true] { color:#a4ead3; border-bottom-color:#a4ead3; }
+#public-shell .workshop-equipment:disabled { opacity:0.65; }
+.workshop-item-copy { display:flex; flex:1; flex-direction:column; gap:4px; }
+.workshop-item-copy strong { font-size:16px; line-height:22px; }
+.workshop-item-copy span,.workshop-item-copy small { font-size:12px; line-height:18px; color:#c5d1d0; }
+.workshop-status { color:#ffdb95; font-size:13px; line-height:20px; min-height:40px; padding:14px 0; }

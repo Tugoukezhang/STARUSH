@@ -1,0 +1,45 @@
+/* B262 build library (SecondaryMenuHierarchy library): two-slot composition, the current segment's small
+   choices, native effect values, one preflight command. Original AI thin surfaces only (art/thin-ui-20261101);
+   the tab surface carries a baked underline, so it is drawn on the selected tab alone. No nested frames, no scaling. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey][data-page=library]{
+  & [data-secondary-page=library]{padding:8px 14px 10px}
+  & .sec-library-stage{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 8px;margin:0 0 10px}
+  & .sec-library-caption{grid-column:1;grid-row:1;margin:0;font-size:12px;line-height:18px;color:#d0ded9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  & .sec-library-tools{grid-column:2;grid-row:1;display:flex;gap:4px}
+  & .sec-library-tools .ui-icon-command{display:grid;place-items:center;width:40px;height:40px;min-width:40px;min-height:40px;padding:4px;border:0;border-radius:0;box-shadow:none;background:none}
+  & .sec-library-tools .ui-icon-command .ui-glyph{display:block;width:32px;height:32px;max-width:100%;object-fit:contain}
+
+  & .sec-library-composition{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;padding:0;border:0;border-bottom:1px solid #f4f0dc33;background:none}
+  & .sec-library-composition .library-stage-tab{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:20px 20px;align-items:center;gap:0 8px;min-height:52px;padding:6px 10px 8px;border:0;border-radius:0;box-shadow:none;outline:0;background:none;text-align:left}
+  & .sec-library-composition .library-stage-tab[aria-selected=true]{background:url('/art/thin-ui-20261101/tab.webp') center/100% 100% no-repeat}
+  & .sec-library-composition .library-stage-tab>span{grid-column:2;grid-row:1;display:flex;min-width:0;font-size:0;line-height:0}
+  & .sec-library-composition .library-stage-tab>span .sec-letter-art{width:auto;height:18px;max-width:100%;object-fit:contain;object-position:left}
+  & .sec-library-composition .library-stage-tab>strong{grid-column:2;grid-row:2;min-width:0;font-size:13px;line-height:20px;color:#f4f0dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  & .sec-library-composition .library-stage-tab[aria-selected=false]>strong{color:#b4c9c6}
+  & .sec-library-composition .library-stage-tab .sec-selected-art{grid-column:1;grid-row:1/3;width:32px;height:32px;object-fit:contain}
+
+  & .sec-library-body{display:flex;flex-direction:column;gap:10px}
+  & .sec-library-body :is(.library-stages,.library-stage,.library-preview){margin:0;border:0;box-shadow:none}
+  & .sec-library-body :is(.library-stages,.library-stage){padding:0;background:none}
+  & .library-stage [data-arrangement-invalid]{margin:0 0 6px;font-size:12px;line-height:18px;color:#ffd38a}
+  & .sec-library-choices{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  & .sec-library-choices .arrangement-option{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);align-items:center;align-content:center;gap:8px;min-height:48px;padding:6px 10px 6px 12px;border:0;border-radius:0;box-shadow:none;outline:0;background:url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;text-align:left}
+  & .sec-library-choices .arrangement-option[aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+  & .sec-library-choices .arrangement-option::after{content:none}
+  & .sec-library-choices .arrangement-option :is(img,.menu-art){grid-column:1;grid-row:1;width:28px;height:28px;object-fit:contain}
+  & .sec-library-choices .arrangement-option strong{grid-column:2;grid-row:1;align-self:center;min-width:0;font-size:13px;line-height:18px;color:#f4f0dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  & :is(.sec-library-composition .library-stage-tab,.sec-library-choices .arrangement-option):focus-visible{outline:2px solid #ffe58b;outline-offset:-2px}
+
+  & .sec-library-body .library-preview{padding:8px 12px;background:url('/art/thin-ui-20261101/panel.webp') center/100% 100% no-repeat}
+  & .sec-library-body .library-preview>.system-context{margin:0;font-size:12px;line-height:18px;color:#ffd38a}
+  & .sec-library-body .arrangement-effects{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;margin:0;padding:0;border:0;background:none}
+  & .sec-library-body .arrangement-effects>div{display:flex;flex-direction:column;gap:0;min-width:0;margin:0;padding:3px 0;border:0;background:none}
+  & .sec-library-body .arrangement-effects dt{font-size:11px;line-height:16px;color:#b4c9c6}
+  & .sec-library-body .arrangement-effects dd{margin:0;font-size:12px;line-height:18px;color:#fff0ba;overflow-wrap:anywhere}
+  & .sec-library-body .arrangement-effects [data-secondary-idle=true]{opacity:1}
+  & .sec-library-body .arrangement-effects [data-secondary-idle=true] dd{color:#8fa6a3}
+
+  & .shell-selection-footer{padding:8px 14px;background:#13282ced}
+  & .shell-selection-footer [data-action=plan-use]{width:100%;min-height:46px;padding:8px 20px;border:0;border-radius:0;box-shadow:none;background:url('/art/thin-ui-20261101/primary.webp') center/100% 100% no-repeat}
+  & .shell-selection-footer [data-action=plan-use]:disabled{filter:grayscale(1) brightness(.8);opacity:1}
+}

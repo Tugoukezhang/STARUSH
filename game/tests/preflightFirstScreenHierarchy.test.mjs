@@ -1,0 +1,19 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+import {loadScenes}from'./helpers/publicShellHarness.mjs';
+function setup(chapter='opening',member='sakura',enabled=true){const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(enabled);e.profile.selectPublicPerformer(member);e.seed(chapter==='opening'?[]:chapter==='neon'?['opening']:['opening','neon'],chapter);const h=e.harness(e.TitleScene);h.scene.create();h.scene._publicShell.showPage('preflight');return{e,h,v:h.scene._publicShell};}
+test('all selected members/chapters put actual route before optional rules and tools',()=>{
+ for(const chapter of ['opening','neon','encore'])for(const member of ['sakura','kai','enjo']){const{h}=setup(chapter,member);const main=h.query('.shell-content'),route=h.query('.preflight-route'),guide=h.query('[data-preflight-section=guide]'),tools=h.query('.preflight-tools');assert(main.children.indexOf(route)<main.children.indexOf(guide));assert(main.children.indexOf(route)<main.children.indexOf(tools));assert.equal(h.all('[data-route-choice]').length,3);assert.equal(tools.querySelectorAll('button').length,6);assert(guide.textContent.includes('场地目标与规则'));}
+});
+test('selected arrangement remains visible and complete but follows route without rewriting plan or profile',()=>{
+ const{e,h,v}=setup();v.arrangementPlan=e.loadRuntime('utils/publicArrangementPlan.mjs').createArrangementPlan(['wide_brush','echo'],{stageId:1,performerId:'sakura',campaignChapterId:'opening'});v.render();const plan=h.query('[data-arrangement-plan]');assert(plan,'valid fixture needs a visible plan');const main=h.query('.shell-content'),raw=e.storage.getItem('starush.public-profile'),before=JSON.stringify(v.arrangementPlan);assert(main.children.indexOf(h.query('.preflight-route'))<main.children.indexOf(plan));h.click('[data-route-choice=east]');assert.equal(JSON.stringify(v.arrangementPlan),before);assert.equal(e.storage.getItem('starush.public-profile'),raw);assert(h.query('.preflight-plan-effects'));assert(h.query('[data-action=plan-adjust]'));h.click('[data-action=start]');assert.equal(h.starts.at(-1)[1].publicRoutePlan.id,'east');assert.deepEqual([...h.starts.at(-1)[1].publicArrangementPlan.choices],['wide_brush','echo']);
+});
+test('subtitle remains authored text while the nonhome heading uses the native accessible title',()=>{
+ for(const chapter of ['opening','neon','encore']){const{e,h}=setup(chapter);const model=e.loadRuntime('systems/PublicShellView.mjs').getPublicShellModel(),p=h.query('.preflight-hero-copy').querySelector('p');assert.equal(p.textContent,model.chapter.subtitle);assert.equal(h.query('.shell-title-art'),null);assert.equal(h.query('.shell-brand').querySelector('h1').textContent,'出战准备');assert.equal(p.children.length,0);}
+});
+test('legacy mode preserves existing route-free rules and all preparation commands',()=>{const{h}=setup('opening','sakura',false);assert.equal(h.query('.preflight-route'),null);assert.equal(h.all('[data-action=preflight-member]').length,1);assert.equal(h.all('[data-action=preflight-library]').length,1);assert(h.text.includes('行动涂染加成'));});
+test('narrow hero has stable compact bounds and native whole-CJK phrase wrapping',()=>{
+ const css=fs.readFileSync(new URL('../src/styles/formalGameLayout.css',import.meta.url),'utf8');assert.match(css,/\.preflight-hero-copy p \{[^}]*word-break:keep-all;[^}]*overflow-wrap:normal;/);assert.match(css,/\.preflight-hero \{height:144px;min-height:144px;/);assert.match(css,/\.preflight-figure \{height:112px;/);assert(!/preflight-hero-copy p[^}]*font-size:\d*\.?\d*vw/.test(css));
+});
+test('the sole arrangement adjustment uses a full-width track rather than orphaning its last character',()=>{
+ const css=fs.readFileSync(new URL('../src/styles/formalGameLayout.css',import.meta.url),'utf8');assert.match(css,/\.preflight-plan > \.preflight-links \{grid-template-columns:minmax\(0,1fr\);\}/);
+});

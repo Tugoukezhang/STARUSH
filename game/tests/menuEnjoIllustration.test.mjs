@@ -1,0 +1,18 @@
+import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs/promises';import{existsSync}from'node:fs';import{createRequire}from'node:module';import{getMenuPortraitArt}from'../src/systems/MenuPortraitPresentation.mjs';import{getMenuAvatarArt}from'../src/systems/MenuPortraitAvatar.mjs';import{getMenuPortraitMotionArt,menuPortraitPoint}from'../src/systems/MenuPortraitMotion.mjs';import{RUNTIME_PAYLOAD}from'../scripts/runtime-payload.mjs';
+import {getMenuPortraitExpressionArt} from '../src/systems/MenuPortraitExpression.mjs';
+const base='art/portrait-base-20261101/';
+test('current Enjo and Kai use the admitted B252 bases and same-source avatars',()=>{
+ assert.deepEqual(getMenuPortraitArt('enjo'),{src:'art/portrait-base-20261101/enjo.webp',width:1152,height:1664});assert.deepEqual(getMenuAvatarArt('enjo'),{src:'art/portrait-base-20261101/enjo-avatar.webp',width:160,height:160});assert.equal(getMenuPortraitMotionArt('enjo').eyes,null);
+ assert.equal(getMenuPortraitArt('kai').src,'art/portrait-base-20261101/kai.webp');assert.equal(getMenuPortraitMotionArt('kai').eyes,null);assert.equal(getMenuAvatarArt('sakura').src,'art/menu-coherent-cast-20261025/sakura-avatar.webp');
+ assert.deepEqual(RUNTIME_PAYLOAD.filter(r=>r.file.startsWith(base)).map(r=>r.file).sort(),['enjo-avatar.webp','enjo.webp','kai-avatar.webp','kai.webp'].map(p=>base+p).sort());assert(!RUNTIME_PAYLOAD.some(r=>r.file==='art/menu-identity-cast-20261026/enjo.webp'||r.file==='art/menu-identity-cast-20261026/enjo-avatar.webp'));
+});
+test('rebuilt Enjo face, hardware, hands and footwear are pinned while chest uses the new source center',()=>{
+ const pose={breath:8,hair:.0315,tail:.079,lookX:1,acknowledge:1};for(const[x,y]of[[550,385],[850,240],[925,610],[530,665],[625,1550]])assert.deepEqual(menuPortraitPoint('enjo',x,y,pose),{x,y});assert.deepEqual(menuPortraitPoint('enjo',610,540,{breath:8}),{x:610,y:532});for(const[x,y]of[[240,950],[980,1060]]){const p=menuPortraitPoint('enjo',x,y,pose);assert(Math.hypot(p.x-x,p.y-y)>1);}
+});
+test('rebuilt menu exports have64px real alpha clearance and sparse current-face Enjo patches',async()=>{
+ const css=await fs.readFile(new URL('../src/styles/venueShell.css',import.meta.url),'utf8');assert(css.includes('@media (max-height:620px)'));assert.match(css,/@media \(max-height:620px\)[\s\S]*?height:54px;min-height:54px;grid-template-rows:32px 18px;padding:0;/);
+ assert.match(css,/\[data-page=roster\] \.shell-member-option \{width:60px;height:54px;min-height:54px;grid-template-rows:32px 18px;padding:0;/);assert(css.includes(':not([data-page=inventory]):not([data-page=roster]) .shell-member-option'));
+ const sharp=createRequire('C:/Users/1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json')('sharp');const file=new URL('../public/'+base+'enjo.webp',import.meta.url);assert(existsSync(file),'reviewed exact body export missing');const{data,info}=await sharp(await fs.readFile(file)).ensureAlpha().raw().toBuffer({resolveWithObject:true});assert.deepEqual([info.width,info.height],[1152,1664]);for(let y=0;y<1664;y++)for(let x=0;x<1152;x++)if(x<64||x>=1088||y<64||y>=1600)assert.equal(data[(y*1152+x)*4+3],0);
+ const face=getMenuPortraitExpressionArt('enjo');assert.deepEqual([face.x,face.y,face.width,face.height],[394,244,330,330]);
+ for(const [key,count] of [['blink',4870],['smile',1925]]){const e=await sharp(await fs.readFile(new URL('../public/'+face[key],import.meta.url))).ensureAlpha().raw().toBuffer({resolveWithObject:true});assert.deepEqual([e.info.width,e.info.height],[330,330]);let n=0;for(let i=3;i<e.data.length;i+=4)n+=e.data[i]>0;assert.equal(n,count);assert(n<330*330*.1);}
+});

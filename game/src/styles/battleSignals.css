@@ -1,0 +1,94 @@
+/* B293 in-level signals: icon + outlined copy on the world, no plates. Must load after every legacy battle sheet.
+   Logical 375x667 coordinates. Visibility stays with the view owners: no animation, fades or transitions here. */
+#game-container[data-battle-mode="public"] {
+  --signal-outline:-1px -1px 0 #101c22,0 -1px 0 #101c22,1px -1px 0 #101c22,-1px 0 0 #101c22,1px 0 0 #101c22,-1px 1px 0 #101c22,0 1px 0 #101c22,1px 1px 0 #101c22,0 2px 0 #101c22;
+  --signal-outline-large:-2px -2px 0 #101c22,0 -2px 0 #101c22,2px -2px 0 #101c22,-2px 0 0 #101c22,2px 0 0 #101c22,-2px 2px 0 #101c22,0 2px 0 #101c22,2px 2px 0 #101c22,0 3px 0 #101c22;
+  --signal-alert:#ffb5a7;
+}
+
+/* Routine notice. Sets display, so the legacy [hidden] and pause rules must be restated at higher specificity. */
+#game-container[data-battle-mode="public"] #battle-notice {
+  display:grid;grid-template-columns:24px minmax(0,1fr);gap:6px;align-items:start;
+  top:110px;left:10px;right:auto;width:fit-content;max-width:290px;margin:0;padding:0;transform:none;
+  background:none;border:0;border-image:none;border-radius:0;box-shadow:none;
+  color:#fff;font-family:"Starush UI","Microsoft YaHei","PingFang SC",sans-serif;font-size:14px;line-height:19px;font-weight:700;
+  text-shadow:var(--signal-outline);white-space:normal;overflow-wrap:anywhere;pointer-events:none;
+  animation:none;transition:none;
+}
+#game-container[data-battle-mode="public"] #battle-notice[hidden],
+#game-container[data-battle-mode="public"][data-battle-paused="true"] #battle-notice {
+  display:none;
+}
+/* Legacy danger rules restore a plate and tint at this specificity. */
+#game-container[data-battle-mode="public"] #battle-notice[data-kind="danger"] {
+  background:none;border:0;color:var(--signal-alert);
+}
+#game-container[data-battle-mode="public"] #battle-notice .battle-signal-icon {
+  display:block;width:24px;height:24px;object-fit:contain;
+}
+#game-container[data-battle-mode="public"] #battle-notice .battle-signal-copy {
+  display:block;min-width:0;padding-top:2px;
+}
+
+/* Legacy formalGameLayout offsets notices with sibling selectors. The stage HUD keeps its run goal in the disclosure,
+   so a goal alone no longer needs the old 158px drop. A goal still moves the boss strip to 128-198, hence 202px. */
+#game-container[data-battle-mode="public"] #hud[data-layout="stage-v2"][data-performer][data-run-goal="true"]:not(:has(> .public-boss-strip)) ~ #battle-notice {
+  top:110px;
+}
+#game-container[data-battle-mode="public"] #hud:has(> .public-boss-strip) ~ #battle-notice {
+  top:180px;
+}
+#game-container[data-battle-mode="public"] #hud[data-run-goal="true"]:has(> .public-boss-strip) ~ #battle-notice {
+  top:202px;
+}
+
+/* Countdown: 48px labels fit the 110px box, including the two-glyph final label. */
+#game-container[data-battle-mode="public"] #combat-feedback #combat-entry {
+  display:grid;place-items:center;isolation:isolate;
+  top:220px;left:calc(50% - 55px);width:110px;height:90px;padding:0;transform:none;
+  background:none;border:0;border-image:none;box-shadow:none;
+  color:#fff;font-size:48px;line-height:64px;font-weight:900;white-space:nowrap;
+  text-shadow:var(--signal-outline-large);animation:none;transition:none;
+}
+#game-container[data-battle-mode="public"] #combat-feedback #combat-entry::before {
+  content:'';position:absolute;left:17px;top:7px;width:76px;height:76px;z-index:-1;
+  background:url('/art/battle-signals-b293/phase.webp') center / contain no-repeat;opacity:.45;pointer-events:none;
+}
+
+/* Hit feedback. */
+#game-container[data-battle-mode="public"] #combat-feedback #combat-hit {
+  top:164px;left:10px;right:auto;width:fit-content;max-width:285px;min-height:0;padding:0;transform:none;
+  background:none;border:0;border-image:none;box-shadow:none;
+  color:#fff;font-size:14px;line-height:19px;font-weight:800;text-align:left;
+  text-shadow:var(--signal-outline);white-space:normal;overflow-wrap:anywhere;animation:none;transition:none;
+}
+#game-container[data-battle-mode="public"] #combat-feedback #combat-hit[data-critical="true"] {
+  color:var(--signal-alert);
+}
+#game-container[data-battle-mode="public"] #combat-feedback #combat-hit .combat-hit-life {
+  font-size:14px;line-height:19px;font-weight:800;
+}
+/* No display here: the legacy .combat-hit-source[hidden] rule stays in charge. */
+#game-container[data-battle-mode="public"] #combat-feedback #combat-hit .combat-hit-source {
+  margin-top:0;color:#fff;font-size:13px;line-height:18px;font-weight:700;
+}
+
+/* Hit placement. Root :has() does not depend on the order the two views mount in.
+   data-boss also covers a live boss with no strip, where the legacy arrival box can still occupy 110-220. */
+#game-container[data-battle-mode="public"]:has(#hud > .public-boss-strip) #combat-feedback #combat-hit,
+#game-container[data-battle-mode="public"] #combat-feedback[data-boss="true"] #combat-hit {
+  top:240px;
+}
+#game-container[data-battle-mode="public"]:has(> #battle-notice:not([hidden])) #combat-feedback #combat-hit {
+  top:228px;
+}
+#game-container[data-battle-mode="public"]:has(> #battle-notice:not([hidden])):has(#hud > .public-boss-strip) #combat-feedback #combat-hit,
+#game-container[data-battle-mode="public"]:has(> #battle-notice:not([hidden])) #combat-feedback[data-boss="true"] #combat-hit {
+  top:282px;
+}
+
+/* The display:grid on #combat-entry above would otherwise beat the legacy [hidden] rule. */
+#game-container[data-battle-mode="public"] #combat-feedback #combat-entry[hidden],
+#game-container[data-battle-mode="public"] #combat-feedback #combat-hit[hidden] {
+  display:none;
+}

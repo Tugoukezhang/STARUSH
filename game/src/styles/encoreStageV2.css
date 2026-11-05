@@ -1,0 +1,167 @@
+/* Load after formalGameLayout.css. This surface never owns the battle clock. */
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] {
+  background:#080b0c;
+  font-family:Arial,"Microsoft YaHei",sans-serif;
+  letter-spacing:0;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .session-panel {
+  background:#080b0c;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .performance-encore {
+  display:grid;
+  grid-template-rows:104px minmax(0,1fr) 142px;
+  isolation:isolate;
+  background:#080b0c;
+  --encore-accent:#58e7ed;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .performance-encore::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);
+  background-size:40px 40px;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .performance-encore-venue {
+  z-index:-2;
+  opacity:.32;
+  filter:none;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-heading {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  min-width:0;
+  padding:12px 20px;
+  background:#080b0ce8;
+  border-top:4px solid #c8fa64;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-heading::after {
+  content:"";
+  position:absolute;
+  width:28px;
+  height:4px;
+  right:20px;
+  bottom:20px;
+  background:#ff78b5;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-kicker {
+  color:#c8fa64;
+  font-size:12px;
+  font-weight:700;
+  line-height:16px;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-action {
+  margin:0;
+  color:#f5faf8;
+  font-size:32px;
+  font-weight:800;
+  line-height:38px;
+  letter-spacing:0;
+  text-shadow:none;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-image {
+  position:relative;
+  min-width:0;
+  min-height:0;
+  margin:0 16px;
+  overflow:hidden;
+  border-block:1px solid #58e7ed;
+  clip-path:inset(0);
+  transition:clip-path 160ms ease-out;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .performance-encore-portrait {
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  object-fit:cover;
+  object-position:50% 12%;
+  opacity:1;
+  transform:none;
+  transition:transform 180ms ease-out,opacity 140ms ease-out;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-caption {
+  padding:16px 20px 64px;
+  min-width:0;
+  background:#080b0cf5;
+  border-top:3px solid #58e7ed;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .performance-encore-name {
+  position:static;
+  margin:0;
+  padding:0;
+  background:none;
+  color:#f5faf8;
+  opacity:1;
+  font-size:24px;
+  line-height:30px;
+  overflow-wrap:anywhere;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-performer {
+  display:block;
+  font-size:24px;
+  font-weight:700;
+  line-height:30px;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .encore-stage-clear {
+  display:block;
+  color:#c8fa64;
+  font-size:14px;
+  font-weight:700;
+  line-height:22px;
+  font-variant-numeric:tabular-nums;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .session-footer {
+  left:20px;
+  right:20px;
+  bottom:12px;
+  display:flex;
+  justify-content:flex-end;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .session-footer button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  background:#121819;
+  border:1px solid #58e7ed;
+  color:#f5faf8;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:0;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] .session-footer button:focus-visible {
+  outline:2px solid #c8fa64;
+  outline-offset:3px;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] [data-phase=loading] .performance-encore-portrait {
+  opacity:.6;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] [data-phase=focus] .encore-stage-image {
+  clip-path:inset(0 8%);
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] [data-phase=focus] .performance-encore-portrait {
+  transform:translateX(8px);
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] [data-phase=exit] .performance-encore-portrait {
+  opacity:.6;
+  transform:translateX(-8px);
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2]:is([data-reduced-motion=true],[data-cinematic-paused=true]) * {
+  transition:none;
+  animation:none;
+}
+#game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2][data-reduced-motion=true] .performance-encore-portrait {
+  transform:none;
+}
+@media (prefers-reduced-motion:reduce) {
+  #game-container #player-session-dialog[data-performance-encore=true][data-encore-stage=v2] * {
+    transition:none;
+    animation:none;
+  }
+}

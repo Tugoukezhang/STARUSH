@@ -1,0 +1,1018 @@
+/* Single presentation owner. Art never owns text, save data or combat rules. */
+#game-container #combat-feedback {position:absolute;inset:0;z-index:35;pointer-events:none;letter-spacing:0;}
+#game-container #combat-feedback [hidden] {display:none;}
+#game-container #combat-boss-entry {position:absolute;left:8px;top:110px;width:160px;box-sizing:border-box;padding:8px;border:2px solid #101c22;border-left:4px solid #ff2bd6;background:#fff;color:#101c22;display:grid;gap:3px;pointer-events:none;letter-spacing:0;}
+#game-container #combat-boss-entry strong {font-size:20px;line-height:24px;font-weight:900;color:#101c22;}
+#game-container #combat-boss-entry span {font-size:16px;line-height:20px;font-weight:700;overflow-wrap:anywhere;}
+#game-container #combat-boss-entry .combat-boss-reason {white-space:pre-line;font-weight:500;}
+#game-container #combat-entry {position:absolute;top:210px;left:20px;width:calc(100% - 40px);height:88px;display:grid;place-items:center;box-sizing:border-box;border:8px solid transparent;border-inline-width:20px;border-image:url('/art/playable-ui-20261018/title.webp') 24 240 fill / 8px 20px / 0 stretch;background:transparent;color:#fff;font-size:48px;line-height:64px;font-weight:900;}
+#game-container #combat-hit {position:absolute;top:152px;left:40px;width:calc(100% - 80px);min-height:46px;box-sizing:border-box;padding:10px 16px;background:url('/art/playable-ui-20261018/slip.webp') center / 100% 100% no-repeat;color:#9b233f;font-size:19px;line-height:26px;font-weight:900;text-align:center;}
+#game-container #combat-hit[data-critical=true] {color:#921d35;}
+#game-container #combat-hit .combat-hit-life {display:block;font:inherit;letter-spacing:0;}
+#game-container #combat-hit .combat-hit-source {display:block;margin-top:2px;color:#60313c;font-size:15px;line-height:22px;font-weight:700;letter-spacing:0;overflow-wrap:anywhere;}
+#game-container #combat-hit .combat-hit-source[hidden] {display:none;}
+#game-container #combat-feedback[data-boss=true] #combat-hit {top:230px;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header {display:grid;grid-template-columns:minmax(0,1fr) 96px;column-gap:8px;row-gap:6px;align-content:start;min-height:156px;padding-top:0;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header > .battle-eyebrow {grid-column:1 / -1;margin:0;line-height:19px;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header > h2 {grid-column:1 / -1;max-width:none;min-width:0;margin:0;padding-inline:0;border-inline-width:10px;border-image-width:6px 16px;font-size:20px;line-height:28px;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header > .battle-result-chapter {grid-column:1;grid-row:3;align-self:end;max-width:none;margin:0;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header .battle-performer-visual {display:contents;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header .battle-performer-visual img {position:static;inset:auto;grid-column:2;grid-row:3 / span 2;align-self:center;width:96px;height:96px;max-width:100%;object-fit:contain;}
+#game-container #battle-result[data-combat-flow=true] .battle-performance-header .battle-visual-copy {position:static;grid-column:1;grid-row:4;align-self:start;max-width:none;}
+#game-container #battle-result[data-combat-flow=true] [data-result-action=retry-save-result] {border-inline-width:20px;border-image-width:6px 28px;padding-inline:8px;gap:8px;}
+#game-container #battle-result[data-combat-flow=true] [data-result-action=retry-save-result] > span {white-space:nowrap;}
+#game-container #battle-result[data-combat-flow=true] .battle-result-stats,#game-container #battle-result[data-combat-flow=true] .battle-result-stats:has(> div:nth-child(4)) {padding-block:10px;gap:6px;}
+#game-container #battle-result[data-combat-flow=true] .battle-result-stats dd {font-size:22px;line-height:29px;}
+#game-container #battle-result[data-combat-flow=true] .battle-save {margin:0;padding:8px 0;font-size:13px;line-height:20px;border-bottom:1px solid #c7d7d6;color:#146760;}
+#game-container #battle-result[data-combat-flow=true] .battle-save.is-warning {color:#9b233f;font-weight:700;}
+#game-container #battle-result[data-combat-flow=true] .battle-result-details {margin-top:10px;border-top:1px solid #c7d7d6;}
+#game-container #battle-result[data-combat-flow=true] .battle-result-details > summary {min-height:44px;box-sizing:border-box;padding:10px 0;font-size:15px;line-height:24px;font-weight:700;cursor:pointer;}
+#game-container #battle-result[data-combat-flow=true] .battle-result-details > summary:focus-visible {outline:3px solid #146760;outline-offset:2px;}
+#game-container #battle-result[data-combat-flow=true] .battle-result-details > .battle-build-summary > h3 {margin:0 0 8px;font-size:17px;line-height:25px;}
+#game-container .profile-backup {margin-top:18px;padding-top:14px;border-top:1px solid #c7d7d6;}
+#game-container .profile-backup h3 {margin:0 0 8px;font-size:17px;line-height:24px;}
+#game-container .profile-backup .session-secondary {width:100%;min-height:44px;margin:5px 0;}
+#game-container .profile-backup-file {display:block;margin:12px 0 6px;font-weight:700;}
+#game-container #profile-backup-file {display:block;width:100%;min-height:44px;font-size:14px;overflow:hidden;}
+#game-container .profile-backup p {overflow-wrap:anywhere;}
+#game-container .profile-backup-warning {color:#8d2836;font-size:14px;line-height:22px;margin:12px 0;}
+#game-container #player-session-dialog[data-mode=profile-backup] .profile-backup {margin-top:0;padding-top:0;border-top:0;}
+#game-container {
+ --layout-ink:#202b30; --layout-muted:#53636b; --layout-paper:#f7faf9;
+ --layout-line:#c7d7d6; --layout-cyan:#37cec8; --layout-yellow:#d5ef40; --layout-selected:#eaf6b9;
+ --ui-ink:#202b30; --ui-paper:#f7faf9; --ui-muted:#53636b; --ui-green:#146760;
+}
+#game-container #public-shell {
+ color:#202b30; background:#f7faf9; --shell-muted:#53636b; --shell-line:#c7d7d6; --shell-mint:#146760;
+ --ui-ink:#202b30; --ui-paper:#f7faf9; --ui-muted:#53636b;
+}
+#game-container #public-shell * {letter-spacing:0; box-sizing:border-box;}
+#game-container :is(#public-shell,#player-session-dialog,.battle-surface) button {-webkit-tap-highlight-color:transparent;}
+#game-container #public-shell .shell-header {
+ height:64px; padding:8px 12px; gap:8px; border:0; border-bottom:3px solid #202b30; background:#fff; box-shadow:none;
+}
+#game-container #public-shell .shell-brand h1 {margin:0; font-size:20px; line-height:27px; font-weight:900; color:#202b30; overflow-wrap:anywhere;}
+#game-container #public-shell[data-page=desk] .shell-brand h1 {font-size:26px; line-height:31px;}
+#game-container #public-shell .shell-brand h1::after {display:none;}
+#game-container #public-shell .shell-eyebrow {font-size:12px; line-height:18px; color:#53636b;}
+#game-container #public-shell .shell-icon-button {
+ width:44px; height:44px; flex:none; color:#202b30; border:0; border-radius:0; box-shadow:none;
+ background:#fff; border:2px solid #202b30; border-radius:4px;
+}
+#game-container #public-shell .shell-wallet {display:flex; flex:none; gap:3px; min-height:44px; max-width:84px; padding:4px 7px; border:0; border-radius:0; box-shadow:none; background:none; color:#202b30;}
+#game-container #public-shell .shell-icon-button[data-action=settings] {background:transparent; border:0;}
+#game-container #public-shell .shell-icon-button[data-action=settings] .menu-art {width:42px; height:42px;}
+#game-container #public-shell .shell-wallet .menu-art {width:26px; height:28px;}
+#game-container #public-shell .shell-wallet strong {font-size:14px; line-height:20px; font-variant-numeric:tabular-nums;}
+#game-container #public-shell .menu-art {display:block; flex:none; width:44px; height:44px; object-fit:contain;}
+#game-container #public-shell .shell-session-context {display:flex; min-height:28px; align-items:center; padding:4px 14px; background:#cdf1ec; border:0; font-size:12px; line-height:20px;}
+#game-container #public-shell .shell-session-context strong {color:#146760;}
+#game-container #public-shell .shell-session-context > span {color:#53636b;}
+#game-container #public-shell[data-page=desk] .shell-session-context {display:none;}
+#game-container #public-shell .shell-content {min-height:0; padding:0 16px 18px; color:#202b30; background:#edf1ef; overflow-x:hidden; overflow-y:auto; scroll-padding-block:12px;}
+#game-container #public-shell .shell-content :is(h2,h3) {color:#202b30; font-weight:800; letter-spacing:0;}
+#game-container #public-shell .shell-page-heading {margin:16px 0 12px; padding:0; border:0; font-size:20px; line-height:28px; color:#202b30;}
+#game-container #public-shell .shell-content button {min-height:44px; min-width:44px; scroll-margin-block:12px; color:#202b30;}
+#game-container #public-shell :is(p,small,dt,blockquote,.system-context,.preflight-goal,.workshop-muted,.archive-summary,.inventory-context) {color:#53636b;}
+#game-container #public-shell :is(.system-context,.preflight-goal,.workshop-muted,.archive-summary,.inventory-context) {font-size:13px; line-height:21px; margin:8px 0 12px;}
+#game-container #public-shell :is(.shell-selection-footer,.shell-start) {flex:none; margin:0; padding:8px 12px; border:0; border-top:1px solid #c7d7d6; background:#fff; box-shadow:none;}
+#game-container #public-shell :is(.shell-primary,.shell-selection-footer > button,.shell-start > button),
+#game-container .battle-surface button:is(.battle-primary,.battle-secondary),#game-container #player-session-dialog :is(.session-primary,.session-secondary) {
+ min-height:52px; border:6px solid transparent; border-inline-width:36px; border-image:url('/art/playable-ui-20261018/secondary.webp') 24 240 fill / 6px 60px / 0 stretch;
+ border-radius:0; background:transparent; box-shadow:none; padding:8px 12px; color:#202b30; text-shadow:none; font-size:15px; line-height:22px; font-weight:800;
+}
+#game-container #public-shell button.shell-primary,#game-container .battle-surface button.battle-primary,#game-container #player-session-dialog button.session-primary {
+ border-image-source:url('/art/playable-ui-20261018/primary.webp'); color:#202b30; text-shadow:none;
+}
+#game-container #public-shell :is(.shell-primary,.shell-selection-footer > button):disabled {filter:grayscale(1); opacity:.6; background:transparent; color:#46585e;}
+#game-container #public-shell .shell-selection-footer > button + button {margin-top:4px;}
+#game-container #public-shell :is(.shell-record,.shell-save-notice,.workshop-status,.inventory-status,.preflight-confirmation) {font-size:12px; line-height:20px; margin:0; min-height:0; padding:2px 0; color:#53636b;}
+#game-container #public-shell button:focus-visible,#game-container .battle-surface button:focus-visible {outline:3px solid #176f68; outline-offset:-3px;}
+#game-container #public-shell button:not(:disabled):hover {filter:brightness(1.03);}
+#game-container #public-shell button:not(:disabled):active {filter:brightness(.92);}
+#game-container #public-shell :is(.shell-save-recovery,.shell-pending-save) {background:#fff1cd; color:#68450b; padding:12px; border-left:3px solid #ad6b21;}
+#game-container #public-shell :is(.shell-save-recovery,.shell-pending-save) p {color:#68450b;}
+#game-container #public-shell :is(.shell-save-recovery,.shell-pending-save) button {min-height:44px; font-weight:700; text-decoration:underline;}
+#game-container #public-shell .shell-navigation {height:70px; flex:none; padding:4px 8px; gap:3px; border:0; border-top:3px solid #202b30; background:#fff;}
+#game-container #public-shell .shell-navigation button {display:flex; flex-direction:column; justify-content:center; align-items:center; gap:0; min-height:54px; padding:0; border:0; border-radius:0; box-shadow:none; font-size:12px; line-height:18px; color:#53636b; background:transparent;}
+#game-container #public-shell .shell-navigation .menu-art {width:38px; height:38px;}
+#game-container #public-shell .shell-navigation [aria-current=page] {color:#202b30; background:#d5ef40; box-shadow:inset 0 -3px #202b30;}
+/* Character-led home. Long-form records remain one deliberate disclosure away. */
+#game-container #public-shell[data-page=desk] .shell-header {background:#15b9e2; border-bottom:0;}
+#game-container #public-shell[data-page=desk] .shell-brand h1 {color:#fff; text-shadow:2px 2px #202b30;}
+#game-container #public-shell[data-page=desk] .shell-eyebrow {color:#173b48; font-weight:700;}
+#game-container #public-shell[data-page=desk] .shell-content {position:relative; isolation:isolate; display:flex; flex-direction:column; padding:0; background:#edf1ef;}
+#game-container #public-shell .lobby-background {position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center bottom; z-index:-1; pointer-events:none;}
+#game-container #public-shell .lobby-shortcuts {position:absolute; inset:12px auto auto 10px; display:grid; grid-template-columns:68px; gap:3px; padding:0; z-index:2; background:none; border:0;}
+#game-container #public-shell .lobby-shortcuts .lobby-shortcut {width:68px; height:60px; min-height:60px; display:flex; flex-direction:column; justify-content:center; gap:0; padding:1px; border:0; border-radius:0; background:transparent; box-shadow:none; color:#202b30;}
+#game-container #public-shell .lobby-shortcuts .menu-art {width:42px; height:42px;}
+#game-container #public-shell .lobby-shortcut-copy {transform:none; display:block;}
+#game-container #public-shell .lobby-shortcut-copy strong {font-size:12px; line-height:18px; white-space:nowrap; background:#fff; padding:1px 4px;}
+#game-container #public-shell .lobby-stage {order:0; flex:1 0 300px; min-height:300px; display:grid; grid-template-rows:minmax(220px,1fr) auto; place-items:center; gap:4px; padding:4px 8px 4px 70px; position:relative;}
+#game-container #public-shell .lobby-member-visual.shell-current-member {width:280px; max-width:100%; height:220px; display:block; margin:0; padding:0; border:0; border-radius:0; background:none; box-shadow:none;}
+#game-container #public-shell .lobby-stage .lobby-member-visual[data-performer=kai] {width:min(300px,calc(100% + 54px)); max-width:none; transform:translateX(-24px);}
+#game-container #public-shell .lobby-character {width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 3px 1px #18373928);}
+#game-container #public-shell .lobby-member-name {position:static; justify-self:end; display:flex; align-items:flex-end; gap:0; min-width:158px; max-width:100%; background:transparent; border:6px solid transparent; border-inline-width:30px; border-image:url('/art/playable-ui-20261018/title.webp') 24 240 fill / 6px 60px / 0 stretch; padding:6px 8px; color:#fff;}
+#game-container #public-shell .lobby-member-name strong {font-size:20px; line-height:28px; color:#fff;}
+#game-container #public-shell .lobby-member-name span {font-size:12px; line-height:19px; padding:0; border:0; background:none; color:#b5f5ec;}
+#game-container #public-shell .lobby-preparation {order:1; display:flex; justify-content:flex-end; padding:4px 14px; gap:12px; background:#fff; border:0; font-size:12px; line-height:20px;}
+#game-container #public-shell .lobby-goal {order:2; margin:0; padding:4px 12px; background:#dff4db; color:#14584f; font-size:12px; line-height:20px;}
+#game-container #public-shell .lobby-mission {order:3; display:grid; grid-template-columns:58px minmax(0,1fr) 44px; gap:8px; align-items:center; padding:12px 10px; margin:4px 8px; background:transparent; border:10px solid transparent; border-image:url('/art/playable-ui-20261018/slip.webp') 64 fill / 12px / 0 stretch;}
+#game-container #public-shell .lobby-mission .shell-main-map {width:58px; height:60px; margin:0; border:0; border-radius:3px;}
+#game-container #public-shell .lobby-mission h2 {font-size:19px; line-height:26px; margin:0;}
+#game-container #public-shell .lobby-mission :is(small,p) {font-size:12px; line-height:19px; color:#53636b; margin:0;}
+#game-container #public-shell .lobby-mission button {width:44px; height:44px; border:0; background:none; box-shadow:none;}
+#game-container #public-shell .lobby-details {order:4; background:#fff; padding:0 14px; border:0; margin:0;}
+#game-container #public-shell .lobby-details > summary {font-size:13px; line-height:22px; padding:12px 0; min-height:46px; color:#53636b; cursor:pointer;}
+#game-container #public-shell .lobby-session-overview {display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; align-items:center; padding:12px 0; margin:0; border-top:1px solid #c7d7d6; background:none;}
+#game-container #public-shell .lobby-session-copy,#game-container #public-shell .lobby-last-run-summary {display:grid; gap:4px; transform:none;}
+#game-container #public-shell .lobby-section-kicker {font-size:12px; line-height:20px; color:#146760;}
+#game-container #public-shell .lobby-session-copy strong {font-size:14px; line-height:22px;}
+#game-container #public-shell .lobby-session-copy span {font-size:12px; line-height:20px;}
+#game-container #public-shell :is(.lobby-session-action,.lobby-record-action) {display:flex; align-items:center; gap:5px; min-height:44px; padding:5px; font-size:12px; line-height:20px; background:none; border:0; text-decoration:underline; text-underline-offset:4px;}
+#game-container #public-shell .lobby-progress {padding:8px 0; background:none; border-bottom:1px solid #c7d7d6;}
+#game-container #public-shell .lobby-progress :is(span,b) {font-size:12px; line-height:22px; color:#53636b;}
+#game-container #public-shell .lobby-progress .is-current {color:#146760;}
+#game-container #public-shell .lobby-last-run {padding:12px 0; margin:0; background:none; border-top:1px solid #c7d7d6; font-size:13px; line-height:22px;}
+#game-container #public-shell .lobby-start .shell-record {display:none;}
+/* Preparation: visual member/venue first, actions and optional rules second. */
+#game-container #public-shell .preflight-hero {position:relative; min-height:210px; margin:0 -16px 10px; overflow:hidden; background:#b5eef0; border:0;}
+#game-container #public-shell .preflight-scene {position:absolute; inset:0; width:100%; height:100%; border:0; opacity:.18; margin:0; filter:grayscale(1);}
+#game-container #public-shell .preflight-figure {position:absolute; right:0; bottom:8px; width:46%; height:184px; object-fit:contain; z-index:1;}
+#game-container #public-shell .preflight-hero[data-performer=kai] .preflight-figure {width:53%; right:8px;}
+#game-container #public-shell .preflight-hero-copy {position:relative; z-index:2; max-width:62%; padding:22px 0 18px 16px;}
+#game-container #public-shell .preflight-hero-copy small {font-size:12px; line-height:20px; color:#146760;}
+#game-container #public-shell .preflight-hero-copy h2 {font-size:23px; line-height:31px; margin:4px 0 8px;}
+#game-container #public-shell .preflight-hero-copy p {font-size:12px; line-height:20px; margin:0; max-width:165px;}
+#game-container #public-shell .preflight-manifest {display:none;}
+#game-container #public-shell .preflight-links {grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; padding:8px 0 12px;}
+#game-container #public-shell .preflight-links button {display:flex; justify-content:flex-start; align-items:center; gap:7px; padding:8px; min-height:48px; border:0; border-bottom:1px solid #c7d7d6; border-radius:0; background:#fff;}
+#game-container #public-shell .preflight-links .menu-art {width:30px; height:30px;}
+#game-container #public-shell .preflight-links button span {font-size:13px; line-height:20px;}
+#game-container #public-shell .preflight-route {padding:8px 0; border-top:1px solid #c7d7d6;}
+#game-container #public-shell .preflight-route h3 {font-size:16px; line-height:24px;}
+#game-container #public-shell .preflight-route > .preflight-links {grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px;}
+#game-container #public-shell .preflight-route .preflight-links button {flex-wrap:wrap; justify-content:center; gap:4px; background:#fff; border:1px solid #c7d7d6;}
+#game-container #public-shell .preflight-route button[aria-pressed=true] {background:#d5ef40; border-color:#202b30; color:#202b30; box-shadow:inset 0 -3px #202b30;}
+#game-container #public-shell .route-choice-state {font-size:12px; line-height:18px;}
+#game-container #public-shell .preflight-route button .menu-art {display:none;}
+#game-container #public-shell .preflight-map {height:160px; margin:8px 0; border:0;}
+#game-container #public-shell .preflight-effects {margin:10px 0; display:grid; gap:7px;}
+#game-container #public-shell .preflight-effects > div {display:flex; justify-content:space-between; gap:10px; font-size:13px; line-height:22px;}
+#game-container #public-shell .preflight-effects dd {margin:0; font-weight:700;}
+#game-container #public-shell :is(.preflight-build-note,.inventory-impact) {font-size:13px; line-height:21px; margin:8px 0; color:#53636b;}
+/* Shared selectors are only repeated items, not floating section cards. */
+#game-container #public-shell .shell-member-strip {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:0 0 12px; padding:0; border:0;}
+#game-container #public-shell :is(.shell-member-option,.inventory-item,.arrangement-option,.run-goal-option) {border:8px solid transparent; border-image:url('/art/playable-ui-20261018/panel.webp') 32 fill / 6px / 0 stretch; border-radius:0; background:transparent; box-shadow:none; color:#202b30;}
+#game-container #public-shell :is(.shell-member-option,.inventory-item,.arrangement-option,.run-goal-option)[aria-pressed=true] {border-image-source:url('/art/playable-ui-20261018/slip.webp'); box-shadow:none; background:transparent; color:#202b30;}
+#game-container #public-shell .shell-member-option {min-height:92px; padding:4px 1px; gap:3px; font-size:12px; line-height:18px;}
+#game-container #public-shell .member-mark {width:52px; height:52px; flex:none; border:0; border-radius:0; box-shadow:none; background:none; overflow:hidden;}
+#game-container #public-shell .member-portrait {object-fit:contain; object-position:center bottom; background:none;}
+#game-container #public-shell .shell-performer-detail {display:grid; grid-template-columns:minmax(0,1fr); align-items:center; gap:8px; margin:0 -16px 12px; padding:12px 16px; min-height:208px; border:0; background:transparent url('/art/playable-ui-20261018/plaza.webp') center 45% / cover no-repeat;}
+#game-container #public-shell .member-mark.member-mark-full {width:100%; height:250px; flex:none;}
+#game-container #public-shell .shell-performer-name {background:#fff; padding:12px; border:0;}
+#game-container #public-shell[data-page=roster] .shell-page-heading {font-size:16px; line-height:24px; margin-block:12px;}
+#game-container #public-shell[data-page=roster] .shell-member-option {min-height:76px;}
+#game-container #public-shell[data-page=roster] .shell-member-option .member-mark {width:44px; height:44px;}
+#game-container #public-shell .shell-performer-name h2 {font-size:23px; line-height:30px; color:#202b30;}
+#game-container #public-shell .shell-action-detail {padding:8px 0 0; min-height:0;}
+#game-container #public-shell .shell-action-detail h3 {font-size:17px; line-height:25px; margin:5px 0;}
+#game-container #public-shell .shell-action-detail p {font-size:13px; line-height:22px; color:#53636b;}
+#game-container #public-shell :is(.shell-member-preparation,.shell-dossier,.shell-performance-record,.shell-tour-reward,.archive-record,.archive-last-run,.tour-chapter-plan,.tour-coverage,.lobby-tour-next) {border:0; border-top:1px solid #c7d7d6; border-radius:0; box-shadow:none; background:none; padding:14px 0; margin:0;}
+#game-container #public-shell :is(.shell-dossier,.shell-performance-record,.shell-tour-reward,.tour-chapter-plan,.lobby-tour-next) :is(p,li,blockquote) {font-size:13px; line-height:22px; margin:6px 0; color:#53636b;}
+#game-container #public-shell :is(.shell-dossier,.tour-chapter-plan,.tour-coverage,.lobby-tour-next) :is(h2,h3) {font-size:17px; line-height:25px; margin:0 0 8px;}
+#game-container #public-shell :is(.shell-member-preparation button,[data-action=training-catalog],[data-action=growth-source],.inventory-detail button) {display:flex; align-items:center; gap:8px; min-height:44px; padding:8px 0; background:none; border:0; color:#146760; font-size:13px; line-height:21px;}
+#game-container #public-shell .shell-tour-heading {display:flex; justify-content:space-between; align-items:center; gap:8px;}
+#game-container #public-shell .shell-tour-heading > span {font-size:12px; line-height:20px; color:#146760;}
+#game-container #public-shell .shell-chapter-option {position:relative; display:flex; gap:12px; min-height:128px; width:100%; padding:10px 12px 10px 94px; margin:0 0 12px; text-align:left; border:8px solid transparent; border-image:url('/art/playable-ui-20261018/panel.webp') 32 fill / 6px / 0 stretch; border-radius:0; background:transparent; box-shadow:none;}
+#game-container #public-shell .shell-chapter-option[aria-pressed=true] {border-image-source:url('/art/playable-ui-20261018/slip.webp'); border-left-width:8px;}
+#game-container #public-shell .shell-route-preview {position:absolute; inset:10px auto 10px 8px; width:70px; height:auto; border:0; margin:0;}
+#game-container #public-shell .shell-chapter-number {position:absolute; left:14px; top:12px; font-size:14px; line-height:20px; background:#202b30; color:#fff; padding:0 4px; z-index:2;}
+#game-container #public-shell .shell-chapter-copy {gap:4px;}
+#game-container #public-shell .shell-chapter-copy strong {font-size:18px; line-height:26px; color:#202b30;}
+#game-container #public-shell .shell-chapter-copy :is(span,small) {color:#53636b; font-size:12px; line-height:19px;}
+#game-container #public-shell .shell-chapter-option:disabled {filter:grayscale(1); opacity:.65; background:transparent; color:#53636b;}
+#game-container #public-shell .inventory-grid {gap:8px;}
+#game-container #public-shell .inventory-item {min-height:120px; padding:8px 2px; gap:5px;}
+#game-container #public-shell .inventory-item .menu-art {width:50px; height:50px;}
+#game-container #public-shell .inventory-item :is(strong,small) {font-size:12px; line-height:19px; text-align:center;}
+#game-container #public-shell .inventory-item[data-state=locked] {filter:grayscale(1); opacity:.7; background:transparent; color:#53636b;}
+#game-container #public-shell .inventory-detail {margin:14px 0 0; padding:14px 0; border-block:1px solid #c7d7d6;}
+#game-container #public-shell .inventory-detail-art {float:right; width:88px; height:88px; margin:0 0 8px 10px;}
+#game-container #public-shell .inventory-detail h2 {font-size:19px; line-height:27px;}
+#game-container #public-shell .inventory-footer [data-action=prepared-preflight] {min-height:44px; padding:5px; border:0; border-image:none; background:none; color:#146760; font-size:13px;}
+#game-container #public-shell .workshop-wallet {padding:12px 0; margin:0 0 12px; border-bottom:1px solid #c7d7d6; background:none;}
+#game-container #public-shell .workshop-wallet > span,#game-container #public-shell .workshop-wallet strong {color:#146760;}
+#game-container #public-shell .workshop-wallet small {font-size:12px; line-height:20px;}
+#game-container #public-shell .workshop-training {padding:14px 0; border-color:#c7d7d6;}
+#game-container #public-shell .workshop-training p {color:#53636b;}
+#game-container #public-shell .workshop-member-context {background:none; border:0; padding:8px 0; color:#202b30;}
+#game-container #public-shell .workshop-equipment {min-height:84px; padding:10px 0; border:0; border-bottom:1px solid #c7d7d6; border-radius:0; background:none; box-shadow:none;}
+#game-container #public-shell .workshop-equipment[aria-pressed=true] {color:#146760; border-bottom-color:#146760;}
+#game-container #public-shell .workshop-equipment :is(span,small) {color:#53636b;}
+#game-container #public-shell .workshop-equipment:disabled {opacity:.65; background:none;}
+#game-container #public-shell .workshop-status {margin-bottom:4px;}
+/* Hub uses a visual directory, library a combination workbench, records real tables. */
+#game-container #public-shell .system-hub-group {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:0 0 16px; padding:0; border:0;}
+#game-container #public-shell .system-hub-heading {grid-column:1 / -1; min-height:0; padding:10px 0 4px; border:0; background:none;}
+#game-container #public-shell .system-hub-heading h2 {font-size:17px; line-height:25px;}
+#game-container #public-shell .system-hub-portrait {display:none;}
+#game-container #public-shell .system-entry {display:grid; grid-template-columns:40px minmax(0,1fr); align-items:start; gap:8px; padding:12px 8px; min-height:110px; border:8px solid transparent; border-image:url('/art/playable-ui-20261018/panel.webp') 32 fill / 5px / 0 stretch; background:transparent; box-shadow:none; border-radius:0;}
+#game-container #public-shell .system-entry .menu-art {width:40px; height:40px;}
+#game-container #public-shell .system-entry-copy {display:contents; transform:none;}
+#game-container #public-shell .system-entry-copy strong {grid-column:2; align-self:center; font-size:14px; line-height:22px;}
+#game-container #public-shell .system-entry-copy small {grid-column:1 / -1; font-size:12px; line-height:19px; color:#53636b; white-space:normal; overflow:visible; text-overflow:clip;}
+#game-container #public-shell .system-entry > svg:last-child {display:none;}
+#game-container #public-shell :is(.arrangement-option,.run-goal-option) {padding:10px 8px; color:#202b30;}
+#game-container #public-shell :is(.arrangement-option,.run-goal-option) small {font-size:12px; line-height:20px; color:#53636b;}
+#game-container #public-shell .arrangement-option .menu-art {width:42px; height:42px;}
+#game-container #public-shell .growth-comparison-labels,#game-container #public-shell .growth-effects > div {display:grid; grid-template-columns:minmax(0,1fr) 62px 62px; gap:8px; padding:8px 0; font-size:13px; line-height:22px; color:#53636b;}
+#game-container #public-shell .growth-comparison-labels {font-weight:700; border-bottom:2px solid #202b30; color:#202b30;}
+#game-container #public-shell .growth-comparison-labels span:not(:first-child),#game-container #public-shell .growth-effects dd {text-align:right;}
+#game-container #public-shell .tour-coverage-table {width:100%; table-layout:fixed; border-collapse:collapse; font-size:13px; line-height:21px; color:#202b30;}
+#game-container #public-shell .tour-coverage-table :is(th,td) {padding:9px 3px; border-bottom:1px solid #c7d7d6; text-align:center; overflow-wrap:anywhere;}
+#game-container #public-shell .tour-coverage-table td[data-state=recorded] {color:#146760; font-weight:700;}
+#game-container #public-shell .tour-coverage-caption {text-align:left; font-size:13px; padding-bottom:8px;}
+#game-container #public-shell :is(.archive-history,.battle-build-summary,.lobby-details) summary {min-height:44px; cursor:pointer;}
+/* Choice, pause, result and settings share the same paper/ink family. */
+#game-container :is(#run-choice,#battle-result,#battle-pause).battle-surface {background:#152c35b8; color:#202b30; padding:16px 12px; gap:0;}
+#game-container :is(#run-choice,#battle-result,#battle-pause) .battle-surface-content {min-height:0; padding:16px 14px; border:10px solid transparent; border-image:url('/art/playable-ui-20261018/panel.webp') 32 fill / 7px / 0 stretch; border-radius:0; background:transparent; box-shadow:none; overscroll-behavior:contain;}
+#game-container :is(#run-choice,#battle-result,#battle-pause) h2 {font-size:22px; line-height:30px; font-weight:900; min-height:48px; margin:0 0 12px; padding:4px; color:#fff; border:6px solid transparent; border-inline-width:36px; border-image:url('/art/playable-ui-20261018/title.webp') 24 240 fill / 6px 60px / 0 stretch; background:transparent; text-align:center; text-shadow:none; max-width:none;}
+#game-container .battle-surface .battle-eyebrow {font-size:12px; line-height:20px; color:#53636b; margin:0 0 4px;}
+#game-container :is(#run-choice,#battle-pause) .battle-lead {font-size:13px; line-height:21px; color:#53636b; margin:8px 0 12px;}
+#game-container #run-choice .battle-choice-context {top:8px; left:12px; right:12px; font-size:13px; line-height:20px; color:#fff; text-align:center;}
+#game-container #run-choice.battle-surface {padding-top:36px;}
+#game-container #run-choice .battle-performer-visual {position:relative; width:auto; height:auto; min-height:44px; margin:0 0 8px; padding:0; border:0; background:none;}
+#game-container #run-choice .battle-performer-visual img {position:absolute; top:0; right:0; bottom:auto; width:40px; height:40px; object-fit:contain;}
+#game-container #run-choice .battle-visual-copy {display:grid; gap:0; max-width:calc(100% - 48px);}
+#game-container #run-choice .battle-visual-copy strong {font-size:15px; line-height:23px; color:#202b30;}
+#game-container #run-choice .battle-visual-copy span {font-size:12px; line-height:20px; color:#146760;}
+#game-container #run-choice[data-build-context=true] .battle-lead {display:none;}
+#game-container #run-choice .battle-choice-list {padding:0; gap:10px;}
+#game-container #run-choice.battle-surface .battle-choice-row {display:grid; grid-template-columns:52px minmax(0,1fr) 14px; gap:8px; padding:12px 8px; min-height:104px; border:8px solid transparent; border-image:url('/art/playable-ui-20261018/slip.webp') 64 fill / 10px / 0 stretch; border-radius:0; background:transparent; color:#202b30; box-shadow:none;}
+#game-container #run-choice .battle-choice-symbol {width:52px; height:52px; display:grid; place-items:center; border:0; border-radius:0; background:none;}
+#game-container #run-choice .battle-choice-art {width:52px; height:52px; object-fit:contain;}
+#game-container #run-choice .battle-choice-row strong {font-size:17px; line-height:25px; color:#202b30;}
+ #game-container #run-choice .battle-choice-row .battle-choice-copy > span {font-size:13px; line-height:20px; color:#53636b;}
+ #game-container #run-choice .battle-choice-row .battle-choice-copy > .battle-choice-delta {color:#146760;}
+#game-container #run-choice .battle-choice-limit {display:block; font-size:12px; line-height:19px; margin-top:4px; white-space:normal; color:#53636b;}
+#game-container #run-choice .battle-choice-row > svg {width:14px; height:14px;}
+#game-container :is(#battle-result,#battle-pause,#run-choice) .battle-surface-footer {flex:none; padding:10px 0 0; background:none; border:0;}
+#game-container .battle-surface .battle-surface-footer .battle-secondary {border:8px solid transparent; border-image:url('/art/playable-ui-20261018/panel.webp') 32 fill / 6px / 0 stretch; padding:6px; font-size:14px; line-height:22px;}
+#game-container #run-choice .battle-surface-footer button {background:none; color:#fff; border:0; text-decoration:underline; text-underline-offset:4px;}
+#game-container #battle-result .battle-performance-header {position:relative; min-height:178px; margin:0; padding:0; background:none; border:0;}
+#game-container #battle-result .battle-performance-header > :is(h2,.battle-eyebrow) {max-width:none;}
+#game-container #battle-result .battle-performance-header > h2 {font-size:24px; line-height:32px; min-height:48px; margin:0 0 12px; color:#fff;}
+#game-container #battle-result .battle-performance-header > .battle-eyebrow {color:#53636b;}
+#game-container #battle-result .battle-result-chapter {max-width:calc(100% - 142px); font-size:14px; line-height:22px; color:#53636b;}
+#game-container #battle-result .battle-performance-header .battle-performer-visual img {right:0; bottom:0; width:138px; height:108px; object-fit:contain;}
+#game-container #battle-result .battle-performance-header .battle-visual-copy {left:0; bottom:10px; max-width:calc(100% - 142px);}
+#game-container #battle-result .battle-performance-header .battle-visual-copy strong {font-size:19px; line-height:27px; color:#202b30;}
+#game-container #battle-result .battle-performance-header .battle-visual-copy span {font-size:12px; line-height:20px; color:#53636b;}
+#game-container #battle-result .battle-result-stats,#game-container #battle-result .battle-result-stats:has(> div:nth-child(4)) {grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 18px; padding:14px 0; border-color:#c7d7d6;}
+#game-container #battle-result .battle-result-stats dt {font-size:12px; line-height:20px; color:#53636b;}
+#game-container #battle-result .battle-result-stats dd {font-size:24px; line-height:32px; color:#202b30;}
+#game-container .battle-build-summary {margin-top:12px; padding-top:8px; border-top:1px solid #c7d7d6; color:#202b30;}
+#game-container .battle-build-summary summary {min-height:44px; padding:10px 0; font-size:14px; line-height:22px; cursor:pointer;}
+#game-container .battle-build-values {display:grid; gap:6px; margin:6px 0;}
+#game-container .battle-build-values > div {display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; font-size:13px; line-height:20px;}
+#game-container .battle-build-values dd {margin:0; font-weight:700;}
+#game-container :is(.battle-build-summary p,.battle-build-next) {font-size:13px; line-height:21px; color:#53636b; margin:8px 0;}
+#game-container #battle-result :is(.battle-tour-review,.battle-result-reward) {padding:12px 0; border-top:1px solid #c7d7d6; font-size:13px; line-height:22px; color:#202b30;}
+#game-container #battle-result .battle-tour-review h3 {font-size:17px; line-height:25px;}
+#game-container #battle-result :is(.battle-result-reward button,[data-action=result-story]) {min-height:44px; width:100%; padding:8px 0; border:0; background:none; color:#146760; text-align:left;}
+#game-container #battle-result .battle-save[data-save-state=saved] {color:#146760;}
+#game-container #battle-result .battle-save:is([data-save-state=pending],[data-save-state=unrecorded],[data-save-state=blocked]) {padding:10px; background:#fff1cd; color:#68450b; border-left:3px solid #ad6b21; font-size:13px; line-height:21px;}
+#game-container #battle-pause .battle-surface-content {flex:0 1 auto; width:100%; margin:auto; max-height:100%; overflow:hidden; justify-content:flex-start;}
+#game-container #battle-pause .battle-surface-content > :not(.battle-pause-scroll) {flex:none;}
+#game-container #battle-pause .battle-pause-scroll {flex:0 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y; scroll-padding-block:8px; padding-bottom:4px;}
+#game-container #battle-pause .battle-pause-scroll > button {display:flex; width:100%; align-items:center; justify-content:center; gap:8px;}
+#game-container #battle-pause .battle-pause-scroll :is(.battle-tour-review,.battle-run-goal) {margin-top:12px; padding-top:10px; border-top:1px solid #c7d7d6;}
+#game-container #battle-pause .battle-pause-scroll h3 {margin:0 0 6px; font-size:16px; line-height:24px;}
+#game-container #battle-pause .battle-pause-scroll p {margin:6px 0; font-size:13px; line-height:21px; color:#53636b;}
+#game-container #battle-pause button {min-height:50px; margin-top:10px; font-size:15px; line-height:22px;}
+#game-container #public-shell .preflight-tools {padding-top:12px; border-top:1px solid #c7d7d6;}
+#game-container #public-shell .preflight-tools > h3 {margin:0; font-size:16px; line-height:24px;}
+#game-container #player-session-dialog {padding:16px 12px; background:#152c35b8; color:#202b30;}
+#game-container #player-session-dialog .session-panel {display:flex; flex-direction:column; min-height:0; max-height:100%; padding:0; overflow:hidden; border:10px solid transparent; border-image:url('/art/playable-ui-20261018/panel.webp') 32 fill / 7px / 0 stretch; border-radius:0; background:transparent; box-shadow:none;}
+#game-container #player-session-dialog .session-header {flex:none; padding:12px 10px 8px; border:0; background:none;}
+#game-container #player-session-dialog .session-header h2 {font-size:20px; line-height:28px; color:#fff; text-align:center; margin:0; padding:8px 4px; border:6px solid transparent; border-inline-width:30px; border-image:url('/art/playable-ui-20261018/title.webp') 24 240 fill / 6px 60px / 0 stretch; background:transparent;}
+#game-container #player-session-dialog .session-content {flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:8px 14px 12px; scroll-padding-block:12px; touch-action:pan-y;}
+#game-container #player-session-dialog .session-footer {flex:none; padding:8px 12px 12px; background:none; border:0;}
+#game-container #player-session-dialog .session-footer button {display:flex; align-items:center; justify-content:center; gap:8px; margin:0; width:100%;}
+#game-container #player-session-dialog .session-secondary {display:flex; align-items:center; gap:6px; min-height:46px; margin-top:8px;}
+#game-container #player-session-dialog .session-setting {min-height:48px; font-size:14px; line-height:22px;}
+#game-container #player-session-dialog input[type=range] {width:100%; min-height:44px; accent-color:#146760; cursor:pointer;}
+#game-container #player-session-dialog input[type=checkbox] {width:26px; height:26px; accent-color:#146760;}
+#game-container #player-session-dialog .session-performer {min-height:64px; margin:0 0 8px; padding:10px 0; border-bottom:1px solid #c7d7d6;}
+#game-container #player-session-dialog .session-note {font-size:12px; line-height:20px; color:#53636b;}
+#game-container #player-session-dialog[data-mode=settings] .session-panel {max-height:100%; border-image-source:url('/art/core-journey-20261018/panel.webp');}
+#game-container #player-session-dialog .session-settings-group {padding:0 0 12px; margin:0 0 12px; border-bottom:1px solid #c7d7d6;}
+#game-container #player-session-dialog .session-settings-group h3 {font-size:16px; line-height:24px; margin:0 0 4px; color:#202b30;}
+#game-container #player-session-dialog[data-mode=settings] .session-setting {min-height:44px;}
+#game-container #player-session-dialog[data-mode=settings] input[type=range] {display:block; min-height:44px; margin:0;}
+#game-container #player-session-dialog[data-mode=settings] .session-note {margin:8px 0 0;}
+#game-container #player-session-dialog .session-settings-group .session-shortcut {width:100%; min-height:52px; margin:0; padding:6px 0; gap:12px; border:0; border-bottom:1px solid #dce4e3; background:none; color:#202b30; font-size:14px; line-height:22px; text-align:left;}
+#game-container #player-session-dialog .session-shortcut img {width:40px; height:40px; object-fit:contain; flex:none;}
+#game-container #player-session-dialog [data-action=settings-retry] {min-height:44px; margin-top:8px; color:#146760;}
+#game-container #player-session-dialog [data-action=settings-retry][hidden] {display:none;}
+/* Raster corners stay uniform; the canvas-owned pause hotspot remains (347,78). */
+#game-container[data-battle-mode=public] #hud::before {top:3px; left:6px; right:6px; bottom:auto; height:110px; box-sizing:border-box; background:transparent; pointer-events:none; border-width:12px 24px 12px 24px; border-style:solid; border-color:transparent; border-image:url('/art/battle-header-20261022/frame.png') 40 80 40 80 fill / 12px 24px 12px 24px / 0 stretch; mask-image:radial-gradient(circle 23px at 341px 75px,transparent 99%,#000 100%);}
+#game-container[data-battle-mode=public] #hud::after {content:'Ⅱ'; position:absolute; left:326px; top:57px; width:42px; height:42px; display:grid; place-items:center; pointer-events:none; color:#fff; font-size:18px; line-height:24px; font-weight:700; background:transparent url('/art/formal-ui-20261016/disc.webp') center / contain no-repeat;}
+#game-container[data-battle-mode=public] .cw-objective {top:56px; left:16px; width:290px; height:24px; padding:0; border:0;}
+#game-container[data-battle-mode=public] #wave-text {color:#202b30; font-size:16px; line-height:20px; text-shadow:none;}
+#game-container[data-battle-mode=public] #round-clock {position:absolute; top:-25px; right:-50px; font-size:15px; line-height:22px; color:#202b30; background:none; border:0; padding:0;}
+#game-container[data-battle-mode=public] .mihoyo-player {top:12px; left:16px; gap:8px;}
+#game-container[data-battle-mode=public] .mihoyo-portrait {width:38px; height:38px; border:0 !important; border-radius:0; background:transparent !important; box-shadow:none;}
+#game-container[data-battle-mode=public] .mihoyo-player-meta {width:122px; height:38px;}
+#game-container[data-battle-mode=public] .mihoyo-name {color:#202b30; font-size:13px; line-height:19px; text-shadow:none;}
+#game-container[data-battle-mode=public] #hp-value {color:#202b30; font-size:12px; line-height:19px;}
+#game-container[data-battle-mode=public] .hp-track {width:122px; bottom:5px; height:8px; border:1px solid #53636b; background:#dbe7e3;}
+#game-container[data-battle-mode=public] #hp-fill {background:#1ca987;}
+#game-container[data-battle-mode=public] .heat-card {left:200px; top:12px; width:96px; height:38px;}
+#game-container[data-battle-mode=public] #heat-level {font-size:12px; line-height:19px; color:#202b30;}
+#game-container[data-battle-mode=public] #heat-gauge {height:8px; border:1px solid #53636b; background:#f2dce3;}
+#game-container[data-battle-mode=public] #heat-fill {background:#d95284;}
+#game-container[data-battle-mode=public] #battle-chapter {top:80px; left:16px; font-size:13px; line-height:20px; max-width:106px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#53636b;}
+#game-container[data-battle-mode=public] #run-build {top:80px; left:128px; max-width:184px; font-size:13px; line-height:20px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#146760; font-weight:700;}
+#game-container[data-battle-mode=public] #hud[data-run-goal=true]::before {height:136px;}
+#game-container[data-battle-mode=public] #run-goal {position:absolute; top:104px; left:30px; right:18px; font-size:13px; line-height:20px; color:#146760; font-weight:700; white-space:nowrap;}
+#game-container[data-battle-mode=public] #run-goal[data-status=missed] {color:#98352d;}
+#game-container[data-battle-mode=public] #hud[data-run-goal=true] .public-boss-strip {top:128px;}
+#game-container[data-battle-mode=public] #hud[data-run-goal=true] ~ #battle-notice {top:158px;}
+#game-container[data-battle-mode=public] #hud:has(> .public-boss-strip) ~ #battle-notice {top:180px;}
+#game-container[data-battle-mode=public] #hud[data-run-goal=true]:has(> .public-boss-strip) ~ #battle-notice {top:202px;}
+#game-container[data-battle-mode=public] .skill-orb[data-charge-state] {width:60px; height:60px; display:flex; flex-direction:column; padding:0; gap:0; border:0; border-radius:0; color:#fff; box-shadow:none; -webkit-tap-highlight-color:transparent; background:transparent url('/art/formal-ui-20261016/disc.webp') center / contain no-repeat;}
+#game-container[data-battle-mode=public] .skill-orb[data-art=weapon] {width:72px; height:72px;}
+#game-container[data-battle-mode=public] .skill-orb .battle-action-art {width:32px; height:32px; object-fit:contain; position:absolute; top:6px; left:20px;}
+#game-container[data-battle-mode=public] .skill-orb[data-art=weapon] svg {display:none;}
+#game-container[data-battle-mode=public] .skill-orb[data-art=weapon] #special-label {position:absolute; top:35px; left:0; right:0; font-size:12px; line-height:17px; margin:0;}
+#game-container[data-battle-mode=public] .skill-orb[data-art=weapon] #special-state {position:absolute; top:52px; left:0; right:0; font-size:12px; line-height:16px;}
+#game-container[data-battle-mode=public] #encore-label {position:absolute; top:24px; left:0; right:0; font-size:12px; line-height:17px;}
+#game-container[data-battle-mode=public] #encore-state {position:absolute; top:41px; left:0; right:0; font-size:12px; line-height:16px;}
+#game-container[data-battle-mode=public] #skill-encore svg {position:absolute; top:7px; left:22px;}
+#game-container[data-battle-mode=public] .skill-orb[data-charge-state=ready] {background-image:url('/art/formal-ui-20261016/disc-ready.webp'); color:#202b30; filter:none;}
+@keyframes skill-ready-settle {0% {transform:scale(.94);} 55% {transform:scale(1.06);} 100% {transform:none;}}
+#game-container[data-battle-mode=public] .skill-orb[data-charge-state=ready] {animation:skill-ready-settle 260ms cubic-bezier(.2,.8,.2,1);}
+#game-container[data-battle-mode=public] .skill-orb[aria-disabled=false]:active {scale:.94;}
+#game-container[data-battle-mode=public] .skill-orb[data-charge-state]:focus-visible {outline:3px solid #202b30;outline-offset:2px;box-shadow:0 0 0 5px #fff;}
+#game-container[data-battle-mode=public] .skill-orb[data-charge-state=charging] {filter:saturate(.6);}
+#game-container[data-battle-mode=public] .skill-orb:is([data-charge-state=preparing],[data-charge-state=paused],[data-charge-state=ended]) {filter:grayscale(1); opacity:.7;}
+#game-container[data-battle-mode=public] .skill-orb.active[data-charge-state=active] {background:transparent url('/art/formal-ui-20261016/disc.webp') center / contain no-repeat;color:#fff;filter:brightness(1.12);}
+#game-container[data-battle-mode=public] .skill-orb svg {width:16px; height:16px; color:inherit;}
+#game-container[data-battle-mode=public] #special-fill {display:none;}
+/* Current cast discs keep their hit regions fixed; only the icon ink moves. */
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) .skill-orb[data-charge-state] {transform:none;translate:none;scale:none;animation:none;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) .battle-action-art {width:24px;height:24px;top:6px;left:24px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) #special-label {top:31px;font-size:12px;line-height:17px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) #special-state {top:48px;font-size:12px;line-height:16px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) #skill-encore svg {top:4px;left:23px;width:14px;height:14px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) #encore-label {top:19px;font-size:12px;line-height:16px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) #encore-state {top:35px;font-size:12px;line-height:16px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) .skill-orb[data-charge-state=ready] > :is(.battle-action-art,svg) {animation:skill-ready-settle 260ms cubic-bezier(.2,.8,.2,1);}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) .skill-orb[aria-disabled=false]:active > :is(.battle-action-art,svg) {transform:translateY(1px);}
+#game-container #public-shell .rehearsal-member {display:flex;align-items:center;gap:12px;padding:8px 0 12px;}
+#game-container #public-shell .rehearsal-member > div {display:grid;gap:4px;min-width:0;}
+#game-container #public-shell .rehearsal-member strong {font-size:18px;line-height:24px;}
+#game-container #public-shell .rehearsal-member span {font-size:13px;line-height:20px;}
+#game-container #public-shell .rehearsal-stage-tabs,#game-container #public-shell .rehearsal-focus-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+#game-container #public-shell .rehearsal-stage-tabs button,#game-container #public-shell .rehearsal-focus-options button {min-width:0;min-height:48px;font-size:13px;line-height:20px;padding:6px 4px;overflow-wrap:anywhere;}
+#game-container #public-shell .rehearsal-stage-tabs .menu-art {width:22px;height:22px;}
+#game-container #public-shell .rehearsal-map {height:156px;margin:8px 0 12px;border-radius:0;}
+#game-container #public-shell .rehearsal-map .shell-map-world {left:0;top:0;width:100%;transform:none;}
+#game-container #public-shell .rehearsal-focus {margin:12px 0;}
+#game-container #public-shell .rehearsal-build {padding:10px 0;border-block:1px solid #b8ceca;}
+#game-container #public-shell .rehearsal-build summary {min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;}
+#game-container #public-shell .preflight-plan {padding:12px 0;border-block:1px solid #c7d7d6;margin:10px 0;}
+#game-container #public-shell .preflight-plan-heading {display:flex;align-items:center;justify-content:space-between;gap:8px;}
+#game-container #public-shell .preflight-plan-heading h3 {margin:0;font-size:17px;line-height:25px;}
+#game-container #public-shell .preflight-plan-pair {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:8px 0;}
+#game-container #public-shell .preflight-plan-choice {display:flex;align-items:center;gap:8px;min-width:0;}
+#game-container #public-shell .preflight-plan-choice .menu-art {width:34px;height:34px;}
+#game-container #public-shell .preflight-plan-choice :is(small,strong) {display:block;font-size:13px;line-height:20px;overflow-wrap:anywhere;}
+#game-container #public-shell .preflight-plan-effects summary {min-height:44px;display:flex;align-items:center;cursor:pointer;font-size:14px;line-height:22px;}
+#game-container #run-choice .battle-choice-plan-tag {display:inline;color:#146760;font-size:12px;line-height:20px;font-weight:700;}
+#game-container #public-shell .chapter-report-tabs {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:12px;}
+#game-container #public-shell .chapter-report-tabs button {min-width:0;min-height:48px;padding:6px 4px;font-size:13px;line-height:20px;overflow-wrap:anywhere;}
+#game-container #public-shell .chapter-report-heading h3 {font-size:20px;line-height:28px;margin:4px 0;}
+#game-container #public-shell .chapter-report-status {font-size:14px;line-height:22px;color:#146760;margin:4px 0 10px;font-weight:700;}
+#game-container #public-shell .chapter-report-recent {padding:12px 0;border-block:1px solid #bdcecd;}
+#game-container #public-shell .chapter-report-recent h3,#game-container #public-shell .chapter-report-stories h3 {font-size:17px;line-height:25px;margin:0 0 8px;}
+#game-container #public-shell .chapter-report-facts {margin:12px 0;display:grid;gap:12px;}
+#game-container #public-shell .chapter-report-facts dt {font-size:14px;line-height:22px;font-weight:700;}
+#game-container #public-shell .chapter-report-facts dd {margin:2px 0 0;font-size:14px;line-height:23px;overflow-wrap:anywhere;}
+#game-container #public-shell .chapter-report-stories {padding:12px 0;display:grid;gap:8px;}
+#game-container #public-shell .chapter-report-guide summary {min-height:44px;display:flex;align-items:center;cursor:pointer;}
+#game-container #public-target-focus {position:absolute;z-index:42;width:136px;transform:translate(-50%,-100%);pointer-events:none;text-align:center;}
+#game-container #public-target-focus[hidden] {display:none;}
+#game-container #public-target-focus img {display:block;width:28px;height:28px;margin:0 auto 2px;object-fit:contain;}
+#game-container #public-target-focus span {display:block;font-size:14px;line-height:20px;font-weight:700;color:#fff;text-shadow:1px 1px #142c31,-1px -1px #142c31,1px -1px #142c31,-1px 1px #142c31;overflow-wrap:anywhere;}
+@media (max-width:340px) {
+ #game-container #public-shell .shell-header {gap:5px; padding-inline:8px;}
+ #game-container #public-shell .shell-brand h1 {font-size:18px; line-height:26px;}
+ #game-container #public-shell[data-page=desk] .shell-brand h1 {font-size:23px;}
+ #game-container #public-shell .shell-content {padding-inline:12px;}
+ #game-container #public-shell[data-page=desk] .shell-content {padding:0;}
+ #game-container #public-shell .shell-chapter-option {padding-left:80px; gap:8px;}
+ #game-container #public-shell .shell-route-preview {width:60px;}
+ #game-container #public-shell .preflight-hero {margin-inline:-12px;}
+ #game-container #public-shell .system-entry {grid-template-columns:32px minmax(0,1fr); gap:5px; padding:10px 4px;}
+ #game-container #public-shell .system-entry .menu-art {width:32px; height:32px;}
+}
+@media (max-height:620px) {
+ #game-container #public-shell .lobby-stage {flex-basis:260px; min-height:260px; grid-template-rows:minmax(188px,1fr) auto;}
+ #game-container #public-shell .lobby-member-visual.shell-current-member {height:188px; width:220px;}
+ #game-container #public-shell .lobby-shortcuts {inset:8px auto auto 8px; gap:2px;}
+ #game-container #public-shell .lobby-shortcuts .lobby-shortcut {height:47px; min-height:47px;}
+ #game-container #public-shell .lobby-shortcuts .menu-art {width:28px; height:28px;}
+ #game-container #public-shell .preflight-hero {min-height:142px;}
+ #game-container #public-shell .preflight-figure {height:124px;}
+ #game-container #run-choice.battle-surface {padding:30px 8px 10px;}
+ #game-container #run-choice .battle-surface-content {padding:10px;}
+ #game-container #run-choice.battle-surface .battle-choice-row {grid-template-columns:38px minmax(0,1fr) 12px; gap:6px; min-height:90px; padding:4px 5px; border-width:6px;}
+ #game-container #run-choice .battle-choice-list {gap:8px;}
+ #game-container #run-choice .battle-performer-visual {min-height:36px; margin-bottom:6px;}
+ #game-container #run-choice .battle-visual-copy strong {font-size:14px; line-height:19px;}
+ #game-container #run-choice .battle-visual-copy span {font-size:12px; line-height:17px;}
+ #game-container #run-choice .battle-choice-art,#game-container #run-choice .battle-choice-symbol {width:38px; height:38px;}
+ #game-container #run-choice .battle-choice-row strong {font-size:16px; line-height:23px;}
+ #game-container :is(#run-choice,#battle-result,#battle-pause) h2 {font-size:22px; line-height:30px; min-height:44px; margin-bottom:8px;}
+}
+/* Four-page current-cast journey. Raster frames are an exact local candidate, not final-art approval. */
+#game-container #public-shell[data-core-journey=true] :is(.shell-selection-footer,.shell-start) {padding:7px 12px;}
+#game-container #public-shell[data-core-journey=true] :is(.shell-selection-footer > button,.shell-start > button) {border:5px solid transparent;border-inline-width:20px;border-image:url('/art/core-journey-20261018/secondary.webp') 24 100 fill / 5px 20px / 0 stretch;padding:5px 12px;min-height:48px;}
+#game-container #public-shell[data-core-journey=true] button.shell-primary {border-image-source:url('/art/core-journey-20261018/primary.webp');}
+#game-container #public-shell[data-core-journey=true] .shell-navigation {height:64px;padding:2px 8px;border-top:1px solid #b8c9cc;}
+#game-container #public-shell[data-core-journey=true] .shell-navigation button {min-height:56px;}
+#game-container #public-shell[data-core-journey=true] .shell-navigation [aria-current=page] {background:transparent;color:#12635e;box-shadow:inset 0 -3px #17b9bc;}
+#game-container #public-shell[data-core-journey=true] .lobby-member-name {border:8px solid transparent;border-inline-width:22px;border-image:url('/art/comic-ui-20261021/panel.png') 36 64 fill / 8px 16px / 0 stretch;padding:4px 7px;min-width:168px;}
+#game-container #public-shell[data-core-journey=true] .lobby-member-name strong {color:#202b30;}
+#game-container #public-shell[data-core-journey=true] .lobby-member-name span {color:#176963;}
+#game-container #public-shell[data-core-journey=true] .lobby-preparation {background:transparent;padding:3px 16px;color:#203a3d;}
+#game-container #public-shell[data-core-journey=true] .lobby-mission {border:6px solid transparent;border-inline-width:16px;border-image:url('/art/comic-ui-20261021/panel.png') 36 64 fill / 6px 16px / 0 stretch;grid-template-columns:60px minmax(0,1fr) 44px;padding:7px 2px;}
+#game-container #public-shell[data-core-journey=true] .lobby-mission .shell-main-map {width:72px;height:72px;border-radius:0;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-page-heading {margin:8px 0;font-size:15px;line-height:22px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-member-strip {gap:6px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-member-option {position:relative;height:76px;min-height:76px;border:4px solid transparent;border-image:url('/art/core-journey-20261018/secondary.webp') 24 100 fill / 4px 12px / 0 stretch;padding:1px 1px 14px;gap:1px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-member-option[aria-pressed=true] {border-image-source:url('/art/core-journey-20261018/panel.webp');}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-member-option .member-mark {width:36px;height:36px;}
+#game-container #public-shell[data-core-journey=true] .member-option-state {position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:12px;line-height:16px;color:#176963;font-weight:700;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-performer-detail {gap:0;margin-top:8px;padding:8px 16px 10px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .member-mark.member-mark-full {height:172px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-performer-name {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 8px;padding:8px 10px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-performer-name h2 {margin:0;font-size:20px;line-height:28px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-performer-name > p {margin:0;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-action-detail {grid-column:1/-1;padding:4px 0 0;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-action-detail > .shell-eyebrow {display:none;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-action-detail h3 {font-size:16px;line-height:22px;margin:0 0 3px;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-action-detail p {font-size:14px;line-height:22px;margin:0;}
+#game-container #public-shell[data-core-journey=true][data-page=roster] .shell-selection-footer .shell-primary {font-size:17px;line-height:24px;}
+#game-container #public-shell[data-core-journey=true][data-page=preflight] .shell-selection-footer .shell-primary {font-size:17px;line-height:24px;}
+#game-container #public-shell[data-core-journey=true][data-page=preflight] .preflight-confirmation {font-size:13px;line-height:20px;}
+#game-container #public-shell[data-core-journey=true] .shell-tour-heading .shell-page-heading {margin:10px 0;font-size:18px;line-height:26px;}
+#game-container #public-shell[data-core-journey=true] .shell-chapter-option {min-height:100px;margin:0 0 8px;padding:8px 8px 8px 100px;gap:8px;border:5px solid transparent;border-image:url('/art/core-journey-20261018/secondary.webp') 24 100 fill / 5px 20px / 0 stretch;}
+#game-container #public-shell[data-core-journey=true] .shell-chapter-option[aria-pressed=true] {border-image-source:url('/art/core-journey-20261018/panel.webp');}
+#game-container #public-shell[data-core-journey=true] .shell-route-preview {inset:7px auto 7px 8px;width:78px;}
+#game-container #public-shell[data-core-journey=true] .shell-chapter-copy strong {font-size:17px;line-height:24px;}
+#game-container #public-shell[data-core-journey=true] .shell-chapter-option:disabled {opacity:1;}
+#game-container #public-shell[data-core-journey=true] .shell-tour-goals {display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;margin:4px 0 12px;color:#146760;border:5px solid transparent;border-inline-width:20px;border-image:url('/art/core-journey-20261018/secondary.webp') 24 100 fill / 5px 20px / 0 stretch;}
+#game-container #public-shell[data-core-journey=true] .preflight-hero {min-height:184px;height:184px;margin-bottom:0;background:#e2f6ef;}
+#game-container #public-shell[data-core-journey=true] .preflight-scene {opacity:1;filter:none;}
+#game-container #public-shell[data-core-journey=true] .preflight-scene .shell-map-world {position:absolute;top:-180px;left:0;width:100%;height:auto;aspect-ratio:1000/1778;transform:none;}
+#game-container #public-shell[data-core-journey=true] .preflight-scene .shell-map-ground {position:absolute;inset:0;width:100%;height:100%;object-fit:fill;}
+#game-container #public-shell[data-core-journey=true] .preflight-figure {width:34%;height:132px;right:8px;bottom:4px;}
+#game-container #public-shell[data-core-journey=true] .preflight-hero[data-performer=kai] .preflight-figure {width:42%;right:0;}
+#game-container #public-shell[data-core-journey=true] .preflight-hero-copy {position:absolute;left:10px;bottom:8px;max-width:62%;padding:7px 10px;background:transparent;border:5px solid transparent;border-inline-width:14px;border-image:url('/art/core-journey-20261018/panel.webp') 24 100 fill / 5px 15px / 0 stretch;}
+#game-container #public-shell[data-core-journey=true] .preflight-hero[data-performer=kai] .preflight-hero-copy {max-width:calc(58% - 18px);}
+#game-container #public-shell[data-core-journey=true] .preflight-hero-copy h2 {font-size:21px;line-height:28px;margin:1px 0;}
+#game-container #public-shell[data-core-journey=true] .preflight-hero-copy p {font-size:13px;line-height:20px;word-break:keep-all;overflow-wrap:normal;}
+#game-container #public-shell[data-core-journey=true] .preflight-team {display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #c7d7d6;}
+#game-container #public-shell[data-core-journey=true] .preflight-team .member-mark {width:38px;height:38px;}
+#game-container #public-shell[data-core-journey=true] .preflight-team-copy {min-width:0;display:grid;gap:0;}
+#game-container #public-shell[data-core-journey=true] .preflight-team-copy strong {font-size:15px;line-height:22px;}
+#game-container #public-shell[data-core-journey=true] .preflight-team-copy span {font-size:13px;line-height:20px;color:#53636b;}
+#game-container #public-shell[data-core-journey=true][data-page=preflight] .shell-content > .preflight-goal {font-size:13px;line-height:21px;margin:6px 0;}
+#game-container #public-shell[data-core-journey=true] .preflight-links {padding:7px 0 10px;gap:5px;}
+#game-container #public-shell[data-core-journey=true] .preflight-plan > .preflight-links {grid-template-columns:minmax(0,1fr);}
+#game-container #public-shell[data-core-journey=true] .preflight-links button {min-height:44px;padding:3px 6px;border:4px solid transparent;border-inline-width:12px;border-image:url('/art/core-journey-20261018/secondary.webp') 24 100 fill / 4px 12px / 0 stretch;background:transparent;font-size:14px;line-height:22px;font-weight:700;}
+#game-container #public-shell[data-core-journey=true] .preflight-links button > span {font-size:inherit;line-height:inherit;font-weight:inherit;}
+#game-container #public-shell[data-core-journey=true] .preflight-links .menu-art {width:26px;height:26px;}
+#game-container #public-shell[data-core-journey=true] .preflight-route .preflight-links button {border:1px solid #c7d7d6;border-image:none;background:#fff;}
+#game-container #public-shell[data-core-journey=true] .preflight-route .preflight-links button[aria-pressed=true] {border-color:#0d8a87;background:#dcf4ef;box-shadow:inset 0 -3px #0d8a87;}
+#game-container #public-shell[data-core-journey=true] .preflight-route .preflight-links button:not(:disabled):active {transform:none;}
+#game-container #public-shell[data-core-journey=true] .preflight-route .preflight-links button:not(:disabled):active > :is(span,small) {transform:translateY(1px);}
+#game-container #public-shell[data-core-journey=true] .preflight-route-facts {display:grid;gap:12px;margin:6px 0 0;}
+#game-container #public-shell[data-core-journey=true] .preflight-route-facts > div {display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;align-items:baseline;}
+#game-container #public-shell[data-core-journey=true] .preflight-route-facts dt {font-size:12px;line-height:20px;color:#53636b;}
+#game-container #public-shell[data-core-journey=true] .preflight-route-facts dd {font-size:14px;line-height:22px;margin:0;color:#202b30;overflow-wrap:anywhere;}
+#game-container #public-shell[data-core-journey=true] .preflight-route-sequence {display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0;}
+#game-container #public-shell[data-core-journey=true] .preflight-route-sequence li {white-space:nowrap;}
+#game-container #public-shell[data-core-journey=true] .preflight-route-sequence li:not(:last-child)::after {content:'\2192';margin-left:4px;color:#53636b;}
+#game-container #public-shell[data-core-journey=true] .preflight-route > .system-context {font-size:12px;line-height:20px;margin:12px 0 4px;color:#53636b;}
+@media (max-width:340px) {
+ #game-container #public-shell[data-core-journey=true][data-page=roster] .shell-performer-detail {margin-inline:-12px;padding-inline:12px;}
+ #game-container #public-shell[data-core-journey=true][data-page=roster] .member-mark.member-mark-full {height:134px;}
+ #game-container #public-shell[data-core-journey=true][data-page=roster] .shell-performer-name {padding:6px 8px;}
+ #game-container #public-shell[data-core-journey=true] .shell-chapter-option {min-height:92px;padding-left:85px;gap:5px;}
+ #game-container #public-shell[data-core-journey=true] .shell-route-preview {width:66px;}
+ #game-container #public-shell[data-core-journey=true] .shell-chapter-copy strong {font-size:16px;}
+ #game-container #public-shell[data-core-journey=true] .preflight-hero {height:144px;min-height:144px;}
+ #game-container #public-shell[data-core-journey=true] .preflight-figure {height:112px;}
+ #game-container #public-shell[data-core-journey=true] .preflight-hero-copy {padding:4px 6px;left:6px;max-width:65%;}
+ #game-container #public-shell[data-core-journey=true] .preflight-hero-copy h2 {font-size:19px;line-height:25px;}
+}
+
+/* Preparation pages share compact selectors, leaving space for the actual operation. */
+#game-container #public-shell[data-system-preparation=true] .shell-content {background:#f2f4f3;padding-top:8px;}
+#game-container #public-shell[data-system-preparation=true] .shell-page-heading {font-size:15px;line-height:22px;margin:0 0 8px;}
+#game-container #public-shell[data-system-preparation=true] .shell-member-strip {gap:6px;margin:0 0 8px;}
+#game-container #public-shell[data-system-preparation=true] .shell-member-option {
+ min-height:56px;padding:3px 2px;gap:0;border:1px solid #b8c8c8;border-bottom:3px solid #b8c8c8;border-image:none;
+ background:#fff;font-size:12px;line-height:18px;color:#202b30;border-radius:4px;
+}
+#game-container #public-shell[data-system-preparation=true] .shell-member-option[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-system-preparation=true] .shell-member-option .member-mark {width:28px;height:28px;}
+#game-container #public-shell[data-system-preparation=true] :is(.inventory-context,.growth-member) {margin:0 0 8px;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-workbench {display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:14px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser {border-block:1px solid #b8c8c8;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary {display:flex;align-items:center;gap:10px;min-height:52px;padding:6px 2px;cursor:pointer;list-style:none;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary::-webkit-details-marker {display:none;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary .menu-art {width:30px;height:30px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary > span {flex:1;min-width:0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary strong {display:block;font-size:14px;line-height:22px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary small {display:block;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary > .inventory-chooser-action {flex:none;font-size:13px;line-height:20px;color:#146760;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary > svg {width:20px;height:20px;rotate:90deg;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser[open] > summary > svg {rotate:270deg;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser > summary:focus-visible {outline:3px solid #176f68;outline-offset:-3px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser[open] .inventory-grid {padding-bottom:8px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-item {
+ min-height:64px;min-width:0;padding:3px 4px;gap:0;border:1px solid #bccbcc;border-image:none;background:#fff;border-radius:4px;
+}
+#game-container #public-shell[data-system-preparation=true] .inventory-item[aria-pressed=true] {border-image:none;border-color:#14706b;box-shadow:inset 0 -2px #14706b;background:#d8f4ee;}
+#game-container #public-shell[data-system-preparation=true] .inventory-item .menu-art {width:22px;height:22px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-item strong {font-size:13px;line-height:18px;min-height:18px;display:block;overflow-wrap:normal;word-break:keep-all;}
+#game-container #public-shell[data-system-preparation=true] .inventory-item small {font-size:11px;line-height:16px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-item[data-state=locked] {filter:grayscale(1);opacity:1;background:#e5e9e8;color:#566469;}
+#game-container #public-shell[data-system-preparation=true] .inventory-item[data-state=locked][aria-pressed=true] {border-color:#14706b;filter:none;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail {min-width:0;border:0;margin:0;padding:0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-chooser ~ .inventory-detail .inventory-detail-heading {position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail-heading > div {min-width:0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail-art {width:36px;height:36px;float:none;margin:0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail-heading small {font-size:11px;line-height:17px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail h2 {font-size:16px;line-height:22px;margin:0;overflow-wrap:anywhere;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail :is(p,dt,dd) {font-size:14px;line-height:22px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-description {margin:8px 0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-effects-heading {font-size:12px;line-height:20px;margin:10px 0 0;}
+#game-container #public-shell[data-system-preparation=true] .inventory-effects {margin:0 0 8px;}
+#game-container #public-shell[data-system-preparation=true] .inventory-effects > div {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px;padding:5px 0;border-bottom:1px solid #c7d7d6;}
+#game-container #public-shell[data-system-preparation=true] .inventory-effects dd {margin:0;font-weight:800;color:#146760;text-align:right;}
+#game-container #public-shell[data-system-preparation=true] .inventory-notes summary {min-height:44px;padding:12px 0;line-height:20px;font-size:12px;cursor:pointer;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail button {font-size:12px;line-height:20px;justify-content:flex-start;text-align:left;}
+#game-container #public-shell[data-system-preparation=true] .inventory-detail button .menu-art {width:24px;height:24px;}
+#game-container #public-shell[data-system-preparation=true] .workshop-member-context {padding:0;margin:0 0 8px;gap:8px;}
+#game-container #public-shell[data-system-preparation=true] .workshop-member-context .member-mark {display:none;}
+#game-container #public-shell[data-system-preparation=true] .workshop-member-context > div {gap:0;}
+#game-container #public-shell[data-system-preparation=true] .workshop-member-context strong {font-size:14px;line-height:22px;}
+#game-container #public-shell[data-system-preparation=true] .workshop-member-context small {font-size:12px;line-height:18px;}
+#game-container #public-shell[data-system-preparation=true] [data-training-primary] {padding:8px 0 12px;border-top:2px solid #202b30;}
+#game-container #public-shell[data-system-preparation=true] [data-training-primary] h2 {font-size:17px;line-height:24px;margin:0 0 4px;}
+#game-container #public-shell[data-system-preparation=true] [data-training-primary] p {font-size:13px;line-height:20px;margin:0 0 6px;}
+#game-container #public-shell[data-system-preparation=true] [data-training-primary] .shell-primary {display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:8px;row-gap:0;width:100%;min-height:64px;text-align:left;}
+#game-container #public-shell[data-system-preparation=true] [data-training-primary] .shell-primary > :is(svg,img) {grid-row:1/span 2;}
+#game-container #public-shell[data-system-preparation=true] .workshop-train-command {grid-column:2;font-size:14px;line-height:22px;}
+#game-container #public-shell[data-system-preparation=true] .workshop-train-cost {grid-column:2;font-size:12px;line-height:18px;font-weight:500;}
+#game-container #public-shell[data-system-preparation=true] [data-training-primary] .shell-primary:disabled {opacity:1;color:#35484d;}
+#game-container #public-shell[data-system-preparation=true] .workshop-wallet {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;padding:8px 0;margin:0;border-bottom:1px solid #c7d7d6;}
+#game-container #public-shell[data-system-preparation=true] .workshop-wallet strong {font-size:22px;line-height:28px;}
+#game-container #public-shell[data-system-preparation=true] .workshop-wallet small {grid-column:1/-1;color:#53636b;}
+#game-container #public-shell[data-system-preparation=true] .workshop-equipment {min-height:76px;}
+#game-container #public-shell[data-system-preparation=true] .workshop-inventory h2 {font-size:17px;line-height:24px;}
+#game-container #public-shell[data-system-preparation=true] .arrangement-pool {padding:0 0 8px;}
+#game-container #public-shell[data-system-preparation=true] .arrangement-pool h2 {font-size:14px;line-height:20px;margin:0 0 4px;}
+#game-container #public-shell[data-system-preparation=true] .growth-ranks {gap:6px;}
+#game-container #public-shell[data-system-preparation=true] .growth-ranks .arrangement-option {min-height:48px;padding:3px 4px;gap:0;text-align:center;}
+#game-container #public-shell[data-system-preparation=true] .arrangement-option {border:1px solid #b8c8c8;border-image:none;border-radius:4px;background:#fff;}
+#game-container #public-shell[data-system-preparation=true] .arrangement-option[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-system-preparation=true] .growth-ranks :is(strong,small) {font-size:12px;line-height:18px;}
+#game-container #public-shell[data-system-preparation=true] .growth-preview {padding:8px 0;margin:0 0 8px;border-bottom:2px solid #202b30;}
+#game-container #public-shell[data-system-preparation=true] .growth-preview h2 {font-size:14px;line-height:22px;margin:0 0 2px;}
+#game-container #public-shell[data-system-preparation=true] .growth-comparison-labels,
+#game-container #public-shell[data-system-preparation=true] .growth-effects > div {grid-template-columns:minmax(0,1fr) 56px 56px;padding:3px 0;gap:6px;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-system-preparation=true] .growth-effects {margin:0;}
+#game-container #public-shell[data-system-preparation=true] .growth-effects dd:last-child {color:#146760;}
+#game-container #public-shell[data-system-preparation=true] .growth-equipment-pool .arrangement-options {gap:6px;}
+#game-container #public-shell[data-system-preparation=true] .growth-equipment-pool .arrangement-option {padding:8px;gap:2px;}
+#game-container #public-shell[data-system-preparation=true] .growth-equipment-pool .arrangement-option strong {font-size:13px;line-height:20px;}
+#game-container #public-shell[data-system-preparation=true] .growth-application {padding-top:8px;}
+@media (max-width:340px) {
+ #game-container #public-shell[data-system-preparation=true] .inventory-effects > div {grid-template-columns:minmax(0,1fr) auto;gap:8px;}
+}
+
+/* Directories and archives prioritize destinations and actual records over framing. */
+#game-container #public-shell[data-directory-reading=true] .shell-content {background:#f2f4f3;padding-top:8px;}
+#game-container #public-shell[data-directory-reading=true] .shell-page-heading {font-size:15px;line-height:22px;margin:0 0 8px;}
+#game-container #public-shell[data-directory-reading=true] .shell-content > .system-context {font-size:12px;line-height:20px;margin:0 0 8px;}
+#game-container #public-shell[data-directory-reading=true] .hub-categories {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;position:sticky;top:0;z-index:2;background:#f2f4f3;margin:0 0 8px;border-bottom:2px solid #202b30;}
+#game-container #public-shell[data-directory-reading=true] .hub-category {min-height:44px;padding:8px 4px;border:0;border-bottom:3px solid transparent;background:none;font-size:13px;line-height:20px;font-weight:700;color:#53636b;}
+#game-container #public-shell[data-directory-reading=true] .hub-category[aria-selected=true] {border-bottom-color:#14706b;background:#d8f4ee;color:#154e4b;}
+#game-container #public-shell[data-directory-reading=true] .system-hub-group {display:block;margin:0;padding:0;border:0;}
+#game-container #public-shell[data-directory-reading=true] .system-hub-group[hidden] {display:none;}
+#game-container #public-shell[data-directory-reading=true] .system-hub-heading {padding:4px 0 8px;min-height:0;}
+#game-container #public-shell[data-directory-reading=true] .system-hub-heading h2 {font-size:14px;line-height:20px;margin:0;}
+#game-container #public-shell[data-directory-reading=true] .system-entry {display:grid;grid-template-columns:32px minmax(0,1fr) 16px;align-items:center;gap:10px;width:100%;min-height:60px;padding:10px 0;border:0;border-bottom:1px solid #c7d7d6;border-image:none;border-radius:0;background:none;box-shadow:none;text-align:left;}
+#game-container #public-shell[data-directory-reading=true] .system-entry .menu-art {width:32px;height:32px;}
+#game-container #public-shell[data-directory-reading=true] .system-entry-copy {display:grid;gap:2px;min-width:0;}
+#game-container #public-shell[data-directory-reading=true] .system-entry-copy strong {grid-column:auto;font-size:14px;line-height:22px;}
+#game-container #public-shell[data-directory-reading=true] .system-entry-copy small {grid-column:auto;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-directory-reading=true] .system-entry > svg:last-child {display:block;width:16px;height:16px;color:#53636b;}
+#game-container #public-shell[data-directory-reading=true] .shell-member-strip {gap:6px;margin:0 0 8px;}
+#game-container #public-shell[data-directory-reading=true] .shell-member-option {min-height:56px;padding:3px 2px;gap:0;border:1px solid #b8c8c8;border-bottom:3px solid #b8c8c8;border-image:none;border-radius:4px;background:#fff;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-directory-reading=true] .shell-member-option[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-directory-reading=true] .shell-member-option .member-mark {width:28px;height:28px;}
+#game-container #public-shell[data-directory-reading=true] .archive-summary {margin:0 0 4px;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-directory-reading=true] .archive-current-records {margin-top:8px;border-top:2px solid #202b30;}
+#game-container #public-shell[data-directory-reading=true] .archive-record {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:0 10px;padding:10px 0;min-height:64px;align-items:center;}
+#game-container #public-shell[data-directory-reading=true] .archive-record h2 {grid-column:1;grid-row:1/span 2;font-size:14px;line-height:22px;margin:0;}
+#game-container #public-shell[data-directory-reading=true] .archive-record > p {grid-column:2;margin:0;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-directory-reading=true] .archive-record > .archive-history {grid-column:1/-1;}
+#game-container #public-shell[data-directory-reading=true] .archive-record .archive-history p {font-size:12px;line-height:21px;}
+#game-container #public-shell[data-directory-reading=true] .archive-overview {border-block:1px solid #c7d7d6;}
+#game-container #public-shell[data-directory-reading=true] .archive-overview > summary {font-size:13px;font-weight:700;}
+#game-container #public-shell[data-directory-reading=true] .archive-last-run {padding:12px 0;}
+#game-container #public-shell[data-directory-reading=true] .archive-last-run h2 {font-size:15px;line-height:22px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-tabs {gap:6px;margin-bottom:8px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-tabs button {border:1px solid #b8c8c8;border-image:none;border-radius:4px;background:#fff;font-size:12px;line-height:20px;min-height:44px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-tabs button[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-heading {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 8px;margin:0 0 8px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-heading > small {grid-column:1/-1;margin:0;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-heading h3 {font-size:18px;line-height:26px;margin:0;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-status {font-size:12px;line-height:20px;margin:0;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-recent {padding:10px 0;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-recent h3 {font-size:15px;line-height:22px;margin:0 0 6px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-result {font-size:13px;line-height:22px;margin:0 0 8px;font-weight:700;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-facts {margin:8px 0;gap:8px;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-facts dt {font-size:12px;line-height:20px;color:#53636b;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-facts dd {font-size:13px;line-height:21px;margin:0;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-recent > .system-context {font-size:12px;line-height:20px;margin:6px 0 0;}
+#game-container #public-shell[data-directory-reading=true] .chapter-report-guide > summary {font-size:13px;line-height:20px;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-pool {padding:0 0 8px;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-pool h2 {font-size:13px;line-height:20px;margin:0 0 4px;}
+#game-container #public-shell[data-directory-reading=true] .library-studies .arrangement-options {grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-option {position:relative;display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:4px;min-height:48px;padding:6px;border:1px solid #b8c8c8;border-image:none;border-radius:4px;background:#fff;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-option[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-option .menu-art {width:24px;height:24px;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-option strong {font-size:12px;line-height:20px;text-wrap:balance;}
+#game-container #public-shell[data-directory-reading=true] .library-stages {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+#game-container #public-shell[data-directory-reading=true] .library-stage .arrangement-options {gap:6px;}
+#game-container #public-shell[data-directory-reading=true] .library-stage .arrangement-option small {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+#game-container #public-shell[data-directory-reading=true] .library-preview {border-top:2px solid #202b30;padding:8px 0;}
+#game-container #public-shell[data-directory-reading=true] .library-preview h2 {font-size:14px;line-height:20px;margin:0 0 4px;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-effects {margin:0;padding:0;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-effects > div {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:8px;font-size:12px;line-height:20px;padding:4px 0;border-bottom:1px solid #c7d7d6;}
+#game-container #public-shell[data-directory-reading=true] .arrangement-effects dd {text-align:right;}
+#game-container #public-shell[data-directory-reading=true] .library-guide > summary {font-size:13px;line-height:20px;font-weight:700;}
+#game-container #public-shell[data-directory-reading=true] .library-guide .system-context {font-size:13px;line-height:21px;}
+@media (max-width:340px) {
+ #game-container #public-shell[data-directory-reading=true] .library-studies .arrangement-option {grid-template-columns:minmax(0,1fr);justify-items:center;gap:0;min-height:62px;padding:4px;}
+ #game-container #public-shell[data-directory-reading=true] .library-stages {gap:8px;}
+}
+
+/* The remaining challenge menus share selection density, not progression rules. */
+#game-container #public-shell[data-challenge-preparation=true] .shell-content {background:#f2f4f3;padding-top:8px;}
+#game-container #public-shell[data-challenge-preparation=true] .shell-page-heading {font-size:15px;line-height:22px;margin:0 0 8px;}
+#game-container #public-shell[data-challenge-preparation=true] .system-context {font-size:12px;line-height:20px;margin:4px 0 8px;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:8px 0;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages .arrangement-pool {margin:0;padding:0;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages :is(h2,h3) {font-size:13px;line-height:20px;margin:0 0 4px;}
+#game-container #public-shell[data-challenge-preparation=true] .arrangement-options {gap:6px;}
+#game-container #public-shell[data-challenge-preparation=true] .arrangement-option {position:relative;min-width:0;min-height:48px;padding:6px;border:1px solid #b8c8c8;border-image:none;border-radius:4px;background:#fff;box-shadow:none;}
+#game-container #public-shell[data-challenge-preparation=true] .arrangement-option[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages .arrangement-option {display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:4px;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages .menu-art {width:24px;height:24px;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages .system-entry-copy {display:block;min-width:0;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages strong {display:block;font-size:12px;line-height:20px;text-wrap:balance;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-stages small {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-guide {border-block:1px solid #c7d7d6;margin:8px 0;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-guide summary {display:list-item;min-height:44px;padding:12px 0;cursor:pointer;font-size:13px;line-height:20px;font-weight:700;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-guide[open] summary {margin-bottom:4px;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-guide .system-context {font-size:13px;line-height:21px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-member {gap:8px;padding:0;margin:0 0 6px;min-height:40px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-member .member-mark {width:36px;height:36px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-member strong {font-size:14px;line-height:20px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-member span {font-size:12px;line-height:18px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-stage-tabs {gap:6px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-stage-tabs button {display:flex;align-items:center;justify-content:center;gap:4px;font-size:12px;line-height:20px;padding:4px 2px;min-height:44px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-focus {margin:8px 0;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-focus h3 {font-size:13px;line-height:20px;margin:0 0 4px;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-focus-options .arrangement-option {display:block;min-height:44px;font-size:12px;line-height:20px;text-align:center;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-build {margin:8px 0;padding:0;border-bottom:1px solid #c7d7d6;border-top:0;}
+#game-container #public-shell[data-challenge-preparation=true] .rehearsal-build summary {font-size:13px;line-height:20px;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-options {gap:6px;margin:8px 0;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-option {display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;align-items:center;min-height:68px;padding:8px;border:1px solid #b8c8c8;border-image:none;border-radius:4px;background:#fff;box-shadow:none;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-option[aria-pressed=true] {border-image:none;border-color:#14706b;background:#d8f4ee;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-option:disabled {background:#e7edeb;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-option .menu-art {width:32px;height:32px;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-option span {min-width:0;gap:2px;}
+#game-container #public-shell[data-challenge-preparation=true] .run-goal-option strong {font-size:14px;line-height:22px;}
+#game-container #public-shell[data-challenge-preparation=true] .challenge-selection {margin:8px 0 4px;font-size:13px;line-height:21px;font-weight:700;color:#154e4b;}
+
+#game-container #player-session-dialog[data-reading=true] .session-performer {min-height:48px;gap:8px;padding:4px 0 8px;margin:0 0 8px;}
+#game-container #player-session-dialog[data-reading=true] .session-performer img {width:40px;height:40px;flex:0 0 40px;border:0;border-radius:0;}
+#game-container #player-session-dialog[data-reading=true] .session-performer strong {font-size:13px;line-height:20px;}
+#game-container #player-session-dialog[data-reading=true] .journal-chapter {margin:0 0 12px;padding:0;}
+#game-container #player-session-dialog[data-reading=true] .journal-chapter h3 {margin:8px 0 4px;font-size:15px;line-height:22px;}
+#game-container #player-session-dialog[data-reading=true] .journal-chapter .session-note {margin:0 0 4px;}
+#game-container #player-session-dialog[data-reading=true] .journal-chapter button {display:block;width:100%;min-height:44px;margin:0;padding:10px 0;border:0;border-bottom:1px solid #c7d7d6;border-image:none;border-radius:0;box-shadow:none;background:none;color:#202b30;text-align:left;font-size:13px;line-height:22px;}
+#game-container #player-session-dialog[data-reading=true] .story-place {margin:8px 0 12px;font-size:12px;line-height:20px;}
+#game-container #player-session-dialog[data-reading=true] .story-passage p {font-size:15px;line-height:24px;margin:4px 0 12px;}
+#game-container #player-session-dialog[data-reading=true] .story-dialogue {padding-left:10px;margin:12px 0;}
+#game-container #player-session-dialog[data-reading=true] .story-dialogue strong {font-size:12px;line-height:20px;}
+#game-container #player-session-dialog[data-reading=true] button:focus-visible {outline:3px solid #176f68;outline-offset:-3px;}
+/* Summary-only entry never delays commands or moves the save status and action footer. */
+@keyframes result-summary-arrive {from {opacity:.65;transform:translateY(8px);} to {opacity:1;transform:none;}}
+@keyframes chapter-header-arrive {from {opacity:.65;transform:translateX(-8px);} to {opacity:1;transform:none;}}
+#game-container #battle-result[data-combat-flow=true][data-motion=enter] .battle-performance-header {animation:result-summary-arrive 180ms cubic-bezier(.2,.8,.2,1);}
+#game-container #battle-result[data-combat-flow=true][data-motion=enter] .battle-result-stats {animation:result-summary-arrive 220ms cubic-bezier(.2,.8,.2,1);}
+#game-container #player-session-dialog:is([data-mode=first-briefing],[data-reading=true]) .session-header {animation:chapter-header-arrive 180ms cubic-bezier(.2,.8,.2,1);}
+/* Page motion: set by PublicShellView only on actual navigation; ordinary rerenders carry no data-motion. */
+@keyframes shell-page-forward {from {opacity:.35; transform:translateX(18px);} to {opacity:1; transform:none;}}
+@keyframes shell-page-back {from {opacity:.35; transform:translateX(-18px);} to {opacity:1; transform:none;}}
+@keyframes shell-page-rise {from {opacity:.35; transform:translateY(10px);} to {opacity:1; transform:none;}}
+@keyframes shell-select {0% {transform:scale(.96);} 60% {transform:scale(1.02);} 100% {transform:none;}}
+#game-container #public-shell[data-motion=forward] .shell-content {animation:shell-page-forward 200ms cubic-bezier(.2,.8,.2,1);}
+#game-container #public-shell[data-motion=back] .shell-content {animation:shell-page-back 200ms cubic-bezier(.2,.8,.2,1);}
+#game-container #public-shell[data-motion=root] .shell-content,#game-container #public-shell[data-motion=enter] .shell-content {animation:shell-page-rise 220ms cubic-bezier(.2,.8,.2,1);}
+#game-container #public-shell[data-motion] .shell-brand h1 {animation:shell-page-rise 160ms ease-out;}
+#game-container #public-shell[data-motion] .shell-navigation [aria-current=page] {animation:shell-select 180ms ease-out;}
+/* Press and selection feedback: ink offset on press, a short pop only on the freshly focused choice. */
+#game-container #public-shell button:not(:disabled):not(.shell-current-member):active {transform:translateY(2px) scale(.98);}
+#game-container #public-shell .shell-navigation button:not(:disabled):active {background:#cdf1ec; color:#202b30;}
+#game-container #public-shell :is(.shell-member-option,.shell-chapter-option,.inventory-item,.arrangement-option,.run-goal-option,.workshop-equipment)[aria-pressed=true]:focus {animation:shell-select 180ms ease-out;}
+/* Stable text layout: CJK labels wrap inside their slot instead of pushing art or icons out. */
+#game-container #public-shell .shell-brand {min-width:0;}
+#game-container #public-shell .shell-brand h1 {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#game-container #public-shell .shell-session-context {gap:6px; min-width:0;}
+#game-container #public-shell .shell-session-context > span {min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+#game-container #public-shell .shell-session-context > strong {flex:none;}
+#game-container #public-shell :is(.shell-content button > span,.shell-chapter-copy,.workshop-item-copy,.shell-performer-name,.shell-member-preparation,.preflight-hero-copy) {min-width:0; overflow-wrap:anywhere;}
+#game-container #public-shell :is(.shell-primary,.shell-selection-footer > button) {overflow-wrap:anywhere;}
+#game-container #public-shell .shell-navigation button {min-width:0; white-space:nowrap;}
+@media (max-width:380px) {
+ #game-container #public-shell :is(.shell-primary,.shell-selection-footer > button) {font-size:14px; line-height:21px; padding-inline:8px;}
+ #game-container #public-shell .shell-chapter-copy strong {font-size:16px; line-height:24px;}
+ #game-container #public-shell .shell-performer-name h2 {font-size:21px; line-height:28px;}
+ #game-container #public-shell .preflight-hero-copy h2 {font-size:21px; line-height:28px;}
+ #game-container #public-shell .preflight-links button {gap:5px; padding:6px;}
+ #game-container #public-shell .preflight-links button span {font-size:12px; line-height:18px;}
+ #game-container #public-shell .shell-wallet {max-width:72px; padding-inline:4px;}
+}
+/* Preparation ink feedback keeps the hit target fixed. */
+/* Original three-row bitmap; measured ink centers align without rescaling individual words. */
+#game-container #public-shell .shell-brand h1[data-title-art=true] {position:relative;width:160px;max-width:100%;height:auto;aspect-ratio:9 / 2;line-height:27px;}
+#game-container #public-shell .shell-brand-lettered .shell-eyebrow {font-size:12px;line-height:16px;}
+#game-container #public-shell .shell-title-copy {position:absolute;inset:0;display:flex;align-items:center;}
+#game-container #public-shell .shell-title-window {display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+#game-container #public-shell h1[data-lettered=true] .shell-title-window {display:block;}
+#game-container #public-shell h1[data-lettered=true] .shell-title-copy {inset:auto;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+/* Source paper is RGB253..255; this 1% display correction removes its matte on white. */
+#game-container #public-shell .shell-title-art {display:block;width:100%;height:auto;max-width:none;filter:brightness(1.01);}
+#game-container #public-shell .shell-title-window[data-row="0"] .shell-title-art {transform:translateY(-2.8157552083%);}
+#game-container #public-shell .shell-title-window[data-row="1"] .shell-title-art {transform:translateY(calc(-33.3333333333% - .09765625%));}
+#game-container #public-shell .shell-title-window[data-row="2"] .shell-title-art {transform:translateY(calc(-66.6666666667% + 2.9134114583%));}
+#game-container #public-shell[data-system-preparation=true] button:is(.inventory-item,[data-action=train]):is(:active,:focus) {transform:none;translate:none;scale:none;animation:none;}
+#game-container #public-shell[data-system-preparation=true] :is(.inventory-item,[data-action=train]) > :is(img,svg,strong,small,span) {transition:transform 100ms ease-out;}
+#game-container #public-shell[data-system-preparation=true] :is(.inventory-item,[data-action=train]):not(:disabled):active > :is(img,svg,strong,small,span) {transform:translateY(1px);}
+/* Current-cast comic presentation: raster titles, live readable values, stable hit regions. */
+#game-container #public-shell[data-core-journey=true][data-page=desk] .shell-header {height:80px;padding:6px 12px;background:#fff;border-bottom:3px solid #202b30;}
+#game-container #public-shell[data-page=desk] .shell-brand h1:has(.shell-brand-art) {height:54px;line-height:0;}
+#game-container #public-shell .shell-brand-art {display:block;width:176px;height:54px;object-fit:contain;object-position:left center;}
+#game-container #public-shell .shell-brand-copy {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .shell-eyebrow {font-size:14px;line-height:17px;color:#34464b;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-stage {flex-basis:336px;min-height:336px;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(284px,1fr) 44px;gap:0;padding:4px 10px 4px 58px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-visual.shell-current-member {width:310px;max-width:100%;height:100%;max-height:360px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-stage .lobby-member-visual[data-performer=kai] {width:340px;max-width:none;transform:translateX(-18px);}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-character {filter:drop-shadow(0 3px 1px #172e3220);}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-background {object-position:center 55%;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcuts {inset:14px auto auto 8px;grid-template-columns:72px;gap:6px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcuts .lobby-shortcut {width:72px;height:64px;min-height:64px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcuts .menu-art {width:38px;height:38px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcut-copy {display:flex;align-items:center;justify-content:center;width:72px;min-height:22px;background:#fff;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcut-copy strong {font-size:14px;line-height:18px;padding:1px 3px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-name {justify-self:end;min-width:166px;align-self:center;align-items:center;justify-content:center;height:44px;border-block-width:5px;border-image-width:5px 16px;padding-block:2px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-name strong {font-size:22px;line-height:26px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-name span {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-preparation {font-size:14px;line-height:20px;background:#ffffffd9;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-mission .shell-main-map {width:60px;height:60px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-mission :is(small,p) {font-size:14px;line-height:21px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-mission p {display:none;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-details > summary {font-size:14px;line-height:22px;padding:10px 0;}
+#game-container #public-shell .shell-navigation button {font-size:13px;line-height:19px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .shell-navigation button {font-size:14px;line-height:19px;}
+/* Home lettering: raster shows only after load; the native label is then clipped but stays in the accessibility tree. */
+#game-container #public-shell .home-lettering {display:none;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] [data-lettering=loaded] > .home-lettering {display:block;flex:none;object-fit:contain;pointer-events:none;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcut-copy[data-lettering=loaded] > .home-lettering {width:72px;height:20px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-name[data-lettering=loaded] {border-inline-width:16px;padding-inline:1px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-name[data-lettering=loaded] > .home-lettering {width:132px;height:30px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-start .shell-primary[data-lettering=loaded] {padding-block:2px;gap:0;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-start .shell-primary[data-lettering=loaded] > .home-lettering {width:156px;height:36px;margin-inline-start:-12px;}
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcut-copy[data-lettering=loaded] strong,
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-name[data-lettering=loaded] strong,
+#game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-start .shell-primary[data-lettering=loaded] > span {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+/* Home entrance runs only on navigation ([data-motion]); children move, button hit rectangles do not. */
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .shell-content {animation:none;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-character {animation:comic-home-arrive 380ms cubic-bezier(.2,.8,.2,1);}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-shortcut:nth-child(2) {--home-stagger:50ms;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-shortcut:nth-child(3) {--home-stagger:100ms;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-shortcut:nth-child(4) {--home-stagger:150ms;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-shortcut > :is(.menu-art,svg) {animation:home-lettering-arrive 220ms cubic-bezier(.2,.8,.2,1) var(--home-stagger,0ms) both;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-shortcut > .lobby-shortcut-copy {animation:home-lettering-arrive 280ms cubic-bezier(.2,.8,.2,1) calc(var(--home-stagger,0ms) + 40ms) both;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-member-name > .home-lettering {animation:home-lettering-arrive 360ms cubic-bezier(.2,.8,.2,1) 200ms both;}
+#game-container #public-shell[data-motion][data-core-journey=true][data-page=desk] .lobby-start .shell-primary > .home-lettering {animation:home-lettering-arrive 320ms cubic-bezier(.2,.8,.2,1) 250ms both;}
+/* The header raster is the only backing; padding replaces the old paper border so avatar/name/hp keep their box. */
+#game-container[data-battle-mode=public] .mihoyo-player {top:8px;left:10px;width:192px;height:50px;padding:8px 11px;gap:6px;box-sizing:border-box;border:0;border-image:none;background:none;}
+#game-container[data-battle-mode=public] .mihoyo-player .mihoyo-portrait {width:40px;height:40px;flex:none;}
+#game-container[data-battle-mode=public] .mihoyo-player-meta {width:122px;height:36px;}
+#game-container[data-battle-mode=public] .mihoyo-name {font-size:15px;line-height:21px;}
+#game-container[data-battle-mode=public] #hp-value {font-size:13px;line-height:20px;}
+#game-container[data-battle-mode=public] .heat-card {left:214px;width:88px;}
+#game-container[data-battle-mode=public] #heat-level {font-size:13px;line-height:20px;}
+#game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) {right:12px;bottom:40px;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+#game-container[data-battle-mode=public] #skill-encore {--comic-command-art:url('/art/skill-command-20261022/encore.png');}
+#game-container[data-battle-mode=public] #skill-special[data-art=weapon] {--comic-command-art:url('/art/skill-command-20261022/rifle.png');}
+#game-container[data-battle-mode=public][data-ui-performer=kai] #skill-special[data-art=weapon] {--comic-command-art:url('/art/skill-command-20261022/sword.png');}
+#game-container[data-battle-mode=public][data-ui-performer=enjo] #skill-special[data-art=weapon] {--comic-command-art:url('/art/skill-command-20261022/hammer.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state] {width:112px;height:74px;position:relative;flex:none;background:none;filter:none;color:#202b30;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])::before {content:'';position:absolute;inset:0 0 26px;background:var(--comic-command-art) center / contain no-repeat;pointer-events:none;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon]) > :is(svg,.battle-action-art,#encore-label,#special-label) {position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap;}
+#game-container[data-battle-mode=public] #skill-encore #encore-state {position:absolute;top:46px;left:14px;right:14px;height:28px;padding:4px;box-sizing:border-box;font-size:14px;line-height:20px;font-weight:800;font-variant-numeric:tabular-nums;color:#202b30;border:0;}
+#game-container[data-battle-mode=public] #skill-special[data-art=weapon] #special-state {position:absolute;top:46px;left:14px;right:14px;height:28px;padding:4px;box-sizing:border-box;font-size:14px;line-height:20px;font-weight:800;font-variant-numeric:tabular-nums;color:#202b30;border:0;}
+/* Authored plates sit behind the live caption: idle covers charging/preparing/paused/ended. */
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state] > :is(#encore-state,#special-state) {background:transparent url('/art/battle-comic-skin-20261021/status-idle.png') center / 100% 100% no-repeat;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=charging]::before {filter:grayscale(.7);opacity:.72;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=ready]::before {animation:comic-command-arrive 360ms cubic-bezier(.2,.8,.2,1);}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=ready] > :is(#encore-state,#special-state) {background-image:url('/art/battle-comic-skin-20261021/status-ready.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=active] > :is(#encore-state,#special-state) {background-image:url('/art/battle-comic-skin-20261021/status-active.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=active] {background:none;filter:none;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=active]::before {animation:comic-command-live 600ms cubic-bezier(.2,.8,.2,1);}
+@keyframes comic-home-arrive {from {opacity:0;transform:translateX(14px);}to {opacity:1;transform:none;}}
+@keyframes home-lettering-arrive {from {opacity:0;transform:scale(.94);}to {opacity:1;transform:none;}}
+@keyframes comic-command-arrive {0% {transform:translateY(5px) scale(.94);opacity:.5;}65% {transform:translateY(-2px) scale(1.035);opacity:1;}100% {transform:none;opacity:1;}}
+@keyframes comic-command-live {0% {transform:none;}45% {transform:translateY(-2px) scale(1.04);}100% {transform:none;}}
+@media (max-height:620px) {
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .shell-header {height:72px;padding-block:4px;}
+ #game-container #public-shell[data-page=desk] .shell-brand h1:has(.shell-brand-art) {height:44px;}
+ #game-container #public-shell .shell-brand-art {width:152px;height:44px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-stage {flex-basis:262px;min-height:262px;grid-template-rows:minmax(210px,1fr) 44px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-member-visual.shell-current-member {height:100%;width:264px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-mission {grid-template-columns:48px minmax(0,1fr) 44px;padding-block:4px;margin-block:2px;flex-shrink:0;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-mission .shell-main-map {width:48px;height:48px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-mission p {display:none;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-details > summary {min-height:44px;padding-block:10px 0;line-height:20px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-stage .lobby-member-visual[data-performer=kai] {width:306px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcuts {gap:0;inset:8px auto auto 5px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcuts .lobby-shortcut {height:50px;min-height:50px;}
+ #game-container #public-shell[data-core-journey=true][data-page=desk] .lobby-shortcuts .menu-art {width:26px;height:26px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon]) > :is(#encore-state,#special-state)::after {animation:none !important;transform:none !important;}
+ #game-container[data-battle-mode=public] .skill-orb::before {animation:none !important;transform:none !important;}
+ #game-container #battle-result .battle-performance-header,#game-container #battle-result .battle-result-stats,#game-container #player-session-dialog .session-header {animation:none !important;transform:none !important;}
+ #game-container[data-battle-mode=public] .mihoyo-skills:has(> [data-art=weapon]) .skill-orb > :is(.battle-action-art,svg) {animation:none !important;transform:none !important;transition:none !important;}
+ #game-container[data-battle-mode=public] .skill-orb[data-charge-state] {animation:none !important;transform:none !important;scale:none !important;transition:none !important;}
+ #game-container #public-shell,#game-container #public-shell * {animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+ #game-container #public-shell button:active {transform:none !important;}
+ #game-container #public-shell[data-system-preparation=true] :is(.inventory-item,[data-action=train]) > :is(img,svg,strong,small,span) {transform:none !important;}
+}
+/* Current battle header: original portrait, authored name and two small raster emblems. */
+#game-container[data-battle-mode=public] #hud::before {background:#fff;border-image:url('/art/battle-header-20261022/frame.png') 40 80 40 80 fill / 12px 24px 12px 24px / 0 stretch;}
+#game-container[data-battle-mode=public] .mihoyo-player {left:16px;top:16px;width:206px;height:44px;padding:0;gap:8px;}
+#game-container[data-battle-mode=public] .mihoyo-player .mihoyo-portrait {width:44px;height:44px;}
+#game-container[data-battle-mode=public] .mihoyo-player-meta {width:154px;height:44px;flex:none;}
+#game-container[data-battle-mode=public] .mihoyo-name {position:relative;width:96px;font-size:16px;line-height:24px;white-space:nowrap;}
+#game-container[data-battle-mode=public] .battle-header-name {display:block;position:absolute;left:0;top:0;width:96px;height:24px;object-fit:contain;pointer-events:none;}
+#game-container[data-battle-mode=public] .mihoyo-player-meta[data-header-lettering=loaded] .mihoyo-name {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+#game-container[data-battle-mode=public] #hp-value {top:0;right:0;width:54px;font-size:16px;line-height:24px;text-align:right;font-variant-numeric:tabular-nums;}
+#game-container[data-battle-mode=public] .hp-track {left:24px;bottom:5px;width:130px;height:8px;box-sizing:border-box;border-color:#202b30;background:#e5f0ef;}
+#game-container[data-battle-mode=public] #hp-fill {background:#00c8dc;}
+#game-container[data-battle-mode=public] .heat-card {left:234px;top:16px;width:110px;height:44px;}
+#game-container[data-battle-mode=public] #heat-level {display:block;position:absolute;left:22px;top:0;width:84px;height:20px;margin:0;color:#202b30;font-size:14px;line-height:20px;white-space:nowrap;}
+#game-container[data-battle-mode=public] #heat-gauge {position:absolute;left:0;bottom:5px;width:70px;height:8px;box-sizing:border-box;border-color:#202b30;background:#f5e6ee;}
+#game-container[data-battle-mode=public] #heat-fill {background:#ed2584;}
+#game-container[data-battle-mode=public] .battle-header-icon {display:block;position:absolute;width:20px;height:20px;overflow:hidden;pointer-events:none;}
+#game-container[data-battle-mode=public] .battle-header-icon img {position:absolute;left:0;top:0;width:40px;height:20px;max-width:none;pointer-events:none;}
+#game-container[data-battle-mode=public] .battle-header-icon[data-kind=life] {left:0;top:24px;}
+#game-container[data-battle-mode=public] .battle-header-icon[data-kind=support] {left:0;top:0;}
+#game-container[data-battle-mode=public] .battle-header-icon[data-kind=support] img {left:-20px;}
+#game-container[data-battle-mode=public] .battle-header-name[hidden],
+#game-container[data-battle-mode=public] .battle-header-icon[hidden] {display:none;}
+#game-container[data-battle-mode=public] #round-clock {top:-20px;width:46px;font-size:16px;line-height:24px;text-align:right;font-variant-numeric:tabular-nums;}
+#game-container[data-battle-mode=public] .cw-objective {top:60px;left:30px;width:276px;height:20px;}
+#game-container[data-battle-mode=public] .mihoyo-player-meta[data-health=critical] #hp-value {color:#a31538;font-weight:900;}
+#game-container[data-battle-mode=public] .mihoyo-player-meta[data-health=critical] #hp-fill {background:#d12b55;}
+#game-container[data-battle-mode=public] #round-clock[data-urgency=low] {color:#a31538;font-weight:900;box-shadow:0 0 0 2px #ffe6ee;background:#ffe6ee;}
+#game-container[data-battle-mode=public] #battle-chapter {left:30px;top:80px;max-width:76px;font-size:14px;line-height:18px;}
+#game-container[data-battle-mode=public] #run-build {top:80px;font-size:14px;line-height:18px;}
+#game-container #player-session-dialog[data-mode=first-briefing] .session-panel {border-image-source:url('/art/briefing-reading-frame-20261022/frame.png'); border-image-slice:64 fill;}
+#game-container #player-session-dialog[data-mode=first-briefing] .session-content>p {font-size:14px; line-height:22px;}
+#game-container #player-session-dialog[data-mode=first-briefing] .session-performer strong {font-size:14px; line-height:22px;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=ready] {--command-caption-art:url('/art/command-state-family-20261022/ready.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=active] {--command-caption-art:url('/art/command-state-family-20261022/active.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=preparing] {--command-caption-art:url('/art/command-state-family-20261022/preparing.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=paused] {--command-caption-art:url('/art/command-state-family-20261022/paused.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=ended] {--command-caption-art:url('/art/command-state-family-20261022/ended.png');}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state]:not([data-charge-state=charging]) > :is(#encore-state,#special-state)::after {content:'';position:absolute;inset:2px 4px;background:var(--command-caption-art) center / contain no-repeat;pointer-events:none;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=ready] > :is(#encore-state,#special-state)::after {animation:command-caption-ready 220ms ease-out;}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state=active] > :is(#encore-state,#special-state)::after {animation:command-caption-active 220ms ease-out;}
+@keyframes command-caption-ready {from {transform:translateY(2px) scale(.94);}to {transform:none;}}
+@keyframes command-caption-active {from {transform:translateY(2px) scale(.94);}to {transform:none;}}
+
+/* Offline native text shares one real glyph family; authored lettering remains raster art. */
+@font-face {font-family:"Starush UI";src:url('/fonts/NotoSansSC-UI.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+#game-container :is(#public-shell,#hud,#combat-feedback,#player-session-dialog,.battle-surface,.public-boss-strip) {font-family:"Starush UI","Microsoft YaHei","PingFang SC",sans-serif;font-synthesis:none;}
+#game-container :is(#public-shell,#hud,#player-session-dialog,.battle-surface) :is(button,input,summary) {font-family:inherit;}
+
+/* Authored story and earned Encore share the existing session pause/input owner. */
+#game-container #player-session-dialog:is([data-performance-story=true],[data-performance-encore=true]) {padding:0;background:#101b23;}
+#game-container #player-session-dialog:is([data-performance-story=true],[data-performance-encore=true]) .session-panel {position:relative;display:flex;flex-direction:column;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;border-image:none;border-radius:0;background:#eaf3f6;overflow:hidden;}
+#game-container #player-session-dialog[data-performance-story=true] .session-header {position:absolute;inset:0 0 auto;z-index:3;padding:14px 18px;background:#112a38ed;border:0;}
+#game-container #player-session-dialog[data-performance-story=true] .session-header h2 {margin:0;font-size:20px;line-height:28px;color:#fff;}
+#game-container #player-session-dialog[data-performance-story=true] .session-content {display:flex;flex:1;flex-direction:column;min-height:0;max-height:none;overflow:auto;padding:0;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-stage {position:relative;flex:1;min-height:210px;overflow:hidden;background:#b9d7e5;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-venue {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-portrait {position:absolute;inset:84px 0 auto;width:100%;height:135%;max-width:none;object-fit:contain;object-position:50% 0;filter:drop-shadow(3px 4px 0 #fff9);animation:performance-speaker-enter 240ms ease-out both;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-location {position:absolute;left:16px;right:16px;bottom:12px;width:max-content;max-width:calc(100% - 32px);padding:4px 8px;background:#132d3de8;color:#fff;font-size:12px;line-height:20px;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-dialogue {position:relative;flex:none;min-height:144px;padding:14px 20px 10px;border-top:4px solid #05bfda;background:#f3f8fa;color:#172d3a;}
+#game-container #player-session-dialog[data-performance-story=true][data-performer=enjo] .performance-story-dialogue {border-top-color:#ed5b7c;}
+#game-container #player-session-dialog[data-performance-story=true][data-performer=kai] .performance-story-dialogue {border-top-color:#15ba98;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-speaker {display:block;padding-right:54px;font-size:15px;line-height:24px;color:#165b73;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-line {font-size:17px;line-height:28px;margin:8px 0;overflow-wrap:anywhere;color:#172d3a;}
+#game-container #player-session-dialog[data-performance-story=true] .performance-story-count {position:absolute;right:20px;top:16px;font-size:12px;line-height:20px;color:#4d6776;}
+#game-container #player-session-dialog[data-performance-story=true] .story-transcript {padding:0 20px 8px;font-size:12px;line-height:20px;background:#f3f8fa;color:#4d6776;}
+#game-container #player-session-dialog[data-performance-story=true] .story-transcript[open] {max-height:180px;overflow:auto;}
+#game-container #player-session-dialog[data-performance-story=true] .story-transcript summary {min-height:32px;cursor:pointer;}
+#game-container #player-session-dialog[data-performance-story=true] .session-footer {display:flex;align-items:center;justify-content:space-between;flex-direction:row-reverse;gap:12px;padding:8px 16px 14px;background:#f3f8fa;border:0;}
+#game-container #player-session-dialog[data-performance-story=true] .session-footer button {min-height:46px;width:auto;min-width:112px;padding:8px 12px;font-size:14px;line-height:22px;border:0;border-radius:2px;border-image:none;box-shadow:none;}
+#game-container #player-session-dialog[data-performance-story=true] .session-footer .session-primary {background:#d9f12c;color:#172d3a;}
+#game-container #player-session-dialog[data-performance-story=true] .session-footer .session-secondary {background:transparent;color:#4d6776;}
+#game-container #player-session-dialog[data-performance-encore=true] .session-panel {background:#101b23;}
+#game-container #player-session-dialog[data-performance-encore=true] .session-header {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);}
+#game-container #player-session-dialog[data-performance-encore=true] .session-content {position:absolute;inset:0;overflow:hidden;max-height:none;padding:0;}
+#game-container #player-session-dialog[data-performance-encore=true] .session-footer {position:absolute;bottom:12px;right:12px;background:transparent;border:0;padding:0;z-index:6;}
+#game-container #player-session-dialog[data-performance-encore=true] .session-footer button {min-height:44px;min-width:112px;padding:8px 12px;border:1px solid #e4f4f9;border-radius:2px;border-image:none;box-shadow:none;background:#112637d9;color:#fff;font-size:13px;line-height:22px;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore {position:absolute;inset:0;overflow:hidden;--encore-accent:#05d0ed;}
+#game-container #player-session-dialog[data-performance-encore=true][data-performer=enjo] .performance-encore {--encore-accent:#fa5c89;}
+#game-container #player-session-dialog[data-performance-encore=true][data-performer=kai] .performance-encore {--encore-accent:#20d4aa;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-venue {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.24;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-beam {position:absolute;left:-20%;top:24%;width:140%;height:58%;background:var(--encore-accent);clip-path:polygon(0 25%,100% 0,100% 72%,0 100%);opacity:.82;transform:translateX(-110%);transition:transform 200ms ease-out;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-closeup {position:absolute;inset:20% 0 auto;height:30%;overflow:hidden;border-block:4px solid var(--encore-accent);background:#172f3d;opacity:0;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-closeup img {position:absolute;left:-15%;top:-12%;width:130%;height:450%;max-width:none;object-fit:cover;object-position:50% 0;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-portrait {position:absolute;left:-8%;top:12px;width:116%;height:110%;max-width:none;object-fit:contain;object-position:center top;opacity:0;transform:translateX(22%);transition:opacity 140ms ease-out,transform 280ms cubic-bezier(.2,.9,.2,1);}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-lettering {position:absolute;left:4%;bottom:12%;width:86%;height:auto;max-height:27%;object-fit:contain;opacity:0;transform:translateX(-36px) rotate(-5deg);transition:opacity 100ms,transform 200ms ease-out;}
+#game-container #player-session-dialog[data-performance-encore=true] .performance-encore-name {position:absolute;left:18px;bottom:8%;padding:4px 10px;background:#112637ed;color:#fff;font-size:16px;line-height:24px;opacity:0;}
+#game-container #player-session-dialog[data-performance-encore=true] [data-phase=focus] .performance-encore-closeup {opacity:1;}
+#game-container #player-session-dialog[data-performance-encore=true] :is([data-phase=hero],[data-phase=exit]) .performance-encore-beam {transform:none;}
+#game-container #player-session-dialog[data-performance-encore=true] [data-phase=hero] .performance-encore-portrait {opacity:1;transform:none;}
+#game-container #player-session-dialog[data-performance-encore=true] [data-phase=hero] .performance-encore-lettering {opacity:1;transform:rotate(-5deg);}
+#game-container #player-session-dialog[data-performance-encore=true] [data-phase=hero] .performance-encore-name {opacity:1;}
+#game-container #player-session-dialog[data-performance-encore=true] [data-phase=exit] :is(.performance-encore-portrait,.performance-encore-lettering) {opacity:0;transform:translateX(-18%);}
+@keyframes performance-speaker-enter {from {opacity:.4;translate:12px 0;}to {opacity:1;translate:none;}}
+@media (max-height:560px) {#game-container #player-session-dialog[data-performance-story=true] .performance-story-stage {min-height:150px;}#game-container #player-session-dialog[data-performance-story=true] .performance-story-dialogue {min-height:126px;padding-top:8px;}#game-container #player-session-dialog[data-performance-story=true] .performance-story-line {font-size:16px;line-height:25px;}}
+@media (prefers-reduced-motion:reduce) {#game-container #player-session-dialog:is([data-performance-story=true],[data-performance-encore=true]) * {animation:none!important;transition:none!important;}}
+#game-container[data-battle-mode=public] :is(#skill-encore,#skill-special[data-art=weapon])[data-charge-state] > :is(#encore-state,#special-state) {font-size:18px;line-height:20px;font-variant-numeric:tabular-nums;}
+
+/* Live choice values get the whole row, independent of the illustrated icon. */
+#game-container #run-choice[data-choice-reading=true].battle-surface {padding:30px 8px 10px;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-context {top:5px;font-size:14px;line-height:20px;}
+#game-container #run-choice[data-choice-reading=true] .battle-surface-content {min-height:0;overflow-y:auto;scroll-padding-block:10px;padding:12px 10px;border:0;border-image:none;background:#f8fafb;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-header {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;margin-bottom:10px;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-header h2 {grid-column:1 / -1;grid-row:1;min-height:40px;margin:0;padding:0;font-size:22px;line-height:28px;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-header .battle-eyebrow {grid-column:2;grid-row:2;margin:0;font-size:14px;line-height:20px;color:#33434a;text-align:right;}
+#game-container #run-choice[data-choice-reading=true] .battle-performer-visual {grid-column:1;grid-row:2;display:flex;align-items:center;gap:6px;min-height:40px;margin:0;padding:0;}
+#game-container #run-choice[data-choice-reading=true] .battle-performer-visual img {position:static;width:36px;height:36px;flex:none;}
+#game-container #run-choice[data-choice-reading=true] .battle-visual-copy {max-width:none;gap:0;}
+#game-container #run-choice[data-choice-reading=true] .battle-visual-copy strong {font-size:14px;line-height:20px;}
+#game-container #run-choice[data-choice-reading=true] .battle-visual-copy span {font-size:14px;line-height:20px;color:#33434a;overflow-wrap:anywhere;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-list {gap:8px;padding:0;}
+#game-container #run-choice[data-choice-reading=true].battle-surface .battle-choice-row {grid-template-columns:36px minmax(0,1fr) 16px;grid-template-rows:auto auto auto;column-gap:8px;row-gap:2px;align-items:center;min-height:106px;padding:6px 8px;border:6px solid transparent;border-image:url('/art/playable-ui-20261018/slip.webp') 64 fill / 8px / 0 stretch;user-select:none;animation:choice-reading-arrive 180ms ease-out both;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row:nth-child(2) {animation-delay:35ms;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row:nth-child(3) {animation-delay:70ms;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-copy {display:contents;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-symbol {grid-column:1;grid-row:1;width:36px;height:36px;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-art {width:36px;height:36px;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row strong {grid-column:2;grid-row:1;margin:0;font-size:18px;line-height:26px;font-weight:800;color:#17272e;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row > svg {grid-column:3;grid-row:1;width:16px;height:16px;color:#17272e;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row .battle-choice-copy > span {grid-column:1 / -1;grid-row:2;font-size:15px;line-height:22px;color:#075b64;font-weight:700;white-space:normal;overflow-wrap:anywhere;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row .battle-choice-delta {grid-column:1 / -1;grid-row:2;font-size:15px;line-height:22px;font-variant-numeric:tabular-nums;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row .battle-choice-limit {grid-column:1 / -1;grid-row:3;margin:0;font-size:14px;line-height:21px;font-weight:400;color:#33434a;white-space:normal;overflow-wrap:anywhere;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row .battle-choice-plan-tag {font-size:13px;line-height:20px;color:#075b64;white-space:nowrap;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row:focus-visible {outline:3px solid #007d8a;outline-offset:-4px;}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row:active {filter:brightness(.94);}
+#game-container #run-choice[data-choice-reading=true] .battle-surface-footer {padding-top:6px;}
+#game-container #run-choice[data-choice-reading=true] .battle-surface-footer button {min-height:44px;font-size:14px;line-height:22px;}
+@keyframes choice-reading-arrive {from {opacity:0;transform:translateY(6px);}to {opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce) {
+  #game-container #run-choice[data-choice-reading=true] .battle-choice-row {animation:none;}
+}

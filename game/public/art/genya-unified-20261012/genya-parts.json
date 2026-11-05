@@ -1,0 +1,2443 @@
+{
+  "frames": {
+    "down/hairCap": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 104,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 93
+      }
+    },
+    "down/face": {
+      "frame": {
+        "x": 116,
+        "y": 4,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "down/torso": {
+      "frame": {
+        "x": 228,
+        "y": 4,
+        "w": 104,
+        "h": 78
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 78
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 78
+      }
+    },
+    "down/skirt": {
+      "frame": {
+        "x": 340,
+        "y": 4,
+        "w": 104,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 64
+      }
+    },
+    "down/upperArmL": {
+      "frame": {
+        "x": 452,
+        "y": 4,
+        "w": 58,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 104
+      }
+    },
+    "down/forearmL": {
+      "frame": {
+        "x": 564,
+        "y": 4,
+        "w": 51,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 51,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 51,
+        "h": 104
+      }
+    },
+    "down/upperArmR": {
+      "frame": {
+        "x": 676,
+        "y": 4,
+        "w": 61,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 61,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 61,
+        "h": 104
+      }
+    },
+    "down/forearmR": {
+      "frame": {
+        "x": 788,
+        "y": 4,
+        "w": 48,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 104
+      }
+    },
+    "down/thighL": {
+      "frame": {
+        "x": 4,
+        "y": 116,
+        "w": 49,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 104
+      }
+    },
+    "down/shinL": {
+      "frame": {
+        "x": 116,
+        "y": 116,
+        "w": 39,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 39,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 39,
+        "h": 104
+      }
+    },
+    "down/thighR": {
+      "frame": {
+        "x": 228,
+        "y": 116,
+        "w": 46,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 46,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 46,
+        "h": 104
+      }
+    },
+    "down/shinR": {
+      "frame": {
+        "x": 340,
+        "y": 116,
+        "w": 40,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 104
+      }
+    },
+    "down/bootL": {
+      "frame": {
+        "x": 452,
+        "y": 116,
+        "w": 61,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 61,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 61,
+        "h": 104
+      }
+    },
+    "down/bootR": {
+      "frame": {
+        "x": 564,
+        "y": 116,
+        "w": 60,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 60,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 60,
+        "h": 104
+      }
+    },
+    "down/tailL": {
+      "frame": {
+        "x": 676,
+        "y": 116,
+        "w": 58,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 104
+      }
+    },
+    "down/tailR": {
+      "frame": {
+        "x": 788,
+        "y": 116,
+        "w": 57,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 104
+      }
+    },
+    "down/closedFace": {
+      "frame": {
+        "x": 4,
+        "y": 228,
+        "w": 104,
+        "h": 95
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 95
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 95
+      }
+    },
+    "down/hurtFace": {
+      "frame": {
+        "x": 116,
+        "y": 228,
+        "w": 104,
+        "h": 94
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 94
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 94
+      }
+    },
+    "left/hairCap": {
+      "frame": {
+        "x": 228,
+        "y": 228,
+        "w": 104,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 93
+      }
+    },
+    "left/face": {
+      "frame": {
+        "x": 340,
+        "y": 228,
+        "w": 104,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 104
+      }
+    },
+    "left/torso": {
+      "frame": {
+        "x": 452,
+        "y": 228,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "left/skirt": {
+      "frame": {
+        "x": 564,
+        "y": 228,
+        "w": 104,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 68
+      }
+    },
+    "left/upperArmL": {
+      "frame": {
+        "x": 676,
+        "y": 228,
+        "w": 64,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 104
+      }
+    },
+    "left/forearmL": {
+      "frame": {
+        "x": 788,
+        "y": 228,
+        "w": 54,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 54,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 54,
+        "h": 104
+      }
+    },
+    "left/upperArmR": {
+      "frame": {
+        "x": 4,
+        "y": 340,
+        "w": 61,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 61,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 61,
+        "h": 104
+      }
+    },
+    "left/forearmR": {
+      "frame": {
+        "x": 116,
+        "y": 340,
+        "w": 47,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 47,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 47,
+        "h": 104
+      }
+    },
+    "left/thighL": {
+      "frame": {
+        "x": 228,
+        "y": 340,
+        "w": 44,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 44,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 44,
+        "h": 104
+      }
+    },
+    "left/shinL": {
+      "frame": {
+        "x": 340,
+        "y": 340,
+        "w": 37,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 37,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 37,
+        "h": 104
+      }
+    },
+    "left/thighR": {
+      "frame": {
+        "x": 452,
+        "y": 340,
+        "w": 41,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 104
+      }
+    },
+    "left/shinR": {
+      "frame": {
+        "x": 564,
+        "y": 340,
+        "w": 36,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 36,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 36,
+        "h": 104
+      }
+    },
+    "left/bootL": {
+      "frame": {
+        "x": 676,
+        "y": 340,
+        "w": 95,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 95,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 95,
+        "h": 104
+      }
+    },
+    "left/bootR": {
+      "frame": {
+        "x": 788,
+        "y": 340,
+        "w": 92,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 92,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 92,
+        "h": 104
+      }
+    },
+    "left/tailL": {
+      "frame": {
+        "x": 4,
+        "y": 452,
+        "w": 55,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 55,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 55,
+        "h": 104
+      }
+    },
+    "left/tailR": {
+      "frame": {
+        "x": 116,
+        "y": 452,
+        "w": 56,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 104
+      }
+    },
+    "left/closedFace": {
+      "frame": {
+        "x": 228,
+        "y": 452,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "left/hurtFace": {
+      "frame": {
+        "x": 340,
+        "y": 452,
+        "w": 104,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 102
+      }
+    },
+    "up/hairCap": {
+      "frame": {
+        "x": 452,
+        "y": 452,
+        "w": 104,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 92
+      }
+    },
+    "up/face": {
+      "frame": {
+        "x": 564,
+        "y": 452,
+        "w": 104,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 98
+      }
+    },
+    "up/torso": {
+      "frame": {
+        "x": 676,
+        "y": 452,
+        "w": 104,
+        "h": 71
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 71
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 71
+      }
+    },
+    "up/skirt": {
+      "frame": {
+        "x": 788,
+        "y": 452,
+        "w": 104,
+        "h": 70
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 70
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 70
+      }
+    },
+    "up/upperArmL": {
+      "frame": {
+        "x": 4,
+        "y": 564,
+        "w": 58,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 104
+      }
+    },
+    "up/forearmL": {
+      "frame": {
+        "x": 116,
+        "y": 564,
+        "w": 51,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 51,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 51,
+        "h": 104
+      }
+    },
+    "up/upperArmR": {
+      "frame": {
+        "x": 228,
+        "y": 564,
+        "w": 58,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 104
+      }
+    },
+    "up/forearmR": {
+      "frame": {
+        "x": 340,
+        "y": 564,
+        "w": 47,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 47,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 47,
+        "h": 104
+      }
+    },
+    "up/thighL": {
+      "frame": {
+        "x": 452,
+        "y": 564,
+        "w": 50,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 104
+      }
+    },
+    "up/shinL": {
+      "frame": {
+        "x": 564,
+        "y": 564,
+        "w": 42,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 42,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 42,
+        "h": 104
+      }
+    },
+    "up/thighR": {
+      "frame": {
+        "x": 676,
+        "y": 564,
+        "w": 49,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 104
+      }
+    },
+    "up/shinR": {
+      "frame": {
+        "x": 788,
+        "y": 564,
+        "w": 41,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 104
+      }
+    },
+    "up/bootL": {
+      "frame": {
+        "x": 4,
+        "y": 676,
+        "w": 56,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 104
+      }
+    },
+    "up/bootR": {
+      "frame": {
+        "x": 116,
+        "y": 676,
+        "w": 56,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 104
+      }
+    },
+    "up/tailL": {
+      "frame": {
+        "x": 228,
+        "y": 676,
+        "w": 59,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 59,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 104
+      }
+    },
+    "up/tailR": {
+      "frame": {
+        "x": 340,
+        "y": 676,
+        "w": 58,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 104
+      }
+    },
+    "up/closedFace": {
+      "frame": {
+        "x": 452,
+        "y": 676,
+        "w": 104,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 92
+      }
+    },
+    "up/hurtFace": {
+      "frame": {
+        "x": 564,
+        "y": 676,
+        "w": 104,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 92
+      }
+    },
+    "right/hairCap": {
+      "frame": {
+        "x": 676,
+        "y": 676,
+        "w": 104,
+        "h": 94
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 94
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 94
+      }
+    },
+    "right/face": {
+      "frame": {
+        "x": 788,
+        "y": 676,
+        "w": 104,
+        "h": 101
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 101
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 101
+      }
+    },
+    "right/torso": {
+      "frame": {
+        "x": 4,
+        "y": 788,
+        "w": 97,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 97,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 97,
+        "h": 104
+      }
+    },
+    "right/skirt": {
+      "frame": {
+        "x": 116,
+        "y": 788,
+        "w": 104,
+        "h": 67
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 67
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 67
+      }
+    },
+    "right/upperArmL": {
+      "frame": {
+        "x": 228,
+        "y": 788,
+        "w": 56,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 104
+      }
+    },
+    "right/forearmL": {
+      "frame": {
+        "x": 340,
+        "y": 788,
+        "w": 50,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 104
+      }
+    },
+    "right/upperArmR": {
+      "frame": {
+        "x": 452,
+        "y": 788,
+        "w": 60,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 60,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 60,
+        "h": 104
+      }
+    },
+    "right/forearmR": {
+      "frame": {
+        "x": 564,
+        "y": 788,
+        "w": 44,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 44,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 44,
+        "h": 104
+      }
+    },
+    "right/thighL": {
+      "frame": {
+        "x": 676,
+        "y": 788,
+        "w": 47,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 47,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 47,
+        "h": 104
+      }
+    },
+    "right/shinL": {
+      "frame": {
+        "x": 788,
+        "y": 788,
+        "w": 37,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 37,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 37,
+        "h": 104
+      }
+    },
+    "right/thighR": {
+      "frame": {
+        "x": 4,
+        "y": 900,
+        "w": 47,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 47,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 47,
+        "h": 104
+      }
+    },
+    "right/shinR": {
+      "frame": {
+        "x": 116,
+        "y": 900,
+        "w": 37,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 37,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 37,
+        "h": 104
+      }
+    },
+    "right/bootL": {
+      "frame": {
+        "x": 228,
+        "y": 900,
+        "w": 93,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 93,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 93,
+        "h": 104
+      }
+    },
+    "right/bootR": {
+      "frame": {
+        "x": 340,
+        "y": 900,
+        "w": 94,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 94,
+        "h": 104
+      }
+    },
+    "right/tailL": {
+      "frame": {
+        "x": 452,
+        "y": 900,
+        "w": 54,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 54,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 54,
+        "h": 104
+      }
+    },
+    "right/tailR": {
+      "frame": {
+        "x": 564,
+        "y": 900,
+        "w": 54,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 54,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 54,
+        "h": 104
+      }
+    },
+    "right/closedFace": {
+      "frame": {
+        "x": 676,
+        "y": 900,
+        "w": 104,
+        "h": 101
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 101
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 101
+      }
+    },
+    "right/hurtFace": {
+      "frame": {
+        "x": 788,
+        "y": 900,
+        "w": 104,
+        "h": 100
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 104,
+        "h": 100
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 100
+      }
+    }
+  },
+  "meta": {
+    "image": "genya-parts.webp",
+    "size": {
+      "w": 1024,
+      "h": 1024
+    },
+    "scale": "1"
+  },
+  "rig": {
+    "identity": "genya",
+    "version": 1,
+    "views": [
+      "down",
+      "left",
+      "up",
+      "right"
+    ],
+    "independentArt": true,
+    "independentBind": true,
+    "sourceOnly": false,
+    "directions": {
+      "front": {
+        "rawWidth": 1222,
+        "rawHeight": 1287,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 20,
+              "y": 50,
+              "width": 295,
+              "height": 264
+            },
+            "frame": "down/hairCap",
+            "width": 295,
+            "height": 264
+          },
+          "face": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 329,
+              "y": 44,
+              "width": 288,
+              "height": 282
+            },
+            "frame": "down/face",
+            "width": 288,
+            "height": 282
+          },
+          "torso": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 649,
+              "y": 109,
+              "width": 250,
+              "height": 188
+            },
+            "frame": "down/torso",
+            "width": 250,
+            "height": 188
+          },
+          "skirt": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 916,
+              "y": 125,
+              "width": 290,
+              "height": 179
+            },
+            "frame": "down/skirt",
+            "width": 290,
+            "height": 179
+          },
+          "upperArmL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 100,
+              "y": 369,
+              "width": 117,
+              "height": 209
+            },
+            "frame": "down/upperArmL",
+            "width": 117,
+            "height": 209
+          },
+          "forearmL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 388,
+              "y": 370,
+              "width": 121,
+              "height": 248
+            },
+            "frame": "down/forearmL",
+            "width": 121,
+            "height": 248
+          },
+          "upperArmR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 712,
+              "y": 370,
+              "width": 114,
+              "height": 194
+            },
+            "frame": "down/upperArmR",
+            "width": 114,
+            "height": 194
+          },
+          "forearmR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1004,
+              "y": 369,
+              "width": 117,
+              "height": 255
+            },
+            "frame": "down/forearmR",
+            "width": 117,
+            "height": 255
+          },
+          "thighL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 114,
+              "y": 657,
+              "width": 104,
+              "height": 223
+            },
+            "frame": "down/thighL",
+            "width": 104,
+            "height": 223
+          },
+          "shinL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 420,
+              "y": 661,
+              "width": 84,
+              "height": 225
+            },
+            "frame": "down/shinL",
+            "width": 84,
+            "height": 225
+          },
+          "thighR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 709,
+              "y": 656,
+              "width": 98,
+              "height": 220
+            },
+            "frame": "down/thighR",
+            "width": 98,
+            "height": 220
+          },
+          "shinR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1010,
+              "y": 660,
+              "width": 84,
+              "height": 221
+            },
+            "frame": "down/shinR",
+            "width": 84,
+            "height": 221
+          },
+          "bootL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 99,
+              "y": 988,
+              "width": 115,
+              "height": 196
+            },
+            "frame": "down/bootL",
+            "width": 115,
+            "height": 196
+          },
+          "bootR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 410,
+              "y": 989,
+              "width": 114,
+              "height": 198
+            },
+            "frame": "down/bootR",
+            "width": 114,
+            "height": 198
+          },
+          "tailL": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 658,
+              "y": 903,
+              "width": 188,
+              "height": 340
+            },
+            "frame": "down/tailL",
+            "width": 188,
+            "height": 340
+          },
+          "tailR": {
+            "sourceFile": "raw/front.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 964,
+              "y": 903,
+              "width": 188,
+              "height": 341
+            },
+            "frame": "down/tailR",
+            "width": 188,
+            "height": 341
+          },
+          "closedFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 27,
+              "y": 120,
+              "width": 359,
+              "height": 329
+            },
+            "frame": "down/closedFace",
+            "width": 359,
+            "height": 329
+          },
+          "hurtFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 26,
+              "y": 570,
+              "width": 360,
+              "height": 327
+            },
+            "frame": "down/hurtFace",
+            "width": 360,
+            "height": 327
+          }
+        }
+      },
+      "left": {
+        "rawWidth": 1222,
+        "rawHeight": 1287,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 26,
+              "y": 59,
+              "width": 285,
+              "height": 255
+            },
+            "frame": "left/hairCap",
+            "width": 285,
+            "height": 255
+          },
+          "face": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 335,
+              "y": 52,
+              "width": 282,
+              "height": 282
+            },
+            "frame": "left/face",
+            "width": 282,
+            "height": 282
+          },
+          "torso": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 665,
+              "y": 106,
+              "width": 203,
+              "height": 199
+            },
+            "frame": "left/torso",
+            "width": 203,
+            "height": 199
+          },
+          "skirt": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 913,
+              "y": 121,
+              "width": 285,
+              "height": 187
+            },
+            "frame": "left/skirt",
+            "width": 285,
+            "height": 187
+          },
+          "upperArmL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 103,
+              "y": 364,
+              "width": 129,
+              "height": 210
+            },
+            "frame": "left/upperArmL",
+            "width": 129,
+            "height": 210
+          },
+          "forearmL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 383,
+              "y": 370,
+              "width": 129,
+              "height": 250
+            },
+            "frame": "left/forearmL",
+            "width": 129,
+            "height": 250
+          },
+          "upperArmR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 703,
+              "y": 367,
+              "width": 116,
+              "height": 197
+            },
+            "frame": "left/upperArmR",
+            "width": 116,
+            "height": 197
+          },
+          "forearmR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 998,
+              "y": 365,
+              "width": 117,
+              "height": 257
+            },
+            "frame": "left/forearmR",
+            "width": 117,
+            "height": 257
+          },
+          "thighL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 119,
+              "y": 643,
+              "width": 100,
+              "height": 238
+            },
+            "frame": "left/thighL",
+            "width": 100,
+            "height": 238
+          },
+          "shinL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 421,
+              "y": 646,
+              "width": 85,
+              "height": 241
+            },
+            "frame": "left/shinL",
+            "width": 85,
+            "height": 241
+          },
+          "thighR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 710,
+              "y": 643,
+              "width": 94,
+              "height": 238
+            },
+            "frame": "left/thighR",
+            "width": 94,
+            "height": 238
+          },
+          "shinR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1009,
+              "y": 645,
+              "width": 83,
+              "height": 240
+            },
+            "frame": "left/shinR",
+            "width": 83,
+            "height": 240
+          },
+          "bootL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 59,
+              "y": 985,
+              "width": 172,
+              "height": 188
+            },
+            "frame": "left/bootL",
+            "width": 172,
+            "height": 188
+          },
+          "bootR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 376,
+              "y": 985,
+              "width": 164,
+              "height": 186
+            },
+            "frame": "left/bootR",
+            "width": 164,
+            "height": 186
+          },
+          "tailL": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 657,
+              "y": 898,
+              "width": 183,
+              "height": 344
+            },
+            "frame": "left/tailL",
+            "width": 183,
+            "height": 344
+          },
+          "tailR": {
+            "sourceFile": "raw/left.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 955,
+              "y": 898,
+              "width": 186,
+              "height": 344
+            },
+            "frame": "left/tailR",
+            "width": 186,
+            "height": 344
+          },
+          "closedFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 408,
+              "y": 121,
+              "width": 339,
+              "height": 333
+            },
+            "frame": "left/closedFace",
+            "width": 339,
+            "height": 333
+          },
+          "hurtFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 408,
+              "y": 571,
+              "width": 336,
+              "height": 331
+            },
+            "frame": "left/hurtFace",
+            "width": 336,
+            "height": 331
+          }
+        }
+      },
+      "back": {
+        "rawWidth": 1222,
+        "rawHeight": 1287,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 20,
+              "y": 48,
+              "width": 296,
+              "height": 263
+            },
+            "frame": "up/hairCap",
+            "width": 296,
+            "height": 263
+          },
+          "face": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 332,
+              "y": 46,
+              "width": 291,
+              "height": 275
+            },
+            "frame": "up/face",
+            "width": 291,
+            "height": 275
+          },
+          "torso": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 640,
+              "y": 110,
+              "width": 261,
+              "height": 178
+            },
+            "frame": "up/torso",
+            "width": 261,
+            "height": 178
+          },
+          "skirt": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 920,
+              "y": 117,
+              "width": 284,
+              "height": 192
+            },
+            "frame": "up/skirt",
+            "width": 284,
+            "height": 192
+          },
+          "upperArmL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 107,
+              "y": 364,
+              "width": 119,
+              "height": 213
+            },
+            "frame": "up/upperArmL",
+            "width": 119,
+            "height": 213
+          },
+          "forearmL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 390,
+              "y": 367,
+              "width": 126,
+              "height": 257
+            },
+            "frame": "up/forearmL",
+            "width": 126,
+            "height": 257
+          },
+          "upperArmR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 708,
+              "y": 366,
+              "width": 115,
+              "height": 205
+            },
+            "frame": "up/upperArmR",
+            "width": 115,
+            "height": 205
+          },
+          "forearmR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 998,
+              "y": 364,
+              "width": 118,
+              "height": 263
+            },
+            "frame": "up/forearmR",
+            "width": 118,
+            "height": 263
+          },
+          "thighL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 114,
+              "y": 652,
+              "width": 111,
+              "height": 231
+            },
+            "frame": "up/thighL",
+            "width": 111,
+            "height": 231
+          },
+          "shinL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 417,
+              "y": 661,
+              "width": 91,
+              "height": 226
+            },
+            "frame": "up/shinL",
+            "width": 91,
+            "height": 226
+          },
+          "thighR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 709,
+              "y": 652,
+              "width": 109,
+              "height": 231
+            },
+            "frame": "up/thighR",
+            "width": 109,
+            "height": 231
+          },
+          "shinR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1006,
+              "y": 661,
+              "width": 90,
+              "height": 226
+            },
+            "frame": "up/shinR",
+            "width": 90,
+            "height": 226
+          },
+          "bootL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 103,
+              "y": 979,
+              "width": 118,
+              "height": 218
+            },
+            "frame": "up/bootL",
+            "width": 118,
+            "height": 218
+          },
+          "bootR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 406,
+              "y": 979,
+              "width": 118,
+              "height": 218
+            },
+            "frame": "up/bootR",
+            "width": 118,
+            "height": 218
+          },
+          "tailL": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 659,
+              "y": 898,
+              "width": 196,
+              "height": 345
+            },
+            "frame": "up/tailL",
+            "width": 196,
+            "height": 345
+          },
+          "tailR": {
+            "sourceFile": "raw/back.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 961,
+              "y": 898,
+              "width": 194,
+              "height": 345
+            },
+            "frame": "up/tailR",
+            "width": 194,
+            "height": 345
+          },
+          "closedFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 770,
+              "y": 121,
+              "width": 363,
+              "height": 322
+            },
+            "frame": "up/closedFace",
+            "width": 363,
+            "height": 322
+          },
+          "hurtFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 770,
+              "y": 570,
+              "width": 363,
+              "height": 321
+            },
+            "frame": "up/hurtFace",
+            "width": 363,
+            "height": 321
+          }
+        }
+      },
+      "right": {
+        "rawWidth": 1222,
+        "rawHeight": 1287,
+        "parts": {
+          "hairCap": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 0,
+            "sourceCrop": {
+              "x": 29,
+              "y": 50,
+              "width": 291,
+              "height": 263
+            },
+            "frame": "right/hairCap",
+            "width": 291,
+            "height": 263
+          },
+          "face": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 1,
+            "sourceCrop": {
+              "x": 338,
+              "y": 48,
+              "width": 286,
+              "height": 278
+            },
+            "frame": "right/face",
+            "width": 286,
+            "height": 278
+          },
+          "torso": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 2,
+            "sourceCrop": {
+              "x": 683,
+              "y": 104,
+              "width": 188,
+              "height": 202
+            },
+            "frame": "right/torso",
+            "width": 188,
+            "height": 202
+          },
+          "skirt": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 922,
+              "y": 123,
+              "width": 272,
+              "height": 176
+            },
+            "frame": "right/skirt",
+            "width": 272,
+            "height": 176
+          },
+          "upperArmL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 4,
+            "sourceCrop": {
+              "x": 108,
+              "y": 370,
+              "width": 105,
+              "height": 196
+            },
+            "frame": "right/upperArmL",
+            "width": 105,
+            "height": 196
+          },
+          "forearmL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 5,
+            "sourceCrop": {
+              "x": 405,
+              "y": 371,
+              "width": 118,
+              "height": 246
+            },
+            "frame": "right/forearmL",
+            "width": 118,
+            "height": 246
+          },
+          "upperArmR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 6,
+            "sourceCrop": {
+              "x": 707,
+              "y": 371,
+              "width": 111,
+              "height": 193
+            },
+            "frame": "right/upperArmR",
+            "width": 111,
+            "height": 193
+          },
+          "forearmR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1011,
+              "y": 370,
+              "width": 105,
+              "height": 248
+            },
+            "frame": "right/forearmR",
+            "width": 105,
+            "height": 248
+          },
+          "thighL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 8,
+            "sourceCrop": {
+              "x": 116,
+              "y": 652,
+              "width": 105,
+              "height": 232
+            },
+            "frame": "right/thighL",
+            "width": 105,
+            "height": 232
+          },
+          "shinL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 9,
+            "sourceCrop": {
+              "x": 426,
+              "y": 659,
+              "width": 78,
+              "height": 222
+            },
+            "frame": "right/shinL",
+            "width": 78,
+            "height": 222
+          },
+          "thighR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 10,
+            "sourceCrop": {
+              "x": 709,
+              "y": 652,
+              "width": 104,
+              "height": 232
+            },
+            "frame": "right/thighR",
+            "width": 104,
+            "height": 232
+          },
+          "shinR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 11,
+            "sourceCrop": {
+              "x": 1012,
+              "y": 658,
+              "width": 80,
+              "height": 224
+            },
+            "frame": "right/shinR",
+            "width": 80,
+            "height": 224
+          },
+          "bootL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 12,
+            "sourceCrop": {
+              "x": 98,
+              "y": 985,
+              "width": 160,
+              "height": 178
+            },
+            "frame": "right/bootL",
+            "width": 160,
+            "height": 178
+          },
+          "bootR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 13,
+            "sourceCrop": {
+              "x": 403,
+              "y": 985,
+              "width": 161,
+              "height": 178
+            },
+            "frame": "right/bootR",
+            "width": 161,
+            "height": 178
+          },
+          "tailL": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 14,
+            "sourceCrop": {
+              "x": 663,
+              "y": 898,
+              "width": 177,
+              "height": 342
+            },
+            "frame": "right/tailL",
+            "width": 177,
+            "height": 342
+          },
+          "tailR": {
+            "sourceFile": "raw/right.png",
+            "sourceCell": 15,
+            "sourceCrop": {
+              "x": 966,
+              "y": 898,
+              "width": 176,
+              "height": 342
+            },
+            "frame": "right/tailR",
+            "width": 176,
+            "height": 342
+          },
+          "closedFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 3,
+            "sourceCrop": {
+              "x": 1157,
+              "y": 121,
+              "width": 344,
+              "height": 333
+            },
+            "frame": "right/closedFace",
+            "width": 344,
+            "height": 333
+          },
+          "hurtFace": {
+            "sourceFile": "raw/hurt-faces.png",
+            "sourceCell": 7,
+            "sourceCrop": {
+              "x": 1157,
+              "y": 570,
+              "width": 344,
+              "height": 332
+            },
+            "frame": "right/hurtFace",
+            "width": 344,
+            "height": 332
+          }
+        }
+      }
+    },
+    "headHeight": 31,
+    "upperLegLength": 7.8,
+    "lowerLegLength": 7.8,
+    "stance": 0.25,
+    "stride": 46,
+    "splitUpperLowerFacing": true,
+    "separateHairTails": 2,
+    "actions": [
+      "idle",
+      "walk",
+      "attack",
+      "action",
+      "hurt",
+      "defeat"
+    ],
+    "originalization": "generated original Genya source; no competitor/Sakura anatomy or weights"
+  }
+}

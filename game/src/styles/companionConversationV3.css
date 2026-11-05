@@ -1,0 +1,122 @@
+/* One portrait scene and one contextual conversation dock; no extra animation clock. */
+#game-container #public-shell[data-cast=owner-three][data-ui-pass=stage-v2][data-page=lounge][data-lounge-layout=conversation] {
+ --bond-ink:#1b3037;--bond-accent:#127a9c;--bond-bright:#6ad6ee;--bond-paper:#f3f8fa;--bond-wash:#e0eef4;--bond-magenta:#c42d6c;
+ /* Equal apparent head height for every role; the face centre lands on one anchor. */
+ --head-px:70px;--face-top:112px;
+ background:var(--bond-paper);color:var(--bond-ink);letter-spacing:0;
+ &[data-lounge-member=kai] {--bond-accent:#146b62;--bond-bright:#63dbc0;--bond-wash:#dcefea;}
+ &[data-lounge-member=enjo] {--bond-accent:#a52f56;--bond-bright:#f098b4;--bond-wash:#f4e2ea;}
+ & [hidden] {display:none!important;}
+ /* Compact header: whole title, native 44px back/settings, the room gets the height. */
+ & .shell-header {height:52px;min-height:52px;padding:3px 10px;background:var(--bond-paper);color:var(--bond-ink);border-bottom:2px solid var(--bond-ink);}
+ & .shell-brand h1 {color:var(--bond-ink);font-size:20px;line-height:26px;white-space:nowrap;text-shadow:none;}
+ & .shell-brand .shell-eyebrow {color:var(--bond-accent);font-size:12px;line-height:16px;}
+ & .shell-header .shell-icon-button {width:44px;height:44px;min-width:44px;min-height:44px;}
+ & .shell-header :is(.shell-icon-button,.shell-wallet,button svg,.shell-wallet strong) {color:var(--bond-ink);}
+ /* Choosing a companion is not a battle preview: no deployment row on this page. */
+ & .shell-session-context {display:none;}
+ & .shell-content {position:relative;min-height:0;height:100%;margin:0;padding:0;background:var(--bond-paper);overflow:hidden;}
+ & .product-module-screen {--pm-accent:var(--bond-bright);position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto auto auto;gap:0;width:100%;height:100%;min-height:0;margin:0;padding:0;border:0;background:var(--bond-paper);color:var(--bond-ink);}
+ /* Members are one compact row above the room, never badges over a face. */
+ & .pm-cast-strip {position:static;grid-row:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;gap:4px;width:auto;margin:0;padding:3px 8px;border-bottom:2px solid var(--bond-magenta);background:var(--bond-wash);}
+ & button.pm-cast-option {display:grid;grid-template-columns:30px auto;align-items:center;justify-content:center;gap:4px;width:auto;height:auto;min-height:44px;margin:0;padding:2px 4px;border:1px solid #b9cfd6;border-radius:4px;background:#f8fcfd;color:var(--bond-ink);font-size:12px;line-height:18px;box-shadow:none;overflow:hidden;}
+ & .pm-cast-option .pm-member-headshot {width:30px;height:30px;object-fit:cover;object-position:center top;border:0;border-radius:2px;background:var(--bond-wash);}
+ & .pm-cast-option > span {display:block;color:var(--bond-ink);font-size:12px;line-height:18px;font-weight:750;white-space:nowrap;}
+ & .pm-cast-option[aria-pressed=true] {border-color:var(--bond-accent);background:var(--bond-bright);box-shadow:inset 0 -3px var(--bond-magenta);}
+ & .pm-cast-option:disabled {opacity:.6;}
+ /* The room is the full band behind the figure, not a nested card. */
+ & .pm-scene {position:relative;isolation:isolate;grid-row:2;display:block;height:auto;min-height:0;margin:0;padding:0;border:0;border-bottom:3px solid var(--bond-accent);background:#d4e3e6;overflow:hidden;animation:companion-scene-enter 220ms ease-out both;}
+ & .pm-scene-art {position:absolute;inset:0;z-index:0;width:100%;height:100%;max-height:none;object-fit:cover;object-position:50% 40%;filter:none;}
+ & .pm-scene-copy {position:absolute;left:12px;right:auto;top:12px;z-index:3;max-width:130px;margin:0;padding:0;pointer-events:none;}
+ & .pm-scene-copy :is(h2,.pm-scene-code,.pm-scene-role) {display:none;}
+ & .pm-scene-member {display:block;width:max-content;max-width:100%;margin:0;padding:3px 9px;border:0;border-left:4px solid var(--bond-magenta);background:#f6fbfced;color:var(--bond-ink);font-size:18px;line-height:26px;font-weight:850;white-space:normal;box-shadow:none;}
+ & button.pm-scene-portrait {position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;min-height:0;max-height:none;grid-column:auto;grid-row:auto;align-self:stretch;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;touch-action:pan-y;}
+ & .pm-scene-portrait .member-mark.member-mark-full {position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;max-height:none;overflow:visible;background:none;}
+ /* Candidate head size is a fraction of source width, never source height. */
+ & .pm-scene[data-member=sakura] {--portrait-head:0.2195;--face-x:0.542;--face-y:0.139;--portrait-ratio:853 / 1280;}
+ /* Legacy scene mirrors the B255 registration; the mount sets authoritative vars inline. */
+ & .pm-scene[data-member=kai] {--portrait-head:0.091797;--face-x:0.566406;--face-y:0.167969;--portrait-ratio:1024 / 1536;}
+ & .pm-scene[data-member=enjo] {--portrait-head:0.0791015625;--face-x:0.56005859375;--face-y:0.157877604167;--portrait-ratio:1024 / 1536;}
+ & .pm-scene-portrait :is(.home-portrait-rig,.menu-portrait-image,.menu-portrait-motion) {
+  --portrait-width:calc(var(--head-px) / var(--portrait-head));
+  position:absolute;inset:auto;display:block;width:var(--portrait-width);height:calc(var(--portrait-width) / (var(--portrait-ratio)));max-width:none;max-height:none;
+  left:calc(50% - var(--portrait-width) * var(--face-x));
+  top:calc(var(--face-top) - var(--portrait-width) / (var(--portrait-ratio)) * var(--face-y));
+  object-fit:contain;object-position:center top;transform:none;
+ }
+ & .pm-scene-portrait .home-portrait-rig {aspect-ratio:853 / 1280;}
+ & .pm-scene-portrait :is(.menu-portrait-image,.menu-portrait-motion) {aspect-ratio:1152 / 1664;}
+ & .pm-scene-portrait :is(.home-portrait-canvas,.menu-portrait-motion canvas) {position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;max-height:none;pointer-events:none;}
+ & .pm-scene-caption {display:none;}
+ /* Dialogue sits below the figure in its own row and scrolls at the real text boundary. */
+ & .pm-dialogue {position:relative;grid-row:3;display:block;height:112px;min-height:112px;max-height:none;margin:0;padding:8px 14px 16px;border:0;border-left:4px solid var(--bond-magenta);border-radius:0;background:var(--bond-wash);color:var(--bond-ink);box-shadow:none;overflow:hidden;}
+ & .pm-dialogue :is(.pm-speaker,.pm-dialogue-speaker) {color:var(--bond-accent);font-size:13px;line-height:22px;font-weight:850;}
+ /* Speaker, avatar and the last saved topic share one line; the band keeps three text lines. */
+ & .pm-dialogue-heading {display:grid;grid-template-columns:22px max-content minmax(0,1fr);align-items:center;gap:0 6px;min-height:22px;margin:0;padding:0;}
+ & .pm-speaker-avatar {position:relative;display:block;flex:0 0 22px;width:22px;height:22px;overflow:hidden;border:1px solid var(--bond-accent);border-radius:3px;background:var(--bond-paper);}
+ & .pm-speaker-avatar .menu-head-avatar {position:relative;inset:0;display:block;width:100%;height:100%;}
+ & .pm-speaker-avatar img {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;}
+ & .pm-ledger {position:static;display:grid;justify-items:end;gap:0;width:auto;min-width:0;max-width:none;overflow:hidden;white-space:nowrap;margin:0;padding:0;border:0;background:none;color:#3d5961;font-size:11px;line-height:16px;}
+ & .pm-ledger strong {display:none;}
+ /* The visit count stays in the accessible record; the visible line keeps the meaningful last topic. */
+ & .pm-ledger [data-companion-visits] {position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+ & .pm-response {display:block;max-width:100%;max-height:66px;overflow-y:auto;overscroll-behavior:contain;margin:0;padding:0;color:var(--bond-ink);font-size:14px;line-height:22px;letter-spacing:0;font-weight:450;white-space:normal;overflow-wrap:anywhere;text-shadow:none;transform:none;}
+ /* Topics or the open question's answers: one contextual row, never two stacked panels. */
+ & .pm-choices {position:relative;grid-row:4;margin:0;padding:4px 8px;background:var(--bond-wash);}
+ & .pm-topics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:6px;margin:0;padding:0;background:none;}
+ & button.pm-topic {display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;min-height:44px;height:auto;margin:0;padding:6px 3px;border:1px solid #a3c1c8;border-radius:4px;background:#f8fcfd;color:var(--bond-accent);font-size:12px;line-height:18px;font-weight:800;text-align:center;box-shadow:none;}
+ & .pm-topic :is(svg,span) {color:inherit;}
+ & .pm-topic svg {position:static;inset:auto;flex:none;width:18px;height:18px;transform:none;}
+ & .pm-topic[aria-pressed=true] {border-color:var(--bond-accent);background:var(--bond-accent);color:#fff;box-shadow:inset 0 -3px var(--bond-bright);}
+ & .pm-topic:disabled {border-color:#b1bfc2;background:#e1e9eb;color:#667a7e;opacity:1;}
+ & .pm-question {display:grid;grid-template-columns:44px minmax(0,1fr);align-items:stretch;gap:6px;}
+ & [data-companion-answers] {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:6px;min-width:0;}
+ & button.pm-answer {display:flex;align-items:center;justify-content:center;min-width:0;min-height:52px;margin:0;padding:4px 6px;border:1px solid var(--bond-accent);border-radius:4px;background:#fff;color:var(--bond-ink);font-size:13px;line-height:18px;font-weight:750;text-align:center;white-space:normal;overflow-wrap:anywhere;}
+ & button.pm-answer[aria-pressed=true] {background:var(--bond-bright);box-shadow:inset 0 -3px var(--bond-magenta);opacity:1;}
+ & button.pm-question-back {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:44px;min-height:52px;margin:0;padding:2px;border:1px solid #a3c1c8;border-radius:4px;background:#f8fcfd;color:var(--bond-accent);font-size:12px;line-height:16px;font-weight:800;}
+ & .pm-question-back svg {flex:none;width:18px;height:18px;}
+ & .pm-question-back > span {white-space:nowrap;}
+ & .pm-save-status {grid-row:5;min-height:20px;margin:0;padding:1px 12px;background:var(--bond-wash);color:#344e56;font-size:12px;line-height:18px;overflow-wrap:anywhere;}
+ & .pm-footer {display:none;}
+ & .shell-navigation {background:var(--bond-paper);border-top:1px solid #acc2c8;}
+ & .shell-navigation button {color:#4a6269;}
+ & .shell-navigation button:is([aria-current=page],[aria-current=location]) {background:var(--bond-wash);color:var(--bond-accent);box-shadow:inset 0 3px var(--bond-bright);}
+ & .shell-navigation button :is(svg,span) {color:inherit;}
+ & button:focus-visible {outline:3px solid var(--bond-magenta);outline-offset:-3px;}
+ /* With the admitted AI control family, keep its bitmaps and only fit the new dock geometry. */
+ &[data-owner-generated-ui=true][data-lounge-member] {
+  & .product-module-screen .pm-choices .pm-topics {background:none;}
+  & button.pm-answer[data-owner-ui-skin] {display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 2px;font-size:13px;line-height:18px;text-align:center;}
+  /* The saved answer is disabled against double activation but reads as chosen, not unavailable. */
+  & button.pm-answer[data-owner-ui-skin][aria-pressed=true]:disabled {opacity:1;filter:none;}
+  & button.pm-question-back[data-owner-ui-skin] {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:48px;padding:0;font-size:12px;line-height:16px;}
+  & .pm-question-back[data-owner-ui-skin] > span {white-space:nowrap;overflow-wrap:normal;}
+ }
+ @media(max-height:600px) {
+  --head-px:58px;--face-top:94px;
+  & .pm-scene-copy {left:10px;top:9px;}
+  & .pm-scene-member {font-size:16px;line-height:24px;padding:2px 7px;}
+  & .shell-header {height:50px;min-height:50px;padding:2px 8px;}
+  & .pm-cast-strip {padding:2px 8px;}
+  & .pm-dialogue {height:106px;min-height:106px;max-height:none;padding:7px 12px 17px;}
+  & .pm-response {font-size:13px;line-height:20px;max-height:60px;}
+  & .pm-choices {padding:3px 8px;}
+  & .pm-topics {gap:5px;}
+  & button.pm-topic {font-size:12px;line-height:18px;gap:3px;padding:4px 2px;}
+  & .pm-topic svg {width:16px;height:16px;}
+  & .pm-save-status {padding:0 10px;min-height:18px;}
+ }
+ @media(max-width:340px) {
+  & .pm-question {grid-template-columns:44px minmax(0,1fr);gap:5px;}
+  & [data-companion-answers] {gap:5px;}
+  & button.pm-answer {font-size:12px;line-height:17px;}
+  &[data-owner-generated-ui=true][data-lounge-member] button.pm-answer[data-owner-ui-skin] {font-size:12px;line-height:17px;}
+  & button.pm-cast-option {grid-template-columns:26px auto;gap:2px;padding:2px;}
+  & .pm-cast-option .pm-member-headshot {width:26px;height:26px;}
+ }
+ @media(prefers-reduced-motion:reduce) {
+  & .pm-scene {animation:none;}
+  & button {transition:none;}
+ }
+}
+@keyframes companion-scene-enter {from{opacity:.65;}to{opacity:1;}}

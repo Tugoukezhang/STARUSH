@@ -1,0 +1,32 @@
+/* Exact wordmarks; no lettering stretch, no duplicate sheet heading. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-inner-family=false][data-home-demo][data-core-journey] {
+ &[data-page=events],&[data-page=sideplay]{background-image:none}
+ &[data-page=events] .shell-content,&[data-page=sideplay] .shell-content{padding:0}
+ & .product-module-screen[data-program-studio="267"],& .product-module-screen[data-practice-studio="267"]{width:100%;margin:0;padding:10px 12px 12px}
+ & .product-module-screen[data-practice-studio="267"] .ps-stage{filter:brightness(.65) saturate(.95)}
+ /* Shared programme illustration owns the scene; chapter-specific preview lives in the chapter sheet. */
+ & .product-module-screen[data-program-studio="267"] .ps-stage{filter:brightness(.72) saturate(.95)}
+ & .product-module-screen[data-program-studio="267"] .pg-venue{position:static;display:flex;flex:1;align-items:flex-end;min-height:190px;aspect-ratio:auto;overflow:visible;border-radius:0;background:none}
+ & .product-module-screen[data-program-studio="267"] .pg-venue-art{inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.72)}
+ & .product-module-screen[data-program-studio="267"] .pg-venue-plate{position:relative;inset:auto;display:block;width:100%;padding:20px 2px 4px;background:none;text-shadow:0 2px 3px #000}
+ & .product-module-screen[data-program-studio="267"] .ps-status{padding:0 2px;color:#f1f6f2;text-shadow:0 2px 3px #000}
+ & .shell-brand h1:is([data-ui-letter=program],[data-ui-letter=practice]){font-size:0;line-height:0}
+ & .shell-brand h1:is([data-ui-letter=program],[data-ui-letter=practice]) .ui-letter-art{display:block;width:auto;height:28px;max-width:150px;object-fit:contain}
+ & .ui-sheet[data-program-sheet] .ui-sheet-title .pg-letter{width:auto;max-width:180px;height:26px;object-fit:contain}
+ & .ui-sheet[data-program-sheet] .pg-heading h3{display:none}
+ & .ui-sheet[data-program-sheet] .pg-heading{justify-content:flex-end;margin:0}
+ & .ui-sheet[data-program-sheet]{padding:16px 18px 20px;background-color:#151d20}
+ & .ui-sheet[data-program-sheet]::backdrop{background:#041013e6}
+ & .ui-sheet[data-program-sheet] .ps-current-venue{margin:0;overflow:hidden;border-radius:4px}
+ & .ui-sheet[data-program-sheet] .ps-current-venue .pg-venue-art{position:static;display:block;width:100%;height:100px;object-fit:cover;object-position:center 40%;filter:none}
+ & .ui-sheet[data-program-sheet] .pg-goal{grid-template-columns:minmax(0,1fr) auto;gap:4px 8px}
+ & .ui-sheet[data-program-sheet] .pg-goal small{grid-column:1/-1}
+ & .ui-sheet[data-program-sheet] .ps-goal-availability{font-size:12px;line-height:19px;color:#c9dad6;font-weight:700}
+ & .ui-sheet[data-program-sheet] .pg-goal[data-availability=available] .ps-goal-availability{color:#b8ee8a}
+ & .ui-sheet[data-program-sheet] .pg-command.pg-primary{margin-top:10px;margin-bottom:4px}
+ & .product-module-screen[data-practice-studio="267"] .ps-entries{margin-bottom:min(6dvh,50px)}
+ & .product-module-screen[data-practice-studio="267"] .ps-entry{grid-template-columns:96px minmax(0,1fr) 24px}
+ & .product-module-screen[data-practice-studio="267"] .ps-entry-enter{display:block;width:24px;height:24px;transform:rotate(180deg)}
+ & .product-module-screen[data-practice-studio="267"] .ps-entry-enter .ui-glyph{width:100%;height:100%;object-fit:contain}
+ @media(max-width:340px){& .product-module-screen[data-practice-studio="267"] .ps-entry{grid-template-columns:72px minmax(0,1fr) 24px}}
+}

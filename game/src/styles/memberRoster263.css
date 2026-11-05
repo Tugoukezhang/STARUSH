@@ -1,0 +1,34 @@
+/* Character selection remains a preview; all commands are the original native controls. */
+#game-container #public-shell[data-ui-rebuild=screen-v2][data-cast=owner-three][data-ui-pass=hierarchy-v1][data-shell-family=hierarchy][data-home-demo][data-core-journey]:is([data-page=roster],[data-page=workshop],[data-page=growth]){
+ & .ui-sheet[data-sheet-kind=actors]{width:calc(100% - 24px);max-width:400px;padding:14px;background:#131517 url('/art/thin-ui-20261101/panel.webp') center/100% 100% no-repeat;border:0;border-image:none;box-shadow:none}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin:0;padding:0;background:none;border:0}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button{position:relative;display:grid;grid-template-columns:60px minmax(0,1fr);grid-template-rows:1fr;align-items:center;gap:14px;width:100%;height:80px;min-height:80px;max-width:none;padding:8px 14px;border:0;border-radius:0;border-image:none;box-shadow:none;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;overflow:hidden}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button[aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
+ & .ui-sheet[data-sheet-kind=actors] :is(.member-mark,.training-headshot,.roster-headshot){position:relative;grid-column:1;grid-row:1;width:60px;height:60px;max-width:60px;min-height:60px;margin:0;padding:0;border:0;background:none;overflow:hidden;object-fit:cover}
+ & .ui-sheet[data-sheet-kind=actors] .member-mark img{position:static;display:block;width:60px;height:60px;max-width:none;object-fit:cover;transform:none}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-name{position:static;grid-column:2;grid-row:1;display:block;width:auto;min-width:0;height:26px;margin:0;padding:0}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-name .ui-letter-art{display:block;width:auto;height:24px;max-width:100%;object-fit:contain;object-position:left}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button>span:not(.ui-actor-name):not(.member-mark){display:none}
+ & .ui-sheet[data-sheet-kind=actors] .member-option-state{position:absolute;left:auto;right:14px;bottom:9px;width:auto;margin:0;padding:0;background:none;color:#8bd8c8;font-size:10px;line-height:14px}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button:focus-visible{outline:2px solid #ffe18b;outline-offset:-2px}
+ & .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button:active{translate:0 1px}
+ & .member-profession-caption{display:block;flex:none;width:36px;height:28px;object-fit:contain}
+ & .ui-footer-caption{display:flex;align-items:center;gap:9px}
+ & .ui-footer-caption h2{margin:0}
+ & .ui-roster-lane .ui-icon-command{width:48px;min-width:48px;height:48px;min-height:48px;padding:4px;border:0;background:none;box-shadow:none}
+ & .ui-roster-lane .ui-glyph{display:block;width:40px;height:40px;max-width:100%;object-fit:contain}
+ & .ui-roster-actions{gap:8px}
+ & .ui-roster-lane .member-profession-glyph{width:42px;height:40px}
+ & .member-studio-letter{display:block;flex:none;width:auto;height:16px;max-width:100%;object-fit:contain}
+ & .workshop-effects dt{display:flex;align-items:center;justify-content:center;gap:5px}
+ & .member-effect-caption{font-size:11px;line-height:16px;color:#b7cccb}
+ & .workshop-wallet .member-studio-letter{height:16px}
+ & .workshop-wallet>span::before{content:none}
+ & .planning-command-footer{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:4px}
+ & .planning-command-footer>:is(.workshop-status,.preflight-links,p){grid-column:1;grid-row:auto}
+ & .planning-command-footer .sec-growth-preflight{display:flex;grid-column:1;grid-row:auto;align-items:center;justify-content:center;gap:8px;width:100%;height:36px;min-height:36px;padding:5px;border:0;border-image:none;background:none;box-shadow:none}
+ & .planning-command-footer[data-plan-state=confirm] .sec-growth-preflight{display:none}
+ & .planning-command-footer .sec-growth-preflight>:not(.member-flow-letter){display:none}
+ & .planning-command-footer .sec-growth-preflight .member-flow-letter{display:block;position:static;width:auto;height:18px;max-width:45%;object-fit:contain;clip-path:none}
+ @media(prefers-reduced-motion:reduce){& .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button{transition:none}}
+}

@@ -1,0 +1,253 @@
+/* Inner pages share the selected home raster family; all labels retain native fallbacks. */
+#game-container #public-shell .shell-navigation [aria-current=location] {color:#12635e;background:#e1f9f8;box-shadow:inset 0 -3px #00abc1;}
+#game-container #public-shell .menu-portrait-image[hidden] {display:none!important;}
+#game-container #public-shell[data-page=desk] :is(.menu-portrait-image,.menu-portrait-motion) {position:absolute;object-fit:contain;pointer-events:none;max-width:none;}
+#game-container #public-shell[data-page=desk] [data-menu-portrait] :is(.menu-portrait-image,.menu-portrait-motion) {left:var(--menu-face-x,64%);top:18px;width:120%;max-width:480px;height:auto;aspect-ratio:1152 / 1664;transform:translateX(-50%);object-position:center center;}
+#game-container #public-shell[data-page=desk] [data-menu-portrait=kai] {--menu-face-x:54%;}
+#game-container #public-shell[data-page=desk] [data-menu-portrait=enjo] {--menu-face-x:54%;}
+#game-container #public-shell .menu-head-avatar[hidden] {display:none!important;}
+#game-container #public-shell .menu-head-avatar {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+#game-container #public-shell .member-mark[data-menu-avatar] {font-size:0;border:0;border-radius:4px;background:#d3f2fa;}
+#game-container #public-shell .member-mark[data-menu-avatar=kai] {background:#d2eee3;}
+#game-container #public-shell .member-mark[data-menu-avatar=enjo] {background:#f8dce2;}
+#game-container #public-shell .menu-portrait-motion[hidden] {display:none!important;}
+#game-container #public-shell .member-portrait[hidden] {display:none!important;}
+#game-container #public-shell[data-page=roster] .home-portrait-rig[data-static=true] {left:50%;right:auto;top:0;bottom:auto;width:auto;max-width:none;height:100%;aspect-ratio:853 / 1280;transform:translateX(-50%);}
+#game-container #public-shell .home-portrait-rig[data-static=true] :is(.home-portrait-parts,.home-portrait-layer) {animation:none!important;transform:none!important;rotate:none!important;translate:none!important;}
+#game-container #public-shell .home-portrait-rig[data-static=true] .home-portrait-layer[data-part=blink] {display:none;}
+#game-container #public-shell .menu-portrait-motion .home-portrait-canvas {position:absolute;inset:0;width:100%;height:100%;}
+#game-container #public-shell[data-page=roster] [data-menu-portrait] {position:relative;}
+#game-container #public-shell[data-page=roster] .menu-portrait-image {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation {height:64px;padding:3px 9px 5px;gap:5px;border-top:2px solid #19242a;background:#fff;}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation button {position:relative;min-height:54px;border-radius:0;background:transparent;box-shadow:none;isolation:isolate;}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation .home-concept-art {inset:3px 3px 5px;pointer-events:none;clip-path:inset(0 0 9% 0);}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation [data-concept-state=ready] > .home-concept-art {visibility:visible;}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation [data-concept-state=ready] > :not(.home-concept-art) {visibility:hidden;}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation :is([aria-current=page],[aria-current=location]) {background:#e1f9f8;box-shadow:inset 0 -3px #00abc1;}
+#game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation button:not(:disabled):active > .home-concept-art {translate:0 2px;}
+#game-container #public-shell[data-cast=owner-three] .shell-title-art.shell-title-single {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:none;filter:none;}
+
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] {--inner-ink:#19242a;--inner-muted:#526168;--inner-line:#d3dce0;--inner-cyan:#00bcd2;--inner-pink:#ec378a;--inner-lime:#dcf000;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-header {height:62px;padding:7px 12px;gap:7px;border-bottom:2px solid var(--inner-ink);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-brand {min-width:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-brand-lettered h1 {width:100%;max-width:164px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-brand-lettered .shell-eyebrow {font-size:10px;line-height:14px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-icon-button[data-action=back] {width:40px;height:40px;border:0;border-radius:0;background:#f0f4f5;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-wallet {margin-left:auto;padding-inline:3px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-session-context {min-height:29px;padding:3px 16px;background:#fff;border-bottom:1px solid var(--inner-line);font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-session-context strong {color:var(--inner-ink);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-content {padding:0 16px 18px;background:#f7f9fa;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-page-heading {margin:12px 0 10px;font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] button:focus-visible {outline:3px solid #009bb0;outline-offset:-3px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-strip {gap:7px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option {position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);align-content:center;align-items:center;gap:1px 4px;height:62px;min-height:62px;padding:5px;border:1px solid var(--inner-line);border-image:none;border-radius:4px;background:#fff;box-shadow:none;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option[aria-pressed=true] {border:2px solid var(--inner-ink);padding:4px;background:#e1f9f8;box-shadow:0 3px 0 var(--inner-cyan);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option .member-mark {grid-row:1 / span 2;width:44px;height:48px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option > span:not(.member-mark) {font-weight:700;text-align:left;white-space:normal;word-break:keep-all;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .member-option-state {position:static;display:block;font-size:11px;line-height:16px;color:#087480;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-selection-footer {padding:8px 12px;background:#fff;border-top:1px solid var(--inner-line);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-selection-footer .shell-primary {min-height:48px;font-size:16px;line-height:24px;gap:8px;}
+
+/* Member portrait and action copy have separate tracks; the original proportions are untouched. */
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-detail {position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:0;min-height:0;margin:16px -16px 0;padding:0 16px;background:#fff;border-block:1px solid var(--inner-line);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage {position:relative;isolation:isolate;height:264px;overflow:hidden;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage::before {content:'';position:absolute;inset:0 -16px;background:url('/art/home-portrait-demo-20261022/backstage.webp') center 46% / cover;opacity:.13;z-index:-1;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .member-mark.member-mark-full {height:100%;width:100%;margin:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .member-mark-full .member-portrait {object-fit:contain;object-position:center bottom;background:transparent;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;margin:0;padding:12px 0 14px;background:transparent;border-top:2px solid var(--inner-ink);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name h2 {position:relative;min-width:0;width:210px;max-width:100%;height:68px;margin:0;font-size:23px;line-height:30px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] :is(.shell-performer-name h2,.shell-chapter-copy strong) .home-concept-art {position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] :is(.shell-performer-name h2,.shell-chapter-copy strong)[data-concept-state=ready] {color:transparent;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name > p {align-self:center;margin:0;padding:2px 6px;border-left:3px solid var(--inner-cyan);font-size:12px;line-height:18px;font-weight:700;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] [data-selection=candidate] .shell-performer-name > p {border-color:var(--inner-pink);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-action-detail {grid-column:1 / -1;margin-top:6px;padding-top:8px;border-top:1px solid var(--inner-line);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-action-detail h3 {margin:0 0 4px;font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-action-detail p {margin:0;font-size:14px;line-height:23px;color:#42545e;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-preparation {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding-block:14px;border-top:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-preparation > span {font-size:12px;line-height:18px;color:var(--inner-muted);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-preparation > strong {grid-column:1;font-size:14px;line-height:22px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-preparation button {grid-column:2;grid-row:1 / span 2;align-self:center;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-preparation button .menu-art {width:28px;height:28px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-dossier {padding-block:16px;border-top:1px solid var(--inner-line);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-dossier blockquote {margin-top:10px;padding-left:12px;border-left:3px solid var(--inner-pink);color:var(--inner-ink);}
+
+/* Three real venue thumbnails remain legible in both locked and selected states. */
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-tour-heading {padding-block:1px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-tour-heading .shell-page-heading {margin:10px 0;font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-tour-heading > span {padding:3px 8px;background:#19242a;color:#fff;font-size:11px;line-height:18px;font-weight:700;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option {min-height:106px;margin:0 0 10px;padding:8px 10px 8px 112px;gap:4px;border:1px solid var(--inner-line);border-image:none;border-radius:4px;background:#fff;box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[aria-pressed=true] {border:2px solid var(--inner-ink);padding:7px 9px 7px 111px;box-shadow:0 3px 0 var(--inner-cyan);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-route-preview {inset:7px auto 7px 7px;width:94px;height:auto;border:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[aria-pressed=true] .shell-route-preview {inset:6px auto 6px 6px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-number {top:7px;left:7px;font-size:12px;line-height:20px;padding:0 6px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy {gap:3px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy strong {position:relative;display:block;width:100%;height:32px;min-height:32px;font-size:18px;line-height:25px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy > span {font-size:12px;line-height:18px;color:#526168;word-break:normal;overflow-wrap:anywhere;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy .shell-chapter-state {font-size:12px;line-height:18px;font-weight:700;color:#087480;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option > svg {width:19px;height:19px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option:disabled {opacity:1;filter:none;background:#eef1f3;border-color:#d3dce0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option:disabled .shell-route-preview {filter:grayscale(.8);opacity:.7;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[data-state=locked] .shell-chapter-state {color:#596971;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] :is(.tour-chapter-plan,.shell-tour-reward,.shell-performance-record) {padding-block:14px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-chapter-plan h3 {font-size:16px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-chapter-plan ol {padding-left:24px;border-left:2px solid var(--inner-cyan);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-chapter-plan li {padding-left:3px;font-size:13px;line-height:22px;}
+
+/* Six existing items are visible by default; details remains a native collapsible group. */
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .shell-page-heading {position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .shell-member-strip {margin-top:12px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-context {margin:6px 0 2px;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-workbench {gap:16px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser {border:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser > summary {min-height:48px;padding:6px 0;border-block:1px solid var(--inner-line);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser > summary .menu-art {width:32px;height:32px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser-action {font-size:12px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding-top:10px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item {position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;min-height:102px;padding:6px 3px;border:1px solid var(--inner-line);border-image:none;border-radius:4px;background:#fff;color:var(--inner-ink);filter:none;opacity:1;box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item .menu-art {width:30px;height:30px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item strong {font-size:13px;line-height:19px;word-break:keep-all;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item small {font-size:11px;line-height:16px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item[data-state=locked] {background:#eef1f3;filter:none;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item[data-state=locked] img {filter:saturate(.7);opacity:.9;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item[aria-pressed=true] {border:2px solid var(--inner-ink);padding:5px 2px;box-shadow:0 3px 0 var(--inner-cyan);background:#e1f9f8;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item[data-compatible=false] small {color:#765c68;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail {padding:0;border:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading {position:static;width:auto;height:auto;margin:0;padding:0;overflow:visible;clip-path:none;white-space:normal;display:flex;align-items:center;gap:12px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading .menu-art {width:48px;height:48px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading small {font-size:11px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading h2 {font-size:20px;line-height:28px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-description {margin:10px 0 14px;color:var(--inner-ink);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects-heading {margin:0 0 4px;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects > div {padding:8px 0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects dd {color:#087480;font-size:16px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-footer .inventory-status {padding:0 4px 5px;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-footer [data-action=prepared-preflight] {min-height:38px;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-footer [data-action=prepared-preflight] .menu-art {width:24px;height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .equipment-art-slot {position:relative;display:block;flex:none;width:40px;height:40px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .equipment-art-slot > :is(img,svg) {position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:contain;}
+#game-container #public-shell .equipment-art[hidden] {display:none!important;}
+#game-container #public-shell .equipment-art-slot[data-equipment-art-state=ready] > :not(.equipment-art) {display:none!important;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .inventory-grid .equipment-art-slot {width:48px;height:48px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] .inventory-detail-heading .equipment-art-slot {width:68px;height:68px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true] :is(.inventory-chooser > summary,.inventory-detail-heading) strong {font-size:14px;line-height:22px;}
+
+@media (max-width:340px) {
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-header {gap:4px;padding-inline:8px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-content {padding-inline:12px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option {grid-template-columns:28px minmax(0,1fr);height:62px;min-height:62px;padding:3px;gap:0 3px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option[aria-pressed=true] {padding:2px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option .member-mark {grid-row:1 / span 2;width:28px;height:36px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] .shell-member-option > span:not(.member-mark) {text-align:left;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-detail {margin-inline:-12px;padding-inline:12px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage {height:226px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option {padding-left:100px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[aria-pressed=true] {padding-left:99px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-route-preview {width:82px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell[data-cast=owner-three]:not([data-page=desk]) .shell-navigation .home-concept-art {animation:none;transition:none;translate:none;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true] :is(.shell-member-option,.shell-chapter-option,.inventory-item) {animation:none;transition:none;}
+}
+
+/* Tour and equipment use illustrated content first, with live DOM states and commands. */
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=tour],[data-page=inventory]) .shell-header {height:76px;padding-block:5px;background:#f2fcfb;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=tour],[data-page=inventory]) .shell-eyebrow {display:none;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=tour],[data-page=inventory]) .shell-brand h1[data-title-art=true] {width:134px;max-width:100%;height:64px;aspect-ratio:auto;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=tour],[data-page=inventory]) .shell-title-art {object-fit:contain;object-position:left center;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=tour],[data-page=inventory]) .shell-content {background:#edf7f7;}
+#game-container #public-shell .inner-page-art {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:0;}
+#game-container #public-shell .inner-page-art[hidden] {display:none!important;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-stop-sequence {position:relative;display:grid;gap:16px;padding:0 0 14px 14px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-stop-sequence::before {content:'';position:absolute;top:24px;bottom:36px;left:3px;width:3px;background:#00b1c4;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option {position:relative;display:grid;grid-template-columns:minmax(0,1fr) 20px;align-items:center;gap:6px;min-height:132px;margin:0;padding:8px 9px 8px 47%;border:2px solid #526a70;border-radius:4px;background:#fff;box-shadow:3px 3px 0 #b5e4e2;text-align:left;overflow:visible;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option::before {content:'';position:absolute;left:-18px;top:24px;width:9px;height:9px;border:2px solid #19242a;border-radius:50%;background:#d9f000;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[aria-pressed=true] {padding:8px 9px 8px 47%;border:2px solid #19242a;background:#e1fffa;box-shadow:3px 4px 0 #00b1c4;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-route-preview,
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[aria-pressed=true] .shell-route-preview {inset:0 auto 0 0;width:44%;height:100%;margin:0;border-radius:2px 0 0 2px;overflow:hidden;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-number {z-index:2;top:6px;left:6px;min-width:26px;padding:1px 5px;background:#19242a;color:#fff;font-size:13px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy strong {height:36px;min-height:36px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy {gap:4px;min-width:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-copy > span {font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[data-state=locked] {background:#e9efef;border-color:#aebdbf;box-shadow:3px 3px 0 #d4dddd;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option[data-state=locked]::before {background:#c4cdd0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-chapter-option:disabled .shell-route-preview {filter:saturate(.45);opacity:.8;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-chapter-plan {border-top:0;padding-top:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-plan-ticket {position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:center;aspect-ratio:611 / 345;min-height:170px;padding:20px 22px 24px 50px;background:#fff;border-left:7px solid #19242a;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-plan-ticket[data-inner-art-state=ready] {background:transparent;border-left:0;padding-left:50px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-plan-ticket > :not(.inner-page-art) {position:relative;z-index:1;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-plan-ticket h3 {margin:0 0 5px;font-size:14px;line-height:21px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-plan-ticket ol {margin:0;padding-left:20px;border:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-plan-ticket li {margin:2px 0;padding:0;font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .shell-tour-reward {padding-left:12px;border-left:4px solid #e6378d;background:#fcebf3;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-workbench {gap:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading {display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:8px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-object-stage {position:relative;isolation:isolate;display:grid;place-items:center;width:100%;aspect-ratio:611 / 399;background:#d1f4f0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-object-stage[data-inner-art-state=ready] {background:transparent;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-object-stage .equipment-art-slot {z-index:1;width:78%;height:78%;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading h2 {margin:4px 0;font-size:19px;line-height:28px;word-break:normal;overflow-wrap:anywhere;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-detail-heading small {display:inline-block;padding:1px 6px;border-left:3px solid #e6378d;background:#fff;font-size:12px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-role {font-size:12px;line-height:20px;color:#426169;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-description {margin:8px 0 12px;font-size:13px;line-height:21px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser {margin-bottom:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser > summary {min-height:44px;background:#19242a;color:#fff;padding:4px 8px;border:0;border-left:4px solid #00cad5;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-chooser-action {color:#dcf000;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-grid {gap:8px;padding-top:9px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item {min-height:108px;padding:5px 2px;border:1px solid #a4bdc0;background:#fff;box-shadow:0 2px 0 #b6d8d8;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-grid .equipment-art-slot {width:56px;height:56px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item[data-state=locked] {background:#e2eded;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-item[aria-pressed=true] {border:2px solid #19242a;padding:4px 1px;background:#d8fff6;box-shadow:0 3px 0 #00b1c4;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 12px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects > div {display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:8px 4px;border:0;border-top:3px solid #00b1c4;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects dt {font-size:11px;line-height:18px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-effects dd {font-size:17px;line-height:24px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-notes {border-top:1px solid #aec8cb;padding-block:8px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-notes summary {font-size:13px;line-height:24px;}
+@keyframes inner-poster-enter {from{opacity:.7;translate:0 5px;}to{opacity:1;translate:0 0;}}
+/* Roster: three stable avatar slots, then identity beside the complete illustration. */
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-content {background:#edf4f5;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-page-heading {margin:10px 0 8px;font-size:14px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-strip {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice {--roster-accent:#226cbd;--roster-tint:#dfedfc;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:58px 22px;gap:0;align-items:center;justify-items:center;position:relative;height:88px;min-height:88px;padding:2px 3px;border:2px solid #b6cbd1;border-image:none;border-radius:4px;background:#fff;box-shadow:none;overflow:hidden;transition:border-color 140ms ease-out,background-color 140ms ease-out;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice[data-member=kai] {--roster-accent:#167f70;--roster-tint:#dcf2e9;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice[data-member=enjo] {--roster-accent:#b8274d;--roster-tint:#fce2e8;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice[aria-pressed=true] {padding:2px 3px;border:2px solid var(--roster-accent);background:var(--roster-tint);box-shadow:0 3px 0 var(--roster-accent);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice .member-mark {grid-row:1;width:58px;height:58px;border-radius:2px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice > span:not(.member-mark) {grid-row:2;justify-self:center;text-align:center;font-size:12px;line-height:20px;white-space:nowrap;color:#19242a;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-member-choice .member-option-state {position:absolute;inset:0 0 auto auto;width:auto;height:auto;padding:1px 4px;background:var(--roster-accent);color:#fff;font-size:10px;line-height:16px;border-radius:0 0 0 3px;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-detail {--roster-accent:#226cbd;--roster-tint:#dfedfc;margin:12px -16px 0;padding:0 16px;background:#fff;border-top:0;border-bottom:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] [data-roster-member=kai] {--roster-accent:#167f70;--roster-tint:#dcf2e9;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] [data-roster-member=enjo] {--roster-accent:#b8274d;--roster-tint:#fce2e8;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage {height:278px;background:var(--roster-tint);margin-inline:-16px;overflow:hidden;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage::before {inset:0;opacity:.12;z-index:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage > .member-mark-full {position:absolute;inset:0 0 0 34%;height:100%;width:66%;border:0;z-index:1;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name {position:absolute;left:16px;bottom:22px;z-index:2;display:flex;flex-direction:column;align-items:flex-start;width:128px;gap:8px;margin:0;padding:0;background:transparent;border:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name h2 {width:128px;max-width:100%;height:56px;font-size:20px;line-height:28px;color:var(--roster-accent);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name h2[data-concept-state=ready] {color:transparent;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name > p {align-self:flex-start;border:0;border-left:3px solid var(--roster-accent);padding:2px 5px;font-size:11px;line-height:18px;color:#253e49;background:#fff;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-role {font-size:12px;line-height:20px;font-weight:700;color:var(--roster-accent);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-action-detail {min-height:0;margin:0;padding:12px 0;border-top:3px solid var(--roster-accent);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-action-detail h3 {font-size:16px;line-height:24px;color:var(--roster-accent);}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-action-detail p {font-size:13px;line-height:22px;color:#314f5d;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-member-preparation {padding:12px 0;border-bottom:1px solid #bfd1d6;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] details.shell-dossier {margin:0;padding:0;border-top:0;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-dossier summary {padding:12px 0;font-size:14px;line-height:22px;font-weight:700;cursor:pointer;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-dossier :is(p,blockquote) {font-size:13px;line-height:23px;color:#314f5d;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-dossier h3 {font-size:15px;line-height:24px;}
+@keyframes roster-identity-enter {from{opacity:.7;translate:0 4px;}to{opacity:1;translate:0 0;}}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage {animation:roster-identity-enter 180ms ease-out both;}
+@media (max-width:340px) {
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-detail {margin-inline:-12px;padding-inline:12px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-portrait-stage {height:246px;margin-inline:-12px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name {left:12px;width:108px;gap:6px;bottom:18px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .shell-performer-name h2 {width:108px;height:48px;}
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] .roster-role {font-size:11px;line-height:18px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=roster] :is(.roster-portrait-stage,.roster-member-choice) {animation:none;transition:none;}
+}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=inventory] .inventory-object-stage,
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true][data-page=tour] .tour-stop-sequence {animation:inner-poster-enter 220ms ease-out both;}
+#game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=inventory],[data-page=tour]) :is(.inventory-item,.shell-chapter-option) {transition:background-color 120ms ease-out,box-shadow 120ms ease-out;}
+@media (prefers-reduced-motion:reduce) {
+ #game-container #public-shell[data-cast=owner-three][data-inner-family=true]:is([data-page=inventory],[data-page=tour]) :is(.inventory-object-stage,.tour-stop-sequence,.inventory-item,.shell-chapter-option) {animation:none;transition:none;}
+}

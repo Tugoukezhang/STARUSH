@@ -1,0 +1,78 @@
+/* Last-loaded preflight treatment. Art and gameplay remain owned by existing helpers. */
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] {--stage-ink:#202426;--stage-line:#586165;--stage-text:#f3f7f5;--stage-muted:#c2ceca;--stage-lime:#a7f063;--stage-pink:#ff9ebc;--stage-cyan:#76e0df;letter-spacing:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .shell-content {padding-top:0;background:var(--stage-ink);color:var(--stage-text);scroll-padding-block:12px;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(h2,h3,strong) {color:inherit;letter-spacing:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero {position:relative;isolation:isolate;height:206px;min-height:206px;margin:0 -16px;overflow:hidden;border:0;border-bottom:3px solid var(--stage-pink);background:#cce7e1;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-scene {inset:0;width:100%;height:100%;opacity:1;filter:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-scene .chapter-venue-art {inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 54%;filter:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-portrait-stage {position:absolute;inset:0 0 0 auto;width:57%;z-index:1;overflow:hidden;pointer-events:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-portrait-stage .member-mark-full {position:absolute;inset:0;display:block;width:100%;height:100%;margin:0;border:0;border-radius:0;background:none;overflow:hidden;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-portrait-stage :is(.member-portrait,.menu-portrait-image) {position:absolute;left:50%;top:0;width:236px;height:auto;aspect-ratio:1152 / 1664;max-width:none;object-fit:contain;object-position:center top;transform:translateX(-50%);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-portrait-stage .home-portrait-rig[data-static=true] {position:absolute;left:50%;top:0;width:236px;height:auto;aspect-ratio:853 / 1280;max-width:none;transform:translateX(-50%);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy {position:absolute;z-index:2;left:0;bottom:16px;display:grid;gap:5px;width:44%;max-width:44%;padding:10px 10px 10px 16px;border:0;border-image:none;border-left:4px solid var(--stage-lime);clip-path:none;background:#202426ed;color:var(--stage-text);box-sizing:border-box;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy small {font-size:11px;line-height:18px;color:var(--stage-lime);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy h2 {font-size:24px;line-height:31px;margin:0;color:var(--stage-text);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy p {max-width:none;margin:0;font-size:12px;line-height:19px;color:#e4ece8;word-break:normal;overflow-wrap:anywhere;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-manifest {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 -16px;padding:0 16px;border:0;border-bottom:1px solid #9fb9aa;background:#e3f4d4;color:#202426;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-team {display:flex;align-items:center;gap:8px;padding:9px 0;border:0;min-width:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-team .member-mark {width:38px;height:44px;flex:0 0 38px;background:none;border:0;border-radius:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-team-copy {display:grid;gap:2px;min-width:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(.preflight-performer,.preflight-loadout) {display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-team-copy .preflight-performer-name {font-size:16px;line-height:22px;color:#202426;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-team-copy .preflight-performer-action {font-size:11px;line-height:18px;color:#364c39;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-loadout span {font-size:12px;line-height:19px;color:#364c39;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-manifest-state {flex:0 0 auto;max-width:28px;padding:0;border:0;font-size:11px;line-height:16px;color:#364c39;writing-mode:horizontal-tb;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(.system-context,.preflight-goal,.preflight-build-note) {color:var(--stage-muted);font-size:12px;line-height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .shell-content > .preflight-goal {margin:9px 0 0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(.preflight-route,.preflight-tools,.preflight-plan) {margin:0;padding:12px 0;border:0;border-bottom:1px solid var(--stage-line);border-radius:0;background:transparent;box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(.preflight-route,.preflight-plan,.preflight-tools) h3 {margin:0 0 8px;font-size:15px;line-height:22px;color:var(--stage-text);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-links {gap:6px;padding:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-links button {min-width:0;min-height:44px;padding:7px 8px;border:1px solid var(--stage-line);border-image:none;border-radius:3px;background:#30383a;color:var(--stage-text);box-shadow:none;font-size:13px;line-height:20px;transform:none;transition:background-color 120ms ease-out;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] button svg {flex-shrink:0;width:20px;height:20px;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route > .preflight-links {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border:1px solid var(--stage-line);border-radius:3px;overflow:hidden;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route .preflight-links button {display:grid;grid-template-columns:20px minmax(0,1fr);align-items:center;column-gap:5px;row-gap:0;border:0;border-right:1px solid var(--stage-line);border-radius:0;min-height:52px;padding:6px 8px;text-align:left;background:#30383a;box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route .preflight-links button:last-child {border-right:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route .preflight-links button svg {grid-row:1 / 3;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .route-choice-state {grid-column:2;font-size:10px;line-height:15px;color:inherit;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route .preflight-links button[aria-pressed=true] {padding:6px 8px;background:var(--stage-lime);color:#202426;border-color:var(--stage-line);box-shadow:inset 0 -3px #476e2d;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-detail {margin:10px 0 0;padding:0 0 0 9px;border-left:2px solid var(--stage-cyan);background:transparent;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-facts {display:grid;gap:8px;margin:0;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-facts > div {display:grid;grid-template-columns:60px minmax(0,1fr);gap:8px;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-facts dt {font-size:12px;line-height:20px;color:var(--stage-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-facts dd {margin:0;font-size:13px;line-height:20px;color:var(--stage-text);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-sequence {gap:2px 4px;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route-sequence li:not(:last-child)::after {color:var(--stage-cyan);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route > .system-context {margin:8px 0 0;font-size:11px;line-height:18px;color:var(--stage-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-tools .preflight-links {grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-tools .preflight-links button {display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;min-height:66px;padding:7px 2px;border:0;border-bottom:2px solid var(--stage-line);border-radius:0;background:transparent;color:var(--stage-text);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-tools .preflight-links button:hover {background:#30383a;border-bottom-color:var(--stage-cyan);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-tools .preflight-links button > span {font-size:12px;line-height:18px;white-space:normal;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(.archive-history,.preflight-plan-effects) {margin:0;padding:0;border:0;border-bottom:1px solid var(--stage-line);border-radius:0;background:transparent;color:var(--stage-text);box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] details > summary {display:list-item;min-height:44px;padding:12px 0;box-sizing:border-box;font-size:13px;line-height:20px;color:var(--stage-text);cursor:pointer;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-member {color:var(--stage-text);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-member :is(p,small) {color:var(--stage-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-effects > div {border-color:var(--stage-line);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-effects dt {color:var(--stage-muted);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-effects dd {color:var(--stage-lime);}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .shell-selection-footer {position:relative;flex-shrink:0;display:grid;grid-template-columns:minmax(0,1fr) 132px;align-items:center;gap:8px;padding:10px 12px;border-top:2px solid var(--stage-line);background:#252b2c;color:var(--stage-text);box-shadow:none;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-confirmation {margin:0;padding:0;font-size:12px;line-height:19px;color:var(--stage-text);overflow-wrap:anywhere;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .shell-selection-footer .shell-primary {display:flex;justify-content:center;align-items:center;gap:8px;width:100%;min-width:0;min-height:50px;margin:0;padding:8px;border:1px solid var(--stage-lime);border-image:none;border-radius:3px;background:var(--stage-lime);color:#202426;box-shadow:none;font-size:16px;line-height:24px;font-weight:800;}
+#game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(button,summary):focus-visible {outline:3px solid var(--stage-pink);outline-offset:2px;}
+@media (max-width:340px) {
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero {margin-inline:-12px;height:180px;min-height:180px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy {padding:8px 6px 8px 9px;bottom:12px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy h2 {font-size:22px;line-height:29px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy p {font-size:11px;line-height:18px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-portrait-stage :is(.member-portrait,.menu-portrait-image,.home-portrait-rig[data-static=true]) {width:210px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-manifest {margin-inline:-12px;padding-inline:12px;gap:4px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route .preflight-links button {padding:6px;column-gap:3px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-route .preflight-links button[aria-pressed=true] {padding:6px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .shell-selection-footer {grid-template-columns:minmax(0,1fr) 116px;gap:6px;padding:8px 12px;}
+}
+@media (max-height:620px) {
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero {height:120px;min-height:120px;}
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] .preflight-hero-copy {bottom:7px;gap:3px;padding-block:6px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  #game-container #public-shell[data-cast=owner-three][data-page=preflight][data-inner-family=true] :is(.shell-content,.chapter-venue-art,button,summary) {animation:none;transition:none;}
+}

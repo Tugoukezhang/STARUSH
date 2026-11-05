@@ -1,0 +1,817 @@
+[
+  {
+    "chapter": {
+      "id": "opening",
+      "ordinal": 1,
+      "name": "星光初演",
+      "subtitle": "旧商街 · 唱片店到露天剧场",
+      "accent": 16738740,
+      "flipX": false,
+      "tint": 16777215,
+      "finalePatterns": [
+        "captured-line",
+        "momentum-cutoff",
+        "captured-line"
+      ],
+      "devices": [
+        {
+          "id": "oldstreet-welcome",
+          "x": 510,
+          "y": 1635,
+          "zone": 0,
+          "label": "南口音箱",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "speaker",
+          "purpose": "集合与首个涂染反馈",
+          "restores": null,
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-records",
+          "x": 350,
+          "y": 1460,
+          "zone": 0,
+          "label": "唱片店灯箱",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "lamp",
+          "purpose": "恢复唱片店门面",
+          "restores": "record-shop",
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-tickets",
+          "x": 820,
+          "y": 1100,
+          "zone": 0,
+          "label": "票亭电源",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "power",
+          "purpose": "打开外街视野中的场所锚点",
+          "restores": "ticket-kiosk",
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-repair",
+          "x": 350,
+          "y": 1120,
+          "zone": 0,
+          "label": "音响铺音箱",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "speaker",
+          "purpose": "外街与装卸巷汇合",
+          "restores": "repair-shop",
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-crossing",
+          "x": 550,
+          "y": 970,
+          "zone": 0,
+          "label": "街口路灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "lamp",
+          "purpose": "南街恢复后开放剧场前庭",
+          "restores": null,
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-north",
+          "x": 490,
+          "y": 820,
+          "zone": 1,
+          "label": "前庭配电",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "power",
+          "purpose": "北区入口与第二组节奏",
+          "restores": null,
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-garden",
+          "x": 184,
+          "y": 520,
+          "zone": 1,
+          "label": "花店门灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "lamp",
+          "purpose": "引导侧面绕行而非穿楼",
+          "restores": "garden-shop",
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-mix",
+          "x": 735,
+          "y": 580,
+          "zone": 1,
+          "label": "露天调音箱",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "speaker",
+          "purpose": "前庭外侧交战位置",
+          "restores": null,
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-stage-left",
+          "x": 370,
+          "y": 270,
+          "zone": 1,
+          "label": "舞台左灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "lamp",
+          "purpose": "露天剧场的左侧准备",
+          "restores": "theater",
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "oldstreet-stage-right",
+          "x": 630,
+          "y": 270,
+          "zone": 1,
+          "label": "舞台右灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "lamp",
+          "purpose": "露天剧场的右侧准备",
+          "restores": "theater",
+          "colorSequence": [],
+          "paintPolicy": "performer"
+        }
+      ]
+    },
+    "story": {
+      "title": "旧商街的第一排",
+      "place": "旧商街 · 开演之前",
+      "intro": [
+        [
+          "旁白",
+          "唱片店的节目牌褪成了灰色，门前只剩几张叠好的椅子。三人把器材放在路边。"
+        ],
+        [
+          "步枪手",
+          "这块牌以前写过我的名字。先把它擦亮吧。"
+        ],
+        [
+          "重锤手",
+          "椅子我来搬，别把第一排也喷了。"
+        ],
+        [
+          "机甲剑士",
+          "装卸门那边还能走。器材有路，开演就不难。"
+        ]
+      ],
+      "midpoint": [
+        [
+          "旁白",
+          "橱窗映出了新的颜色。沿着装卸门旁的小路望去，能看见街尾的露天剧场。"
+        ],
+        [
+          "步枪手",
+          "原来离剧场这么近。以前我只敢站在店门口。"
+        ],
+        [
+          "机甲剑士",
+          "今天往前走一点。我看着后面的路。"
+        ],
+        [
+          "重锤手",
+          "音箱接上了，第一排也摆好了。还差你过来。"
+        ]
+      ],
+      "outro": [
+        [
+          "旁白",
+          "干扰退去，剧场前留下了一排亮着的招牌。散落的节目单被收好，背面写着霓虹街口的地址。"
+        ],
+        [
+          "重锤手",
+          "真开起来了。明天还搬这些吗？"
+        ],
+        [
+          "步枪手",
+          "搬。下一站也许有人在等。"
+        ],
+        [
+          "机甲剑士",
+          "先把线收好。路上别再绊到自己。"
+        ]
+      ]
+    },
+    "pacing": {
+      "id": "opening",
+      "objective": "沿街自由涂染，接通设施后前往露天剧场。",
+      "pressure": "旧街定线：预告锁定当时的位置，离开弹路后再转回涂染。南区先收设施与串场，实际进入北区后接续中场压力；已有联动仍可提前打断。旧街压轴以定点锁定为主，中段加入横向预判；三段后进入涂染窗口。南北两区各选一条串场线，完成两站；第一站完成后另一线留待复演。旧街同线两站可自由安排先后。",
+      "steps": [
+        "恢复沿街设施",
+        "接通北侧舞台",
+        "化解压轴攻击后完成涂染"
+      ]
+    },
+    "briefing": {
+      "title": "星光初演 · 旧商街",
+      "rule": "攻击会给经过的街面铺上颜色。沿街恢复演出设施，走向露天剧场；靠近装卸门或展板可以互动。",
+      "goal": "恢复南街与剧场的十处演出设施，再完成露天压轴。",
+      "progression": "点亮第 3、7 盏主灯时，各选择一次本场编排。"
+    },
+    "resources": {
+      "ground": "art/map-presentation-20261018/opening-neutral.webp",
+      "colorGround": "art/map-presentation-20261018/opening-color.webp",
+      "venue": "art/chapter-venues-20261024/opening.webp"
+    }
+  },
+  {
+    "chapter": {
+      "id": "neon",
+      "ordinal": 2,
+      "name": "霓虹街口",
+      "subtitle": "试听街巷 · 声浪汇入听音广场",
+      "accent": 7853763,
+      "flipX": false,
+      "tint": 16777215,
+      "finalePatterns": [
+        "momentum-cutoff",
+        "captured-line",
+        "momentum-cutoff"
+      ],
+      "devices": [
+        {
+          "id": "neonstreet-meeting",
+          "x": 500,
+          "y": 1630,
+          "zone": 0,
+          "label": "集合点音柱",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "街角集合，声浪的第一次回应",
+          "restores": null,
+          "colorSequence": [
+            "pink"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-east-court",
+          "x": 790,
+          "y": 1470,
+          "zone": 0,
+          "label": "东侧广播",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "绕向咖啡亭的侧路",
+          "restores": null,
+          "colorSequence": [
+            "orange"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-listening",
+          "x": 225,
+          "y": 1220,
+          "zone": 0,
+          "label": "试听店门灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "恢复试听店橱窗",
+          "restores": "listening-store",
+          "colorSequence": [
+            "purple"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-cafe",
+          "x": 805,
+          "y": 1225,
+          "zone": 0,
+          "label": "咖啡亭门灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "恢复咖啡亭与街区对话",
+          "restores": "night-cafe",
+          "colorSequence": [
+            "yellow"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-crossing",
+          "x": 500,
+          "y": 1005,
+          "zone": 0,
+          "label": "街口配电",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "南街闭环后进入北侧听音区",
+          "restores": null,
+          "colorSequence": [
+            "blue"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-north-entry",
+          "x": 500,
+          "y": 850,
+          "zone": 1,
+          "label": "广场广播",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "北区入口与声部汇合",
+          "restores": null,
+          "colorSequence": [
+            "orange"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-echo-shop",
+          "x": 240,
+          "y": 535,
+          "zone": 1,
+          "label": "回声店灯箱",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "西侧听音回路",
+          "restores": "north-listening",
+          "colorSequence": [
+            "pink"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-north-cafe",
+          "x": 760,
+          "y": 545,
+          "zone": 1,
+          "label": "晚间窗口",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "东侧听音回路",
+          "restores": "north-cafe",
+          "colorSequence": [
+            "purple"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-plaza-left",
+          "x": 350,
+          "y": 285,
+          "zone": 1,
+          "label": "听音棚左灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "左声部准备",
+          "restores": "listening-pavilion",
+          "colorSequence": [
+            "blue"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "neonstreet-plaza-right",
+          "x": 650,
+          "y": 285,
+          "zone": 1,
+          "label": "听音棚右灯",
+          "kind": "light",
+          "required": true,
+          "paintMax": 52,
+          "sceneArt": "signal",
+          "scenePrefix": "neonstreet",
+          "purpose": "右声部准备",
+          "restores": "listening-pavilion",
+          "colorSequence": [
+            "yellow"
+          ],
+          "paintPolicy": "performer"
+        }
+      ]
+    },
+    "story": {
+      "title": "两边都亮着的街口",
+      "place": "霓虹街口 · 第二站",
+      "intro": [
+        [
+          "旁白",
+          "霓虹街口两侧的店面各自垂着断开的灯线。路中间的招牌仍然没有回应。"
+        ],
+        [
+          "步枪手",
+          "先试近的这家。另一边交给谁？"
+        ],
+        [
+          "机甲剑士",
+          "我走对面，路口留出来。"
+        ],
+        [
+          "重锤手",
+          "我在中间接线。哪边好了，喊一声。"
+        ]
+      ],
+      "midpoint": [
+        [
+          "旁白",
+          "两家店面都恢复了颜色，回应才沿着灯线传到路口。重锤手收起刚才没接通的插头。"
+        ],
+        [
+          "重锤手",
+          "难怪刚才不亮。少了哪边都不行。"
+        ],
+        [
+          "机甲剑士",
+          "不是谁走得快，是两边都得接上。"
+        ],
+        [
+          "步枪手",
+          "好，下次我先问一声，不闷头往前喷了。"
+        ]
+      ],
+      "outro": [
+        [
+          "旁白",
+          "最后一块招牌亮起。街口的人把一张港湾节目单夹进器材箱，约好在终场听完这首曲子。"
+        ],
+        [
+          "步枪手",
+          "带上它。别又夹在箱底找不到。"
+        ],
+        [
+          "重锤手",
+          "放音箱旁边，肯定忘不了。"
+        ],
+        [
+          "机甲剑士",
+          "港湾的风大，明天先检查支架。"
+        ]
+      ]
+    },
+    "pacing": {
+      "id": "neon",
+      "objective": "先接通两侧门灯，再涂染汇流中枢。",
+      "pressure": "霓虹截拍：声浪预告按已发生的水平移动估计去向，锁定后不追踪。追击者停步预告后定向突进；横移让路或提前击败均可处理。南区先收设施与串场，实际进入北区后接续中场压力；已有联动仍可提前打断。突进与声浪轮流出招；普通接近和可涂染的干扰仍可能同时发生。支线第二站可能有守卫：靠近会接近出招，离开会回守；可提前击败或绕回涂染，涂满站点后解除回守。街口联动：及时涂满干扰者，可取消未发出的声浪。霓虹压轴交替预判与定点锁定；末段弹路净空且距离足够时折返，预告后不追踪。南北两区各选一条串场线，完成两站；第一站完成后另一线留待复演。霓虹按前站→后站接力。",
+      "steps": [
+        "接通两侧门灯",
+        "恢复汇流中枢",
+        "停转修正弹路，完成压轴"
+      ]
+    },
+    "briefing": {
+      "title": "霓虹街口 · 试听街巷",
+      "rule": "无需逐台配色。先接通试听店与咖啡亭，街口中枢才可涂染；北侧两店接通后，广场双灯开放。房屋和隔板会挡住攻击。",
+      "goal": "点亮十盏主灯，再完成压轴演出。",
+      "progression": "点亮第 3、7 盏主灯时，各选择一次本场编排。"
+    },
+    "resources": {
+      "ground": "art/map-presentation-20261018/neon-neutral.webp",
+      "colorGround": "art/map-presentation-20261018/neon-color.webp",
+      "venue": "art/chapter-venues-20261024/neon.webp"
+    }
+  },
+  {
+    "chapter": {
+      "id": "encore",
+      "ordinal": 3,
+      "name": "终场合奏",
+      "subtitle": "港湾甲板 · 合奏点亮帆顶舞台",
+      "accent": 16763507,
+      "flipX": false,
+      "tint": 16777215,
+      "finalePatterns": [
+        "momentum-cutoff",
+        "momentum-cutoff",
+        "captured-line"
+      ],
+      "devices": [
+        {
+          "id": "harbor-meeting",
+          "x": 500,
+          "y": 1630,
+          "zone": 0,
+          "label": "码头集合灯",
+          "purpose": "港湾入口的第一次声部交接",
+          "restores": null,
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "pink",
+            "yellow"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-west-deck",
+          "x": 240,
+          "y": 1450,
+          "zone": 0,
+          "label": "栈桥侧灯",
+          "purpose": "沿甲板侧路接入准备区",
+          "restores": null,
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "blue",
+            "purple"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-shed",
+          "x": 280,
+          "y": 1250,
+          "zone": 0,
+          "label": "器材间接线",
+          "purpose": "恢复器材间",
+          "restores": "equipment-shed",
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "yellow",
+            "orange"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-control",
+          "x": 740,
+          "y": 1050,
+          "zone": 0,
+          "label": "调度亭接线",
+          "purpose": "恢复调度亭",
+          "restores": "control-cabin",
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "purple",
+            "pink"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-crossing",
+          "x": 500,
+          "y": 1005,
+          "zone": 0,
+          "label": "中段配电",
+          "purpose": "南段准备完成后进入调音区",
+          "restores": null,
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "orange",
+            "blue"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-north-entry",
+          "x": 500,
+          "y": 850,
+          "zone": 1,
+          "label": "调音区入口",
+          "purpose": "从准备区汇入双侧声部",
+          "restores": null,
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "pink",
+            "yellow"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-west-relay",
+          "x": 280,
+          "y": 690,
+          "zone": 1,
+          "label": "西侧声部",
+          "purpose": "恢复西侧调音亭",
+          "restores": "west-relay",
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "blue",
+            "purple"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-east-relay",
+          "x": 720,
+          "y": 690,
+          "zone": 1,
+          "label": "东侧声部",
+          "purpose": "恢复东侧调音亭",
+          "restores": "east-relay",
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "yellow",
+            "orange"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-stage-left",
+          "x": 350,
+          "y": 300,
+          "zone": 1,
+          "label": "帆顶左灯",
+          "purpose": "舞台左侧接力完成",
+          "restores": "sail-stage",
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "purple",
+            "pink"
+          ],
+          "paintPolicy": "performer"
+        },
+        {
+          "id": "harbor-stage-right",
+          "x": 650,
+          "y": 300,
+          "zone": 1,
+          "label": "帆顶右灯",
+          "purpose": "舞台右侧接力完成",
+          "restores": "sail-stage",
+          "kind": "light",
+          "required": true,
+          "paintMax": 26,
+          "sceneArt": "signal",
+          "scenePrefix": "harbor",
+          "colorSequence": [
+            "orange",
+            "blue"
+          ],
+          "paintPolicy": "performer"
+        }
+      ]
+    },
+    "story": {
+      "title": "收线之前",
+      "place": "港湾演出场 · 终站",
+      "intro": [
+        [
+          "旁白",
+          "甲板尽头是帆顶舞台，两侧调音亭的灯还没亮。器材箱里的三张节目单被风吹得哗哗作响。"
+        ],
+        [
+          "机甲剑士",
+          "先把两侧接好，再上台。别隔着甲板试音。"
+        ],
+        [
+          "步枪手",
+          "我去左边。节目单压住了，不会飞。"
+        ],
+        [
+          "重锤手",
+          "右边交给我。今天这只音箱终于能上舞台了。"
+        ]
+      ],
+      "midpoint": [
+        [
+          "旁白",
+          "两侧调音亭恢复了颜色，甲板尽头的舞台灯还在闪烁。三人沿着灯线望向帆顶。"
+        ],
+        [
+          "重锤手",
+          "还剩那两盏。喷好就能开场？"
+        ],
+        [
+          "机甲剑士",
+          "还得靠近校准。信号接稳以后，再上台。"
+        ],
+        [
+          "步枪手",
+          "那就慢一点。这一段，我们不抢。"
+        ]
+      ],
+      "outro": [
+        [
+          "旁白",
+          "最后的干扰散去。三张节目单并排压在音箱下，从旧商街到港湾的巡演在这一晚收尾。"
+        ],
+        [
+          "步枪手",
+          "以前有人替我留位置。这回我们把整排都留好了。"
+        ],
+        [
+          "重锤手",
+          "还不收线吗？"
+        ],
+        [
+          "机甲剑士",
+          "等一会儿。有人还在听。"
+        ],
+        [
+          "旁白",
+          "灯没有熄灭。等掌声慢下来，她们才开始收起器材。"
+        ]
+      ]
+    },
+    "pacing": {
+      "id": "encore",
+      "objective": "舞台双灯喷满后，靠近各自灯柱累计校准1秒；离开保留进度。",
+      "pressure": "甲板横穿：侧向声浪锁定当时的横排，前后换位让出通道；两侧被建筑挡住时改为普通定线。追击者从侧翼接近，停步后定向突进；横移或提前击败均可处理。南区先收设施与串场，实际进入北区后接续中场压力；已有联动仍可提前打断。突进与声浪轮流出招；普通接近和可涂染的干扰仍可能同时发生。支线第二站可能有守卫：靠近会接近出招，离开会回守；可提前击败或绕回涂染，涂满站点后解除回守。港湾落击：红圈锁定脚下后不再跟随，及时离开范围；领舞预告时涂满干扰者，可取消未落下的攻击并打开收势。港湾压轴按二维走位预判；首末段弹路净空且距离足够时折返，离开弹路后等回程通过。南北两区各选一条串场线，完成两站；第一站完成后另一线留待复演。港湾串场站涂满后也需靠近校准。",
+      "steps": [
+        "恢复甲板与调音亭",
+        "喷满双灯并近场校准",
+        "让出横排，完成终场压轴"
+      ]
+    },
+    "briefing": {
+      "title": "终场合奏 · 港湾甲板",
+      "rule": "主灯分两段蓄满，无需切换颜色。帆顶舞台双灯喷满后，还需靠近各自灯柱累计校准1秒；离开不丢进度。水边不可通行，运输栏可以收拢。",
+      "goal": "点亮十盏主灯，再完成压轴演出。",
+      "progression": "点亮第 3、7 盏主灯时，各选择一次本场编排。"
+    },
+    "resources": {
+      "ground": "art/map-presentation-20261018/encore-neutral.webp",
+      "colorGround": "art/map-presentation-20261018/encore-color.webp",
+      "venue": "art/chapter-venues-20261024/encore.webp"
+    }
+  }
+]
