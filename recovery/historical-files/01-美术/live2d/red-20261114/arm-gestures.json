@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "model": "red-cloth-combined-rig.inx",
+  "scope": "Q75 candidate, native Inochi parameters driven by browser timeline; not Cubism motion format",
+  "poseOrder": ["yaw","pitch","roll","left","right","gazeX","gazeY","mouth","form","browLift","browTilt","breath","balance","grip","raised"],
+  "gestures": {
+    "steady": {
+      "label": "提稳武器", "duration": 1.9,
+      "keys": [
+        {"time":0,"delta":{}},
+        {"time":0.22,"delta":{"grip":0.16,"balance":0.04}},
+        {"time":0.68,"delta":{"grip":-0.9,"balance":-0.15,"yaw":-2,"pitch":1,"gazeY":0.2}},
+        {"time":1.05,"delta":{"grip":-0.72,"balance":-0.12,"yaw":-2,"pitch":1,"gazeY":0.2}},
+        {"time":1.45,"delta":{"grip":-0.18,"balance":-0.04,"yaw":-0.5}},
+        {"time":1.9,"delta":{}}
+      ]
+    },
+    "respond": {
+      "label":"抬手回应", "duration":2.1,
+      "keys":[
+        {"time":0,"delta":{}},
+        {"time":0.18,"delta":{"raised":-0.18,"pitch":0.4}},
+        {"time":0.55,"delta":{"raised":1,"yaw":3,"roll":-1,"gazeX":0.2,"mouth":0.15,"form":0.7,"browLift":0.25}},
+        {"time":0.95,"delta":{"raised":0.65,"yaw":4,"roll":-1,"gazeX":0.2,"mouth":0.1,"form":0.7,"browLift":0.25}},
+        {"time":1.3,"delta":{"raised":0.8,"yaw":3,"roll":-0.7,"gazeX":0.1,"form":0.5}},
+        {"time":2.1,"delta":{}}
+      ]
+    }
+  }
+}

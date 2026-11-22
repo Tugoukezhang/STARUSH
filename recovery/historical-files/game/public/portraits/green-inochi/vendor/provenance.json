@@ -1,0 +1,23 @@
+{
+  "source": "https://github.com/shinshin86/aituber-onair/tree/main/packages/core/examples/react-inochi2d-app/public/inochi2d",
+  "scope": "Q69 isolated mesh workbench runtime; not shipped in game, no sample character included",
+  "format": "Rust Inox2D via wasm-bindgen; not Cubism",
+  "files": [
+    {
+      "name": "LICENSE",
+      "sha256": "53ee955400d2e821a4f15f14ae596f55a8fe1a2e147b31845b97ad7f8995516f"
+    },
+    {
+      "name": "THIRD-PARTY-NOTICES.md",
+      "sha256": "1b8234450ab6b18b32e2339680b53eb8f1ed31f67091d61de6461fc892553025"
+    },
+    {
+      "name": "inochi2d.js",
+      "sha256": "3a2704909ef20622c75fbcb17641f05b95e44b3650d7809c0f64196d617b3af8"
+    },
+    {
+      "name": "inochi2d_bg.wasm",
+      "sha256": "494e639776179c41354f950c3b941a20dfd93db5ac8833a3de887ac2033626ea"
+    }
+  ]
+}

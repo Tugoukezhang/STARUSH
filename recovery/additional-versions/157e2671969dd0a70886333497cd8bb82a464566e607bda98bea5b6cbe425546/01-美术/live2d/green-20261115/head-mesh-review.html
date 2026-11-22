@@ -1,0 +1,24 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>绿发头部网格 · Q79 制作中</title>
+<style>body{margin:0;background:#171e29;color:#f5eee6;font:15px system-ui}main{display:grid;grid-template-columns:minmax(300px,1fr) 320px;max-width:1400px;margin:auto}#stage{position:relative;height:85vh;min-height:430px;background:#e9e3dc}canvas{width:100%;height:100%;display:block}aside{padding:20px}h1{font-size:22px}p{line-height:1.6}label{display:block;margin:22px 0}input{width:100%;accent-color:#ff7a45}button{padding:12px;margin:5px;border:1px solid #8694a3;border-radius:8px;background:#29394c;color:white;font:inherit}output{float:right;font-variant-numeric:tabular-nums}#status{font-size:13px}small{color:#c7c2bf}@media(max-width:650px){main{display:block}#stage{height:58vh}aside{padding:16px}}</style>
+<main><div id="stage"><canvas id="model"></canvas></div><aside><h1>绿发 · 头部网格</h1><p>Q79 头脸参数 / Inochi2D 原生网格<br><small>非 Cubism 模型；<span id="head-acceptance">读取验收状态…</span>无眨眼、物理或游戏接入声明。</small></p><label>左右转向 <output id="yawValue">0°</output><input id="yaw" aria-label="左右转向" type="range" min="-12" max="12" step="0.1" value="0"></label><label>俯仰 <output id="pitchValue">0°</output><input id="pitch" aria-label="俯仰" type="range" min="-8" max="8" step="0.1" value="0"></label><label>倾斜 <output id="rollValue">0°</output><input id="roll" aria-label="倾斜" type="range" min="-4" max="4" step="0.1" value="0"></label><button id="reset">复位</button><button id="zoom">头部特写</button><button id="reload">重载模型</button><p id="status" role="status">正在读取原生模型…</p><a href="green-head-mesh.inx" download style="color:#ffb694">下载可编辑 INX</a></aside></main>
+<script type="module">
+import init,{Inochi2dRuntime} from '../vendor/inox2d/inochi2d.js';
+const canvas=document.querySelector('canvas'),stage=document.querySelector('#stage'),status=document.querySelector('#status');
+let runtime,bytes,closeup=false,disposed=false,gl,design,draws=0;
+const sliders=['yaw','pitch','roll'].map(id=>document.getElementById(id));
+function render(){if(runtime&&!disposed){runtime.tick(0);draws++;}}
+function resize(){if(!runtime||disposed)return;const {width,height}=stage.getBoundingClientRect(),dpr=Math.min(devicePixelRatio,2);runtime.resize(width,height,dpr);runtime.set_camera_transform(closeup?8:0,closeup?464:0,closeup?Math.min(width/350,height/350):Math.min(width/1100,height/1500));render();}
+function pose(yaw,pitch,roll){const v=[yaw,pitch,roll];sliders.forEach((s,i)=>{s.value=v[i];document.getElementById(s.id+'Value').value=v[i]+'°'});runtime.set_parameter_vec2('Head:: Yaw-Pitch',yaw,pitch);runtime.set_parameter_scalar('Head:: Roll',roll);render();status.textContent=`${design.layers.length} 个纹理层 / ${design.layers.filter(l=>l.deformed).length} 个头部网格 · ${yaw} / ${pitch} / ${roll}`;}
+try{
+ gl=canvas.getContext('webgl2');if(!gl)throw Error('此设备未提供 WebGL2');
+ // Match the isolated, tested desktop-GL border fallback; never patch another canvas/context.
+ const parameter=gl.texParameteri.bind(gl);gl.texParameteri=(t,n,v)=>parameter(t,n,v===0x812d?gl.CLAMP_TO_EDGE:v);
+ await init({module_or_path:'../vendor/inox2d/inochi2d_bg.wasm'});runtime=new Inochi2dRuntime(canvas);bytes=new Uint8Array(await(await fetch('green-head-mesh.inx')).arrayBuffer());design=await(await fetch('head-mesh-design.json')).json();document.querySelector('#head-acceptance').textContent=design.headXYZAccepted?'已通过 yaw±12 / pitch±8 / roll±4 限定验收。':'转向未验收。';runtime.load_model(bytes);resize();pose(0,0,0);
+ sliders.forEach(s=>s.addEventListener('input',()=>pose(...sliders.map(s=>+s.value))));
+ document.querySelector('#reset').onclick=()=>pose(0,0,0);document.querySelector('#zoom').onclick=()=>{closeup=!closeup;document.querySelector('#zoom').textContent=closeup?'全身':'头部特写';resize();};
+ document.querySelector('#reload').onclick=()=>{runtime.clear();runtime.load_model(bytes);resize();pose(0,0,0)};
+ const observer=new ResizeObserver(resize);observer.observe(stage);
+ addEventListener('pagehide',()=>{observer.disconnect();runtime.clear();runtime.free();disposed=true},{once:true});
+ window.meshReview={pose,resize,captureNative(){runtime.resize(1086,1448,1);runtime.set_camera_transform(0,0,1);render();const result=canvas.toDataURL();resize();return result},snapshot:()=>runtime.get_frame_snapshot_summary(),draws:()=>draws,profile:()=>runtime.get_runtime_profile_summary(),pixels(){render();const p=new Uint8Array(canvas.width*canvas.height*4);gl.readPixels(0,0,canvas.width,canvas.height,gl.RGBA,gl.UNSIGNED_BYTE,p);return Array.from(p)}};window.ready=true;
+}catch(e){status.textContent='模型载入失败：'+e.message;window.failure=String(e);console.error(e)}
+</script></html>

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "origin": "STARUSH original Q81-Q83 finite movements; local native mesh parameters",
+  "actions": {
+    "chime": {"duration": 1.8, "tracks": {
+      "moon":{"wave":"pulse","target":0.8,"delay":0},
+      "tilt":{"wave":"tilt","target":0.7,"delay":0},
+      "upperNote":{"wave":"pulse","target":0.8,"delay":0.08},
+      "nearNote":{"wave":"pulse","target":-0.65,"delay":0.16},
+      "arc":{"wave":"pulse","target":0.8,"delay":0.24},
+      "rs":{"wave":"pulse","target":-0.8,"delay":0},
+      "re":{"wave":"pulse","target":0.8,"delay":0},
+      "rw":{"wave":"pulse","target":1.2,"delay":0}
+    }},
+    "gesture": {"duration":2,"tracks":{
+      "ls":{"wave":"pulse","target":1.6,"delay":0},"le":{"wave":"pulse","target":-2.2,"delay":0},
+      "lw":{"wave":"pulse","target":2,"delay":0},"rs":{"wave":"pulse","target":-1.5,"delay":0},
+      "re":{"wave":"pulse","target":2,"delay":0},"rw":{"wave":"pulse","target":-2,"delay":0},
+      "sway":{"wave":"pulse","target":0.35,"delay":0}
+    }},
+    "breathe":{"duration":6,"tracks":{"breath":{"wave":"breath","target":1,"delay":0}}},
+    "blink":{"duration":0.42,"tracks":{"left":{"wave":"pulse","target":1,"delay":0},"right":{"wave":"pulse","target":1,"delay":0}}},
+    "smile":{"duration":0.8,"tracks":{"smile":{"wave":"pulse","target":1,"delay":0},"close":{"wave":"pulse","target":0.45,"delay":0}}}
+  }
+}

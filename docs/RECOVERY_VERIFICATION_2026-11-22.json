@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-22",
+  "baseline": "a556aeb8eb2ae989d6432742f736c23a4b8263b9",
+  "archive": {
+    "files": 305,
+    "bytes": 11521435,
+    "missing_or_changed": 0
+  },
+  "build": {
+    "passed": true,
+    "chapters": 5,
+    "large_bundle_warning": true,
+    "artAccepted": false,
+    "contentComplete": false
+  },
+  "tests": {
+    "passed": 42,
+    "failed": 0,
+    "files": [
+      "publicSaveBundle.test.mjs",
+      "publicProfileSingleWriter.test.mjs",
+      "ownerStartupSettingsRecovery.test.mjs",
+      "p15PublicDemoRuntimeContract.test.mjs",
+      "chapterContentBuildGuard.test.mjs"
+    ]
+  },
+  "browser": {
+    "viewport": "390x844",
+    "errors": [],
+    "failedRequests": [],
+    "steps": [
+      "home",
+      "settings keyboard focus and close",
+      "member preview kai",
+      "member preview enjo",
+      "member preview sakura",
+      "chapter and preparation",
+      "normal battle entry and briefing",
+      "movement",
+      "automatic shooting",
+      "public mode keeps member color",
+      "member action",
+      "pause and resume"
+    ],
+    "before": {
+      "x": 500,
+      "y": 1708,
+      "color": "pink",
+      "form": "attack",
+      "bullets": 0,
+      "member": "sakura",
+      "paused": false
+    },
+    "after": {
+      "x": 674.9999999999985,
+      "y": 1708,
+      "color": "pink",
+      "form": "attack",
+      "bullets": 1,
+      "member": "sakura",
+      "paused": false
+    },
+    "maxBullets": 1,
+    "pass": true
+  },
+  "limitations": [
+    "B306 baseline only, not the complete later working tree.",
+    "No recovered native/runtime character model acceptance.",
+    "Short first-chapter smoke, not full campaign or long-session acceptance.",
+    "Browser observation uses a temporary read-only game accessor; no profile, unlock, scene or health injection."
+  ]
+}

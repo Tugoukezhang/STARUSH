@@ -1,0 +1,3070 @@
+{
+  "format": 1,
+  "captured_date": "2026-11-22",
+  "baseline_commit": "a556aeb8eb2ae989d6432742f736c23a4b8263b9",
+  "warning": "Historical candidates from different dates, not the final working tree. No restored-model or module acceptance is implied.",
+  "files": [
+    {
+      "path": "recovery/historical-files/01-美术/live2d/blue-white-20261115/build-source.py",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/build-source.py",
+      "sha256": "7eddfc62b874793362680065e1389f8ac098b27aa08b94dc53d7a52c3848a048",
+      "bytes": 21545,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/blue-white-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/export-source.py",
+      "sha256": "d8b1325c793421cdd6b8e554dc8776510b3aa54bfb9e1a0575169c74929fcd30",
+      "bytes": 3747,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/blue-white-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/source-review.html",
+      "sha256": "edf799768710b19b0fed9fbbe14a2d2c21b18163149eef8eba7abb8332443e4e",
+      "bytes": 5396,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/blue-white-20261115/source-review.mjs",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/source-review.mjs",
+      "sha256": "8b60006cfe030173908365c7c9cbc3fc0204e06d6f6152412d33888fcdba5a72",
+      "bytes": 9692,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-body-rig.py",
+      "original_project_path": "01-美术/live2d/build-body-rig.py",
+      "sha256": "a4643c3690e3c998be48913fa4aa4f812517901ccf181d5b7d0eb392d62dcb57",
+      "bytes": 3907,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-cloth-combined-rig.py",
+      "original_project_path": "01-美术/live2d/build-cloth-combined-rig.py",
+      "sha256": "d6f047978ded6c19d97dc7d25d8c8e639cb3bd182af755254e8b38e203372b9c",
+      "bytes": 2525,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-eye-rig.py",
+      "original_project_path": "01-美术/live2d/build-eye-rig.py",
+      "sha256": "e752f48835ee4b78a20d99b766c45242e0336115dfc9b69b4d926086c713a249",
+      "bytes": 5872,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-eye-source.py",
+      "original_project_path": "01-美术/live2d/build-eye-source.py",
+      "sha256": "39b7b61e5b9f05ef3fc1c99144d628e9df16111da75291a7decde20804bab303",
+      "bytes": 5886,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-hair-crossing-rig.py",
+      "original_project_path": "01-美术/live2d/build-hair-crossing-rig.py",
+      "sha256": "be4a32931cda11f8310ffd8532736a1c8722db418278aa02d0064c8cc753803b",
+      "bytes": 4730,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-hair-crossing-source.py",
+      "original_project_path": "01-美术/live2d/build-hair-crossing-source.py",
+      "sha256": "d445cf23aa608535be8e9dd94b3eb8e65b363669e40f7293c59d4a32f5deca35",
+      "bytes": 5473,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-hair-rig.py",
+      "original_project_path": "01-美术/live2d/build-hair-rig.py",
+      "sha256": "2ce11fdd484fb86f68df78b6011e54835eadfb87a045598dfb8bc101504ce06c",
+      "bytes": 2920,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-hair-source.py",
+      "original_project_path": "01-美术/live2d/build-hair-source.py",
+      "sha256": "3a46070cf10943aa1326bb62e5f229872797c6ae78169ec1bb86121119e0087c",
+      "bytes": 4594,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-hair-split-rig.py",
+      "original_project_path": "01-美术/live2d/build-hair-split-rig.py",
+      "sha256": "650dd1809a0a06917b59ea309648597b715a5694728b549c95d95951c68aed4a",
+      "bytes": 4732,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/build-head-mesh.py",
+      "sha256": "145cb3ceac8ff9f318542804e9eaf865768662f1bc05027a09eaceaf91a2f8a9",
+      "bytes": 6771,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/build-mouth-source.py",
+      "original_project_path": "01-美术/live2d/build-mouth-source.py",
+      "sha256": "efd0ca969c80c02c7eebfae7cefc545af1b218e835a25bf8250ac129206a6128",
+      "bytes": 4191,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/export-layer-pngs.py",
+      "original_project_path": "01-美术/live2d/export-layer-pngs.py",
+      "sha256": "063f6d801858ca34519e85186cce0195f008977e59e848fb09ceb8eb3203d7d6",
+      "bytes": 4032,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/export-layer-source.mjs",
+      "original_project_path": "01-美术/live2d/export-layer-source.mjs",
+      "sha256": "1bcdf1573c3064de4047b103351a0dd4df955c4923978a44e7573da080ca1544",
+      "bytes": 3263,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/README.md",
+      "sha256": "b54672d6c8ae0428a59efdc8881dd4c20cf93fa458e57c79d01568214d8065e4",
+      "bytes": 2997,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/body/build-body-rig.py",
+      "original_project_path": "01-美术/live2d/green-20261115/body/build-body-rig.py",
+      "sha256": "dadfdd46016c74359267740d00a9628173a7260bebff139318334a83a7fbca8f",
+      "bytes": 6880,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "927e0bb616ed0edf8160776c3c30781995061f8b68dc1203eec4ca99c66bd495",
+      "bytes": 3238,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/README.md",
+      "sha256": "54fc6f2356b3e5644a497d4df25c9191032618ac64cc28343633de676e340684",
+      "bytes": 764,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/build-closure-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/build-closure-source.py",
+      "sha256": "0f8315e70fb83828d81482d1ceb809f50eb7cd6dfd0e954aaa71c468b7b4ef0d",
+      "bytes": 3137,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/build-eye-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/build-eye-source.py",
+      "sha256": "765c832bacb7bb0762e15b79b5203670cc9927027f9bd6ba84cbfc829f62a9fd",
+      "bytes": 6259,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/build-mouth-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/build-mouth-source.py",
+      "sha256": "7c2aff3a9ad20a0f60bb382cececa3462dace5f212404a92c39c885d288d7d8d",
+      "bytes": 4962,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/closure/expression-rig-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/closure/expression-rig-review.html",
+      "sha256": "1e8c45696e31dfb6b0a01231635267a38af2c90760ef5e956de5b50d795d19cc",
+      "bytes": 6424,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/expression-rig-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/expression-rig-review.html",
+      "sha256": "b3696f89c34615d32233f96b1cb98dcb7111a9cb3791f235eac4e716a0debdb4",
+      "bytes": 6312,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/expression/eye-source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/eye-source-review.html",
+      "sha256": "e243863d2f2be9dc985667d8461a1a35fa88349310be1786b7288a77ed57dbf4",
+      "bytes": 2408,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/ornaments/build-ornament-rig.py",
+      "original_project_path": "01-美术/live2d/green-20261115/ornaments/build-ornament-rig.py",
+      "sha256": "096da66ed8f1186668353e0f523158f33818999a65489c47cec9d0555c33bd6c",
+      "bytes": 3866,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/physics/build-physics-rig.py",
+      "original_project_path": "01-美术/live2d/green-20261115/physics/build-physics-rig.py",
+      "sha256": "5395d375d53d224ec4f3ccbd3b365a6a39d2f25ddc54a141c227eec6d2c0a51e",
+      "bytes": 4781,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/physics/green-spring.mjs",
+      "original_project_path": "01-美术/live2d/green-20261115/physics/green-spring.mjs",
+      "sha256": "0dc39e5fbe48ba4ad458f53781a0f0329a8bbb67618b89c401a8684678e985fd",
+      "bytes": 1846,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/README.md",
+      "sha256": "32672ef37c66d6ef2cb5c14420941020788aa876cebda5e80d78d78c6abf2782",
+      "bytes": 3127,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/actions.json",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/actions.json",
+      "sha256": "0b02702566992d26534ef26e76ac2ee068a6120bdfd5d77779508ecc6a736ff2",
+      "bytes": 1368,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/actions.mjs",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/actions.mjs",
+      "sha256": "f724697d0be80d8d22ba9266028c9f64c48d1b8555d243dcc548d4a5bcf6960a",
+      "bytes": 3603,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/avatar.mjs",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/avatar.mjs",
+      "sha256": "cf7241636f997005685406a844dfb1432b6e5e377ac919f4df78c263e4186a9d",
+      "bytes": 6118,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/green-spring.mjs",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/green-spring.mjs",
+      "sha256": "0dc39e5fbe48ba4ad458f53781a0f0329a8bbb67618b89c401a8684678e985fd",
+      "bytes": 1846,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/index.html",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/index.html",
+      "sha256": "b50ed3c56feea2d7ff43ec760c8d8657f98ab2a01a89483b88564f135660e93b",
+      "bytes": 3371,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/pose.mjs",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/pose.mjs",
+      "sha256": "24e45a12aa1f932d3f9847c4b21e3af1993130c7b54ed7b1d3187226b78f0d97",
+      "bytes": 1860,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/vendor/LICENSE",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/vendor/LICENSE",
+      "sha256": "53ee955400d2e821a4f15f14ae596f55a8fe1a2e147b31845b97ad7f8995516f",
+      "bytes": 1068,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "sha256": "1b8234450ab6b18b32e2339680b53eb8f1ed31f67091d61de6461fc892553025",
+      "bytes": 4067,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/vendor/inochi2d.js",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/vendor/inochi2d.js",
+      "sha256": "3a2704909ef20622c75fbcb17641f05b95e44b3650d7809c0f64196d617b3af8",
+      "bytes": 44289,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/vendor/inochi2d_bg.wasm",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/vendor/inochi2d_bg.wasm",
+      "sha256": "494e639776179c41354f950c3b941a20dfd93db5ac8833a3de887ac2033626ea",
+      "bytes": 911722,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/runtime-inochi/vendor/provenance.json",
+      "original_project_path": "01-美术/live2d/green-20261115/runtime-inochi/vendor/provenance.json",
+      "sha256": "98bcb3f1b86a1c25c05185325ee4d1f87285676b20a43a220ea5ce2c3403d882",
+      "bytes": 816,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "a525f8eb7f3f6c24930b9142727b51419d87ec947aae1886d0c7ab3a0b791c41",
+      "bytes": 4477,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/README.md",
+      "sha256": "c71cbdfb65930ea78c8b98a1eeb1f0b8f9e5cd90c1a307f02181a4a1d5d32bda",
+      "bytes": 4376,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/arm-gesture-player.mjs",
+      "original_project_path": "01-美术/live2d/red-20261114/arm-gesture-player.mjs",
+      "sha256": "e3bcfd8b57f5512744e35879f1215bea0fefea4efbd89673180ab23117f0674d",
+      "bytes": 2038,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/arm-gestures.json",
+      "original_project_path": "01-美术/live2d/red-20261114/arm-gestures.json",
+      "sha256": "ccdbc917fdee3c8aa1ade6b0d3af4faa95659c509a0389464c0b138961613fa7",
+      "bytes": 1339,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/export-lossless-inp.py",
+      "original_project_path": "01-美术/live2d/red-20261114/export-lossless-inp.py",
+      "sha256": "d9acb5d9c4a2c0e30f4ce531a437a46be04e050e2664d2457fbaa79738b73617",
+      "bytes": 2069,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/hair-crossing-inspect.html",
+      "original_project_path": "01-美术/live2d/red-20261114/hair-crossing-inspect.html",
+      "sha256": "01fae99db16de47f5d16b2195928af09f54c08254e64eaf4545ecf02f544aac2",
+      "bytes": 764,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/hair-crossing-review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/hair-crossing-review.html",
+      "sha256": "0727340f3c8384e46abdcf9b82d232e4db3f96c6b17125ae558df78745d90b09",
+      "bytes": 2491,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/hair-source-review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/hair-source-review.html",
+      "sha256": "8549c8d396ecc184d0c3757ca715a826973f86b33cb471d264adafcc70ea204e",
+      "bytes": 2875,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/hair-split-review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/hair-split-review.html",
+      "sha256": "7e2b8919f3d29235c313642691d19b2d4ecd1587eb53523cba18f0274cf81a69",
+      "bytes": 2488,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/hair-split-spring.mjs",
+      "original_project_path": "01-美术/live2d/red-20261114/hair-split-spring.mjs",
+      "sha256": "f1cf2af7ff255fc422f8eaaf945f545d1fab160f5e03a0f9efc4d3bf92f30fb4",
+      "bytes": 1402,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/hair-spring.mjs",
+      "original_project_path": "01-美术/live2d/red-20261114/hair-spring.mjs",
+      "sha256": "9a566265d03d2e3c4e6f59207b01fafd3ff9b79f1aa26b180ed81f819652df55",
+      "bytes": 1373,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/head-mesh-review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/head-mesh-review.html",
+      "sha256": "f98646ad610ae3bdab44e2c26270d72695bf8b5ff9c53b6604e34996de25794a",
+      "bytes": 4814,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/mouth-source-review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/mouth-source-review.html",
+      "sha256": "a1fba90c9b3e251172e78ba0d623cbd4fe3224e1d3101197b10f1bed164b1bbf",
+      "bytes": 2867,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/provenance.json",
+      "original_project_path": "01-美术/live2d/red-20261114/provenance.json",
+      "sha256": "c41a4e3d6d6ad98c7b43b3c536c12b20fd1701aa40ef9a2f3e4343e3a0c66aaa",
+      "bytes": 818,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "d2257fb71807a92264f011a97a8b8541197831fd52290a417cbf239d3c938f97",
+      "bytes": 8574,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/README.md",
+      "sha256": "abbbd5eb92aebf9cb29463db2873453de0386b9400d50788cb8251f819c7e178",
+      "bytes": 1946,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/arm-gesture-player.mjs",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/arm-gesture-player.mjs",
+      "sha256": "e3bcfd8b57f5512744e35879f1215bea0fefea4efbd89673180ab23117f0674d",
+      "bytes": 2038,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/arm-gestures.json",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/arm-gestures.json",
+      "sha256": "ccdbc917fdee3c8aa1ade6b0d3af4faa95659c509a0389464c0b138961613fa7",
+      "bytes": 1339,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/avatar.mjs",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/avatar.mjs",
+      "sha256": "0fc7df2bac4f773c146045318905a64063d4592c88a41e48a693d644399d8a6a",
+      "bytes": 5088,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/hair-split-spring.mjs",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/hair-split-spring.mjs",
+      "sha256": "f1cf2af7ff255fc422f8eaaf945f545d1fab160f5e03a0f9efc4d3bf92f30fb4",
+      "bytes": 1402,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/index.html",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/index.html",
+      "sha256": "c067ce7b2e5d723af8e39398fa733dfd1aba6180032da9970a6ac1cb8cb5c807",
+      "bytes": 3238,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/model-info.json",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/model-info.json",
+      "sha256": "6f1225c7534933d24fa02972dc1e9b6aa33ebe90776648b0198eca5f47c7e0f8",
+      "bytes": 214,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/vendor/LICENSE",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/vendor/LICENSE",
+      "sha256": "53ee955400d2e821a4f15f14ae596f55a8fe1a2e147b31845b97ad7f8995516f",
+      "bytes": 1068,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "sha256": "1b8234450ab6b18b32e2339680b53eb8f1ed31f67091d61de6461fc892553025",
+      "bytes": 4067,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/vendor/inochi2d.js",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/vendor/inochi2d.js",
+      "sha256": "3a2704909ef20622c75fbcb17641f05b95e44b3650d7809c0f64196d617b3af8",
+      "bytes": 44289,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/vendor/inochi2d_bg.wasm",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/vendor/inochi2d_bg.wasm",
+      "sha256": "494e639776179c41354f950c3b941a20dfd93db5ac8833a3de887ac2033626ea",
+      "bytes": 911722,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/red-20261114/runtime-inochi/vendor/provenance.json",
+      "original_project_path": "01-美术/live2d/red-20261114/runtime-inochi/vendor/provenance.json",
+      "sha256": "98bcb3f1b86a1c25c05185325ee4d1f87285676b20a43a220ea5ce2c3403d882",
+      "bytes": 816,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "2ffa332520b18e20ed4df7757ca3211c998bcded23dc04d5dbcaca4e20c80cca",
+      "bytes": 6828,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/PROJECT_INSTRUCTIONS.historical.txt",
+      "original_project_path": "AGENTS.md",
+      "sha256": "d4ea3741f769317a3294f2bbb7d54566141264ef06a41e66c1f273d0867ea432",
+      "bytes": 4179,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/ART_REFERENCE_REGISTER_2026-11-14.md",
+      "original_project_path": "docs/ART_REFERENCE_REGISTER_2026-11-14.md",
+      "sha256": "6e87e9dc84b590a88343326ff755279b3c75a5ba7656a76c6e9182b6ac6fbcb8",
+      "bytes": 13988,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ACTION_COUNTERPLAY_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_ACTION_COUNTERPLAY_2026-11-06.md",
+      "sha256": "b21bfd8c0b33c71e628c8f3146ef9b28936e0a98a6918c9c6651da18b9f04f3f",
+      "bytes": 1342,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_COMBAT_CALIBRATION_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_COMBAT_CALIBRATION_2026-11-06.md",
+      "sha256": "522d57e2c0d716e7d91a1d8c8d1a72e9696bf0cd2cdcbe465c44c9d9d4783343",
+      "bytes": 5634,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_CONTINUOUS_PIGMENT_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_CONTINUOUS_PIGMENT_2026-11-06.md",
+      "sha256": "556f928d67369d8ee1e5b9874246fa79d33a01af5c1cb7f82d18dc10bc9eb01c",
+      "bytes": 1336,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ECHO_BODY_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_ECHO_BODY_2026-11-13.md",
+      "sha256": "c82c4af62cb49e8cb6e39b63919c3d6afc1d00a22167a7e1519d5e2e116745fe",
+      "bytes": 2903,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ECHO_FINALE_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_ECHO_FINALE_2026-11-13.md",
+      "sha256": "703c8d477de877956c7a01866b98ec235406319bf3e978ee3621e9f2c6f44718",
+      "bytes": 953,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ECHO_INTEGRATION_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_ECHO_INTEGRATION_2026-11-13.md",
+      "sha256": "bb02b9b858073555e1cd34b40bb4095158aff8f238a3dfe45442e0681c0b079b",
+      "bytes": 1319,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ECHO_OPENING_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_ECHO_OPENING_2026-11-13.md",
+      "sha256": "678b99f9c252c31e330245a540e1a27816e26e9fec4858c0faace9658e90c994",
+      "bytes": 3357,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ENEMY_CADENCE_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_ENEMY_CADENCE_2026-11-06.md",
+      "sha256": "989aa0dd066ce446d89ad24e799f0232c5ca192d064d15422a3f5e1acebe4ad7",
+      "bytes": 1299,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_FACILITY_ENEMY_ART_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_FACILITY_ENEMY_ART_2026-11-06.md",
+      "sha256": "4411b5063173c1628be9d683dae2f21715f1d9c83eba589ac102d24f17f98135",
+      "bytes": 4150,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_FAILURE_RECOVERY_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_FAILURE_RECOVERY_2026-11-06.md",
+      "sha256": "d3eaa720d4521c7a5430d52c7a9418fedcece06b832a4192574eeb651f121d8c",
+      "bytes": 1572,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_GROWTH_REWARD_CALIBRATION_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_GROWTH_REWARD_CALIBRATION_2026-11-06.md",
+      "sha256": "d9c33ee104229615450c2ce5e7d5c37165be4fbe7ef3a044dae01f01fb59707e",
+      "bytes": 1203,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_HARBOR_SCENE_POLISH_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_HARBOR_SCENE_POLISH_2026-11-06.md",
+      "sha256": "cdb70aec8637dc6e2d3fc5fd7371edf611dc14a1af06ce15357b6dc68acc745b",
+      "bytes": 1320,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_HOMECOMING_SCENE_POLISH_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_HOMECOMING_SCENE_POLISH_2026-11-06.md",
+      "sha256": "a44a4d3a6f29b59f8292bac8805086884d6c271062a9e10a990c579748de42ad",
+      "bytes": 1139,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_INTERFACE_MOTION_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_INTERFACE_MOTION_2026-11-06.md",
+      "sha256": "2c6adcc5a46d00a0fa1e36bc9694d63c79280463eec6bd86e98699d0a9b7ff23",
+      "bytes": 3847,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_MAP_CAMERA_AUDIT_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_MAP_CAMERA_AUDIT_2026-11-06.md",
+      "sha256": "456a674931d40952d9c8d5edd77c5179243173ed8cdc314cb9b4d926301f3a63",
+      "bytes": 4149,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_NEON_SCENE_POLISH_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_NEON_SCENE_POLISH_2026-11-06.md",
+      "sha256": "5e4fd9a54696c25151aed6f9ae600119c97e3a804a902893ecdcb9d32dbec3be",
+      "bytes": 1449,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_NIGHTLINE_SCENE_POLISH_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_NIGHTLINE_SCENE_POLISH_2026-11-06.md",
+      "sha256": "3f8e8103cbcc090b0fe1274e2f07943d45d9737ea73fcf55592ad4780b379a57",
+      "bytes": 4740,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_OPENING_SCENE_POLISH_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_OPENING_SCENE_POLISH_2026-11-06.md",
+      "sha256": "f369fe35baa00ff7b4aafe5905058bfd2660dda9acc8dc4f789d342e1aafc7db",
+      "bytes": 3280,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_PIGMENT_IMPACT_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_PIGMENT_IMPACT_2026-11-06.md",
+      "sha256": "7e93ab446cd08b60cb1edcbc4c4503cc85aa5c5bc0a06c936cc8fb5f00afb360",
+      "bytes": 906,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_PRISM_BODY_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_PRISM_BODY_2026-11-13.md",
+      "sha256": "a841d6f3a0aba0438a1631609c722ec1560122e94fed82ec13563c093122c111",
+      "bytes": 3005,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_PRISM_FINALE_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_PRISM_FINALE_2026-11-13.md",
+      "sha256": "bb4773ee45396403296f450b3e7c148629f9515a59e570ed17623fb56eeedeeb",
+      "bytes": 3165,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_PRISM_INTEGRATION_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_PRISM_INTEGRATION_2026-11-13.md",
+      "sha256": "ea797bb57d1ac7b44722864c54883bd5d2c7e0add924d6a2698612cb816afb4d",
+      "bytes": 3322,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_PRISM_OPENING_2026-11-13.md",
+      "original_project_path": "docs/CLOUD_PRISM_OPENING_2026-11-13.md",
+      "sha256": "6a38f0777ae9e36a8699ca31c4739b5bcc27b795df901975d60ebe33896e3eab",
+      "bytes": 3970,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q68_SLEEVE_BROW_DELIVERY_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q68_SLEEVE_BROW_DELIVERY_2026-11-14.md",
+      "sha256": "fa8a5fa7f497320c5a94e325accd7f8f2597aef2836939a6b3f641ec2f3ca1f7",
+      "bytes": 3025,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q69_HEAD_MESH_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q69_HEAD_MESH_2026-11-14.md",
+      "sha256": "efca8510cd64191b1b3bd27b89320cc49683fc85dc617e36b3fd06c2b61e9ef0",
+      "bytes": 4679,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q70_EYE_RIG_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q70_EYE_RIG_2026-11-14.md",
+      "sha256": "e213ad934745ea7dcf7616caf068a16d7bc426641fd411f325166c985b807e6c",
+      "bytes": 4782,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q70_EYE_SOURCE_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q70_EYE_SOURCE_2026-11-14.md",
+      "sha256": "a9a1fe6a2f33b24bb6f37fd057399672245e5e949fffeef29ca2e0bdd73ae0c5",
+      "bytes": 3520,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q71_MOUTH_EXPRESSIONS_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q71_MOUTH_EXPRESSIONS_2026-11-14.md",
+      "sha256": "5cdcd842f9557ae20e254389a0b5dfe6ac74ccffb6d4f16ffba6944fc1da90d4",
+      "bytes": 5751,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q72_BODY_BREATH_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q72_BODY_BREATH_2026-11-14.md",
+      "sha256": "1861d39a40c1ab4d3132b9e4602306786bfd8bd058b4a3930c407e541c90fffc",
+      "bytes": 2979,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q73_HAIR_PHYSICS_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q73_HAIR_PHYSICS_2026-11-14.md",
+      "sha256": "623578b26f38dbb0104e1c97e58586b1b9b85852d326c4f2daa7236ba0834ccf",
+      "bytes": 1483,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q74_CLOTH_PHYSICS_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q74_CLOTH_PHYSICS_2026-11-14.md",
+      "sha256": "22df8dba8430047862a74796dc8e61d9d0b4f0f4c14562cb92cbd8ca2f519448",
+      "bytes": 1150,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q75_ARM_RESPONSE_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q75_ARM_RESPONSE_2026-11-14.md",
+      "sha256": "02828a3158c768acd870d7f7a02f63747f3f3c25f816c35f47d09a98a033f2af",
+      "bytes": 1258,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q76_RUNTIME_EXPORT_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q76_RUNTIME_EXPORT_2026-11-14.md",
+      "sha256": "673e4c578ba54df70cfa8ae91e358f0e3c2fbb2f1bcef5761fea871476eacff1",
+      "bytes": 1378,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q77_HOME_INTEGRATION_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q77_HOME_INTEGRATION_2026-11-14.md",
+      "sha256": "af09867bb91743b47fd30a00fae24e799304582702c96fb2b1295a1080c8745c",
+      "bytes": 4581,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q78_GREEN_LAYER_SOURCE_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q78_GREEN_LAYER_SOURCE_2026-11-14.md",
+      "sha256": "6d689877a3bd639d91ab8ce9c4f711c925588ac1dd3777f9c090ae8b9364ad8c",
+      "bytes": 24257,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q79_GREEN_HEAD_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q79_GREEN_HEAD_2026-11-15.md",
+      "sha256": "06d69065af031543427f5bcfbf619fcde3cfac683957b132971f1e0d986237b7",
+      "bytes": 809,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q80_GREEN_EXPRESSION_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q80_GREEN_EXPRESSION_2026-11-15.md",
+      "sha256": "12d88da3036c422b3c7ae84e288fd36f5c3a83bb24f221efb090294b55d535cb",
+      "bytes": 738,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q82_GREEN_HAIR_CLOTH_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q82_GREEN_HAIR_CLOTH_2026-11-15.md",
+      "sha256": "2518b978624983ecfb5a85ef7e6000641723d14d9e7c1faca3476a910ab9e40d",
+      "bytes": 1108,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q83_GREEN_MOON_NOTES_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q83_GREEN_MOON_NOTES_2026-11-15.md",
+      "sha256": "24b0d1a25c8495441e58f2be23fc3e59a28378edf6879d8521d449161d3decc5",
+      "bytes": 2834,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q84_GREEN_RUNTIME_ACTIONS_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q84_GREEN_RUNTIME_ACTIONS_2026-11-15.md",
+      "sha256": "09a2f4af8d1e1ff3d37491fc8a56aef82a9b29a3be12af7b605c5916364774c7",
+      "bytes": 2656,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q85_GREEN_CHARACTER_INTEGRATION_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q85_GREEN_CHARACTER_INTEGRATION_2026-11-15.md",
+      "sha256": "4a310563e58fbbf917bd7449a2072c94044f7271d78ce0dc3a5807cc70df1d61",
+      "bytes": 745,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_Q86_BLUE_WHITE_LAYER_SOURCE_2026-11-15.md",
+      "original_project_path": "docs/CLOUD_Q86_BLUE_WHITE_LAYER_SOURCE_2026-11-15.md",
+      "sha256": "640b78bfbb58a28c6c5cf977f416da2a3053744d41628f2cd0b21495252e36ba",
+      "bytes": 4156,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_QUEUE_STATE.json",
+      "original_project_path": "docs/CLOUD_QUEUE_STATE.json",
+      "sha256": "488d8ef059c0e40043d8532cbc5fcbb6c54aead5d48fa9455c78613f2d6872b3",
+      "bytes": 6053,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_RED_PORTRAIT_LAYERS_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_RED_PORTRAIT_LAYERS_2026-11-14.md",
+      "sha256": "f0e7083d2db92657947a8a777f43c5f84fbe81982957858257b82e92b4227292",
+      "bytes": 7170,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ROOFTOP_SCENE_POLISH_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_ROOFTOP_SCENE_POLISH_2026-11-06.md",
+      "sha256": "1b13384ccb669ad76957a280cc6da8e353294e244a2f38b05d674f9708790eb1",
+      "bytes": 1178,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_ROUTE_BALANCE_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_ROUTE_BALANCE_2026-11-06.md",
+      "sha256": "0fbeafb1af33df973381eac3e7dfb703e99141bc74055cf0a52fc49ca5823bd4",
+      "bytes": 1127,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/CLOUD_SKILL_FEEDBACK_2026-11-06.md",
+      "original_project_path": "docs/CLOUD_SKILL_FEEDBACK_2026-11-06.md",
+      "sha256": "6d91e8a845713a0ab5d5f286ac5852153f47cd0fd356ec6ef6817e8857dd9b7e",
+      "bytes": 1639,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/PRODUCER_LEARNINGS.md",
+      "original_project_path": "docs/PRODUCER_LEARNINGS.md",
+      "sha256": "716dcc2a6da9f8bf85cf075c9d3d545280b78013ed3a3a765f1002a6f62125c4",
+      "bytes": 3429,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/REFERENCE_VIDEO_3D_WORKFLOW_2026-11-13.md",
+      "original_project_path": "docs/REFERENCE_VIDEO_3D_WORKFLOW_2026-11-13.md",
+      "sha256": "3b15291c885345ce2699f6478ee6b278eca77aa967add8b66759d5aa32c0156a",
+      "bytes": 3828,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/docs/REFERENCE_VIDEO_BATCH2_2026-11-13.md",
+      "original_project_path": "docs/REFERENCE_VIDEO_BATCH2_2026-11-13.md",
+      "sha256": "36b2b173b0c52922afc31fc0d075b0ae6164752216a4179f312e4989ccc0816b",
+      "bytes": 5291,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/actions.json",
+      "original_project_path": "game/public/portraits/green-inochi/actions.json",
+      "sha256": "0b02702566992d26534ef26e76ac2ee068a6120bdfd5d77779508ecc6a736ff2",
+      "bytes": 1368,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/actions.mjs",
+      "original_project_path": "game/public/portraits/green-inochi/actions.mjs",
+      "sha256": "f724697d0be80d8d22ba9266028c9f64c48d1b8555d243dcc548d4a5bcf6960a",
+      "bytes": 3603,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/avatar.mjs",
+      "original_project_path": "game/public/portraits/green-inochi/avatar.mjs",
+      "sha256": "cf7241636f997005685406a844dfb1432b6e5e377ac919f4df78c263e4186a9d",
+      "bytes": 6118,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/green-spring.mjs",
+      "original_project_path": "game/public/portraits/green-inochi/green-spring.mjs",
+      "sha256": "0dc39e5fbe48ba4ad458f53781a0f0329a8bbb67618b89c401a8684678e985fd",
+      "bytes": 1846,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/pose.mjs",
+      "original_project_path": "game/public/portraits/green-inochi/pose.mjs",
+      "sha256": "24e45a12aa1f932d3f9847c4b21e3af1993130c7b54ed7b1d3187226b78f0d97",
+      "bytes": 1860,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/vendor/LICENSE",
+      "original_project_path": "game/public/portraits/green-inochi/vendor/LICENSE",
+      "sha256": "53ee955400d2e821a4f15f14ae596f55a8fe1a2e147b31845b97ad7f8995516f",
+      "bytes": 1068,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "original_project_path": "game/public/portraits/green-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "sha256": "1b8234450ab6b18b32e2339680b53eb8f1ed31f67091d61de6461fc892553025",
+      "bytes": 4067,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/vendor/inochi2d.js",
+      "original_project_path": "game/public/portraits/green-inochi/vendor/inochi2d.js",
+      "sha256": "3a2704909ef20622c75fbcb17641f05b95e44b3650d7809c0f64196d617b3af8",
+      "bytes": 44289,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/vendor/inochi2d_bg.wasm",
+      "original_project_path": "game/public/portraits/green-inochi/vendor/inochi2d_bg.wasm",
+      "sha256": "494e639776179c41354f950c3b941a20dfd93db5ac8833a3de887ac2033626ea",
+      "bytes": 911722,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/green-inochi/vendor/provenance.json",
+      "original_project_path": "game/public/portraits/green-inochi/vendor/provenance.json",
+      "sha256": "98bcb3f1b86a1c25c05185325ee4d1f87285676b20a43a220ea5ce2c3403d882",
+      "bytes": 816,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/arm-gesture-player.mjs",
+      "original_project_path": "game/public/portraits/red-inochi/arm-gesture-player.mjs",
+      "sha256": "e3bcfd8b57f5512744e35879f1215bea0fefea4efbd89673180ab23117f0674d",
+      "bytes": 2038,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/arm-gestures.json",
+      "original_project_path": "game/public/portraits/red-inochi/arm-gestures.json",
+      "sha256": "ccdbc917fdee3c8aa1ade6b0d3af4faa95659c509a0389464c0b138961613fa7",
+      "bytes": 1339,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/avatar.mjs",
+      "original_project_path": "game/public/portraits/red-inochi/avatar.mjs",
+      "sha256": "0fc7df2bac4f773c146045318905a64063d4592c88a41e48a693d644399d8a6a",
+      "bytes": 5088,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/hair-split-spring.mjs",
+      "original_project_path": "game/public/portraits/red-inochi/hair-split-spring.mjs",
+      "sha256": "f1cf2af7ff255fc422f8eaaf945f545d1fab160f5e03a0f9efc4d3bf92f30fb4",
+      "bytes": 1402,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/model-info.json",
+      "original_project_path": "game/public/portraits/red-inochi/model-info.json",
+      "sha256": "6f1225c7534933d24fa02972dc1e9b6aa33ebe90776648b0198eca5f47c7e0f8",
+      "bytes": 214,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/vendor/LICENSE",
+      "original_project_path": "game/public/portraits/red-inochi/vendor/LICENSE",
+      "sha256": "53ee955400d2e821a4f15f14ae596f55a8fe1a2e147b31845b97ad7f8995516f",
+      "bytes": 1068,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "original_project_path": "game/public/portraits/red-inochi/vendor/THIRD-PARTY-NOTICES.md",
+      "sha256": "1b8234450ab6b18b32e2339680b53eb8f1ed31f67091d61de6461fc892553025",
+      "bytes": 4067,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/vendor/inochi2d.js",
+      "original_project_path": "game/public/portraits/red-inochi/vendor/inochi2d.js",
+      "sha256": "3a2704909ef20622c75fbcb17641f05b95e44b3650d7809c0f64196d617b3af8",
+      "bytes": 44289,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/vendor/inochi2d_bg.wasm",
+      "original_project_path": "game/public/portraits/red-inochi/vendor/inochi2d_bg.wasm",
+      "sha256": "494e639776179c41354f950c3b941a20dfd93db5ac8833a3de887ac2033626ea",
+      "bytes": 911722,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/public/portraits/red-inochi/vendor/provenance.json",
+      "original_project_path": "game/public/portraits/red-inochi/vendor/provenance.json",
+      "sha256": "98bcb3f1b86a1c25c05185325ee4d1f87285676b20a43a220ea5ce2c3403d882",
+      "bytes": 816,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/scripts/cloud-queue-state.mjs",
+      "original_project_path": "game/scripts/cloud-queue-state.mjs",
+      "sha256": "4d5545c39b67bcc25c8e804077430a4ca28c37c39406ead8f8c3c885ae96e3e0",
+      "bytes": 3614,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/scripts/qa-static-server.mjs",
+      "original_project_path": "game/scripts/qa-static-server.mjs",
+      "sha256": "b9db2e40048db7d7d00e57a95e8a0515858e20f890d11587060e96760926c9e5",
+      "bytes": 7093,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/scripts/runtime-payload.mjs",
+      "original_project_path": "game/scripts/runtime-payload.mjs",
+      "sha256": "a2341cfe453390212880e8d34115054d0d6311d844e524acf279dec83d855855",
+      "bytes": 30795,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/scenes/BattleScene.js",
+      "original_project_path": "game/src/scenes/BattleScene.js",
+      "sha256": "4e9e4509dd9f2e70de2f30d1d7730623304e37ea5fbe5a580ad721b0e417fe75",
+      "bytes": 374710,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/scenes/EchoFinaleScene.js",
+      "original_project_path": "game/src/scenes/EchoFinaleScene.js",
+      "sha256": "a94ddcb9a331954606856c1c8c759b16e696e9cca7ebd9bed1f87e6579b1af07",
+      "bytes": 6289,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/scenes/EchoRelayScene.js",
+      "original_project_path": "game/src/scenes/EchoRelayScene.js",
+      "sha256": "14301cbb649c0f079be259c9ea4b1fe6defa8f37777df0f4e7ebdc2cf52ba441",
+      "bytes": 5315,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/scenes/EchoWorkshopScene.js",
+      "original_project_path": "game/src/scenes/EchoWorkshopScene.js",
+      "sha256": "a088ef531f74b9e50b8088bbf07d80b97c49b27fc80bc2c87281a8d112f2148c",
+      "bytes": 7159,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/scenes/PrismFinaleScene.js",
+      "original_project_path": "game/src/scenes/PrismFinaleScene.js",
+      "sha256": "02de55caa133687b74d1a9eb480f6598c0cbc36ad7b7b131fa1f870e3e882538",
+      "bytes": 3835,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/scenes/PrismRouteScene.js",
+      "original_project_path": "game/src/scenes/PrismRouteScene.js",
+      "sha256": "915eef44f5eed07c5b17b249c9304f92cf2db4a5e0af6e1348f82a346abd9157",
+      "bytes": 7004,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/styles/interfaceMotion375.css",
+      "original_project_path": "game/src/styles/interfaceMotion375.css",
+      "sha256": "8412a37816608907e2d6a20551655331dadd7520f63064c1517d2f8e1409bea7",
+      "bytes": 3978,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/styles/portraitFraming284.css",
+      "original_project_path": "game/src/styles/portraitFraming284.css",
+      "sha256": "0f70eb1eb2f9d375aa8b2423ec577ff931e5b6c640c38d295f39e3f25f266e52",
+      "bytes": 5580,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/styles/practiceStep391.css",
+      "original_project_path": "game/src/styles/practiceStep391.css",
+      "sha256": "7cfb4af8e8785c688db31ce0be064c055f898ba91e39cdb5a3a186565dcd47df",
+      "bytes": 774,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/ActionCounterplay388.mjs",
+      "original_project_path": "game/src/systems/ActionCounterplay388.mjs",
+      "sha256": "f4978e0381a44343a1bcaed06b9e52baa95bf5ec2dbd08f5753b20cd04f93c6b",
+      "bytes": 2939,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/BattleSurfaceView.mjs",
+      "original_project_path": "game/src/systems/BattleSurfaceView.mjs",
+      "sha256": "80c5fd9797d90aac2c29df835f35d7a2b59dc783bceded12f019c52390f8635d",
+      "bytes": 55701,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/CompactMenuPages.mjs",
+      "original_project_path": "game/src/systems/CompactMenuPages.mjs",
+      "sha256": "662135687c9cf54e9908e4e3b8e7667d9475fb2cd54b6005cf8befd7a9dc3801",
+      "bytes": 18175,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/GreenInochiPortrait.mjs",
+      "original_project_path": "game/src/systems/GreenInochiPortrait.mjs",
+      "sha256": "5149c440fb3fec3d48c89acd36100e2b66448eb60aa37f3ec0c5c1ab36cfb571",
+      "bytes": 5448,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/InterfaceMotion375.mjs",
+      "original_project_path": "game/src/systems/InterfaceMotion375.mjs",
+      "sha256": "c02f43abc3421e9d055d42311f8475f46daab44c13cd8ebb6a341cae99af4bc7",
+      "bytes": 1481,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/NightlineActors383.mjs",
+      "original_project_path": "game/src/systems/NightlineActors383.mjs",
+      "sha256": "edbfab20016114bcdedc893cd9e91bd22ea0d80cf25d76d8f5c947a91f8c03d6",
+      "bytes": 3807,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/NightlineLabels384.mjs",
+      "original_project_path": "game/src/systems/NightlineLabels384.mjs",
+      "sha256": "d515f635da35d3a53dac17a449aee732860c1972261a9a51eb72ef2d88ac2e21",
+      "bytes": 2159,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/NightlineSceneArt382.mjs",
+      "original_project_path": "game/src/systems/NightlineSceneArt382.mjs",
+      "sha256": "617ba543aa961d1146f2899186295ccced60173d7efc757f8a0ce509c8777403",
+      "bytes": 2844,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/OpeningFacilityReadability377.mjs",
+      "original_project_path": "game/src/systems/OpeningFacilityReadability377.mjs",
+      "sha256": "9c6fafd59edc9c703f1b79b63ff3bf4fd931de9bfceddc759032d9cb806b441a",
+      "bytes": 3036,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/OpeningGroundContacts376.mjs",
+      "original_project_path": "game/src/systems/OpeningGroundContacts376.mjs",
+      "sha256": "5236309cb4bf3d50904f70e41be90deb32ca195f56803cd6910c255092ad6894",
+      "bytes": 1335,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PerformerMeleeCombat.mjs",
+      "original_project_path": "game/src/systems/PerformerMeleeCombat.mjs",
+      "sha256": "64c20075754da805adc7d88773288a207e5063b4c7ae78e9e515c23940f3979d",
+      "bytes": 9001,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PlayerSessionExperience.mjs",
+      "original_project_path": "game/src/systems/PlayerSessionExperience.mjs",
+      "sha256": "2cbafbb5171ea29e5f9abb7b20816272bad341c6eb76e512647289a5a3146966",
+      "bytes": 31971,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PrismOfficialOverlay.mjs",
+      "original_project_path": "game/src/systems/PrismOfficialOverlay.mjs",
+      "sha256": "a601dad200d0850910757ed38b321f25014108d2efcf44b3f9e3893f597f15be",
+      "bytes": 4435,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PublicObjectiveGuidance.mjs",
+      "original_project_path": "game/src/systems/PublicObjectiveGuidance.mjs",
+      "sha256": "719ea0bfd556b9af2abe3c1b80493630a24d56025922d4a5e3c49f671b5c67fb",
+      "bytes": 13727,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PublicShellView.mjs",
+      "original_project_path": "game/src/systems/PublicShellView.mjs",
+      "sha256": "78263c34c7cdb240d7c798d415e11754885a80b9b21d1342187b2f351caf3dae",
+      "bytes": 67273,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PublicStage1PerformerRun.mjs",
+      "original_project_path": "game/src/systems/PublicStage1PerformerRun.mjs",
+      "sha256": "01d61dc81adeadc4824318aa21f6f6b2dc53157bb7cf2187283c5f24a524f14c",
+      "bytes": 29416,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/PublicStage1SakuraActionContract.mjs",
+      "original_project_path": "game/src/systems/PublicStage1SakuraActionContract.mjs",
+      "sha256": "0751bcfe06025859a3d696707abd9c898b44e9d15d4d0dde4cb1f792d36d9a06",
+      "bytes": 3257,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/systems/RooftopSupplyPresentation380.mjs",
+      "original_project_path": "game/src/systems/RooftopSupplyPresentation380.mjs",
+      "sha256": "80cb784c61763470cd5137d3e000bbb9b38ea6d92f8908175ea951c200ef83cf",
+      "bytes": 3260,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/battleFxPreference374.mjs",
+      "original_project_path": "game/src/utils/battleFxPreference374.mjs",
+      "sha256": "b52e7e402c019b6d87fa25ac54d18528d3d6a1da52ab52dd4384dff72b480eea",
+      "bytes": 366,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoChapter.mjs",
+      "original_project_path": "game/src/utils/echoChapter.mjs",
+      "sha256": "e54346d218feb1ce2b082cfc0baed1bfecc1b9ad4f54c89f12a82eaf9c05c455",
+      "bytes": 3928,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoChapterRun.mjs",
+      "original_project_path": "game/src/utils/echoChapterRun.mjs",
+      "sha256": "24b645d68cab27362a54677a5a7c88ee9cc302a40f18472656631cebb908a46d",
+      "bytes": 1208,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoFinale.mjs",
+      "original_project_path": "game/src/utils/echoFinale.mjs",
+      "sha256": "30ba8f9e86412127b6ddf29ec001bf00faeffa16277523bd2853e3506d7c0e81",
+      "bytes": 4007,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoRelay.mjs",
+      "original_project_path": "game/src/utils/echoRelay.mjs",
+      "sha256": "57915b4437ae3b3f7802e73fed0fba1f1735030ed3ddeec86ce29989b8ebe6c1",
+      "bytes": 4332,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoReport.mjs",
+      "original_project_path": "game/src/utils/echoReport.mjs",
+      "sha256": "84382ceef032607337dea5543c6c5c676a9b7997142c9c5ef03cea0b133a39ce",
+      "bytes": 4205,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoTraining.mjs",
+      "original_project_path": "game/src/utils/echoTraining.mjs",
+      "sha256": "32beeca08f643f1c8e6bf5ccdca9858d1f20665743bcbbd6187361b015dc6be7",
+      "bytes": 621,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/echoWorkshop.mjs",
+      "original_project_path": "game/src/utils/echoWorkshop.mjs",
+      "sha256": "d9000da38169a17bc075cdafb8291f615f6d744816db2fe2af8ddc35ea30a193",
+      "bytes": 6535,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/playerPreferences.mjs",
+      "original_project_path": "game/src/utils/playerPreferences.mjs",
+      "sha256": "c4a569ad2c139df9e4b08a0644f56edbe58532e37bbc5260dec376abbaa34bf3",
+      "bytes": 3960,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/prismBody.mjs",
+      "original_project_path": "game/src/utils/prismBody.mjs",
+      "sha256": "d5ac8d07e083c5d74ddad599cf247ccc9d8f0347c709019ed018ccbbc957eb60",
+      "bytes": 6880,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/prismChapter.mjs",
+      "original_project_path": "game/src/utils/prismChapter.mjs",
+      "sha256": "74013f8e4c32df4ca6fc13c45e784029c92cf6573be48681537b885dbc9efbc7",
+      "bytes": 3589,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/prismChapterRun.mjs",
+      "original_project_path": "game/src/utils/prismChapterRun.mjs",
+      "sha256": "86d49b3e29c6dc091a0814a1bc80da4da3e3f42dad18affdbce524fa76e10a2c",
+      "bytes": 1226,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/prismFinale.mjs",
+      "original_project_path": "game/src/utils/prismFinale.mjs",
+      "sha256": "3748df37bce6d8a01b0b14336eef7d8006053d42d57cddfe2daccfbf16877dd8",
+      "bytes": 4382,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/prismReport.mjs",
+      "original_project_path": "game/src/utils/prismReport.mjs",
+      "sha256": "aa6326080d52faf0b57ad9b624a3e7b5314435ca80bc66f63839fceef93e36c0",
+      "bytes": 3300,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/src/utils/prismSequence.mjs",
+      "original_project_path": "game/src/utils/prismSequence.mjs",
+      "sha256": "797cb0ca11e172f98b5e7372bff0c30ad93f708cece5407ecc3d690ee8afb4cb",
+      "bytes": 1238,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/actionCounterplay388.test.mjs",
+      "original_project_path": "game/tests/actionCounterplay388.test.mjs",
+      "sha256": "121b9ce155cf82ad19003fe3cd71f316b7ca5b4a3d8e091338cae07e98aa8445",
+      "bytes": 4920,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/battleCommandMotion371.test.mjs",
+      "original_project_path": "game/tests/battleCommandMotion371.test.mjs",
+      "sha256": "4b9fe1167d9931171514736691b92f9a7d3974886fc87c97c837cc28a53aa4ee",
+      "bytes": 4547,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/battleFxPreference374.test.mjs",
+      "original_project_path": "game/tests/battleFxPreference374.test.mjs",
+      "sha256": "85360b3fe47f9b6c8de7d90653ca8c1d688468ff18ef3da43d3223c2791e6d0b",
+      "bytes": 1876,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/branchRewards387.test.mjs",
+      "original_project_path": "game/tests/branchRewards387.test.mjs",
+      "sha256": "c19461830956fb036cfd5925e9e42c0aff8c410b32edaa5471c780c498f1a22f",
+      "bytes": 4553,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/echoFinale400.test.mjs",
+      "original_project_path": "game/tests/echoFinale400.test.mjs",
+      "sha256": "69cc35798d31e5a17d8974de86fec764c6dba61a9790e5d24971a7495501b86b",
+      "bytes": 2785,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/echoOpening398.test.mjs",
+      "original_project_path": "game/tests/echoOpening398.test.mjs",
+      "sha256": "f15b76b80df127097229f34fb0d72bfca0f0ae94a8c2d5d37dc7668b11436d7f",
+      "bytes": 3382,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/echoRelay399.test.mjs",
+      "original_project_path": "game/tests/echoRelay399.test.mjs",
+      "sha256": "b384cc6387707ebfb34ca8c84dcae438eade88a2a22ebb169fb95a369e4664e7",
+      "bytes": 2576,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/guidedDeviceLabel301.test.mjs",
+      "original_project_path": "game/tests/guidedDeviceLabel301.test.mjs",
+      "sha256": "aafb18cb6bebf8b53cdc9a04d96176800e6a4605f2bd759406261917c6be4fa8",
+      "bytes": 1073,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/helpers/publicShellHarness.mjs",
+      "original_project_path": "game/tests/helpers/publicShellHarness.mjs",
+      "sha256": "631408be389ece689e44967fefc7feddef3b6e16b6abe99f042a54b11d27bab6",
+      "bytes": 13577,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/homecomingSceneReadability381.test.mjs",
+      "original_project_path": "game/tests/homecomingSceneReadability381.test.mjs",
+      "sha256": "b124c69b49d5643ca18614419ac846633de475eaef327cc26f510c926226876e",
+      "bytes": 2731,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/nightlineActors383.test.mjs",
+      "original_project_path": "game/tests/nightlineActors383.test.mjs",
+      "sha256": "ba67d09826c3a9e0434651723baf1298690d4394a4ae7e4c4ce4875171ac2f99",
+      "bytes": 4745,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/nightlineLabels384.test.mjs",
+      "original_project_path": "game/tests/nightlineLabels384.test.mjs",
+      "sha256": "c5fd81c442ba6e1ff48528ec8d62e6403cefd8753c36d05af0a210317a6ad547",
+      "bytes": 2552,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/nightlineSceneArt382.test.mjs",
+      "original_project_path": "game/tests/nightlineSceneArt382.test.mjs",
+      "sha256": "391b41f29936a6d88dcc02596155973ed72110fec318b5f4bb0e7b70fcb45a4b",
+      "bytes": 5718,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/openingGroundContacts376.test.mjs",
+      "original_project_path": "game/tests/openingGroundContacts376.test.mjs",
+      "sha256": "9cdc99ba5c02328e4848b3b2ed831c1de71f2555fad8a3acfb5a994b4d34e44a",
+      "bytes": 2475,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/openingSpawnSafety.test.mjs",
+      "original_project_path": "game/tests/openingSpawnSafety.test.mjs",
+      "sha256": "a9d90e781b24af5e123235d3f4fd31bcf211cabde2b50995bf7c818718e52fcb",
+      "bytes": 5133,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/ownerChapterChaserContent.test.mjs",
+      "original_project_path": "game/tests/ownerChapterChaserContent.test.mjs",
+      "sha256": "e04d679d526f5b5454cca558925048998b9f7c8d5a9d5d444f343de83102d8c1",
+      "bytes": 8378,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/p16050PlayerPreferences.test.mjs",
+      "original_project_path": "game/tests/p16050PlayerPreferences.test.mjs",
+      "sha256": "c0d23acd9ce74686756f84659254fdf2377265d53cff788a5cfaaf822254d779",
+      "bytes": 2121,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/practiceStep391.test.mjs",
+      "original_project_path": "game/tests/practiceStep391.test.mjs",
+      "sha256": "cf87435a64c820b50d060c5cc0ef20e9f770478435a57155eaf99dd17a5aeb87",
+      "bytes": 4846,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/prismBody394.test.mjs",
+      "original_project_path": "game/tests/prismBody394.test.mjs",
+      "sha256": "7a502a71932a196cc90c4198f1f40385f0343b28b97b7ecebf8b05c6fe4487db",
+      "bytes": 3382,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/prismEntry393.test.mjs",
+      "original_project_path": "game/tests/prismEntry393.test.mjs",
+      "sha256": "908d9c0e8c0215c0f5e14e79a93c8ccb944f70281010f174889d67f978ff2693",
+      "bytes": 1052,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/prismFinale395.test.mjs",
+      "original_project_path": "game/tests/prismFinale395.test.mjs",
+      "sha256": "e96bccc039e101b087d62083eddf1ed29c7365d164eeed15eae500684958f55b",
+      "bytes": 2813,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/prismFormal397.test.mjs",
+      "original_project_path": "game/tests/prismFormal397.test.mjs",
+      "sha256": "33da599e47f925d38171b305d39686353679279e7a46e7b8ce7bf83d6587f19d",
+      "bytes": 5712,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/prismOpening393.test.mjs",
+      "original_project_path": "game/tests/prismOpening393.test.mjs",
+      "sha256": "6b99cf1c142e72e7d12025a4bc00e2426bca040eb0623ca02da42c80f5d26902",
+      "bytes": 3734,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/prismSequence396.test.mjs",
+      "original_project_path": "game/tests/prismSequence396.test.mjs",
+      "sha256": "a4a8c94ec57594ebdc80d40cdc3a25f4782fa41e1b6de78e03c767e9eef57ea3",
+      "bytes": 1059,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/publicShellSceneEntry.test.mjs",
+      "original_project_path": "game/tests/publicShellSceneEntry.test.mjs",
+      "sha256": "3feeeaba70fa4d6b2db0bd508fe5d1746ee86bd5de80a0cfd49f5d985804560a",
+      "bytes": 6447,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/historical-files/game/tests/rooftopSupplyPresentation380.test.mjs",
+      "original_project_path": "game/tests/rooftopSupplyPresentation380.test.mjs",
+      "sha256": "c3403bf287b8d14a05c17d0624c6e33c82c4448bb43003cb55b596066b75907b",
+      "bytes": 3802,
+      "source_kind": "reconstructed-historical-candidate",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/90013f85c9ec4ff61c13622aa17700c8c8439a58277c389d0516985a2318e99e/game/src/systems/PaintZoneSystem.js",
+      "original_project_path": "game/src/systems/PaintZoneSystem.js",
+      "sha256": "90013f85c9ec4ff61c13622aa17700c8c8439a58277c389d0516985a2318e99e",
+      "bytes": 27559,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-06T06:33:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d68f414b5c140321cbb527f5f16e55b68405df2938ea9e6097c33893bb1c1e10/game/tests/publicObjectiveGuidance.test.mjs",
+      "original_project_path": "game/tests/publicObjectiveGuidance.test.mjs",
+      "sha256": "d68f414b5c140321cbb527f5f16e55b68405df2938ea9e6097c33893bb1c1e10",
+      "bytes": 13078,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-06T06:33:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/ca4ba91cd7e528dff6970ae7f070763eadce1ab2b31b78506e8a37aaf27961eb/game/src/utils/releaseIdentity.mjs",
+      "original_project_path": "game/src/utils/releaseIdentity.mjs",
+      "sha256": "ca4ba91cd7e528dff6970ae7f070763eadce1ab2b31b78506e8a37aaf27961eb",
+      "bytes": 433,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/a49e077f0e410de716431d949a8c1e1e22cb1ea4546e1076ebc08d4410939ac1/game/src/utils/publicBattleCheckpoint.mjs",
+      "original_project_path": "game/src/utils/publicBattleCheckpoint.mjs",
+      "sha256": "a49e077f0e410de716431d949a8c1e1e22cb1ea4546e1076ebc08d4410939ac1",
+      "bytes": 18192,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-06T08:27:11+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/4a0c749bcb1dd720aa2d253bcfb44ba8f11df45d8d3429d49a66d2f01851068e/game/tests/b68PublicBattleCheckpointStorage.test.mjs",
+      "original_project_path": "game/tests/b68PublicBattleCheckpointStorage.test.mjs",
+      "sha256": "4a0c749bcb1dd720aa2d253bcfb44ba8f11df45d8d3429d49a66d2f01851068e",
+      "bytes": 15440,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-06T08:27:11+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/8c84d8f40f534b9a40173bc38b5cde62d161ffcaf8be28804d0ec15123bc781f/game/tests/publicPerformanceRecords.test.mjs",
+      "original_project_path": "game/tests/publicPerformanceRecords.test.mjs",
+      "sha256": "8c84d8f40f534b9a40173bc38b5cde62d161ffcaf8be28804d0ec15123bc781f",
+      "bytes": 10258,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-06T07:28:52+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/be22d103df5a6086ae25f53e17d2c00ea0cecf6097ac61fb2bba2fd723df65ab/game/tests/p16012PublicStage1UnlitChaserRole.test.mjs",
+      "original_project_path": "game/tests/p16012PublicStage1UnlitChaserRole.test.mjs",
+      "sha256": "be22d103df5a6086ae25f53e17d2c00ea0cecf6097ac61fb2bba2fd723df65ab",
+      "bytes": 3379,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-06T07:28:52+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/21f6528b6668f39c1430b7a159dccbe91fdce4ba4a174e84ffe91f80da84caf5/game/src/utils/chapterObjectives.mjs",
+      "original_project_path": "game/src/utils/chapterObjectives.mjs",
+      "sha256": "21f6528b6668f39c1430b7a159dccbe91fdce4ba4a174e84ffe91f80da84caf5",
+      "bytes": 5229,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/e25a152459c1d53228890276ffe66962d5080fc970ffd5628013ea9a5ce3e01f/game/tests/p15PublicDemoRuntimeContract.test.mjs",
+      "original_project_path": "game/tests/p15PublicDemoRuntimeContract.test.mjs",
+      "sha256": "e25a152459c1d53228890276ffe66962d5080fc970ffd5628013ea9a5ce3e01f",
+      "bytes": 2021,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/54828d848d3beb4cb2561df8c28e908caba3196f3acf67ea4e7efb0b55ac7f8e/game/src/utils/publicChapterContent.mjs",
+      "original_project_path": "game/src/utils/publicChapterContent.mjs",
+      "sha256": "54828d848d3beb4cb2561df8c28e908caba3196f3acf67ea4e7efb0b55ac7f8e",
+      "bytes": 15220,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/fefdaf3975bd27f9c9b89338a3d41c321cbdacb1b938c377b9440be7f938225b/game/src/utils/publicCampaign.mjs",
+      "original_project_path": "game/src/utils/publicCampaign.mjs",
+      "sha256": "fefdaf3975bd27f9c9b89338a3d41c321cbdacb1b938c377b9440be7f938225b",
+      "bytes": 3214,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/6fc57ca0a9cf802b8dd6885e5901a1b93f84c8bdf81037370e2d6030d60acd2e/game/src/utils/publicRunProgression.mjs",
+      "original_project_path": "game/src/utils/publicRunProgression.mjs",
+      "sha256": "6fc57ca0a9cf802b8dd6885e5901a1b93f84c8bdf81037370e2d6030d60acd2e",
+      "bytes": 35399,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/159a20b126b5a392eba7bb232cb19374b93a75f696ca18156012d68981adf6de/game/src/utils/publicChapterReports.mjs",
+      "original_project_path": "game/src/utils/publicChapterReports.mjs",
+      "sha256": "159a20b126b5a392eba7bb232cb19374b93a75f696ca18156012d68981adf6de",
+      "bytes": 4788,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/39d3dec1c249e6900e02960a0d622c8f6acf0a82cacb1a24c94270cdfe28da64/game/src/utils/publicPerformanceAccess.mjs",
+      "original_project_path": "game/src/utils/publicPerformanceAccess.mjs",
+      "sha256": "39d3dec1c249e6900e02960a0d622c8f6acf0a82cacb1a24c94270cdfe28da64",
+      "bytes": 3934,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/854d6ab994583ad5e09decd71a1292806e15221d0d7c34125671ec719dd9eec5/game/src/systems/ChapterArchiveView.mjs",
+      "original_project_path": "game/src/systems/ChapterArchiveView.mjs",
+      "sha256": "854d6ab994583ad5e09decd71a1292806e15221d0d7c34125671ec719dd9eec5",
+      "bytes": 7921,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/05118fb3b76b61fa96d4a4045383edb08a2a00def2ab05d35bb4f4a2c5ad54a3/game/src/systems/TourJourneyView.mjs",
+      "original_project_path": "game/src/systems/TourJourneyView.mjs",
+      "sha256": "05118fb3b76b61fa96d4a4045383edb08a2a00def2ab05d35bb4f4a2c5ad54a3",
+      "bytes": 9943,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/35cb1bd709fb5de49a0696835d6f477ed1cec6137dc674f255881f6ba6f717de/game/src/utils/publicTourContent.mjs",
+      "original_project_path": "game/src/utils/publicTourContent.mjs",
+      "sha256": "35cb1bd709fb5de49a0696835d6f477ed1cec6137dc674f255881f6ba6f717de",
+      "bytes": 3723,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/38fc181796473fc01eaa81948849566661b2b67b40d3675eb57e763f6e4f7825/game/src/utils/chapterEncounterContent.mjs",
+      "original_project_path": "game/src/utils/chapterEncounterContent.mjs",
+      "sha256": "38fc181796473fc01eaa81948849566661b2b67b40d3675eb57e763f6e4f7825",
+      "bytes": 4810,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/b17687e3c4851d33931c0a4fec27b9e58ed88c82c19bf9b4a8a6389d18325790/game/src/scenes/TitleScene.js",
+      "original_project_path": "game/src/scenes/TitleScene.js",
+      "sha256": "b17687e3c4851d33931c0a4fec27b9e58ed88c82c19bf9b4a8a6389d18325790",
+      "bytes": 10490,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/ee640ebbe162d68c189e4586d1795fc63244b779c4fee3c6410f6d8768b86fdd/game/src/systems/MobileGameScreens.mjs",
+      "original_project_path": "game/src/systems/MobileGameScreens.mjs",
+      "sha256": "ee640ebbe162d68c189e4586d1795fc63244b779c4fee3c6410f6d8768b86fdd",
+      "bytes": 45515,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/070be896d3bdde01b0212be6764b3288a69894e7f3d5f58465e22b82907942c8/game/src/utils/publicDemoRuntimeContract.mjs",
+      "original_project_path": "game/src/utils/publicDemoRuntimeContract.mjs",
+      "sha256": "070be896d3bdde01b0212be6764b3288a69894e7f3d5f58465e22b82907942c8",
+      "bytes": 1382,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/42893afeca7ac0a58571629a9f0c52c8550abe3326dbb13aba5ebec95a4a528b/game/src/systems/GameSystemScreens.mjs",
+      "original_project_path": "game/src/systems/GameSystemScreens.mjs",
+      "sha256": "42893afeca7ac0a58571629a9f0c52c8550abe3326dbb13aba5ebec95a4a528b",
+      "bytes": 26222,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-13T15:22:28+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/b0b531dbc8facc05e80db656422d97155415a25b51761f12573fa5b75bdbda98/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "b0b531dbc8facc05e80db656422d97155415a25b51761f12573fa5b75bdbda98",
+      "bytes": 6920,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T02:48:46+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/dc143ab2a91d134a158732c3f77a08ab5936690f0eecdc2deaaef81b809b60e4/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "dc143ab2a91d134a158732c3f77a08ab5936690f0eecdc2deaaef81b809b60e4",
+      "bytes": 6946,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T02:48:46+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d48b778ffd2c974086a4ca8e5c33fa8a3c6c55ee74633e2099fe8bfdc974d8d1/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "d48b778ffd2c974086a4ca8e5c33fa8a3c6c55ee74633e2099fe8bfdc974d8d1",
+      "bytes": 6985,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T02:48:46+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/31c71fa16577fcd255b8b4b0897269c10391b12a45d140c2c5edb6320b462b1c/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "31c71fa16577fcd255b8b4b0897269c10391b12a45d140c2c5edb6320b462b1c",
+      "bytes": 8662,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T02:48:46+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/bdb1aad4e2cfa9c7863fa4f99841a2544137d9fcf9c4e7ca0aa9b0c5222ae0cf/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "bdb1aad4e2cfa9c7863fa4f99841a2544137d9fcf9c4e7ca0aa9b0c5222ae0cf",
+      "bytes": 7003,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T02:48:46+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/f637a46e22a10ef053ce3268b57db5ce208fd93a8ee02db36e2b3fa4fca81941/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "f637a46e22a10ef053ce3268b57db5ce208fd93a8ee02db36e2b3fa4fca81941",
+      "bytes": 8703,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T02:48:46+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/a811a0c768efe0a240caafe1a6862829d394858b2e8f5a6abc28d012c9dad69e/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "a811a0c768efe0a240caafe1a6862829d394858b2e8f5a6abc28d012c9dad69e",
+      "bytes": 8706,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T04:00:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/5b6588dd55efe3b487b01ac069231621cfa90c35bdf728605d3a990a5e1da5cc/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "5b6588dd55efe3b487b01ac069231621cfa90c35bdf728605d3a990a5e1da5cc",
+      "bytes": 7009,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T04:00:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/851e428370703cea4f8f123dadce2ebc3d7d6bb6e88a505e6ee914ae8f7b08db/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "851e428370703cea4f8f123dadce2ebc3d7d6bb6e88a505e6ee914ae8f7b08db",
+      "bytes": 7269,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T04:00:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/e36725d468704f246cc9c6f1434203b19f2ea96d26cfbd36a1f34074d5b40b4b/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "e36725d468704f246cc9c6f1434203b19f2ea96d26cfbd36a1f34074d5b40b4b",
+      "bytes": 7339,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T04:00:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/2d0d0380179500f4ac91621ef64082f280f104c9e0eed33751ee1137682baa0e/01-美术/live2d/red-20261114/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/README.md",
+      "sha256": "2d0d0380179500f4ac91621ef64082f280f104c9e0eed33751ee1137682baa0e",
+      "bytes": 5062,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T04:00:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/197c9a32051c0703aa5effe9c3744ed3039415b767cf5a640faa3cdc0050a568/01-美术/live2d/red-20261114/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/README.md",
+      "sha256": "197c9a32051c0703aa5effe9c3744ed3039415b767cf5a640faa3cdc0050a568",
+      "bytes": 5244,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T04:00:43+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/82b55f83fba20bac32073c7cd03fff565edeb0a7452bd71e1b5d49e81e67d387/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "82b55f83fba20bac32073c7cd03fff565edeb0a7452bd71e1b5d49e81e67d387",
+      "bytes": 7649,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:06:15+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/cad74b921a8450a64c54863a18a860d43be6d610f98f9c4fd1d43856f142d1e6/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "cad74b921a8450a64c54863a18a860d43be6d610f98f9c4fd1d43856f142d1e6",
+      "bytes": 7649,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:59:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/5f7bc4b1a97d85605fbf88df660370a27a65ab850b8b2acfbbbfc46ed4592007/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "5f7bc4b1a97d85605fbf88df660370a27a65ab850b8b2acfbbbfc46ed4592007",
+      "bytes": 8755,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:06:15+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/e8587b70cc2a2251392063a00e0521a6cb5e42d0a4a32db616d6f500c5d2621b/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "e8587b70cc2a2251392063a00e0521a6cb5e42d0a4a32db616d6f500c5d2621b",
+      "bytes": 8794,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:06:15+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/23d6f97f117042025199ea31f44c39d0a3756929f86337fb5eeb3bac9323d4b0/01-美术/live2d/red-20261114/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/README.md",
+      "sha256": "23d6f97f117042025199ea31f44c39d0a3756929f86337fb5eeb3bac9323d4b0",
+      "bytes": 3489,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:06:15+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/253983ae484047ea22aae410975650313ad95e24cbc04a601797c3d511ee2380/01-美术/live2d/red-20261114/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/README.md",
+      "sha256": "253983ae484047ea22aae410975650313ad95e24cbc04a601797c3d511ee2380",
+      "bytes": 3578,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:06:15+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/42e4ceea3f192bc824cca5d728c17960511f70b153c3207e3ad3aa515660b889/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "42e4ceea3f192bc824cca5d728c17960511f70b153c3207e3ad3aa515660b889",
+      "bytes": 8838,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:59:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/9bd0b6363d30214142ad546a2359d01e21d3332ce0ac0a4bbc6637d7584d8943/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "9bd0b6363d30214142ad546a2359d01e21d3332ce0ac0a4bbc6637d7584d8943",
+      "bytes": 8989,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:59:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/024760abe4f842790060d3b72fa1968f0dc5dafce3c1c1951da60c4cef31d67e/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "024760abe4f842790060d3b72fa1968f0dc5dafce3c1c1951da60c4cef31d67e",
+      "bytes": 7760,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:59:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/eeae8371b8768fbf3608f3988495db0b7e432768b4ff6b8cb5b72f446582c048/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "eeae8371b8768fbf3608f3988495db0b7e432768b4ff6b8cb5b72f446582c048",
+      "bytes": 9048,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:59:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/545d32684bbc4458f49a704e266c182ddf59da7632b0fccdd225c39c96b7bdc1/01-美术/live2d/register-layers.py",
+      "original_project_path": "01-美术/live2d/register-layers.py",
+      "sha256": "545d32684bbc4458f49a704e266c182ddf59da7632b0fccdd225c39c96b7bdc1",
+      "bytes": 8205,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T05:59:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/6fd7179c973aacb951b6b5794d38ec9f4c1f5286d6eca81eeef5e1f95809c12a/01-美术/live2d/red-20261114/review.html",
+      "original_project_path": "01-美术/live2d/red-20261114/review.html",
+      "sha256": "6fd7179c973aacb951b6b5794d38ec9f4c1f5286d6eca81eeef5e1f95809c12a",
+      "bytes": 9091,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T07:02:29+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d5a02f69ccfc404e56dc295ac37ff13f197ec3b63009a85b8cab27c0f6baa9ae/01-美术/live2d/export-layer-source.mjs",
+      "original_project_path": "01-美术/live2d/export-layer-source.mjs",
+      "sha256": "d5a02f69ccfc404e56dc295ac37ff13f197ec3b63009a85b8cab27c0f6baa9ae",
+      "bytes": 3401,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T08:20:06+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/2a6cd60a1ae4fae2fc025793d6aeb77714f5bb25a7a3037ef0a94e9c715851c8/01-美术/live2d/red-20261114/README.md",
+      "original_project_path": "01-美术/live2d/red-20261114/README.md",
+      "sha256": "2a6cd60a1ae4fae2fc025793d6aeb77714f5bb25a7a3037ef0a94e9c715851c8",
+      "bytes": 3973,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T10:35:34+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/346749612447b47d06f4caf0cac00bdaf7a63c33f503de5b5a46a67de7aa2d27/01-美术/live2d/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/build-head-mesh.py",
+      "sha256": "346749612447b47d06f4caf0cac00bdaf7a63c33f503de5b5a46a67de7aa2d27",
+      "bytes": 6018,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T11:25:34+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/6c2ea12bc930a823d18f83a0eb5b6c7af2264c8b2f38d4d7a9bd25bbd2d992f3/01-美术/live2d/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/build-head-mesh.py",
+      "sha256": "6c2ea12bc930a823d18f83a0eb5b6c7af2264c8b2f38d4d7a9bd25bbd2d992f3",
+      "bytes": 6557,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T11:25:34+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/22d0950621022648500e5366be63324727c39e6a9db1f466134d3c31dbb1434b/01-美术/live2d/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/build-head-mesh.py",
+      "sha256": "22d0950621022648500e5366be63324727c39e6a9db1f466134d3c31dbb1434b",
+      "bytes": 6556,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T11:25:34+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/a263548f65473f8cadacc976079befa9eda4f733df06cf2ef7cb21d3795c8378/01-美术/live2d/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/build-head-mesh.py",
+      "sha256": "a263548f65473f8cadacc976079befa9eda4f733df06cf2ef7cb21d3795c8378",
+      "bytes": 7174,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T11:25:34+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d9f586b98f313487c614c68deb04c0d6963fee4aff7cba40902a8fc9e0bf0fd5/docs/CLOUD_Q73_HAIR_PHYSICS_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q73_HAIR_PHYSICS_2026-11-14.md",
+      "sha256": "d9f586b98f313487c614c68deb04c0d6963fee4aff7cba40902a8fc9e0bf0fd5",
+      "bytes": 4426,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T13:06:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/f69b74a0d84e2751a29774cb976b358b2f0e2bfec786779445b36e68cb42068c/docs/CLOUD_Q73_HAIR_PHYSICS_2026-11-14.md",
+      "original_project_path": "docs/CLOUD_Q73_HAIR_PHYSICS_2026-11-14.md",
+      "sha256": "f69b74a0d84e2751a29774cb976b358b2f0e2bfec786779445b36e68cb42068c",
+      "bytes": 9125,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T13:56:09+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/466a137cc45d2f4302e07b809bd156db83e194ba083546a9c035fc3bc532d549/01-美术/live2d/build-hair-crossing-source.py",
+      "original_project_path": "01-美术/live2d/build-hair-crossing-source.py",
+      "sha256": "466a137cc45d2f4302e07b809bd156db83e194ba083546a9c035fc3bc532d549",
+      "bytes": 5957,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T14:46:12+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/851ecbb4abe27bc7cdf8dde66cdd47cff4f68ff98953d19362011957e0f0ea72/01-美术/live2d/build-hair-crossing-source.py",
+      "original_project_path": "01-美术/live2d/build-hair-crossing-source.py",
+      "sha256": "851ecbb4abe27bc7cdf8dde66cdd47cff4f68ff98953d19362011957e0f0ea72",
+      "bytes": 6406,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T14:46:12+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/b9f66c417795b2e9cdca4a251a51240a5b076ac4888e637727e541cd6b549e7b/game/src/systems/PublicShellView.mjs",
+      "original_project_path": "game/src/systems/PublicShellView.mjs",
+      "sha256": "b9f66c417795b2e9cdca4a251a51240a5b076ac4888e637727e541cd6b549e7b",
+      "bytes": 67337,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T16:25:39+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/fafb4554c635b4a0cf281076bf40769ba2ae166cde0f7faf760922729fdeee60/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "fafb4554c635b4a0cf281076bf40769ba2ae166cde0f7faf760922729fdeee60",
+      "bytes": 2728,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T17:41:22+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/123ad86881fb202e194df1dffaae876bf51076a2bc5d2570535111493c1d44aa/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "123ad86881fb202e194df1dffaae876bf51076a2bc5d2570535111493c1d44aa",
+      "bytes": 4572,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T17:41:22+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/8d870a2f93b392fd00832dc973427873c6d57af6af22ce97e2902e3a62d7cf2e/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "8d870a2f93b392fd00832dc973427873c6d57af6af22ce97e2902e3a62d7cf2e",
+      "bytes": 2736,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T17:41:22+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/42cd5a61ad08bddeae69303ae990b6d6d8b4fd35a4fd5059c2a451aabc41d1f3/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "42cd5a61ad08bddeae69303ae990b6d6d8b4fd35a4fd5059c2a451aabc41d1f3",
+      "bytes": 4603,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T19:46:05+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d694a7715b8520a989b6cbbe3f52151a4d188fc97fc11b086410bffa2a9bc8d7/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "d694a7715b8520a989b6cbbe3f52151a4d188fc97fc11b086410bffa2a9bc8d7",
+      "bytes": 2875,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T17:41:22+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/fb231c4e08b134ee86b5ce42b62dda74c6648a1cc394cf836f62ab40f83b15f7/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "fb231c4e08b134ee86b5ce42b62dda74c6648a1cc394cf836f62ab40f83b15f7",
+      "bytes": 2933,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T17:41:22+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/22ee459e3e68d09c9f15f5cea34a4b933e3dbad888ee28d3a6432bfb323f375d/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "22ee459e3e68d09c9f15f5cea34a4b933e3dbad888ee28d3a6432bfb323f375d",
+      "bytes": 2964,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T18:25:47+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/b30cfcd42653c085a97e164ad430b1cdc586e48d221479008cea018930fe80d8/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "b30cfcd42653c085a97e164ad430b1cdc586e48d221479008cea018930fe80d8",
+      "bytes": 3016,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T19:06:30+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/a58e17bc1a83bdf10b861899d6776697d56c87f045af0680872cd93c00a854c1/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "a58e17bc1a83bdf10b861899d6776697d56c87f045af0680872cd93c00a854c1",
+      "bytes": 3110,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-14T19:46:05+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/7dd3a55e03d4ad95bed75dcea873a9443095d4bf7f4d1633b98a74682ceff5e7/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "7dd3a55e03d4ad95bed75dcea873a9443095d4bf7f4d1633b98a74682ceff5e7",
+      "bytes": 4671,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T01:33:10+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/785924181588da70b292d9264afd262b83caa867dba2d7291da5513b1c67107a/01-美术/live2d/green-20261115/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/README.md",
+      "sha256": "785924181588da70b292d9264afd262b83caa867dba2d7291da5513b1c67107a",
+      "bytes": 1314,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T01:33:10+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/5e7da4bdafb2fefd8bbc7cdecdbd9d89a5804221969be2af127d1a657c162ca4/01-美术/live2d/green-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/export-source.py",
+      "sha256": "5e7da4bdafb2fefd8bbc7cdecdbd9d89a5804221969be2af127d1a657c162ca4",
+      "bytes": 3146,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T03:45:56+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d2e1de3fa6b27171ca87634d1745dad0045aa596fd2c73fbeba81e3fe8eb9832/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "d2e1de3fa6b27171ca87634d1745dad0045aa596fd2c73fbeba81e3fe8eb9832",
+      "bytes": 4750,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T04:26:16+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/874a55712416d2669a7d75fdca88cd5fae9f3626d8286a4da3439073e7efc7f0/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "874a55712416d2669a7d75fdca88cd5fae9f3626d8286a4da3439073e7efc7f0",
+      "bytes": 5183,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T04:26:16+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/7492c0597ce5e00492223b8f4b5eeb9b512c8625842700206e03fc08c2a2861b/01-美术/live2d/green-20261115/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/README.md",
+      "sha256": "7492c0597ce5e00492223b8f4b5eeb9b512c8625842700206e03fc08c2a2861b",
+      "bytes": 4043,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T04:26:16+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/da4811a0ffb57dd171c5b0983204614b30af7e642489f533f7d1f98aa8fa4e96/01-美术/live2d/green-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/source-review.html",
+      "sha256": "da4811a0ffb57dd171c5b0983204614b30af7e642489f533f7d1f98aa8fa4e96",
+      "bytes": 5350,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/440aecf6858ad2b49636bcf36893e737e158b74efde4ccd47d90ef6bcfec077e/01-美术/live2d/green-20261115/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/README.md",
+      "sha256": "440aecf6858ad2b49636bcf36893e737e158b74efde4ccd47d90ef6bcfec077e",
+      "bytes": 4486,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/481941c256d722b412eed8ec7997686e0251335b95c08b4401e86cd16ca65d94/01-美术/live2d/green-20261115/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/green-20261115/build-head-mesh.py",
+      "sha256": "481941c256d722b412eed8ec7997686e0251335b95c08b4401e86cd16ca65d94",
+      "bytes": 6405,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/69e1856971beb95fb62fcc465c39b8997e844bed55002069ff8dd2d517bd73ae/01-美术/live2d/green-20261115/head-mesh-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/head-mesh-review.html",
+      "sha256": "69e1856971beb95fb62fcc465c39b8997e844bed55002069ff8dd2d517bd73ae",
+      "bytes": 4814,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/1e21637b426164e213ff6b5ec5268d26095ed57a0513b656f6507b73731269ee/01-美术/live2d/green-20261115/build-head-mesh.py",
+      "original_project_path": "01-美术/live2d/green-20261115/build-head-mesh.py",
+      "sha256": "1e21637b426164e213ff6b5ec5268d26095ed57a0513b656f6507b73731269ee",
+      "bytes": 6782,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/157e2671969dd0a70886333497cd8bb82a464566e607bda98bea5b6cbe425546/01-美术/live2d/green-20261115/head-mesh-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/head-mesh-review.html",
+      "sha256": "157e2671969dd0a70886333497cd8bb82a464566e607bda98bea5b6cbe425546",
+      "bytes": 5001,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/d44fac0beacca3aa0574d6b70ed7a3bef0e877ca66ae80f09e7cfcaea3de2de7/01-美术/live2d/green-20261115/README.md",
+      "original_project_path": "01-美术/live2d/green-20261115/README.md",
+      "sha256": "d44fac0beacca3aa0574d6b70ed7a3bef0e877ca66ae80f09e7cfcaea3de2de7",
+      "bytes": 4784,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:12:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/a01aabeb5e7c71941217dff1026c5fa05c0b28b18f87e970d06e5fbe0ce948b6/01-美术/live2d/green-20261115/expression/build-eye-source.py",
+      "original_project_path": "01-美术/live2d/green-20261115/expression/build-eye-source.py",
+      "sha256": "a01aabeb5e7c71941217dff1026c5fa05c0b28b18f87e970d06e5fbe0ce948b6",
+      "bytes": 6652,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T05:58:58+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/324b3ba445a1339b658014a3097053829630cc0db5551f3b1c3cdbfcc4332eec/01-美术/live2d/green-20261115/body/body-rig-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/body/body-rig-review.html",
+      "sha256": "324b3ba445a1339b658014a3097053829630cc0db5551f3b1c3cdbfcc4332eec",
+      "bytes": 7683,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T06:45:57+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/2ff7bc443d59334ac6f6d9c9fed3ac17889db943d37a03bdefe318327f348353/01-美术/live2d/green-20261115/body/body-rig-review.html",
+      "original_project_path": "01-美术/live2d/green-20261115/body/body-rig-review.html",
+      "sha256": "2ff7bc443d59334ac6f6d9c9fed3ac17889db943d37a03bdefe318327f348353",
+      "bytes": 7689,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T06:45:57+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/ab4dd84a5f21ffc89fbbbbd9194ecedf870021865d5ce0f17eaaf4f3037ee230/game/tests/publicShellRigRouting.test.mjs",
+      "original_project_path": "game/tests/publicShellRigRouting.test.mjs",
+      "sha256": "ab4dd84a5f21ffc89fbbbbd9194ecedf870021865d5ce0f17eaaf4f3037ee230",
+      "bytes": 3038,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T07:36:31+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/9f01cffda03db29379922656cb51a8869e446b8178eb5a563b365e1711ab723a/01-美术/live2d/blue-white-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/source-review.html",
+      "sha256": "9f01cffda03db29379922656cb51a8869e446b8178eb5a563b365e1711ab723a",
+      "bytes": 5367,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T08:29:57+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/62482e7a9c5afc004e70f7113466eacbd8b143803e2e5ce44cb5a4d9129388c5/01-美术/live2d/blue-white-20261115/build-source.py",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/build-source.py",
+      "sha256": "62482e7a9c5afc004e70f7113466eacbd8b143803e2e5ce44cb5a4d9129388c5",
+      "bytes": 24077,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": "2026-11-15T09:15:40+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/ba24844fc1883376e04c24a372ae5d4e484f27885ea9809ef8903d72cc375dc8/01-美术/live2d/blue-white-20261115/source-review.html",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/source-review.html",
+      "sha256": "ba24844fc1883376e04c24a372ae5d4e484f27885ea9809ef8903d72cc375dc8",
+      "bytes": 2421,
+      "source_kind": "static-reconstruction-from-recorded-write",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": "2026-11-15T18:55:45+00:00",
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/af6b9494045f055242acb6887d056ef6afbee5c2a9c9a1411cfa8ef37231309e/01-美术/live2d/blue-white-20261115/source-review.mjs",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/source-review.mjs",
+      "sha256": "af6b9494045f055242acb6887d056ef6afbee5c2a9c9a1411cfa8ef37231309e",
+      "bytes": 8277,
+      "source_kind": "historical-hash-matched-version",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "recovery/additional-versions/b4ee23b537e55179560e046dfcf6fc8dbd533a3701d00aba330a7018e7b11d1c/01-美术/live2d/blue-white-20261115/export-source.py",
+      "original_project_path": "01-美术/live2d/blue-white-20261115/export-source.py",
+      "sha256": "b4ee23b537e55179560e046dfcf6fc8dbd533a3701d00aba330a7018e7b11d1c",
+      "bytes": 3304,
+      "source_kind": "historical-hash-matched-version",
+      "matches_recorded_historical_hash": true,
+      "historical_time_utc": null,
+      "integrated": false
+    },
+    {
+      "path": "01-美术/owner-originals/蔚蓝魔法学园少女.png",
+      "original_project_path": "owner-original/蔚蓝魔法学园少女.png",
+      "sha256": "f96952976e68b2d9b007556a8fdf81999a7df0632546ffc87023a4df526a3bda",
+      "bytes": 1867093,
+      "source_kind": "owner-supplied-original-png",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false,
+      "pixel_size": [
+        1085,
+        1449
+      ]
+    },
+    {
+      "path": "01-美术/owner-originals/翡翠风歌的浮空旋律.png",
+      "original_project_path": "owner-original/翡翠风歌的浮空旋律.png",
+      "sha256": "7733edc1d70905b27ed9b5cbb9def7c53e0eb4e6b5411a138aa815d08c53e590",
+      "bytes": 1810839,
+      "source_kind": "owner-supplied-original-png",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false,
+      "pixel_size": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "path": "01-美术/owner-originals/橙白黑赛博战术女武神.png",
+      "original_project_path": "owner-original/橙白黑赛博战术女武神.png",
+      "sha256": "fa2d3de4d0640b96287cb95dda8ca2a3f256c4a20a1b94e660895331c7ab3701",
+      "bytes": 1923969,
+      "source_kind": "owner-supplied-original-png",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false,
+      "pixel_size": [
+        1070,
+        1470
+      ]
+    },
+    {
+      "path": "recovery/production-queue.historical.txt",
+      "original_project_path": "historical-production-queue",
+      "sha256": "c766309d63113417efa08151ef92787f369c93b227a32b2d03c2d4b4f470bbdb",
+      "bytes": 25654,
+      "source_kind": "historical-rows-not-current-acceptance",
+      "matches_recorded_historical_hash": false,
+      "historical_time_utc": null,
+      "integrated": false
+    }
+  ]
+}

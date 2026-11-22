@@ -1,0 +1,15 @@
+import {PrismRouteScene} from './PrismRouteScene.js';
+import {PrismFinale} from '../utils/prismFinale.mjs';
+export class PrismFinaleScene extends PrismRouteScene {
+ constructor(){super('PrismFinaleScene');this.segmentLabel='折光花庭 · 司仪压轴';}
+ createRun(){return new PrismFinale(this.member.id);}
+ mountUI(){super.mountUI();this.ui.setAttribute('aria-label','折光司仪压轴试演');this.ui.querySelector('.prism-header small').textContent='司仪压轴 · 双相光盾';}
+ drawGarden(){const g=this.add.graphics();g.fillStyle(0x163336).fillRoundedRect(18,150,339,400,24);g.lineStyle(3,0xa4b999,.7).strokeRoundedRect(20,150,335,400,24);for(let r=50;r<=140;r+=30)g.lineStyle(1,0xa3b69b,.15).strokeCircle(188,265,r);for(let i=0;i<12;i++){const a=i*Math.PI/6;g.lineStyle(1,0xd7bf88,.2).lineBetween(188+40*Math.cos(a),265+40*Math.sin(a),188+145*Math.cos(a),265+145*Math.sin(a));}for(const x of [28,243]){g.fillStyle(0x4b715c).fillRoundedRect(x,365,105,22,7);for(let t=x+8;t<x+105;t+=15)g.fillStyle(0xc0bf8b).fillCircle(t,373,5);}for(const [x,label]of [[78,'西侧接光环'],[298,'东侧接光环']])this.add.text(x,355,label,{fontSize:'12px',color:'#ead6b5',stroke:'#102b30',strokeThickness:3}).setOrigin(.5);this.add.text(188,489,'中央分光台 · E',{fontSize:'12px',color:'#ead6b5'}).setOrigin(.5);this.add.text(188,221,'花门 / 出口',{fontSize:'11px',color:'#ead6b5'}).setOrigin(.5);this.bossArt=this.add.graphics().setDepth(4);}
+ dialogTexts(s){return s.phase==='ready'?['让司仪的光盾散开','中央台转一档接西环，站入光环接光1.4秒后破盾。靠近司仪自动攻击，技能可加快输出；窗口只有3.8秒。半血换相必须回中央改接东环再破盾。竖线横躲、十字斜躲；环带预告时走出环带或贴近中心。击败后走入上方花门。','开始试演']:s.phase==='paused'?['压轴暂停','光盾窗口、接光与追光预告均已冻结。','继续试演']:s.phase==='complete'?['折光司仪谢幕','西环与东环都已破盾，花门重新开放。','再试一次']:['再读一次光的落点','先接对光环破盾，再靠近输出。十字预告时斜移，环带预告时离开环带。','重新试演'];}
+ showOverlay(){super.showOverlay();const s=this.run.snapshot();if(s.phase==='complete'||s.phase==='failed')this.ui.querySelector('.prism-review').textContent=`破盾 ${s.breaks} 次 · 造成伤害 ${s.damage} · 受击 ${s.hits} 次 · ${(s.time/1000).toFixed(1)} 秒`;}
+ renderFrame(){super.renderFrame();const s=this.run.snapshot(),g=this.bossArt,b=s.boss,h=s.enemies[0].hazard;g.clear();if(b.hp>0){g.lineStyle(3,s.exposed?0xf5cc87:0xa2d9dd,1).strokeCircle(b.x,b.y,31);for(let i=0;i<6;i++){const a=i*Math.PI/3+s.time*.0002;g.lineStyle(2,0xe2b6df,.8).lineBetween(b.x+25*Math.cos(a),b.y+25*Math.sin(a),b.x+36*Math.cos(a+.2),b.y+36*Math.sin(a+.2));}if(h?.axis==='ring'&&h.state!=='rest'){g.lineStyle(55,h.state==='warning'?0xffd78f:0xff8b9d,h.state==='warning'?.17:.45).strokeCircle(b.x,b.y,82.5);g.lineStyle(2,0xffe0b0,.8).strokeCircle(b.x,b.y,55).strokeCircle(b.x,b.y,110);}}
+ this.dom.progress.textContent=s.gateOpen?'出口已开放':`司仪 ${Math.ceil(b.hp)} / 240 · 第${b.stage}相`;
+ this.dom.target.textContent=s.gateOpen?'走入上方花门':s.exposed?'光盾已破 · 输出窗口 '+(s.windowMs/1000).toFixed(1)+'秒':(b.stage===1?'西侧':'东侧')+'接光环 · '+(s.stations.find(x=>x.id===s.route).lightMs/1000).toFixed(1)+' / 1.4秒';
+ this.dom.hint.textContent=s.gateOpen?'走进金色花环完成压轴':h?.state==='warning'||h?.state==='active'?h.axis==='ring'?'环带追光 · 离开环带或贴近中心':h.cross?'交叉追光 · 斜向移开横竖标线':'竖向追光 · 横向移开标线':s.exposed?'自动攻击 + 主动技能 · 抓紧破盾窗口':'回中央转向对应光环，再站入环内接光';
+ }
+}

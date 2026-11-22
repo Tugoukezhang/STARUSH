@@ -1,0 +1,32 @@
+/* One timing family, scoped to live menu/dialog owners. No animation owns a command. */
+#game-container [data-ui-motion=true] {
+ --ui-feedback-time:100ms;--ui-panel-time:160ms;--ui-page-time:180ms;--ui-reward-time:220ms;
+ --ui-ease:cubic-bezier(.2,.8,.2,1);
+}
+@keyframes ui-page-forward375 {from{opacity:.72;translate:6px 0}to{opacity:1;translate:0 0}}
+@keyframes ui-page-back375 {from{opacity:.72;translate:-6px 0}to{opacity:1;translate:0 0}}
+@keyframes ui-panel375 {from{opacity:.72;translate:0 4px}to{opacity:1;translate:0 0}}
+@keyframes ui-reward375 {from{opacity:.65;scale:.9}to{opacity:1;scale:1}}
+#game-container #public-shell[data-ui-motion=true] .shell-content {animation:none!important}
+#game-container #public-shell[data-ui-motion=true][data-motion=forward] .shell-content {animation:ui-page-forward375 var(--ui-page-time) var(--ui-ease)!important}
+#game-container #public-shell[data-ui-motion=true][data-motion=back] .shell-content {animation:ui-page-back375 var(--ui-page-time) var(--ui-ease)!important}
+#game-container #public-shell[data-ui-motion=true]:is([data-motion=root],[data-motion=enter]):not([data-page=desk]) .shell-content {animation:ui-panel375 var(--ui-page-time) var(--ui-ease)!important}
+/* The page carries spatial motion; interior groups don't arrive a second time. */
+#game-container #public-shell[data-ui-motion=true] :is(.preflight-hero,.tour-stop-sequence,.roster-portrait-stage,.roster-identity,.roster-detail,.shell-brand h1,.shell-navigation [aria-current]) {animation:none!important}
+#game-container #public-shell[data-ui-motion=true] :is(.home-concept-art,.home-portrait-rig,.lobby-character,.home-lettering) {animation-duration:var(--ui-page-time)!important;animation-delay:0ms!important}
+#game-container [data-ui-motion=true]:is(#player-session-dialog,#battle-pause,#run-choice) :is(.session-panel,.battle-surface-content) {animation:ui-panel375 var(--ui-panel-time) var(--ui-ease)!important}
+#game-container #battle-result[data-ui-motion=true] :is(.battle-performance-header,.battle-result-stats) {animation:ui-panel375 var(--ui-page-time) var(--ui-ease)!important}
+#game-container #battle-result[data-ui-motion=true] .result-reward-icon {animation:ui-reward375 var(--ui-reward-time) var(--ui-ease);transform-origin:center}
+#game-container [data-ui-motion=true] :is(button,summary) {transition-duration:var(--ui-feedback-time)!important}
+/* Keep the pointer target stationary; color and inset ink carry press/selection feedback. */
+#game-container [data-ui-motion=true] button:active:not(:disabled) {transform:none!important;translate:none!important;scale:none!important;filter:brightness(.94)}
+#game-container #public-shell[data-ui-motion=true] :is(.shell-member-option,.shell-chapter-option,.inventory-item,.arrangement-option,.run-goal-option,.workshop-equipment)[aria-pressed=true]:focus {animation:none!important}
+/* Input skips arrivals, including art that finishes loading after that input. */
+#game-container [data-ui-motion=true][data-ui-entry-skipped=true] :is(.shell-content,.session-panel,.battle-surface-content,.battle-performance-header,.battle-result-stats,.result-reward-icon,.home-concept-art,.home-portrait-rig,.lobby-character,.home-lettering,.ui-sheet,.battle-choice-row,.roster-portrait-stage,.preflight-hero) {animation:none!important}
+#game-container [data-ui-motion=true][data-ui-motion-reduced=true],
+#game-container [data-ui-motion=true][data-ui-motion-reduced=true] *,
+#game-container [data-ui-motion=true][data-ui-motion-reduced=true] *::before,
+#game-container [data-ui-motion=true][data-ui-motion-reduced=true] *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){
+ #game-container [data-ui-motion=true],#game-container [data-ui-motion=true] *,#game-container [data-ui-motion=true] *::before,#game-container [data-ui-motion=true] *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

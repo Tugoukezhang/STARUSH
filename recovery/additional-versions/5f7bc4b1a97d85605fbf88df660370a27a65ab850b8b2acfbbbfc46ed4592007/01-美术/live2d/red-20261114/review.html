@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Q68 红发拆层对位工作台</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#10151e;color:#eaf0fa;font:15px system-ui}header{padding:18px 24px;border-bottom:1px solid #344154}h1{font-size:21px;margin:0 0 8px}p{margin:6px 0;color:#b9c5d8}.layout{display:grid;grid-template-columns:280px 1fr;gap:16px;padding:16px}aside{background:#1a2331;padding:16px;border-radius:10px}.views{display:grid;grid-template-columns:1fr 1fr;gap:12px}.surface{background:#233142;border:1px solid #40516b;overflow:hidden;border-radius:8px}.surface>h2{font-size:15px;margin:12px}canvas,img{display:block;width:100%;height:auto}button,select,input{font:inherit}button,select{padding:8px 10px;color:inherit;background:#26364b;border:1px solid #536983;border-radius:5px;cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f8a665}label{display:block;margin:9px 0}label input[type=range]{width:100%}.buttons{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.notice{color:#ffc294}.stats{white-space:pre-wrap;font:12px monospace;overflow-wrap:anywhere}.check{display:flex;align-items:center;gap:8px}a{color:#afdcff}@media(max-width:760px){.layout{grid-template-columns:1fr}.views{grid-template-columns:1fr}aside{position:static}}
+</style>
+<header><h1>Q68 · 红发拆层对位工作台</h1><p class="notice">制作中，未验收。这是图层检查工具，不是 Live2D 模型或正式游戏主页。</p><p>左侧为透明底衍生参考，右侧为独立图层重组；衍生参考仍须与用户原图核对身份。</p></header>
+<div class="layout"><aside>
+<label>检查底色 <select id="background"><option value="#233142">深蓝灰</option><option value="#ffffff">白色</option><option value="#141414">近黑</option><option value="#728b79">灰绿</option></select></label>
+<div class="buttons"><button id="all">全部显示</button><button id="reset">重置调整</button></div>
+<div id="layers"></div>
+<label>调整图层 <select id="active"></select></label>
+<label>水平偏移 <input id="dx" type="range" min="-120" max="120" value="0"></label>
+<label>垂直偏移 <input id="dy" type="range" min="-120" max="120" value="0"></label>
+<fieldset><legend>部件联动检查（不是转向参数）</legend><label>部件 <select id="group"><option value="">不选部件</option></select></label><label>整体横移 <input id="group-dx" type="range" min="-16" max="16" value="0"></label><label>整体纵移 <input id="group-dy" type="range" min="-16" max="16" value="0"></label></fieldset>
+<label>参考叠图透明度 <input id="overlay" type="range" min="0" max="1" step="0.05" value="0"></label>
+<div class="buttons"><button id="solo">只看当前层</button><button id="export">导出对位 JSON</button></div>
+<p>偏移只用于暴露接缝和遮挡补绘，不代表已完成转向或物理绑定。修改不会写入游戏存档。</p>
+<pre id="stats" class="stats" aria-live="polite">加载中…</pre>
+</aside><main class="views"><section class="surface"><h2>透明底衍生参考</h2><img id="reference" alt="红发角色透明底衍生参考"></section><section class="surface"><h2>独立图层重组 · 待对位审查</h2><canvas id="canvas" width="1070" height="1470" aria-label="拆层重组预览"></canvas></section></main></div>
+<script type="module">
+const manifest=await fetch('./layers.json').then(r=>{if(!r.ok)throw Error('图层清单读取失败');return r.json()});
+const canvas=document.querySelector('#canvas'),ctx=canvas.getContext('2d');
+canvas.width=manifest.canvas.width;canvas.height=manifest.canvas.height;
+const names={'rear-hair':'后马尾补绘','rear-hair-tips':'肩后发尾原纹理','body-core':'躯干与腿','shoulder-underpaint':'肩根隐藏布料补绘','coat-skirts':'衣片与飘带（待细分）','arm-left':'持枪手臂','weapon':'武器遮挡补绘','weapon-surface':'武器原纹理','grip-hand-surface':'持枪手臂原纹理','face-base':'脸底补绘','facial-features':'五官（待细分）','short-hair':'短发与刘海','head-accessories-paint':'护目镜遮挡补绘','head-accessories':'护目镜与头饰','arm-right':'抬高手臂补绘','arm-right-surface':'抬高手臂原纹理'};
+const load=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('资源加载失败：'+src));im.src=src});
+const reference=await load(manifest.reference);document.querySelector('#reference').src=manifest.reference;
+const layers=await Promise.all(manifest.layers.map(async data=>({...data,image:await load(data.file),visible:true,dx:0,dy:0})));
+const active=document.querySelector('#active');
+const groups=(manifest.groups||[]).map(g=>({...g,dx:0,dy:0}));
+for(const g of groups)document.querySelector('#group').add(new Option(g.label,g.id));
+const groupOffset=layer=>groups.filter(g=>g.members.includes(layer.id)).reduce((sum,g)=>[sum[0]+g.dx,sum[1]+g.dy],[0,0]);
+for(const axis of ['dx','dy'])document.querySelector('#group-'+axis).oninput=e=>{const g=groups.find(g=>g.id===document.querySelector('#group').value);if(g)g[axis]=Number(e.target.value);render()};
+document.querySelector('#group').onchange=e=>{const g=groups.find(g=>g.id===e.target.value);for(const axis of ['dx','dy'])document.querySelector('#group-'+axis).value=g?.[axis]||0;render()};
+for(const layer of layers){
+ const label=document.createElement('label');label.className='check';
+ const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=true;checkbox.dataset.layer=layer.id;
+ checkbox.addEventListener('change',()=>{layer.visible=checkbox.checked;render()});
+ label.append(checkbox,document.createTextNode(names[layer.id]));document.querySelector('#layers').append(label);
+ const option=new Option(names[layer.id],layer.id);active.add(option);
+}
+function sync(){const layer=layers.find(l=>l.id===active.value);document.querySelector('#dx').value=layer.dx;document.querySelector('#dy').value=layer.dy;render()}
+function render(){
+ ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
+ for(const layer of layers){if(!layer.visible)continue;ctx.save();const offset=groupOffset(layer);ctx.translate(layer.dx+offset[0],layer.dy+offset[1]);ctx.transform(...layer.matrix);if(layer.textureRegions){ctx.beginPath();for(const polygon of layer.textureRegions){polygon.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath()}ctx.clip()}ctx.drawImage(layer.image,0,0);ctx.restore()}
+ ctx.globalAlpha=Number(document.querySelector('#overlay').value);ctx.drawImage(reference,0,0);ctx.globalAlpha=1;
+ const layer=layers.find(l=>l.id===active.value);
+ document.querySelector('#stats').textContent=`显示 ${layers.filter(l=>l.visible).length}/${layers.length} 层\n当前：${names[layer.id]}\n偏移：${layer.dx}, ${layer.dy}px\n对位：${layer.registration.status}\n自动匹配不是美术验收\nartAccepted: false`;
+ document.querySelectorAll('input[data-layer]').forEach(e=>e.checked=layers.find(l=>l.id===e.dataset.layer).visible);
+ window.reviewState={loaded:true,visible:layers.filter(l=>l.visible).map(l=>l.id),active:layer.id,dx:layer.dx,dy:layer.dy,groups:groups.map(g=>({id:g.id,dx:g.dx,dy:g.dy})),artAccepted:false};
+}
+active.addEventListener('change',sync);
+for(const axis of ['dx','dy'])document.querySelector('#'+axis).addEventListener('input',e=>{layers.find(l=>l.id===active.value)[axis]=Number(e.target.value);render()});
+document.querySelector('#overlay').addEventListener('input',render);
+document.querySelector('#background').addEventListener('change',e=>document.querySelectorAll('.surface').forEach(s=>s.style.background=e.target.value));
+document.querySelector('#all').onclick=()=>{layers.forEach(l=>l.visible=true);render()};
+document.querySelector('#solo').onclick=()=>{layers.forEach(l=>l.visible=l.id===active.value);render()};
+document.querySelector('#reset').onclick=()=>{layers.forEach(l=>{l.dx=0;l.dy=0;l.visible=true});groups.forEach(g=>{g.dx=0;g.dy=0});document.querySelector('#group-dx').value=0;document.querySelector('#group-dy').value=0;document.querySelector('#overlay').value=0;sync()};
+document.querySelector('#export').onclick=()=>{const data=structuredClone(manifest);data.layers.forEach((l,i)=>{const offset=groupOffset(layers[i]);l.matrix[4]+=layers[i].dx+offset[0];l.matrix[5]+=layers[i].dy+offset[1]});const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='layers-review.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+sync();
+</script>
+</html>

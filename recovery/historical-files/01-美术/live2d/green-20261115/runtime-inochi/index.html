@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Q84 绿发运行包</title>
+<style>html{color-scheme:dark}body{margin:0;background:#122b2b;color:#eaf4e9;font:16px system-ui}main{max-width:1000px;margin:auto;display:grid;grid-template-columns:minmax(250px,1fr) 300px}#stage{height:90vh;min-height:400px;background:radial-gradient(ellipse at 50% 42%,#3c6960,#132d31 75%)}canvas{display:block;width:100%;height:100%;touch-action:none}aside{padding:24px}button{font:inherit;color:inherit;background:#254b43;border:1px solid #8cbaa8;border-radius:9px;padding:12px;margin:4px;cursor:pointer}button:focus-visible{outline:3px solid #f0d080}label{display:block;margin:14px 4px}p{line-height:1.7}small{color:#aac4bc}@media(max-width:650px){main{display:block}#stage{height:61vh;min-height:320px}aside{padding:16px}h1{font-size:23px;margin:0}}</style>
+<main><div id="stage"><canvas id="model" aria-label="绿色角色互动预览"></canvas></div><aside><h1>月下的轻声回应</h1><p>轻点下方动作，或在人物区域移动指针。</p><div id="actions"><button data-action="chime">月饰回应</button><button data-action="gesture">双臂回应</button><button data-action="breathe">轻轻呼吸</button><button data-action="blink">眨眼</button><button data-action="smile">微笑</button></div><button id="impulse">轻拨发衣</button><button id="cancel">取消动作</button><button id="pause">暂停</button><button id="resume">继续</button><button id="reset">回到初始</button><button id="reload">重新加载</button><label><input id="reduced" type="checkbox"> 减少动态</label><p id="status" role="status">正在加载角色…</p><small>独立运行包预览 · Inochi2D 网格模型。尚未接入正式角色页。</small></aside></main>
+<script type="module">
+import {createGreenAvatar} from './avatar.mjs';
+const canvas=document.querySelector('canvas'),status=document.querySelector('#status');
+try {
+  const reduced=document.querySelector('#reduced');reduced.checked=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const avatar=await createGreenAvatar(canvas,{reducedMotion:reduced.checked,onError:e=>{status.textContent=e.message;window.failure=String(e)}});window.avatar=avatar;
+  for(const b of document.querySelectorAll('[data-action]'))b.onclick=()=>{avatar.play(b.dataset.action);status.textContent=reduced.checked?'已减少动态，可关闭后体验动作。':b.textContent};
+  for(const id of ['impulse','cancel','pause','resume','reset','reload'])document.getElementById(id).onclick=()=>{avatar[id]();status.textContent=id==='pause'?'动作已暂停':id==='resume'?'动作继续':id==='reload'?'角色已重新加载':'已回应'};
+  reduced.onchange=()=>{avatar.setReducedMotion(reduced.checked);status.textContent=reduced.checked?'已减少动态':'已开启动态'};
+  canvas.addEventListener('pointermove',e=>{if(e.pointerType==='touch'&&!e.buttons)return;const r=canvas.getBoundingClientRect();avatar.look((e.clientX-r.left)/r.width*2-1,1-(e.clientY-r.top)/r.height*2)});
+  canvas.addEventListener('pointerleave',()=>avatar.look(0,0));
+  status.textContent='角色已就绪';window.ready=true;
+}catch(e){status.textContent='加载失败：'+e.message;window.failure=String(e);console.error(e)}
+</script></html>

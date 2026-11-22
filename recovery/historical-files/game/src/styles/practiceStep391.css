@@ -1,0 +1,6 @@
+/* One live mechanism at a time; native disclosure never takes over the pause owner. */
+#game-container #battle-pause [data-practice-step] {margin:8px 0;padding:0 12px;border:1px solid #8ba69a;border-radius:6px;background:#f1f7ec;color:#24493e;min-width:0;}
+#game-container #battle-pause .battle-practice-summary {min-height:44px;box-sizing:border-box;padding:10px 0;font-size:14px;line-height:24px;font-weight:750;cursor:pointer;overflow-wrap:anywhere;}
+#game-container #battle-pause .battle-practice-summary:focus-visible {outline:2px solid #28614f;outline-offset:2px;}
+#game-container #battle-pause [data-practice-step] p {font-size:13px;line-height:21px;margin:4px 0 10px;overflow-wrap:anywhere;}
+#game-container #battle-pause .battle-practice-action {font-weight:700;}

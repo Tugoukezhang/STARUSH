@@ -38,7 +38,7 @@ test('local retry remains single-use and success removes recovery without an ext
 function settings(){
  const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);const h=e.harness(e.TitleScene);h.scene.create();h.click('[data-action=settings]');
  const root=e.document.getElementById('player-session-dialog'),query=root.querySelectorAll.bind(root);
- root.querySelectorAll=selector=>selector==='button, input'?walk(root).filter(n=>['BUTTON','INPUT'].includes(n.tagName)):query(selector);
+ root.querySelectorAll=selector=>selector==='button, input, summary'?walk(root).filter(n=>['BUTTON','INPUT','SUMMARY'].includes(n.tagName)):query(selector);
  function walk(node){return node.children.flatMap(child=>[child,...walk(child)]);}
  return {e,h,ui:h.scene._sessionExperience,root};
 }

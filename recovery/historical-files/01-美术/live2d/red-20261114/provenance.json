@@ -1,0 +1,14 @@
+{
+  "queueItem": "Q68",
+  "source": "User attached three GPT-generated PNGs in conversation, red first. Initial cutout edited through num_last_images_to_include:3; subsequent edits reference saved red-derived PNGs.",
+  "sourceBinaryAvailable": false,
+  "notByteIdenticalUserSource": true,
+  "editingTool": "image_gen; no Python raster editing",
+  "selectedLayers": "layers.json",
+  "fiveFeaturesNote": "Two eyes/brows and mouth are independently clipped UV regions of cutout-candidate.png; standalone generated eye/mouth alternatives are not selected. These are not separate eyelid/iris rigs.",
+  "rejectedOrUnused": "Files not selected in layers.json are intermediate, comparison or rejected drafts, not approved assets.",
+  "files": [],
+  "artAccepted": false,
+  "contentComplete": false,
+  "isLive2DModel": false
+}
