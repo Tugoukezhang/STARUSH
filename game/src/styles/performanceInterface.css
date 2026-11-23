@@ -1,0 +1,97 @@
+/* Stage lighting follows the section; the selected tab also carries a solid rail. */
+#game-container #public-shell {
+  --section-light: #91e0ce;
+  --section-edge: #46766e;
+}
+#game-container #public-shell[data-root-page=roster] { --section-light: #f6b9ce; --section-edge: #98556b; }
+#game-container #public-shell[data-root-page=tour] { --section-light: #b6d9ff; --section-edge: #54799c; }
+#game-container #public-shell[data-root-page=inventory] { --section-light: #ffe0a3; --section-edge: #9c7744; }
+#game-container #public-shell[data-root-page=records] { --section-light: #d4c6ff; --section-edge: #7a668e; }
+
+#game-container #public-shell[data-page] .shell-header {
+  background-image: linear-gradient(90deg,#101d21ef,#152126bd 48%,#142226e8);
+  box-shadow: inset 0 -1px var(--section-edge);
+}
+#game-container #public-shell[data-page=desk] .ui-home-dock {
+  background-image: linear-gradient(5deg,#112027f2,#182b31d6 65%,#192d3177);
+  box-shadow: inset 0 1px #c4fff24d;
+}
+#game-container #public-shell[data-page] :is(.shell-wallet,.ui-home-caption,.pm-home-label) {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 3px #07151b;
+}
+#game-container #public-shell[data-page] :is(.shell-content,.ui-sheet-body,.journey-detail-panels) {
+  scrollbar-color: var(--section-edge) transparent;
+  scrollbar-width: thin;
+  scroll-padding-block: 12px;
+}
+#game-container #public-shell[data-page] :is(.ui-sheet,.shell-pending-save,[role=dialog]) {
+  box-shadow: 0 12px 36px #06101575, inset 0 1px #effff124;
+}
+#game-container #public-shell :is(button[aria-selected=true],button[aria-pressed=true],button[aria-current=page]) {
+  box-shadow: inset 0 -3px var(--section-light);
+}
+#game-container #public-shell :is(button:disabled,button[aria-disabled=true]) { cursor: default; }
+#game-container :is(button,summary,select,input,[role=button]):focus-visible {
+  outline: 2px solid #ffdc86 !important;
+  outline-offset: -3px;
+}
+#game-container :is(button,summary,[role=button]) { touch-action: manipulation; }
+#game-container button:not(:disabled):not([aria-disabled=true]):active {
+  filter: brightness(.88);
+}
+@media (hover:hover) {
+  #game-container button:not(:disabled):not([aria-disabled=true]):hover { outline: 1px solid #98d5caaa; outline-offset: -2px; }
+}
+#game-container :is(#round-clock,#hp-value,#special-state,#encore-state,.shell-wallet) { font-variant-numeric:tabular-nums; }
+#game-container #hud #round-clock { text-shadow:0 1px 3px #07151b; }
+#game-container #hud #hp-fill { background-image:linear-gradient(to bottom,#ffffff47,transparent 44%,#15272b44); }
+#game-container #player-session-dialog :is(p,li) { overflow-wrap:break-word; }
+#game-container [role=dialog] button, #game-container dialog button { scroll-margin-block:8px; }
+@media (forced-colors:active) {
+  #game-container button:is([aria-selected=true],[aria-pressed=true],[aria-current=page]) { outline:2px solid Highlight; }
+}
+
+/* The four pictograms share one 46px rail on every menu page. */
+#game-container #public-shell[data-page] .ui-root-nav .ui-nav-root::before {
+  content:attr(title);
+  position:absolute;
+  inset:auto 0 4px;
+  font:600 10px/12px system-ui,sans-serif;
+  text-align:center;
+  color:#d6e6e4;
+  pointer-events:none;
+}
+#game-container #public-shell[data-page] .ui-nav-root .ui-glyph {
+  translate:0 -6px;
+  scale:.78;
+}
+#game-container #public-shell[data-page] .ui-nav-root[aria-current]::before {color:#fff;}
+#game-container #public-shell[data-page=desk][data-home-demo=true] .shell-brand-art {
+  object-position:left center;
+  max-height:40px;
+}
+#game-container #battle-result .battle-surface-content {
+  scrollbar-width:thin;
+  scrollbar-color:#709c92 #eaf2f0;
+  scroll-padding-block:12px;
+}
+#game-container :is(#battle-result,#player-session-dialog) :is(strong,time) { font-variant-numeric:tabular-nums; }
+#game-container :is(#battle-result,#player-session-dialog) button { touch-action:manipulation; }
+/* Keep CJK labels and counts legible in dense preparation and archive panels. */
+#game-container #public-shell :is(.member-sheet-name,.inventory-loadout-name,.chapter-story-title,.chapter-report-heading) {
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+}
+#game-container #public-shell :is(.inventory-slot-count,.inventory-notes,.chapter-report-facts,.challenge-result-stats,.growth-comparison-labels) {
+  font-variant-numeric:tabular-nums;
+}
+#game-container #public-shell :is(.inventory-description,.chapter-report-guide,.growth-effects) { line-height:1.55; }
+#game-container #public-shell :is(.library-stage-tabs,.chapter-report-tabs,.journey-detail-tabs) button:focus-visible {outline-offset:-4px;}
+#game-container #player-session-dialog input[type=range] {
+  accent-color:#27877c;
+  min-height:36px;
+  max-width:100%;
+  cursor:pointer;
+}
+#game-loading progress {accent-color:#75d9c9;}

@@ -3565,9 +3565,9 @@ export class BattleScene extends Phaser.Scene {
     const publicRound = this._isPublicStage1Round();
     this._joystickRest = { x: JOYSTICK_REST_X, y: JOYSTICK_REST_Y };
     this._joystickOrigin = { ...this._joystickRest };
-    this._joystickBase = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_BASE_RADIUS + (publicRound ? 0 : 14), publicRound ? 0x26383C : 0xFFFFFF, publicRound ? 0.14 : 0.18)
+    this._joystickBase = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_BASE_RADIUS + (publicRound ? 0 : 14), publicRound ? 0x26383C : 0xFFFFFF, publicRound ? 0.28 : 0.18)
       .setDepth(124)
-      .setStrokeStyle(publicRound ? 1.5 : 4, publicRound ? 0x26383C : 0xFFFFFF, publicRound ? 0.65 : 0.5));
+      .setStrokeStyle(publicRound ? 2 : 4, publicRound ? 0xAACDC8 : 0xFFFFFF, publicRound ? 0.65 : 0.5));
     this._joystickKnob = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_KNOB_RADIUS + (publicRound ? 0 : 6), 0xFFFFFF, publicRound ? 0.95 : 0.82)
       .setDepth(125)
       .setStrokeStyle(publicRound ? 1.5 : 3, publicRound ? 0x82999F : 0xFFFFFF, 0.7));
@@ -3597,6 +3597,7 @@ export class BattleScene extends Phaser.Scene {
     }
     if (this._joystickKnob && this._joystickKnob.active !== false) {
       this._joystickKnob.setPosition(rest.x, rest.y);
+      this._joystickKnob.setFillStyle?.(0xFFFFFF, .95);
     }
   }
 
@@ -3610,6 +3611,7 @@ export class BattleScene extends Phaser.Scene {
     }
     if (this._joystickKnob && this._joystickKnob.active !== false) {
       this._joystickKnob.setPosition(target.x, target.y);
+      this._joystickKnob.setFillStyle?.(0xBDF5E7, 1);
     }
   }
 
