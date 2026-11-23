@@ -1,5 +1,6 @@
 import {getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
 import {countdownUrgency} from './BattleHeaderPresentation.mjs';
+import {syncBattleCommandFeedback} from './BattleCommandFeedback.mjs';
 const actions={sakura:'rifle',kai:'sword',enjo:'hammer'};
 const collapseOnShutdown=new WeakSet();
 
@@ -50,5 +51,6 @@ export function syncBattleHudStage(scene,doc,member,action,encore){
   meter.setAttribute('aria-label',id==='special'?member.actionName+'充能':'安可充能');meter.setAttribute('aria-valuenow',String(fact.charge));
   button.style.setProperty('--charge-turn',String(fact.charge/100)+'turn');
   button.dataset.art='stage';button.dataset.chargeState=fact.state;button.setAttribute('title',button.getAttribute('aria-label'));
+  syncBattleCommandFeedback(scene,doc,button,id,member,fact);
  }
 }

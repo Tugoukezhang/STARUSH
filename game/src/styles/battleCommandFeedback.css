@@ -1,0 +1,75 @@
+/* Fixed touch targets. Only the owned weapon ink moves, driven by the Run's paused clock. */
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged] {
+  --command-x:0px;--command-y:0px;--command-angle:0deg;--command-flash:0;--command-spread:1;
+  scale:none;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged]::after {
+  background:linear-gradient(145deg,#35434aeb,#11191ff2 72%);
+  border:1px solid #c7e8e55c;
+  box-shadow:inset 0 1px 0 #ffffff1f,inset 0 -5px 12px #05090d66,0 3px 8px #0005;
+  animation:none;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged] > .battle-command-art {
+  transform:translate(var(--command-x),var(--command-y)) rotate(var(--command-angle));
+  filter:drop-shadow(0 2px 2px #0008);
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged] > :is(#special-state,#encore-state) {
+  left:-64px;top:26px;width:60px;height:22px;box-sizing:border-box;padding:2px 5px 2px 3px;
+  background:#10191fea;border-right:2px solid #a5bdc5;border-radius:3px 0 0 3px;
+  font-size:12px;line-height:18px;color:#e6eff2;text-shadow:none;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged][data-charge-state=ready]::after {
+  border:2px solid var(--command-ink);
+  background:radial-gradient(ellipse at 50% 100%,#486765d9,#17292ee8 70%);
+  box-shadow:inset 0 0 12px #b7fff326,0 0 0 1px #10191f,0 3px 10px #0006;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged][data-charge-state=ready] > :is(#special-state,#encore-state) {
+  background:var(--command-ink);border-color:#f2fff8;color:#102328;font-weight:900;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged][data-charge-state=charging] > .battle-command-art {
+  filter:grayscale(.6) brightness(.76) drop-shadow(0 2px 2px #0008);
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged]:is([data-command-phase=release],[data-command-phase=recovery],[data-command-phase=active]) > :is(#special-state,#encore-state) {
+  border-color:var(--command-ink);color:var(--command-ink);
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged]:is([data-charge-state=paused],[data-charge-state=busy]) > :is(#special-state,#encore-state) {
+  border-color:#a5bdc5;color:#e6eff2;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged][aria-disabled=false]:active {
+  scale:none;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged][aria-disabled=false]:active > .battle-command-art {
+  filter:brightness(1.2) drop-shadow(0 1px 1px #0008);
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-fx {
+  position:absolute;left:6px;top:6px;width:60px;height:60px;z-index:2;
+  border-radius:50%;overflow:hidden;pointer-events:none;
+  opacity:var(--command-flash);transform:scale(var(--command-spread));
+  background:radial-gradient(ellipse at 50% 55%,#fafff37a,transparent 65%);
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-stroke {
+  position:absolute;left:4px;top:18px;width:27px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--command-ink) 40%,#fff);
+  transform:rotate(-18deg);transform-origin:right center;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-stroke:nth-child(2) {top:30px;left:0;width:34px;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-stroke:nth-child(3) {top:42px;left:7px;width:23px;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=sword] .battle-command-stroke {left:5px;top:29px;width:54px;height:3px;transform:rotate(-45deg);transform-origin:center;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=sword] .battle-command-stroke:nth-child(2) {left:4px;top:19px;width:34px;opacity:.6;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=sword] .battle-command-stroke:nth-child(3) {left:25px;top:43px;width:26px;opacity:.5;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=hammer] .battle-command-fx {background:radial-gradient(ellipse at 50% 65%,#fff8 0,transparent 28%,var(--command-ink) 30%,transparent 35%);}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=hammer] .battle-command-stroke {top:38px;left:4px;width:52px;height:2px;transform:rotate(0deg);transform-origin:center;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=hammer] .battle-command-stroke:nth-child(2) {transform:rotate(60deg);}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-kind=hammer] .battle-command-stroke:nth-child(3) {transform:rotate(-60deg);}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-phase {
+  position:absolute;left:14px;top:62px;width:44px;height:3px;border-radius:2px;
+  background:#080e13;box-shadow:0 1px 0 #ffffff26;overflow:hidden;z-index:3;pointer-events:none;
+}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-phase[hidden] {display:none;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-phase-fill {display:block;height:100%;background:var(--command-ink);transform-origin:left;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-motion=reduced] > .battle-command-art {transform:none;}
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] [data-command-motion=reduced] > .battle-command-fx {display:none;}
+@media(prefers-reduced-motion:reduce){
+  #game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .skill-orb[data-command-feedback=staged] > .battle-command-art {transform:none!important;}
+  #game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] .battle-command-fx {display:none!important;}
+}
