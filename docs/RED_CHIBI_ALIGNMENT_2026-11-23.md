@@ -1,6 +1,6 @@
 # 红发女武神战斗 Q 版：制作与验收
 
-状态：素材和接入已完成；最终浏览器重开与远端备份核对中。角色来源为负责人确认的 `01-美术/owner-originals/橙白黑赛博战术女武神.png`，本轮制作对应的战斗 Q 版，不把它记作历史立绘模型恢复。
+状态：本轮红发角色模块完成，相关检查、生产构建、浏览器失败与重开通过。角色来源为负责人确认的 `01-美术/owner-originals/橙白黑赛博战术女武神.png`，本轮制作对应的战斗 Q 版，不把它记作历史立绘模型恢复。
 
 ## 制作前验收条件
 
@@ -33,8 +33,10 @@
 
 - 相关单元与集成检查 88/88 通过，另有 HUD 名称/头像同步专项 1/1 通过，合计 89 项。包括加载失败、解码取消、帧状态、脚底/枪口、倒地完成/取消、暂停、触控状态和启动设置恢复。
 - 浏览器四组正常入口回归通过：红发 390×844、剑士 320×700、重锤 430×932、剑士 390×844 减少动态。真实触控技能、重复触控、暂停恢复和固定命中区域通过，无脚本异常或 HTTP 失败请求。复查脚本：`game/scripts/qa-command-feedback.cjs`。
-- 红发完整入口/自然受伤/失败/重开由 `game/scripts/qa-red-valkyrie.cjs` 复查。只使用鼠标、触摸和方向键，场景变量只读观察，不注入血量、坐标或通关存档。最终结果待下方补记。
+- 红发完整入口/自然受伤/失败/重开由 `game/scripts/qa-red-valkyrie.cjs` 复查。只使用鼠标、触摸和方向键，场景变量只读观察，不注入血量、坐标或通关存档。最终完整流程通过：真实攻击造成 5 次受伤，HP 5→0；观察到新图集的倒地展示，结算使用红发立绘；点击“重试本站”后 HP 恢复 5、受伤/技能计数清零，角色能再次移动和自动射击。资源请求中没有旧猫耳图、旧红发身体贴图或旧运行模型；脚本异常与 HTTP 失败均为 0。逐帧测试覆盖完整倒地顺序，浏览器采样捕获其中起始帧，不冒称逐帧截图验收。
+- 最终 `npm run build` 通过：441 个模块，807 份运行资产，共 133,528,699 字节；五章内容/素材边界检查通过。保留既有大包体警告，未发布线上。
 - 恢复档案 `node scripts/verify-recovery.mjs` 仍为 305/305；与本轮新资产分开计数。
+- 验证脚本修正：支持加载入口带查询参数、正常点击中途编排/剧情，区分时间到与 HP 耗尽两种失败。最后一次实际跑到的是 HP 耗尽；先前一局时间到时仍有 3 HP，是合法失败结算，不将其误报成人物代码错误。
 
 ### 历史测试边界
 
@@ -48,3 +50,21 @@
 - 当前支持左右镜像，不是八方向独立绘制；边走边射使用移动帧与真实枪口特效，尚无独立上半身射击骨骼。胜利姿态保存在图集，但本次浏览器长流程验证的是失败/重试，没有声称完整通关验收。
 - 绿发 `kai` 与蓝白 `enjo` 尚未统一到正式原图。下一模块先按绿发原图统一 Q 版、头像、道具和各动作路径，逐角色验收并备份。
 - 历史 Q68–85 完成记录不重算，Q86 仍待原生分层实物验收；总数仍 85/150，`artAccepted` 与 `contentComplete` 仍为 false。
+
+
+## 复查入口
+
+在 `game/` 执行相关测试与构建：
+
+```sh
+node --test tests/redValkyrieIdentity.test.mjs tests/userCastBattlePresentation.test.mjs tests/userCastMotion.test.mjs tests/battleHudStageV2.test.mjs tests/rifleTargetOrigin.test.mjs tests/sakuraDefeatPresentation.test.mjs tests/worldGroundingPresentation.test.mjs tests/battleCommandFeedback.test.mjs tests/ownerStartupSettingsRecovery.test.mjs
+node --test --test-name-pattern='every actual cast sync' tests/ownerEntryConsistency.test.mjs
+npm run build
+```
+
+浏览器脚本需已安装 Playwright 与 Chromium、已启动 Vite。`qa-command-feedback.cjs` 和 `qa-red-valkyrie.cjs` 支持 `STARUSH_QA_URL`、`STARUSH_QA_OUTPUT`、`STARUSH_PLAYWRIGHT_MODULE`、`STARUSH_CHROMIUM`；截图、原始日志和详细逐帧采样放仓库外。
+
+
+## GitHub 实物备份
+
+制作检查点 `b9732ddd2981b91a9d20a2020d712aef2356d8c0` 已推送到 `recovery/continue-game-20261122`。核对远端分支 SHA 后，经 GitHub API 取回本次全部 42 个改动文件，共 16,823,012 字节，与本地逐字节一致，包括美术源 PNG、运行 PNG、生成提示、接入代码和复查脚本。最后的验收记录另行提交并核对；截图与私人原始日志不在公开仓库。
