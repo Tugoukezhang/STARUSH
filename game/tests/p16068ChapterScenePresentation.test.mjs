@@ -37,9 +37,9 @@ test('each chapter has its own foundation, without changing authored objective g
   assert.equal(typeof presentation.getChapterScenePresentation,'function');
   const before=JSON.stringify(PUBLIC_CHAPTERS);
   const configs=PUBLIC_CHAPTERS.map(c=>presentation.getChapterScenePresentation({stageId:1,campaignChapterId:c.id}));
-  assert.equal(new Set(configs.map(c=>c.groundKey)).size,4);
+  assert.equal(new Set(configs.map(c=>c.groundKey)).size,5);
   assert.equal(new Set(configs.map(c=>c.groundPath)).size,4);
-  for(const c of configs){assert.equal(c.width,1000);assert.equal(c.height,1778);assert.equal(c.flipX,false);assert.equal(c.groundPath,c.id==='raincheck'?'art/rooftop-20261103/neutral.webp':`art/map-presentation-20261018/${c.id}-neutral.webp`);}
+  for(const c of configs){assert.equal(c.width,1000);assert.equal(c.height,1778);assert.equal(c.flipX,false);assert.equal(c.groundPath,c.id==='raincheck'?'art/rooftop-20261103/neutral.webp':`art/map-presentation-20261018/${c.id==='homecoming'?'encore':c.id}-neutral.webp`);}
   assert.equal(presentation.getChapterScenePresentation({practiceMode:true}),null);
   assert.equal(presentation.getChapterScenePresentation({stageId:2}),null);
   assert.equal(JSON.stringify(PUBLIC_CHAPTERS),before);

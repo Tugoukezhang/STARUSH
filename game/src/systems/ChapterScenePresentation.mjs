@@ -1,3 +1,4 @@
+import { attachChapterFloorDetails } from './ChapterFloorDetails.mjs';
 import { COLOR_HEX } from '../utils/config.js';
 import { getBattleChapter, getChapterDeviceLabel, getCumulativeChapterPaintProgress, PUBLIC_CHAPTER_COLORS } from '../utils/publicCampaign.mjs';
 import { isOldStreetChapter, OLD_STREET_ASSETS } from '../utils/oldStreetMap.mjs';
@@ -112,6 +113,7 @@ export function createChapterGround(scene, data, depth) {
       .setDisplaySize(rect.width,rect.height).setDepth(depth-0.01).setFlip(rect.column!==1,rect.row!==1);
   });
   ground.southApron=ground.cameraAprons[6];
+  attachChapterFloorDetails(scene, ground, config.id, depth);
   ground.once('destroy', () => ground.cameraAprons.forEach(apron=>apron.destroy()));
   return ground;
 }
@@ -214,8 +216,17 @@ export function drawDevicePresentation(device, currentZone) {
   }
   // State marks stay local to the actual paint contact, never create a second target.
   if ((device.required||device.chapterSideSet) && view.state !== 'locked') {
-    gfx.lineStyle(2, view.accent, view.state === 'suppressed' ? 0.35 : 0.9);
-    gfx.lineBetween(x - 26, y + 31, x + 26, y + 31);
+    // Five inlaid segments stay aligned to the device and fill at the real paint level.
+    for (let segment = 0; segment < 5; segment++) {
+      const left = x - 26 + segment * 11;
+      const fill = Math.max(0, Math.min(1, view.progress * 5 - segment));
+      gfx.lineStyle(3, 0x25353b, .72);
+      gfx.lineBetween(left, y + 31, left + 8, y + 31);
+      if (fill > 0) {
+        gfx.lineStyle(2, view.accent, view.state === 'suppressed' ? .4 : .95);
+        gfx.lineBetween(left, y + 31, left + 8 * fill, y + 31);
+      }
+    }
     if (view.state === 'complete') {
       gfx.lineStyle(2.5, view.accent, 1);
       gfx.lineBetween(x + 18, y + 21, x + 22, y + 25);
