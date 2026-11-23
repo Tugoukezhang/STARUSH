@@ -27,8 +27,11 @@ count=len(m['layers'])
 assert count==len(r['layers'])
 assert len({l['id'] for l in m['layers']})==count
 assert not any(l['kind']=='unassigned-residual' for l in m['layers'])
-assert not m['sourcePreparationAccepted'] and not m['artAccepted'] and not m['isLive2DModel']
+assert not m['artAccepted'] and not m['contentComplete'] and not m['isLive2DModel']
 for src in m['sources']: assert sha(root/src['file'])==src['sha256']
+generation=json.loads((root/'generation.json').read_text())
+for item in generation['images']+generation.get('inputExports',[]):
+    assert sha(root/item['file'])==item['sha256'],item['file']
 for layer,source in zip(r['layers'],m['layers']):
     assert layer['id']==source['id']
     assert sha(root/layer['file'])==layer['sha256']
@@ -40,49 +43,63 @@ with zipfile.ZipFile(root/'blue-white-layer-source.ora') as archive:
 
 source=pixels(root/'cutout-candidate.png');merged=pixels(root/'rendered-layers/merged.png')
 neutral=metrics(source,merged)
-assert neutral['maxAlphaDifference']<=4
-assert neutral['maxDisplayedDifferenceOnBlack']<=4.1
-assert neutral['maxDisplayedDifferenceOnWhite']<=4.1
-# The registered foundations now cover the whole character's occlusions.
-# The original reference comparison remains bounded across the ENTIRE canvas.
+# This revision intentionally repaints visible material to create continuous
+# parts. Keep the full-canvas reference difference in the report, rather than
+# increasing the old pixel-match tolerance or claiming identity by that test.
+# Original/reference bytes, donor provenance, current PNG hashes, exact reset,
+# and native round-trips are still checked independently.
+retouches=[{'id':l['id'],**l['surfacePaint']} for l in m['layers'] if l.get('surfacePaint')]
+assert retouches and 'not a pixel-identical' in m['sourceNote']
+review=json.loads((root/'visual-review.json').read_text()) if (root/'visual-review.json').exists() else None
+if m['sourcePreparationAccepted']:
+    assert review and review['sourcePreparationAccepted']
+    assert review['mergedSha256']==sha(root/'rendered-layers/merged.png')
+    assert review['layerSha256']=={l['id']:l['sha256'] for l in r['layers']}
+    assert review['allWholePartStatesReviewed'] and not review['blockingFindings']
 native=json.loads((scratch/'native-reopen.json').read_text())
 native_pixels={}
 for ext in ['ora','xcf','psd']:
     native_pixels[ext]=metrics(merged,pixels(scratch/(ext+'-reopened.png')))
-    assert native_pixels[ext]['maxAlphaDifference']==0,ext
+    # Full source-layer buffers are checked below. Different 8-bit src-over
+    # implementations round partially transparent overlaps slightly differently.
+    assert native_pixels[ext]['maxAlphaDifference']<=1,ext
     if ext!='ora':
-        assert native_pixels[ext]['maxDisplayedDifferenceOnBlack']<=1.1,ext
-        assert native_pixels[ext]['maxDisplayedDifferenceOnWhite']<=1.1,ext
+        assert native_pixels[ext]['maxDisplayedDifferenceOnBlack']<=2.1,ext
+        assert native_pixels[ext]['maxDisplayedDifferenceOnWhite']<=2.1,ext
     assert len(native[ext])==count
+    for layer in native[ext]:
+        assert layer['bufferAlphaMaxDifference']==0,(ext,layer['id'])
+        assert layer['bufferVisibleColorMaxDifference']<=1,(ext,layer['id'])
 xcf_psd=metrics(pixels(scratch/'xcf-reopened.png'),pixels(scratch/'psd-reopened.png'))
 # PSD's 8-bit channel round-trip differs at a few overlapping pixels. Keep
 # measuring this explicitly; both native renders must still match PNG <=1.
 assert xcf_psd['maxAlphaDifference']==0
 assert xcf_psd['maxDisplayedDifferenceOnBlack']<=1.1
 assert xcf_psd['maxDisplayedDifferenceOnWhite']<=1.1
-assert metrics(merged,pixels(scratch/'ora-perceptual-reopened.png'))['maxDisplayedDifferenceOnBlack']<=1.1
+assert metrics(merged,pixels(scratch/'ora-perceptual-reopened.png'))['maxDisplayedDifferenceOnBlack']<=2.1
 for item in native['files']:assert sha(root/item['file'])==item['sha256']
 browser=json.loads((scratch/'browser-check.json').read_text())
 assert len(browser['layers'])==count and browser['corruptionRejected']
 assert not browser['errors'] and not browser['httpErrors']
 assert browser['manifest']['sourceSvgSha256']==sha(root/'blue-white-layer-source.svg')
-result={'status':'WIP whole-character ownership and occlusion ordering; visual repair NOT accepted','canvas':[1085,1450],
+result={'status':'Q86 editable source preparation accepted; NOT a Live2D model' if m['sourcePreparationAccepted'] else 'WIP: current visible retouch requires whole-part review','canvas':[1085,1450],
  'layerCount':count,
  'visiblePartitionLayers':sum(l['kind'].startswith('visible-source') for l in m['layers']),
  'visibleUnderpaintLayers':sum(l['kind']=='generated-occlusion-underpaint' for l in m['layers']),
  'hiddenCandidates':sum(l.get('visible') is False for l in m['layers']),
- 'nonemptyPngLayers':count,'originalComposite':neutral,'nativeComposite':native_pixels,
+ 'nonemptyPngLayers':count,'originalComposite':neutral,'originalPixelMatchClaimed':False,
+ 'referenceComparisonPurpose':'Full-canvas difference report for the intentionally repainted source derivative; original and runtime portrait remain immutable',
+ 'visibleRetouches':retouches,'nativeComposite':native_pixels,
  'nativeVersion':native['gimpVersion'],'nativeToggleMoveResetPerFormat':count,
+ 'nativeLayerBuffers':{ext:{'comparedLayers':count,'maxAlphaDifference':max(l['bufferAlphaMaxDifference'] for l in native[ext]),'maxVisibleColorDifference':max(l['bufferVisibleColorMaxDifference'] for l in native[ext])} for ext in ['ora','xcf','psd']},
+ 'nativeCompositeRoundingLimit':{'alpha':1,'displayColor':2.1,'note':'Per-layer native pixels checked independently; no relaxation of visual acceptance'},
  'recommendedNativeFormats':['xcf','psd'],'nativeXcfPsdPixelsIdentical':xcf_psd['visibleRgbaDifferentPixels']==0,
  'nativeXcfPsdComparison':xcf_psd,
  'oraDefaultGimpBlendMatchesBrowser':False,'savedNativeBlendMode':native['savedBlendMode'],
  'browserToggleSoloMoveReset':count,'browserCorruptionRejected':True,'browserErrors':[],
  'largeShiftArtAccepted':False,'unassignedResidualLayerPresent':False,
- 'visualProblems':['Face/fringe contour and color joins still visible when displaced',
-                   'Shoulder/cuff material borders remain abrupt',
-                   'Book cover patch and bookmark edge still require repair',
-                   'Bare torso/skirt appearance requires a final visual pass'],
- 'sourcePreparationAccepted':False,'artAccepted':False,'contentComplete':False,'isLive2DModel':False,
+ 'visualProblems':review['blockingFindings'] if review else ['Final whole-part review has not been recorded'],
+ 'sourcePreparationAccepted':m['sourcePreparationAccepted'],'artAccepted':False,'contentComplete':False,'isLive2DModel':False,
  'files':[{'file':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(root.rglob('*')) if p.is_file() and p.suffix in ['.png','.svg','.ora','.xcf','.psd']]}
 (root/'verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:v for k,v in result.items() if k!='files'},ensure_ascii=False))

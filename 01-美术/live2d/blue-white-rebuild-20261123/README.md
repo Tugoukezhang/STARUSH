@@ -1,15 +1,15 @@
 # 蓝白 Q86 分层源重建检查点
 
-状态：**WIP，Q86 未验收，当前 91 层。** 负责人要求整张源稿完成再交付。本目录的中途备份不代表任务完成，没有接入游戏动态立绘。
+状态：**WIP，Q86 未验收，当前 90 层。** 负责人要求整张源稿完成再交付。本目录的中途备份不代表任务完成，没有接入游戏动态立绘。
 
 - 原生源：`blue-white-layer-source.xcf`、`.psd`、`.ora`；位置与 SHA 见 `raster-layers.json`。
-- 实际输出：`rendered-layers/` 下 91 张非空部件 PNG，以及 `merged.png`。65 个原图部件，26 个活动补绘底面，没有未归属余面层。
+- 实际输出：`rendered-layers/` 下 90 张非空部件 PNG，以及 `merged.png`。64 个原图部件及有记录的连续重绘，26 个活动补绘底面，没有未归属余面层。
 - 可编辑坐标：`build-source.py`、`complete-source.py`、`occlusion-patches.json`、`micro-ownership.json`、`occlusion-envelopes.json`。前后关系由 `complete-source.py` 管理。
 - image_gen 原始补绘、提示与参考关系：根目录各 PNG 和 `generation.json`。整件生成稿有些仅作候选，不要用它们替换正式角色。
 - `source-review.html`：先验证 SHA 的实际 PNG 检查页，支持显隐、单层、偏移、复位、原图和深浅底色对照。部件归属只是检查帮助，不是骨骼或物理。
 - 最新边界：仓库 `docs/BLUE_Q86_FULL_SOURCE_PROGRESS_2026-11-23.md`；结构化记录：`verification.json`。
 
-静止复原与原图的最大 alpha 差 3/255，显示色差约 3.494/255。原生文件重开、实际 PNG 和检查页操作已检查；但脸/刘海、肩袖、书封和衣裙的移开画面仍有生硬接缝，整张源稿没有完成视觉验收，不能进入 Q87。
+当前源稿已对头发、脸、眼、衣服、腿部和书本等表面做连续重绘，不再声称与原透明立绘近似逐像素相同。原参考及游戏资产未改。完整差异、生成素材来源、PNG 与原生重开结果见 `verification.json`；仍有脸侧小发束和帽花边缘待最后修顺，源准备尚未验收，不能进入 Q87。
 
 继续编辑优先使用 **XCF 或 PSD**。GIMP 3 直接导入 ORA 会采用不同的默认叠色方式；本轮新增重叠底面后能看出差异。打包脚本已为保存的 XCF/PSD 统一为经典正常模式，并单独保留 ORA 默认导入的检查结果；ORA 的图层图片字节完整，但不能把其默认叠色当作颜色验收基准。
 

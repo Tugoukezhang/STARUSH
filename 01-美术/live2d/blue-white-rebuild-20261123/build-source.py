@@ -149,17 +149,19 @@ if micro:rows=[l for l in rows if l['id']!='unassigned-residual']
 for side in ('left','right'):
  for name in ('iris','lash'):
   next(l for l in rows if l['id']==f'{name}-{side}')['controlOwner']=f'eye-{side}'
-for child,owner in [('hair-gold-clips','fringe-center'),('hat-flower','cap'),('hat-bow','cap'),('hat-bow-tails','cap')]:
+for child,owner in [('shoe-bent','stocking-bent'),('shoe-straight','stocking-straight'),('stocking-bent','thigh-bent'),('cuff-raised','sleeve-raised'),('raised-hand','cuff-raised'),('cuff-lowered','sleeve-lowered'),('lowered-hand','cuff-lowered'),('hair-gold-clips','fringe-center'),('hat-flower','cap'),('hat-bow','cap'),('hat-bow-tails','cap')]:
  next(l for l in rows if l['id']==child)['controlOwner']=owner
 rows=completion['arrange'](rows)
+rows=completion['surface_restorations'](rows)
 envelopes=json.loads((r/'occlusion-envelopes.json').read_text()) if (r/'occlusion-envelopes.json').exists() else {}
 def path(p):return 'M'+' L'.join(','.join(map(str,xy)) for xy in p)+' Z'
-textures={f:(r/f).read_bytes() for f in sorted({l['file'] for l in rows})}
+textures={f:(r/f).read_bytes() for f in sorted({l['file'] for l in rows}|{l['surfacePaint']['file'] for l in rows if l.get('surfacePaint')})}
 defs=f'<filter id="uv-hard" filterUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="discrete" tableValues="0 1"/><feFuncG type="discrete" tableValues="0 1"/><feFuncB type="discrete" tableValues="0 1"/><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer></filter>'+''.join(f'<image id="tex-{f}" width="{struct.unpack(">II",b[16:24])[0]}" height="{struct.unpack(">II",b[16:24])[1]}" href="data:image/png;base64,{base64.b64encode(b).decode()}"/>' for f,b in textures.items())
 # Only backfill locations already inside the almost opaque reference silhouette.
 # This alpha-only mask cannot paint background gaps or alter source RGB.
-defs+='<filter id="opaque-reference" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/><feComponentTransfer><feFuncA type="linear" slope="255" intercept="-251"/></feComponentTransfer></filter><mask id="reference-silhouette" maskUnits="userSpaceOnUse" x="0" y="0" width="1085" height="1450"><use href="#tex-cutout-candidate.png" filter="url(#opaque-reference)"/></mask>'
+defs+='<filter id="clean-generated-alpha" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="linear" slope="1.1" intercept="-0.03"/></feComponentTransfer></filter><filter id="opaque-reference" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/><feComponentTransfer><feFuncA type="linear" slope="255" intercept="-251"/></feComponentTransfer></filter><mask id="reference-silhouette" maskUnits="userSpaceOnUse" x="0" y="0" width="1085" height="1450"><use href="#tex-cutout-candidate.png" filter="url(#opaque-reference)"/></mask>'
 groups=[]
+defs+='<filter id="source-alpha-white" filterUnits="userSpaceOnUse" x="0" y="0" width="1085" height="1450" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/></filter>'
 for owner,runs in envelopes.get('owners',{}).items():
  d=''.join(f'M{x},{y}h{w}v1h{-w}z' for x,y,w in runs)
  defs+=f'<mask id="envelope-{owner}" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}"><path d="{d}" fill="white" shape-rendering="crispEdges"/></mask>'
@@ -206,17 +208,39 @@ for l in rows:
  transform='matrix('+' '.join(map(str,l.get('sourceTransform',[1,0,0,1,0,0])))+')'
  content=f'<g mask="url(#mask-{id})"><use href="#tex-{l["file"]}" transform="{transform}"/></g>{extra}'
  if l['kind'].startswith('visible-source') or l['kind']=='unassigned-residual':content=f'<g mask="url(#uv-unowned)">{content}</g>{owned}'
+ if l.get('surfacePaint'):
+  paint=l['surfacePaint'];mid='surface-alpha-'+id
+  defs+=f'<mask id="{mid}" data-preserve-alpha="true" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}"><g filter="url(#source-alpha-white)">{content}</g></mask>'
+  transform='matrix('+' '.join(map(str,paint['transform']))+')'
+  donor=f'<use href="#tex-{paint["file"]}" transform="{transform}"/>'
+  if paint.get('sourceClip'):
+   scid='paint-uv-'+id;defs+=f'<clipPath id="{scid}"><path d="{path(paint["sourceClip"])}"/></clipPath>'
+   donor=f'<use href="#tex-{paint["file"]}" transform="{transform}" clip-path="url(#{scid})"/>'
+  if paint.get('cleanAlpha'):donor=f'<g filter="url(#clean-generated-alpha)">{donor}</g>'
+  overlay=f'<g mask="url(#{mid})">{donor}</g>'
+  if paint.get('region'):
+   cid='surface-region-'+id;clipd=path(paint['region'])+''.join(path(p) for p in paint.get('excludeRegions',[]));defs+=f'<clipPath id="{cid}"><path d="{clipd}" clip-rule="evenodd"/></clipPath>';overlay=f'<g clip-path="url(#{cid})">{overlay}</g>'
+  if paint.get('completeRegion'):
+   content+=f'<g clip-path="url(#{cid})">{donor}</g>'
+  elif paint.get('replacePart'):
+   content=f'<g clip-path="url(#{cid})">{donor}</g>'
+  else:content+=overlay
+ if l.get('surfacePaint',{}).get('fadeLeft'):
+  a,b,y0,y1=l['surfacePaint']['fadeLeft'];fid='joint-fade-'+id;gid='joint-gradient-'+id
+  defs+=f'<linearGradient id="{gid}" gradientUnits="userSpaceOnUse" x1="{a}" x2="{b}"><stop offset="0" stop-color="black"/><stop offset="1" stop-color="white"/></linearGradient><mask id="{fid}" data-preserve-alpha="true" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}"><rect width="{W}" height="{H}" fill="white"/><rect x="{a}" y="{y0}" width="{b-a}" height="{y1-y0}" fill="url(#{gid})"/></mask>'
+  content=f'<g mask="url(#{fid})">{content}</g>'
+ if l['kind']=='generated-occlusion-underpaint':content=f'<g filter="url(#clean-generated-alpha)">{content}</g>'
  if l.get('clipToSourceAlpha'):content=f'<g mask="url(#reference-silhouette)">{content}</g>'
  if l['kind']=='generated-occlusion-underpaint':
   owner=l.get('controlOwner',l['id'])
-  if owner in envelopes.get('owners',{}):content=f'<g mask="url(#envelope-{owner})">{content}</g>'
+  if owner in envelopes.get('owners',{}) and not l.get('completeSilhouette'):content=f'<g mask="url(#envelope-{owner})">{content}</g>'
  groups.append(f'<g id="{id}" inkscape:groupmode="layer" inkscape:label="{escape(l["label"])}"'+(' style="display:none"' if l.get('visible') is False else '')+f'>{content}</g>')
 # Threshold only the ownership masks, never source color/alpha. This avoids
 # complementary antialiased mask edges recompositing to 75% alpha at a seam.
 import re
-defs=re.sub(r'(<mask\b[^>]*>)(.*?)(</mask>)',lambda m:m[1]+'<g filter="url(#uv-hard)">'+m[2]+'</g>'+m[3],defs)
+defs=re.sub(r'(<mask\b[^>]*>)(.*?)(</mask>)',lambda m:m[0] if 'data-preserve-alpha' in m[1] else m[1]+'<g filter="url(#uv-hard)">'+m[2]+'</g>'+m[3],defs)
 svg=f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="{W}" height="{H}" viewBox="0 0 {W} {H}"><title>STARUSH Q86 blue-white editable source, UNACCEPTED, not a model</title><defs>{defs}</defs>'+''.join(groups)+'</svg>'
 (r/'blue-white-layer-source.svg').write_text(svg)
-m=dict(schemaVersion=1,queueItem='Q86',status='rebuilt-visible-partition-unaccepted',sourcePreparationAccepted=False,artAccepted=False,contentComplete=False,isLive2DModel=False,canvas=dict(width=W,height=H),reference='cutout-candidate.png',historicalToolSha256='7eddfc62b874793362680065e1389f8ac098b27aa08b94dc53d7a52c3848a048', sourceNote='Rebuilt 2026-11-23 from existing confirmed portrait and historical UV ownership. Hair additions are hidden candidates only. User official PNG accessed through image-tool reference; generated derivative bytes. Visible UV partition and hidden inpaint candidates require isolated/shifted inspection. No mesh, rig, physics or runtime acceptance.',layers=rows,sources=[dict(file=f,sha256=hashlib.sha256(b).hexdigest()) for f,b in textures.items()])
+m=dict(schemaVersion=1,queueItem='Q86',status='rebuilt-visible-partition-unaccepted',sourcePreparationAccepted=False,artAccepted=False,contentComplete=False,isLive2DModel=False,canvas=dict(width=W,height=H),reference='cutout-candidate.png',historicalToolSha256='7eddfc62b874793362680065e1389f8ac098b27aa08b94dc53d7a52c3848a048', sourceNote='Rebuilt editable derivative from confirmed portrait UV ownership plus registered image-tool restorations. Visible hair, face, eyes, clothing, stockings and book surfaces are intentionally retouched to complete their occlusions; not a pixel-identical recovered portrait. The immutable original and runtime art remain unchanged. Source visual preparation is still under review; no mesh, rig, physics or runtime model acceptance.',layers=rows,sources=[dict(file=f,sha256=hashlib.sha256(b).hexdigest()) for f,b in textures.items()])
 (r/'layers.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
 print('SOURCE_GEOMETRY',len(rows))

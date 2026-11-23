@@ -1,46 +1,1871 @@
 {
-  "status": "WIP whole-character ownership and occlusion ordering; visual repair NOT accepted",
+  "status": "WIP: current visible retouch requires whole-part review",
   "canvas": [
     1085,
     1450
   ],
-  "layerCount": 91,
-  "visiblePartitionLayers": 65,
+  "layerCount": 90,
+  "visiblePartitionLayers": 64,
   "visibleUnderpaintLayers": 26,
   "hiddenCandidates": 0,
-  "nonemptyPngLayers": 91,
+  "nonemptyPngLayers": 90,
   "originalComposite": {
-    "maxAlphaDifference": 3.0,
-    "alphaDifferentPixels": 226388,
-    "maxDisplayedDifferenceOnBlack": 3.494117647058829,
-    "maxDisplayedDifferenceOnWhite": 3.4941176470588147,
-    "visibleRgbaDifferentPixels": 297541
+    "maxAlphaDifference": 255.0,
+    "alphaDifferentPixels": 578440,
+    "maxDisplayedDifferenceOnBlack": 255.0,
+    "maxDisplayedDifferenceOnWhite": 254.0,
+    "visibleRgbaDifferentPixels": 603702
   },
+  "originalPixelMatchClaimed": false,
+  "referenceComparisonPurpose": "Full-canvas difference report for the intentionally repainted source derivative; original and runtime portrait remain immutable",
+  "visibleRetouches": [
+    {
+      "id": "rear-hair-right-lower",
+      "file": "backhair-clean-paint.png",
+      "transform": [
+        1.03,
+        0,
+        0,
+        0.97,
+        0,
+        0
+      ],
+      "reason": "Continuous loose back hair beneath the separate original front braids",
+      "replacePart": true,
+      "region": [
+        [
+          550,
+          595
+        ],
+        [
+          1070,
+          595
+        ],
+        [
+          1070,
+          855
+        ],
+        [
+          550,
+          855
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "rear-hair-left-lower",
+      "file": "backhair-clean-paint.png",
+      "transform": [
+        1.03,
+        0,
+        0,
+        0.97,
+        0,
+        0
+      ],
+      "reason": "Continuous loose back hair beneath the separate original front braids",
+      "replacePart": true,
+      "region": [
+        [
+          20,
+          528
+        ],
+        [
+          440,
+          528
+        ],
+        [
+          440,
+          825
+        ],
+        [
+          20,
+          825
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "rear-hair-left-upper",
+      "file": "backhair-clean-paint.png",
+      "transform": [
+        1.03,
+        0,
+        0,
+        0.97,
+        0,
+        0
+      ],
+      "reason": "Continuous loose back hair beneath the separate original front braids",
+      "replacePart": true,
+      "region": [
+        [
+          20,
+          350
+        ],
+        [
+          440,
+          350
+        ],
+        [
+          440,
+          548
+        ],
+        [
+          20,
+          548
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "rear-hair-right-upper",
+      "file": "backhair-clean-paint.png",
+      "transform": [
+        1.03,
+        0,
+        0,
+        0.97,
+        0,
+        0
+      ],
+      "reason": "Continuous loose back hair beneath the separate original front braids",
+      "replacePart": true,
+      "region": [
+        [
+          550,
+          350
+        ],
+        [
+          1070,
+          350
+        ],
+        [
+          1070,
+          615
+        ],
+        [
+          550,
+          615
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "hair-under-raised-sleeve",
+      "file": "backhair-clean-paint.png",
+      "transform": [
+        1.03,
+        0,
+        0,
+        0.97,
+        0,
+        0
+      ],
+      "reason": "Continuous loose back hair beneath the separate original front braids",
+      "cleanAlpha": true
+    },
+    {
+      "id": "skirt-lower-train",
+      "file": "skirt-interior-clean-paint.png",
+      "transform": [
+        0.47161572052401746,
+        0,
+        0,
+        0.47161572052401746,
+        276,
+        630
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          360,
+          910
+        ],
+        [
+          730,
+          910
+        ],
+        [
+          730,
+          1170
+        ],
+        [
+          360,
+          1170
+        ]
+      ],
+      "reason": "Complete naturally draped back-skirt section from the same image-tool restoration",
+      "cleanAlpha": true
+    },
+    {
+      "id": "skirt-left-back",
+      "file": "skirt-interior-clean-paint.png",
+      "transform": [
+        0.47161572052401746,
+        0,
+        0,
+        0.47161572052401746,
+        276,
+        630
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          310,
+          730
+        ],
+        [
+          534,
+          730
+        ],
+        [
+          558,
+          800
+        ],
+        [
+          540,
+          935
+        ],
+        [
+          478,
+          961
+        ],
+        [
+          310,
+          961
+        ]
+      ],
+      "reason": "Complete naturally draped back-skirt section from the same image-tool restoration",
+      "cleanAlpha": true
+    },
+    {
+      "id": "skirt-inner-right",
+      "file": "skirt-interior-clean-paint.png",
+      "transform": [
+        0.47161572052401746,
+        0,
+        0,
+        0.47161572052401746,
+        276,
+        630
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          510,
+          720
+        ],
+        [
+          900,
+          720
+        ],
+        [
+          900,
+          1000
+        ],
+        [
+          600,
+          1000
+        ],
+        [
+          530,
+          950
+        ],
+        [
+          510,
+          900
+        ]
+      ],
+      "reason": "Complete naturally draped back-skirt section from the same image-tool restoration",
+      "cleanAlpha": true
+    },
+    {
+      "id": "stocking-straight",
+      "file": "stocking-straight-clean-paint.png",
+      "transform": [
+        0.34,
+        0,
+        0.014,
+        0.438,
+        572.3,
+        840.5
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          580,
+          850
+        ],
+        [
+          680,
+          850
+        ],
+        [
+          890,
+          1300
+        ],
+        [
+          795,
+          1320
+        ]
+      ],
+      "reason": "Clean continuous rear stocking with overlap beneath the crossed front leg",
+      "cleanAlpha": true
+    },
+    {
+      "id": "shoe-straight",
+      "file": "donor-inputs/shoe-straight.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        673,
+        1213
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          785,
+          1220
+        ],
+        [
+          906,
+          1220
+        ],
+        [
+          906,
+          1430
+        ],
+        [
+          785,
+          1430
+        ]
+      ],
+      "reason": "Original shoe texture retained; distant transparent crumbs excluded"
+    },
+    {
+      "id": "thigh-bent",
+      "file": "thigh-clean-paint.png",
+      "transform": [
+        0.125,
+        0,
+        0,
+        0.113,
+        488,
+        737
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          487,
+          735
+        ],
+        [
+          654,
+          735
+        ],
+        [
+          654,
+          869
+        ],
+        [
+          487,
+          869
+        ]
+      ],
+      "cleanAlpha": true,
+      "reason": "Skin-only upper leg restored without skirt trim or the separate stocking band"
+    },
+    {
+      "id": "stocking-bent",
+      "file": "stocking-bent-final-paint.png",
+      "transform": [
+        0.23061397318278054,
+        -0.0029640084685956447,
+        -0.027819336626676114,
+        0.21016231474947067,
+        480.26591390261115,
+        788.9576570218773
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          475,
+          785
+        ],
+        [
+          595,
+          785
+        ],
+        [
+          610,
+          844
+        ],
+        [
+          820,
+          840
+        ],
+        [
+          835,
+          915
+        ],
+        [
+          560,
+          965
+        ],
+        [
+          475,
+          955
+        ]
+      ],
+      "reason": "Clean complete bent stocking retaining the original navy star-heart band",
+      "cleanAlpha": true
+    },
+    {
+      "id": "shoe-bent",
+      "file": "donor-inputs/shoe-bent.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        781,
+        822
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          781,
+          822
+        ],
+        [
+          900,
+          822
+        ],
+        [
+          900,
+          980
+        ],
+        [
+          781,
+          980
+        ]
+      ],
+      "reason": "Original separate shoe aligned 8 px left and 4 px down to overlap the completed ankle",
+      "fadeLeft": [
+        790,
+        820,
+        858,
+        930
+      ]
+    },
+    {
+      "id": "coat-left-back",
+      "file": "coat-complete-paint.png",
+      "transform": [
+        0.5,
+        0,
+        0,
+        0.66,
+        210,
+        145
+      ],
+      "region": [
+        [
+          320,
+          450
+        ],
+        [
+          450,
+          450
+        ],
+        [
+          450,
+          860
+        ],
+        [
+          320,
+          860
+        ]
+      ],
+      "sourceClip": [
+        [
+          385,
+          450
+        ],
+        [
+          445,
+          445
+        ],
+        [
+          460,
+          700
+        ],
+        [
+          430,
+          800
+        ],
+        [
+          350,
+          940
+        ],
+        [
+          240,
+          1060
+        ],
+        [
+          228,
+          1040
+        ],
+        [
+          245,
+          930
+        ],
+        [
+          342,
+          792
+        ],
+        [
+          380,
+          690
+        ]
+      ],
+      "reason": "Complete original-style white outer coat panel with a natural tapered edge",
+      "completeRegion": true,
+      "cleanAlpha": true
+    },
+    {
+      "id": "coat-right-back",
+      "file": "coat-complete-paint.png",
+      "transform": [
+        0.7504923777368528,
+        0.09467081031307548,
+        0.10448639246981781,
+        0.544429097605893,
+        119.22607172089224,
+        170.9674263351751
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          520,
+          440
+        ],
+        [
+          960,
+          440
+        ],
+        [
+          960,
+          615
+        ],
+        [
+          520,
+          615
+        ]
+      ],
+      "sourceClip": [
+        [
+          504,
+          450
+        ],
+        [
+          550,
+          474
+        ],
+        [
+          600,
+          520
+        ],
+        [
+          680,
+          555
+        ],
+        [
+          810,
+          549
+        ],
+        [
+          915,
+          550
+        ],
+        [
+          980,
+          585
+        ],
+        [
+          978,
+          625
+        ],
+        [
+          922,
+          670
+        ],
+        [
+          891,
+          695
+        ],
+        [
+          833,
+          709
+        ],
+        [
+          780,
+          729
+        ],
+        [
+          715,
+          770
+        ],
+        [
+          633,
+          799
+        ],
+        [
+          571,
+          786
+        ],
+        [
+          535,
+          812
+        ],
+        [
+          544,
+          746
+        ],
+        [
+          572,
+          698
+        ],
+        [
+          551,
+          650
+        ],
+        [
+          526,
+          583
+        ]
+      ],
+      "reason": "Complete flowing right coat from one continuous image-tool paint, split with overlapping editable joints",
+      "cleanAlpha": true
+    },
+    {
+      "id": "coat-right-tail",
+      "file": "coat-complete-paint.png",
+      "transform": [
+        0.7504923777368528,
+        0.09467081031307548,
+        0.10448639246981781,
+        0.544429097605893,
+        119.22607172089224,
+        170.9674263351751
+      ],
+      "region": [
+        [
+          520,
+          595
+        ],
+        [
+          960,
+          595
+        ],
+        [
+          960,
+          720
+        ],
+        [
+          520,
+          720
+        ]
+      ],
+      "sourceClip": [
+        [
+          504,
+          450
+        ],
+        [
+          550,
+          474
+        ],
+        [
+          600,
+          520
+        ],
+        [
+          680,
+          555
+        ],
+        [
+          810,
+          549
+        ],
+        [
+          915,
+          550
+        ],
+        [
+          980,
+          585
+        ],
+        [
+          978,
+          625
+        ],
+        [
+          922,
+          670
+        ],
+        [
+          891,
+          695
+        ],
+        [
+          833,
+          709
+        ],
+        [
+          780,
+          729
+        ],
+        [
+          715,
+          770
+        ],
+        [
+          633,
+          799
+        ],
+        [
+          571,
+          786
+        ],
+        [
+          535,
+          812
+        ],
+        [
+          544,
+          746
+        ],
+        [
+          572,
+          698
+        ],
+        [
+          551,
+          650
+        ],
+        [
+          526,
+          583
+        ]
+      ],
+      "reason": "Complete flowing right coat from one continuous image-tool paint, split with overlapping editable joints",
+      "completeRegion": true,
+      "cleanAlpha": true
+    },
+    {
+      "id": "blouse",
+      "file": "torso-clean-paint.png",
+      "transform": [
+        0.3632031651310972,
+        0.0282632217449752,
+        0.030132135479851833,
+        0.44234237188104525,
+        245.48199394515666,
+        237.42935833961775
+      ],
+      "reason": "Continuous plain white pleated chest below the separate original bow and braids",
+      "replacePart": true,
+      "region": [
+        [
+          385,
+          468
+        ],
+        [
+          421,
+          427
+        ],
+        [
+          454,
+          403
+        ],
+        [
+          492,
+          398
+        ],
+        [
+          535,
+          393
+        ],
+        [
+          566,
+          418
+        ],
+        [
+          583,
+          468
+        ],
+        [
+          574,
+          513
+        ],
+        [
+          553,
+          556
+        ],
+        [
+          506,
+          575
+        ],
+        [
+          464,
+          593
+        ],
+        [
+          424,
+          574
+        ],
+        [
+          393,
+          536
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "sleeve-lowered",
+      "file": "sleeve-lowered-clean-paint.png",
+      "transform": [
+        0.13709095485820513,
+        0.0037841919784113998,
+        -0.0037841919784113998,
+        0.13709095485820513,
+        268.4908122168283,
+        499.4323712032263
+      ],
+      "region": [
+        [
+          260,
+          485
+        ],
+        [
+          430,
+          485
+        ],
+        [
+          430,
+          715
+        ],
+        [
+          260,
+          715
+        ]
+      ],
+      "replacePart": true,
+      "cleanAlpha": true,
+      "reason": "Completed image-tool component with original pose, palette and decorative identity retained"
+    },
+    {
+      "id": "sleeve-raised",
+      "file": "sleeve-closed-paint.png",
+      "transform": [
+        0.16177135716271948,
+        0.00940757095043939,
+        0.032370352750407776,
+        0.18462693017692805,
+        509.7168280940624,
+        294.081656241729
+      ],
+      "reason": "Continuous sleeve cloth and filled cuff attachment from image-tool repair",
+      "replacePart": true,
+      "region": [
+        [
+          510,
+          310
+        ],
+        [
+          750,
+          310
+        ],
+        [
+          750,
+          515
+        ],
+        [
+          510,
+          515
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "corset",
+      "file": "torso-final-paint.png",
+      "transform": [
+        0.3874251497005986,
+        0.014970059880239596,
+        0.05482733163809368,
+        0.3222049052579772,
+        211.22401771798883,
+        323.37453859404474
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          426,
+          574
+        ],
+        [
+          437,
+          560
+        ],
+        [
+          458,
+          550
+        ],
+        [
+          484,
+          541
+        ],
+        [
+          514,
+          536
+        ],
+        [
+          539,
+          538
+        ],
+        [
+          555,
+          545
+        ],
+        [
+          556,
+          569
+        ],
+        [
+          567,
+          590
+        ],
+        [
+          592,
+          610
+        ],
+        [
+          576,
+          629
+        ],
+        [
+          554,
+          651
+        ],
+        [
+          526,
+          674
+        ],
+        [
+          493,
+          663
+        ],
+        [
+          470,
+          653
+        ],
+        [
+          458,
+          641
+        ],
+        [
+          449,
+          623
+        ],
+        [
+          438,
+          601
+        ]
+      ],
+      "reason": "Continuous navy corset beneath long ribbon, with four retained gold buttons",
+      "cleanAlpha": true
+    },
+    {
+      "id": "neck",
+      "file": "face-foundation-final.png",
+      "transform": [
+        0.103,
+        0,
+        0,
+        0.09,
+        416,
+        343
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          457,
+          379
+        ],
+        [
+          475,
+          387
+        ],
+        [
+          501,
+          384
+        ],
+        [
+          516,
+          381
+        ],
+        [
+          512,
+          406
+        ],
+        [
+          502,
+          421
+        ],
+        [
+          478,
+          428
+        ],
+        [
+          461,
+          416
+        ]
+      ],
+      "reason": "Complete neck skin, matching the repaired face, with no detached hair in the skin part",
+      "cleanAlpha": true
+    },
+    {
+      "id": "collar",
+      "file": "torso-clean-paint.png",
+      "transform": [
+        0.3632031651310972,
+        0.0282632217449752,
+        0.030132135479851833,
+        0.44234237188104525,
+        245.48199394515666,
+        237.42935833961775
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          432,
+          391
+        ],
+        [
+          538,
+          391
+        ],
+        [
+          538,
+          439
+        ],
+        [
+          432,
+          439
+        ]
+      ],
+      "reason": "Continuous original-style blue-white stand collar from the same blouse restoration",
+      "cleanAlpha": true
+    },
+    {
+      "id": "face",
+      "file": "face-foundation-final.png",
+      "transform": [
+        0.20278934746939287,
+        -0.02610122428373096,
+        0.013719550675249272,
+        0.18202700997097057,
+        364.1545500441752,
+        229.00176700744672
+      ],
+      "reason": "Unify skin with completed face plate and remove residual hair/collar marks; facial features remain independent",
+      "replacePart": true,
+      "region": [
+        [
+          418,
+          252
+        ],
+        [
+          438,
+          229
+        ],
+        [
+          472,
+          219
+        ],
+        [
+          514,
+          221
+        ],
+        [
+          552,
+          238
+        ],
+        [
+          579,
+          270
+        ],
+        [
+          581,
+          306
+        ],
+        [
+          568,
+          337
+        ],
+        [
+          551,
+          361
+        ],
+        [
+          532,
+          378
+        ],
+        [
+          515,
+          387
+        ],
+        [
+          498,
+          392
+        ],
+        [
+          483,
+          396
+        ],
+        [
+          470,
+          387
+        ],
+        [
+          456,
+          375
+        ],
+        [
+          446,
+          362
+        ],
+        [
+          437,
+          344
+        ],
+        [
+          425,
+          321
+        ]
+      ],
+      "cleanAlpha": true
+    },
+    {
+      "id": "iris-left",
+      "file": "cutout-candidate.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          453,
+          305
+        ],
+        [
+          459,
+          302
+        ],
+        [
+          469,
+          302
+        ],
+        [
+          475,
+          307
+        ],
+        [
+          476,
+          312
+        ],
+        [
+          474,
+          318
+        ],
+        [
+          471,
+          322
+        ],
+        [
+          467,
+          325
+        ],
+        [
+          461,
+          325
+        ],
+        [
+          456,
+          322
+        ],
+        [
+          454,
+          317
+        ],
+        [
+          452,
+          312
+        ]
+      ],
+      "reason": "Original visible iris retained over the generated hidden circular continuation"
+    },
+    {
+      "id": "eye-left",
+      "file": "face-foundation-final.png",
+      "transform": [
+        0.20278934746939287,
+        -0.02610122428373096,
+        0.013719550675249272,
+        0.18202700997097057,
+        364.1545500441752,
+        229.00176700744672
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          434.5,
+          291.5
+        ],
+        [
+          490.5,
+          291.5
+        ],
+        [
+          490.5,
+          338.5
+        ],
+        [
+          434.5,
+          338.5
+        ]
+      ],
+      "excludeRegions": [
+        [
+          [
+            445,
+            309
+          ],
+          [
+            452,
+            304
+          ],
+          [
+            462,
+            304
+          ],
+          [
+            472,
+            306
+          ],
+          [
+            479,
+            313
+          ],
+          [
+            477,
+            318
+          ],
+          [
+            471,
+            323
+          ],
+          [
+            464,
+            326
+          ],
+          [
+            457,
+            324
+          ],
+          [
+            451,
+            320
+          ],
+          [
+            447,
+            315
+          ]
+        ]
+      ],
+      "reason": "Skin lid surround covers the complete iris outside the open eye aperture",
+      "cleanAlpha": true
+    },
+    {
+      "id": "iris-right",
+      "file": "cutout-candidate.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          523,
+          325
+        ],
+        [
+          532,
+          325
+        ],
+        [
+          538,
+          329
+        ],
+        [
+          540,
+          334
+        ],
+        [
+          537,
+          340
+        ],
+        [
+          533,
+          345
+        ],
+        [
+          528,
+          347
+        ],
+        [
+          523,
+          343
+        ],
+        [
+          519,
+          338
+        ],
+        [
+          519,
+          332
+        ]
+      ],
+      "reason": "Original visible iris retained over the generated hidden circular continuation"
+    },
+    {
+      "id": "eye-right",
+      "file": "face-foundation-final.png",
+      "transform": [
+        0.20278934746939287,
+        -0.02610122428373096,
+        0.013719550675249272,
+        0.18202700997097057,
+        364.1545500441752,
+        229.00176700744672
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          505,
+          315
+        ],
+        [
+          561,
+          315
+        ],
+        [
+          561,
+          362
+        ],
+        [
+          505,
+          362
+        ]
+      ],
+      "excludeRegions": [
+        [
+          [
+            519,
+            331
+          ],
+          [
+            524,
+            326
+          ],
+          [
+            532,
+            326
+          ],
+          [
+            540,
+            329
+          ],
+          [
+            545,
+            334
+          ],
+          [
+            546,
+            339
+          ],
+          [
+            541,
+            343
+          ],
+          [
+            534,
+            346
+          ],
+          [
+            527,
+            345
+          ],
+          [
+            521,
+            341
+          ],
+          [
+            518,
+            336
+          ]
+        ]
+      ],
+      "reason": "Skin lid surround covers the complete iris outside the open eye aperture",
+      "cleanAlpha": true
+    },
+    {
+      "id": "brow-left",
+      "file": "donor-inputs/brow-right.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        448,
+        271
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          451,
+          275
+        ],
+        [
+          489,
+          275
+        ],
+        [
+          489,
+          301
+        ],
+        [
+          451,
+          301
+        ]
+      ],
+      "reason": "Original thin brown brow texture used to complete the brow hidden beneath the swept bang"
+    },
+    {
+      "id": "hair-side-left",
+      "file": "backhair-clean-paint.png",
+      "transform": [
+        1.03,
+        0,
+        0,
+        0.97,
+        0,
+        0
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          350,
+          255
+        ],
+        [
+          417,
+          250
+        ],
+        [
+          431,
+          292
+        ],
+        [
+          425,
+          333
+        ],
+        [
+          418,
+          374
+        ],
+        [
+          401,
+          407
+        ],
+        [
+          378,
+          438
+        ],
+        [
+          352,
+          462
+        ],
+        [
+          330,
+          470
+        ],
+        [
+          347,
+          442
+        ],
+        [
+          361,
+          410
+        ],
+        [
+          360,
+          370
+        ],
+        [
+          345,
+          342
+        ]
+      ],
+      "reason": "Clean continuous pink hair surface; smooth explicit strand contour replaces stray UV fragments",
+      "cleanAlpha": true
+    },
+    {
+      "id": "fringe-center",
+      "file": "fringe-center-clean-paint.png",
+      "transform": [
+        0.12,
+        0,
+        0,
+        0.12,
+        413,
+        200
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          410,
+          199
+        ],
+        [
+          580,
+          199
+        ],
+        [
+          580,
+          345
+        ],
+        [
+          410,
+          345
+        ]
+      ],
+      "cleanAlpha": true,
+      "reason": "Complete centre fringe and left swept bang, repaired by image tool from the isolated original component"
+    },
+    {
+      "id": "fringe-right",
+      "file": "fringe-right-clean-paint.png",
+      "transform": [
+        0.106,
+        0,
+        0,
+        0.106,
+        537,
+        213
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          535,
+          210
+        ],
+        [
+          640,
+          210
+        ],
+        [
+          640,
+          395
+        ],
+        [
+          535,
+          395
+        ]
+      ],
+      "cleanAlpha": true,
+      "reason": "Complete right lock with original pink identity and no cutout crumbs"
+    },
+    {
+      "id": "hair-temple-left",
+      "file": "donor-inputs/hair-temple-left.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        403,
+        278
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          416,
+          298
+        ],
+        [
+          433,
+          298
+        ],
+        [
+          442,
+          334
+        ],
+        [
+          454,
+          360
+        ],
+        [
+          446,
+          365
+        ],
+        [
+          429,
+          360
+        ],
+        [
+          415,
+          340
+        ]
+      ],
+      "reason": "Original natural cheek lock retained with a tight component boundary"
+    },
+    {
+      "id": "hair-temple-right",
+      "file": "donor-inputs/hair-temple-right.png",
+      "transform": [
+        1,
+        0,
+        0,
+        1,
+        515,
+        310
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          526,
+          325
+        ],
+        [
+          579,
+          325
+        ],
+        [
+          579,
+          385
+        ],
+        [
+          526,
+          385
+        ]
+      ],
+      "reason": "Original natural right cheek lock retained"
+    },
+    {
+      "id": "hat-bow-tails",
+      "file": "hat-tails-clean-paint.png",
+      "transform": [
+        0.125,
+        0,
+        0,
+        0.1,
+        264,
+        311
+      ],
+      "replacePart": true,
+      "region": [
+        [
+          280,
+          330
+        ],
+        [
+          350,
+          330
+        ],
+        [
+          350,
+          415
+        ],
+        [
+          280,
+          415
+        ]
+      ],
+      "cleanAlpha": true,
+      "reason": "Image-tool repair removes the unrelated pink hair from the original navy hat ribbon"
+    },
+    {
+      "id": "braid-left",
+      "file": "braid-left-clean-paint.png",
+      "transform": [
+        0.1498316854102341,
+        0.002031851460458256,
+        -0.002031851460458256,
+        0.1498316854102341,
+        297.57053362517496,
+        322.034840365309
+      ],
+      "region": [
+        [
+          285,
+          325
+        ],
+        [
+          460,
+          325
+        ],
+        [
+          460,
+          550
+        ],
+        [
+          285,
+          550
+        ]
+      ],
+      "replacePart": true,
+      "cleanAlpha": true,
+      "reason": "Completed image-tool component with original pose, palette and decorative identity retained"
+    },
+    {
+      "id": "braid-right",
+      "file": "braid-right-clean-paint.png",
+      "transform": [
+        0.08046428466129515,
+        0.00014636570790571568,
+        -0.00014636570790571568,
+        0.08046428466129515,
+        509.37079031867586,
+        369.1555892044531
+      ],
+      "region": [
+        [
+          500,
+          365
+        ],
+        [
+          580,
+          365
+        ],
+        [
+          580,
+          510
+        ],
+        [
+          500,
+          510
+        ]
+      ],
+      "replacePart": true,
+      "cleanAlpha": true,
+      "reason": "Completed image-tool component with original pose, palette and decorative identity retained"
+    },
+    {
+      "id": "book",
+      "file": "book-underpaint-candidate.png",
+      "transform": [
+        0.987,
+        0,
+        0,
+        0.97,
+        1,
+        -11
+      ],
+      "region": [
+        [
+          80,
+          844
+        ],
+        [
+          415,
+          844
+        ],
+        [
+          415,
+          1100
+        ],
+        [
+          80,
+          1100
+        ]
+      ],
+      "reason": "Continuous front cover instead of an isolated patch behind the bookmark",
+      "replacePart": true,
+      "cleanAlpha": true
+    }
+  ],
   "nativeComposite": {
     "ora": {
-      "maxAlphaDifference": 0.0,
-      "alphaDifferentPixels": 0,
-      "maxDisplayedDifferenceOnBlack": 19.0,
-      "maxDisplayedDifferenceOnWhite": 19.0,
-      "visibleRgbaDifferentPixels": 145377
+      "maxAlphaDifference": 1.0,
+      "alphaDifferentPixels": 29,
+      "maxDisplayedDifferenceOnBlack": 57.0,
+      "maxDisplayedDifferenceOnWhite": 57.0,
+      "visibleRgbaDifferentPixels": 93020
     },
     "xcf": {
-      "maxAlphaDifference": 0.0,
-      "alphaDifferentPixels": 0,
-      "maxDisplayedDifferenceOnBlack": 1.0,
-      "maxDisplayedDifferenceOnWhite": 1.0,
-      "visibleRgbaDifferentPixels": 122692
+      "maxAlphaDifference": 1.0,
+      "alphaDifferentPixels": 29,
+      "maxDisplayedDifferenceOnBlack": 1.984313725490182,
+      "maxDisplayedDifferenceOnWhite": 1.984313725490182,
+      "visibleRgbaDifferentPixels": 72467
     },
     "psd": {
-      "maxAlphaDifference": 0.0,
-      "alphaDifferentPixels": 0,
-      "maxDisplayedDifferenceOnBlack": 1.0,
-      "maxDisplayedDifferenceOnWhite": 1.0,
-      "visibleRgbaDifferentPixels": 122685
+      "maxAlphaDifference": 1.0,
+      "alphaDifferentPixels": 29,
+      "maxDisplayedDifferenceOnBlack": 1.984313725490182,
+      "maxDisplayedDifferenceOnWhite": 1.984313725490182,
+      "visibleRgbaDifferentPixels": 72468
     }
   },
   "nativeVersion": "3.0.4",
-  "nativeToggleMoveResetPerFormat": 91,
+  "nativeToggleMoveResetPerFormat": 90,
+  "nativeLayerBuffers": {
+    "ora": {
+      "comparedLayers": 90,
+      "maxAlphaDifference": 0,
+      "maxVisibleColorDifference": 0
+    },
+    "xcf": {
+      "comparedLayers": 90,
+      "maxAlphaDifference": 0,
+      "maxVisibleColorDifference": 0
+    },
+    "psd": {
+      "comparedLayers": 90,
+      "maxAlphaDifference": 0,
+      "maxVisibleColorDifference": 0
+    }
+  },
+  "nativeCompositeRoundingLimit": {
+    "alpha": 1,
+    "displayColor": 2.1,
+    "note": "Per-layer native pixels checked independently; no relaxation of visual acceptance"
+  },
   "recommendedNativeFormats": [
     "xcf",
     "psd"
@@ -51,20 +1876,17 @@
     "alphaDifferentPixels": 0,
     "maxDisplayedDifferenceOnBlack": 1.0,
     "maxDisplayedDifferenceOnWhite": 1.0,
-    "visibleRgbaDifferentPixels": 21
+    "visibleRgbaDifferentPixels": 3
   },
   "oraDefaultGimpBlendMatchesBrowser": false,
   "savedNativeBlendMode": "NORMAL_LEGACY",
-  "browserToggleSoloMoveReset": 91,
+  "browserToggleSoloMoveReset": 90,
   "browserCorruptionRejected": true,
   "browserErrors": [],
   "largeShiftArtAccepted": false,
   "unassignedResidualLayerPresent": false,
   "visualProblems": [
-    "Face/fringe contour and color joins still visible when displaced",
-    "Shoulder/cuff material borders remain abrupt",
-    "Book cover patch and bookmark edge still require repair",
-    "Bare torso/skirt appearance requires a final visual pass"
+    "Final whole-part review has not been recorded"
   ],
   "sourcePreparationAccepted": false,
   "artAccepted": false,
@@ -72,24 +1894,29 @@
   "isLive2DModel": false,
   "files": [
     {
+      "file": "backhair-clean-paint.png",
+      "bytes": 917605,
+      "sha256": "b4c309af005b3d9455ab71d793d46ff04e7fdf0ebc207ecddd2042c1d57ab340"
+    },
+    {
       "file": "blue-white-layer-source.ora",
-      "bytes": 3746313,
-      "sha256": "7a9cdd123c2d21afdb566b0ad8dc7fd8a22ae29774555b60fcabaa5b60043aab"
+      "bytes": 4427545,
+      "sha256": "00d9f4ba813ca0448465baded8b8210e4bfa5cd73e3d8bac8d74d645c8114fe1"
     },
     {
       "file": "blue-white-layer-source.psd",
-      "bytes": 5768010,
-      "sha256": "2e9b4f382268d814826cb9409cc769ae45a83457fed21a15cd2aea1bbe0970a3"
+      "bytes": 6911665,
+      "sha256": "ab755f1b8bdfb86027d9ce6c2a64f5c210830023c3889143c218d6fc9e08cd73"
     },
     {
       "file": "blue-white-layer-source.svg",
-      "bytes": 13673701,
-      "sha256": "4ba26bf06ebe3cf16d1af46aa22f1899324ee7bb4d1fea5265b643b6f4ebc698"
+      "bytes": 25483142,
+      "sha256": "3fac06f1ca92dd4b7bde6a4ec7e3fd7c7abe5e89f1627528a0ac03cb03efd9f1"
     },
     {
       "file": "blue-white-layer-source.xcf",
-      "bytes": 3364152,
-      "sha256": "47ed164c36abbc1093565e9464609da11fa3e9698bce55e410cfcb5b5c927626"
+      "bytes": 4551516,
+      "sha256": "9c2dfb2e190254854dc8043496fdfe5c87846f46f55bab7e45726ea6790c18c9"
     },
     {
       "file": "book-complete-paint.png",
@@ -102,9 +1929,99 @@
       "sha256": "32601899236fc3b39b5aebfae226c7641c57054f664b85db0966029c78778f21"
     },
     {
+      "file": "braid-left-clean-paint.png",
+      "bytes": 563777,
+      "sha256": "53f987f00dcf2ee857f5f292a400040d2675dc200c8db9aa6f8881d39f8a8870"
+    },
+    {
+      "file": "braid-right-clean-paint.png",
+      "bytes": 742753,
+      "sha256": "36a5fdb3eabbdc6b05e6f6b42256b4b35b6ac8ae0739f7bf3098b5bb044c3908"
+    },
+    {
+      "file": "coat-clean-paint.png",
+      "bytes": 2635930,
+      "sha256": "b1d758d2e4c0b8ef155bd24f8b79f862a25501653ca912083c071c2c3f930259"
+    },
+    {
+      "file": "coat-complete-paint.png",
+      "bytes": 373954,
+      "sha256": "6cb2821a03b58bb41cd6795f930778250c974590fd3e57aacefa0130fe37b37b"
+    },
+    {
       "file": "cutout-candidate.png",
       "bytes": 1689016,
       "sha256": "532c841b9f7146486190199b0be2f1a4ef433042b6c27aa810717bfd04994b7a"
+    },
+    {
+      "file": "donor-inputs/braid-left.png",
+      "bytes": 17257,
+      "sha256": "bc4c4d08bb469fb0edec5f4058c3458cfac5d8455985a2eceb70e4129fac2439"
+    },
+    {
+      "file": "donor-inputs/braid-right.png",
+      "bytes": 11451,
+      "sha256": "ac77b9f0935fbf7e4435e43e6e7ac91d8e87c0cf84b8aa0c0b91fa05b280e95c"
+    },
+    {
+      "file": "donor-inputs/brow-right.png",
+      "bytes": 284,
+      "sha256": "9fe8d47b237d10a83b04d60706d24cd53283e9ccb37362f268058976120389fb"
+    },
+    {
+      "file": "donor-inputs/fringe-center.png",
+      "bytes": 28509,
+      "sha256": "4153dd311c49206c609ebb9464d7b5676d2280531a3d25104f52b1a6b3a6ae91"
+    },
+    {
+      "file": "donor-inputs/fringe-right.png",
+      "bytes": 18271,
+      "sha256": "a9027f3fef14fbaf51f5127d92d0a1eb61c50c06dcff179b5a9d5a369641ab68"
+    },
+    {
+      "file": "donor-inputs/hair-temple-left.png",
+      "bytes": 4815,
+      "sha256": "a30e3352bd58c9c0376d0cd81fe8f49c69a84c5d880ee7c5815ac3500da24e3a"
+    },
+    {
+      "file": "donor-inputs/hair-temple-right.png",
+      "bytes": 5146,
+      "sha256": "7bb2966930cfe96ada35d61660da6ccdbb47cd0513f95d1ac81be8eba5f1ca99"
+    },
+    {
+      "file": "donor-inputs/hat-bow-tails.png",
+      "bytes": 12734,
+      "sha256": "cfe62d80a0b8392d7646ccf340bdd7214c733437a9d5e0355f3c00358e31f5f0"
+    },
+    {
+      "file": "donor-inputs/shoe-bent.png",
+      "bytes": 22251,
+      "sha256": "74538c8c209dab6d27599a22d39131c6ec3da382e19a66bd171cdfffd4dab0ef"
+    },
+    {
+      "file": "donor-inputs/shoe-straight.png",
+      "bytes": 33761,
+      "sha256": "5503ce517e4b0e790b852cd18e89109f00e973079667c99c70710332f61bf148"
+    },
+    {
+      "file": "donor-inputs/sleeve-lowered.png",
+      "bytes": 29847,
+      "sha256": "6367b73a50146f66bcdb334ed038d7cbd1701a41d32e31a335fd5ae0ac959a42"
+    },
+    {
+      "file": "donor-inputs/stocking-bent.png",
+      "bytes": 50429,
+      "sha256": "9b28e913c6e43675e5766d9ec0309e614714739567f79d216d3fd63f699b359f"
+    },
+    {
+      "file": "donor-inputs/stocking-straight.png",
+      "bytes": 51791,
+      "sha256": "39103bc470f2420cc55d8c39ead7bc5d2ec23feb04dbc67dd4348d7cc98156b3"
+    },
+    {
+      "file": "donor-inputs/thigh-bent.png",
+      "bytes": 21621,
+      "sha256": "30cbe8ce1cc7bf18724e6faadd0f2690e0068c5194827db24ca64a28dcfadc00"
     },
     {
       "file": "dress-complete-paint.png",
@@ -132,9 +2049,24 @@
       "sha256": "8069e52a636ead2ef45f9303530c95d2bde123401cd5a05f736a3e86199d8423"
     },
     {
+      "file": "fringe-center-clean-paint.png",
+      "bytes": 1250346,
+      "sha256": "ae2131235392a548151ff91b5e324db83ce26cae01dfff1eacd12e6dcabec739"
+    },
+    {
+      "file": "fringe-right-clean-paint.png",
+      "bytes": 735788,
+      "sha256": "c7abaa268b65e27861fbca90e7633c0f406f9fbfd4229559260c068bcb4656d8"
+    },
+    {
       "file": "hair-underpaint-candidate.png",
       "bytes": 935143,
       "sha256": "3d262a51728af4b140c5523616143e24046ead60fc0aa3e31fe6566728e15dae"
+    },
+    {
+      "file": "hat-tails-clean-paint.png",
+      "bytes": 268519,
+      "sha256": "4fa6bbcb2c56138e4799f785623d7106dc4ab85803ce84f2ba420ef841310345"
     },
     {
       "file": "material-underpaint-sheet.png",
@@ -143,8 +2075,8 @@
     },
     {
       "file": "rendered-layers/bent-thigh-foundation.png",
-      "bytes": 11422,
-      "sha256": "e78c3f55445dfc9d1e134291e335f51178e513aca4f3475126b0bb7adc8a80a0"
+      "bytes": 10248,
+      "sha256": "2f22aba13caeb23e5cd2c175765763e088d609f12dabee5b8a253d40116d03a2"
     },
     {
       "file": "rendered-layers/bird.png",
@@ -153,93 +2085,93 @@
     },
     {
       "file": "rendered-layers/blouse-foundation.png",
-      "bytes": 27877,
-      "sha256": "054e11caead78efa422774c051ffa21540692c51129591646e09ef94c71c5c5e"
+      "bytes": 59323,
+      "sha256": "7a2c3428a91f521b713f88f5b01c2514a8e50a2924d07b3aa742491b7ec92d0d"
     },
     {
       "file": "rendered-layers/blouse.png",
-      "bytes": 23162,
-      "sha256": "83abad20cf5592f82fb7d1222c6c2db6eff4aa1caed1dfa54d2c7607ba1321b6"
+      "bytes": 62008,
+      "sha256": "9ce8c367afed642c2ef7fc3db8e274d5d0d0ca88dc8c9f2bd13ea96c872e4323"
     },
     {
       "file": "rendered-layers/book-cover-foundation.png",
-      "bytes": 3402,
-      "sha256": "06f9d3cd63d7d9313987eb37c57c75e18cc8dcfd7e1d8cd424156c27a10f63aa"
+      "bytes": 3232,
+      "sha256": "7a3f378a6033cd47ccb7f4492cab19665ca94d535ee28cc79ba4d7acee61785f"
     },
     {
       "file": "rendered-layers/book-ribbon.png",
-      "bytes": 11477,
-      "sha256": "d2e0f342ccda69b70a7f6c52a972a51e9d28e643a3c4cb943d11a039c97c95db"
+      "bytes": 12399,
+      "sha256": "ecb91c90fd13e01325990243319261c07257db2ae9d1a30a7e72ee9b0400b2b3"
     },
     {
       "file": "rendered-layers/book.png",
-      "bytes": 122266,
-      "sha256": "85b987b46f3a6f2a0cc87f91d903ac4a040fb8b2add19096ad5a473b820b8f31"
+      "bytes": 101344,
+      "sha256": "e1873482b90a4883227d93bb86522f2b82b33d61ead2c7623e87d84616223a3f"
     },
     {
       "file": "rendered-layers/braid-left-foundation.png",
-      "bytes": 10065,
-      "sha256": "c295ff90efad2803d45aae7065138116b4fed057e2bbdc3a02307ce5f00d8a03"
+      "bytes": 12260,
+      "sha256": "f53ca346cc4ead5698cf70d2a2ddceed77a577fe331dc4f3f108ba04b1f5c571"
     },
     {
       "file": "rendered-layers/braid-left.png",
-      "bytes": 17257,
-      "sha256": "bc4c4d08bb469fb0edec5f4058c3458cfac5d8455985a2eceb70e4129fac2439"
+      "bytes": 18772,
+      "sha256": "d04e1043575641eb278f4c2980f4d6bc6a41096f61030939105c963b662508b0"
     },
     {
       "file": "rendered-layers/braid-right-foundation.png",
-      "bytes": 6507,
-      "sha256": "df540eff24ddf0a2a95ebf4417fad2678dada30f036ebaeb4fc833fdc1256c07"
+      "bytes": 6392,
+      "sha256": "0ee1d2d713db047a46ac594956201dba5e330fb2237887b0b93cdc7372efa33a"
     },
     {
       "file": "rendered-layers/braid-right.png",
-      "bytes": 11451,
-      "sha256": "ac77b9f0935fbf7e4435e43e6e7ac91d8e87c0cf84b8aa0c0b91fa05b280e95c"
+      "bytes": 8070,
+      "sha256": "c40ea91f5e19d5a1935fafdd40bd5d75a0c4398385c19feb1f4eeb66d419840a"
     },
     {
       "file": "rendered-layers/brow-left.png",
-      "bytes": 788,
-      "sha256": "c6ea8e698cf9185db2a3bc56690cce6c79c806d530817b3fef04dc498889d8d2"
+      "bytes": 306,
+      "sha256": "5399e163fba360607847fc8739a40285b3d9704b6c07a379c26010ba42760fa5"
     },
     {
       "file": "rendered-layers/brow-right.png",
-      "bytes": 768,
-      "sha256": "9ba1f6514ba562d3cd3472ce4b8688db528ee2ce4600dfa43e59ab5555e98724"
+      "bytes": 284,
+      "sha256": "9fe8d47b237d10a83b04d60706d24cd53283e9ccb37362f268058976120389fb"
     },
     {
       "file": "rendered-layers/cap.png",
-      "bytes": 47552,
-      "sha256": "8681df26d4eb5ba443156ebdbdce479c4f6d7322e78db39e466dee987a59ad34"
+      "bytes": 46037,
+      "sha256": "dbb565a021698c823352a7a0c65e5d02068d796016ab4b339f9f0f4d9a107692"
     },
     {
       "file": "rendered-layers/coat-left-back.png",
-      "bytes": 24603,
-      "sha256": "40626ef6fadf5eedad7231564126c74ff3e6490af0968d76bb1d544244bb1806"
+      "bytes": 36302,
+      "sha256": "ffd384a5caef3797ff44ba493456bd380c044097ae1ddfa7acedeba8bff1e537"
     },
     {
       "file": "rendered-layers/coat-right-back.png",
-      "bytes": 18714,
-      "sha256": "332c20df22ab1b8d00f23970e86a3bfe0e5b674ad3f4704752c582868514bc6d"
+      "bytes": 42911,
+      "sha256": "915994bc6548e62aa076c6fc0c0b16b737deb12091a149278b3132c0fed43d6a"
     },
     {
       "file": "rendered-layers/coat-right-tail.png",
-      "bytes": 21546,
-      "sha256": "59ebb4b0230555fc6bc4616dd12b1743f730f4266ab4f9aa0446697801cebabe"
+      "bytes": 42942,
+      "sha256": "8c7a11be4e663aa6e585751bf1117cdef495b965ccbc925910d91c7c5c20f6b3"
     },
     {
       "file": "rendered-layers/collar.png",
-      "bytes": 5512,
-      "sha256": "3d69661ddcf775ff304c211ee6fcb5acc478462a0bef5fe4856b1f98d8222a8e"
+      "bytes": 10466,
+      "sha256": "217ca4e0b55fa47acba6cbb65f028cca3e6391a7cceefbd391de55fe796a4a9a"
     },
     {
       "file": "rendered-layers/corset-foundation.png",
-      "bytes": 16881,
-      "sha256": "c2db9fadd55a7a09efe8d58e3eaaf0a3ae7d29f231b24e8335752ab3e485d552"
+      "bytes": 28563,
+      "sha256": "9064a984755faa2caea999961fbbbcc3c3d0886807b3655834a4eab366ff692c"
     },
     {
       "file": "rendered-layers/corset.png",
-      "bytes": 28731,
-      "sha256": "c90447eeb04eefa139d49f7265810c1c551676964baef32d6bcf7feb5d76f589"
+      "bytes": 27821,
+      "sha256": "eb06e143dc6eee67f8e4ce2340b2da1ee0ef29aaeb49cb6e5d6be2693f51ef8e"
     },
     {
       "file": "rendered-layers/cuff-lowered.png",
@@ -252,149 +2184,144 @@
       "sha256": "8da7bdb52588f379e8f5e35bf898c28d4da40adeab047106d01f8acce72ded8e"
     },
     {
-      "file": "rendered-layers/ear-left.png",
-      "bytes": 1665,
-      "sha256": "48849cb9ee9f368aed0237c62eddc92593b33f9950fa000af209557a8ad2a2b5"
-    },
-    {
       "file": "rendered-layers/eye-left.png",
-      "bytes": 3101,
-      "sha256": "78e56dca3c5e1d8fc42a6ae4e2c96ebf52f6963d79b89f402d81292a26e1a056"
+      "bytes": 2510,
+      "sha256": "5ddbddb96f7e1f3805e49d1e0f30075eacaf227cd66a0626676d6a48340bd6d1"
     },
     {
       "file": "rendered-layers/eye-right.png",
-      "bytes": 2419,
-      "sha256": "384ce878db637c4ea8b1c1ab086a181fd82e3f5719d82c84ceac322fedf65c71"
+      "bytes": 2358,
+      "sha256": "c35af097b14d436839c4d498ee72b60cc2908cc14ee3dfaf333a6a92db6dd70e"
     },
     {
       "file": "rendered-layers/eye-white-left-foundation.png",
-      "bytes": 1637,
-      "sha256": "298c790519d6eaa8f464e2b77ead17f3c762903d83d4b7378617faa0ad068bc5"
+      "bytes": 1097,
+      "sha256": "4095d7b419a17173d4fb09f1908dbe65e1ad978b92882573d87b9ad1873e7127"
     },
     {
       "file": "rendered-layers/eye-white-right-foundation.png",
-      "bytes": 1335,
-      "sha256": "ebb2f1d3005e5a965e9542c009c0a04cf1d1a4943ec546f0e1dac71b8fa6a625"
+      "bytes": 973,
+      "sha256": "315702afb291f3c5325162d9ebc07186d72301b3c02e9e6abfc619e9564c3ee5"
     },
     {
       "file": "rendered-layers/face-foundation.png",
-      "bytes": 18351,
-      "sha256": "5ecca805ba127123e9118ff936a9c2fe3f693858eca227e71a22d68cd8678007"
+      "bytes": 17313,
+      "sha256": "ba863a15630bd52de23fd55007d0154edbd3771bce01d370b4f5cd24fdbbd433"
     },
     {
       "file": "rendered-layers/face.png",
-      "bytes": 7461,
-      "sha256": "1cb8bb95d91c88147f1b246f5a9891b44299105eeb121adf0756eb22e7a6cd29"
+      "bytes": 19067,
+      "sha256": "060d2ef208e9c4b01a93858edb89ad651c81dc4c949bbbe14aa92495bacf5d94"
     },
     {
       "file": "rendered-layers/fringe-center-foundation.png",
-      "bytes": 21833,
-      "sha256": "c8a51d46244215181e55f34b45fb0c0389f0c496389dc35b69a52662bce7395c"
+      "bytes": 26018,
+      "sha256": "97044105dcf7a17154e0c9228e344c2c4370d874fe4b782b34ecf2375bdcbd4f"
     },
     {
       "file": "rendered-layers/fringe-center.png",
-      "bytes": 26924,
-      "sha256": "d6e9bcb2f84d16602648f40556aef95130f30f9d691908fb23cf2e5d819addd1"
+      "bytes": 26018,
+      "sha256": "97044105dcf7a17154e0c9228e344c2c4370d874fe4b782b34ecf2375bdcbd4f"
     },
     {
       "file": "rendered-layers/fringe-right-foundation.png",
-      "bytes": 10060,
-      "sha256": "a496e5d399b23136f5c42ba1cadd11c6c305521ee8cb2a6e78b0ae409d517daf"
+      "bytes": 13945,
+      "sha256": "754381655f08631b2c8f259b7a239325ddec5db4c3e31a2936a21c7f5a4d768f"
     },
     {
       "file": "rendered-layers/fringe-right.png",
-      "bytes": 18653,
-      "sha256": "00c3cbac350a79445c82f0eb7d127b3164cd62cc8b82137ce518f5fc20b51a75"
+      "bytes": 13945,
+      "sha256": "754381655f08631b2c8f259b7a239325ddec5db4c3e31a2936a21c7f5a4d768f"
     },
     {
       "file": "rendered-layers/hair-back-foundation.png",
-      "bytes": 103837,
-      "sha256": "2ebba8ebebecd4bb6057b090dd18b0a313990a304ae06723bc52abb75d5c017d"
+      "bytes": 340920,
+      "sha256": "e984868858f5f833e8ea33414860a503ec8d4ec4b121aad4d606a132f741f1bb"
     },
     {
       "file": "rendered-layers/hair-crown-foundation.png",
-      "bytes": 36893,
-      "sha256": "3afa8ebfd335f58d6a755c9bcb6919f3fadceb6adcbb062238e11e209623b95c"
+      "bytes": 34738,
+      "sha256": "df9ccde02856628425221d79399dcd58455ebad71eaa987c573e3d5b02dc150b"
     },
     {
       "file": "rendered-layers/hair-gold-clips.png",
-      "bytes": 1547,
-      "sha256": "f69099a6533b37d4db91306da1b6128486a0eadd3efce30f3f717f8e992437f8"
+      "bytes": 990,
+      "sha256": "5e202d894d45a8e16a5926cfa143eda2c245eed1c30de96c8d23872d3698c788"
     },
     {
       "file": "rendered-layers/hair-left-root-foundation.png",
-      "bytes": 18655,
-      "sha256": "b3e4beb3fb1b54605cf1b558cf5d54622f2c18e1be7172cefb62a4cd08650fa5"
+      "bytes": 26284,
+      "sha256": "e3a65b8d5a4a58db099183a5a83df567cd27744869e6f2a6eff81bccd541ba2d"
     },
     {
       "file": "rendered-layers/hair-side-left.png",
-      "bytes": 28799,
-      "sha256": "6edb61968f34dc44327653054975dce80ee13ba50f13e918c7e7d53f22727b64"
+      "bytes": 31642,
+      "sha256": "a514bad521a328c60c03bd495581d53c1248211ab3b1c1e07ac705457616fae6"
     },
     {
       "file": "rendered-layers/hair-temple-left.png",
-      "bytes": 4826,
-      "sha256": "b0d4af10f9fe59af97e9b22318a4c6c9b1dca21ffd7683ae4963924c4d70977d"
+      "bytes": 3758,
+      "sha256": "748f54c67fb60e722afddc0a138648ca5a431102b3120b114a27f97ae2f8026f"
     },
     {
       "file": "rendered-layers/hair-temple-right.png",
-      "bytes": 5410,
-      "sha256": "62bae31f637f16e4b67d41d9a128cf5cf1c4a46ad661af1731d5f75b11cf1497"
+      "bytes": 4818,
+      "sha256": "8214388e11c73b7c46af8e65ca4aa1f5e4c786be3701a91a4731529dd813ba8a"
     },
     {
       "file": "rendered-layers/hair-under-raised-sleeve.png",
-      "bytes": 19267,
-      "sha256": "ad84fc7382f24ca1ed46665365e1d9db92d3f84210e8b7a6ec38873a6dfefc35"
+      "bytes": 16238,
+      "sha256": "7581c0c624a20d960201a987ddb09b30b38293cf03eebd76883e5f8d913e2926"
     },
     {
       "file": "rendered-layers/hat-bow-tails.png",
-      "bytes": 12734,
-      "sha256": "cfe62d80a0b8392d7646ccf340bdd7214c733437a9d5e0355f3c00358e31f5f0"
+      "bytes": 4882,
+      "sha256": "90d88e7520dea46771aa146931f588c677b065eea37f261f405f50ea03531e85"
     },
     {
       "file": "rendered-layers/hat-bow.png",
-      "bytes": 27768,
-      "sha256": "d5ffd8873ab5fb73c489242b2b5780f1ac8f1e5882543c617861a7d7f29eecbc"
+      "bytes": 28198,
+      "sha256": "d38fc20b081e48d340e8d7807800e7f3420919c7137db86cf64758f2c8a13d05"
     },
     {
       "file": "rendered-layers/hat-flower.png",
-      "bytes": 19303,
-      "sha256": "8b07b7de5f682a6ac05590018540d393039cc0c6807f7bb983d96f6ba73b10e9"
+      "bytes": 17215,
+      "sha256": "38ec5113775efe1aa660a068a0d9a9380e212d383d74a07382372d230dcd90c8"
     },
     {
       "file": "rendered-layers/iris-left-foundation.png",
-      "bytes": 1604,
-      "sha256": "436cd049aba5283fc44d4e1506eda3fc6f7543b16e5ea4221d509f79912502a8"
+      "bytes": 1669,
+      "sha256": "9bd414114903976ab6fac3c4b9623268f24fe41768df40ba71d6f711691a8780"
     },
     {
       "file": "rendered-layers/iris-left.png",
-      "bytes": 1455,
-      "sha256": "7315b6fc90d1145f4b64f9c55328d4368d5bed925889d7f9b22c6e24aaa3bdfe"
+      "bytes": 1811,
+      "sha256": "6453531a56a1ebf98e268b794923f66b31b456bbc3f5abf03a93913af699df7e"
     },
     {
       "file": "rendered-layers/iris-right-foundation.png",
-      "bytes": 1386,
-      "sha256": "47633f1335a56c23e2feaad059ae651ab615c3e1164ab1ada5b004f9bfbb8714"
+      "bytes": 1478,
+      "sha256": "e5124c37a5168e1bb611e1070f346bba95c1d57b6b710ca0e9aeeab598893f38"
     },
     {
       "file": "rendered-layers/iris-right.png",
-      "bytes": 1300,
-      "sha256": "c1df1e963519d1201af5c1f9dc32a3d000ebb89b5331108bbbe8d4b5d90a2884"
+      "bytes": 1579,
+      "sha256": "a311918b8a901d037db789b535fce96d68bec75f66a520b301e63b99643fffbf"
     },
     {
       "file": "rendered-layers/lash-left.png",
-      "bytes": 1768,
-      "sha256": "c4162cd74613e68432c6ed44d952da1cf9488edc191fe534a406ec080f406872"
+      "bytes": 1327,
+      "sha256": "e4644991ba85bbfe226f48c72acfb0dedac172f62c667d483485a862aa771164"
     },
     {
       "file": "rendered-layers/lash-right.png",
-      "bytes": 1252,
-      "sha256": "c83df46fc222c11314098e6a555b48d8b9a877694e9e5c9b585e60bb7efed7c7"
+      "bytes": 1163,
+      "sha256": "2c934075db5c06445efcbf5b1eca7ba1dc075ba2e181e49857286cfd64f1ae85"
     },
     {
       "file": "rendered-layers/lowered-cuff-foundation.png",
-      "bytes": 4110,
-      "sha256": "20ff21eaa6f86c27abbfb194622c9fd5c8be0fb5321c1d2cea498bb23705801a"
+      "bytes": 4070,
+      "sha256": "818a89c52550bc4d783e20c3f82861a2dacc169c7de9f9454d7f0e7f1fc15e62"
     },
     {
       "file": "rendered-layers/lowered-hand.png",
@@ -403,23 +2330,23 @@
     },
     {
       "file": "rendered-layers/lowered-sleeve-foundation.png",
-      "bytes": 14968,
-      "sha256": "efbbe10a97b094546d3bf0713745087490a003cff0d5b876ed7e8504e0e383d9"
+      "bytes": 23133,
+      "sha256": "7cc0741133a450be938e414a84fa6111b367d4d14f7bfa45acf4553f5f98dcfb"
     },
     {
       "file": "rendered-layers/lowered-wrist-foundation.png",
-      "bytes": 1307,
-      "sha256": "fca8aa9a061c3cc6335a0fa9259800241602fe390b0162b1b24f4e8fc1155d2d"
+      "bytes": 1239,
+      "sha256": "f9ec1eed2d16d69eda1e0e446594c23e936f77e934d0ee53b636c61b4ae464a6"
     },
     {
       "file": "rendered-layers/merged.png",
-      "bytes": 1604756,
-      "sha256": "2e8a9a89e5e05a0153053945cac045ce3dde356c608b5b3dedb5743d7dc7c02c"
+      "bytes": 1501476,
+      "sha256": "388f778edaa1b3362aecd193ef3541367967b7234b5170d29bf6ad4b11bd4218"
     },
     {
       "file": "rendered-layers/mouth.png",
-      "bytes": 2178,
-      "sha256": "395e226e5477ce71870812727cc0a0c9a1af4aaeddf1365eb34e0926ce303536"
+      "bytes": 1699,
+      "sha256": "9367ed956b25a4659187117ed11462cdfb7b8be37a9a451e76fc512fa478ae8b"
     },
     {
       "file": "rendered-layers/neck-bow-tail-left.png",
@@ -438,23 +2365,23 @@
     },
     {
       "file": "rendered-layers/neck-foundation.png",
-      "bytes": 2501,
-      "sha256": "6501812c5b95a4eaa09842246b11b453899f3830375bf9653c1043b19f6a0b16"
+      "bytes": 2049,
+      "sha256": "1815582cb216e9b5ecbfc5a6392133ab10fc72b54353beb27edcec12836f47cc"
     },
     {
       "file": "rendered-layers/neck.png",
-      "bytes": 2355,
-      "sha256": "a0c99f6f74e7cfc6b4c2eac1a111c6f5559472e678217290dd93f145baeba4c0"
+      "bytes": 2794,
+      "sha256": "aa4cd7bd34759415d8e40eb1104757491f5c45515892f4125b18658386607f9f"
     },
     {
       "file": "rendered-layers/nose.png",
-      "bytes": 850,
-      "sha256": "17f1fef7f2ecde549bdef30a088fd914f9e1c82420387b2cd0cc9703f24c0702"
+      "bytes": 253,
+      "sha256": "abc4c3b23da87fdf2472ad5e796bd46f394e84a6414528b0c65d76ab4be3709f"
     },
     {
       "file": "rendered-layers/raised-cuff-foundation.png",
-      "bytes": 6997,
-      "sha256": "a900a3ac34ccd9e6955a2f05a81aaa100b7f54f8ce4baa77144bb4d1ff61451c"
+      "bytes": 6928,
+      "sha256": "8b203f16ad5908d11f3f0bb01768e23d02f92746b16ea4487f8ceed0d6779cf9"
     },
     {
       "file": "rendered-layers/raised-hand.png",
@@ -463,38 +2390,38 @@
     },
     {
       "file": "rendered-layers/raised-shoulder-foundation.png",
-      "bytes": 4596,
-      "sha256": "0bdeccbe1f3b6fd0a5e53ed887f30045794547228469d40c0b559ec158feda67"
+      "bytes": 14150,
+      "sha256": "9988240a4179a1d15eff0a82e35db39a5f2ec1ce71a8dfc28c49a83c3a1d04d3"
     },
     {
       "file": "rendered-layers/raised-sleeve-foundation.png",
-      "bytes": 17954,
-      "sha256": "05577221adb581836e562e90ffdb8e342fa858e3e86b66c8d07c39766bda72ef"
+      "bytes": 33826,
+      "sha256": "5ac4fe18a26d3776062fd02ee1451415b852206889b2264531d88616decc00de"
     },
     {
       "file": "rendered-layers/raised-wrist-foundation.png",
-      "bytes": 1949,
-      "sha256": "ad3cfbe90de66d6bfce06e3bc8d178ddfc1063e4a27567d5dda868ce25090bef"
+      "bytes": 1811,
+      "sha256": "165436d604c4279c487596a28d50feb3dc0c5e5e8de9ac07131133614a4e0ad4"
     },
     {
       "file": "rendered-layers/rear-hair-left-lower.png",
-      "bytes": 66549,
-      "sha256": "fce9cc022299691049bfd298b014ef82891674f603f4604b4cd34eedbca9ca4f"
+      "bytes": 94087,
+      "sha256": "580bf798c3b951c8a4379afcdf6275c0c6e0921617ee4c8946f5c6754644d83a"
     },
     {
       "file": "rendered-layers/rear-hair-left-upper.png",
-      "bytes": 72591,
-      "sha256": "185b294219f4082828c10751fb0f97623d328763fad5c7130348f0e6ac51bd8f"
+      "bytes": 126997,
+      "sha256": "fcb9db80d2ca5273c13d5ecfca902b576796c16e6ace8de9f27ab09b17ab6d2d"
     },
     {
       "file": "rendered-layers/rear-hair-right-lower.png",
-      "bytes": 98069,
-      "sha256": "2b139f030016748f0fd6c89195f4f74614b51e97ee4bed9d801b65c40d9db428"
+      "bytes": 142711,
+      "sha256": "2f510d45534276ff224c805e320732d1531f862bbee5ed6e3c49c0cd4232aba2"
     },
     {
       "file": "rendered-layers/rear-hair-right-upper.png",
-      "bytes": 46784,
-      "sha256": "1e5ad4e373694b3ed9218e9b97d9d801bcb7a01795d964826c019fa110d61199"
+      "bytes": 188690,
+      "sha256": "4061df71796bf89703eca0b91b39ad49118c3f73f47cc6e1ac1d60452008843a"
     },
     {
       "file": "rendered-layers/ribbon-airborne.png",
@@ -523,13 +2450,13 @@
     },
     {
       "file": "rendered-layers/shoe-bent.png",
-      "bytes": 22251,
-      "sha256": "74538c8c209dab6d27599a22d39131c6ec3da382e19a66bd171cdfffd4dab0ef"
+      "bytes": 21848,
+      "sha256": "b053c9f513a95a6276296343315f7d0547985d250e1ace19f9b22bc6b80c60aa"
     },
     {
       "file": "rendered-layers/shoe-straight.png",
-      "bytes": 33761,
-      "sha256": "5503ce517e4b0e790b852cd18e89109f00e973079667c99c70710332f61bf148"
+      "bytes": 33581,
+      "sha256": "993c49d263e052428f11bfc4085d4b89d5affdcaefe1e74f5f6b54be8152cdf9"
     },
     {
       "file": "rendered-layers/skirt-front.png",
@@ -538,23 +2465,23 @@
     },
     {
       "file": "rendered-layers/skirt-inner-right.png",
-      "bytes": 29554,
-      "sha256": "3b70ceb31f25ca65f61917db91fa343bc8273c55674cdbc5c871063529f38a34"
+      "bytes": 112732,
+      "sha256": "bb964c51556a37535d07b9a3b011c760f9d7c33a5d58723f9b88eed277119567"
     },
     {
       "file": "rendered-layers/skirt-interior-foundation.png",
-      "bytes": 87914,
-      "sha256": "e12eb7ab4f2d6fd016500b7f8aa88f0806a920ef4f068fc1f5f75eac808ed611"
+      "bytes": 94283,
+      "sha256": "7e52d901b3a327e278d9a5d5467877594f4655c098bb15eca62538dd7628d25e"
     },
     {
       "file": "rendered-layers/skirt-left-back.png",
-      "bytes": 29544,
-      "sha256": "448d16150c4aa0ccd43a174b68909ffd59e481421feef02b474a1613c435cdf9"
+      "bytes": 85600,
+      "sha256": "6fa05fc919433e3752348ec5973de96a2e18c7e584f391b163d6483d26732349"
     },
     {
       "file": "rendered-layers/skirt-lower-train.png",
-      "bytes": 91249,
-      "sha256": "b13fab2f4e8aa159eb816d091222961ab6296c8b5c3e6f7fae58ebd0df1f092b"
+      "bytes": 96986,
+      "sha256": "b5bc6a1f33460ec187d1187338159a26bf29cac81631438b7608def3f56c7791"
     },
     {
       "file": "rendered-layers/skirt-right.png",
@@ -563,33 +2490,33 @@
     },
     {
       "file": "rendered-layers/sleeve-lowered.png",
-      "bytes": 29847,
-      "sha256": "6367b73a50146f66bcdb334ed038d7cbd1701a41d32e31a335fd5ae0ac959a42"
+      "bytes": 25891,
+      "sha256": "1c297dd08f69f09f6be19995f508f0f7b9f90d39950d5c7933787bb96db2a6af"
     },
     {
       "file": "rendered-layers/sleeve-raised.png",
-      "bytes": 28820,
-      "sha256": "9ef4ba6e999c117d8fde23ea4a3f434fde421529f9838e83fe2f295e1350fb35"
+      "bytes": 43893,
+      "sha256": "2c02d1ad29ef683a4353378ae3fbb83f02dded5a7f1dac21ad14030999dfd261"
     },
     {
       "file": "rendered-layers/stocking-bent.png",
-      "bytes": 50429,
-      "sha256": "9b28e913c6e43675e5766d9ec0309e614714739567f79d216d3fd63f699b359f"
+      "bytes": 34548,
+      "sha256": "830d14c8286aa9074a87a53aae9a00b2e441ecd0e5e55c2ad7e2bbb8c356ea65"
     },
     {
       "file": "rendered-layers/stocking-straight.png",
-      "bytes": 51791,
-      "sha256": "39103bc470f2420cc55d8c39ead7bc5d2ec23feb04dbc67dd4348d7cc98156b3"
+      "bytes": 44960,
+      "sha256": "c6adc14a34d67b328e7d523082c8f5f5d7fbc5750c301932024904abb28a0c9a"
     },
     {
       "file": "rendered-layers/straight-leg-foundation.png",
-      "bytes": 10599,
-      "sha256": "0637204f23fd361e20c0591505e718adc2360254ac7c6f198456b5b8f064c136"
+      "bytes": 10566,
+      "sha256": "782322d22ef319a43a0bcc60fcf096f400e760afe2fae031d7db998595d70d02"
     },
     {
       "file": "rendered-layers/thigh-bent.png",
-      "bytes": 21621,
-      "sha256": "30cbe8ce1cc7bf18724e6faadd0f2690e0068c5194827db24ca64a28dcfadc00"
+      "bytes": 13134,
+      "sha256": "04111eb469c241a957d88c4ca07f52547eca25f81b904a92f3dc09cdaabeebcf"
     },
     {
       "file": "rendered-layers/waist-bow.png",
@@ -602,14 +2529,59 @@
       "sha256": "d589884ed2c44faf3757b346a6516d1656e8ce471c8b82e920bdac7b7a1f302f"
     },
     {
+      "file": "skirt-interior-clean-paint.png",
+      "bytes": 1626811,
+      "sha256": "e7921e81cf8cc211817002151a19d73ed46727baeeba198251f087a5a9635612"
+    },
+    {
+      "file": "sleeve-closed-paint.png",
+      "bytes": 1094889,
+      "sha256": "c49ae1f9bfdc06aec0c50cb1f3993dd447906489207da9ad36777203ae5ddf31"
+    },
+    {
       "file": "sleeve-complete-paint.png",
       "bytes": 950978,
       "sha256": "b180592bdbe98bb8b7889eed56e91fd47741d2280e06593d2d19795b77941953"
     },
     {
+      "file": "sleeve-lowered-clean-paint.png",
+      "bytes": 972467,
+      "sha256": "dc17861a4392ef5cce3d911374924280d5116106f54607582876214196e4b096"
+    },
+    {
+      "file": "stocking-bent-clean-paint.png",
+      "bytes": 771347,
+      "sha256": "edec73113c3f70b350a032bb0339d4ac67e3d79c2ff3d38ce055d118b5997924"
+    },
+    {
+      "file": "stocking-bent-final-paint.png",
+      "bytes": 765418,
+      "sha256": "e754388bef704e2cd033c13e0907c8989677d771dc286b9afa07b6c34a8c86fb"
+    },
+    {
+      "file": "stocking-straight-clean-paint.png",
+      "bytes": 422933,
+      "sha256": "e13fa6f128bfd87fbae5c832e5b3884128e6feaedc5993acb3eb7b03aec22b18"
+    },
+    {
+      "file": "thigh-clean-paint.png",
+      "bytes": 924473,
+      "sha256": "a992ff2e60b8ea44d3c2bd55e3d30d7677d5e138a426b9a5babad9886b275c9f"
+    },
+    {
+      "file": "torso-clean-paint.png",
+      "bytes": 941008,
+      "sha256": "232632182ad82d72468ed6b65930a1c846919f8c376b6d2894760011d626db10"
+    },
+    {
       "file": "torso-complete-paint.png",
       "bytes": 957995,
       "sha256": "3166910aa822202197a289f8d7be5632c49473fc2f6f76359235bf8fd8997e36"
+    },
+    {
+      "file": "torso-final-paint.png",
+      "bytes": 935425,
+      "sha256": "9797c156effe7360e5bf00d3ab3026f7b714245f6ddfd82814c805409ce1c9d9"
     }
   ]
 }

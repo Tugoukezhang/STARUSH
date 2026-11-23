@@ -6,7 +6,9 @@ STARUSH_Q86_ROOT must name this source directory; evidence goes outside Git.
 """
 from pathlib import Path
 import os, json, hashlib
-from gi.repository import Gimp, Gio
+from gi.repository import Gimp, Gio, Gegl
+from PIL import Image
+import numpy as np
 
 root = Path(os.environ['STARUSH_Q86_ROOT']).resolve()
 scratch = Path(os.environ.get('STARUSH_Q86_SCRATCH', '/tmp/starush-q86'))
@@ -46,7 +48,18 @@ def inspect(image, name):
         assert tuple(layer.get_offsets()[-2:]) == (row['x']+17,row['y']-13)
         layer.set_offsets(row['x'],row['y'])
         layer.set_visible(row['visible'])
-        entries.append({'id':row['id'],'visible':row['visible'],'offsetsRestored':True,'toggleAndMove':True})
+        # Compare each actual native buffer to its source PNG. Composite
+        # rounding is separate from layer data preservation.
+        raw=layer.get_buffer().get(Gegl.Rectangle.new(0,0,row['width'],row['height']),1.0,"R'G'B'A u8",Gegl.AbyssPolicy.NONE)
+        actual=np.frombuffer(raw,dtype=np.uint8).reshape(row['height'],row['width'],4).astype(np.int16)
+        original=np.array(Image.open(root/row['file']).convert('RGBA'),dtype=np.int16)
+        visible=(actual[:,:,3]>0)|(original[:,:,3]>0)
+        delta=np.abs(actual-original)
+        max_alpha=int(delta[:,:,3].max())
+        max_color=int(delta[:,:,:3][visible].max()) if visible.any() else 0
+        assert max_alpha==0,(name,row['id'],max_alpha)
+        assert max_color<=1,(name,row['id'],max_color)
+        entries.append({'id':row['id'],'visible':row['visible'],'offsetsRestored':True,'toggleAndMove':True,'bufferAlphaMaxDifference':max_alpha,'bufferVisibleColorMaxDifference':max_color})
     export(image, 'file-png-export', scratch/(name+'-reopened.png'))
     return entries
 
