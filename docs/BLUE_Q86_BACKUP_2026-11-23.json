@@ -1,0 +1,851 @@
+{
+  "scope": "Entire current Q86 source directory plus every file changed in the completion commit; all fetched bytes compared to local",
+  "branch": "recovery/continue-game-20261122",
+  "commit": "70d8fd6d69a2bbc6ae7f2d854c096a47284c2c2b",
+  "remoteCommit": "70d8fd6d69a2bbc6ae7f2d854c096a47284c2c2b",
+  "verifiedFiles": 168,
+  "verifiedBytes": 87728020,
+  "removedFilesVerified": [],
+  "files": [
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/README.md",
+      "bytes": 4371,
+      "sha256": "c12edfec6203355fd991a3259510a527e0342312d30b4ad46bf8bb699474271a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/backhair-clean-paint.png",
+      "bytes": 917605,
+      "sha256": "b4c309af005b3d9455ab71d793d46ff04e7fdf0ebc207ecddd2042c1d57ab340"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/blue-white-layer-source.ora",
+      "bytes": 4447658,
+      "sha256": "636374c20fa882cd927259311483dcbb0b97ff74bb981b52468e89719837bf4b"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/blue-white-layer-source.psd",
+      "bytes": 6934966,
+      "sha256": "a8cd08151d85684c0364f6e70fa7fe58685d1e866580ad18eb362ddb380c2104"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/blue-white-layer-source.svg",
+      "bytes": 26359010,
+      "sha256": "e4fdfccd11ef58d69b1ea696a688940f82ef048a9c2f7a7bc14a577871e1d62c"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/blue-white-layer-source.xcf",
+      "bytes": 4563018,
+      "sha256": "fe1f236090ac5a198124f65d53c508c01d3be7f2bd589e45df028b2f9ca5c160"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/book-complete-paint.png",
+      "bytes": 2246005,
+      "sha256": "387407681c9d673269259dec3a48b6319ce2051860089e01895476f522ab2251"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/book-underpaint-candidate.png",
+      "bytes": 180507,
+      "sha256": "32601899236fc3b39b5aebfae226c7641c57054f664b85db0966029c78778f21"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/braid-left-clean-paint.png",
+      "bytes": 563777,
+      "sha256": "53f987f00dcf2ee857f5f292a400040d2675dc200c8db9aa6f8881d39f8a8870"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/braid-right-clean-paint.png",
+      "bytes": 742753,
+      "sha256": "36a5fdb3eabbdc6b05e6f6b42256b4b35b6ac8ae0739f7bf3098b5bb044c3908"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/build-source.py",
+      "bytes": 28359,
+      "sha256": "a6a66c798ed3dee3103f74ede57de5c051ed3a9909fad79ca0ced1ceca087c85"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/capture-layer-atlas.cjs",
+      "bytes": 1764,
+      "sha256": "2eb3ac15fab24d76f97eb13b0d8029a0ec38f13add92370b3dce68f3f57c3905"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/capture-visual-states.cjs",
+      "bytes": 3570,
+      "sha256": "7a2b2cf2c6fa98a58176ffc5cb6557fa30f6c50eee6ae1dff551766c72b11323"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/coat-clean-paint.png",
+      "bytes": 2635930,
+      "sha256": "b1d758d2e4c0b8ef155bd24f8b79f862a25501653ca912083c071c2c3f930259"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/coat-complete-paint.png",
+      "bytes": 373954,
+      "sha256": "6cb2821a03b58bb41cd6795f930778250c974590fd3e57aacefa0130fe37b37b"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/complete-source.py",
+      "bytes": 38329,
+      "sha256": "2d7809a214fa80830341b6c5c93e0dc759d4433a423b3cf0da6a1438782a4b23"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/cutout-candidate.png",
+      "bytes": 1689016,
+      "sha256": "532c841b9f7146486190199b0be2f1a4ef433042b6c27aa810717bfd04994b7a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/braid-left.png",
+      "bytes": 17257,
+      "sha256": "bc4c4d08bb469fb0edec5f4058c3458cfac5d8455985a2eceb70e4129fac2439"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/braid-right.png",
+      "bytes": 11451,
+      "sha256": "ac77b9f0935fbf7e4435e43e6e7ac91d8e87c0cf84b8aa0c0b91fa05b280e95c"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/brow-right.png",
+      "bytes": 284,
+      "sha256": "9fe8d47b237d10a83b04d60706d24cd53283e9ccb37362f268058976120389fb"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/fringe-center.png",
+      "bytes": 28509,
+      "sha256": "4153dd311c49206c609ebb9464d7b5676d2280531a3d25104f52b1a6b3a6ae91"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/fringe-right.png",
+      "bytes": 18271,
+      "sha256": "a9027f3fef14fbaf51f5127d92d0a1eb61c50c06dcff179b5a9d5a369641ab68"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/hair-temple-left.png",
+      "bytes": 4815,
+      "sha256": "a30e3352bd58c9c0376d0cd81fe8f49c69a84c5d880ee7c5815ac3500da24e3a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/hair-temple-right.png",
+      "bytes": 5146,
+      "sha256": "7bb2966930cfe96ada35d61660da6ccdbb47cd0513f95d1ac81be8eba5f1ca99"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/hat-bow-tails.png",
+      "bytes": 12734,
+      "sha256": "cfe62d80a0b8392d7646ccf340bdd7214c733437a9d5e0355f3c00358e31f5f0"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/hat-flower.png",
+      "bytes": 17215,
+      "sha256": "38ec5113775efe1aa660a068a0d9a9380e212d383d74a07382372d230dcd90c8"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/shoe-bent.png",
+      "bytes": 22251,
+      "sha256": "74538c8c209dab6d27599a22d39131c6ec3da382e19a66bd171cdfffd4dab0ef"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/shoe-straight.png",
+      "bytes": 33761,
+      "sha256": "5503ce517e4b0e790b852cd18e89109f00e973079667c99c70710332f61bf148"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/sleeve-lowered.png",
+      "bytes": 29847,
+      "sha256": "6367b73a50146f66bcdb334ed038d7cbd1701a41d32e31a335fd5ae0ac959a42"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/stocking-bent.png",
+      "bytes": 50429,
+      "sha256": "9b28e913c6e43675e5766d9ec0309e614714739567f79d216d3fd63f699b359f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/stocking-straight.png",
+      "bytes": 51791,
+      "sha256": "39103bc470f2420cc55d8c39ead7bc5d2ec23feb04dbc67dd4348d7cc98156b3"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/donor-inputs/thigh-bent.png",
+      "bytes": 21621,
+      "sha256": "30cbe8ce1cc7bf18724e6faadd0f2690e0068c5194827db24ca64a28dcfadc00"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/dress-complete-paint.png",
+      "bytes": 1807692,
+      "sha256": "1f29af5e2e507ab706a06b29f166f5bac612564456468f97eebc1d073886c033"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/export-source.py",
+      "bytes": 4438,
+      "sha256": "e2f08f9f6f27d37baccfa2dfea7bd1fb1b4592c50d1eebb2779909e4a675c1da"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/eye-components-paint.png",
+      "bytes": 888221,
+      "sha256": "336abbb3c94c22c95092cc2dcf774883b18a8f6e26a8d09c871574154eb28486"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/face-foundation-draft.png",
+      "bytes": 934140,
+      "sha256": "8baf854647ae3ff7afc14e4d21fbf28cabc7346988b29a4198d6c32dc412131f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/face-foundation-final.png",
+      "bytes": 856596,
+      "sha256": "fbb465f62e58a8b77b28aaad743f1cd90e49f3c638d81941b6a877805d8f5754"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/face-foundation-paint.png",
+      "bytes": 827209,
+      "sha256": "8069e52a636ead2ef45f9303530c95d2bde123401cd5a05f736a3e86199d8423"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/fringe-center-clean-paint.png",
+      "bytes": 1250346,
+      "sha256": "ae2131235392a548151ff91b5e324db83ce26cae01dfff1eacd12e6dcabec739"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/fringe-right-clean-paint.png",
+      "bytes": 735788,
+      "sha256": "c7abaa268b65e27861fbca90e7633c0f406f9fbfd4229559260c068bcb4656d8"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/generation.json",
+      "bytes": 41285,
+      "sha256": "b877c630298543b4575d7dafd569797bbff1a47205ab27d0a91dfb4eb0a06d5e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/hair-underpaint-candidate.png",
+      "bytes": 935143,
+      "sha256": "3d262a51728af4b140c5523616143e24046ead60fc0aa3e31fe6566728e15dae"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/hat-flower-clean-paint.png",
+      "bytes": 611704,
+      "sha256": "2ae81c461f2a4555f4a1591d6f2b45e6c089a990fdeded7cb0fb83d1d3f6b1b0"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/hat-tails-clean-paint.png",
+      "bytes": 268519,
+      "sha256": "4fa6bbcb2c56138e4799f785623d7106dc4ab85803ce84f2ba420ef841310345"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/layers.json",
+      "bytes": 8807159,
+      "sha256": "6abdebaab4c0fec213a8dcd74526720a1f3cc77ddb246d9c001b37765d57f359"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/material-underpaint-sheet.png",
+      "bytes": 1811388,
+      "sha256": "a88f0153c2598c01407d673de965e63be2374284e480794b833cfe2301513c1c"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/micro-ownership.json",
+      "bytes": 768479,
+      "sha256": "121d0646210172d9ef590be52bd236e20d96e726323c45cd05c4d0eb78332f49"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/occlusion-envelopes.json",
+      "bytes": 122619,
+      "sha256": "703b2cb543a4ff5e42fe86cfcc2ba813981222093a12ff4ce816edc7edec19e6"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/occlusion-patches.json",
+      "bytes": 4688,
+      "sha256": "1a7a556bb0f7bd9a0edc49b4c5d8146086f84a20a4ff578a0cc976d0fa3c02b9"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/package-native.py",
+      "bytes": 4627,
+      "sha256": "3305a2882f02664b4743e034ade377e0ec3ec0b806c6063a3396d648cc78a8e0"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/prepare-envelopes.py",
+      "bytes": 2002,
+      "sha256": "ba720c66e8f738441997015a3873c659a5ad5fb422df341409d778b213e73c7d"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/qa-occlusion.cjs",
+      "bytes": 4097,
+      "sha256": "9b4e6304e643b4c5984a7c5735fae7c9f8387af7fdc496fd8cf8faec744488ee"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/qa-source.cjs",
+      "bytes": 4764,
+      "sha256": "45b9248066c8fd236383799cd19b11dcd7d2083df52d3388b34f0f60c55ea116"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/raster-layers.json",
+      "bytes": 25931,
+      "sha256": "d8db4797e5fcac9e570b1a5a83d36c52522bcc54db39fd1b86d5309c9f963c95"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/bent-thigh-foundation.png",
+      "bytes": 8858,
+      "sha256": "4237053b50749833e41aed7b61946c3ff6c94cf5a1a47b643e672037b319aa64"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/bird.png",
+      "bytes": 38126,
+      "sha256": "3bff48ed851ab56e9fdbce87c8d3647decd19a185bcab05566ac81ad7833bd36"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/blouse-foundation.png",
+      "bytes": 59682,
+      "sha256": "5630447ddad1d8ef2c0b88445bf0cd66cb5680367092ed00b35375a48384d683"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/blouse.png",
+      "bytes": 62008,
+      "sha256": "9ce8c367afed642c2ef7fc3db8e274d5d0d0ca88dc8c9f2bd13ea96c872e4323"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/book-cover-foundation.png",
+      "bytes": 3232,
+      "sha256": "7a3f378a6033cd47ccb7f4492cab19665ca94d535ee28cc79ba4d7acee61785f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/book-ribbon.png",
+      "bytes": 12399,
+      "sha256": "ecb91c90fd13e01325990243319261c07257db2ae9d1a30a7e72ee9b0400b2b3"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/book.png",
+      "bytes": 101344,
+      "sha256": "e1873482b90a4883227d93bb86522f2b82b33d61ead2c7623e87d84616223a3f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/braid-left-foundation.png",
+      "bytes": 13059,
+      "sha256": "07d4b4d3fe99bfdc3be236b3112c51ceb50986f57304392ae92784511d7775e0"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/braid-left.png",
+      "bytes": 18772,
+      "sha256": "d04e1043575641eb278f4c2980f4d6bc6a41096f61030939105c963b662508b0"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/braid-right-foundation.png",
+      "bytes": 7286,
+      "sha256": "32cfd33bbcb084a4f24e8ec2be5455cb05bc5baff566f62fd873c1431372d940"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/braid-right.png",
+      "bytes": 8070,
+      "sha256": "c40ea91f5e19d5a1935fafdd40bd5d75a0c4398385c19feb1f4eeb66d419840a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/brow-left.png",
+      "bytes": 306,
+      "sha256": "5399e163fba360607847fc8739a40285b3d9704b6c07a379c26010ba42760fa5"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/brow-right.png",
+      "bytes": 284,
+      "sha256": "9fe8d47b237d10a83b04d60706d24cd53283e9ccb37362f268058976120389fb"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/cap.png",
+      "bytes": 46238,
+      "sha256": "bdc7c212f310b5c0a5f482280f2588854be8bae4f9c7f73b0b2650acab5c824b"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/coat-left-back.png",
+      "bytes": 36302,
+      "sha256": "ffd384a5caef3797ff44ba493456bd380c044097ae1ddfa7acedeba8bff1e537"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/coat-right-back.png",
+      "bytes": 42911,
+      "sha256": "915994bc6548e62aa076c6fc0c0b16b737deb12091a149278b3132c0fed43d6a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/coat-right-tail.png",
+      "bytes": 42942,
+      "sha256": "8c7a11be4e663aa6e585751bf1117cdef495b965ccbc925910d91c7c5c20f6b3"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/collar.png",
+      "bytes": 10466,
+      "sha256": "217ca4e0b55fa47acba6cbb65f028cca3e6391a7cceefbd391de55fe796a4a9a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/corset-foundation.png",
+      "bytes": 29122,
+      "sha256": "b8405d6bb5095ef3595e98510397b4f72abbb403b2621753d97a27cc4cbe576d"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/corset.png",
+      "bytes": 27821,
+      "sha256": "eb06e143dc6eee67f8e4ce2340b2da1ee0ef29aaeb49cb6e5d6be2693f51ef8e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/cuff-lowered.png",
+      "bytes": 11398,
+      "sha256": "fd783b27b371a60d85c403a4038072975b3fa5051f84211daf9c672cbcf5f408"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/cuff-raised.png",
+      "bytes": 20092,
+      "sha256": "8da7bdb52588f379e8f5e35bf898c28d4da40adeab047106d01f8acce72ded8e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/eye-left.png",
+      "bytes": 2510,
+      "sha256": "5ddbddb96f7e1f3805e49d1e0f30075eacaf227cd66a0626676d6a48340bd6d1"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/eye-right.png",
+      "bytes": 2358,
+      "sha256": "c35af097b14d436839c4d498ee72b60cc2908cc14ee3dfaf333a6a92db6dd70e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/eye-white-left-foundation.png",
+      "bytes": 1097,
+      "sha256": "4095d7b419a17173d4fb09f1908dbe65e1ad978b92882573d87b9ad1873e7127"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/eye-white-right-foundation.png",
+      "bytes": 973,
+      "sha256": "315702afb291f3c5325162d9ebc07186d72301b3c02e9e6abfc619e9564c3ee5"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/face-foundation.png",
+      "bytes": 17313,
+      "sha256": "ba863a15630bd52de23fd55007d0154edbd3771bce01d370b4f5cd24fdbbd433"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/face.png",
+      "bytes": 19067,
+      "sha256": "060d2ef208e9c4b01a93858edb89ad651c81dc4c949bbbe14aa92495bacf5d94"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/fringe-center-foundation.png",
+      "bytes": 26018,
+      "sha256": "97044105dcf7a17154e0c9228e344c2c4370d874fe4b782b34ecf2375bdcbd4f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/fringe-center.png",
+      "bytes": 26018,
+      "sha256": "97044105dcf7a17154e0c9228e344c2c4370d874fe4b782b34ecf2375bdcbd4f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/fringe-right-foundation.png",
+      "bytes": 13945,
+      "sha256": "754381655f08631b2c8f259b7a239325ddec5db4c3e31a2936a21c7f5a4d768f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/fringe-right.png",
+      "bytes": 13945,
+      "sha256": "754381655f08631b2c8f259b7a239325ddec5db4c3e31a2936a21c7f5a4d768f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-back-foundation.png",
+      "bytes": 354078,
+      "sha256": "a37a4e71b4797e3eb958b9d5b48afea72cfb1ae7f9378b2d5bda221af0ede3cf"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-crown-foundation.png",
+      "bytes": 34738,
+      "sha256": "df9ccde02856628425221d79399dcd58455ebad71eaa987c573e3d5b02dc150b"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-gold-clips.png",
+      "bytes": 990,
+      "sha256": "5e202d894d45a8e16a5926cfa143eda2c245eed1c30de96c8d23872d3698c788"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-left-root-foundation.png",
+      "bytes": 26284,
+      "sha256": "e3a65b8d5a4a58db099183a5a83df567cd27744869e6f2a6eff81bccd541ba2d"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-side-left.png",
+      "bytes": 31135,
+      "sha256": "cd54c2161197b241f233367d768815ab9fc022ba97419db13b619f39003b65f6"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-temple-left.png",
+      "bytes": 3054,
+      "sha256": "3ce7a320441100158cb1199dace76a7652cb79540bc59bcf649cabd3079cd8c3"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-temple-right.png",
+      "bytes": 4769,
+      "sha256": "26b56744f40f24953f1d55e8e31602518e4212c8b44d83846d3059588451500f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hair-under-raised-sleeve.png",
+      "bytes": 15192,
+      "sha256": "f1cef4c95bf7a424d7de7ec4d0b129e29650a90d737773764ce29bc91bcec53e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hat-bow-tails.png",
+      "bytes": 4882,
+      "sha256": "90d88e7520dea46771aa146931f588c677b065eea37f261f405f50ea03531e85"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hat-bow.png",
+      "bytes": 24705,
+      "sha256": "e0b9d77cd23f6bb9132541c8343185a61e77f74afa00077a551b12f65e526ac1"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/hat-flower.png",
+      "bytes": 13312,
+      "sha256": "8163dd1684c1feae0da84e74216147349a2dbdd424f6edf5d333a146914e9155"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/iris-left-foundation.png",
+      "bytes": 1669,
+      "sha256": "9bd414114903976ab6fac3c4b9623268f24fe41768df40ba71d6f711691a8780"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/iris-left.png",
+      "bytes": 1811,
+      "sha256": "6453531a56a1ebf98e268b794923f66b31b456bbc3f5abf03a93913af699df7e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/iris-right-foundation.png",
+      "bytes": 1478,
+      "sha256": "e5124c37a5168e1bb611e1070f346bba95c1d57b6b710ca0e9aeeab598893f38"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/iris-right.png",
+      "bytes": 1579,
+      "sha256": "a311918b8a901d037db789b535fce96d68bec75f66a520b301e63b99643fffbf"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lash-left.png",
+      "bytes": 1327,
+      "sha256": "e4644991ba85bbfe226f48c72acfb0dedac172f62c667d483485a862aa771164"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lash-right.png",
+      "bytes": 1163,
+      "sha256": "2c934075db5c06445efcbf5b1eca7ba1dc075ba2e181e49857286cfd64f1ae85"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lowered-cuff-foundation.png",
+      "bytes": 1920,
+      "sha256": "b8919f30d3f792dbec556074b6e4f011fbd3465aebf8702fad1dc033df540f5f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lowered-hand.png",
+      "bytes": 12292,
+      "sha256": "0bba4d913c693271caf14e4062673e65300643f8bd72ca78a2973df493f72e0c"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lowered-shoulder-foundation.png",
+      "bytes": 2764,
+      "sha256": "37d116cad81324eff333429d825ae27dc6a3e5dbe6b481a62b6efef12648dd74"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lowered-sleeve-foundation.png",
+      "bytes": 24970,
+      "sha256": "ac006a5c1ad9cc4f1f93b09311c76af7a39672cde17d6f725fb2d2fcc03e68fa"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/lowered-wrist-foundation.png",
+      "bytes": 1239,
+      "sha256": "f9ec1eed2d16d69eda1e0e446594c23e936f77e934d0ee53b636c61b4ae464a6"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/merged.png",
+      "bytes": 1502334,
+      "sha256": "6e1a4ebc6fcc201c990c8beb7c70b0ce13761182ddbc651a6dd89fcf673ce92e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/mouth.png",
+      "bytes": 1699,
+      "sha256": "9367ed956b25a4659187117ed11462cdfb7b8be37a9a451e76fc512fa478ae8b"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/neck-bow-tail-left.png",
+      "bytes": 5698,
+      "sha256": "656960a5871196847b69e52f066745c22df7e274a75d26437199fe53c15beddc"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/neck-bow-tail-right.png",
+      "bytes": 6323,
+      "sha256": "9c107d88397261d80dfc444f8544a670dd09c9a4a1a68050e6d6c18b61c2a2c9"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/neck-bow.png",
+      "bytes": 24292,
+      "sha256": "a428b6ac9c65b52201e80d4bb559fc907a44d021d0f46da327fdf87ea9e89efd"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/neck-foundation.png",
+      "bytes": 2049,
+      "sha256": "1815582cb216e9b5ecbfc5a6392133ab10fc72b54353beb27edcec12836f47cc"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/neck.png",
+      "bytes": 2794,
+      "sha256": "aa4cd7bd34759415d8e40eb1104757491f5c45515892f4125b18658386607f9f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/nose.png",
+      "bytes": 253,
+      "sha256": "abc4c3b23da87fdf2472ad5e796bd46f394e84a6414528b0c65d76ab4be3709f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/raised-cuff-foundation.png",
+      "bytes": 6928,
+      "sha256": "8b203f16ad5908d11f3f0bb01768e23d02f92746b16ea4487f8ceed0d6779cf9"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/raised-hand.png",
+      "bytes": 23146,
+      "sha256": "311273d95e87bf9a2634cce932567d961c9c66d046f78bcffa3f9ee0011d3923"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/raised-shoulder-foundation.png",
+      "bytes": 14150,
+      "sha256": "9988240a4179a1d15eff0a82e35db39a5f2ec1ce71a8dfc28c49a83c3a1d04d3"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/raised-sleeve-foundation.png",
+      "bytes": 33826,
+      "sha256": "5ac4fe18a26d3776062fd02ee1451415b852206889b2264531d88616decc00de"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/raised-wrist-foundation.png",
+      "bytes": 1811,
+      "sha256": "165436d604c4279c487596a28d50feb3dc0c5e5e8de9ac07131133614a4e0ad4"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/rear-hair-left-lower.png",
+      "bytes": 94087,
+      "sha256": "580bf798c3b951c8a4379afcdf6275c0c6e0921617ee4c8946f5c6754644d83a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/rear-hair-left-upper.png",
+      "bytes": 126997,
+      "sha256": "fcb9db80d2ca5273c13d5ecfca902b576796c16e6ace8de9f27ab09b17ab6d2d"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/rear-hair-right-lower.png",
+      "bytes": 142711,
+      "sha256": "2f510d45534276ff224c805e320732d1531f862bbee5ed6e3c49c0cd4232aba2"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/rear-hair-right-upper.png",
+      "bytes": 188690,
+      "sha256": "4061df71796bf89703eca0b91b39ad49118c3f73f47cc6e1ac1d60452008843a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/ribbon-airborne.png",
+      "bytes": 113497,
+      "sha256": "c9e8871e3d9b0a80a74e3e6545c7e3f7b0c70591d7f99bce0fd18111d2e4c5d8"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/ribbon-front-long.png",
+      "bytes": 41094,
+      "sha256": "c04bedf6068c932e661a3d9d5145d1f83aa35514f65b42306eb15c59f98c73e7"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/ribbon-lower-left.png",
+      "bytes": 24514,
+      "sha256": "cbef91f5486597cd2da8c261a7f13b4dc150f7ac4fcf3284457031852351184e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/ribbon-side-right.png",
+      "bytes": 21383,
+      "sha256": "d8588ee0fcdbdcc25892d9671cf2b9bf371e9e1e34bda2a4858c171be68bdac5"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/ribbon-top-drop.png",
+      "bytes": 15739,
+      "sha256": "d05bd4e58d66e328a252f1325e12c66e692b277e34c8fd5722fa239be0fbc8aa"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/shoe-bent.png",
+      "bytes": 21848,
+      "sha256": "b053c9f513a95a6276296343315f7d0547985d250e1ace19f9b22bc6b80c60aa"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/shoe-straight.png",
+      "bytes": 33581,
+      "sha256": "993c49d263e052428f11bfc4085d4b89d5affdcaefe1e74f5f6b54be8152cdf9"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/skirt-front.png",
+      "bytes": 62974,
+      "sha256": "dd732865a4055b0aa25ab0d0bbebd072531dc94b47c083c1a6b3a4ae342f6c73"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/skirt-inner-right.png",
+      "bytes": 112732,
+      "sha256": "bb964c51556a37535d07b9a3b011c760f9d7c33a5d58723f9b88eed277119567"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/skirt-interior-foundation.png",
+      "bytes": 94283,
+      "sha256": "7e52d901b3a327e278d9a5d5467877594f4655c098bb15eca62538dd7628d25e"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/skirt-left-back.png",
+      "bytes": 85600,
+      "sha256": "6fa05fc919433e3752348ec5973de96a2e18c7e584f391b163d6483d26732349"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/skirt-lower-train.png",
+      "bytes": 96986,
+      "sha256": "b5bc6a1f33460ec187d1187338159a26bf29cac81631438b7608def3f56c7791"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/skirt-right.png",
+      "bytes": 40476,
+      "sha256": "414509797e209a2610254b7ef2c0ebc404fa32ce0afb3f225a0eeb996a936869"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/sleeve-lowered.png",
+      "bytes": 25891,
+      "sha256": "1c297dd08f69f09f6be19995f508f0f7b9f90d39950d5c7933787bb96db2a6af"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/sleeve-raised.png",
+      "bytes": 43893,
+      "sha256": "2c02d1ad29ef683a4353378ae3fbb83f02dded5a7f1dac21ad14030999dfd261"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/stocking-bent.png",
+      "bytes": 34548,
+      "sha256": "830d14c8286aa9074a87a53aae9a00b2e441ecd0e5e55c2ad7e2bbb8c356ea65"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/stocking-straight.png",
+      "bytes": 44960,
+      "sha256": "c6adc14a34d67b328e7d523082c8f5f5d7fbc5750c301932024904abb28a0c9a"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/straight-leg-foundation.png",
+      "bytes": 10566,
+      "sha256": "782322d22ef319a43a0bcc60fcf096f400e760afe2fae031d7db998595d70d02"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/straight-thigh-foundation.png",
+      "bytes": 6517,
+      "sha256": "b4b8527c4b5e813825f9b46d8b928a25abe7122f1f05fdb19fea1647543fc0b5"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/thigh-bent.png",
+      "bytes": 11046,
+      "sha256": "dcf64d054133c16e30c991bf8126ed7b254f4595297faeb822263447d46b4844"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/thigh-straight.png",
+      "bytes": 7023,
+      "sha256": "ada3c2fea59e7a62e9a8e61d058e230d86333a07a310781953166c54c8e94e15"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/waist-bow.png",
+      "bytes": 16099,
+      "sha256": "ca716f9dcd0b1876de959f9160fb31478edbd372e22749b6361fd85c14858876"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/rendered-layers/waist-star.png",
+      "bytes": 20916,
+      "sha256": "d589884ed2c44faf3757b346a6516d1656e8ce471c8b82e920bdac7b7a1f302f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/skirt-interior-clean-paint.png",
+      "bytes": 1626811,
+      "sha256": "e7921e81cf8cc211817002151a19d73ed46727baeeba198251f087a5a9635612"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/sleeve-closed-paint.png",
+      "bytes": 1094889,
+      "sha256": "c49ae1f9bfdc06aec0c50cb1f3993dd447906489207da9ad36777203ae5ddf31"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/sleeve-complete-paint.png",
+      "bytes": 950978,
+      "sha256": "b180592bdbe98bb8b7889eed56e91fd47741d2280e06593d2d19795b77941953"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/sleeve-lowered-clean-paint.png",
+      "bytes": 972467,
+      "sha256": "dc17861a4392ef5cce3d911374924280d5116106f54607582876214196e4b096"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/source-review.html",
+      "bytes": 3825,
+      "sha256": "9b51d11ee3dd50d7cbcc43bf9dd7c8dbb33700eb064d15fde0ecc8f6e29a6702"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/source-review.mjs",
+      "bytes": 9890,
+      "sha256": "432747acb2ec80e497735d6a06f74bdef7b2e2f01c0343856afc7206071bfa4d"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/stocking-bent-clean-paint.png",
+      "bytes": 771347,
+      "sha256": "edec73113c3f70b350a032bb0339d4ac67e3d79c2ff3d38ce055d118b5997924"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/stocking-bent-final-paint.png",
+      "bytes": 765418,
+      "sha256": "e754388bef704e2cd033c13e0907c8989677d771dc286b9afa07b6c34a8c86fb"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/stocking-straight-clean-paint.png",
+      "bytes": 422933,
+      "sha256": "e13fa6f128bfd87fbae5c832e5b3884128e6feaedc5993acb3eb7b03aec22b18"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/thigh-clean-paint.png",
+      "bytes": 924473,
+      "sha256": "a992ff2e60b8ea44d3c2bd55e3d30d7677d5e138a426b9a5babad9886b275c9f"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/torso-clean-paint.png",
+      "bytes": 941008,
+      "sha256": "232632182ad82d72468ed6b65930a1c846919f8c376b6d2894760011d626db10"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/torso-complete-paint.png",
+      "bytes": 957995,
+      "sha256": "3166910aa822202197a289f8d7be5632c49473fc2f6f76359235bf8fd8997e36"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/torso-final-paint.png",
+      "bytes": 935425,
+      "sha256": "9797c156effe7360e5bf00d3ab3026f7b714245f6ddfd82814c805409ce1c9d9"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/verification.json",
+      "bytes": 58558,
+      "sha256": "8cdd01d9b0fd3fe87a9ae370ae54643a331d5e85ab568d6fdf95921990a551f4"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/verify-source.py",
+      "bytes": 7385,
+      "sha256": "1b8d2dad882eeb7c04b811df50f308c6ca19fef757240653e0ac7e088bed8909"
+    },
+    {
+      "path": "01-美术/live2d/blue-white-rebuild-20261123/visual-review.json",
+      "bytes": 18681,
+      "sha256": "d911e3094b3d74b6be6aecaa26c609ea58d142da574081a85dd9907b48ac02b3"
+    },
+    {
+      "path": "docs/BLUE_Q86_FULL_SOURCE_PROGRESS_2026-11-23.md",
+      "bytes": 8113,
+      "sha256": "ad583056f22cf673333f20321df127dc9a85960af1bc4557a872a5cfa99aecb0"
+    },
+    {
+      "path": "docs/BLUE_Q86_SOURCE_COMPLETE_2026-11-23.md",
+      "bytes": 4781,
+      "sha256": "8852bedc3a3208c3800415059daec5fc1fe267c1bb29b15ad64a511da537c465"
+    },
+    {
+      "path": "docs/CURRENT_CLOUD_HANDOFF.md",
+      "bytes": 18449,
+      "sha256": "25b60f5baee7a64be3896f6dbd147faf8cb800eb8b1dce65411361701718a681"
+    },
+    {
+      "path": "docs/TUTORIAL_REFERENCE_STATUS.md",
+      "bytes": 8518,
+      "sha256": "050b6e2c35395b2369e6099ea371c68ff01a62b7a0a77c315b0a445f1fea91d0"
+    }
+  ]
+}

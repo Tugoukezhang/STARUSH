@@ -127,6 +127,8 @@ GIMP 重新打开 XCF/PSD/ORA，各 93 层实际缓冲像素与独立 PNG 完全
 
 实物仍在 `01-美术/live2d/blue-white-rebuild-20261123/`，优先编辑 XCF/PSD。详细结论与保存回执见 `BLUE_Q86_SOURCE_COMPLETE_2026-11-23.md`；源目录 `visual-review.json`、`verification.json` 锁定通过版本。`sourcePreparationAccepted=true`；全局 `artAccepted`、`contentComplete`、`isLive2DModel` 仍为 false。旧队列 85/150 不改写，本轮 Q86 源准备另记完成，没有宣称历史缺失模型已恢复。
 
+正式实物提交 `70d8fd6d69a2bbc6ae7f2d854c096a47284c2c2b` 已推送到 `recovery/continue-game-20261122`。从 GitHub 取回**整个 Q86 源目录的 164 个受版本控制文件，加上本次 4 份文档，共 168 个文件、87,728,020 字节**，全部逐字节与本地一致；远端分支 SHA 与实物提交一致。包含 XCF、PSD、ORA、SVG、93 张独立 PNG、补绘原图、参考、构建工具与验收记录。可复核清单见 `BLUE_Q86_BACKUP_2026-11-23.json`。本核验回执再单独提交、推送并取回核对；不改动已核验的源素材。
+
 ## 下一制作断点
 
 1. **进入 Q87：蓝白角色头部 XYZ 建模。** 先读 `BLUE_Q86_SOURCE_COMPLETE_2026-11-23.md`，从当前 93 层 XCF/PSD 源稿开始，按历史队列核对帽檐、五官、发型透视和侧转俯仰轮廓。源图平移检查不是头部动作；须制作真实网格/参数、保存原生工程，并检查极值与组合姿态。Q88 再处理眼口与表情。
