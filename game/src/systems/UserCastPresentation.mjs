@@ -36,7 +36,7 @@ export class UserCastPresentation {
       .setOrigin(this.art.motion.originX,this.art.motion.originY).setDisplaySize(this.width,this.height).setDepth(9.8);
     this.state='idle';this.upper=null;this.upperCel=-1;
     this.weaponFx=new UserWeaponFx(scene,id);
-    this.heavyRig=id==='enjo'?new HeavyLimbRig(scene,this.image):null;
+    this.heavyRig=id==='enjo'&&!this.art.confirmedDesign?new HeavyLimbRig(scene,this.image):null;
   }
   beginShot(now,dx,dy,interval){
     const s=this.scene;

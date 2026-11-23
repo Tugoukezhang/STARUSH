@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import Contains from 'phaser/src/geom/polygon/Contains.js';
 import Polygon from 'phaser/src/geom/polygon/Polygon.js';
 import {OldStreetState} from '../src/utils/oldStreetMap.mjs';
-import {UserWeaponFx,HEAVY_WEAPON_FX} from '../src/systems/UserWeaponFx.mjs';
+import {BLUE_SPELL_FX} from '../src/utils/blueAcademyArt.mjs';
+import {UserWeaponFx} from '../src/systems/UserWeaponFx.mjs';
 const wall={id:'test-wall',footprint:{x:170,y:0,width:60,height:500}};
 function fixture({props=[wall],id='enjo',x=100,y=100,bounds={x:0,y:0,width:1000,height:1800}}={}){
  let now=500;const images=[],graphics=[],masks=[],state=new OldStreetState(props,[]),events=[];
@@ -16,9 +17,9 @@ function fixture({props=[wall],id='enjo',x=100,y=100,bounds={x:0,y:0,width:1000,
 }
 const has=(g,x,y)=>Contains(new Polygon(g.points),x,y);
 
-test('heavy primary keeps authored size beside a wall and clips only the occluded side',()=>{
+test('spell primary keeps authored size beside a wall and clips only the occluded side',()=>{
  const f=fixture();assert(f.fx.release(f.packet));const row=f.fx.rows[0];
- assert.equal(row.size,237.5,'existing full-image shrink incorrectly weakens the open side');assert.equal(row.node.key,HEAVY_WEAPON_FX.key);
+ assert.equal(row.size,237.5,'existing full-image shrink incorrectly weakens the open side');assert.equal(row.node.key,BLUE_SPELL_FX.key);
  assert.equal(f.graphics.length,1);assert(row.node.mask);const g=f.graphics[0];
  assert(has(g,20,100));assert(has(g,150,100));assert(!has(g,200,100));
  for(let y=5;y<250;y+=5)for(let x=5;x<250;x+=5)if(has(g,x,y))assert(f.state.clearLine({x:100,y:100},{x,y},1),'visible pixels cannot cross a closed wall');

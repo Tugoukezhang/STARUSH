@@ -228,8 +228,8 @@ test('selection is local UI state and disappears on destroy and scene shutdown',
 
 test('each role sees its own labels, deltas, details and art in rows and the selected detail',()=>{
   const echo={sakura:{label:'回响追加',delta:'第3次有效命中后 200ms 补色',detail:/原落点/,art:'echo'},
-    kai:{label:'回响回斩',delta:'每3次有效挥剑 → 延迟回斩',detail:/125范围/,art:'echo-kai',src:'art/role-echo-b302/kai.webp'},
-    enjo:{label:'落锤震波',delta:'每3次命中 → 扩散震波',detail:/150范围/,art:'echo-enjo',src:'art/role-echo-b302/enjo.webp'}};
+    kai:{label:'回响回斩',delta:'每3次有效挥剑 → 延迟回斩',detail:/125范围/,art:'echo-kai',src:'art/green-windsong-20261123/weapon.png'},
+    enjo:{label:'星页回响',delta:'每3次命中 → 扩散震波',detail:/150范围/,art:'echo-enjo',src:'art/blue-academy-20261123/weapon.png'}};
   const brush={sakura:/扫射覆盖/,kai:/突进轨迹/,enjo:/重锤覆盖/};
   for(const id of ROLES){
     const f=fixture(id,['relay']),row=rowOf(f.view,'echo'),expected=echo[id];
@@ -265,7 +265,7 @@ test('without a build snapshot the detail uses getRunChoice copy and adds no emp
   assert.equal(row.querySelector('.battle-choice-limit'),null);
   row.click();
   const detail=detailOf(f.view),option=f.e.profile.getRunChoice('echo','enjo');
-  assert.equal(detail.querySelector('strong').textContent,'落锤震波');
+  assert.equal(detail.querySelector('strong').textContent,'星页回响');
   assert.equal(detail.querySelector('span').textContent,option.description);
   assert.equal(detail.querySelector('small'),null);
   confirmOf(f.view).click();
@@ -391,7 +391,7 @@ test('B303 art is requested and preloaded in place of the old ticket; heading an
     assert.ok(paths.includes(CONFIRM_ART),id);
     assert.ok(paths.includes(HEADING),id);
     assert.equal(paths.includes(OLD_TICKET),false,id);
-    if(id!=='sakura')assert.ok(paths.includes(`art/role-echo-b302/${id}.webp`),id);
+    if(id!=='sakura')assert.ok(paths.includes((id==='kai'?'art/green-windsong-20261123/weapon.png':'art/blue-academy-20261123/weapon.png')),id);
   }
 });
 

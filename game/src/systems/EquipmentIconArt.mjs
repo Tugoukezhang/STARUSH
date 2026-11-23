@@ -1,7 +1,9 @@
+import {BLUE_ACADEMY_ART} from '../utils/blueAcademyArt.mjs';
 import {GREEN_WINDSONG_ART} from '../utils/greenWindsongArt.mjs';
 const IDS=['wide_nozzle','rhythm_sync','focus_lens','travelling_nozzle','return_edge','delayed_hammer'];
 const ART=Object.freeze({...Object.fromEntries(IDS.map(id=>[id,Object.freeze({src:`art/equipment-identity-20261025/${id}.png`,width:256,height:256})])),
   return_edge:Object.freeze({src:GREEN_WINDSONG_ART.weaponIcon,width:1254,height:1254}),
+  delayed_hammer:Object.freeze({src:BLUE_ACADEMY_ART.weaponIcon,width:1254,height:1254}),
   rain_relay:Object.freeze({src:'art/rain-relay-295/rain_relay.webp',width:256,height:256})});
 export const getEquipmentIconArt=id=>Object.hasOwn(ART,id)?ART[id]:null;
 

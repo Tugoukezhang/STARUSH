@@ -10,7 +10,7 @@ const destinations=Object.freeze({
  save:['services','save','完整备份、恢复与中途续玩'],audio:['services','volume-2','声音、字幕与演出设置'],
  chapter:['tour','route','三站巡演与各站现场目标'],story:['records','book-open','章节故事、回顾与演出记录'],
  encounter:['preflight','swords','设施、遭遇与压轴登场'],settlement:['records','flag','本机真实成绩与演出结果'],
- kits:['roster','users','步枪、重锤与翡翠风歌'],build:['library','layers','局内改装与行动编排'],
+ kits:['roster','users','女武神、风歌与魔法师'],build:['library','layers','局内改装与行动编排'],
  pigment:['preflight','palette','战斗中的街道与建筑涂染'],roster:['roster','users','成员预览、出战与配置'],
  growth:['workshop','clapperboard','训练阶位与已拥有配件'],inventory:['inventory','backpack','物件展示、兼容与装备'],
  bonds:['lounge','heart','休息室话题与本机相处记录'],challenge:['playhub','swords','排练与三站压轴连演'],

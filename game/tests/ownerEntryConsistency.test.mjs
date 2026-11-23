@@ -18,7 +18,7 @@ function fixture(){
 test('every actual cast sync ends with the current identity, image, action and accessible label during countdown',()=>{
  const e=fixture(),body=source.match(/  _syncPublicCastHud\(member\) \{([\s\S]*?)\n  \}\n\n  _freezePublicPaintRound/)[1];
  const call=new Function('document','getPublicPerformer','performerPortraitCss','syncPublicBattleHud',`return function(member){${body}}`)(e.doc,e.profile.getPublicPerformer,()=> 'legacy portrait',e.surface.syncPublicBattleHud);
- for(const [id,name,label]of [['sakura','战术女武神','扫射'],['kai','翡翠风歌','突进'],['enjo','重锤手','重锤']]){
+ for(const [id,name,label]of [['sakura','战术女武神','扫射'],['kai','翡翠风歌','突进'],['enjo','蔚蓝魔法师','绽放']]){
   const member=e.loadRuntime('utils/userCast.mjs').getPlayablePerformer(id);
   const scene={_userCastPresentation:true,_isPublicStage1Round:()=>true,battleData:{performerId:id},
    publicPerformerRun:{member,canAct:()=>false},publicStage1Round:{snapshot:()=>({phase:'idle'})}};
@@ -26,7 +26,7 @@ test('every actual cast sync ends with the current identity, image, action and a
   assert.equal(e.doc.querySelector('.mihoyo-name').textContent,name);
   assert.equal(e.doc.getElementById('special-label').textContent,label);
   assert.equal(e.doc.querySelector('.mihoyo-portrait').textContent,'');
-  assert.match(e.doc.querySelector('.mihoyo-portrait').style.backgroundImage,id==='sakura'?/red-valkyrie-20261123/:id==='kai'?/green-windsong-20261123/:/user-cast-20261015/);
+  assert.match(e.doc.querySelector('.mihoyo-portrait').style.backgroundImage,id==='sakura'?/red-valkyrie-20261123/:id==='kai'?/green-windsong-20261123/:/blue-academy-20261123/);
   assert.match(e.doc.getElementById('skill-special').getAttribute('aria-label'),new RegExp(name+'.*待开演'));
   assert.equal(e.doc.getElementById('skill-special').getAttribute('aria-disabled'),'true');
  }

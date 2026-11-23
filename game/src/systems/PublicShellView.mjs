@@ -566,7 +566,7 @@ export class PublicShellView {
   roster(main, model) {
     const owner=isUserCastEnabled();
     if(owner)this.root.dataset.rosterLayout='showcase';
-    const roles={sakura:'远程 · 连续扫射',kai:'近战 · 突进',enjo:'近战 · 范围重击'};
+    const roles={sakura:'远程 · 连续扫射',kai:'近战 · 突进',enjo:'近身 · 范围魔法'};
     if(!owner)this.element('h2','shell-page-heading','本场，由谁领唱？',main);
     const strip = this.element('div','shell-member-strip',undefined,main);strip.setAttribute('role','group');strip.setAttribute('aria-label','公演成员');
     for(const member of PUBLIC_PERFORMERS) {
@@ -807,7 +807,7 @@ export class PublicShellView {
     this.element('strong','',isUserCastEnabled()?member.name:`${member.name} · ${member.actionName}`,identityCopy);
     if(isUserCastEnabled()){
       this.element('span','workshop-member-action',member.actionName,identityCopy);
-      this.element('span','workshop-member-role',{sakura:'远程 · 连续扫射',kai:'近战 · 突进',enjo:'近战 · 范围重击'}[member.id],identityCopy);
+      this.element('span','workshop-member-role',{sakura:'远程 · 连续扫射',kai:'近战 · 突进',enjo:'近身 · 范围魔法'}[member.id],identityCopy);
     }
     const training=this.element('section','workshop-training',undefined,main);
     training.dataset.performer=member.id;

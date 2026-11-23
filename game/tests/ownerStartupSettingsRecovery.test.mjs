@@ -10,7 +10,7 @@ function boot(earlyImage=null){
  return {ui:window.starushLoading,nodes,timers,listeners,reloads:()=>reloads};
 }
 test('boot uses existing raster stage and exactly three owner designs before module download',()=>{
- assert.match(html,/class="loading-cast"/);for(const file of ['red-valkyrie-20261123/portrait.png','green-windsong-20261123/portrait.png','user-cast-20261015/hammer-cat.webp'])assert(html.includes('art/'+file));
+ assert.match(html,/class="loading-cast"/);for(const file of ['red-valkyrie-20261123/portrait.png','green-windsong-20261123/portrait.png','blue-academy-20261123/portrait.png'])assert(html.includes('art/'+file));
  assert.doesNotMatch(html,/cat-rifle/);
  assert.match(html,/<progress[^>]+id="game-loading-progress"/);assert.match(html,/art\/playable-ui-20261018\/plaza.webp/);
 });

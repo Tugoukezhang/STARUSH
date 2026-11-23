@@ -42,7 +42,7 @@ export function sampleBattleCommandFeedback(scene,type){
     y=5*Math.cos(progress*Math.PI*3)*settle**2;
     angle=5*Math.sin(progress*Math.PI*2)*settle;flash=settle**3;
   }
-  const caption=kind==='hammer'?'余震':action.phase==='release'?(kind==='rifle'?'扫射中':'突进中'):'收势';
+  const caption=kind==='hammer'?'回响':action.phase==='release'?(kind==='rifle'?'扫射中':'突进中'):'收势';
   return {kind,phase:action.phase,progress,caption,x,y,angle,flash,spread:1+progress*.4};
 }
 

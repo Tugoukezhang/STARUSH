@@ -1,5 +1,6 @@
 import { getRunChoice } from '../utils/publicRunProgression.mjs';
 import { getDisplayPerformer as getPublicPerformer, getActiveUserCastArt,isUserCastEnabled } from '../utils/userCast.mjs';
+import {BLUE_ACADEMY_PORTRAIT,BLUE_ACADEMY_ART} from '../utils/blueAcademyArt.mjs';
 import {RED_VALKYRIE_PORTRAIT} from '../utils/redValkyrieArt.mjs';
 import {GREEN_WINDSONG_PORTRAIT,GREEN_WINDSONG_ART} from '../utils/greenWindsongArt.mjs';
 import {getPublicJourneyResult} from '../utils/publicJourneyContent.mjs';
@@ -51,15 +52,14 @@ const CHOICE_THEMES=Object.freeze({
 const OPTION_COUNT=['','一','二','三','四'];
 const ROLE_ECHO_ART=Object.freeze({
  kai:{src:GREEN_WINDSONG_ART.weaponIcon,size:256,category:'风铃回响',ink:'#76e0bf'},
- enjo:{src:'art/role-echo-b302/enjo.webp',size:256,category:'地面震波',ink:'#ffd17b'},
+ enjo:{src:BLUE_ACADEMY_ART.weaponIcon,size:256,category:'星页回响',ink:'#8bbfff'},
 });
 // Owned full-body sources. head = crown-to-chin / source width; face = face centre as source fractions,
 // so CSS renders every role with the same head height at the same anchor. Static art, not Live2D.
 const RESULT_PORTRAITS=Object.freeze({
  sakura:RED_VALKYRIE_PORTRAIT,
  kai:GREEN_WINDSONG_PORTRAIT,
- ...Object.fromEntries(['enjo'].map(id=>{const a=getPortraitBase(id),m=portraitBaseMetrics(a);return[id,Object.freeze({src:a.src,width:a.width,height:a.height,
-   head:((a.face.y+a.face.height)*a.height-a.bounds.y)/a.width,faceX:m.faceX,faceY:m.faceY})];})),
+ enjo:BLUE_ACADEMY_PORTRAIT,
 });
 // Original AI lettering 公演完成; victory only, decorative beside the native h2.
 const RESULT_TITLE_ART=Object.freeze({src:'art/result-stage-20261031/complete.webp',width:984,height:268});
@@ -697,7 +697,7 @@ export function syncPublicBattleHud(scene,doc=globalThis.document){
   const member=scene.publicPerformerRun?.member||getPublicPerformer(scene.battleData?.performerId);
   const name=doc.querySelector?.('.mihoyo-name');if(name)name.textContent=member.name;
   if(scene._userCastPresentation){
-    set('special-label',{sakura:'扫射',kai:'突进',enjo:'重锤'}[member.id]||member.actionName);
+    set('special-label',{sakura:'扫射',kai:'突进',enjo:'绽放'}[member.id]||member.actionName);
     const portrait=doc.querySelector?.('.mihoyo-portrait');
     if(portrait&&!stageHud){portrait.textContent='';portrait.style.backgroundImage=uiPerformerAvatarCss(member.id,doc.baseURI);}
   }

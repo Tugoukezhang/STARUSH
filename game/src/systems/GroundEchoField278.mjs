@@ -1,7 +1,8 @@
 import {GroundEcho} from '../utils/groundEcho278.mjs';
 import {canEnemyBePublicStage1PaintTarget} from './PublicStage1EnemyRoles.mjs';
+import {BLUE_SPELL_FX} from '../utils/blueAcademyArt.mjs';
 
-export const GROUND_ECHO_ART={key:'enjo-ground-echo-278',path:'art/enjo-ground-echo-278/pressure.webp'};
+export const GROUND_ECHO_ART={...BLUE_SPELL_FX,key:'owner-blue-spell-echo'};
 
 export class GroundEchoField {
   constructor(run){this.run=run;this.scene=run.scene;this.rows=[];}
@@ -47,7 +48,8 @@ export class GroundEchoField {
         row.clip.fillPoints(points,true);row.mask=row.clip.createGeometryMask();row.node.setMask(row.mask);
       }
       const fade=now>w.end?Math.max(0,1-(now-w.end)/150):1;
-      row.node.setDisplaySize(frame.radius*2,frame.radius*2).setAlpha(frame.alpha*fade);
+      row.node.setFrame(Math.min(5,Math.floor(frame.progress*6)))
+        .setDisplaySize(frame.radius*2,frame.radius*2).setAlpha(frame.alpha*fade);
     }
   }
   remove(row){row.wave.destroy();row.node?.destroy();row.mask?.destroy();row.clip?.destroy();this.rows.splice(this.rows.indexOf(row),1);}

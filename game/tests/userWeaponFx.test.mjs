@@ -1,3 +1,4 @@
+import {BLUE_SPELL_FX} from '../src/utils/blueAcademyArt.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {UserWeaponFx,USER_WEAPON_FX,HEAVY_WEAPON_FX,KAI_DASH_FX,RIFLE_COMIC_MUZZLE,preloadUserWeaponFx} from '../src/systems/UserWeaponFx.mjs';
@@ -46,7 +47,7 @@ test('three skill releases select distinct art, preserve real radius and never p
   for(const [id,kind]of [['sakura','spray'],['kai','sweep'],['enjo','burst']]){
     const {fx,view}=fixture(id),row={x:100,y:100,radius:72,start:500,angle:.3,sequence:1,beat:0,color:'blue',contacts:[]};
     assert.equal(fx.release(row),true);fx.update(500,view);
-    assert.equal(fx.rows[0].kind,kind);assert.equal(fx.rows[0].node.texture.key,id==='enjo'?HEAVY_WEAPON_FX.key:id==='kai'?GREEN_WIND_FX.key:USER_WEAPON_FX[kind].key);
+    assert.equal(fx.rows[0].kind,kind);assert.equal(fx.rows[0].node.texture.key,id==='enjo'?BLUE_SPELL_FX.key:id==='kai'?GREEN_WIND_FX.key:USER_WEAPON_FX[kind].key);
     assert(fx.rows[0].size<=row.radius*2);assert.equal(row.radius,72);assert.equal(fx.stats.releases,1);
   }
 });
@@ -59,15 +60,15 @@ test('accepted contacts and empty-ground pigment cannot share a false hit cue',(
   assert(fx.rows[1].node.depth<view.depth);
 });
 
-test('neutral hammer uses actual pigment while other authored multi-color FX keeps original palette',()=>{
+test('confirmed spell and other authored effects retain their identity colors',()=>{
   const {fx,nodes}=fixture('enjo');fx.release({x:100,y:100,radius:190,start:500,color:'orange'});
-  assert.equal(nodes[0].tint,0xffffff);assert.equal(fx.rows[0].frameOffset,24);
+  assert.equal(nodes[0].tint,0xffffff);assert.equal(fx.rows[0].node.texture.key,BLUE_SPELL_FX.key);assert.equal(fx.rows[0].node.frame.name,0);
   for(const id of['kai','sakura']){const f=fixture(id);f.fx.release({x:100,y:100,radius:190,start:500,color:'orange'});
     assert.notEqual(f.nodes[0].tint,0xff8c00);assert.equal(f.nodes[0].tint,0xffffff);
     assert((f.nodes[0].tint&255)>60,'other original raster palettes retain the blue channel');}
 });
 
-test('hammer uses one authored burst with visible jets, inside the actual issued footprint',()=>{
+test('spell uses one authored burst, inside the actual issued footprint',()=>{
   const {fx}=fixture('enjo');fx.release({x:100,y:100,radius:190,start:500,color:'orange'});
   assert.equal(fx.rows.length,1,'do not repeat a complete authored burst six times');
   for(const row of fx.rows){assert(Math.hypot(row.x-100,row.y-100)+row.size/2<=190);assert(row.ground);}

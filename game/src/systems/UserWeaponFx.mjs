@@ -7,6 +7,7 @@ import {PUBLIC_MENU_ART} from './PublicMenuArt.mjs';
 import {groundFxVisibility} from '../utils/groundFxVisibility.mjs';
 import {MELEE_PROCESS_ART,sampleMeleeAttack,sampleHeavyProcess} from '../utils/meleeAttackArt.mjs';
 import {GREEN_WIND_FX} from '../utils/greenWindsongArt.mjs';
+import {BLUE_SPELL_FX} from '../utils/blueAcademyArt.mjs';
 const BASE='art/graffiti-combat-20261018/';
 export const HEAVY_WEAPON_FX=Object.freeze({key:'user-fx-heavy-20261021',path:'art/heavy-palette-impact-20261029/impact.png',origin:Object.freeze([.5,.625]),extent:.469,palettes:Object.freeze(['pink','blue','yellow','purple','orange','neutral'])});
 export const HAMMER_COMIC_CONTACT=Object.freeze({key:'user-hammer-contact-20261022',path:'art/hammer-comic-contact-20261022/burst.png',origin:Object.freeze([.5,.625]),extent:.469});
@@ -69,12 +70,8 @@ export function preloadUserWeaponFx(scene,id){
   // The neutral landing bank is shared by the three casts; each keeps its own muzzle/contact/release banks.
   if(Object.hasOwn(WEAPONS,id))scene.load.spritesheet(RIFLE_PIGMENT_DEPOSITION.key,RIFLE_PIGMENT_DEPOSITION.path,
     {frameWidth:RIFLE_PIGMENT_DEPOSITION.frameWidth,frameHeight:RIFLE_PIGMENT_DEPOSITION.frameHeight});
-  if(id==='enjo')scene.load.spritesheet(HEAVY_WEAPON_FX.key,HEAVY_WEAPON_FX.path,{frameWidth:256,frameHeight:256});
-  if(id==='enjo')scene.load.spritesheet(HAMMER_COMIC_CONTACT.key,HAMMER_COMIC_CONTACT.path,{frameWidth:256,frameHeight:256});
-  if(id==='enjo')scene.load.spritesheet(HEAVY_COMIC_CHAIN.key,HEAVY_COMIC_CHAIN.path,{frameWidth:256,frameHeight:256});
-  if(id==='enjo')scene.load.spritesheet(HEAVY_COMIC_LANDING.key,HEAVY_COMIC_LANDING.path,{frameWidth:256,frameHeight:256});
+  if(id==='enjo')scene.load.spritesheet(BLUE_SPELL_FX.key,BLUE_SPELL_FX.path,{frameWidth:BLUE_SPELL_FX.frameWidth,frameHeight:BLUE_SPELL_FX.frameHeight});
   if(id==='kai')scene.load.spritesheet(GREEN_WIND_FX.key,GREEN_WIND_FX.path,{frameWidth:GREEN_WIND_FX.frameWidth,frameHeight:GREEN_WIND_FX.frameHeight});
-  if(id==='enjo')scene.load.spritesheet(DUO_COMIC_CONTACT.key,DUO_COMIC_CONTACT.path,{frameWidth:256,frameHeight:256});
   preloadGraffitiGround(scene);
 }
 
@@ -83,6 +80,7 @@ export class UserWeaponFx{
   constructor(scene,id){
     this.scene=scene;this.id=id;this.rows=[];this.lastFrame=[];this.pendingShots=[];this.projectiles=[];this.disposed=false;this.seen=new WeakSet();
     this.windArt=id==='kai'?GREEN_WIND_FX:null;
+    this.spellArt=id==='enjo'?BLUE_SPELL_FX:null;
     this.inkWake=id==='sakura'?new RifleInkWake(scene):null;
     this.contactFragments=new ContactInkFragments(scene);
     this.relayTransfer=new RelayInkTransfer(scene);
@@ -114,18 +112,19 @@ export class UserWeaponFx{
     if(artKind==='muzzle'&&!(this.id==='sakura'&&kind==='spray'&&release!==true))return false;
     if(artKind==='muzzle'&&!this.scene.textures?.exists(RIFLE_COMIC_MUZZLE.key))artKind='spray';
     if(this.windArt&&['sweep','dash','kai-contact','duo-contact'].includes(artKind))artKind='wind';
-    const ordinaryHammer=this.id==='enjo'&&kind==='impact'&&artKind==='burst'&&!release&&!releaseContact&&this.scene.textures?.exists(HAMMER_COMIC_CONTACT.key);
-    const landing=this.id==='enjo'&&hasHeavyLanding(this.scene)&&!release&&!releaseContact&&!skillContact&&(ordinaryHammer||artKind==='rifle-deposition');
+    if(this.spellArt&&['burst','impact','heavy','duo-contact'].includes(artKind)){artKind='spell';origin=this.spellArt.origin;}
+    const ordinaryHammer=!this.spellArt&&this.id==='enjo'&&kind==='impact'&&artKind==='burst'&&!release&&!releaseContact&&this.scene.textures?.exists(HAMMER_COMIC_CONTACT.key);
+    const landing=!this.spellArt&&this.id==='enjo'&&hasHeavyLanding(this.scene)&&!release&&!releaseContact&&!skillContact&&(ordinaryHammer||artKind==='rifle-deposition');
     const landingOffset=kind==='deposition'?4:0;
-    const chain=!landing&&this.id==='enjo'&&hasHeavyChain(this.scene)&&(ordinaryHammer||artKind==='rifle-deposition');
+    const chain=!this.spellArt&&!landing&&this.id==='enjo'&&hasHeavyChain(this.scene)&&(ordinaryHammer||artKind==='rifle-deposition');
     const chainOffset=chain?(ordinaryHammer?4:8):0;
-    const art=artKind==='wind'?this.windArt:landing?{...HEAVY_COMIC_LANDING,origin:landingOffset?[.5,.5]:HEAVY_COMIC_LANDING.origin,extent:landingOffset?.45:HEAVY_COMIC_LANDING.extent}:chain?{...HEAVY_COMIC_CHAIN,origin:ordinaryHammer?[.5,.625]:HEAVY_COMIC_CHAIN.origin,extent:ordinaryHammer?.469:.43}:artKind==='duo-contact'?DUO_COMIC_CONTACT:artKind==='heavy'?HEAVY_WEAPON_FX:artKind==='dash'?KAI_DASH_FX:artKind==='contact'?RIFLE_COMIC_CONTACT:artKind==='kai-contact'?KAI_COMIC_CONTACT
+    const art=artKind==='spell'?this.spellArt:artKind==='wind'?this.windArt:landing?{...HEAVY_COMIC_LANDING,origin:landingOffset?[.5,.5]:HEAVY_COMIC_LANDING.origin,extent:landingOffset?.45:HEAVY_COMIC_LANDING.extent}:chain?{...HEAVY_COMIC_CHAIN,origin:ordinaryHammer?[.5,.625]:HEAVY_COMIC_CHAIN.origin,extent:ordinaryHammer?.469:.43}:artKind==='duo-contact'?DUO_COMIC_CONTACT:artKind==='heavy'?HEAVY_WEAPON_FX:artKind==='dash'?KAI_DASH_FX:artKind==='contact'?RIFLE_COMIC_CONTACT:artKind==='kai-contact'?KAI_COMIC_CONTACT
       :artKind==='muzzle'?RIFLE_COMIC_MUZZLE:artKind==='rifle-deposition'?RIFLE_PIGMENT_DEPOSITION:ordinaryHammer?HAMMER_COMIC_CONTACT:USER_WEAPON_FX[artKind];
     if(!this.ready()||!art||!Number.isFinite(x+y+size+angle+start)||size<=0||!this.scene.textures?.exists(art.key))return false;
     let reach=size*4/3*(extent??art.extent);
     if(ground&&Number.isFinite(sourceRadius)&&reach>sourceRadius){size*=sourceRadius/reach;reach=sourceRadius;}
     let clipPoints=null;
-    if(artKind==='heavy'&&ground&&release&&!releaseContact&&this.scene.make?.graphics&&this.scene.oldStreet?.state?.blockers){
+    if((artKind==='heavy'||artKind==='spell'&&heavyRelease)&&ground&&release&&!releaseContact&&this.scene.make?.graphics&&this.scene.oldStreet?.state?.blockers){
       clipPoints=groundFxVisibility(x,y,reach,this.scene.oldStreet.state.blockers(),this.scene.physics?.world?.bounds);
       if(clipPoints===null)return false;
     }else{
@@ -170,7 +169,7 @@ export class UserWeaponFx{
   }
   projectileVisual(x,y,color,hex){
     if(!this.ready())return null;
-    const projectileArt=this.windArt||(this.id==='sakura'?RIFLE_COMIC_PROJECTILE:null);
+    const projectileArt=this.spellArt||this.windArt||(this.id==='sakura'?RIFLE_COMIC_PROJECTILE:null);
     if(projectileArt&&this.scene.textures?.exists(projectileArt.key)){
       // BattleScene keeps ownership of this node with its real projectile; FX only advances cels.
       const node=this.scene.add.image(x,y,projectileArt.key,0).setOrigin(...projectileArt.origin)
@@ -232,8 +231,8 @@ export class UserWeaponFx{
   }
   syncMeleeStroke(view,time){
     const s=this.scene,a=s.publicPerformerRun?.meleeCombat?.snapshot?.();
-    const chain=this.id==='enjo'&&hasHeavyChain(s);
-    const authored=!!this.windArt||chain||s.textures?.exists(MELEE_PROCESS_ART.key),art=this.windArt||(chain?HEAVY_COMIC_CHAIN:authored?MELEE_PROCESS_ART:USER_WEAPON_FX.sweep);
+    const chain=!this.spellArt&&this.id==='enjo'&&hasHeavyChain(s);
+    const authored=!!this.spellArt||!!this.windArt||chain||s.textures?.exists(MELEE_PROCESS_ART.key),art=this.spellArt||this.windArt||(chain?HEAVY_COMIC_CHAIN:authored?MELEE_PROCESS_ART:USER_WEAPON_FX.sweep);
     const hide=()=>{this.meleeTrace?.node.setVisible(false);return false;};
     if(!['kai','enjo'].includes(this.id)||!this.ready()||view?.art?.id!==this.id
       ||['hurt','action'].includes(view.state)||s.publicPerformerRun?.choiceOpen||!a
@@ -257,8 +256,8 @@ export class UserWeaponFx{
     if(!path)size=Math.min(size,Math.max(0,a.reach-Math.hypot(x-a.x,y-a.y))/(4/3*art.extent));
     const radius=size*4/3*art.extent,available=elevated?radius*2:this.sizeAt(x,y,radius*2);
     if(available<4)return hide();size*=available/(radius*2);
-    const cel=authored?sampleMeleeAttack(a,this.id):null;
-    const frame=heavyProcess?heavyProcess.frame:cel?(this.id==='enjo'?6:0)+cel.fxFrame:windup?0:a.phase==='release'?2:3+Math.min(2,Math.floor(p*3));
+    const cel=this.spellArt?{fxFrame:windup?(p<.5?0:1):a.phase==='release'?(p<.5?2:3):(p<.5?4:5),fxAlpha:windup?.12+.16*p:a.phase==='release'?.82:.5*(1-p)}:authored?sampleMeleeAttack(a,this.id):null;
+    const frame=heavyProcess?heavyProcess.frame:cel?(this.id==='enjo'&&!this.spellArt?6:0)+cel.fxFrame:windup?0:a.phase==='release'?2:3+Math.min(2,Math.floor(p*3));
     const alpha=heavyProcess?heavyProcess.alpha:cel?cel.fxAlpha:windup?.16+.2*p:a.phase==='release'?.82:.62*(1-p);
     const rotation=path&&Math.hypot(path.to.x-path.from.x,path.to.y-path.from.y)>.001
       ?Math.atan2(path.to.y-path.from.y,path.to.x-path.from.x)-(chain?Math.PI*.5:this.id==='kai'?Math.PI*.75:Math.PI*.25)

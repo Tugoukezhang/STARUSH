@@ -644,7 +644,7 @@ export function getRunChoice(id, performerId=null) {
     const option = pool.find((entry) => entry.id === id);
     if (option) {
       if(id==='echo'&&performerId==='kai')return {...option,label:'回响回斩',description:'每第三次有效挥剑后沿原方向延迟回斩，不追踪、不穿墙'};
-      if(id==='echo'&&performerId==='enjo')return {...option,label:'落锤震波',description:'每第三次有效命中后从原落锤点扩散震波，不穿墙、不递归'};
+      if(id==='echo'&&performerId==='enjo')return {...option,label:'星页回响',description:'每第三次有效命中后从原施法点扩散震波，不穿墙、不递归'};
       return { ...option };
     }
   }

@@ -1,8 +1,9 @@
 import {getPortraitBase} from './PortraitBaseRegistration.mjs';
 import {RED_VALKYRIE_AVATAR} from '../utils/redValkyrieArt.mjs';
+import {BLUE_ACADEMY_AVATAR} from '../utils/blueAcademyArt.mjs';
 import {GREEN_WINDSONG_AVATAR} from '../utils/greenWindsongArt.mjs';
-// Confirmed replacements have their own avatars; the remaining legacy member uses its registered crop.
-const ART=Object.freeze({sakura:RED_VALKYRIE_AVATAR,kai:GREEN_WINDSONG_AVATAR,enjo:getPortraitBase('enjo').avatar});
+// All three confirmed replacement identities own their decoded avatar assets.
+const ART=Object.freeze({sakura:RED_VALKYRIE_AVATAR,kai:GREEN_WINDSONG_AVATAR,enjo:BLUE_ACADEMY_AVATAR});
 export const getMenuAvatarArt=id=>Object.hasOwn(ART,id)?ART[id]:null;
 export function mountMenuAvatar(view,parent,id,fallback){
  const art=getMenuAvatarArt(id);if(!art||!parent||!view?.doc||view.disposed)return null;

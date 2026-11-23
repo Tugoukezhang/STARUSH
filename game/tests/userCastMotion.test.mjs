@@ -34,19 +34,19 @@ test('three production actors preload their own animation atlas, never the other
   for(const id of ['sakura','kai','enjo']){
     const sheets=[],scene={load:{image(){},spritesheet:(...args)=>sheets.push(args)}};
     preloadActorPresentation(scene,{stageId:1,performerId:id});
-    assert.equal(sheets.length,id==='enjo'?20:id==='kai'?7:9);assert.equal(sheets.filter(row=>row[0]==='melee-directional-20261026-'+id).length,id==='enjo'?1:0);const art=getUserCastArt(id);
-    assert.equal(sheets.filter(row=>row[0]==='enjo-north-rig-20261029').length,id==='enjo'?1:0,'rear bank belongs only to the heavy');
-    assert.equal(sheets.filter(row=>row[0]==='melee-heavy-bridge-20261028-enjo').length,id==='enjo'?1:0,'new heavy bank is never loaded for rifle or sword');
-    assert.equal(sheets.filter(row=>row[0]==='melee-authored-20261026-'+id).length,id==='enjo'?1:0);
-    assert.equal(sheets.filter(row=>row[0]==='melee-authored-20261026-process').length,id==='enjo'?1:0);
-    assert.equal(sheets.filter(row=>row[0]==='user-duo-contact-20261025').length,id==='enjo'?1:0,'existing B129 skill-contact bank belongs only to sword and hammer');
+    assert.equal(sheets.length,id==='sakura'?9:7);assert.equal(sheets.filter(row=>row[0]==='melee-directional-20261026-'+id).length,0);const art=getUserCastArt(id);
+    assert.equal(sheets.filter(row=>row[0]==='enjo-north-rig-20261029').length,0,'rear bank belongs only to the heavy');
+    assert.equal(sheets.filter(row=>row[0]==='melee-heavy-bridge-20261028-enjo').length,0,'new heavy bank is never loaded for rifle or sword');
+    assert.equal(sheets.filter(row=>row[0]==='melee-authored-20261026-'+id).length,0);
+    assert.equal(sheets.filter(row=>row[0]==='melee-authored-20261026-process').length,0);
+    assert.equal(sheets.filter(row=>row[0]==='user-duo-contact-20261025').length,0,'existing B129 skill-contact bank belongs only to sword and hammer');
     assert.equal(sheets.filter(row=>row[0]==='user-rifle-deposition-20261023').length,1,'one neutral landing bank shared without loading other character atlases');
     assert.deepEqual(sheets.map(row=>row[0]).filter(key=>/^user-rifle-(projectile|contact)-20261021$/.test(key)),
       id==='sakura'?['user-rifle-projectile-20261021','user-rifle-contact-20261021']:[]);
     assert.equal(sheets[0][0],art.motion.key);assert.equal(sheets[0][1],art.motion.path);
-    assert.equal(sheets[0][2].frameWidth,id==='enjo'?384:256);assert.equal(sheets[0][2].frameHeight,id==='enjo'?320:256);
+    assert.equal(sheets[0][2].frameWidth,256);assert.equal(sheets[0][2].frameHeight,256);
     preloadActorPresentation(scene,{stageId:1,performerId:id,practiceMode:true});
-    assert.equal(sheets.length,id==='enjo'?20:id==='kai'?7:9);assert.equal(scene._userCastPresentation,false);
+    assert.equal(sheets.length,id==='sakura'?9:7);assert.equal(scene._userCastPresentation,false);
   }
 });
 
@@ -81,11 +81,11 @@ test('real action and damage counters select one finite cycle and return to idle
   for(const id of ['sakura','kai','enjo']){
     const {scene:s,view:v}=fixture(id);v.update(0,false);s.publicPerformerRun.actions++;v.update(10,false);
     assert.equal(v.state,'action');const frame=v.image.frame.name;
-    if(id==='enjo')assert.equal(frame,14,'new atlas contact cel starts with instant hammer consequence, not windup');
+    if(id==='enjo')assert.equal(frame,14,'new atlas contact cel starts with instant spell consequence, not windup');
     v.update(140,false);assert.notEqual(v.image.frame.name,frame);
     v.update(1200,false);assert.equal(v.state,'idle');
     s.battleRecord.playerHitCount++;v.update(1210,false);assert.equal(v.state,'hurt');
-    if(id==='enjo'){assert.equal(v.image.texture.key,getUserCastArt(id).motion.hurt.key);assert.equal(v.image.frame.name,0);}
+    if(id==='enjo'){assert.equal(v.image.texture.key,getUserCastArt(id).motion.key);assert.equal(v.image.frame.name,18);}
     else assert(v.image.frame.name>=18);v.update(2000,false);assert.equal(v.state,'idle');
     assert.equal(s.publicPerformerRun.actions,1);assert.equal(s.battleRecord.playerHitCount,1);
     v.destroy();v.destroy();assert(v.disposed);assert.equal(v.image.destroyed,1);assert.equal(v.shadow.destroyed,1);

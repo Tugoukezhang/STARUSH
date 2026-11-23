@@ -10,8 +10,10 @@ fs.mkdirSync(dir,{recursive:true});
  const b=await chromium.launch({executablePath:process.env.STARUSH_CHROMIUM||undefined,headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  const all=[];
  try{
-  for(const [id,width,height,reduced] of [['sakura',390,844,false],['kai',320,700,false],['enjo',430,932,false],['kai',390,844,true]]){
-   const result={id,width,height,reduced,errors:[],httpErrors:[]},name=id+(reduced?'-reduced':'');all.push(result);
+  for(const [id,width,height,reduced] of [['sakura',390,844,false],['kai',320,700,false],['enjo',430,932,false],['kai',390,844,true],['enjo',320,700,true]]){
+   const result={id,width,height,reduced,errors:[],httpErrors:[]},name=id+(reduced?'-reduced':'');
+   if(process.env.STARUSH_QA_CASE&&process.env.STARUSH_QA_CASE!==name)continue;
+   all.push(result);
    const c=await b.newContext({viewport:{width,height},hasTouch:true,isMobile:true,reducedMotion:reduced?'reduce':'no-preference',...(recordVideo?{recordVideo:{dir,size:{width,height}}}:{})});
    const p=await c.newPage();p.on('pageerror',e=>result.errors.push(e.message));p.on('response',r=>{if(r.status()>=400)result.httpErrors.push({url:r.url(),status:r.status()});});
    await p.route('**/src/main.js*',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text())+'\nwindow.__qaGame=()=>activeGame;\n'});});

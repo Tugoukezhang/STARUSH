@@ -24,7 +24,7 @@ const tactics=Object.freeze({
 const roleNotes=Object.freeze({
   sakura:'扫射向前方铺开；范围加成扩大弹道、落点与扫射覆盖，遮挡后仍需换位。',
   kai:'突进会改变落脚位置；范围加成扩大沿途涂染，不延长突进，也不提供无敌。',
-  enjo:'重锤集中作用于近身；范围加成扩大落锤覆盖，威力加成不等于远距离命中。',
+  enjo:'魔法集中作用于近身；范围加成扩大施法覆盖，威力加成不等于远距离命中。',
 });
 const numeric=value=>String(Math.round(value*10000)/10000);
 
@@ -49,7 +49,7 @@ export function getPublicBuildModel(preparation,performerId,choices=[]) {
     choices:Object.freeze(growth.choices),effects:Object.freeze(effects),rows:Object.freeze(rows.map(Object.freeze)),
     modification:modifies?Object.freeze({id:equipment.id,name:equipment.name,description:equipment.description}):null,
     roleNote:roleNotes[performerId]+(choices.includes('fanfire')?' 普通射击三列，中路60%、两翼各20%；射击间隔不变，仍会被建筑遮挡。':'')+(modifies?' '+equipment.name+'：'+equipment.description:''),
-    tactic:performerId==='kai'&&choices.includes('echo')?'每第三次有效挥剑后，沿当时方向延迟回斩。125范围、140度扇区逐段染色，每个目标最多14点；不追踪、不穿墙。':performerId==='enjo'&&choices.includes('echo')?'每第三次有效命中，从原落锤点向外扩散震波。每个目标最多涂染14点，经过的地面同步染色；墙后不会命中。':tactics[choices.join(':')]||'本场编排尚未选满；已装备配件与训练加成保持生效。',
+    tactic:performerId==='kai'&&choices.includes('echo')?'每第三次有效挥剑后，沿当时方向延迟回斩。125范围、140度扇区逐段染色，每个目标最多14点；不追踪、不穿墙。':performerId==='enjo'&&choices.includes('echo')?'每第三次有效命中，从原施法点向外扩散震波。每个目标最多涂染14点，经过的地面同步染色；墙后不会命中。':tactics[choices.join(':')]||'本场编排尚未选满；已装备配件与训练加成保持生效。',
   });
 }
 
@@ -65,7 +65,7 @@ export function getPublicBuildOption(build,id) {
     echo:build.performerId==='kai'?'每3次有效挥剑 → 延迟回斩':build.performerId==='enjo'?'每3次命中 → 扩散震波':'第3次有效命中后 200ms 补色',recovery:'必需设施完成后恢复 1 生命',fanfire:'普通射击 1列 → 3列'}[id];
   const detail={wide_brush:{sakura:'弹道、落点和扫射覆盖变宽。',kai:'弹道、落点和突进轨迹变宽。',enjo:'弹道、落点和重锤覆盖变宽。'}[build.performerId],
     tempo:'射速、计时与安可不变。',overdrive:'仅主动涂染与覆盖增强，普通射击不变。',
-    relay:'无另一有效目标不触发，不递归。',echo:build.performerId==='kai'?'200ms后回斩125范围、140度；每目标14点，不追踪、不穿墙。':build.performerId==='enjo'?'从原落锤点扩散至150范围，每个目标14点；不穿墙、不递归。':'原落点、不追踪；空击不计数，不递归。',
+    relay:'无另一有效目标不触发，不递归。',echo:build.performerId==='kai'?'200ms后回斩125范围、140度；每目标14点，不追踪、不穿墙。':build.performerId==='enjo'?'从原施法点扩散至150范围，每个目标14点；不穿墙、不递归。':'原落点、不追踪；空击不计数，不递归。',
     recovery:'上限 5；满生命不积存，无护盾。',fanfire:'中路60%、两翼各20%；射击间隔不变，遮挡后需换位。'}[id];
   return {id,label:getRunChoice(id,build.performerId).label,delta,detail,after};
 }

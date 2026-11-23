@@ -72,17 +72,17 @@ test('all three current actions consume one charge and use the selected width an
 test('production cast configuration connects all three portraits, confirm/start handoff and result identity',()=>{
   const env=loadScenes();
   env.loadRuntime('utils/userCast.mjs').configureUserCast(true);
-  const expected={sakura:'red-valkyrie',kai:'green-windsong',enjo:'hammer-cat'};
+  const expected={sakura:'red-valkyrie',kai:'green-windsong',enjo:'blue-academy'};
   for(const [id,design] of Object.entries(expected)){
     const h=env.harness(env.IdolRosterScene);h.scene.create();
     assert.deepEqual(h.all('button[data-member]').map(b=>b.dataset.member),['sakura','kai','enjo']);
     const before=plain(env.profile.loadPublicProfile());h.click(`[data-member=${id}]`);
     assert.deepEqual(plain(env.profile.loadPublicProfile()),before);
-    assert.equal(h.query('.member-mark-full').querySelector('img').src,id==='sakura'?'art/red-valkyrie-20261123/portrait.png':id==='kai'?'art/green-windsong-20261123/portrait.png':`art/user-cast-20261015/${design}.webp`);
+    assert.equal(h.query('.member-mark-full').querySelector('img').src,id==='sakura'?'art/red-valkyrie-20261123/portrait.png':id==='kai'?'art/green-windsong-20261123/portrait.png':'art/blue-academy-20261123/portrait.png');
     h.click('[data-action=confirm-member]');
     const data=env.TitleScene.prototype._buildRecommendedBattleData.call({},new URLSearchParams());
     assert.equal(data.performerId,id);assert.equal(data.characterId,id);
-    assert.equal(data.name,{sakura:'战术女武神',kai:'翡翠风歌',enjo:'重锤手'}[id]);
+    assert.equal(data.name,{sakura:'战术女武神',kai:'翡翠风歌',enjo:'蔚蓝魔法师'}[id]);
     h.shutdown();
   }
   const source=fs.readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
@@ -91,12 +91,12 @@ test('production cast configuration connects all three portraits, confirm/start 
 
 test('the playable cast uses the three owner designs and preserves save IDs',()=>{
   assert.deepEqual(USER_CAST.map(m=>m.id),['sakura','kai','enjo']);
-  assert.deepEqual(USER_CAST.map(m=>m.designId),['red-valkyrie','green-windsong','hammer-cat']);
+  assert.deepEqual(USER_CAST.map(m=>m.designId),['red-valkyrie','green-windsong','blue-academy']);
   assert.equal(getPlayablePerformer('venus').id,'sakura');
   for(const member of USER_CAST){
     const art=getUserCastArt(member.id);
-    assert.equal(art.battle,member.id==='sakura'?'art/red-valkyrie-20261123/portrait.png':member.id==='kai'?'art/green-windsong-20261123/portrait.png':`art/user-cast-20261015/${member.designId}-battle.webp`);
-    assert.equal(art.portrait,member.id==='sakura'?'art/red-valkyrie-20261123/portrait.png':member.id==='kai'?'art/green-windsong-20261123/portrait.png':`art/user-cast-20261015/${member.designId}.webp`);
+    assert.equal(art.battle,member.id==='sakura'?'art/red-valkyrie-20261123/portrait.png':member.id==='kai'?'art/green-windsong-20261123/portrait.png':'art/blue-academy-20261123/portrait.png');
+    assert.equal(art.portrait,member.id==='sakura'?'art/red-valkyrie-20261123/portrait.png':member.id==='kai'?'art/green-windsong-20261123/portrait.png':'art/blue-academy-20261123/portrait.png');
     assert.ok(fs.existsSync(new URL('../public/'+art.battle,import.meta.url)));
     assert.ok(fs.existsSync(new URL('../public/'+art.avatar,import.meta.url)));
   }

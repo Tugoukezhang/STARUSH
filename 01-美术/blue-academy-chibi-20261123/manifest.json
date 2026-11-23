@@ -1,0 +1,280 @@
+{
+  "source": "01-美术/owner-originals/蔚蓝魔法学园少女.png",
+  "tool": "image_gen",
+  "kind": "raster source and frame animation, not a native layered model",
+  "assets": {
+    "motion": {
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2869409,
+      "sha256": "01a846e2296c519ef1b3ca2b11148159e6eea17b53161e54517cb156d9d6d7db",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "runtime": "game/public/art/blue-academy-20261123/motion.png",
+      "boundsAlpha60": [
+        [
+          27,
+          13,
+          218,
+          247
+        ],
+        [
+          26,
+          12,
+          218,
+          247
+        ],
+        [
+          27,
+          12,
+          219,
+          247
+        ],
+        [
+          22,
+          13,
+          219,
+          247
+        ],
+        [
+          27,
+          12,
+          222,
+          247
+        ],
+        [
+          26,
+          13,
+          218,
+          247
+        ],
+        [
+          28,
+          13,
+          207,
+          243
+        ],
+        [
+          25,
+          11,
+          209,
+          241
+        ],
+        [
+          29,
+          11,
+          212,
+          240
+        ],
+        [
+          24,
+          16,
+          208,
+          243
+        ],
+        [
+          26,
+          16,
+          208,
+          242
+        ],
+        [
+          25,
+          11,
+          209,
+          242
+        ],
+        [
+          27,
+          13,
+          210,
+          247
+        ],
+        [
+          28,
+          19,
+          205,
+          246
+        ],
+        [
+          21,
+          11,
+          228,
+          246
+        ],
+        [
+          11,
+          9,
+          245,
+          246
+        ],
+        [
+          20,
+          12,
+          224,
+          246
+        ],
+        [
+          23,
+          15,
+          211,
+          246
+        ],
+        [
+          19,
+          12,
+          218,
+          242
+        ],
+        [
+          16,
+          15,
+          203,
+          240
+        ],
+        [
+          17,
+          19,
+          201,
+          241
+        ],
+        [
+          26,
+          15,
+          207,
+          241
+        ],
+        [
+          16,
+          42,
+          198,
+          237
+        ],
+        [
+          9,
+          62,
+          228,
+          240
+        ]
+      ],
+      "cellEdgeMaxAlpha": [
+        8,
+        10,
+        10,
+        8,
+        7,
+        8,
+        7,
+        9,
+        9,
+        7,
+        6,
+        8,
+        7,
+        6,
+        6,
+        7,
+        6,
+        5,
+        6,
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    "portrait": {
+      "width": 1085,
+      "height": 1450,
+      "bytes": 1689016,
+      "sha256": "532c841b9f7146486190199b0be2f1a4ef433042b6c27aa810717bfd04994b7a",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "runtime": "game/public/art/blue-academy-20261123/portrait.png"
+    },
+    "avatar": {
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2394787,
+      "sha256": "f24bef383684c1ea0d4df9f04daa684405b22a15796388d3ee2209dee09f8681",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "runtime": "game/public/art/blue-academy-20261123/avatar.png"
+    },
+    "weapon": {
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1281684,
+      "sha256": "d5cce55ea3bb65a045a71ad49b5a28e79adc3e81dc9acf1e2f9f3ec2715187db",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "runtime": "game/public/art/blue-academy-20261123/weapon.png"
+    },
+    "spell": {
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1507035,
+      "sha256": "c5860f9105f13d764c545c7c21348273f4aa65a4dcf951120ae02aed84811851",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "runtime": "game/public/art/blue-academy-20261123/spell.png",
+      "boundsAlpha60": [
+        [
+          204,
+          195,
+          321,
+          312
+        ],
+        [
+          122,
+          107,
+          402,
+          391
+        ],
+        [
+          72,
+          49,
+          438,
+          431
+        ],
+        [
+          68,
+          52,
+          455,
+          429
+        ],
+        [
+          81,
+          72,
+          430,
+          409
+        ],
+        [
+          90,
+          83,
+          419,
+          404
+        ]
+      ],
+      "cellEdgeMaxAlpha": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

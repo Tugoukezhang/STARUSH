@@ -24,7 +24,7 @@ export function getPublicArrangementStudies(memberId){
 const memberNotes={
   sakura:'扇面扫射覆盖前方。先朝向还未完成的区域，再释放行动；背后和遮挡后的设施不会自动补齐。',
   kai:'突进会改变落脚位置，但没有无敌，途中仍会受伤。给终点留出空间，不要向墙角硬冲。',
-  enjo:'重锤集中涂染近身区域。先靠近目标再落锤；远处设施不会因为威力提高而自动完成。',
+  enjo:'魔法集中涂染近身区域。先靠近目标再施法；远处设施不会因为威力提高而自动完成。',
 };
 const chapterNotes={
   opening:'从唱片店沿通路推进到剧场。涂染范围和接力都不替代绕过遮挡、寻找射击角度。',

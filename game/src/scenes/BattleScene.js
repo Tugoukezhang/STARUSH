@@ -433,7 +433,7 @@ export class BattleScene extends Phaser.Scene {
   }
 
   preload() {
-    if(this.initialBattleData.performerId==='enjo')this.load.image(GROUND_ECHO_ART.key,GROUND_ECHO_ART.path);
+    if(this.initialBattleData.performerId==='enjo')this.load.spritesheet(GROUND_ECHO_ART.key,GROUND_ECHO_ART.path,{frameWidth:GROUND_ECHO_ART.frameWidth,frameHeight:GROUND_ECHO_ART.frameHeight});
     if(this.initialBattleData.performerId==='kai')this.load.spritesheet(SWORD_ECHO_ART.key,SWORD_ECHO_ART.path,{frameWidth:SWORD_ECHO_ART.frameWidth,frameHeight:SWORD_ECHO_ART.frameHeight});
     this._loadRecovery = beginSceneLoading(this, undefined, file => isOptionalQRebaseTrialFile(this, file) || isOptionalFacilityCompletionFile(file));
     const background = getBattleBackgroundConfig(this.initialBattleData?.stageId);
