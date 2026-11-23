@@ -16,7 +16,7 @@ function rig({id='sakura',player={x:500,y:1000},street=new OldStreetState([])}={
  const node=()=>({frame:{name:0},texture:{key:''},setOrigin(){return this;},setDisplaySize(){return this;},setDepth(){return this;},setTint(){return this;},
   setAlpha(){return this;},setAngle(){return this;},setFlipX(f){this.flipX=f;return this;},setPosition(){return this;},setTexture(k,f){this.texture={key:k};this.frame.name=f;return this;},setCrop(){return this;},setVisible(){return this;},destroy(){}});
  const s=Object.assign(Object.create(BattleScene.prototype),{_userCastPresentation:true,_isPublicStage1Round:()=>true,game:{loop:{frame:0}},
-  player:{...player,hp:5,active:true},playerGfx:{alpha:1},battleRecord:{playerHitCount:0},publicPerformerRun:{actions:0,now:()=>time},
+  player:{...player,hp:5,active:true},playerGfx:{alpha:1},battleRecord:{playerHitCount:0},publicPerformerRun:{member:{id},growth:{choices:[]},actions:0,now:()=>time},
   oldStreet:street,textures:{exists:()=>true},add:{ellipse:node,image:node},enemies:{children:{iterate(){}}}});
  const v=new UserCastPresentation(s,id);s.actorPresentation={userCastView:v};v.update(0,false);
  return {s,v,setTime:t=>time=t};

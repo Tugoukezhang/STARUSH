@@ -37,8 +37,8 @@ test('active cast preloads only its replacement image and clears the mode for hi
     const rows=[],scene={load:{image:(key,path)=>rows.push({key,path}),spritesheet(){}}};
     preloadActorPresentation(scene,{stageId:1,performerId:member.id});
     assert.equal(scene._userCastPresentation,true);
-    assert.equal(rows.filter(row=>row.key.startsWith('user-cast-')).length,1);
-    assert.equal(rows[0].path,`art/user-cast-20261015/${member.designId}-battle.webp`);
+    assert.equal(rows.filter(row=>row.key===getUserCastArt(member.id).key).length,1);
+    assert.equal(rows[0].path,getUserCastArt(member.id).battle);
     assert(!rows.some(row=>/five-q|refined|unified/.test(row.path)));
     preloadActorPresentation(scene,{stageId:1,performerId:member.id,practiceMode:true});
     assert.equal(scene._userCastPresentation,false);
@@ -72,17 +72,17 @@ test('all three current actions consume one charge and use the selected width an
 test('production cast configuration connects all three portraits, confirm/start handoff and result identity',()=>{
   const env=loadScenes();
   env.loadRuntime('utils/userCast.mjs').configureUserCast(true);
-  const expected={sakura:'cat-rifle',kai:'mecha-sword',enjo:'hammer-cat'};
+  const expected={sakura:'red-valkyrie',kai:'mecha-sword',enjo:'hammer-cat'};
   for(const [id,design] of Object.entries(expected)){
     const h=env.harness(env.IdolRosterScene);h.scene.create();
     assert.deepEqual(h.all('button[data-member]').map(b=>b.dataset.member),['sakura','kai','enjo']);
     const before=plain(env.profile.loadPublicProfile());h.click(`[data-member=${id}]`);
     assert.deepEqual(plain(env.profile.loadPublicProfile()),before);
-    assert.equal(h.query('.member-mark-full').querySelector('img').src,`art/user-cast-20261015/${design}.webp`);
+    assert.equal(h.query('.member-mark-full').querySelector('img').src,id==='sakura'?'art/red-valkyrie-20261123/portrait.png':`art/user-cast-20261015/${design}.webp`);
     h.click('[data-action=confirm-member]');
     const data=env.TitleScene.prototype._buildRecommendedBattleData.call({},new URLSearchParams());
     assert.equal(data.performerId,id);assert.equal(data.characterId,id);
-    assert.equal(data.name,{sakura:'步枪手',kai:'机甲剑士',enjo:'重锤手'}[id]);
+    assert.equal(data.name,{sakura:'战术女武神',kai:'机甲剑士',enjo:'重锤手'}[id]);
     h.shutdown();
   }
   const source=fs.readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
@@ -91,12 +91,12 @@ test('production cast configuration connects all three portraits, confirm/start 
 
 test('the playable cast uses the three owner designs and preserves save IDs',()=>{
   assert.deepEqual(USER_CAST.map(m=>m.id),['sakura','kai','enjo']);
-  assert.deepEqual(USER_CAST.map(m=>m.designId),['cat-rifle','mecha-sword','hammer-cat']);
+  assert.deepEqual(USER_CAST.map(m=>m.designId),['red-valkyrie','mecha-sword','hammer-cat']);
   assert.equal(getPlayablePerformer('venus').id,'sakura');
   for(const member of USER_CAST){
     const art=getUserCastArt(member.id);
-    assert.equal(art.battle,`art/user-cast-20261015/${member.designId}-battle.webp`);
-    assert.equal(art.portrait,`art/user-cast-20261015/${member.designId}.webp`);
+    assert.equal(art.battle,member.id==='sakura'?'art/red-valkyrie-20261123/portrait.png':`art/user-cast-20261015/${member.designId}-battle.webp`);
+    assert.equal(art.portrait,member.id==='sakura'?'art/red-valkyrie-20261123/portrait.png':`art/user-cast-20261015/${member.designId}.webp`);
     assert.ok(fs.existsSync(new URL('../public/'+art.battle,import.meta.url)));
     assert.ok(fs.existsSync(new URL('../public/'+art.avatar,import.meta.url)));
   }
@@ -108,6 +108,8 @@ test('an archived selected member is replaced only on an explicit start, preserv
   const before=plain(env.profile.loadPublicProfile());
   const h=env.harness(env.TitleScene);h.scene.create();
   assert.equal(env.profile.loadPublicProfile().selectedId,'venus','render must not write a save');
+  h.click('[data-action=start]');
+  assert.equal(env.profile.loadPublicProfile().selectedId,'venus','opening preflight still does not write the save');
   h.click('[data-action=start]');
   const after=plain(env.profile.loadPublicProfile());
   assert.equal(after.selectedId,'sakura');assert.equal(h.starts[0][1].performerId,'sakura');
@@ -144,7 +146,7 @@ test('public pigment can preserve strong color and repainting stays idempotent',
 test('an obstructed echo does not announce a successful proc',()=>{
   const notices=[],run=Object.create(PublicStage1PerformerRun.prototype);
   Object.assign(run,{scene:{_userCastPresentation:true,time:{now:500},_showPublicBattleNotice:label=>notices.push(label)},
-    pausedAt:null,pausedMs:0,impacts:2,effects:()=>({echo:true,relay:false}),later:(_delay,callback)=>callback(),paint:()=>false});
+    member:{id:'sakura'},pausedAt:null,pausedMs:0,impacts:2,effects:()=>({echo:true,relay:false}),later:(_delay,callback)=>callback(),paint:()=>false});
   run.onImpact(100,100,'pink',null);assert.deepEqual(notices,[]);
   run.impacts=2;run.paint=()=>true;run.onImpact(100,100,'pink',null);assert.deepEqual(notices,['回响追加']);
 });

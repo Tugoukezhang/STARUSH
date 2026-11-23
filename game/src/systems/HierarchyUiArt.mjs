@@ -1,4 +1,5 @@
 import {mountPreflightUi271} from './PreflightUiArt271.mjs';
+import {getActiveUserCastArt,getDisplayPerformer} from '../utils/userCast.mjs';
 const BASE='art/hierarchy-ui-20261101/';
 const ICONS=new Set(['home','member','tour','bag','companion','venue','modes','switch','back','close','train','equipment','skill','info','route','archive','settings','lock','owned','selected','story','backstage','program','rehearsal','performers','save']);
 const LETTERS=new Set(['roster','tour','inventory','preflight','workshop','start','resume','confirm','sakura','kai','enjo','open','chapter-opening','chapter-neon','chapter-encore','switch','tour-confirm','program','practice','backstage','services']);
@@ -27,6 +28,12 @@ export function mountHierarchyUi(view,root=view.root){
   for(const node of root.querySelectorAll('[data-ui-letter]')){
     const key=node.dataset.uiLetter;
     if(!LETTERS.has(key))throw new RangeError(`Unknown hierarchy lettering: ${key}`);
+    if(getActiveUserCastArt(key)?.confirmedDesign){
+      delete node.dataset.uiLetter;node.dataset.confirmedName=key;
+      node.textContent=getDisplayPerformer(key).name;
+      Object.assign(node.style,{fontSize:'18px',lineHeight:'28px',fontWeight:'800',color:(['desk','preflight','roster'].includes(view.page)&&!node.classList.contains('member-sheet-name'))?'#f3fff9':'#203939'});
+      continue;
+    }
     if(node.querySelector('.ui-letter-art'))continue;
     const img=view.element('img','ui-letter-art',undefined,node);img.alt='';img.draggable=false;img.setAttribute('aria-hidden','true');img.src=['backstage','services'].includes(key)?'art/console-studio-20261102/letter-'+key+'.webp':['program','practice'].includes(key)?'art/program-studio-20261101/letter-'+key+'.webp':key==='switch'&&['roster','workshop','growth'].includes(view.page)?'art/member-studio-20261101/letter-switch.webp':BASE+'letters-'+key+'.webp';
   }

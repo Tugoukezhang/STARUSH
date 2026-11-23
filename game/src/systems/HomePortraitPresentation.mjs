@@ -1,4 +1,5 @@
 import {mountHomePortraitCanvas} from './HomePortraitCanvas.mjs';
+import {getActiveUserCastArt} from '../utils/userCast.mjs';
 const BASE='art/home-portrait-demo-20261022/';
 const RIFLE=Object.freeze({kind:'layered-demo',width:853,height:1280,layers:Object.freeze([
  {id:'body',x:38,y:8,width:800,height:1259},
@@ -11,6 +12,21 @@ export function getHomePortraitArt(id){return id==='sakura'?RIFLE:null;}
 
 // The layered menu demo shares rifle art with the roster, never battle textures.
 export function mountHomePortrait(view,parent,id,fallback,background=null,options={}){
+ const replacement=getActiveUserCastArt(id);
+ if(replacement?.confirmedDesign){
+  let disposed=false,loading=false;
+  const live=()=>!disposed&&!view.disposed&&fallback.parentNode===parent;
+  const fail=()=>{if(!live())return;fallback.hidden=true;parent.dataset.portraitState='unavailable';};
+  const ready=async()=>{if(!live()||loading)return;loading=true;
+   if(fallback.naturalWidth!==replacement.width||fallback.naturalHeight!==replacement.height){fail();return;}
+   try{await fallback.decode?.();if(live()){fallback.hidden=false;parent.dataset.portraitState='static';}}catch{fail();}
+  };
+  parent.dataset.portraitState='loading';parent.dataset.confirmedDesign=replacement.designId;
+  fallback.hidden=true;fallback.width=replacement.width;fallback.height=replacement.height;
+  fallback.addEventListener('load',ready);fallback.addEventListener('error',fail);
+  fallback.src=replacement.portrait;if(fallback.complete&&fallback.naturalWidth>0)ready();
+  return ()=>{disposed=true;fallback.removeEventListener('load',ready);fallback.removeEventListener('error',fail);delete parent.dataset.confirmedDesign;delete parent.dataset.portraitState;};
+ }
  const art=getHomePortraitArt(id);if(!art)return ()=>{};
  fallback.hidden=true;
  const rig=view.element('span','home-portrait-rig',undefined,parent);if(options.animate===false)rig.dataset.static='true';

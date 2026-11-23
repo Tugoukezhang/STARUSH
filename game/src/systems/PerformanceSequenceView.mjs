@@ -1,10 +1,11 @@
 import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
 import {getHomePortraitArt} from './HomePortraitPresentation.mjs';
+import {getActiveUserCastArt} from '../utils/userCast.mjs';
 import {getMenuPortraitArt} from './MenuPortraitPresentation.mjs';
 import {PublicStoryPlayback} from '../utils/publicStoryPlayback.mjs';
 import {shellIcons} from '../vendor/shellIcons.mjs';
 const speakerIds={'步枪手':'sakura','机甲剑士':'kai','重锤手':'enjo'};
-function portrait(id){return id==='sakura'?getHomePortraitArt(id)?.layers.find(l=>l.id==='body')?.src:getMenuPortraitArt(id)?.src;}
+function portrait(id){return getActiveUserCastArt(id)?.confirmedDesign?getActiveUserCastArt(id).portrait:id==='sakura'?getHomePortraitArt(id)?.layers.find(l=>l.id==='body')?.src:getMenuPortraitArt(id)?.src;}
 function node(parent,tag,cls,text){const e=parent.ownerDocument?.createElement(tag)||document.createElement(tag);e.className=cls;if(text!==undefined)e.textContent=text;parent.append(e);return e;}
 function image(parent,cls,src){const e=node(parent,'img',cls);e.alt='';e.draggable=false;e.setAttribute('aria-hidden','true');e.decoding='async';e.src=src;return e;}
 

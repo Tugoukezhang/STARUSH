@@ -1,5 +1,6 @@
 import { getRunChoice } from '../utils/publicRunProgression.mjs';
 import { getDisplayPerformer as getPublicPerformer, getActiveUserCastArt,isUserCastEnabled } from '../utils/userCast.mjs';
+import {RED_VALKYRIE_PORTRAIT} from '../utils/redValkyrieArt.mjs';
 import {getPublicJourneyResult} from '../utils/publicJourneyContent.mjs';
 import { getPublicChapter,PUBLIC_CHAPTERS } from '../utils/publicCampaign.mjs';
 import { releaseSessionInput, resumePlayerAudioFromGesture } from './PlayerSessionExperience.mjs';
@@ -54,7 +55,7 @@ const ROLE_ECHO_ART=Object.freeze({
 // Owned full-body sources. head = crown-to-chin / source width; face = face centre as source fractions,
 // so CSS renders every role with the same head height at the same anchor. Static art, not Live2D.
 const RESULT_PORTRAITS=Object.freeze({
- sakura:Object.freeze({src:'art/home-portrait-demo-20261022/sakura-body.webp',width:800,height:1259,head:0.234,faceX:0.53,faceY:0.135}),
+ sakura:RED_VALKYRIE_PORTRAIT,
  ...Object.fromEntries(['kai','enjo'].map(id=>{const a=getPortraitBase(id),m=portraitBaseMetrics(a);return[id,Object.freeze({src:a.src,width:a.width,height:a.height,
    head:((a.face.y+a.face.height)*a.height-a.bounds.y)/a.width,faceX:m.faceX,faceY:m.faceY})];})),
 });

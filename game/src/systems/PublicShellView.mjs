@@ -550,7 +550,7 @@ export class PublicShellView {
     portrait.width=visual?.width || 128;portrait.height=visual?.height || 128;portrait.decoding='async';
     if(!large&&isUserCastEnabled())mountMenuAvatar(this,mark,member.id,portrait);
     if(large&&isUserCastEnabled()){
-      const rig=motionOptions?.animate===true?getCompanionRig(member.id):null;
+      const rig=motionOptions?.animate===true&&!art?.confirmedDesign?getCompanionRig(member.id):null;
       if(member.id==='enjo'&&motionOptions?.animate===true)this.homePortraitDispose=mountEnjoContinuousPortrait(this,mark,portrait);
       else if(member.id==='kai'&&motionOptions?.animate===true)this.homePortraitDispose=mountKaiContinuousPortrait(this,mark,portrait);
       else if(rig)this.homePortraitDispose=mountCompanionRig(this,mark,portrait,rig,motionOptions.background);

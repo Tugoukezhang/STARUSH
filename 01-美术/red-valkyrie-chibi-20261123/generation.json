@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-23",
+  "tool": "image_gen",
+  "reference": "01-美术/owner-originals/橙白黑赛博战术女武神.png",
+  "notes": "AI-derived chibi and UI assets; original reference is preserved. Raster frame animation, not a recovered native layered model. All image editing used image_gen; runtime frames select atlas rectangles without modifying source pixels.",
+  "outputs": [
+    {
+      "kind": "motion",
+      "file": "motion.png",
+      "generationFile": "exec-63f08bf3-4a34-4727-8a9b-efdf7b6e0dd4.png",
+      "prompt": "Create a production-ready 2D game sprite atlas by adapting the exact original red-haired female character in the reference. This is a chibi version of THIS character, not a new character. Preserve her long orange-red high ponytail, amber eyes, orange-lens goggles on forehead, white mechanical fin-shaped hair accessories (NOT animal ears), white oversized cropped jacket with orange lining, black tactical torso outfit and belts, asymmetric charcoal coat panels, black thigh-high on one leg, bare other thigh, chunky white black orange boots, black fingerless gloves and white/orange compact rectangular tactical firearm. Render a polished cute anime chibi, approximately 2.7 heads tall, bold clean silhouette, restrained cel shading and delicate dark outline, readable at 90px tall. Same facial identity, design, scale and lighting in EVERY cell. No background, no ground, no drop shadows, transparent RGBA. NO text, no numbers, no borders, no grid lines.\nOUTPUT IS ONE WIDE 1536x1024 SPRITE SHEET: EXACTLY 6 EQUAL COLUMNS by 4 EQUAL ROWS, 24 separate full-body figures, one per 256x256 cell. Each figure fully inside its own cell, no overlap; leave margin around all hair, coat and weapon tips. Base perspective front three-quarter, facing screen RIGHT. Normal planted foot baseline at y=238 within each cell; head top near y=24, body centered x=120. Each figure holds the same compact white/orange tactical gun with its barrel pointing RIGHT. Pose differences are locally articulated arms/legs/hair, not resizing the entire drawing.\nROW 1 cells 0-5: 0 relaxed armed idle with eyes closed for blink; 1 subtle breathing raised chest, eyes open; 2 relaxed breathing exhale, ponytail follows; 3 resting weight on rear leg, hair settling; 4 cheerful victory fist raised, gun kept safe pointing down; 5 small smile returning to ready.\nROW 2 cells 6-11: SIX FRAMES OF ONE CONTINUOUS WALK TO THE RIGHT WITH GUN HELD READY AT CHEST. 6 right foot forward heel contact, left foot trailing toe; 7 weight down right knee flexed, left leg lifts; 8 left knee passes forward, right leg support; 9 left foot forward heel contact, right foot trailing toe; 10 weight down left knee flexed, right leg lifts; 11 right knee passes forward, left leg support. Make alternating feet and bent knees clearly distinct. Head and torso preserve size; ponytail and coat lag the movement. Do not draw feet running in place identical poses.\nROW 3 cells 12-17: 12 standard armed ready idle, both feet planted and gun aimed right; 13 aiming anticipation, weight forward; 14 FIRING pose gun extended right, no muzzle flash baked in; 15 RECOIL, gun shifts back and barrel rises slightly, shoulders absorb force; 16 recovery halfway, cloth and ponytail delayed; 17 gun and torso return to ready. Both hands correctly grip the same weapon throughout, no floating weapons or duplicated hands.\nROW 4 cells 18-23: 18 damage flinch, eyes squeezed, shoulders back; 19 low stagger, one knee bent, gun retained; 20 recover balance; 21 ready after hurt; 22 defeated kneeling, head lowered, gun lowered; 23 defeated lying seated sideways on ground, exhausted eyes closed, both legs visible and weapon lying beside her, no gore. Keep design consistent, ponytail remains red and recognizable."
+    },
+    {
+      "kind": "portrait",
+      "file": "portrait.png",
+      "generationFile": "exec-967c162f-53e4-44fb-a35e-c275d29d39a4.png",
+      "prompt": "Edit the provided original character illustration ONLY to remove the white background and floor shadow. Output one full-body isolated transparent PNG of the SAME illustrated red-haired tactical woman. Preserve the exact pose, mature anime proportions, face, very long flowing orange red high ponytail, forehead goggles, pointed white mechanical hair ornaments, white orange black jacket and asymmetric coat tails, mismatched thigh clothing, boots, her original handheld rectangular white black orange tactical weapon. Keep all fine hair tips and translucent white cloth shading. No redesign, no chibi proportions, no change of costume, no extra objects, no floor shadow, no lettering. Leave transparent margin around her complete silhouette. True alpha transparency."
+    },
+    {
+      "kind": "avatar",
+      "file": "avatar.png",
+      "generationFile": "exec-738edbdc-9ec8-4b41-8079-c5c055d957ac.png",
+      "prompt": "Create one square in-game portrait icon by adapting the head and upper shoulders of the EXACT red-haired tactical woman from the original reference. Faithful anime illustration, original adult facial identity, amber eyes, orange red fringe, long red high ponytail visible behind her, forehead goggles with orange lenses, white mechanical pointed hair ornaments NOT animal ears, white orange black jacket collar, black choker. Close framing: head including goggles and ornaments fills 85 percent of square, face centered and immediately readable in a 40px game HUD, neutral confident slight smile. Clean edges, good contrast, same color palette as reference, no frame, no text, no background, true alpha transparency. One head portrait only, no grid."
+    },
+    {
+      "kind": "weapon",
+      "file": "weapon.png",
+      "generationFile": "exec-ee85cd5a-4924-435f-81be-1beea5240f69.png",
+      "prompt": "Create one isolated 2D game skill icon of the compact white black orange futuristic tactical firearm held by the woman in the original reference. Only the weapon, NO PERSON, NO HANDS. Faithfully adapt her chunky rectangular case-like receiver, white armor shell, black central rail and grip, orange glowing vents and orange accent panels into a clear compact right-facing sci-fi rifle. Three-quarter side view angled slightly upward to the right, substantial wide receiver, short muzzle, compact back grip. Same weapon family as reference, clean anime cel shading and dark outline for a 50px icon. Centered in a square with 12% transparent margin, no background, no circle, no border, no text, no muzzle flash, true alpha."
+    }
+  ]
+}

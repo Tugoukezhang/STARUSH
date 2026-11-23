@@ -14,7 +14,7 @@ fs.mkdirSync(dir,{recursive:true});
    const result={id,width,height,reduced,errors:[],httpErrors:[]},name=id+(reduced?'-reduced':'');all.push(result);
    const c=await b.newContext({viewport:{width,height},hasTouch:true,isMobile:true,reducedMotion:reduced?'reduce':'no-preference',...(recordVideo?{recordVideo:{dir,size:{width,height}}}:{})});
    const p=await c.newPage();p.on('pageerror',e=>result.errors.push(e.message));p.on('response',r=>{if(r.status()>=400)result.httpErrors.push({url:r.url(),status:r.status()});});
-   await p.route('**/src/main.js',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text())+'\nwindow.__qaGame=()=>activeGame;\n'});});
+   await p.route('**/src/main.js*',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text())+'\nwindow.__qaGame=()=>activeGame;\n'});});
    try{
     await p.goto(url);await p.locator('#public-shell[data-page=desk]').waitFor();
     if(id!=='sakura'){
@@ -25,7 +25,7 @@ fs.mkdirSync(dir,{recursive:true});
     await p.locator('[data-nav=tour]').tap();await p.locator('button[data-chapter=opening]').tap();
     await p.getByRole('button',{name:'前往准备 · 星光初演',exact:true}).tap();
     await p.locator('#public-shell[data-page=preflight]').waitFor();await p.locator('[data-action=start]').tap();
-    await p.waitForFunction(()=>window.__qaGame()?.scene.isActive('BattleScene'));
+    await p.waitForFunction(()=>window.__qaGame?.()?.scene.isActive('BattleScene'));
     for(let i=0;i<12;i++){
      const dialog=p.locator('#player-session-dialog');if(!await dialog.count())break;
      await dialog.locator('.session-primary').last().tap();await p.waitForTimeout(180);

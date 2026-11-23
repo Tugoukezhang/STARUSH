@@ -69,10 +69,10 @@ test('actual endBattle method persists immediately, waits only for lethal Sakura
 
 test('actual damage method supplies HP zero before death dispatch and repeated invulnerable hits do not restart it',()=>{
  const source=fs.readFileSync(new URL('../src/scenes/BattleScene.js',import.meta.url),'utf8');
- const block=source.slice(source.indexOf('  _onEnemyHitPlayer(sourceBullet = null) {'),source.indexOf('  _getPlayerVisualTarget() {'));
- const hit=new Function(`return function(sourceBullet=null) ${block.slice(block.indexOf('{'))}`)();
+ const block=source.slice(source.indexOf('  _onEnemyHitPlayer('),source.indexOf('  _getPlayerVisualTarget() {'));
+ const hit=new Function('capturePlayerHitSource',`return function(sourceBullet=null,contactEnemy=null) ${block.slice(block.indexOf('{'))}`)(()=>null);
  const a=actor(),s=a.scene;s.player.hp=2;let deaths=0,pose=null;
- Object.assign(s,{_consumeP15HostileProjectile:()=>{},battleRecord:{playerHitCount:0},_spawnPlayerHitBeatFlash:()=>{},
+ Object.assign(s,{time:{now:100},_consumeP15HostileProjectile:()=>{},battleRecord:{playerHitCount:0},_spawnPlayerHitBeatFlash:()=>{},
   cameras:{main:{shake:()=>{}}},support:{gainFromTakeDamage:()=>{}},_getPlayerVisualTarget:()=>({}),tweens:{add:()=>{}},
   _onPlayerDeath(){deaths++;pose=api.captureSakuraDefeat(a,'player-defeat');}});
  hit.call(s);assert.equal(s.player.hp,1);assert.equal(deaths,0);

@@ -530,6 +530,7 @@ export class ActorPresentation {
 
   captureDefeatPose(resultType) {
     const {scene}=this,p=scene.player;
+    if(this.userCastView&&resultType==='player-defeat'&&!this.disposed)return this.userCastView.captureDefeat();
     if(this.venusView&&resultType==='player-defeat'&&!this.disposed&&p?.active&&p.hp<=0
       &&Number.isFinite(p.x+p.y))return this.venusView.captureDefeat();
     if(this.genyaView&&resultType==='player-defeat'&&!this.disposed&&p?.active&&p.hp<=0

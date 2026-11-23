@@ -1,5 +1,5 @@
 import {mountMenuAvatar} from './MenuPortraitAvatar.mjs';
-const NAMES=Object.freeze({sakura:'步枪手',kai:'机甲剑士',enjo:'重锤手'});
+const NAMES=Object.freeze({sakura:'战术女武神',kai:'机甲剑士',enjo:'重锤手'});
 const LINES=Object.freeze({
  sakura:{head:['别急，我已经听到下一拍了。','瞄准完成。下一场，我来开路。'],body:['弹匣检查好了，随时可以出发。','这一拍，想和你配合得更好。']},
  kai:{head:['剑锋已校准。你指方向，我来破阵。','在这里，先让刀刃休息一会。'],body:['前面的路，我会先替你探清。','准备好了。保持步调，我们一起前进。']},

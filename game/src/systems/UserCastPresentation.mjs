@@ -25,7 +25,8 @@ export class UserCastPresentation {
   constructor(scene,id){
     this.scene=scene;this.art=getUserCastArt(id);this.disposed=false;this.shotAt=-Infinity;this.depth=9.8;
     this.flip=id==='kai';this.handFlip=this.flip;this.handShotClock=-Infinity;this.lastX=scene.player.x;this.lastY=scene.player.y;
-    this.height=this.art.motion.frameHeight*.5;this.width=this.art.motion.frameWidth*.5;this.clock=0;this.lastNow=null;this.wasFrozen=false;this.walkDistance=0;
+    this.scale=this.art.motion.scale??.5;
+    this.height=this.art.motion.frameHeight*this.scale;this.width=this.art.motion.frameWidth*this.scale;this.clock=0;this.lastNow=null;this.wasFrozen=false;this.walkDistance=0;
     this.shotDuration={sakura:270,kai:240,enjo:260}[this.art.id];
     this.actionDuration=getPublicPerformerAction(this.art.id)?.presentationMs??320;
     this.shotClock=-Infinity;this.actionClock=-Infinity;this.hurtClock=-Infinity;this.streakUntil=-Infinity;this.idleClock=0;
@@ -129,7 +130,10 @@ export class UserCastPresentation {
     }
     else if(this.state==='idle'){
       const idle=this.art.motion.idle,rest=this.art.motion.rest,age=(t-this.idleClock)%BLINK_EVERY;
-      if(idle&&s.textures?.exists(idle.key)&&age>=BLINK_AT&&age<BLINK_AT+BLINK_FOR){key=idle.key;frame=0;}
+      if(this.art.motion.singleAtlas){
+        frame=age>=BLINK_AT&&age<BLINK_AT+BLINK_FOR?0:age<REST_AT?12:[1,2,3,2][Math.floor((age-REST_AT)/750)%4];
+      }
+      else if(idle&&s.textures?.exists(idle.key)&&age>=BLINK_AT&&age<BLINK_AT+BLINK_FOR){key=idle.key;frame=0;}
       else if(rest&&age>=REST_AT&&age<REST_AT+3*REST_FOR&&s.textures?.exists(rest.key)){key=rest.key;frame=1+Math.floor((age-REST_AT)/REST_FOR);}
     }
     const actionArt=this.meleePose?.art||MELEE_ATTACK_BODY[this.art.id],tallAction=actionArt&&key===actionArt.key;
@@ -189,7 +193,7 @@ export class UserCastPresentation {
     if(this.disposed||this.art.id!=='sakura'||this.state==='hurt'||this.state==='action')return null;
     const shoot=this.art.motion.shoot,idle=this.art.motion.idle,rest=this.art.motion.rest,walk=this.art.motion.walk,texture=this.image.texture?.key;
     const marker=this.upperCel>=0?shoot.muzzles[this.upperCel]
-      :(shoot&&texture===shoot.key?shoot.muzzles:idle&&texture===idle.key?idle.muzzles:rest&&texture===rest.key?rest.muzzles:walk&&texture===walk.key?walk.muzzles:RIFLE_MUZZLES)?.[this.image.frame.name];if(!marker)return null;
+      :(this.art.motion.muzzles|| (shoot&&texture===shoot.key?shoot.muzzles:idle&&texture===idle.key?idle.muzzles:rest&&texture===rest.key?rest.muzzles:walk&&texture===walk.key?walk.muzzles:RIFLE_MUZZLES))?.[this.image.frame.name];if(!marker)return null;
     const [x,y]=marker,p=this.scene.player,m=this.art.motion;
     return {x:p.x+(this.flip?-1:1)*(x-m.originX*m.frameWidth)*this.width/m.frameWidth,
       y:p.y+26+(y-m.originY*m.frameHeight)*this.height/m.frameHeight};
@@ -204,13 +208,19 @@ export class UserCastPresentation {
     if(!r)return {x:b.x,y:b.y,right:b.right,bottom:b.bottom};
     const frameWidth=attack&&this.image.texture?.key===attack.key?attack.frameWidth:motion.frameWidth;
     const left=this.flip?frameWidth-r[2]:r[0],right=this.flip?frameWidth-r[0]:r[2];
-    const scale=attack&&this.image.texture?.key===attack.key?(attack.scale??.5):.5;
+    const scale=attack&&this.image.texture?.key===attack.key?(attack.scale??.5):this.scale;
     return {x:b.x+left*scale,y:b.y+r[1]*scale,right:b.x+right*scale,bottom:b.y+r[3]*scale};
   }
   // Union of the visible clipped upper and lower bands, in native frame pixels.
   layerBounds(){
     const u=MOVE_SHOOT.upperBounds[this.upperCel],l=MOVE_SHOOT.lowerBounds[this.image.frame.name];
     return [Math.min(u[0],l[0]),Math.min(u[1],l[1]),Math.max(u[2],l[2]),Math.max(u[3],l[3])];
+  }
+  captureDefeat(){
+    const p=this.scene.player,m=this.art.motion;
+    if(this.disposed||!m.defeatFrames||!p?.active||!(p.hp<=0)||!Number.isFinite(p.x+p.y))return null;
+    return Object.freeze({x:p.x,y:p.y+26,art:m,frames:m.defeatFrames,size:this.height,
+      originX:this.flip?1-m.originX:m.originX,originY:m.originY,flipX:this.flip});
   }
   destroy(){if(this.disposed)return;this.disposed=true;this.heavyRig?.destroy();this.weaponFx.destroy();this.image.destroy();this.upper?.destroy();this.shadow.destroy();}
 }

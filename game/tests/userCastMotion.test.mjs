@@ -34,7 +34,7 @@ test('three production actors preload their own animation atlas, never the other
   for(const id of ['sakura','kai','enjo']){
     const sheets=[],scene={load:{image(){},spritesheet:(...args)=>sheets.push(args)}};
     preloadActorPresentation(scene,{stageId:1,performerId:id});
-    assert.equal(sheets.length,id==='enjo'?20:id==='kai'?14:13);assert.equal(sheets.filter(row=>row[0]==='melee-directional-20261026-'+id).length,id==='sakura'?0:1);const art=getUserCastArt(id);
+    assert.equal(sheets.length,id==='enjo'?20:id==='kai'?14:9);assert.equal(sheets.filter(row=>row[0]==='melee-directional-20261026-'+id).length,id==='sakura'?0:1);const art=getUserCastArt(id);
     assert.equal(sheets.filter(row=>row[0]==='enjo-north-rig-20261029').length,id==='enjo'?1:0,'rear bank belongs only to the heavy');
     assert.equal(sheets.filter(row=>row[0]==='melee-heavy-bridge-20261028-enjo').length,id==='enjo'?1:0,'new heavy bank is never loaded for rifle or sword');
     assert.equal(sheets.filter(row=>row[0]==='melee-authored-20261026-'+id).length,id==='sakura'?0:1);
@@ -44,18 +44,18 @@ test('three production actors preload their own animation atlas, never the other
     assert.deepEqual(sheets.map(row=>row[0]).filter(key=>/^user-rifle-(projectile|contact)-20261021$/.test(key)),
       id==='sakura'?['user-rifle-projectile-20261021','user-rifle-contact-20261021']:[]);
     assert.equal(sheets[0][0],art.motion.key);assert.equal(sheets[0][1],art.motion.path);
-    assert.equal(sheets[0][2].frameWidth,384);assert.equal(sheets[0][2].frameHeight,320);
+    assert.equal(sheets[0][2].frameWidth,id==='sakura'?256:384);assert.equal(sheets[0][2].frameHeight,id==='sakura'?256:320);
     preloadActorPresentation(scene,{stageId:1,performerId:id,practiceMode:true});
-    assert.equal(sheets.length,id==='enjo'?20:id==='kai'?14:13);assert.equal(scene._userCastPresentation,false);
+    assert.equal(sheets.length,id==='enjo'?20:id==='kai'?14:9);assert.equal(scene._userCastPresentation,false);
   }
 });
 
 test('walk phases follow actual distance, continue while shooting, and stop when position stops',()=>{
   const {scene:s,view:v}=fixture();v.update(0,false);s.player.x+=15;v.update(60,false);
-  assert.equal(v.state,'move');assert.equal(v.image.texture.key,getUserCastArt('sakura').motion.walk.key);
-  const first=v.image.frame.name;assert.equal(first,0,'15px stays in the first 22.5px walk phase');v.beginShot(61,1);s.player.x+=15;v.update(120,false);
+  assert.equal(v.state,'move');assert.equal(v.image.texture.key,getUserCastArt('sakura').motion.key);
+  const first=v.image.frame.name;assert.equal(first,7,'15px advances one cel in the six-frame 90px walk cycle');v.beginShot(61,1);s.player.x+=15;v.update(120,false);
   assert.equal(v.state,'move-attack');assert.notEqual(v.image.frame.name,first);
-  assert.equal(v.image.frame.name,1,'walking cels survive automatic fire');assert.equal(v.image.texture.key,getUserCastArt('sakura').motion.walk.key);
+  assert.equal(v.image.frame.name,8,'walking cels survive automatic fire');assert.equal(v.image.texture.key,getUserCastArt('sakura').motion.key);
   const distance=v.walkDistance;v.update(150,false);v.update(360,false);
   assert.equal(v.walkDistance,distance);assert.equal(v.state,'idle');
 });

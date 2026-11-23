@@ -1,6 +1,7 @@
 import {getPortraitBase} from './PortraitBaseRegistration.mjs';
+import {RED_VALKYRIE_AVATAR} from '../utils/redValkyrieArt.mjs';
 // Kai/Enjo avatars are crops of the same registered portrait base; Sakura keeps her own.
-const ART=Object.freeze({sakura:Object.freeze({src:'art/menu-coherent-cast-20261025/sakura-avatar.webp',width:160,height:160}),kai:getPortraitBase('kai').avatar,enjo:getPortraitBase('enjo').avatar});
+const ART=Object.freeze({sakura:RED_VALKYRIE_AVATAR,kai:getPortraitBase('kai').avatar,enjo:getPortraitBase('enjo').avatar});
 export const getMenuAvatarArt=id=>Object.hasOwn(ART,id)?ART[id]:null;
 export function mountMenuAvatar(view,parent,id,fallback){
  const art=getMenuAvatarArt(id);if(!art||!parent||!view?.doc||view.disposed)return null;
@@ -11,6 +12,6 @@ export function mountMenuAvatar(view,parent,id,fallback){
   if(getPortraitBase(id)){parent.dataset.avatarState='unavailable';const error=view.element('span','menu-avatar-error','!',parent);error.setAttribute('role','img');error.setAttribute('aria-label','头像未能载入');error.title='头像未能载入';}
   else{delete parent.dataset.menuAvatar;delete parent.dataset.avatarState;if(fallback)fallback.hidden=false;}
  };
- const ready=async()=>{if(!owned()||started)return;started=true;try{if(image.naturalWidth!==160||image.naturalHeight!==160)return fail();if(image.decode)await image.decode();if(!owned())return;image.hidden=false;parent.dataset.avatarState='ready';}catch{fail();}};
+ const ready=async()=>{if(!owned()||started)return;started=true;try{if(image.naturalWidth!==(art.naturalWidth||art.width)||image.naturalHeight!==(art.naturalHeight||art.height))return fail();if(image.decode)await image.decode();if(!owned())return;image.hidden=false;parent.dataset.avatarState='ready';}catch{fail();}};
  image.addEventListener('load',ready,{once:true});image.addEventListener('error',fail,{once:true});image.src=art.src;if(image.complete&&image.naturalWidth>0)ready();return image;
 }

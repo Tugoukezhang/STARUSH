@@ -10,7 +10,8 @@ function boot(earlyImage=null){
  return {ui:window.starushLoading,nodes,timers,listeners,reloads:()=>reloads};
 }
 test('boot uses existing raster stage and exactly three owner designs before module download',()=>{
- assert.match(html,/class="loading-cast"/);for(const name of ['cat-rifle.webp','mecha-sword.webp','hammer-cat.webp'])assert(html.includes('art/user-cast-20261015/'+name));
+ assert.match(html,/class="loading-cast"/);for(const file of ['red-valkyrie-20261123/portrait.png','user-cast-20261015/mecha-sword.webp','user-cast-20261015/hammer-cat.webp'])assert(html.includes('art/'+file));
+ assert.doesNotMatch(html,/cat-rifle/);
  assert.match(html,/<progress[^>]+id="game-loading-progress"/);assert.match(html,/art\/playable-ui-20261018\/plaza.webp/);
 });
 test('legacy theme no longer overrides the independent boot presentation owner',()=>{const css=fs.readFileSync(new URL('../src/styles/gameUiTheme.css',import.meta.url),'utf8');assert.doesNotMatch(css,/#game-loading/);});

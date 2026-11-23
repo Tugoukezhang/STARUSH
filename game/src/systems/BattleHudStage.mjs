@@ -1,6 +1,7 @@
 import {getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
 import {countdownUrgency} from './BattleHeaderPresentation.mjs';
 import {syncBattleCommandFeedback} from './BattleCommandFeedback.mjs';
+import {getActiveUserCastArt} from '../utils/userCast.mjs';
 const actions={sakura:'rifle',kai:'sword',enjo:'hammer'};
 const collapseOnShutdown=new WeakSet();
 
@@ -44,7 +45,7 @@ export function syncBattleHudStage(scene,doc,member,action,encore){
   if(button.dataset.commandIcon!==icon){
    let art=button.querySelector('img.battle-command-art');
    if(!art){art=doc.createElement('img');art.className='battle-command-art';art.alt='';art.setAttribute('aria-hidden','true');art.width=256;art.height=256;art.draggable=false;button.append(art);}
-   art.src=`art/battle-controls-20261031/${icon}.webp`;button.dataset.commandIcon=icon;
+   art.src=id==='special'&&getActiveUserCastArt(member.id)?.weaponIcon||`art/battle-controls-20261031/${icon}.webp`;button.dataset.commandIcon=icon;
   }
   let meter=button.querySelector('.battle-command-charge');
   if(!meter){meter=doc.createElement('span');meter.className='battle-command-charge';for(const [key,value]of Object.entries({role:'meter','aria-valuemin':'0','aria-valuemax':'100'}))meter.setAttribute(key,value);button.append(meter);}

@@ -1,3 +1,4 @@
+import {RED_VALKYRIE_ART} from '../utils/redValkyrieArt.mjs';
 import {loadPublicProfile,getRunChoice} from '../utils/publicRunProgression.mjs';
 import {UI_CAST as PUBLIC_PERFORMERS,isUserCastEnabled} from '../utils/userCast.mjs';
 import {getPreparationCatalog} from '../utils/publicPreparationCatalog.mjs';
@@ -10,7 +11,7 @@ import {createArrangementPlan} from '../utils/publicArrangementPlan.mjs';
 import {getPublicPerformanceCatalog} from '../utils/publicPerformanceAccess.mjs';
 
 // Fanfire reuses the generated rifle control symbol; it is not part of the shared menu art table.
-const ROLE_CHOICE_ART=Object.freeze({fanfire:'art/battle-controls-20261031/rifle.webp'});
+const ROLE_CHOICE_ART=Object.freeze({fanfire:RED_VALKYRIE_ART.weaponIcon});
 function arrangementArt(view,key,parent){
  let image;
  if(ROLE_CHOICE_ART[key]){image=view.element('img','menu-art',undefined,parent);image.src=ROLE_CHOICE_ART[key];image.alt='';image.width=64;image.height=64;image.draggable=false;}

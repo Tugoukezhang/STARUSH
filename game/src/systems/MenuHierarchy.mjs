@@ -1,3 +1,4 @@
+import {getActiveUserCastArt} from '../utils/userCast.mjs';
 import {openHierarchySheet} from './HierarchySheets.mjs';
 import {compactSecondaryPage,compactTrainingPage} from './SecondaryMenuHierarchy.mjs';
 import {framePlayModes,frameRunGoals} from './ProgramMenuPages.mjs';
@@ -98,7 +99,7 @@ function roster(view,main) {
   const role={sakura:'rifle',kai:'sword',enjo:'hammer'}[view.selection.memberId];
   const ability=tools.querySelector('[data-action=roster-sheet-ability]');
   const glyph=view.element('img','ui-glyph member-profession-glyph',undefined,ability);
-  glyph.src='art/member-studio-20261101/role-'+role+'.webp';glyph.alt='';glyph.draggable=false;glyph.setAttribute('aria-hidden','true');
+  glyph.src=getActiveUserCastArt(view.selection.memberId)?.weaponIcon||'art/member-studio-20261101/role-'+role+'.webp';glyph.alt='';glyph.draggable=false;glyph.setAttribute('aria-hidden','true');
   const profession=view.element('img','member-profession-caption',undefined,identity);
   profession.src=glyph.src;profession.alt='';profession.draggable=false;identity.insertBefore(profession,identity.children[0]);
 }

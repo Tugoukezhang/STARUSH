@@ -83,11 +83,13 @@ export class SakuraDefeatPresentation {
     this.started = true;
     const row = Math.max(0, DIRECTIONS.indexOf(pose.direction));
     const startFrame=(pose.frameOffset || 0)+row*4,size=pose.size || 88;
-    this.image = scene.add.image(pose.x, pose.y, art.key, startFrame)
-      .setDisplaySize(size, size).setOrigin(0.5, pose.originY ?? (245 / 256 - 26 / 88)).setDepth(9.81);
+    const frames=pose.frames||[startFrame,startFrame+1,startFrame+2,startFrame+3];
+    this.image = scene.add.image(pose.x, pose.y, art.key, frames[0])
+      .setDisplaySize(size, size).setOrigin(pose.originX??0.5, pose.originY ?? (245 / 256 - 26 / 88)).setDepth(9.81);
+    this.image.setFlipX?.(pose.flipX===true);
     FRAME_TIMES.forEach((time, index) => {
       this.timers.push(scene.time.delayedCall(time, () => {
-        if (!this.disposed) this.image.setFrame(startFrame + index + 1);
+        if (!this.disposed) this.image.setFrame(frames[index+1]);
       }));
     });
     this.timers.push(scene.time.delayedCall(SAKURA_DEFEAT_DURATION, () => {

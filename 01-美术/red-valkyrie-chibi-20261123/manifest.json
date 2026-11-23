@@ -1,0 +1,54 @@
+{
+  "reference": "01-美术/owner-originals/橙白黑赛博战术女武神.png",
+  "referenceSHA256": "fa2d3de4d0640b96287cb95dda8ca2a3f256c4a20a1b94e660895331c7ab3701",
+  "atlas": {
+    "columns": 6,
+    "rows": 4,
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "origin": [
+      152,
+      251
+    ],
+    "runtimeScale": 0.38,
+    "registration": "game/src/utils/redValkyrieArt.mjs"
+  },
+  "files": [
+    {
+      "file": "avatar.png",
+      "bytes": 2462065,
+      "sha256": "f4b0363ee23be4564605c51b5b19849f4f26fa73c84757eadd5b51fd9da03247",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "runtime": "game/public/art/red-valkyrie-20261123/avatar.png"
+    },
+    {
+      "file": "motion.png",
+      "bytes": 2864081,
+      "sha256": "7c1a6690391f882bd5c56194a845626ec4c0942b443de31742ad7a71904a0516",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "runtime": "game/public/art/red-valkyrie-20261123/motion.png"
+    },
+    {
+      "file": "portrait.png",
+      "bytes": 1975781,
+      "sha256": "c63f07f272787663fb6a84de4c25d898894180314c26e1fa04bf5e83f9246d5d",
+      "width": 1070,
+      "height": 1470,
+      "mode": "RGBA",
+      "runtime": "game/public/art/red-valkyrie-20261123/portrait.png"
+    },
+    {
+      "file": "weapon.png",
+      "bytes": 890207,
+      "sha256": "6a8f0d7150d40a1d0c6eb5cb58ef42d882b165d8b2f3dcc73dc17b41a76e2e8a",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "runtime": "game/public/art/red-valkyrie-20261123/weapon.png"
+    }
+  ]
+}
