@@ -1,7 +1,7 @@
 {
   "queueItem": "Q86",
-  "sourceSvgSha256": "7546c2c45f7db003c13435c6be2a20a443b564349869d33d7b679f7230d9ab24",
-  "manifestSha256": "f9d22b8b5da5dd901c42ec5ac7dbb1c5351c5f87586fa6d30c3f0129e5642581",
+  "sourceSvgSha256": "119a4432b91e55e38f4a717292983ef543a2f0b8025ba24df1dfff4659f16316",
+  "manifestSha256": "6bc05e5e2fa0a74aaf19e3125d2dbb5692e6b82b9cb33d2fcbfc6328e1b67cc6",
   "layers": [
     {
       "id": "book-cover-hidden-paint",
@@ -44,6 +44,26 @@
       "sha256": "cb75f929de9f0a8ce2fe3ad04ecedb51ffb2e6b9b5cedaae9baafc231b665b77"
     },
     {
+      "id": "face-foundation",
+      "file": "rendered-layers/face-foundation.png",
+      "x": 407,
+      "y": 205,
+      "width": 190,
+      "height": 207,
+      "visible": true,
+      "sha256": "1a900a80ca4e292676889b4b5e26107166046be4430d531c587a4c64487ed0ff"
+    },
+    {
+      "id": "raised-shoulder-foundation",
+      "file": "rendered-layers/raised-shoulder-foundation.png",
+      "x": 519,
+      "y": 370,
+      "width": 88,
+      "height": 130,
+      "visible": true,
+      "sha256": "69aba0d1a285a8db176ebe29175aa446431135f08fde0153b69636a1376f6d1a"
+    },
+    {
       "id": "unassigned-residual",
       "file": "rendered-layers/unassigned-residual.png",
       "x": 0,
@@ -61,7 +81,7 @@
       "width": 189,
       "height": 211,
       "visible": true,
-      "sha256": "686849d4192303b5b23c36a86ca6c9a580d96a39e6734a05d0d67f300d727f8a"
+      "sha256": "5888ce0894b9c02a6698ec56a386e6369ab94eb520c1c2b7cda3554d8d7f629b"
     },
     {
       "id": "coat-right-tail",
@@ -81,7 +101,7 @@
       "width": 196,
       "height": 167,
       "visible": true,
-      "sha256": "4bf69c335910d0a0a4275259088355dfdfb331438185a1feb8a188e2f7488c23"
+      "sha256": "afd7051cefe32cc5771ad0542d234f28dd13eca5f6c6d8a2dae85733f0c6cc80"
     },
     {
       "id": "coat-left-back",
@@ -111,7 +131,7 @@
       "width": 426,
       "height": 162,
       "visible": true,
-      "sha256": "88a4fa19dade108c67d8c0e041131a1621930f541f515bfb259a63cb1e9e19bf"
+      "sha256": "6ae2738ecb28acd28f034e6d7f1285158d71aefb55d9c27cd9aa97f7d203fd0f"
     },
     {
       "id": "rear-hair-left-lower",
@@ -291,7 +311,17 @@
       "width": 210,
       "height": 181,
       "visible": true,
-      "sha256": "e26eacc0e3ffed959d36cb3c736ca590a628b2dd811746370cbcebb7cd99e7ea"
+      "sha256": "1624ea8e6bc96c783697eddac76fd754d176c9efbec127c81cb7798f71c26ea0"
+    },
+    {
+      "id": "hair-under-raised-sleeve",
+      "file": "rendered-layers/hair-under-raised-sleeve.png",
+      "x": 567,
+      "y": 433,
+      "width": 114,
+      "height": 67,
+      "visible": true,
+      "sha256": "9a1e61aef1277a6d9d2e13ce97b164dacca028160674a592c919dfd6f217f177"
     },
     {
       "id": "cuff-raised",
@@ -411,7 +441,7 @@
       "width": 71,
       "height": 131,
       "visible": true,
-      "sha256": "1fd9351d4593b962b0de53f33180e1704b23597297d99af917d8617cdfb69fe4"
+      "sha256": "44250aef4d6ddb000b71cbd4dfe6d3a9283ea7787936a88b60a2cc1ed62a8aa9"
     },
     {
       "id": "braid-left",
@@ -421,7 +451,7 @@
       "width": 150,
       "height": 211,
       "visible": true,
-      "sha256": "efd46f6fea293cd137d3bf7bd7751e603c61c24184930a9036746aa3cb777a15"
+      "sha256": "3e89be4a65fc6709f17d5f6a2e31a9f7879055b7d32b446821d4c5194370a5b5"
     },
     {
       "id": "fringe-right",
@@ -431,7 +461,7 @@
       "width": 105,
       "height": 195,
       "visible": true,
-      "sha256": "e62915a835cc6d4759bf9def06da1aebce6dba821b174f968a3a11e4858013a2"
+      "sha256": "c8229ce2d878744f2b23808e66f1e15c990519fdd3dd483efff0ab4f6442e47b"
     },
     {
       "id": "fringe-center",
@@ -441,7 +471,7 @@
       "width": 164,
       "height": 133,
       "visible": true,
-      "sha256": "ed5dbba63d8e3d12e171c8f4c24b34e5dea60643c2086e20e606c37f46cd04cb"
+      "sha256": "5d444b6cbfb2a33e3a8caee904576e7cf253f63f690d1c505200d9933670f9da"
     },
     {
       "id": "ear-left",
@@ -451,7 +481,7 @@
       "width": 47,
       "height": 55,
       "visible": true,
-      "sha256": "49ecc3bd27654ccb085ad5563d6e0846fffdd594e71e76229d19e86a859946c8"
+      "sha256": "e0f5f19bdfdd07f21ebe5a0a5bb9ffb9d6c3a29e4955c906744f0eda8f719632"
     },
     {
       "id": "face",
@@ -461,7 +491,27 @@
       "width": 160,
       "height": 132,
       "visible": true,
-      "sha256": "4a506c07e8ee3e47c6e08231dd4cde6c7f436086ac0e19a9c22af9fa6bd83ab5"
+      "sha256": "20fb88e3b4427353ede498517c6d3009b9bb04da7823c6fec17f042219a2949c"
+    },
+    {
+      "id": "hair-temple-right",
+      "file": "rendered-layers/hair-temple-right.png",
+      "x": 534,
+      "y": 310,
+      "width": 52,
+      "height": 78,
+      "visible": true,
+      "sha256": "5a40d88da020045600c59a791b18ed161f5c7669cc7585faa42f32b779a6b11e"
+    },
+    {
+      "id": "hair-temple-left",
+      "file": "rendered-layers/hair-temple-left.png",
+      "x": 403,
+      "y": 292,
+      "width": 60,
+      "height": 86,
+      "visible": true,
+      "sha256": "06fae39e2049786743aa9029d8143396ee988bd3dbbf74440f006902746e0426"
     },
     {
       "id": "hat-bow-tails",

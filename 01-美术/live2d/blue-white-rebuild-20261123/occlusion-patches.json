@@ -1,0 +1,262 @@
+{
+  "version": 1,
+  "sourcePreparationAccepted": false,
+  "ownershipAdditions": [
+    {
+      "id": "hair-temple-left",
+      "label": "左侧贴脸发丝",
+      "before": "face",
+      "owner": "hair-side-left",
+      "region": [
+        [
+          411,
+          300
+        ],
+        [
+          431,
+          303
+        ],
+        [
+          444,
+          322
+        ],
+        [
+          444,
+          349
+        ],
+        [
+          455,
+          367
+        ],
+        [
+          448,
+          370
+        ],
+        [
+          433,
+          354
+        ],
+        [
+          420,
+          338
+        ]
+      ]
+    },
+    {
+      "id": "hair-temple-right",
+      "label": "右侧贴脸发丝",
+      "before": "face",
+      "owner": "fringe-right",
+      "region": [
+        [
+          550,
+          319
+        ],
+        [
+          570,
+          318
+        ],
+        [
+          578,
+          343
+        ],
+        [
+          567,
+          362
+        ],
+        [
+          554,
+          376
+        ],
+        [
+          544,
+          380
+        ],
+        [
+          542,
+          370
+        ],
+        [
+          550,
+          350
+        ]
+      ]
+    },
+    {
+      "id": "hair-under-raised-sleeve",
+      "label": "抬起右袖下方后发",
+      "before": "sleeve-raised",
+      "owner": "rear-hair-right-upper",
+      "region": [
+        [
+          578,
+          472
+        ],
+        [
+          604,
+          463
+        ],
+        [
+          626,
+          451
+        ],
+        [
+          650,
+          443
+        ],
+        [
+          673,
+          441
+        ],
+        [
+          673,
+          450
+        ],
+        [
+          652,
+          459
+        ],
+        [
+          620,
+          472
+        ],
+        [
+          590,
+          486
+        ],
+        [
+          575,
+          492
+        ]
+      ]
+    }
+  ],
+  "underpaint": [
+    {
+      "id": "face-foundation",
+      "label": "脸部与刘海下底面补绘",
+      "file": "face-foundation-paint.png",
+      "region": [
+        [
+          415,
+          226
+        ],
+        [
+          455,
+          213
+        ],
+        [
+          550,
+          215
+        ],
+        [
+          587,
+          248
+        ],
+        [
+          589,
+          323
+        ],
+        [
+          573,
+          359
+        ],
+        [
+          546,
+          386
+        ],
+        [
+          513,
+          404
+        ],
+        [
+          487,
+          403
+        ],
+        [
+          453,
+          375
+        ],
+        [
+          429,
+          349
+        ],
+        [
+          415,
+          310
+        ]
+      ],
+      "exclude": [],
+      "sourceTransform": [
+        0.20278934746939287,
+        -0.02610122428373096,
+        0.013719550675249272,
+        0.18202700997097057,
+        364.1545500441752,
+        229.00176700744672
+      ],
+      "controlOwner": "face",
+      "visible": true,
+      "accepted": false,
+      "clipToSourceAlpha": true,
+      "kind": "generated-occlusion-underpaint"
+    },
+    {
+      "id": "raised-shoulder-foundation",
+      "label": "右肩衣料连接底面补绘",
+      "file": "sleeve-complete-paint.png",
+      "region": [
+        [
+          527,
+          398
+        ],
+        [
+          553,
+          378
+        ],
+        [
+          575,
+          382
+        ],
+        [
+          598,
+          411
+        ],
+        [
+          599,
+          450
+        ],
+        [
+          580,
+          478
+        ],
+        [
+          555,
+          492
+        ],
+        [
+          536,
+          469
+        ],
+        [
+          527,
+          435
+        ]
+      ],
+      "exclude": [],
+      "sourceTransform": [
+        0.16177135716271948,
+        0.00940757095043939,
+        0.032370352750407776,
+        0.18462693017692805,
+        509.7168280940624,
+        294.081656241729
+      ],
+      "controlOwner": "blouse",
+      "visible": true,
+      "accepted": false,
+      "clipToSourceAlpha": true,
+      "kind": "generated-occlusion-underpaint"
+    }
+  ]
+}

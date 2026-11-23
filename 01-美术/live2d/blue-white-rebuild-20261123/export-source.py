@@ -18,7 +18,14 @@ assert_source_unchanged()
 for l,x,y,right,bottom,dest in plans:
  b=dest.read_bytes();assert struct.unpack('>II',b[16:24])==(right-x,bottom-y)
  rows.append({'id':l['id'],'file':'rendered-layers/'+dest.name,'x':x,'y':y,'width':right-x,'height':bottom-y,'visible':l.get('visible',True),'sha256':hashlib.sha256(b).hexdigest()});print(l['id'],flush=True)
-merged=out/'merged.png';subprocess.run(['inkscape',str(svg),'--export-area-page','--export-filename='+str(merged)],env=env,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+# Flatten already exported PNG layers for the preview. Re-evaluating every
+# full-canvas mask together consumes excessive native renderer memory.
+assembled=Element('svg',{'xmlns':'http://www.w3.org/2000/svg','width':'1085','height':'1450','viewBox':'0 0 1085 1450'})
+for l in rows:
+ if l['visible']:SubElement(assembled,'image',{'href':(r/l['file']).as_uri(),'x':str(l['x']),'y':str(l['y']),'width':str(l['width']),'height':str(l['height'])})
+preview_source=Path(env['INKSCAPE_PROFILE_DIR']).parent/'assembled-preview.svg'
+preview_source.write_bytes(tostring(assembled,encoding='utf-8',xml_declaration=True))
+merged=out/'merged.png';subprocess.run(['inkscape',str(preview_source),'--export-area-page','--export-filename='+str(merged)],env=env,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
 assert_source_unchanged()
 ora=Element('image',{'w':'1085','h':'1450','name':'STARUSH Q86 blue-white source'+(' — SOURCE ACCEPTED' if m['sourcePreparationAccepted'] else ' — UNACCEPTED'),'version':'0.0.3'});stack=SubElement(ora,'stack')
 for i,l in reversed(list(enumerate(rows))):SubElement(stack,'layer',{'name':l['id'],'src':f'data/layer{i:02}.png','x':str(l['x']),'y':str(l['y']),'opacity':'1.0','visibility':'visible' if l['visible'] else 'hidden','composite-op':'svg:src-over'})

@@ -23,7 +23,7 @@ m=json.loads((root/'layers.json').read_text());r=json.loads((root/'raster-layers
 assert sha(root/'cutout-candidate.png')==sha(root.parents[1]/'blue-academy-chibi-20261123/portrait.png')
 assert r['manifestSha256']==sha(root/'layers.json')
 assert r['sourceSvgSha256']==sha(root/'blue-white-layer-source.svg')
-assert len(m['layers'])==len(r['layers'])==61
+assert len(m['layers'])==len(r['layers'])==66
 assert not m['sourcePreparationAccepted'] and not m['artAccepted'] and not m['isLive2DModel']
 for src in m['sources']: assert sha(root/src['file'])==src['sha256']
 for layer,source in zip(r['layers'],m['layers']):
@@ -37,26 +37,49 @@ with zipfile.ZipFile(root/'blue-white-layer-source.ora') as archive:
 
 source=pixels(root/'cutout-candidate.png');merged=pixels(root/'rendered-layers/merged.png')
 neutral=metrics(source,merged)
-assert neutral['maxAlphaDifference']<=1
-assert neutral['maxDisplayedDifferenceOnBlack']<=1.1
-assert neutral['maxDisplayedDifferenceOnWhite']<=1.1
+assert neutral['maxAlphaDifference']<=4
+assert neutral['maxDisplayedDifferenceOnBlack']<=4.1
+assert neutral['maxDisplayedDifferenceOnWhite']<=4.1
+# Added skin/cloth lies only underneath these two local regions. Everything
+# else must retain the previous maximum one-level raster rounding difference.
+outside=np.ones(source.shape[:2],dtype=bool)
+outside[205:415,405:600]=False
+outside[370:505,515:610]=False
+display_delta=np.abs(source[:,:,:3]*source[:,:,3:4]/255-merged[:,:,:3]*merged[:,:,3:4]/255)
+assert display_delta[outside].max()<=1.1
 native=json.loads((scratch/'native-reopen.json').read_text())
 native_pixels={}
 for ext in ['ora','xcf','psd']:
     native_pixels[ext]=metrics(merged,pixels(scratch/(ext+'-reopened.png')))
-    assert native_pixels[ext]['visibleRgbaDifferentPixels']==0,ext
-    assert len(native[ext])==61
+    assert native_pixels[ext]['maxAlphaDifference']==0,ext
+    tolerance=16 if ext=='ora' else 1.1
+    assert native_pixels[ext]['maxDisplayedDifferenceOnBlack']<=tolerance,ext
+    assert native_pixels[ext]['maxDisplayedDifferenceOnWhite']<=tolerance,ext
+    assert len(native[ext])==66
+assert metrics(pixels(scratch/'xcf-reopened.png'),pixels(scratch/'psd-reopened.png'))['visibleRgbaDifferentPixels']==0
+assert metrics(merged,pixels(scratch/'ora-perceptual-reopened.png'))['maxDisplayedDifferenceOnBlack']<=1.1
 for item in native['files']:assert sha(root/item['file'])==item['sha256']
 browser=json.loads((scratch/'browser-check.json').read_text())
-assert len(browser['layers'])==61 and browser['corruptionRejected']
+assert len(browser['layers'])==66 and browser['corruptionRejected']
 assert not browser['errors'] and not browser['httpErrors']
 assert browser['manifest']['sourceSvgSha256']==sha(root/'blue-white-layer-source.svg')
 residual=pixels(root/'rendered-layers/unassigned-residual.png')
-result={'status':'WIP source infrastructure verified; Q86 NOT accepted','canvas':[1085,1450],
- 'layerCount':61,'visiblePartitionLayers':57,'hiddenCandidates':4,
- 'nonemptyPngLayers':61,'originalComposite':neutral,'nativeComposite':native_pixels,
- 'nativeVersion':native['gimpVersion'],'nativeToggleMoveResetPerFormat':61,
- 'browserToggleSoloMoveReset':61,'browserCorruptionRejected':True,'browserErrors':[],
+occlusion=json.loads((scratch/'occlusion-check.json').read_text())
+assert occlusion['sourceSvgSha256']==sha(root/'blue-white-layer-source.svg')
+feature_checks=[s for s in occlusion['states'] if 'filledAlpha' in s]
+assert len(feature_checks)==5
+assert all(s['filledAlpha']>=250 and s['withoutFoundationAlpha']<32 for s in feature_checks)
+junction_checks=[{k:s[k] for k in ['id','dx','dy','newlyFilledPixels']} for s in occlusion['states'] if 'newlyFilledPixels' in s]
+assert len(junction_checks)==8 and all(s['newlyFilledPixels']>0 for s in junction_checks)
+result={'status':'WIP face/shoulder foundation added; Q86 NOT accepted','canvas':[1085,1450],
+ 'layerCount':66,'visiblePartitionLayers':60,'visibleUnderpaintLayers':2,'hiddenCandidates':4,
+ 'nonemptyPngLayers':66,'originalComposite':neutral,'nativeComposite':native_pixels,
+ 'nativeVersion':native['gimpVersion'],'nativeToggleMoveResetPerFormat':66,
+ 'recommendedNativeFormats':['xcf','psd'],'nativeXcfPsdPixelsIdentical':True,
+ 'oraDefaultGimpBlendMatchesBrowser':False,'savedNativeBlendMode':native['savedBlendMode'],
+ 'browserToggleSoloMoveReset':66,'browserCorruptionRejected':True,'browserErrors':[],
+ 'featureGapChecks':feature_checks,'largeShiftArtAccepted':False,
+ 'junctionGapChecks':junction_checks,
  'unassignedResidualPixelsAlphaAbove32':int((residual[:,:,3]>32).sum()),
  'sourcePreparationAccepted':False,'artAccepted':False,'contentComplete':False,'isLive2DModel':False,
  'files':[{'file':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(root.rglob('*')) if p.is_file() and p.suffix in ['.png','.svg','.ora','.xcf','.psd']]}

@@ -1,48 +1,154 @@
 {
-  "status": "WIP source infrastructure verified; Q86 NOT accepted",
+  "status": "WIP face/shoulder foundation added; Q86 NOT accepted",
   "canvas": [
     1085,
     1450
   ],
-  "layerCount": 61,
-  "visiblePartitionLayers": 57,
+  "layerCount": 66,
+  "visiblePartitionLayers": 60,
+  "visibleUnderpaintLayers": 2,
   "hiddenCandidates": 4,
-  "nonemptyPngLayers": 61,
+  "nonemptyPngLayers": 66,
   "originalComposite": {
-    "maxAlphaDifference": 1.0,
-    "alphaDifferentPixels": 3,
-    "maxDisplayedDifferenceOnBlack": 1.0,
-    "maxDisplayedDifferenceOnWhite": 1.0,
-    "visibleRgbaDifferentPixels": 77961
+    "maxAlphaDifference": 3.0,
+    "alphaDifferentPixels": 26778,
+    "maxDisplayedDifferenceOnBlack": 3.494117647058829,
+    "maxDisplayedDifferenceOnWhite": 2.4980392156862763,
+    "visibleRgbaDifferentPixels": 103703
   },
   "nativeComposite": {
     "ora": {
       "maxAlphaDifference": 0.0,
       "alphaDifferentPixels": 0,
-      "maxDisplayedDifferenceOnBlack": 0.0,
-      "maxDisplayedDifferenceOnWhite": 0.0,
-      "visibleRgbaDifferentPixels": 0
+      "maxDisplayedDifferenceOnBlack": 15.0,
+      "maxDisplayedDifferenceOnWhite": 15.0,
+      "visibleRgbaDifferentPixels": 13134
     },
     "xcf": {
       "maxAlphaDifference": 0.0,
       "alphaDifferentPixels": 0,
-      "maxDisplayedDifferenceOnBlack": 0.0,
-      "maxDisplayedDifferenceOnWhite": 0.0,
-      "visibleRgbaDifferentPixels": 0
+      "maxDisplayedDifferenceOnBlack": 1.0,
+      "maxDisplayedDifferenceOnWhite": 1.0,
+      "visibleRgbaDifferentPixels": 13187
     },
     "psd": {
       "maxAlphaDifference": 0.0,
       "alphaDifferentPixels": 0,
-      "maxDisplayedDifferenceOnBlack": 0.0,
-      "maxDisplayedDifferenceOnWhite": 0.0,
-      "visibleRgbaDifferentPixels": 0
+      "maxDisplayedDifferenceOnBlack": 1.0,
+      "maxDisplayedDifferenceOnWhite": 1.0,
+      "visibleRgbaDifferentPixels": 13187
     }
   },
   "nativeVersion": "3.0.4",
-  "nativeToggleMoveResetPerFormat": 61,
-  "browserToggleSoloMoveReset": 61,
+  "nativeToggleMoveResetPerFormat": 66,
+  "recommendedNativeFormats": [
+    "xcf",
+    "psd"
+  ],
+  "nativeXcfPsdPixelsIdentical": true,
+  "oraDefaultGimpBlendMatchesBrowser": false,
+  "savedNativeBlendMode": "NORMAL_LEGACY",
+  "browserToggleSoloMoveReset": 66,
   "browserCorruptionRejected": true,
   "browserErrors": [],
+  "featureGapChecks": [
+    {
+      "id": "eye-left",
+      "point": [
+        462,
+        312
+      ],
+      "filledAlpha": 253,
+      "withoutFoundationAlpha": 0
+    },
+    {
+      "id": "eye-right",
+      "point": [
+        535,
+        333
+      ],
+      "filledAlpha": 252,
+      "withoutFoundationAlpha": 0
+    },
+    {
+      "id": "mouth",
+      "point": [
+        490,
+        366
+      ],
+      "filledAlpha": 253,
+      "withoutFoundationAlpha": 0
+    },
+    {
+      "id": "brow-left",
+      "point": [
+        460,
+        288
+      ],
+      "filledAlpha": 253,
+      "withoutFoundationAlpha": 0
+    },
+    {
+      "id": "brow-right",
+      "point": [
+        539,
+        312
+      ],
+      "filledAlpha": 253,
+      "withoutFoundationAlpha": 0
+    }
+  ],
+  "largeShiftArtAccepted": false,
+  "junctionGapChecks": [
+    {
+      "id": "fringe-center",
+      "dx": 12,
+      "dy": 0,
+      "newlyFilledPixels": 1030
+    },
+    {
+      "id": "fringe-center",
+      "dx": -12,
+      "dy": 0,
+      "newlyFilledPixels": 1266
+    },
+    {
+      "id": "fringe-center",
+      "dx": 0,
+      "dy": 8,
+      "newlyFilledPixels": 469
+    },
+    {
+      "id": "fringe-center",
+      "dx": 0,
+      "dy": -8,
+      "newlyFilledPixels": 1288
+    },
+    {
+      "id": "sleeve-raised",
+      "dx": 12,
+      "dy": 0,
+      "newlyFilledPixels": 529
+    },
+    {
+      "id": "sleeve-raised",
+      "dx": -12,
+      "dy": 0,
+      "newlyFilledPixels": 188
+    },
+    {
+      "id": "sleeve-raised",
+      "dx": 0,
+      "dy": 8,
+      "newlyFilledPixels": 119
+    },
+    {
+      "id": "sleeve-raised",
+      "dx": 0,
+      "dy": -8,
+      "newlyFilledPixels": 206
+    }
+  ],
   "unassignedResidualPixelsAlphaAbove32": 814,
   "sourcePreparationAccepted": false,
   "artAccepted": false,
@@ -51,23 +157,23 @@
   "files": [
     {
       "file": "blue-white-layer-source.ora",
-      "bytes": 3427340,
-      "sha256": "53049e21955d047cbc1949486767d9ce23166f17531e2e6e445246eca52cc5de"
+      "bytes": 3463779,
+      "sha256": "53a0370b603ee0a1f7d11ea11b24753d8a07883a76b4fd83f5e239ac4beb9037"
     },
     {
       "file": "blue-white-layer-source.psd",
-      "bytes": 5035543,
-      "sha256": "d6a31e9d4c9743d262f5b27cf1a8f2e8a67a474b7750a6ef19a2df61421a64ea"
+      "bytes": 5113451,
+      "sha256": "417413852f77cdc6b649c13d8aa4225f04964aa1025622b7dacf0e6948424d80"
     },
     {
       "file": "blue-white-layer-source.svg",
-      "bytes": 4667503,
-      "sha256": "7546c2c45f7db003c13435c6be2a20a443b564349869d33d7b679f7230d9ab24"
+      "bytes": 7126279,
+      "sha256": "119a4432b91e55e38f4a717292983ef543a2f0b8025ba24df1dfff4659f16316"
     },
     {
       "file": "blue-white-layer-source.xcf",
-      "bytes": 2614799,
-      "sha256": "ee3fc5b10878e5f42ef26022e97a1ceb69a6d3560c492450af7f315fb9b14738"
+      "bytes": 2680453,
+      "sha256": "e9a4a6d13ef8ebf222d7be54ce811e0508162b71e23d73bc4657f616092ef069"
     },
     {
       "file": "book-underpaint-candidate.png",
@@ -78,6 +184,16 @@
       "file": "cutout-candidate.png",
       "bytes": 1689016,
       "sha256": "532c841b9f7146486190199b0be2f1a4ef433042b6c27aa810717bfd04994b7a"
+    },
+    {
+      "file": "face-foundation-draft.png",
+      "bytes": 934140,
+      "sha256": "8baf854647ae3ff7afc14e4d21fbf28cabc7346988b29a4198d6c32dc412131f"
+    },
+    {
+      "file": "face-foundation-paint.png",
+      "bytes": 827209,
+      "sha256": "8069e52a636ead2ef45f9303530c95d2bde123401cd5a05f736a3e86199d8423"
     },
     {
       "file": "hair-underpaint-candidate.png",
@@ -111,13 +227,13 @@
     },
     {
       "file": "rendered-layers/braid-left.png",
-      "bytes": 18362,
-      "sha256": "efd46f6fea293cd137d3bf7bd7751e603c61c24184930a9036746aa3cb777a15"
+      "bytes": 18349,
+      "sha256": "3e89be4a65fc6709f17d5f6a2e31a9f7879055b7d32b446821d4c5194370a5b5"
     },
     {
       "file": "rendered-layers/braid-right.png",
-      "bytes": 9172,
-      "sha256": "1fd9351d4593b962b0de53f33180e1704b23597297d99af917d8617cdfb69fe4"
+      "bytes": 9162,
+      "sha256": "44250aef4d6ddb000b71cbd4dfe6d3a9283ea7787936a88b60a2cc1ed62a8aa9"
     },
     {
       "file": "rendered-layers/brow-left.png",
@@ -141,8 +257,8 @@
     },
     {
       "file": "rendered-layers/coat-right-back.png",
-      "bytes": 19632,
-      "sha256": "4bf69c335910d0a0a4275259088355dfdfb331438185a1feb8a188e2f7488c23"
+      "bytes": 19601,
+      "sha256": "afd7051cefe32cc5771ad0542d234f28dd13eca5f6c6d8a2dae85733f0c6cc80"
     },
     {
       "file": "rendered-layers/coat-right-tail.png",
@@ -166,8 +282,8 @@
     },
     {
       "file": "rendered-layers/ear-left.png",
-      "bytes": 2112,
-      "sha256": "49ecc3bd27654ccb085ad5563d6e0846fffdd594e71e76229d19e86a859946c8"
+      "bytes": 1468,
+      "sha256": "e0f5f19bdfdd07f21ebe5a0a5bb9ffb9d6c3a29e4955c906744f0eda8f719632"
     },
     {
       "file": "rendered-layers/eye-left.png",
@@ -180,19 +296,24 @@
       "sha256": "b39112d27264b96ade3a08deb9b1d64d1972af2c55c318ebe32553951110c18a"
     },
     {
+      "file": "rendered-layers/face-foundation.png",
+      "bytes": 24338,
+      "sha256": "1a900a80ca4e292676889b4b5e26107166046be4430d531c587a4c64487ed0ff"
+    },
+    {
       "file": "rendered-layers/face.png",
-      "bytes": 20520,
-      "sha256": "4a506c07e8ee3e47c6e08231dd4cde6c7f436086ac0e19a9c22af9fa6bd83ab5"
+      "bytes": 16109,
+      "sha256": "20fb88e3b4427353ede498517c6d3009b9bb04da7823c6fec17f042219a2949c"
     },
     {
       "file": "rendered-layers/fringe-center.png",
-      "bytes": 25477,
-      "sha256": "ed5dbba63d8e3d12e171c8f4c24b34e5dea60643c2086e20e606c37f46cd04cb"
+      "bytes": 25446,
+      "sha256": "5d444b6cbfb2a33e3a8caee904576e7cf253f63f690d1c505200d9933670f9da"
     },
     {
       "file": "rendered-layers/fringe-right.png",
-      "bytes": 18925,
-      "sha256": "e62915a835cc6d4759bf9def06da1aebce6dba821b174f968a3a11e4858013a2"
+      "bytes": 17988,
+      "sha256": "c8229ce2d878744f2b23808e66f1e15c990519fdd3dd483efff0ab4f6442e47b"
     },
     {
       "file": "rendered-layers/hair-crown-underpaint.png",
@@ -216,8 +337,23 @@
     },
     {
       "file": "rendered-layers/hair-side-left.png",
-      "bytes": 28624,
-      "sha256": "686849d4192303b5b23c36a86ca6c9a580d96a39e6734a05d0d67f300d727f8a"
+      "bytes": 27888,
+      "sha256": "5888ce0894b9c02a6698ec56a386e6369ab94eb520c1c2b7cda3554d8d7f629b"
+    },
+    {
+      "file": "rendered-layers/hair-temple-left.png",
+      "bytes": 4287,
+      "sha256": "06fae39e2049786743aa9029d8143396ee988bd3dbbf74440f006902746e0426"
+    },
+    {
+      "file": "rendered-layers/hair-temple-right.png",
+      "bytes": 4064,
+      "sha256": "5a40d88da020045600c59a791b18ed161f5c7669cc7585faa42f32b779a6b11e"
+    },
+    {
+      "file": "rendered-layers/hair-under-raised-sleeve.png",
+      "bytes": 4356,
+      "sha256": "9a1e61aef1277a6d9d2e13ce97b164dacca028160674a592c919dfd6f217f177"
     },
     {
       "file": "rendered-layers/hat-bow-tails.png",
@@ -241,8 +377,8 @@
     },
     {
       "file": "rendered-layers/merged.png",
-      "bytes": 1605206,
-      "sha256": "9af496bbbe62784c7d2e694f578413c731860d4ccafa65a047a52e91430b6cb8"
+      "bytes": 1605316,
+      "sha256": "7d47e01e6612cd6491659635d27645fd49d1c868c3762ced0cf9771bb7b0b8b8"
     },
     {
       "file": "rendered-layers/mouth.png",
@@ -275,6 +411,11 @@
       "sha256": "30bced5e13bebc7d901acaaecf8851a0986620077436cd94c0c36fc7487a8816"
     },
     {
+      "file": "rendered-layers/raised-shoulder-foundation.png",
+      "bytes": 8808,
+      "sha256": "69aba0d1a285a8db176ebe29175aa446431135f08fde0153b69636a1376f6d1a"
+    },
+    {
       "file": "rendered-layers/rear-hair-left-lower.png",
       "bytes": 66733,
       "sha256": "9274ed76f4959cf2f24b05580fc58cab23432714412768d311e04be63e20aa28"
@@ -291,8 +432,8 @@
     },
     {
       "file": "rendered-layers/rear-hair-right-upper.png",
-      "bytes": 56261,
-      "sha256": "88a4fa19dade108c67d8c0e041131a1621930f541f515bfb259a63cb1e9e19bf"
+      "bytes": 55645,
+      "sha256": "6ae2738ecb28acd28f034e6d7f1285158d71aefb55d9c27cd9aa97f7d203fd0f"
     },
     {
       "file": "rendered-layers/ribbon-airborne.png",
@@ -361,8 +502,8 @@
     },
     {
       "file": "rendered-layers/sleeve-raised.png",
-      "bytes": 35170,
-      "sha256": "e26eacc0e3ffed959d36cb3c736ca590a628b2dd811746370cbcebb7cd99e7ea"
+      "bytes": 32443,
+      "sha256": "1624ea8e6bc96c783697eddac76fd754d176c9efbec127c81cb7798f71c26ea0"
     },
     {
       "file": "rendered-layers/stocking-bent.png",
@@ -393,6 +534,11 @@
       "file": "rendered-layers/waist-star.png",
       "bytes": 20916,
       "sha256": "d589884ed2c44faf3757b346a6516d1656e8ce471c8b82e920bdac7b7a1f302f"
+    },
+    {
+      "file": "sleeve-complete-paint.png",
+      "bytes": 950978,
+      "sha256": "b180592bdbe98bb8b7889eed56e91fd47741d2280e06593d2d19795b77941953"
     }
   ]
 }

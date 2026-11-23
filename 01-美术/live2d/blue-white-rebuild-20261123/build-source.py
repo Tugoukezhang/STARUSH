@@ -73,10 +73,15 @@ patches={
 spec=[(i,l,patches.get(i,p)) for i,l,p in spec]
 spec.insert(next(n for n,s in enumerate(spec) if s[0]=='braid-right')+1,('neck-bow-tail-right','领结右侧蓝白飘带',[(520,491),(536,495),(545,501),(556,510),(571,520),(588,530),(594,540),(584,548),(561,539),(541,536),(525,526),(518,516)]))
 spec=[(i,'左侧鬓角发丝（原误标耳朵）' if i=='ear-left' else l,p) for i,l,p in spec]
+occlusion=json.loads((r/'occlusion-patches.json').read_text())
+for part in occlusion['ownershipAdditions']:
+ spec.insert(next(n for n,s in enumerate(spec) if s[0]==part['before']),(part['id'],part['label'],part['region']))
 rows=[]
 for n,(id,label,p) in enumerate(spec): rows.append(dict(id=id,label=label,file='cutout-candidate.png',region=p,exclude=[q for _,_,q in spec[:n]],kind='visible-source-UV',accepted=False))
 rows.append(dict(id='unassigned-residual',label='待审查的未归属余面',file='cutout-candidate.png',region=[(0,0),(W,0),(W,H),(0,H)],exclude=[p for _,_,p in spec],kind='unassigned-residual',accepted=False))
 rows.reverse()
+for part in occlusion['ownershipAdditions']:
+ next(l for l in rows if l['id']==part['id'])['controlOwner']=part['owner']
 # Coordinates below were inspected in residual-atlas-0..3, not automatically
 # assigned by nearest distance. Preserve original pixels and keep ownership explicit.
 def box(x,y,w,h):return [(x,y),(x+w,y),(x+w,y+h),(x,y+h)]
@@ -135,9 +140,13 @@ for id,label,p,owner in reversed([
 ]):
  rows.insert(0,dict(id=id,label=label,file='hair-underpaint-candidate.png',region=p,exclude=[],kind='generated-hidden-paint',candidateFor=owner,visible=False,accepted=False,sourceTransform=[1085/1054,0,0,1450/1492,0,0]))
 rows.insert(0,dict(id='book-cover-hidden-paint',label='候选：书签后书封补绘',file='book-underpaint-candidate.png',region=[(238,1046),(252,1042),(267,1056),(284,1080),(285,1084),(272,1087),(256,1085),(248,1070)],exclude=[],kind='generated-hidden-paint',candidateFor='book',visible=False,accepted=False,sourceTransform=[1,0,0,1,-4,-42]))
+rows[4:4]=occlusion['underpaint']
 def path(p):return 'M'+' L'.join(','.join(map(str,xy)) for xy in p)+' Z'
 textures={f:(r/f).read_bytes() for f in sorted({l['file'] for l in rows})}
 defs=f'<filter id="uv-hard" filterUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="discrete" tableValues="0 1"/><feFuncG type="discrete" tableValues="0 1"/><feFuncB type="discrete" tableValues="0 1"/><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer></filter>'+''.join(f'<image id="tex-{f}" width="{struct.unpack(">II",b[16:24])[0]}" height="{struct.unpack(">II",b[16:24])[1]}" href="data:image/png;base64,{base64.b64encode(b).decode()}"/>' for f,b in textures.items())
+# Only backfill locations already inside the almost opaque reference silhouette.
+# This alpha-only mask cannot paint background gaps or alter source RGB.
+defs+='<filter id="opaque-reference" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/><feComponentTransfer><feFuncA type="linear" slope="255" intercept="-251"/></feComponentTransfer></filter><mask id="reference-silhouette" maskUnits="userSpaceOnUse" x="0" y="0" width="1085" height="1450"><use href="#tex-cutout-candidate.png" filter="url(#opaque-reference)"/></mask>'
 groups=[]
 # Deterministic UV ownership at 21 multi-polygon junctions found by full-canvas
 # alpha comparison. These retain original texture samples, not painted colors.
@@ -149,6 +158,9 @@ corner_owners['braid-right']=[(550,376),(568,386),(557,394)]
 corner_owners['cuff-lowered'].append((281,685))
 corner_owners['fringe-right'].append((560,316))
 corner_owners['coat-left-back']=[(381,705)]
+corner_owners['hair-temple-left']=[(415,300)]
+corner_owners['hair-temple-right']=[(568,359),(554,375)]
+corner_owners['coat-right-back'].extend([(595,483),(575,488)])
 corner_rects=''.join(f'<rect x="{x}" y="{y}" width="1" height="1" fill="black" shape-rendering="crispEdges"/>' for cells in corner_owners.values() for x,y in cells)
 for l in rows:
  id=l['id'];defs+=f'<mask id="mask-{id}" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}"><path d="{path(l["region"])}" fill="white" shape-rendering="crispEdges"/>'+''.join(f'<path d="{path(q)}" fill="black" shape-rendering="crispEdges"/>' for q in l['exclude'])+(corner_rects if l['file']=='cutout-candidate.png' else '')+'</mask>'
@@ -159,7 +171,9 @@ for l in rows:
  if id in corner_owners:
   l['uvCornerCells']=corner_owners[id];cid='corners-'+id;defs+=f'<clipPath id="{cid}">'+''.join(f'<rect x="{x}" y="{y}" width="1" height="1" shape-rendering="crispEdges"/>' for x,y in corner_owners[id])+'</clipPath>';extra+=f'<use href="#tex-cutout-candidate.png" clip-path="url(#{cid})"/>'
  transform='matrix('+' '.join(map(str,l.get('sourceTransform',[1,0,0,1,0,0])))+')'
- groups.append(f'<g id="{id}" inkscape:groupmode="layer" inkscape:label="{escape(l["label"])}"'+(' style="display:none"' if l.get('visible') is False else '')+f'><g mask="url(#mask-{id})"><use href="#tex-{l["file"]}" transform="{transform}"/></g>{extra}</g>')
+ content=f'<g mask="url(#mask-{id})"><use href="#tex-{l["file"]}" transform="{transform}"/></g>{extra}'
+ if l.get('clipToSourceAlpha'):content=f'<g mask="url(#reference-silhouette)">{content}</g>'
+ groups.append(f'<g id="{id}" inkscape:groupmode="layer" inkscape:label="{escape(l["label"])}"'+(' style="display:none"' if l.get('visible') is False else '')+f'>{content}</g>')
 # Threshold only the ownership masks, never source color/alpha. This avoids
 # complementary antialiased mask edges recompositing to 75% alpha at a seam.
 import re

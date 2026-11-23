@@ -14,6 +14,25 @@
       "tool": "image_gen",
       "prompt": "Edit the supplied artwork into an isolated book component for game animation. Keep ONLY the open blue-and-gold magic book at its original lower-left position, perspective, drawing style and scale. Remove the bird, the blue bookmark hanging across the front cover, all character parts and all other objects. Fill the small cover region previously behind the bookmark with continuous dark royal blue leather and restrained gold ornament matching the surrounding cover. Retain all ivory page fans, cover corners and golden spine details. The complete open book should remain approximately x90..405 y860..1090 on the original 1085x1450 canvas. Everything else transparent. DO NOT center, enlarge, rotate, zoom or crop the book. Preserve the empty margins so this can be placed back underneath the original bookmark layer. A single book only, no lettering or layout guides.",
       "status": "hidden cover patch candidate; full isolated book retained; registration -4,-42 requires visual review"
+    },
+    {
+      "file": "face-foundation-draft.png",
+      "tool": "image_gen",
+      "prompt": "Create a clean animation compositing base from this cropped illustration fragment. This is ONLY a painted peach-colored FACE FOUNDATION SHAPE on transparency, for placing separate illustrated eyes, mouth and hair layers above it. Preserve the reference's softly pointed chin, tilted oval, warm pale-peach skin, light pink cheek shading and fine jaw contour. Complete the oval upward into a full smooth forehead. Fill the missing cutout holes with matching skin shading. Remove the pink hair fragments and blue collar fragments along its edges. The finished shape has no drawn eyes, eyelashes, brows, nose marks or mouth: those already exist on separate production layers. No neck, no hair, no clothing, no background, no extra shapes. Keep the same painterly anime rendering and head tilt as this supplied piece. A single smooth continuous opaque face-shaped texture with soft blush and subtle edge shading, centered with ample transparent padding.",
+      "status": "new foundation; registration and visibility review in occlusion-patches.json"
+    },
+    {
+      "file": "sleeve-complete-paint.png",
+      "tool": "image_gen",
+      "prompt": "Repair this isolated white-and-blue illustrated sleeve into a complete standalone animation part. Preserve its current diagonal pose (shoulder at lower left, cuff opening at upper right), white billowing fabric, pale lavender fold shading, thin bright-blue piping, navy edging and painterly anime style. Fill the missing fabric along the lower-left shoulder end into a smooth rounded closed shoulder cap, including cloth previously hidden by hair or torso. Complete the fabric at the upper-right cuff attachment. Remove every pink hair sliver, skin sliver, noise speck or unrelated ribbon outside the sleeve. Do not include a hand, forearm, person, head or torso. Retain the same silhouette and folds as much as possible; only extend the two attachment ends by a modest margin so neighboring parts can cover them. One clean complete sleeve on a transparent background with padding on all sides. No text or diagrams.",
+      "status": "new sleeve image; only shoulder junction used as foundation; source illustration retained"
+    },
+    {
+      "file": "face-foundation-paint.png",
+      "tool": "image_gen",
+      "prompt": "Edit only the color/shading of this isolated face foundation texture. Keep its exact outline, orientation, canvas, transparency and placement. It currently has a strong cool pink cast. Change the skin to very light warm ivory peach matching an anime face with central skin around #FBE2D3, softly shaded edges around #EBC4B8, only extremely faint peach blush. Reduce the broad pink/red edge blush and overall contrast. Retain gentle painted volume and the thin original chin contour. Keep this a single featureless skin foundation shape: do not add eyes, eyebrows, nose marks, mouth, hair, ears, neck, clothing, text or any other object. This is a color correction to an existing production compositing layer, not a new design.",
+      "reference": "face-foundation-draft.png",
+      "status": "warm ivory tone revision; used as registered underpaint, entire Q86 not accepted"
     }
   ],
   "failed": [

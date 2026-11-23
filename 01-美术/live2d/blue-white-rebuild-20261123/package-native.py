@@ -52,10 +52,15 @@ def inspect(image, name):
 
 image=load(root/'blue-white-layer-source.ora')
 ora=inspect(image,'ora')
+# GIMP's ORA importer maps svg:src-over to modern (linear) NORMAL. PSD and
+# browser src-over use perceptual RGB here. Persist classic Normal in the
+# recommended XCF/PSD; retain and report the unmodified ORA import separately.
+for layer in image.get_layers():layer.set_mode(Gimp.LayerMode.NORMAL_LEGACY)
+ora_perceptual=inspect(image,'ora-perceptual')
 assert Gimp.file_save(Gimp.RunMode.NONINTERACTIVE,image,Gio.File.new_for_path(str(root/'blue-white-layer-source.xcf')))
 export(image,'file-psd-export',root/'blue-white-layer-source.psd')
 image.delete()
-records={'gimpVersion':Gimp.version(),'canvas':[1085,1450],'layerCount':len(expected),'ora':ora}
+records={'gimpVersion':Gimp.version(),'canvas':[1085,1450],'layerCount':len(expected),'ora':ora,'oraPerceptual':ora_perceptual,'savedBlendMode':'NORMAL_LEGACY','oraDefaultColorMatchesBrowser':False}
 for ext in ['xcf','psd']:
     reopened=load(root/('blue-white-layer-source.'+ext))
     records[ext]=inspect(reopened,ext)
