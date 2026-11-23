@@ -82,7 +82,7 @@ export class UserWeaponFx{
     this.windArt=id==='kai'?GREEN_WIND_FX:null;
     this.spellArt=id==='enjo'?BLUE_SPELL_FX:null;
     this.inkWake=id==='sakura'?new RifleInkWake(scene):null;
-    this.contactFragments=new ContactInkFragments(scene);
+    this.contactFragments=new ContactInkFragments(scene,id);
     this.relayTransfer=new RelayInkTransfer(scene);
     this.meleeTrace=null;
     this.stats={shots:0,releases:0,impacts:0,ground:0,choices:0,blocks:0,created:0,culled:0};this.choiceAt={};
@@ -359,6 +359,12 @@ export class UserWeaponFx{
       const progress=(age-delay)/(art.duration-delay);
       const frame=row.releaseContact?Math.min(5,4+Math.floor(Math.max(0,progress)*2))
         :transient?0:ends.findIndex(end=>progress<end);
+      // The wet footprint spreads from its registered centre on the battle clock.
+      if (deposit) {
+        const spread = 1 - Math.pow(1 - Math.min(1, progress / .45), 2);
+        const diameter = row.size * 4 / 3 * (.76 + .24 * spread);
+        row.node.setDisplaySize(diameter, diameter);
+      }
       const contactEnd=transient?0:ends[2];
       const alpha=row.releaseContact?(progress<0?0:row.alpha*(1-progress))
         :row.alpha*(row.kind==='choice'?1-progress*.85:row.kind==='blocked'?1-progress:progress<contactEnd?1:(1-progress)/(1-contactEnd));
