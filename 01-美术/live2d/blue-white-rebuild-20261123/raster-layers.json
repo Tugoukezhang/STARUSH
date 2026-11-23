@@ -1,17 +1,17 @@
 {
   "queueItem": "Q86",
-  "sourceSvgSha256": "3fac06f1ca92dd4b7bde6a4ec7e3fd7c7abe5e89f1627528a0ac03cb03efd9f1",
-  "manifestSha256": "b9661241105a00e9d03c9c290af2b559ff83b0c213bd1481acafa68a51080c95",
+  "sourceSvgSha256": "e4fdfccd11ef58d69b1ea696a688940f82ef048a9c2f7a7bc14a577871e1d62c",
+  "manifestSha256": "6abdebaab4c0fec213a8dcd74526720a1f3cc77ddb246d9c001b37765d57f359",
   "layers": [
     {
       "id": "hair-back-foundation",
       "file": "rendered-layers/hair-back-foundation.png",
-      "x": 292,
+      "x": 0,
       "y": 142,
-      "width": 381,
+      "width": 673,
       "height": 726,
       "visible": true,
-      "sha256": "e984868858f5f833e8ea33414860a503ec8d4ec4b121aad4d606a132f741f1bb"
+      "sha256": "a37a4e71b4797e3eb958b9d5b48afea72cfb1ae7f9378b2d5bda221af0ede3cf"
     },
     {
       "id": "rear-hair-right-lower",
@@ -61,7 +61,7 @@
       "width": 199,
       "height": 194,
       "visible": true,
-      "sha256": "7581c0c624a20d960201a987ddb09b30b38293cf03eebd76883e5f8d913e2926"
+      "sha256": "f1cef4c95bf7a424d7de7ec4d0b129e29650a90d737773764ce29bc91bcec53e"
     },
     {
       "id": "skirt-interior-foundation",
@@ -104,6 +104,26 @@
       "sha256": "bb964c51556a37535d07b9a3b011c760f9d7c33a5d58723f9b88eed277119567"
     },
     {
+      "id": "straight-thigh-foundation",
+      "file": "rendered-layers/straight-thigh-foundation.png",
+      "x": 547,
+      "y": 767,
+      "width": 105,
+      "height": 119,
+      "visible": true,
+      "sha256": "b4b8527c4b5e813825f9b46d8b928a25abe7122f1f05fdb19fea1647543fc0b5"
+    },
+    {
+      "id": "thigh-straight",
+      "file": "rendered-layers/thigh-straight.png",
+      "x": 565,
+      "y": 766,
+      "width": 87,
+      "height": 108,
+      "visible": true,
+      "sha256": "ada3c2fea59e7a62e9a8e61d058e230d86333a07a310781953166c54c8e94e15"
+    },
+    {
       "id": "straight-leg-foundation",
       "file": "rendered-layers/straight-leg-foundation.png",
       "x": 572,
@@ -136,22 +156,22 @@
     {
       "id": "bent-thigh-foundation",
       "file": "rendered-layers/bent-thigh-foundation.png",
-      "x": 490,
-      "y": 722,
-      "width": 148,
-      "height": 142,
+      "x": 492,
+      "y": 734,
+      "width": 151,
+      "height": 124,
       "visible": true,
-      "sha256": "2f22aba13caeb23e5cd2c175765763e088d609f12dabee5b8a253d40116d03a2"
+      "sha256": "4237053b50749833e41aed7b61946c3ff6c94cf5a1a47b643e672037b319aa64"
     },
     {
       "id": "thigh-bent",
       "file": "rendered-layers/thigh-bent.png",
-      "x": 479,
-      "y": 727,
-      "width": 186,
-      "height": 150,
+      "x": 487,
+      "y": 735,
+      "width": 178,
+      "height": 137,
       "visible": true,
-      "sha256": "04111eb469c241a957d88c4ca07f52547eca25f81b904a92f3dc09cdaabeebcf"
+      "sha256": "dcf64d054133c16e30c991bf8126ed7b254f4595297faeb822263447d46b4844"
     },
     {
       "id": "stocking-bent",
@@ -211,7 +231,7 @@
       "width": 208,
       "height": 213,
       "visible": true,
-      "sha256": "7a2c3428a91f521b713f88f5b01c2514a8e50a2924d07b3aa742491b7ec92d0d"
+      "sha256": "5630447ddad1d8ef2c0b88445bf0cd66cb5680367092ed00b35375a48384d683"
     },
     {
       "id": "raised-shoulder-foundation",
@@ -224,6 +244,16 @@
       "sha256": "9988240a4179a1d15eff0a82e35db39a5f2ec1ce71a8dfc28c49a83c3a1d04d3"
     },
     {
+      "id": "lowered-shoulder-foundation",
+      "file": "rendered-layers/lowered-shoulder-foundation.png",
+      "x": 359,
+      "y": 491,
+      "width": 64,
+      "height": 66,
+      "visible": true,
+      "sha256": "37d116cad81324eff333429d825ae27dc6a3e5dbe6b481a62b6efef12648dd74"
+    },
+    {
       "id": "blouse",
       "file": "rendered-layers/blouse.png",
       "x": 371,
@@ -234,6 +264,16 @@
       "sha256": "9ce8c367afed642c2ef7fc3db8e274d5d0d0ca88dc8c9f2bd13ea96c872e4323"
     },
     {
+      "id": "lowered-cuff-foundation",
+      "file": "rendered-layers/lowered-cuff-foundation.png",
+      "x": 254,
+      "y": 632,
+      "width": 62,
+      "height": 52,
+      "visible": true,
+      "sha256": "b8919f30d3f792dbec556074b6e4f011fbd3465aebf8702fad1dc033df540f5f"
+    },
+    {
       "id": "lowered-sleeve-foundation",
       "file": "rendered-layers/lowered-sleeve-foundation.png",
       "x": 266,
@@ -241,7 +281,7 @@
       "width": 157,
       "height": 201,
       "visible": true,
-      "sha256": "7cc0741133a450be938e414a84fa6111b367d4d14f7bfa45acf4553f5f98dcfb"
+      "sha256": "ac006a5c1ad9cc4f1f93b09311c76af7a39672cde17d6f725fb2d2fcc03e68fa"
     },
     {
       "id": "sleeve-lowered",
@@ -281,7 +321,7 @@
       "width": 190,
       "height": 171,
       "visible": true,
-      "sha256": "9064a984755faa2caea999961fbbbcc3c3d0886807b3655834a4eab366ff692c"
+      "sha256": "b8405d6bb5095ef3595e98510397b4f72abbb403b2621753d97a27cc4cbe576d"
     },
     {
       "id": "corset",
@@ -301,7 +341,7 @@
       "width": 378,
       "height": 232,
       "visible": true,
-      "sha256": "1b04be4e8829058c561493d1b274aad504aa38d604bb49f06c0179f44718657c"
+      "sha256": "dd732865a4055b0aa25ab0d0bbebd072531dc94b47c083c1a6b3a4ae342f6c73"
     },
     {
       "id": "skirt-right",
@@ -352,6 +392,16 @@
       "height": 161,
       "visible": true,
       "sha256": "e3a65b8d5a4a58db099183a5a83df567cd27744869e6f2a6eff81bccd541ba2d"
+    },
+    {
+      "id": "hair-crown-foundation",
+      "file": "rendered-layers/hair-crown-foundation.png",
+      "x": 388,
+      "y": 170,
+      "width": 219,
+      "height": 145,
+      "visible": true,
+      "sha256": "df9ccde02856628425221d79399dcd58455ebad71eaa987c573e3d5b02dc150b"
     },
     {
       "id": "face-foundation",
@@ -517,21 +567,11 @@
       "id": "hair-side-left",
       "file": "rendered-layers/hair-side-left.png",
       "x": 227,
-      "y": 124,
+      "y": 202,
       "width": 380,
-      "height": 355,
+      "height": 277,
       "visible": true,
-      "sha256": "a514bad521a328c60c03bd495581d53c1248211ab3b1c1e07ac705457616fae6"
-    },
-    {
-      "id": "hair-crown-foundation",
-      "file": "rendered-layers/hair-crown-foundation.png",
-      "x": 388,
-      "y": 170,
-      "width": 219,
-      "height": 145,
-      "visible": true,
-      "sha256": "df9ccde02856628425221d79399dcd58455ebad71eaa987c573e3d5b02dc150b"
+      "sha256": "cd54c2161197b241f233367d768815ab9fc022ba97419db13b619f39003b65f6"
     },
     {
       "id": "fringe-center-foundation",
@@ -576,22 +616,22 @@
     {
       "id": "hair-temple-left",
       "file": "rendered-layers/hair-temple-left.png",
-      "x": 403,
-      "y": 278,
-      "width": 88,
-      "height": 95,
+      "x": 387,
+      "y": 277,
+      "width": 104,
+      "height": 111,
       "visible": true,
-      "sha256": "748f54c67fb60e722afddc0a138648ca5a431102b3120b114a27f97ae2f8026f"
+      "sha256": "3ce7a320441100158cb1199dace76a7652cb79540bc59bcf649cabd3079cd8c3"
     },
     {
       "id": "hair-temple-right",
       "file": "rendered-layers/hair-temple-right.png",
-      "x": 515,
-      "y": 310,
-      "width": 72,
-      "height": 83,
+      "x": 512,
+      "y": 287,
+      "width": 96,
+      "height": 116,
       "visible": true,
-      "sha256": "8214388e11c73b7c46af8e65ca4aa1f5e4c786be3701a91a4731529dd813ba8a"
+      "sha256": "26b56744f40f24953f1d55e8e31602518e4212c8b44d83846d3059588451500f"
     },
     {
       "id": "cap",
@@ -601,7 +641,7 @@
       "width": 409,
       "height": 180,
       "visible": true,
-      "sha256": "dbb565a021698c823352a7a0c65e5d02068d796016ab4b339f9f0f4d9a107692"
+      "sha256": "bdc7c212f310b5c0a5f482280f2588854be8bae4f9c7f73b0b2650acab5c824b"
     },
     {
       "id": "hat-bow",
@@ -611,7 +651,7 @@
       "width": 524,
       "height": 275,
       "visible": true,
-      "sha256": "d38fc20b081e48d340e8d7807800e7f3420919c7137db86cf64758f2c8a13d05"
+      "sha256": "e0b9d77cd23f6bb9132541c8343185a61e77f74afa00077a551b12f65e526ac1"
     },
     {
       "id": "hat-bow-tails",
@@ -629,9 +669,9 @@
       "x": 260,
       "y": 143,
       "width": 203,
-      "height": 171,
+      "height": 178,
       "visible": true,
-      "sha256": "38ec5113775efe1aa660a068a0d9a9380e212d383d74a07382372d230dcd90c8"
+      "sha256": "8163dd1684c1feae0da84e74216147349a2dbdd424f6edf5d333a146914e9155"
     },
     {
       "id": "hair-gold-clips",
@@ -651,7 +691,7 @@
       "width": 146,
       "height": 199,
       "visible": true,
-      "sha256": "f53ca346cc4ead5698cf70d2a2ddceed77a577fe331dc4f3f108ba04b1f5c571"
+      "sha256": "07d4b4d3fe99bfdc3be236b3112c51ceb50986f57304392ae92784511d7775e0"
     },
     {
       "id": "braid-left",
@@ -671,7 +711,7 @@
       "width": 63,
       "height": 128,
       "visible": true,
-      "sha256": "0ee1d2d713db047a46ac594956201dba5e330fb2237887b0b93cdc7372efa33a"
+      "sha256": "32cfd33bbcb084a4f24e8ec2be5455cb05bc5baff566f62fd873c1431372d940"
     },
     {
       "id": "braid-right",
@@ -712,16 +752,6 @@
       "height": 73,
       "visible": true,
       "sha256": "9c107d88397261d80dfc444f8544a670dd09c9a4a1a68050e6d6c18b61c2a2c9"
-    },
-    {
-      "id": "lowered-cuff-foundation",
-      "file": "rendered-layers/lowered-cuff-foundation.png",
-      "x": 203,
-      "y": 631,
-      "width": 102,
-      "height": 93,
-      "visible": true,
-      "sha256": "818a89c52550bc4d783e20c3f82861a2dacc169c7de9f9454d7f0e7f1fc15e62"
     },
     {
       "id": "cuff-lowered",
@@ -904,7 +934,7 @@
       "sha256": "d05bd4e58d66e328a252f1325e12c66e692b277e34c8fd5722fa239be0fbc8aa"
     }
   ],
-  "sourcePreparationAccepted": false,
+  "sourcePreparationAccepted": true,
   "artAccepted": false,
   "isLive2DModel": false
 }

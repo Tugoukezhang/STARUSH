@@ -222,6 +222,14 @@
       "tool": "image_gen",
       "status": "Registered final-source donor; visual inspection pending",
       "sha256": "4fa6bbcb2c56138e4799f785623d7106dc4ab85803ce84f2ba420ef841310345"
+    },
+    {
+      "file": "hat-flower-clean-paint.png",
+      "reference": "donor-inputs/hat-flower.png",
+      "prompt": "Repair this isolated white anime HAT FLOWER for a layered game portrait. Keep ONLY the single white flower with five large soft white/lavender petals, its small sculpted round GOLD center and the small blue/white petals directly behind it. Complete any cut or squared-off petal tips into natural rounded petals. Remove all floating scraps, pink hair, detached gold pieces, and the long dark navy ribbon/bow shapes around it; those are separate layers. Preserve the original flower's tilt, five-petal layout, elegant painted details, soft shading and golden round center. Do not add leaves, stalk, a second blossom or any other ornament. One complete clean opaque accessory on a transparent background, fully visible with empty margin, no text. Faithful restoration of this existing flower, not a new flower design.",
+      "tool": "image_gen",
+      "status": "Registered complete flower restoration; final visual review pending",
+      "sha256": "2ae81c461f2a4555f4a1591d6f2b45e6c089a990fdeded7cb0fb83d1d3f6b1b0"
     }
   ],
   "failed": [
@@ -274,6 +282,11 @@
     {
       "file": "donor-inputs/hat-bow-tails.png",
       "sha256": "cfe62d80a0b8392d7646ccf340bdd7214c733437a9d5e0355f3c00358e31f5f0",
+      "role": "Native Inkscape layer export snapshot used as repair reference or registered original texture; not a new user original"
+    },
+    {
+      "file": "donor-inputs/hat-flower.png",
+      "sha256": "38ec5113775efe1aa660a068a0d9a9380e212d383d74a07382372d230dcd90c8",
       "role": "Native Inkscape layer export snapshot used as repair reference or registered original texture; not a new user original"
     },
     {

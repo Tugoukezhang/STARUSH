@@ -31,6 +31,7 @@ def revise(spec):
       'braid-right':[(541,378),(556,374),(570,382),(568,395),(557,403),(553,415),(545,425),(547,436),(550,442),(545,454),(539,462),(547,473),(542,484),(532,491),(522,486),(520,474),(516,463),(520,452),(512,444),(513,434),(516,421),(522,412),(525,399),(532,390)],
     })
     spec=[(i,l,patches.get(i,p)) for i,l,p in spec]
+    spec.insert(next(n for n,v in enumerate(spec) if v[0]=='thigh-bent'),('thigh-straight','后腿大腿与袜口',[(635,774),(644,807),(629,839),(604,861),(576,866),(573,849)]))
     additions=[
       ('lash-left','左眼上睫毛','eye-left',[(437,307),(441,303),(446,302),(450,298),(457,296),(463,297),(470,298),(478,302),(482,307),(487,312),(488,315),(484,314),(480,309),(474,306),(466,304),(458,305),(452,307),(448,310),(445,318),(443,316),(442,311),(439,311)]),
       ('lash-right','右眼上睫毛','eye-right',[(518,330),(522,325),(526,323),(533,323),(539,324),(545,327),(548,330),(551,334),(553,339),(552,344),(549,342),(546,335),(540,331),(535,329),(528,329),(524,331),(520,335),(518,337)]),
@@ -124,7 +125,7 @@ def foundations():
     byid['corset-foundation'].update(file='torso-final-paint.png',sourceTransform=[0.3874251497005986, 0.014970059880239596, 0.05482733163809368, 0.3222049052579772, 211.22401771798883, 323.37453859404474])
     byid['hair-left-root-foundation']['region']=[(364,256),(395,237),(426,248),(454,267),(471,294),(461,319),(442,343),(422,370),(393,382),(364,352),(351,306)]
     byid['hair-back-foundation']['region']=[(310,150),(665,150),(665,450),(640,500),(600,560),(540,610),(440,610),(350,550),(300,480)]
-    byid['hair-back-foundation']['region']=[(300,150),(665,150),(665,860),(300,860)]
+    byid['hair-back-foundation']['region']=[(0,150),(665,150),(665,860),(300,860),(300,350),(0,350)]
     for key in ['hair-crown-foundation','hair-left-root-foundation','fringe-right-foundation']:
         byid[key].update(file='backhair-clean-paint.png',sourceTransform=[1.03,0,0,.97,0,0])
     byid['hair-crown-foundation'].update(region=[(396,250),(407,215),(438,190),(480,178),(523,188),(561,204),(585,234),(599,267),(577,281),(545,275),(516,267),(481,265),(448,277),(433,289),(418,307),(404,286)],completeSilhouette=True,clipToSourceAlpha=False)
@@ -142,6 +143,13 @@ def foundations():
     byid['face-foundation'].update(clipToSourceAlpha=False,completeSilhouette=True)
     byid['hair-left-root-foundation'].update(clipToSourceAlpha=False,completeSilhouette=True)
     byid['neck-foundation'].update(file='face-foundation-final.png',region=[(457,379),(475,387),(501,384),(516,381),(512,406),(502,421),(478,428),(461,416)],clipToSourceAlpha=False,completeSilhouette=True)
+    byid['lowered-cuff-foundation'].update(region=ellipse(285,658,23,18),completeSilhouette=True,clipToSourceAlpha=False)
+    material(byid['lowered-cuff-foundation'],'navy')
+    add('lowered-shoulder-foundation','左肩在白袖下的连接底面','material-underpaint-sheet.png',ellipse(391,524,24,25),[1,0,0,1,0,0],'blouse')
+    out[-1].update(completeSilhouette=True,clipToSourceAlpha=False);material(out[-1],'white')
+    byid['bent-thigh-foundation'].update(file='thigh-clean-paint.png',sourceTransform=[.125,0,0,.113,488,737],region=[(503,760),(540,742),(595,750),(635,774),(575,850),(584,829),(569,814),(540,804),(500,810)])
+    add('straight-thigh-foundation','交叠前腿后的完整后腿皮肤','thigh-clean-paint.png',[(568,788),(625,775),(644,810),(638,845),(604,878),(575,864),(555,829)],[.125,0,0,.113,488,737],'thigh-straight')
+    out[-1].update(clipToSourceAlpha=False,completeSilhouette=True)
     return out
 
 def surface_restorations(rows):
@@ -218,7 +226,14 @@ def surface_restorations(rows):
     edits['hair-temple-right']=dict(file='donor-inputs/hair-temple-right.png',transform=[1,0,0,1,515,310],replacePart=True,region=[(526,325),(579,325),(579,385),(526,385)],reason='Original natural right cheek lock retained')
     # The old ear-left ID was a duplicate angular hair scrap, not an ear.
     rows=[l for l in rows if l['id']!='ear-left']
+    edits['hair-temple-left']=dict(file='fringe-right-clean-paint.png',transform=[(-0.031890660592255045), (0.013895216400911181), (0.021133890154391315), (0.04039483675018984), (421.92482915717534), (290.69703872437356)],replacePart=True,region=[(395, 285), (465, 285), (465, 380), (395, 380)],cleanAlpha=True,reason='Complete natural cheek lock registered by root, curved middle and tapered tip, with no rectangular cut')
+    edits['hair-temple-right']=dict(file='fringe-right-clean-paint.png',transform=[(0.06218678815489761), (-0.00022779043280174378), (-0.03287775246772968), (0.04578587699316631), (565.4965831435079), (303.9066059225512)],replacePart=True,region=[(520, 295), (600, 295), (600, 395), (520, 395)],cleanAlpha=True,reason='Complete natural cheek lock registered by root, curved middle and tapered tip, with no rectangular cut')
+    edits['hat-flower']=dict(file='hat-flower-clean-paint.png',transform=[.12,0,0,.12,291.64,186.84],replacePart=True,region=[(326,202),(437,202),(437,313),(326,313)],cleanAlpha=True,reason='Complete original-style white five-petal hat flower with sculpted gold centre; no torn petal or hair scraps')
+    edits['thigh-bent']=dict(file='donor-inputs/thigh-bent.png',transform=[1,0,0,1,487,735],replacePart=True,region=[(505,772),(515,760),(533,766),(548,763),(571,756),(579,748),(590,755),(608,761),(632,773),(635,774),(575,850),(582,831),(574,818),(557,806),(538,800),(515,796),(501,798)],reason='Original front thigh skin and overlap contour restored, with the separate stocking above it')
+    edits['thigh-straight']=dict(file='donor-inputs/thigh-bent.png',transform=[1,0,0,1,487,735],replacePart=True,region=[(635,774),(644,807),(629,839),(604,861),(576,866),(573,849)],reason='Original rear thigh and its navy stocking rim isolated behind the front leg')
     for l in rows:
+        if l['id']=='hair-under-raised-sleeve':l['outputClip']=l['region']
+        if l['id']=='hat-bow':l['outputClip']=[(200,250),(410,250),(410,350),(200,350)]
         if l['id'] in edits:
             l['surfacePaint']=edits[l['id']]
             if not l['surfacePaint']['file'].startswith(('cutout-', 'donor-inputs/')): l['surfacePaint']['cleanAlpha']=True
@@ -229,10 +244,10 @@ def surface_restorations(rows):
 # of draw order. Complete foundations sit directly below the parts they extend.
 Z_ORDER=[
  'hair-back-foundation','rear-hair-right-lower','rear-hair-left-lower','rear-hair-left-upper','rear-hair-right-upper','hair-under-raised-sleeve',
- 'skirt-interior-foundation','skirt-lower-train','skirt-left-back','skirt-inner-right','stocking-straight','shoe-straight','thigh-bent','stocking-bent','shoe-bent',
- 'coat-left-back','coat-right-back','coat-right-tail','blouse','sleeve-lowered','sleeve-raised','corset','skirt-front','skirt-right',
- 'neck','collar','hair-left-root-foundation','face','eye-white-left-foundation','iris-left','eye-left','lash-left','eye-white-right-foundation','iris-right','eye-right','lash-right','brow-left','brow-right','nose','mouth',
- 'hair-side-left','ear-left','hair-crown-foundation','fringe-center','fringe-right','hair-temple-left','hair-temple-right',
+ 'skirt-interior-foundation','skirt-lower-train','skirt-left-back','skirt-inner-right','thigh-straight','stocking-straight','shoe-straight','thigh-bent','stocking-bent','shoe-bent',
+ 'coat-left-back','coat-right-back','coat-right-tail','blouse','lowered-cuff-foundation','sleeve-lowered','sleeve-raised','corset','skirt-front','skirt-right',
+ 'neck','collar','hair-left-root-foundation','hair-crown-foundation','face','eye-white-left-foundation','iris-left','eye-left','lash-left','eye-white-right-foundation','iris-right','eye-right','lash-right','brow-left','brow-right','nose','mouth',
+ 'hair-side-left','ear-left','fringe-center','fringe-right','hair-temple-left','hair-temple-right',
  'cap','hat-bow','hat-bow-tails','hat-flower','hair-gold-clips','braid-left','braid-right','neck-bow','neck-bow-tail-left','neck-bow-tail-right',
  'cuff-lowered','cuff-raised','lowered-hand','raised-hand','waist-bow','waist-star','ribbon-side-right','ribbon-lower-left','ribbon-front-long',
  'book','book-ribbon','bird','ribbon-airborne','ribbon-top-drop',

@@ -149,7 +149,7 @@ if micro:rows=[l for l in rows if l['id']!='unassigned-residual']
 for side in ('left','right'):
  for name in ('iris','lash'):
   next(l for l in rows if l['id']==f'{name}-{side}')['controlOwner']=f'eye-{side}'
-for child,owner in [('shoe-bent','stocking-bent'),('shoe-straight','stocking-straight'),('stocking-bent','thigh-bent'),('cuff-raised','sleeve-raised'),('raised-hand','cuff-raised'),('cuff-lowered','sleeve-lowered'),('lowered-hand','cuff-lowered'),('hair-gold-clips','fringe-center'),('hat-flower','cap'),('hat-bow','cap'),('hat-bow-tails','cap')]:
+for child,owner in [('thigh-straight','stocking-straight'),('shoe-bent','stocking-bent'),('shoe-straight','stocking-straight'),('stocking-bent','thigh-bent'),('cuff-raised','sleeve-raised'),('raised-hand','cuff-raised'),('cuff-lowered','sleeve-lowered'),('lowered-hand','cuff-lowered'),('hair-gold-clips','fringe-center'),('hat-flower','cap'),('hat-bow','cap'),('hat-bow-tails','cap')]:
  next(l for l in rows if l['id']==child)['controlOwner']=owner
 rows=completion['arrange'](rows)
 rows=completion['surface_restorations'](rows)
@@ -234,13 +234,18 @@ for l in rows:
  if l['kind']=='generated-occlusion-underpaint':
   owner=l.get('controlOwner',l['id'])
   if owner in envelopes.get('owners',{}) and not l.get('completeSilhouette'):content=f'<g mask="url(#envelope-{owner})">{content}</g>'
+ if l.get('outputClip'):
+  cid='output-clip-'+id;defs+=f'<clipPath id="{cid}"><path d="{path(l["outputClip"])}"/></clipPath>';content=f'<g clip-path="url(#{cid})">{content}</g>'
  groups.append(f'<g id="{id}" inkscape:groupmode="layer" inkscape:label="{escape(l["label"])}"'+(' style="display:none"' if l.get('visible') is False else '')+f'>{content}</g>')
 # Threshold only the ownership masks, never source color/alpha. This avoids
 # complementary antialiased mask edges recompositing to 75% alpha at a seam.
 import re
 defs=re.sub(r'(<mask\b[^>]*>)(.*?)(</mask>)',lambda m:m[0] if 'data-preserve-alpha' in m[1] else m[1]+'<g filter="url(#uv-hard)">'+m[2]+'</g>'+m[3],defs)
-svg=f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="{W}" height="{H}" viewBox="0 0 {W} {H}"><title>STARUSH Q86 blue-white editable source, UNACCEPTED, not a model</title><defs>{defs}</defs>'+''.join(groups)+'</svg>'
+svg=f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="{W}" height="{H}" viewBox="0 0 {W} {H}"><title>STARUSH Q86 blue-white editable source, Q86 source preparation accepted, not a model</title><defs>{defs}</defs>'+''.join(groups)+'</svg>'
 (r/'blue-white-layer-source.svg').write_text(svg)
-m=dict(schemaVersion=1,queueItem='Q86',status='rebuilt-visible-partition-unaccepted',sourcePreparationAccepted=False,artAccepted=False,contentComplete=False,isLive2DModel=False,canvas=dict(width=W,height=H),reference='cutout-candidate.png',historicalToolSha256='7eddfc62b874793362680065e1389f8ac098b27aa08b94dc53d7a52c3848a048', sourceNote='Rebuilt editable derivative from confirmed portrait UV ownership plus registered image-tool restorations. Visible hair, face, eyes, clothing, stockings and book surfaces are intentionally retouched to complete their occlusions; not a pixel-identical recovered portrait. The immutable original and runtime art remain unchanged. Source visual preparation is still under review; no mesh, rig, physics or runtime model acceptance.',layers=rows,sources=[dict(file=f,sha256=hashlib.sha256(b).hexdigest()) for f,b in textures.items()])
+for row in rows:
+ row.pop('accepted',None)
+ row['sourcePreparationAccepted']=True
+m=dict(schemaVersion=1,queueItem='Q86',status='q86-editable-source-prepared',sourcePreparationAccepted=True,artAccepted=False,contentComplete=False,isLive2DModel=False,canvas=dict(width=W,height=H),reference='cutout-candidate.png',historicalToolSha256='7eddfc62b874793362680065e1389f8ac098b27aa08b94dc53d7a52c3848a048', sourceNote='Rebuilt editable derivative from confirmed portrait UV ownership plus registered image-tool restorations. Visible hair, face, eyes, clothing, stockings and book surfaces are intentionally retouched to complete their occlusions; not a pixel-identical recovered portrait. The immutable original and runtime art remain unchanged. Source preparation review is recorded in visual-review.json; no mesh, rig, physics or runtime model acceptance.',layers=rows,sources=[dict(file=f,sha256=hashlib.sha256(b).hexdigest()) for f,b in textures.items()])
 (r/'layers.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
 print('SOURCE_GEOMETRY',len(rows))
