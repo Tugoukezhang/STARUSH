@@ -1,6 +1,7 @@
 import { getRunChoice } from '../utils/publicRunProgression.mjs';
 import { getDisplayPerformer as getPublicPerformer, getActiveUserCastArt,isUserCastEnabled } from '../utils/userCast.mjs';
 import {RED_VALKYRIE_PORTRAIT} from '../utils/redValkyrieArt.mjs';
+import {GREEN_WINDSONG_PORTRAIT,GREEN_WINDSONG_ART} from '../utils/greenWindsongArt.mjs';
 import {getPublicJourneyResult} from '../utils/publicJourneyContent.mjs';
 import { getPublicChapter,PUBLIC_CHAPTERS } from '../utils/publicCampaign.mjs';
 import { releaseSessionInput, resumePlayerAudioFromGesture } from './PlayerSessionExperience.mjs';
@@ -49,14 +50,15 @@ const CHOICE_THEMES=Object.freeze({
 });
 const OPTION_COUNT=['','一','二','三','四'];
 const ROLE_ECHO_ART=Object.freeze({
- kai:{src:'art/role-echo-b302/kai.webp',size:256,category:'定向回斩',ink:'#ff9e9c'},
+ kai:{src:GREEN_WINDSONG_ART.weaponIcon,size:256,category:'风铃回响',ink:'#76e0bf'},
  enjo:{src:'art/role-echo-b302/enjo.webp',size:256,category:'地面震波',ink:'#ffd17b'},
 });
 // Owned full-body sources. head = crown-to-chin / source width; face = face centre as source fractions,
 // so CSS renders every role with the same head height at the same anchor. Static art, not Live2D.
 const RESULT_PORTRAITS=Object.freeze({
  sakura:RED_VALKYRIE_PORTRAIT,
- ...Object.fromEntries(['kai','enjo'].map(id=>{const a=getPortraitBase(id),m=portraitBaseMetrics(a);return[id,Object.freeze({src:a.src,width:a.width,height:a.height,
+ kai:GREEN_WINDSONG_PORTRAIT,
+ ...Object.fromEntries(['enjo'].map(id=>{const a=getPortraitBase(id),m=portraitBaseMetrics(a);return[id,Object.freeze({src:a.src,width:a.width,height:a.height,
    head:((a.face.y+a.face.height)*a.height-a.bounds.y)/a.width,faceX:m.faceX,faceY:m.faceY})];})),
 });
 // Original AI lettering 公演完成; victory only, decorative beside the native h2.

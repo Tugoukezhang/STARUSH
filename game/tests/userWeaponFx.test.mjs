@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {UserWeaponFx,USER_WEAPON_FX,HEAVY_WEAPON_FX,KAI_DASH_FX,RIFLE_COMIC_MUZZLE,preloadUserWeaponFx} from '../src/systems/UserWeaponFx.mjs';
+import {GREEN_WIND_FX} from '../src/utils/greenWindsongArt.mjs';
 import {loadBattleScene} from './helpers/loadBattleScene.mjs';
 import {loadScenes} from './helpers/publicShellHarness.mjs';
 
@@ -25,7 +26,7 @@ test('four explicit bitmap FX sheets are preloaded only through the selected pub
   const env=loadScenes();env.loadRuntime('utils/userCast.mjs').configureUserCast(true);
   const {preloadActorPresentation}=env.loadRuntime('systems/ActorPresentation.mjs');
   const sheets=[],s={load:{image(){},spritesheet:(...a)=>sheets.push(a)}};
-  preloadActorPresentation(s,{stageId:1,performerId:'sakura'});assert.equal(sheets.length,13);assert.equal(sheets.filter(row=>row[0]==='user-rifle-shoot-20261021').length,1);
+  preloadActorPresentation(s,{stageId:1,performerId:'sakura'});assert.equal(sheets.length,9);assert.equal(sheets.filter(row=>row[0]==='user-rifle-shoot-20261021').length,0);
   assert.deepEqual(sheets.slice(-3).map(row=>row[0]),['user-rifle-projectile-20261021','user-rifle-contact-20261021','user-rifle-deposition-20261023']);
   sheets.length=0;preloadActorPresentation(s,{stageId:1,practiceMode:true});assert.equal(sheets.length,0);
 });
@@ -45,7 +46,7 @@ test('three skill releases select distinct art, preserve real radius and never p
   for(const [id,kind]of [['sakura','spray'],['kai','sweep'],['enjo','burst']]){
     const {fx,view}=fixture(id),row={x:100,y:100,radius:72,start:500,angle:.3,sequence:1,beat:0,color:'blue',contacts:[]};
     assert.equal(fx.release(row),true);fx.update(500,view);
-    assert.equal(fx.rows[0].kind,kind);assert.equal(fx.rows[0].node.texture.key,id==='enjo'?HEAVY_WEAPON_FX.key:id==='kai'?KAI_DASH_FX.key:USER_WEAPON_FX[kind].key);
+    assert.equal(fx.rows[0].kind,kind);assert.equal(fx.rows[0].node.texture.key,id==='enjo'?HEAVY_WEAPON_FX.key:id==='kai'?GREEN_WIND_FX.key:USER_WEAPON_FX[kind].key);
     assert(fx.rows[0].size<=row.radius*2);assert.equal(row.radius,72);assert.equal(fx.stats.releases,1);
   }
 });

@@ -24,7 +24,7 @@ const UPPER_DEPTH=.000001;
 export class UserCastPresentation {
   constructor(scene,id){
     this.scene=scene;this.art=getUserCastArt(id);this.disposed=false;this.shotAt=-Infinity;this.depth=9.8;
-    this.flip=id==='kai';this.handFlip=this.flip;this.handShotClock=-Infinity;this.lastX=scene.player.x;this.lastY=scene.player.y;
+    this.facesLeft=this.art.motion.facesLeft??(id==='kai');this.flip=this.facesLeft;this.handFlip=this.flip;this.handShotClock=-Infinity;this.lastX=scene.player.x;this.lastY=scene.player.y;
     this.scale=this.art.motion.scale??.5;
     this.height=this.art.motion.frameHeight*this.scale;this.width=this.art.motion.frameWidth*this.scale;this.clock=0;this.lastNow=null;this.wasFrozen=false;this.walkDistance=0;
     this.shotDuration={sakura:270,kai:240,enjo:260}[this.art.id];
@@ -51,7 +51,7 @@ export class UserCastPresentation {
     const poseLocked=this.shotClock-this.hurtClock<240||this.shotClock-this.actionClock<320
       ||(s.publicPerformerRun?.actions||0)>this.actions||(s.battleRecord?.playerHitCount||0)>this.hits;
     if(Math.abs(dx)>.15){
-      this.handFlip=this.art.id==='kai'?dx>0:dx<0;
+      this.handFlip=this.facesLeft?dx>0:dx<0;
       if(!poseLocked)this.flip=this.handFlip;
       // Rifle body keeps this shot side across a firing streak, so movement cannot flip it between same-side shots.
       if(rifle)this.streakUntil=poseLocked?-Infinity:this.shotClock+Math.min(paced?interval:SHOOT_CONFIG.FIRE_RATE,500)+100;
@@ -68,7 +68,7 @@ export class UserCastPresentation {
     if(!frozen){
       if(!this.wasFrozen)this.clock+=elapsed;
       const moved=Math.hypot(dx,dy),shooting=this.clock-this.shotClock<this.shotDuration;
-      if(Math.abs(dx)>.05&&this.clock-this.handShotClock>=140)this.handFlip=this.art.id==='kai'?dx>0:dx<0;
+      if(Math.abs(dx)>.05&&this.clock-this.handShotClock>=140)this.handFlip=this.facesLeft?dx>0:dx<0;
       const actions=s.publicPerformerRun?.actions||0,hits=s.battleRecord?.playerHitCount||0;
       const startedAction=actions>this.actions,previousState=this.state;
       const run=s.publicPerformerRun;
@@ -86,10 +86,10 @@ export class UserCastPresentation {
       if(this.state==='action'&&(startedAction||previousState!=='action')){
         const presentation=s.publicPerformerRun?.actionPresentation;
         if(presentation?.sequence===actions&&['left','right'].includes(presentation.direction))
-          this.flip=this.art.id==='kai'?presentation.direction==='right':presentation.direction==='left';
+          this.flip=this.facesLeft?presentation.direction==='right':presentation.direction==='left';
       }else if(this.state!=='hurt'&&this.state!=='action'){
         if((previousState==='hurt'||previousState==='action')&&shooting)this.flip=this.handFlip;
-        else if(Math.abs(dx)>.05&&!shooting&&this.clock>=this.streakUntil)this.flip=this.art.id==='kai'?dx>0:dx<0;
+        else if(Math.abs(dx)>.05&&!shooting&&this.clock>=this.streakUntil)this.flip=this.facesLeft?dx>0:dx<0;
       }
     }
     this.wasFrozen=!!frozen;
@@ -109,10 +109,11 @@ export class UserCastPresentation {
       // Consequences remain owned by the run: hammer is instant; sword dashes for 160ms.
       frame=sample([14,15,16,17],t-this.actionClock,this.actionDuration);
     }else if(melee){
-      const pose=selectMeleeAttackBody(this.art.id,melee,k=>s.textures?.exists(k));
+      const pose=this.art.confirmedDesign?null:selectMeleeAttackBody(this.art.id,melee,k=>s.textures?.exists(k));
       if(pose){this.meleePose=pose;key=pose.art.key;frame=pose.frame;this.flip=pose.flip;}
-      else {frame=melee.phase==='windup'?14:melee.phase==='release'?(melee.progress<.5?15:16):17;
-        this.flip=this.art.id==='kai'?Math.cos(melee.angle)>0:Math.cos(melee.angle)<0;}
+      else {frame=this.art.confirmedDesign?(melee.phase==='windup'?13:melee.phase==='release'?(melee.progress<.5?14:15):(melee.progress<.5?16:17))
+        :melee.phase==='windup'?14:melee.phase==='release'?(melee.progress<.5?15:16):17;
+        this.flip=this.facesLeft?Math.cos(melee.angle)>0:Math.cos(melee.angle)<0;}
     }else if(moving){
       // Every walk bank spans the same 90 world pixels; the original atlas and unloaded banks keep six 15px cels.
       const walk=this.art.motion.walk,banked=walk&&s.textures?.exists(walk.key),cels=banked&&walk.frames||6;
@@ -183,7 +184,7 @@ export class UserCastPresentation {
   }
   // Optional normalized target dx lets the rifle query its next shot side with beginShot's deadzone, read-only.
   handWorld(dx){
-    const p=this.scene.player,nativeFacing=this.art.id==='kai'?-1:1;
+    const p=this.scene.player,nativeFacing=this.facesLeft?-1:1;
     const aimed=this.art.id==='sakura'&&Number.isFinite(dx);
     // Near-vertical fire keeps its active body side instead of borrowing a retreating hand.
     const flip=aimed&&Math.abs(dx)>.15?dx<0:aimed&&this.clock<=this.streakUntil?this.flip:(this.handFlip??this.flip);

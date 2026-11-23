@@ -1,0 +1,208 @@
+{
+  "reference": "01-美术/owner-originals/翡翠风歌的浮空旋律.png",
+  "referenceSHA256": "7733edc1d70905b27ed9b5cbb9def7c53e0eb4e6b5411a138aa815d08c53e590",
+  "files": [
+    {
+      "file": "motion.png",
+      "bytes": 3112246,
+      "sha256": "13bee8fd630aaa7e5a794ab5409424e6aabb6a64177a73ce9501c633279c0bc5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "runtime": "game/public/art/green-windsong-20261123/motion.png"
+    },
+    {
+      "file": "portrait.png",
+      "bytes": 1866317,
+      "sha256": "98bc54bb53881bc44b7962bf8a27e69584c02fb7b8740f23f2b83289c14f10b4",
+      "width": 1086,
+      "height": 1448,
+      "mode": "RGBA",
+      "runtime": "game/public/art/green-windsong-20261123/portrait.png"
+    },
+    {
+      "file": "avatar.png",
+      "bytes": 2543560,
+      "sha256": "b775e19bd99e59c8af8377e8a24de526d9f4300725bccb5dc856ef25b51bc96b",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "runtime": "game/public/art/green-windsong-20261123/avatar.png"
+    },
+    {
+      "file": "weapon.png",
+      "bytes": 845370,
+      "sha256": "160341225355644e12395fa1d649662f137fd83117fd01acc2602a5cb441d944",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "runtime": "game/public/art/green-windsong-20261123/weapon.png"
+    },
+    {
+      "file": "wind.png",
+      "bytes": 1663379,
+      "sha256": "02bbe7e924a4a02130dd9b0be2e8b2378d1d2b6b423d7f436456d868b4c32fa0",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "runtime": "game/public/art/green-windsong-20261123/wind.png"
+    }
+  ],
+  "atlas": {
+    "columns": 6,
+    "rows": 4,
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "origin": [
+      144,
+      242
+    ],
+    "runtimeScale": 0.4,
+    "bounds": [
+      [
+        18,
+        20,
+        235,
+        244
+      ],
+      [
+        20,
+        20,
+        234,
+        244
+      ],
+      [
+        19,
+        20,
+        234,
+        244
+      ],
+      [
+        18,
+        20,
+        234,
+        244
+      ],
+      [
+        18,
+        13,
+        228,
+        244
+      ],
+      [
+        17,
+        20,
+        233,
+        244
+      ],
+      [
+        21,
+        19,
+        233,
+        244
+      ],
+      [
+        18,
+        20,
+        234,
+        242
+      ],
+      [
+        16,
+        20,
+        234,
+        245
+      ],
+      [
+        13,
+        20,
+        234,
+        246
+      ],
+      [
+        15,
+        19,
+        233,
+        244
+      ],
+      [
+        20,
+        20,
+        233,
+        245
+      ],
+      [
+        25,
+        20,
+        234,
+        242
+      ],
+      [
+        24,
+        21,
+        225,
+        242
+      ],
+      [
+        13,
+        21,
+        228,
+        242
+      ],
+      [
+        3,
+        24,
+        241,
+        239
+      ],
+      [
+        13,
+        21,
+        238,
+        242
+      ],
+      [
+        21,
+        20,
+        234,
+        242
+      ],
+      [
+        19,
+        19,
+        231,
+        241
+      ],
+      [
+        17,
+        24,
+        235,
+        239
+      ],
+      [
+        13,
+        22,
+        236,
+        240
+      ],
+      [
+        20,
+        20,
+        234,
+        242
+      ],
+      [
+        18,
+        44,
+        236,
+        235
+      ],
+      [
+        16,
+        51,
+        236,
+        239
+      ]
+    ]
+  }
+}

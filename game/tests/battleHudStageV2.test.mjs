@@ -13,10 +13,10 @@ function fixture(id='sakura'){
  const scene={_userCastPresentation:true,_isPublicStage1Round:()=>true,battleData:{performerId:id,campaignChapterId:'opening'},player:{hp:3,maxHp:5},_paintRoundEndsAt:241000,publicStage1Round:{snapshot:()=>({phase:'active'})},publicPerformerRun:{member,now:()=>1000,getAbilityState:()=>abilities},events:{once(){}}};
  const sync=()=>e.loadRuntime('systems/BattleSurfaceView.mjs').syncPublicBattleHud(scene,doc);return {e,doc,hud,host,avatar,meta,scene,abilities,sync};
 }
-for(const [id,name,icon]of [['sakura','战术女武神','rifle'],['kai','机甲剑士','sword'],['enjo','重锤手','hammer']])test(id+' stage HUD has same-source identity and real accessible charge rings with decorative command art',()=>{
+for(const [id,name,icon]of [['sakura','战术女武神','rifle'],['kai','翡翠风歌','sword'],['enjo','重锤手','hammer']])test(id+' stage HUD has same-source identity and real accessible charge rings with decorative command art',()=>{
  const f=fixture(id),before=JSON.stringify(f.abilities);f.sync();
  assert.equal(f.hud.dataset.performer,id);assert.equal(f.meta.querySelector('.mihoyo-name').textContent,name);
- assert.match(f.avatar.querySelector('img.battle-stage-avatar').src,id==='sakura'?/red-valkyrie-20261123\/avatar\.png$/:new RegExp(id+'-avatar.webp$'));
+ assert.match(f.avatar.querySelector('img.battle-stage-avatar').src,id==='sakura'?/red-valkyrie-20261123\/avatar\.png$/:id==='kai'?/green-windsong-20261123\/avatar\.png$/:new RegExp(id+'-avatar.webp$'));
  assert.equal(f.avatar.textContent,'','actual Scene initial cannot push the image down');assert.equal(f.avatar.children.length,1);
  const b=f.doc.getElementById('skill-special'),ring=b.querySelector('.battle-command-charge');
  assert.equal(b.dataset.commandIcon,icon);assert.equal(b.querySelector('img.battle-command-art').getAttribute('aria-hidden'),'true');assert.equal(b.querySelector('svg'),null,'no code-drawn command icon');

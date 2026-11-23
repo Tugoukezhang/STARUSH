@@ -244,8 +244,8 @@ const chaser = position => ({...position, active: true, publicStage1EnemyRole: '
 const release = {x: 0, y: 0, angle: 0, color: 'pink', start: 0};
 
 test('art contract keeps the Codex-loaded asset identity', () => {
-  assert.equal(SWORD_ECHO_ART.key, 'kai-sword-sequence-292');
-  assert.equal(SWORD_ECHO_ART.path, 'art/kai-sword-sequence-292/slash.webp');
+  assert.equal(SWORD_ECHO_ART.key, 'owner-green-wind-echo');
+  assert.equal(SWORD_ECHO_ART.path, 'art/green-windsong-20261123/wind.png');
 });
 
 test('missing required texture throws at queue, before any wave exists', () => {

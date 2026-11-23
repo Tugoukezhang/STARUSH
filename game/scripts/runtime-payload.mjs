@@ -148,6 +148,7 @@ export const RUNTIME_PAYLOAD = Object.freeze([
   ...group('owner-dash-contrast-material', 'art/kai-dash-contrast-20261021/', ['dash.png']),
   ...group('owner-character-motion', 'art/three-cast-actions-20261018/', ['cat-rifle.webp','mecha-sword.webp','hammer-cat.webp']),
   ...group('owner-red-valkyrie', 'art/red-valkyrie-20261123/', ['motion.png','portrait.png','avatar.png','weapon.png']),
+  ...group('owner-green-windsong', 'art/green-windsong-20261123/', ['motion.png','portrait.png','avatar.png','weapon.png','wind.png']),
   ...group('owner-character-gait', 'art/enjo-gait-20261021/', ['walk.png']),
   ...group('owner-character-walk', 'art/rifle-walk-volume-20261022/', ['walk.png']),
   ...group('owner-character-hurt', 'art/enjo-hurt-20261021/', ['hurt.png']),

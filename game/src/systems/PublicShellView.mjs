@@ -551,7 +551,8 @@ export class PublicShellView {
     if(!large&&isUserCastEnabled())mountMenuAvatar(this,mark,member.id,portrait);
     if(large&&isUserCastEnabled()){
       const rig=motionOptions?.animate===true&&!art?.confirmedDesign?getCompanionRig(member.id):null;
-      if(member.id==='enjo'&&motionOptions?.animate===true)this.homePortraitDispose=mountEnjoContinuousPortrait(this,mark,portrait);
+      if(art?.confirmedDesign)this.homePortraitDispose=mountHomePortrait(this,mark,member.id,portrait,motionOptions?.background);
+      else if(member.id==='enjo'&&motionOptions?.animate===true)this.homePortraitDispose=mountEnjoContinuousPortrait(this,mark,portrait);
       else if(member.id==='kai'&&motionOptions?.animate===true)this.homePortraitDispose=mountKaiContinuousPortrait(this,mark,portrait);
       else if(rig)this.homePortraitDispose=mountCompanionRig(this,mark,portrait,rig,motionOptions.background);
       else if(member.id==='sakura')this.homePortraitDispose=mountHomePortrait(this,mark,member.id,portrait,motionOptions?.background,{animate:motionOptions?.animate===true});

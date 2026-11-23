@@ -1,7 +1,7 @@
 import {getDisplayPerformer,USER_CAST,isUserCastEnabled} from './userCast.mjs';
 import {USER_CAST_DOSSIERS,USER_CAST_STORIES} from './userCastStory.mjs';
 import {PUBLIC_CHAPTER_IDS,getChapterPrerequisiteIds} from './publicChapterContent.mjs';
-const displayNames={'绯樱':'步枪手','苍海':'机甲剑士','金星':'重锤手','幻夜':'机甲剑士','炎上':'重锤手'};
+const displayNames={'绯樱':'步枪手','苍海':'翡翠风歌','金星':'重锤手','幻夜':'翡翠风歌','炎上':'重锤手'};
 const castText=text=>isUserCastEnabled()?text.replace(/绯樱|苍海|金星|幻夜|炎上/g,name=>displayNames[name]):text;
 const dossiers={
   sakura:{id:'sakura',name:'绯樱',role:'领唱 / 把第一句唱给街坊',

@@ -1,8 +1,8 @@
 import {mountMenuAvatar} from './MenuPortraitAvatar.mjs';
-const NAMES=Object.freeze({sakura:'战术女武神',kai:'机甲剑士',enjo:'重锤手'});
+const NAMES=Object.freeze({sakura:'战术女武神',kai:'翡翠风歌',enjo:'重锤手'});
 const LINES=Object.freeze({
  sakura:{head:['别急，我已经听到下一拍了。','瞄准完成。下一场，我来开路。'],body:['弹匣检查好了，随时可以出发。','这一拍，想和你配合得更好。']},
- kai:{head:['剑锋已校准。你指方向，我来破阵。','在这里，先让刀刃休息一会。'],body:['前面的路，我会先替你探清。','准备好了。保持步调，我们一起前进。']},
+ kai:{head:['风铃已调好音。你指方向，我来引路。','在这里，先听一会儿轻轻的风声吧。'],body:['前面的路，我会先替你探清。','准备好了。保持步调，我们一起前进。']},
  enjo:{head:['站稳啦，下一锤可要很响！','刚才那一拍，还想再听一次吗？'],body:['锤子很沉，不过有你在就没问题。','等灯光亮起，我们就一起上台吧。']},
 });
 const UNSETTLED=new Set(['loading','unavailable']);

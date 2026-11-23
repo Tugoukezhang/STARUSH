@@ -1,7 +1,9 @@
 import {SwordEcho,SWORD_ECHO_RADIUS,SWORD_ECHO_INNER_RADIUS} from '../utils/swordEcho291.mjs';
 import {canEnemyBePublicStage1PaintTarget} from './PublicStage1EnemyRoles.mjs';
+import {GREEN_WIND_FX} from '../utils/greenWindsongArt.mjs';
 
-export const SWORD_ECHO_ART={key:'kai-sword-sequence-292',path:'art/kai-sword-sequence-292/slash.webp',frameWidth:512,frameHeight:512};
+// Preserve the echo's gameplay sector and release clock; only its drawing changes.
+export const SWORD_ECHO_ART={...GREEN_WIND_FX,key:'owner-green-wind-echo'};
 export const SWORD_ECHO_ART_MAX_ALPHA=.88;
 export const SWORD_ECHO_VISUAL_MS=640;
 

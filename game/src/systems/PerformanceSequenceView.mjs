@@ -1,10 +1,10 @@
 import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
 import {getHomePortraitArt} from './HomePortraitPresentation.mjs';
-import {getActiveUserCastArt} from '../utils/userCast.mjs';
+import {getActiveUserCastArt,getDisplayPerformer} from '../utils/userCast.mjs';
 import {getMenuPortraitArt} from './MenuPortraitPresentation.mjs';
 import {PublicStoryPlayback} from '../utils/publicStoryPlayback.mjs';
 import {shellIcons} from '../vendor/shellIcons.mjs';
-const speakerIds={'步枪手':'sakura','机甲剑士':'kai','重锤手':'enjo'};
+const speakerIds={'步枪手':'sakura','机甲剑士':'kai','翡翠风歌':'kai','重锤手':'enjo'};
 function portrait(id){return getActiveUserCastArt(id)?.confirmedDesign?getActiveUserCastArt(id).portrait:id==='sakura'?getHomePortraitArt(id)?.layers.find(l=>l.id==='body')?.src:getMenuPortraitArt(id)?.src;}
 function node(parent,tag,cls,text){const e=parent.ownerDocument?.createElement(tag)||document.createElement(tag);e.className=cls;if(text!==undefined)e.textContent=text;parent.append(e);return e;}
 function image(parent,cls,src){const e=node(parent,'img',cls);e.alt='';e.draggable=false;e.setAttribute('aria-hidden','true');e.decoding='async';e.src=src;return e;}
@@ -71,7 +71,7 @@ export function mountStorySequence(ui,panel,beat,complete,{performerId,progress=
   if(finished){if(saved)complete();else hold();return;}draw();
  });next.dataset.action='story-next';
  function draw(){
-  const index=playback.index,line=beat.lines[index];speaker.textContent=line.speaker;copy.textContent=line.text;count.textContent=`${index+1} / ${beat.lines.length}`;
+  const index=playback.index,line=beat.lines[index],speakerId=speakerIds[line.speaker];speaker.textContent=getActiveUserCastArt(speakerId)?.confirmedDesign?getDisplayPerformer(speakerId).name:line.speaker;copy.textContent=line.text;count.textContent=`${index+1} / ${beat.lines.length}`;
   root.dataset.storyLine=String(index);root.dataset.storyRead=String(playback.read);root.dataset.storyNarration=String(line.speaker==='旁白');
   const id=line.speaker==='旁白'?performerId:speakerIds[line.speaker];root.dataset.performer=id;
   const src=portrait(id);if(figure.getAttribute('src')!==src)figure.src=src;
@@ -93,7 +93,7 @@ export function mountEncoreSequence(ui,panel,id,complete,cleared=0){
  const heading=node(stage,'header','encore-stage-heading');node(heading,'span','encore-stage-kicker','ENCORE');node(heading,'h3','encore-stage-action','安可返场');
  const frame=node(stage,'div','encore-stage-image');
  const figure=image(frame,'performance-encore-portrait',portrait(id));
- const name={'sakura':'步枪手','kai':'机甲剑士','enjo':'重锤手'}[id];
+ const name=getActiveUserCastArt(id)?.confirmedDesign?getDisplayPerformer(id).name:{'sakura':'步枪手','kai':'机甲剑士','enjo':'重锤手'}[id];
  const caption=node(stage,'div','encore-stage-caption'),identity=node(caption,'p','performance-encore-name');
  node(identity,'strong','encore-stage-performer',name);
  if(Number.isSafeInteger(cleared)&&cleared>0)node(identity,'span','encore-stage-clear',' · 清弹 '+cleared);

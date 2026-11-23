@@ -83,7 +83,7 @@ export function renderMobileLobby(view,main,model) {
   const character=view.element('img','lobby-character',undefined,member);
   character.src=getUiPerformerArt(model.member.id).portrait;character.alt=model.member.name;character.draggable=false;
   if(isUserCastEnabled())view.homePortraitDispose=mountHomePortrait(view,member,model.member.id,character,bg);
-  if(isUserCastEnabled())view.menuPortraitDispose=mountMenuPortrait(view,member,model.member.id,character,{animate:true,background:bg});
+  if(isUserCastEnabled()&&!getUiPerformerArt(model.member.id)?.confirmedDesign)view.menuPortraitDispose=mountMenuPortrait(view,member,model.member.id,character,{animate:true,background:bg});
   if(isUserCastEnabled()){
     view.portraitInteractionDispose=mountPortraitInteraction(view,member,stage,model.member.id);
   }

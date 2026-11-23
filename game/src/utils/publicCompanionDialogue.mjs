@@ -11,15 +11,15 @@ const DIALOGUES={
    {id:'rest-encore',label:'把余力留给返场',response:'听你的。先收起检查表，安静等灯亮起来；准备好了，也可以不一直绷着。'}]}
  },
  kai:{
-  greeting:{prompt:'剑已经收好了。这里很安静，你想聊聊下一步，还是先看看窗外？',choices:[
+  greeting:{prompt:'风铃已经收好了。这里很安静，你想聊聊下一步，还是先看看窗外？',choices:[
    {id:'check-first',label:'一起确认下一步',response:'那就只确认一件事：下一次起步时，我先看清落脚处。剩下的，不必在这里急着决定。'},
    {id:'rest-first',label:'先看看窗外',response:'好。那道光刚好落在地板边缘。什么也不说地待一会儿，也是不错的安排。'}]},
   rehearsal:{prompt:'我想把突进的动作接顺。先练起步的站姿，还是沿着路线慢慢走？',choices:[
    {id:'steady-first',label:'从稳稳的一步开始',response:'我会先把脚跟落稳，再接下一拍。你数慢一点就好，这一次不追求更快。'},
-   {id:'route-first',label:'沿路线慢慢走一遍',response:'好的，拐角留半步余地。等路线熟悉了，再把剑锋和移动接在同一个节奏里。'}]},
+   {id:'route-first',label:'沿路线慢慢走一遍',response:'好的，拐角留半步余地。等路线熟悉了，再把风铃和脚步接在同一个节奏里。'}]},
   encore:{prompt:'返场的站位已经确认。要再校准一次起步点，还是先给自己留一点余力？',choices:[
    {id:'confirm-encore',label:'再校准一次起步点',response:'起步、转向、收步，顺序不变。谢谢你愿意陪我把这些不起眼的地方也确认清楚。'},
-   {id:'rest-encore',label:'先放松一下',response:'明白。我会把剑放在一边。真正开演之前，可以先不用考虑怎样做得更好。'}]}
+   {id:'rest-encore',label:'先放松一下',response:'明白。我会把风铃放在一边。真正开演之前，可以先不用考虑怎样做得更好。'}]}
  },
  enjo:{
   greeting:{prompt:'重锤放下啦！你想陪我检查一下锤柄，还是先占住沙发的好位置？',choices:[

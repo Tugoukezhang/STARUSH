@@ -94,7 +94,7 @@ export function preloadActorPresentation(scene, data = {}) {
     if(ownerArt.motion.idle)scene.load.spritesheet(ownerArt.motion.idle.key,ownerArt.motion.idle.path,{frameWidth:ownerArt.motion.frameWidth,frameHeight:ownerArt.motion.frameHeight});
     if(ownerArt.motion.rest)scene.load.spritesheet(ownerArt.motion.rest.key,ownerArt.motion.rest.path,{frameWidth:ownerArt.motion.frameWidth,frameHeight:ownerArt.motion.frameHeight});
     preloadUserWeaponFx(scene,ownerArt.id);
-    preloadMeleeAttackArt(scene,ownerArt.id);
+    if(!ownerArt.confirmedDesign)preloadMeleeAttackArt(scene,ownerArt.id);
     preloadHeavyLimbRig(scene,ownerArt.id);
     if(data.campaignChapterId==='encore'&&!data.defenseMode&&!data.publicFinaleTrial)preloadHarborGroundStrike(scene);
     for(const role of Object.keys(ENEMIES)){const art=getEnemyArt(role);scene.load.image(art.key,art.path);}

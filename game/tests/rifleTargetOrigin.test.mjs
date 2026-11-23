@@ -25,7 +25,7 @@ const KEYS=['flip','handFlip','handShotClock','shotAt','shotClock','shotDuration
 const snap=(s,v)=>JSON.stringify({view:KEYS.map(k=>v[k]),frame:v.image.frame.name,key:v.image.texture.key,flipX:v.image.flipX,player:s.player});
 // The scene runs in a vm realm; compare plain coordinates.
 const O=(s,t)=>{const o=s._getPublicStage1PaintShotOrigin(t);return o&&{x:o.x,y:o.y};};
-const oldHand=(v,p)=>({x:p.x+((v.handFlip??v.flip)?-1:1)*(v.art.id==='kai'?-1:1)*16,y:p.y-12});
+const oldHand=(v,p)=>({x:p.x+((v.handFlip??v.flip)?-1:1)*(v.facesLeft?-1:1)*16,y:p.y-12});
 
 test('stale right hand cannot launch a left target from the far side, and vice versa',()=>{
  for(const [shotDx,target,x] of [[1,{x:300,y:1000},484],[-1,{x:700,y:1000},516],[1,{x:380,y:760},484],[-1,{x:620,y:1240},516]]){

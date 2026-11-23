@@ -1,12 +1,13 @@
 import { PUBLIC_PERFORMERS,getPublicPerformer } from './publicRunProgression.mjs';
 import {RED_VALKYRIE_ART} from './redValkyrieArt.mjs';
+import {GREEN_WINDSONG_ART} from './greenWindsongArt.mjs';
 import {USER_CAST_MOTION_BOUNDS,ENJO_WALK_ART,ENJO_HURT_ART,ENJO_REST_ART,KAI_HURT_ART,RIFLE_SHOOT_ART,RIFLE_IDLE_ART,RIFLE_REST_ART,RIFLE_WALK_ART} from './userCastMotionData.mjs';
 
 const BASE='art/user-cast-20261015/';
 // IDs preserve existing saves; these are the owner's replacement designs.
 export const USER_CAST=Object.freeze([
   {id:'sakura',designId:'red-valkyrie',name:'战术女武神',actionName:'扇面扫射',actionSummary:'向前方三条路线扫射，留下连续涂色区域',identityMark:'枪'},
-  {id:'kai',designId:'mecha-sword',name:'机甲剑士',actionName:'涂色突进',actionSummary:'沿移动方向突进，留下宽幅涂色轨迹，期间仍会受伤',identityMark:'剑'},
+  {id:'kai',designId:'green-windsong',name:'翡翠风歌',actionName:'乘风突进',actionSummary:'沿移动方向乘风突进，留下宽幅涂色轨迹，期间仍会受伤',identityMark:'风'},
   {id:'enjo',designId:'hammer-cat',name:'重锤手',actionName:'重锤爆染',actionSummary:'重锤砸向周围，集中涂染近身区域',identityMark:'锤'},
 ].map(row=>Object.freeze({...getPublicPerformer(row.id),...row})));
 
@@ -18,6 +19,7 @@ export function isUserCastEnabled(){return enabled;}
 
 export function getUserCastArt(id){
   if(id==='sakura')return RED_VALKYRIE_ART;
+  if(id==='kai')return GREEN_WINDSONG_ART;
   const member=USER_CAST.find(row=>row.id===id);if(!member)return null;
   const portrait=BASE+member.designId+'.webp',battle=BASE+member.designId+'-battle.webp';
   return Object.freeze({id,designId:member.designId,key:'user-cast-'+member.designId,battle,

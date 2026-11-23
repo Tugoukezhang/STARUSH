@@ -15,8 +15,8 @@ export const PUBLIC_EQUIPMENT = Object.freeze([
     description:'安可释放后，向380范围内最近的最多两座可涂染设施各补色至多20点；不穿墙，不跳过校音与配色顺序。Boss阶段不触发。', behavior:true},
   {id:'travelling_nozzle',name:'随行喷头',performerId:'sakura',ownerName:'步枪手',art:'nozzle',
     unlock:'步枪手首次通关任意章节',description:'扫射每一拍从当前站位出手；朝向不重新锁定。'},
-  {id:'return_edge',name:'回锋刀环',performerId:'kai',ownerName:'机甲剑士',art:'lens',
-    unlock:'机甲剑士首次通关任意章节',description:'突进结束后在起点追加一次回锋；人不返回，不提供无敌。'},
+  {id:'return_edge',name:'回响风铃',performerId:'kai',ownerName:'翡翠风歌',art:'lens',
+    unlock:'翡翠风歌首次通关任意章节',description:'突进结束后在起点追加一次回风；人不返回，不提供无敌。'},
   {id:'delayed_hammer',name:'余震锤芯',performerId:'enjo',ownerName:'重锤手',art:'tempo',
     unlock:'重锤手首次通关任意章节',description:'落锤350ms后在原落点追加一次余震；不跟随人物。'},
 ].map(Object.freeze));

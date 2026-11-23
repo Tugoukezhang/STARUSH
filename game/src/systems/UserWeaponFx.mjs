@@ -6,6 +6,7 @@ import {RelayInkTransfer} from './RelayInkTransfer.mjs';
 import {PUBLIC_MENU_ART} from './PublicMenuArt.mjs';
 import {groundFxVisibility} from '../utils/groundFxVisibility.mjs';
 import {MELEE_PROCESS_ART,sampleMeleeAttack,sampleHeavyProcess} from '../utils/meleeAttackArt.mjs';
+import {GREEN_WIND_FX} from '../utils/greenWindsongArt.mjs';
 const BASE='art/graffiti-combat-20261018/';
 export const HEAVY_WEAPON_FX=Object.freeze({key:'user-fx-heavy-20261021',path:'art/heavy-palette-impact-20261029/impact.png',origin:Object.freeze([.5,.625]),extent:.469,palettes:Object.freeze(['pink','blue','yellow','purple','orange','neutral'])});
 export const HAMMER_COMIC_CONTACT=Object.freeze({key:'user-hammer-contact-20261022',path:'art/hammer-comic-contact-20261022/burst.png',origin:Object.freeze([.5,.625]),extent:.469});
@@ -72,10 +73,8 @@ export function preloadUserWeaponFx(scene,id){
   if(id==='enjo')scene.load.spritesheet(HAMMER_COMIC_CONTACT.key,HAMMER_COMIC_CONTACT.path,{frameWidth:256,frameHeight:256});
   if(id==='enjo')scene.load.spritesheet(HEAVY_COMIC_CHAIN.key,HEAVY_COMIC_CHAIN.path,{frameWidth:256,frameHeight:256});
   if(id==='enjo')scene.load.spritesheet(HEAVY_COMIC_LANDING.key,HEAVY_COMIC_LANDING.path,{frameWidth:256,frameHeight:256});
-  if(id==='kai')scene.load.spritesheet(KAI_DASH_FX.key,KAI_DASH_FX.path,{frameWidth:256,frameHeight:256});
-  if(id==='kai')scene.load.spritesheet(KAI_COMIC_PROJECTILE.key,KAI_COMIC_PROJECTILE.path,{frameWidth:256,frameHeight:128});
-  if(id==='kai')scene.load.spritesheet(KAI_COMIC_CONTACT.key,KAI_COMIC_CONTACT.path,{frameWidth:256,frameHeight:256});
-  if(id==='kai'||id==='enjo')scene.load.spritesheet(DUO_COMIC_CONTACT.key,DUO_COMIC_CONTACT.path,{frameWidth:256,frameHeight:256});
+  if(id==='kai')scene.load.spritesheet(GREEN_WIND_FX.key,GREEN_WIND_FX.path,{frameWidth:GREEN_WIND_FX.frameWidth,frameHeight:GREEN_WIND_FX.frameHeight});
+  if(id==='enjo')scene.load.spritesheet(DUO_COMIC_CONTACT.key,DUO_COMIC_CONTACT.path,{frameWidth:256,frameHeight:256});
   preloadGraffitiGround(scene);
 }
 
@@ -83,6 +82,7 @@ export function preloadUserWeaponFx(scene,id){
 export class UserWeaponFx{
   constructor(scene,id){
     this.scene=scene;this.id=id;this.rows=[];this.lastFrame=[];this.pendingShots=[];this.projectiles=[];this.disposed=false;this.seen=new WeakSet();
+    this.windArt=id==='kai'?GREEN_WIND_FX:null;
     this.inkWake=id==='sakura'?new RifleInkWake(scene):null;
     this.contactFragments=new ContactInkFragments(scene);
     this.relayTransfer=new RelayInkTransfer(scene);
@@ -113,12 +113,13 @@ export class UserWeaponFx{
     if(artKind==='rifle-deposition'&&!(Object.hasOwn(WEAPONS,this.id)&&kind==='deposition'&&ground===true&&release!==true&&releaseContact!==true))return false;
     if(artKind==='muzzle'&&!(this.id==='sakura'&&kind==='spray'&&release!==true))return false;
     if(artKind==='muzzle'&&!this.scene.textures?.exists(RIFLE_COMIC_MUZZLE.key))artKind='spray';
+    if(this.windArt&&['sweep','dash','kai-contact','duo-contact'].includes(artKind))artKind='wind';
     const ordinaryHammer=this.id==='enjo'&&kind==='impact'&&artKind==='burst'&&!release&&!releaseContact&&this.scene.textures?.exists(HAMMER_COMIC_CONTACT.key);
     const landing=this.id==='enjo'&&hasHeavyLanding(this.scene)&&!release&&!releaseContact&&!skillContact&&(ordinaryHammer||artKind==='rifle-deposition');
     const landingOffset=kind==='deposition'?4:0;
     const chain=!landing&&this.id==='enjo'&&hasHeavyChain(this.scene)&&(ordinaryHammer||artKind==='rifle-deposition');
     const chainOffset=chain?(ordinaryHammer?4:8):0;
-    const art=landing?{...HEAVY_COMIC_LANDING,origin:landingOffset?[.5,.5]:HEAVY_COMIC_LANDING.origin,extent:landingOffset?.45:HEAVY_COMIC_LANDING.extent}:chain?{...HEAVY_COMIC_CHAIN,origin:ordinaryHammer?[.5,.625]:HEAVY_COMIC_CHAIN.origin,extent:ordinaryHammer?.469:.43}:artKind==='duo-contact'?DUO_COMIC_CONTACT:artKind==='heavy'?HEAVY_WEAPON_FX:artKind==='dash'?KAI_DASH_FX:artKind==='contact'?RIFLE_COMIC_CONTACT:artKind==='kai-contact'?KAI_COMIC_CONTACT
+    const art=artKind==='wind'?this.windArt:landing?{...HEAVY_COMIC_LANDING,origin:landingOffset?[.5,.5]:HEAVY_COMIC_LANDING.origin,extent:landingOffset?.45:HEAVY_COMIC_LANDING.extent}:chain?{...HEAVY_COMIC_CHAIN,origin:ordinaryHammer?[.5,.625]:HEAVY_COMIC_CHAIN.origin,extent:ordinaryHammer?.469:.43}:artKind==='duo-contact'?DUO_COMIC_CONTACT:artKind==='heavy'?HEAVY_WEAPON_FX:artKind==='dash'?KAI_DASH_FX:artKind==='contact'?RIFLE_COMIC_CONTACT:artKind==='kai-contact'?KAI_COMIC_CONTACT
       :artKind==='muzzle'?RIFLE_COMIC_MUZZLE:artKind==='rifle-deposition'?RIFLE_PIGMENT_DEPOSITION:ordinaryHammer?HAMMER_COMIC_CONTACT:USER_WEAPON_FX[artKind];
     if(!this.ready()||!art||!Number.isFinite(x+y+size+angle+start)||size<=0||!this.scene.textures?.exists(art.key))return false;
     let reach=size*4/3*(extent??art.extent);
@@ -169,7 +170,7 @@ export class UserWeaponFx{
   }
   projectileVisual(x,y,color,hex){
     if(!this.ready())return null;
-    const projectileArt=this.id==='sakura'?RIFLE_COMIC_PROJECTILE:this.id==='kai'?KAI_COMIC_PROJECTILE:null;
+    const projectileArt=this.windArt||(this.id==='sakura'?RIFLE_COMIC_PROJECTILE:null);
     if(projectileArt&&this.scene.textures?.exists(projectileArt.key)){
       // BattleScene keeps ownership of this node with its real projectile; FX only advances cels.
       const node=this.scene.add.image(x,y,projectileArt.key,0).setOrigin(...projectileArt.origin)
@@ -232,7 +233,7 @@ export class UserWeaponFx{
   syncMeleeStroke(view,time){
     const s=this.scene,a=s.publicPerformerRun?.meleeCombat?.snapshot?.();
     const chain=this.id==='enjo'&&hasHeavyChain(s);
-    const authored=chain||s.textures?.exists(MELEE_PROCESS_ART.key),art=chain?HEAVY_COMIC_CHAIN:authored?MELEE_PROCESS_ART:USER_WEAPON_FX.sweep;
+    const authored=!!this.windArt||chain||s.textures?.exists(MELEE_PROCESS_ART.key),art=this.windArt||(chain?HEAVY_COMIC_CHAIN:authored?MELEE_PROCESS_ART:USER_WEAPON_FX.sweep);
     const hide=()=>{this.meleeTrace?.node.setVisible(false);return false;};
     if(!['kai','enjo'].includes(this.id)||!this.ready()||view?.art?.id!==this.id
       ||['hurt','action'].includes(view.state)||s.publicPerformerRun?.choiceOpen||!a
@@ -261,7 +262,7 @@ export class UserWeaponFx{
     const alpha=heavyProcess?heavyProcess.alpha:cel?cel.fxAlpha:windup?.16+.2*p:a.phase==='release'?.82:.62*(1-p);
     const rotation=path&&Math.hypot(path.to.x-path.from.x,path.to.y-path.from.y)>.001
       ?Math.atan2(path.to.y-path.from.y,path.to.x-path.from.x)-(chain?Math.PI*.5:this.id==='kai'?Math.PI*.75:Math.PI*.25)
-      :a.angle-(authored&&this.id==='kai'?Math.PI:0);
+      :a.angle-(authored&&this.id==='kai'&&!this.windArt?Math.PI:0);
     // The descending heavy head crosses the rear body; only its preparation remains occluded.
     const behind=Math.sin(a.angle)<-.35&&!(chain&&path&&heavyProcess?.fullSpan);
     const depth=(view.depth??9.8)+(behind?-.00002:.00002);
