@@ -15,14 +15,16 @@ const url=process.env.STARUSH_Q86_URL||'http://127.0.0.1:5180/source-review.html
   const baseline=await pixels();
   const layers=await page.locator('#list input').evaluateAll(xs=>xs.map(x=>({id:x.dataset.layer,visible:x.checked})));
   for(const layer of layers){
-   await page.locator(`[data-layer="${layer.id}"]`).click();assert.notEqual(await pixels(),baseline,`${layer.id} toggle must change real pixels`);
+   await page.locator(`[data-layer="${layer.id}"]`).click();const neutralToggleChanged=await pixels()!==baseline;
    await page.locator('#reset').click();assert.equal(await pixels(),baseline,`${layer.id} visibility reset`);
    await page.locator(`[data-solo="${layer.id}"]`).click();const solo=await pixels();
+   await page.locator(`[data-layer="${layer.id}"]`).uncheck();assert.notEqual(await pixels(),solo,`${layer.id} isolated toggle must change real pixels`);
+   await page.locator(`[data-solo="${layer.id}"]`).click();
    await page.locator('#dx').fill('35');await page.locator('#dx').dispatchEvent('input');
    await page.locator('#dy').fill('-25');await page.locator('#dy').dispatchEvent('input');
    assert.notEqual(await pixels(),solo,`${layer.id} move must change real pixels`);
    await page.locator('#reset').click();assert.equal(await pixels(),baseline,`${layer.id} movement reset`);
-   result.layers.push({id:layer.id,initiallyVisible:layer.visible,toggle:true,solo:true,move:true,reset:true});
+   result.layers.push({id:layer.id,initiallyVisible:layer.visible,neutralToggleChanged,toggle:true,solo:true,move:true,reset:true});
   }
   await page.evaluate(()=>window.scrollTo(0,0));
   await page.screenshot({path:path.join(out,'source-desktop.png'),fullPage:false});

@@ -33,6 +33,48 @@
       "prompt": "Edit only the color/shading of this isolated face foundation texture. Keep its exact outline, orientation, canvas, transparency and placement. It currently has a strong cool pink cast. Change the skin to very light warm ivory peach matching an anime face with central skin around #FBE2D3, softly shaded edges around #EBC4B8, only extremely faint peach blush. Reduce the broad pink/red edge blush and overall contrast. Retain gentle painted volume and the thin original chin contour. Keep this a single featureless skin foundation shape: do not add eyes, eyebrows, nose marks, mouth, hair, ears, neck, clothing, text or any other object. This is a color correction to an existing production compositing layer, not a new design.",
       "reference": "face-foundation-draft.png",
       "status": "warm ivory tone revision; used as registered underpaint, entire Q86 not accepted"
+    },
+    {
+      "file": "torso-complete-paint.png",
+      "prompt": "Create an isolated animation production CLOTHING component based on the attached confirmed illustration. Show ONLY the complete upper garment: the white high-collared blouse from neck to waist with its dark navy fitted corset, gold buttons and pointed lower front, with the upper chest cloth and BOTH shoulder attachment caps fully filled. Remove the blue neck bow and its tails, pink braids, hair, face, hands, sleeves, flowing ribbons, star medallion and skirt. Complete all white fabric previously obscured by hair and bow. Keep the original torso pose leaning slightly left, white pleated chest, navy corset curved diagonal lower edge, original soft painterly anime line art and blue-white-gold color palette. Neck opening can be closed with white collar inner cloth, no skin or body needed. Shoulder on image right should extend upwards toward its raised sleeve attachment, image left shoulder extends downward. Single complete contiguous garment floating on transparency, generous clear margins, no text or diagrams. Preserve costume design and folds; do not redesign. It is an opaque clothing asset, not a person.",
+      "tool": "image_gen",
+      "reference": "cutout-candidate.png",
+      "status": "complete source restoration donor; registration pending"
+    },
+    {
+      "file": "dress-complete-paint.png",
+      "prompt": "Create a clean isolated animation CLOTHING component from the attached confirmed illustration: ONLY the full layered blue-and-white skirt and long frilled train, including the interior fabric previously hidden behind the crossed legs. Remove the character, ALL legs/skin/stockings/shoes, upper body, hair, blue flying ribbons, book, bird, star ornament and waist bow. Reconstruct the missing inner skirt continuously with opaque pale blue-lavender shaded fabric and natural folds. Keep the original skirt silhouette: waist at upper center-left, full rounded frills billowing to image right, smaller folds left, long ruffled train cascading below toward left/center. Match the original painterly style, white and cobalt trim, subtle gold seams, navy shadows. No circular holes, no leg-shaped notches or gaps inside the skirt; this is one COMPLETE opaque draped costume skirt with a closed waist cap. Transparent background outside the full silhouette. No text, layout guides or added decorations.",
+      "tool": "image_gen",
+      "reference": "cutout-candidate.png",
+      "status": "complete source restoration donor; registration pending"
+    },
+    {
+      "file": "book-complete-paint.png",
+      "prompt": "Produce an isolated animation component of exactly the open blue-and-gold magic book in the supplied illustration. Retain the same three-quarter perspective: left cover rises diagonally to upper left, ivory pages fan upward and to right, low royal-blue cover extends to right. Remove the hanging blue bookmark completely and reconstruct an uninterrupted royal-blue leather front cover with continuous thin gold filigree where it crossed. Also remove bird, people, clothing, all surrounding objects. Full open book only, centered with transparent padding, no hanging ribbons, no text. Keep its characteristic gold star/spine details and fine painterly page edges, same relative proportions as original. The front cover must have no leftover stripe, patch seam or transparent hole where the bookmark was.",
+      "tool": "image_gen",
+      "reference": "cutout-candidate.png",
+      "status": "complete source restoration donor; registration pending"
+    },
+    {
+      "file": "eye-components-paint.png",
+      "tool": "image_gen",
+      "prompt": "Create an animation eye-underpainting texture sheet for the pink-eyed anime character in the reference. Transparent background. Arrange four clearly separated isolated components in a simple 2 by 2 grid, no labels. TOP ROW: two entirely blank ivory-white almond-shaped sclera bases, each with a softly shaded pale lavender upper edge and NO iris, pupil, lashes or outline, left eye slightly wider than right eye, tilted as in the reference. BOTTOM ROW: two full round pink-magenta irises with dark violet upper shading, black pupils and the same little white highlights as the reference, completely painted round circles including the upper parts usually hidden by eyelids. No eyelashes or skin. Keep her original pink eye palette, soft detailed painterly anime style. Large clean opaque components with plentiful transparent spacing, no halo, no background, no face, no text. These are editable eye parts, NOT new eyes or a new character design.",
+      "reference": "cutout-candidate.png",
+      "status": "registered sclera and iris foundations; source inspection in progress"
+    },
+    {
+      "file": "face-foundation-final.png",
+      "tool": "image_gen",
+      "prompt": "Color-match this EXISTING isolated painted face foundation. Preserve the exact shape, placement, dimensions, tilt, transparency and all contours. The current skin is slightly too orange and tan. Change the central and lower skin to very pale rose ivory #FCE8E0, with faint soft peach pink cheek blush #F9DAD4 and subtle edges #EBC7BF. Avoid yellow, brown or saturated pink areas. Keep the whole surface almost uniform with extremely gentle painted face volume. No features: no eyes, brows, mouth, nose, hair, clothing or any new object. It is a blank compositing skin plate. Transparent background. This is only a color correction, not a new shape or character.",
+      "reference": "face-foundation-paint.png",
+      "status": "registration and whole-part inspection in progress"
+    },
+    {
+      "file": "material-underpaint-sheet.png",
+      "tool": "image_gen",
+      "prompt": "Create a production texture sheet to restore the hidden surfaces of the supplied illustrated costume. Transparent background with FOUR separate large square swatches, arranged in a 2 by 2 grid, with a wide transparent cross gutter. No text or labels. TOP LEFT: opaque white satin fabric with very subtle broad diagonal folds, highlights #F6F0F3, middle #DCD6E4 and soft lavender shadow #BCB6CD. TOP RIGHT: opaque deep navy blue corset cloth with smooth slight diagonal cloth volume, midtone #2E4463 and muted highlights #496081. BOTTOM LEFT: opaque matte periwinkle blue inner skirt cloth, midtone #819CC0, soft deeper folds #647F9F and lighter folds #A2B6D3. BOTTOM RIGHT: opaque softly flowing pastel pink hair, fine continuous curved pink strands, midtone #DA9AAD, highlights #F3C4CF and shadow #AF7893. Match the soft painterly anime rendering of the attached reference. These are continuous material surfaces only: absolutely NO buttons, seams, stripes, trim, frills, gold ornament, garment silhouettes, people, faces or other objects. Flat material patches with faint natural tonal variation, no dramatic shadows and no halos. Each patch is fully opaque across its entire square interior. Preserve clean transparent gaps around and between the squares.",
+      "reference": "cutout-candidate.png",
+      "status": "registration and whole-part inspection in progress"
     }
   ],
   "failed": [

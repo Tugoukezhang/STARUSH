@@ -10,7 +10,7 @@ def assert_source_unchanged():
  if hashlib.sha256((r/'layers.json').read_bytes()).hexdigest()!=manifest_sha or hashlib.sha256(svg.read_bytes()).hexdigest()!=svg_sha:
   raise RuntimeError('Source changed during native export; do not publish mixed-generation layers. Wait for build-source completion and rerun.')
 for l in m['layers']:
- p=l['region']+[a for q in l.get('appendResidualRegions',[])+l.get('appendOwnedRegions',[])+l.get('paintRegions',[])+l.get('includeRegions',[])+l.get('residualTransferRegions',[]) for a in q];pad=max(8,math.ceil(l.get('paintStroke',8)/2+7)) if l.get('paintRegions') else 8;x=max(0,math.floor(min(a[0] for a in p)-pad));y=max(0,math.floor(min(a[1] for a in p)-pad));right=min(1085,math.ceil(max(a[0] for a in p)+pad));bottom=min(1450,math.ceil(max(a[1] for a in p)+pad));dest=out/(l['id']+'.png')
+ p=l['region']+l.get('uvCornerCells',[])+[a for q in l.get('appendResidualRegions',[])+l.get('appendOwnedRegions',[])+l.get('paintRegions',[])+l.get('includeRegions',[])+l.get('residualTransferRegions',[]) for a in q];pad=max(8,math.ceil(l.get('paintStroke',8)/2+7)) if l.get('paintRegions') else 8;x=max(0,math.floor(min(a[0] for a in p)-pad));y=max(0,math.floor(min(a[1] for a in p)-pad));right=min(1085,math.ceil(max(a[0] for a in p)+pad));bottom=min(1450,math.ceil(max(a[1] for a in p)+pad));dest=out/(l['id']+'.png')
  actions.extend(['export-id:'+l['id'],'export-area:'+':'.join(map(str,[x,y,right,bottom])),'export-filename:'+str(dest),'export-do'])
  plans.append((l,x,y,right,bottom,dest))
 subprocess.run(['inkscape',str(exportsvg),'--export-id-only','--export-dpi=96','--actions='+';'.join(actions)],env=env,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)

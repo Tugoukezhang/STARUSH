@@ -69,7 +69,16 @@ try {
   const visible = new Map(initial);
   const shifts = new Map();
   // Owner grouping is an inspection aid, never a deformation or runtime binding.
-  const ownedIds = id => [id, ...layers.filter(layer => layer.controlOwner === id).map(layer => layer.id)];
+  const ownedIds = id => {
+    const owned = new Set([id]);
+    for (let changed = true; changed;) {
+      changed = false;
+      for (const layer of layers) if (owned.has(layer.controlOwner) && !owned.has(layer.id)) {
+        owned.add(layer.id); changed = true;
+      }
+    }
+    return [...owned];
+  };
   function refresh() {
     const shift = shifts.get(selected.value) || [0, 0];
     dx.value = shift[0]; dy.value = shift[1];
