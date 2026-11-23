@@ -1,0 +1,398 @@
+{
+  "status": "WIP source infrastructure verified; Q86 NOT accepted",
+  "canvas": [
+    1085,
+    1450
+  ],
+  "layerCount": 61,
+  "visiblePartitionLayers": 57,
+  "hiddenCandidates": 4,
+  "nonemptyPngLayers": 61,
+  "originalComposite": {
+    "maxAlphaDifference": 1.0,
+    "alphaDifferentPixels": 3,
+    "maxDisplayedDifferenceOnBlack": 1.0,
+    "maxDisplayedDifferenceOnWhite": 1.0,
+    "visibleRgbaDifferentPixels": 77961
+  },
+  "nativeComposite": {
+    "ora": {
+      "maxAlphaDifference": 0.0,
+      "alphaDifferentPixels": 0,
+      "maxDisplayedDifferenceOnBlack": 0.0,
+      "maxDisplayedDifferenceOnWhite": 0.0,
+      "visibleRgbaDifferentPixels": 0
+    },
+    "xcf": {
+      "maxAlphaDifference": 0.0,
+      "alphaDifferentPixels": 0,
+      "maxDisplayedDifferenceOnBlack": 0.0,
+      "maxDisplayedDifferenceOnWhite": 0.0,
+      "visibleRgbaDifferentPixels": 0
+    },
+    "psd": {
+      "maxAlphaDifference": 0.0,
+      "alphaDifferentPixels": 0,
+      "maxDisplayedDifferenceOnBlack": 0.0,
+      "maxDisplayedDifferenceOnWhite": 0.0,
+      "visibleRgbaDifferentPixels": 0
+    }
+  },
+  "nativeVersion": "3.0.4",
+  "nativeToggleMoveResetPerFormat": 61,
+  "browserToggleSoloMoveReset": 61,
+  "browserCorruptionRejected": true,
+  "browserErrors": [],
+  "unassignedResidualPixelsAlphaAbove32": 814,
+  "sourcePreparationAccepted": false,
+  "artAccepted": false,
+  "contentComplete": false,
+  "isLive2DModel": false,
+  "files": [
+    {
+      "file": "blue-white-layer-source.ora",
+      "bytes": 3427340,
+      "sha256": "53049e21955d047cbc1949486767d9ce23166f17531e2e6e445246eca52cc5de"
+    },
+    {
+      "file": "blue-white-layer-source.psd",
+      "bytes": 5035543,
+      "sha256": "d6a31e9d4c9743d262f5b27cf1a8f2e8a67a474b7750a6ef19a2df61421a64ea"
+    },
+    {
+      "file": "blue-white-layer-source.svg",
+      "bytes": 4667503,
+      "sha256": "7546c2c45f7db003c13435c6be2a20a443b564349869d33d7b679f7230d9ab24"
+    },
+    {
+      "file": "blue-white-layer-source.xcf",
+      "bytes": 2614799,
+      "sha256": "ee3fc5b10878e5f42ef26022e97a1ceb69a6d3560c492450af7f315fb9b14738"
+    },
+    {
+      "file": "book-underpaint-candidate.png",
+      "bytes": 180507,
+      "sha256": "32601899236fc3b39b5aebfae226c7641c57054f664b85db0966029c78778f21"
+    },
+    {
+      "file": "cutout-candidate.png",
+      "bytes": 1689016,
+      "sha256": "532c841b9f7146486190199b0be2f1a4ef433042b6c27aa810717bfd04994b7a"
+    },
+    {
+      "file": "hair-underpaint-candidate.png",
+      "bytes": 935143,
+      "sha256": "3d262a51728af4b140c5523616143e24046ead60fc0aa3e31fe6566728e15dae"
+    },
+    {
+      "file": "rendered-layers/bird.png",
+      "bytes": 37582,
+      "sha256": "31119a9834ed772a4284a0e62f137b5f57848dfe2be5e2bd0ff093bf313505e2"
+    },
+    {
+      "file": "rendered-layers/blouse.png",
+      "bytes": 21496,
+      "sha256": "9f97425f6a0342d443f076209fc3a882e56d1aab7f9f7c1cbc9e38c9b4acdb75"
+    },
+    {
+      "file": "rendered-layers/book-cover-hidden-paint.png",
+      "bytes": 3008,
+      "sha256": "ff47eba1b1929f103dd1c9a8d458a810dd16402d69a5f91bf88b38192e02da79"
+    },
+    {
+      "file": "rendered-layers/book-ribbon.png",
+      "bytes": 9304,
+      "sha256": "7c264336a66540bfa8792b035639ceae69f5a385e6fc0f1c107670bf557a997b"
+    },
+    {
+      "file": "rendered-layers/book.png",
+      "bytes": 119400,
+      "sha256": "6e1dce09bf27e8adb7ed7b58fcca21d172780e9313a59fd97dedb1c829d2b36f"
+    },
+    {
+      "file": "rendered-layers/braid-left.png",
+      "bytes": 18362,
+      "sha256": "efd46f6fea293cd137d3bf7bd7751e603c61c24184930a9036746aa3cb777a15"
+    },
+    {
+      "file": "rendered-layers/braid-right.png",
+      "bytes": 9172,
+      "sha256": "1fd9351d4593b962b0de53f33180e1704b23597297d99af917d8617cdfb69fe4"
+    },
+    {
+      "file": "rendered-layers/brow-left.png",
+      "bytes": 886,
+      "sha256": "b029ba106b282a55fbbadf0b87e60f1ea8783f0cfaf012ff039716701a8f2fb8"
+    },
+    {
+      "file": "rendered-layers/brow-right.png",
+      "bytes": 710,
+      "sha256": "e4b03342102082367e7171769488bf768f353c3e4efc07e41a40e2477f589763"
+    },
+    {
+      "file": "rendered-layers/cap.png",
+      "bytes": 45915,
+      "sha256": "7beb713a00948c332bb1d5e528b4ecedc665992b6da8c858074fbc27d4cca77c"
+    },
+    {
+      "file": "rendered-layers/coat-left-back.png",
+      "bytes": 24396,
+      "sha256": "2a6c0c42d4a388ab8d5e7b3463e96e1e1b4c2ca9802ef3368748fab9f227267d"
+    },
+    {
+      "file": "rendered-layers/coat-right-back.png",
+      "bytes": 19632,
+      "sha256": "4bf69c335910d0a0a4275259088355dfdfb331438185a1feb8a188e2f7488c23"
+    },
+    {
+      "file": "rendered-layers/coat-right-tail.png",
+      "bytes": 20621,
+      "sha256": "8a11eef7425596c6d57360ad9fe591986e5e48376c48b80b80b10e09f07e1985"
+    },
+    {
+      "file": "rendered-layers/corset.png",
+      "bytes": 34515,
+      "sha256": "ebe6bcec3244efdc80aa41eaa5a662cd24dc0a8c01e1e2c1c7a43f3fabe5aaea"
+    },
+    {
+      "file": "rendered-layers/cuff-lowered.png",
+      "bytes": 10987,
+      "sha256": "d2112ec3b20769ed92ee10e275932c26b91aa6a0bc07733bbf38868293768c69"
+    },
+    {
+      "file": "rendered-layers/cuff-raised.png",
+      "bytes": 19221,
+      "sha256": "dcb0f4786776675eaaad8e3f2f0f65d49ff32b1a4f575751afa9fabdad824af4"
+    },
+    {
+      "file": "rendered-layers/ear-left.png",
+      "bytes": 2112,
+      "sha256": "49ecc3bd27654ccb085ad5563d6e0846fffdd594e71e76229d19e86a859946c8"
+    },
+    {
+      "file": "rendered-layers/eye-left.png",
+      "bytes": 3319,
+      "sha256": "444aa3d58893b73efbd141e7c3f4b64cdd13653144372c1a23e9791687061df3"
+    },
+    {
+      "file": "rendered-layers/eye-right.png",
+      "bytes": 2675,
+      "sha256": "b39112d27264b96ade3a08deb9b1d64d1972af2c55c318ebe32553951110c18a"
+    },
+    {
+      "file": "rendered-layers/face.png",
+      "bytes": 20520,
+      "sha256": "4a506c07e8ee3e47c6e08231dd4cde6c7f436086ac0e19a9c22af9fa6bd83ab5"
+    },
+    {
+      "file": "rendered-layers/fringe-center.png",
+      "bytes": 25477,
+      "sha256": "ed5dbba63d8e3d12e171c8f4c24b34e5dea60643c2086e20e606c37f46cd04cb"
+    },
+    {
+      "file": "rendered-layers/fringe-right.png",
+      "bytes": 18925,
+      "sha256": "e62915a835cc6d4759bf9def06da1aebce6dba821b174f968a3a11e4858013a2"
+    },
+    {
+      "file": "rendered-layers/hair-crown-underpaint.png",
+      "bytes": 38635,
+      "sha256": "916e750970cf12cb63a3508b30a47847d6d799d11ace37c7228cdb4caf250700"
+    },
+    {
+      "file": "rendered-layers/hair-gold-clips.png",
+      "bytes": 1547,
+      "sha256": "f69099a6533b37d4db91306da1b6128486a0eadd3efce30f3f717f8e992437f8"
+    },
+    {
+      "file": "rendered-layers/hair-left-root-underpaint.png",
+      "bytes": 47199,
+      "sha256": "9617523aa368d17c53f558b03e6da3f667b668ef46740789e088e6ee9243db46"
+    },
+    {
+      "file": "rendered-layers/hair-right-root-underpaint.png",
+      "bytes": 44620,
+      "sha256": "cb75f929de9f0a8ce2fe3ad04ecedb51ffb2e6b9b5cedaae9baafc231b665b77"
+    },
+    {
+      "file": "rendered-layers/hair-side-left.png",
+      "bytes": 28624,
+      "sha256": "686849d4192303b5b23c36a86ca6c9a580d96a39e6734a05d0d67f300d727f8a"
+    },
+    {
+      "file": "rendered-layers/hat-bow-tails.png",
+      "bytes": 12514,
+      "sha256": "7186fb280ad6386b1ead50e2d4b94311fa5e28f3139387e54931034a56c101b0"
+    },
+    {
+      "file": "rendered-layers/hat-bow.png",
+      "bytes": 25058,
+      "sha256": "49a2b6b407a53859d8fe8819aebaa0c22170ecf0a95405380d18203eac346eb8"
+    },
+    {
+      "file": "rendered-layers/hat-flower.png",
+      "bytes": 18568,
+      "sha256": "87f9de5f69a45efb4f0cc485750aa61c532e3c965b1d776e613161313953e13d"
+    },
+    {
+      "file": "rendered-layers/lowered-hand.png",
+      "bytes": 11345,
+      "sha256": "7f5c678cd2a95dd847719e05bcfe68f83ae1b0ea39c9d1e57a8c92444870e7e8"
+    },
+    {
+      "file": "rendered-layers/merged.png",
+      "bytes": 1605206,
+      "sha256": "9af496bbbe62784c7d2e694f578413c731860d4ccafa65a047a52e91430b6cb8"
+    },
+    {
+      "file": "rendered-layers/mouth.png",
+      "bytes": 1998,
+      "sha256": "7dbaeed85c06ce1c87cedfdac2cf63e1ddc5d12a4462f28f604ad126238c4852"
+    },
+    {
+      "file": "rendered-layers/neck-bow-tail-right.png",
+      "bytes": 6323,
+      "sha256": "9c107d88397261d80dfc444f8544a670dd09c9a4a1a68050e6d6c18b61c2a2c9"
+    },
+    {
+      "file": "rendered-layers/neck-bow.png",
+      "bytes": 24182,
+      "sha256": "f6dffe5d7f89cd6edd8078233aa6f4ec45ab18a0360a3e4e66693cf971c6040b"
+    },
+    {
+      "file": "rendered-layers/neck.png",
+      "bytes": 5513,
+      "sha256": "30f5e9c72fbeabafe8c360597943cfdb2e3e7517bda21f54b18d0628949e8f19"
+    },
+    {
+      "file": "rendered-layers/nose.png",
+      "bytes": 567,
+      "sha256": "3b209f20af27299b653ca6fd9cd936eee366d3f6b645d375d50dfb3f128de423"
+    },
+    {
+      "file": "rendered-layers/raised-hand.png",
+      "bytes": 21969,
+      "sha256": "30bced5e13bebc7d901acaaecf8851a0986620077436cd94c0c36fc7487a8816"
+    },
+    {
+      "file": "rendered-layers/rear-hair-left-lower.png",
+      "bytes": 66733,
+      "sha256": "9274ed76f4959cf2f24b05580fc58cab23432714412768d311e04be63e20aa28"
+    },
+    {
+      "file": "rendered-layers/rear-hair-left-upper.png",
+      "bytes": 70674,
+      "sha256": "6defc637c319f66e12191a6b6e509cb020d3ca1b6c16907fbeb203e382fd6c99"
+    },
+    {
+      "file": "rendered-layers/rear-hair-right-lower.png",
+      "bytes": 95279,
+      "sha256": "99e7b69f648cf4bab71a265b7fbc88aac0fed597b6509af093c6c5393bebe2bf"
+    },
+    {
+      "file": "rendered-layers/rear-hair-right-upper.png",
+      "bytes": 56261,
+      "sha256": "88a4fa19dade108c67d8c0e041131a1621930f541f515bfb259a63cb1e9e19bf"
+    },
+    {
+      "file": "rendered-layers/ribbon-airborne.png",
+      "bytes": 113377,
+      "sha256": "22bdace8147daf44846c884050a4a0bdf94afae262fa7f345fa283df50ed8e1c"
+    },
+    {
+      "file": "rendered-layers/ribbon-front-long.png",
+      "bytes": 41094,
+      "sha256": "c04bedf6068c932e661a3d9d5145d1f83aa35514f65b42306eb15c59f98c73e7"
+    },
+    {
+      "file": "rendered-layers/ribbon-lower-left.png",
+      "bytes": 23939,
+      "sha256": "1dfa92645b1e11406d20a00cda872f834704c5ac7cd107b403939c4446f0aee8"
+    },
+    {
+      "file": "rendered-layers/ribbon-side-right.png",
+      "bytes": 21383,
+      "sha256": "d8588ee0fcdbdcc25892d9671cf2b9bf371e9e1e34bda2a4858c171be68bdac5"
+    },
+    {
+      "file": "rendered-layers/ribbon-top-drop.png",
+      "bytes": 14486,
+      "sha256": "bef4e4971b077ee2a262a5e0067ec6d4567eafe48c6d65af41e9abe98b8467e8"
+    },
+    {
+      "file": "rendered-layers/shoe-bent.png",
+      "bytes": 20250,
+      "sha256": "ed669773bb9d14ff098313bfe6ebcbe0ba4322e08b1ae70e4328cc0aca3fede1"
+    },
+    {
+      "file": "rendered-layers/shoe-straight.png",
+      "bytes": 31712,
+      "sha256": "c7eed3585383509dcf1728ef49bd33582014e1c4091929448273c30d549ab052"
+    },
+    {
+      "file": "rendered-layers/skirt-front.png",
+      "bytes": 58081,
+      "sha256": "8aa2f76027270fc7b5a731ac4bc51c1c0c450c3d155a397d81f668be64302cc3"
+    },
+    {
+      "file": "rendered-layers/skirt-inner-right.png",
+      "bytes": 30145,
+      "sha256": "4229717516e71c6e804ade83279288ae280ae25ea03c9f75ec9fe8949187b3c8"
+    },
+    {
+      "file": "rendered-layers/skirt-left-back.png",
+      "bytes": 29062,
+      "sha256": "6177eb325265bd5ba8f8f30fd33c8c713e2c53612059b528483b4722683bbd97"
+    },
+    {
+      "file": "rendered-layers/skirt-lower-train.png",
+      "bytes": 90493,
+      "sha256": "06314d21775ac074b2bc8af767aaf966df31ae715671b9e68c2af84cd9976367"
+    },
+    {
+      "file": "rendered-layers/skirt-right.png",
+      "bytes": 40476,
+      "sha256": "414509797e209a2610254b7ef2c0ebc404fa32ce0afb3f225a0eeb996a936869"
+    },
+    {
+      "file": "rendered-layers/sleeve-lowered.png",
+      "bytes": 29847,
+      "sha256": "6367b73a50146f66bcdb334ed038d7cbd1701a41d32e31a335fd5ae0ac959a42"
+    },
+    {
+      "file": "rendered-layers/sleeve-raised.png",
+      "bytes": 35170,
+      "sha256": "e26eacc0e3ffed959d36cb3c736ca590a628b2dd811746370cbcebb7cd99e7ea"
+    },
+    {
+      "file": "rendered-layers/stocking-bent.png",
+      "bytes": 50573,
+      "sha256": "e0843f351580fba17ea4e27609bc5224d26abc65a0bf6187521a8efab1314c08"
+    },
+    {
+      "file": "rendered-layers/stocking-straight.png",
+      "bytes": 47424,
+      "sha256": "65d752c162af4c132f4573da8adb7863df32bb9afdeabbaa5d332ec9dd130e6c"
+    },
+    {
+      "file": "rendered-layers/thigh-bent.png",
+      "bytes": 19824,
+      "sha256": "f75c1a41cbc52a7ff5174172854a9f63ee889955f714b26d0d2f28e3619d8031"
+    },
+    {
+      "file": "rendered-layers/unassigned-residual.png",
+      "bytes": 41551,
+      "sha256": "255a2297b420f08f21c89286bb051e90be302a104db6223e6c6234b866bf186b"
+    },
+    {
+      "file": "rendered-layers/waist-bow.png",
+      "bytes": 15709,
+      "sha256": "1f8d80812373592a98d41e7b505084260badea27b8876e308a8b2ba49693f782"
+    },
+    {
+      "file": "rendered-layers/waist-star.png",
+      "bytes": 20916,
+      "sha256": "d589884ed2c44faf3757b346a6516d1656e8ce471c8b82e920bdac7b7a1f302f"
+    }
+  ]
+}

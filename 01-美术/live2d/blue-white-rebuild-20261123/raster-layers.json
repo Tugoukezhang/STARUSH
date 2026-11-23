@@ -1,0 +1,620 @@
+{
+  "queueItem": "Q86",
+  "sourceSvgSha256": "7546c2c45f7db003c13435c6be2a20a443b564349869d33d7b679f7230d9ab24",
+  "manifestSha256": "f9d22b8b5da5dd901c42ec5ac7dbb1c5351c5f87586fa6d30c3f0129e5642581",
+  "layers": [
+    {
+      "id": "book-cover-hidden-paint",
+      "file": "rendered-layers/book-cover-hidden-paint.png",
+      "x": 230,
+      "y": 1034,
+      "width": 63,
+      "height": 61,
+      "visible": false,
+      "sha256": "ff47eba1b1929f103dd1c9a8d458a810dd16402d69a5f91bf88b38192e02da79"
+    },
+    {
+      "id": "hair-crown-underpaint",
+      "file": "rendered-layers/hair-crown-underpaint.png",
+      "x": 381,
+      "y": 138,
+      "width": 230,
+      "height": 151,
+      "visible": false,
+      "sha256": "916e750970cf12cb63a3508b30a47847d6d799d11ace37c7228cdb4caf250700"
+    },
+    {
+      "id": "hair-left-root-underpaint",
+      "file": "rendered-layers/hair-left-root-underpaint.png",
+      "x": 292,
+      "y": 317,
+      "width": 152,
+      "height": 236,
+      "visible": false,
+      "sha256": "9617523aa368d17c53f558b03e6da3f667b668ef46740789e088e6ee9243db46"
+    },
+    {
+      "id": "hair-right-root-underpaint",
+      "file": "rendered-layers/hair-right-root-underpaint.png",
+      "x": 542,
+      "y": 347,
+      "width": 256,
+      "height": 229,
+      "visible": false,
+      "sha256": "cb75f929de9f0a8ce2fe3ad04ecedb51ffb2e6b9b5cedaae9baafc231b665b77"
+    },
+    {
+      "id": "unassigned-residual",
+      "file": "rendered-layers/unassigned-residual.png",
+      "x": 0,
+      "y": 0,
+      "width": 1085,
+      "height": 1450,
+      "visible": true,
+      "sha256": "255a2297b420f08f21c89286bb051e90be302a104db6223e6c6234b866bf186b"
+    },
+    {
+      "id": "hair-side-left",
+      "file": "rendered-layers/hair-side-left.png",
+      "x": 267,
+      "y": 268,
+      "width": 189,
+      "height": 211,
+      "visible": true,
+      "sha256": "686849d4192303b5b23c36a86ca6c9a580d96a39e6734a05d0d67f300d727f8a"
+    },
+    {
+      "id": "coat-right-tail",
+      "file": "rendered-layers/coat-right-tail.png",
+      "x": 557,
+      "y": 593,
+      "width": 345,
+      "height": 173,
+      "visible": true,
+      "sha256": "8a11eef7425596c6d57360ad9fe591986e5e48376c48b80b80b10e09f07e1985"
+    },
+    {
+      "id": "coat-right-back",
+      "file": "rendered-layers/coat-right-back.png",
+      "x": 531,
+      "y": 456,
+      "width": 196,
+      "height": 167,
+      "visible": true,
+      "sha256": "4bf69c335910d0a0a4275259088355dfdfb331438185a1feb8a188e2f7488c23"
+    },
+    {
+      "id": "coat-left-back",
+      "file": "rendered-layers/coat-left-back.png",
+      "x": 317,
+      "y": 539,
+      "width": 139,
+      "height": 316,
+      "visible": true,
+      "sha256": "2a6c0c42d4a388ab8d5e7b3463e96e1e1b4c2ca9802ef3368748fab9f227267d"
+    },
+    {
+      "id": "rear-hair-right-lower",
+      "file": "rendered-layers/rear-hair-right-lower.png",
+      "x": 621,
+      "y": 484,
+      "width": 407,
+      "height": 327,
+      "visible": true,
+      "sha256": "99e7b69f648cf4bab71a265b7fbc88aac0fed597b6509af093c6c5393bebe2bf"
+    },
+    {
+      "id": "rear-hair-right-upper",
+      "file": "rendered-layers/rear-hair-right-upper.png",
+      "x": 563,
+      "y": 402,
+      "width": 426,
+      "height": 162,
+      "visible": true,
+      "sha256": "88a4fa19dade108c67d8c0e041131a1621930f541f515bfb259a63cb1e9e19bf"
+    },
+    {
+      "id": "rear-hair-left-lower",
+      "file": "rendered-layers/rear-hair-left-lower.png",
+      "x": 102,
+      "y": 472,
+      "width": 320,
+      "height": 253,
+      "visible": true,
+      "sha256": "9274ed76f4959cf2f24b05580fc58cab23432714412768d311e04be63e20aa28"
+    },
+    {
+      "id": "rear-hair-left-upper",
+      "file": "rendered-layers/rear-hair-left-upper.png",
+      "x": 24,
+      "y": 377,
+      "width": 423,
+      "height": 243,
+      "visible": true,
+      "sha256": "6defc637c319f66e12191a6b6e509cb020d3ca1b6c16907fbeb203e382fd6c99"
+    },
+    {
+      "id": "book",
+      "file": "rendered-layers/book.png",
+      "x": 72,
+      "y": 836,
+      "width": 347,
+      "height": 272,
+      "visible": true,
+      "sha256": "6e1dce09bf27e8adb7ed7b58fcca21d172780e9313a59fd97dedb1c829d2b36f"
+    },
+    {
+      "id": "bird",
+      "file": "rendered-layers/bird.png",
+      "x": 8,
+      "y": 727,
+      "width": 220,
+      "height": 147,
+      "visible": true,
+      "sha256": "31119a9834ed772a4284a0e62f137b5f57848dfe2be5e2bd0ff093bf313505e2"
+    },
+    {
+      "id": "book-ribbon",
+      "file": "rendered-layers/book-ribbon.png",
+      "x": 232,
+      "y": 1036,
+      "width": 97,
+      "height": 114,
+      "visible": true,
+      "sha256": "7c264336a66540bfa8792b035639ceae69f5a385e6fc0f1c107670bf557a997b"
+    },
+    {
+      "id": "skirt-lower-train",
+      "file": "rendered-layers/skirt-lower-train.png",
+      "x": 389,
+      "y": 897,
+      "width": 369,
+      "height": 277,
+      "visible": true,
+      "sha256": "06314d21775ac074b2bc8af767aaf966df31ae715671b9e68c2af84cd9976367"
+    },
+    {
+      "id": "skirt-left-back",
+      "file": "rendered-layers/skirt-left-back.png",
+      "x": 314,
+      "y": 772,
+      "width": 199,
+      "height": 163,
+      "visible": true,
+      "sha256": "6177eb325265bd5ba8f8f30fd33c8c713e2c53612059b528483b4722683bbd97"
+    },
+    {
+      "id": "skirt-inner-right",
+      "file": "rendered-layers/skirt-inner-right.png",
+      "x": 626,
+      "y": 708,
+      "width": 262,
+      "height": 253,
+      "visible": true,
+      "sha256": "4229717516e71c6e804ade83279288ae280ae25ea03c9f75ec9fe8949187b3c8"
+    },
+    {
+      "id": "skirt-right",
+      "file": "rendered-layers/skirt-right.png",
+      "x": 642,
+      "y": 637,
+      "width": 215,
+      "height": 189,
+      "visible": true,
+      "sha256": "414509797e209a2610254b7ef2c0ebc404fa32ce0afb3f225a0eeb996a936869"
+    },
+    {
+      "id": "skirt-front",
+      "file": "rendered-layers/skirt-front.png",
+      "x": 321,
+      "y": 629,
+      "width": 378,
+      "height": 232,
+      "visible": true,
+      "sha256": "8aa2f76027270fc7b5a731ac4bc51c1c0c450c3d155a397d81f668be64302cc3"
+    },
+    {
+      "id": "ribbon-lower-left",
+      "file": "rendered-layers/ribbon-lower-left.png",
+      "x": 222,
+      "y": 700,
+      "width": 219,
+      "height": 234,
+      "visible": true,
+      "sha256": "1dfa92645b1e11406d20a00cda872f834704c5ac7cd107b403939c4446f0aee8"
+    },
+    {
+      "id": "ribbon-side-right",
+      "file": "rendered-layers/ribbon-side-right.png",
+      "x": 605,
+      "y": 570,
+      "width": 311,
+      "height": 99,
+      "visible": true,
+      "sha256": "d8588ee0fcdbdcc25892d9671cf2b9bf371e9e1e34bda2a4858c171be68bdac5"
+    },
+    {
+      "id": "blouse",
+      "file": "rendered-layers/blouse.png",
+      "x": 374,
+      "y": 442,
+      "width": 208,
+      "height": 133,
+      "visible": true,
+      "sha256": "9f97425f6a0342d443f076209fc3a882e56d1aab7f9f7c1cbc9e38c9b4acdb75"
+    },
+    {
+      "id": "corset",
+      "file": "rendered-layers/corset.png",
+      "x": 398,
+      "y": 527,
+      "width": 202,
+      "height": 165,
+      "visible": true,
+      "sha256": "ebe6bcec3244efdc80aa41eaa5a662cd24dc0a8c01e1e2c1c7a43f3fabe5aaea"
+    },
+    {
+      "id": "neck",
+      "file": "rendered-layers/neck.png",
+      "x": 440,
+      "y": 355,
+      "width": 98,
+      "height": 88,
+      "visible": true,
+      "sha256": "30f5e9c72fbeabafe8c360597943cfdb2e3e7517bda21f54b18d0628949e8f19"
+    },
+    {
+      "id": "sleeve-lowered",
+      "file": "rendered-layers/sleeve-lowered.png",
+      "x": 262,
+      "y": 499,
+      "width": 153,
+      "height": 196,
+      "visible": true,
+      "sha256": "6367b73a50146f66bcdb334ed038d7cbd1701a41d32e31a335fd5ae0ac959a42"
+    },
+    {
+      "id": "cuff-lowered",
+      "file": "rendered-layers/cuff-lowered.png",
+      "x": 204,
+      "y": 626,
+      "width": 100,
+      "height": 100,
+      "visible": true,
+      "sha256": "d2112ec3b20769ed92ee10e275932c26b91aa6a0bc07733bbf38868293768c69"
+    },
+    {
+      "id": "sleeve-raised",
+      "file": "rendered-layers/sleeve-raised.png",
+      "x": 530,
+      "y": 317,
+      "width": 210,
+      "height": 181,
+      "visible": true,
+      "sha256": "e26eacc0e3ffed959d36cb3c736ca590a628b2dd811746370cbcebb7cd99e7ea"
+    },
+    {
+      "id": "cuff-raised",
+      "file": "rendered-layers/cuff-raised.png",
+      "x": 654,
+      "y": 289,
+      "width": 139,
+      "height": 138,
+      "visible": true,
+      "sha256": "dcb0f4786776675eaaad8e3f2f0f65d49ff32b1a4f575751afa9fabdad824af4"
+    },
+    {
+      "id": "stocking-straight",
+      "file": "rendered-layers/stocking-straight.png",
+      "x": 570,
+      "y": 914,
+      "width": 309,
+      "height": 481,
+      "visible": true,
+      "sha256": "65d752c162af4c132f4573da8adb7863df32bb9afdeabbaa5d332ec9dd130e6c"
+    },
+    {
+      "id": "shoe-straight",
+      "file": "rendered-layers/shoe-straight.png",
+      "x": 783,
+      "y": 1225,
+      "width": 123,
+      "height": 208,
+      "visible": true,
+      "sha256": "c7eed3585383509dcf1728ef49bd33582014e1c4091929448273c30d549ab052"
+    },
+    {
+      "id": "thigh-bent",
+      "file": "rendered-layers/thigh-bent.png",
+      "x": 487,
+      "y": 735,
+      "width": 178,
+      "height": 137,
+      "visible": true,
+      "sha256": "f75c1a41cbc52a7ff5174172854a9f63ee889955f714b26d0d2f28e3619d8031"
+    },
+    {
+      "id": "stocking-bent",
+      "file": "rendered-layers/stocking-bent.png",
+      "x": 469,
+      "y": 788,
+      "width": 407,
+      "height": 174,
+      "visible": true,
+      "sha256": "e0843f351580fba17ea4e27609bc5224d26abc65a0bf6187521a8efab1314c08"
+    },
+    {
+      "id": "shoe-bent",
+      "file": "rendered-layers/shoe-bent.png",
+      "x": 789,
+      "y": 819,
+      "width": 122,
+      "height": 164,
+      "visible": true,
+      "sha256": "ed669773bb9d14ff098313bfe6ebcbe0ba4322e08b1ae70e4328cc0aca3fede1"
+    },
+    {
+      "id": "waist-bow",
+      "file": "rendered-layers/waist-bow.png",
+      "x": 398,
+      "y": 640,
+      "width": 101,
+      "height": 146,
+      "visible": true,
+      "sha256": "1f8d80812373592a98d41e7b505084260badea27b8876e308a8b2ba49693f782"
+    },
+    {
+      "id": "waist-star",
+      "file": "rendered-layers/waist-star.png",
+      "x": 577,
+      "y": 605,
+      "width": 113,
+      "height": 121,
+      "visible": true,
+      "sha256": "d589884ed2c44faf3757b346a6516d1656e8ce471c8b82e920bdac7b7a1f302f"
+    },
+    {
+      "id": "ribbon-front-long",
+      "file": "rendered-layers/ribbon-front-long.png",
+      "x": 513,
+      "y": 448,
+      "width": 400,
+      "height": 173,
+      "visible": true,
+      "sha256": "c04bedf6068c932e661a3d9d5145d1f83aa35514f65b42306eb15c59f98c73e7"
+    },
+    {
+      "id": "neck-bow",
+      "file": "rendered-layers/neck-bow.png",
+      "x": 390,
+      "y": 404,
+      "width": 143,
+      "height": 135,
+      "visible": true,
+      "sha256": "f6dffe5d7f89cd6edd8078233aa6f4ec45ab18a0360a3e4e66693cf971c6040b"
+    },
+    {
+      "id": "neck-bow-tail-right",
+      "file": "rendered-layers/neck-bow-tail-right.png",
+      "x": 510,
+      "y": 483,
+      "width": 92,
+      "height": 73,
+      "visible": true,
+      "sha256": "9c107d88397261d80dfc444f8544a670dd09c9a4a1a68050e6d6c18b61c2a2c9"
+    },
+    {
+      "id": "braid-right",
+      "file": "rendered-layers/braid-right.png",
+      "x": 506,
+      "y": 367,
+      "width": 71,
+      "height": 131,
+      "visible": true,
+      "sha256": "1fd9351d4593b962b0de53f33180e1704b23597297d99af917d8617cdfb69fe4"
+    },
+    {
+      "id": "braid-left",
+      "file": "rendered-layers/braid-left.png",
+      "x": 303,
+      "y": 332,
+      "width": 150,
+      "height": 211,
+      "visible": true,
+      "sha256": "efd46f6fea293cd137d3bf7bd7751e603c61c24184930a9036746aa3cb777a15"
+    },
+    {
+      "id": "fringe-right",
+      "file": "rendered-layers/fringe-right.png",
+      "x": 533,
+      "y": 207,
+      "width": 105,
+      "height": 195,
+      "visible": true,
+      "sha256": "e62915a835cc6d4759bf9def06da1aebce6dba821b174f968a3a11e4858013a2"
+    },
+    {
+      "id": "fringe-center",
+      "file": "rendered-layers/fringe-center.png",
+      "x": 415,
+      "y": 199,
+      "width": 164,
+      "height": 133,
+      "visible": true,
+      "sha256": "ed5dbba63d8e3d12e171c8f4c24b34e5dea60643c2086e20e606c37f46cd04cb"
+    },
+    {
+      "id": "ear-left",
+      "file": "rendered-layers/ear-left.png",
+      "x": 403,
+      "y": 316,
+      "width": 47,
+      "height": 55,
+      "visible": true,
+      "sha256": "49ecc3bd27654ccb085ad5563d6e0846fffdd594e71e76229d19e86a859946c8"
+    },
+    {
+      "id": "face",
+      "file": "rendered-layers/face.png",
+      "x": 416,
+      "y": 278,
+      "width": 160,
+      "height": 132,
+      "visible": true,
+      "sha256": "4a506c07e8ee3e47c6e08231dd4cde6c7f436086ac0e19a9c22af9fa6bd83ab5"
+    },
+    {
+      "id": "hat-bow-tails",
+      "file": "rendered-layers/hat-bow-tails.png",
+      "x": 280,
+      "y": 313,
+      "width": 125,
+      "height": 102,
+      "visible": true,
+      "sha256": "7186fb280ad6386b1ead50e2d4b94311fa5e28f3139387e54931034a56c101b0"
+    },
+    {
+      "id": "hat-bow",
+      "file": "rendered-layers/hat-bow.png",
+      "x": 214,
+      "y": 240,
+      "width": 211,
+      "height": 130,
+      "visible": true,
+      "sha256": "49a2b6b407a53859d8fe8819aebaa0c22170ecf0a95405380d18203eac346eb8"
+    },
+    {
+      "id": "cap",
+      "file": "rendered-layers/cap.png",
+      "x": 340,
+      "y": 114,
+      "width": 305,
+      "height": 179,
+      "visible": true,
+      "sha256": "7beb713a00948c332bb1d5e528b4ecedc665992b6da8c858074fbc27d4cca77c"
+    },
+    {
+      "id": "hair-gold-clips",
+      "file": "rendered-layers/hair-gold-clips.png",
+      "x": 413,
+      "y": 232,
+      "width": 62,
+      "height": 51,
+      "visible": true,
+      "sha256": "f69099a6533b37d4db91306da1b6128486a0eadd3efce30f3f717f8e992437f8"
+    },
+    {
+      "id": "hat-flower",
+      "file": "rendered-layers/hat-flower.png",
+      "x": 326,
+      "y": 204,
+      "width": 137,
+      "height": 110,
+      "visible": true,
+      "sha256": "87f9de5f69a45efb4f0cc485750aa61c532e3c965b1d776e613161313953e13d"
+    },
+    {
+      "id": "nose",
+      "file": "rendered-layers/nose.png",
+      "x": 486,
+      "y": 323,
+      "width": 29,
+      "height": 36,
+      "visible": true,
+      "sha256": "3b209f20af27299b653ca6fd9cd936eee366d3f6b645d375d50dfb3f128de423"
+    },
+    {
+      "id": "mouth",
+      "file": "rendered-layers/mouth.png",
+      "x": 468,
+      "y": 343,
+      "width": 47,
+      "height": 47,
+      "visible": true,
+      "sha256": "7dbaeed85c06ce1c87cedfdac2cf63e1ddc5d12a4462f28f604ad126238c4852"
+    },
+    {
+      "id": "brow-right",
+      "file": "rendered-layers/brow-right.png",
+      "x": 519,
+      "y": 299,
+      "width": 40,
+      "height": 29,
+      "visible": true,
+      "sha256": "e4b03342102082367e7171769488bf768f353c3e4efc07e41a40e2477f589763"
+    },
+    {
+      "id": "brow-left",
+      "file": "rendered-layers/brow-left.png",
+      "x": 438,
+      "y": 275,
+      "width": 50,
+      "height": 30,
+      "visible": true,
+      "sha256": "b029ba106b282a55fbbadf0b87e60f1ea8783f0cfaf012ff039716701a8f2fb8"
+    },
+    {
+      "id": "eye-right",
+      "file": "rendered-layers/eye-right.png",
+      "x": 509,
+      "y": 311,
+      "width": 49,
+      "height": 46,
+      "visible": true,
+      "sha256": "b39112d27264b96ade3a08deb9b1d64d1972af2c55c318ebe32553951110c18a"
+    },
+    {
+      "id": "eye-left",
+      "file": "rendered-layers/eye-left.png",
+      "x": 434,
+      "y": 288,
+      "width": 58,
+      "height": 48,
+      "visible": true,
+      "sha256": "444aa3d58893b73efbd141e7c3f4b64cdd13653144372c1a23e9791687061df3"
+    },
+    {
+      "id": "lowered-hand",
+      "file": "rendered-layers/lowered-hand.png",
+      "x": 128,
+      "y": 643,
+      "width": 110,
+      "height": 99,
+      "visible": true,
+      "sha256": "7f5c678cd2a95dd847719e05bcfe68f83ae1b0ea39c9d1e57a8c92444870e7e8"
+    },
+    {
+      "id": "raised-hand",
+      "file": "rendered-layers/raised-hand.png",
+      "x": 739,
+      "y": 252,
+      "width": 157,
+      "height": 148,
+      "visible": true,
+      "sha256": "30bced5e13bebc7d901acaaecf8851a0986620077436cd94c0c36fc7487a8816"
+    },
+    {
+      "id": "ribbon-airborne",
+      "file": "rendered-layers/ribbon-airborne.png",
+      "x": 627,
+      "y": 0,
+      "width": 458,
+      "height": 471,
+      "visible": true,
+      "sha256": "22bdace8147daf44846c884050a4a0bdf94afae262fa7f345fa283df50ed8e1c"
+    },
+    {
+      "id": "ribbon-top-drop",
+      "file": "rendered-layers/ribbon-top-drop.png",
+      "x": 367,
+      "y": 37,
+      "width": 276,
+      "height": 91,
+      "visible": true,
+      "sha256": "bef4e4971b077ee2a262a5e0067ec6d4567eafe48c6d65af41e9abe98b8467e8"
+    }
+  ],
+  "sourcePreparationAccepted": false,
+  "artAccepted": false,
+  "isLive2DModel": false
+}

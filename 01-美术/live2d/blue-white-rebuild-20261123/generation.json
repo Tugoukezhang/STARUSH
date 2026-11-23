@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-23",
+  "purpose": "Q86 rebuild candidate only",
+  "reference": "../../blue-academy-chibi-20261123/portrait.png",
+  "images": [
+    {
+      "file": "hair-underpaint-candidate.png",
+      "tool": "image_gen",
+      "prompt": "Create an animation production HAIR LAYER from the attached illustration. Output only this character's pink hair: the complete crown, bangs, twin front braids, and long flowing back hair, with the hair roots that were behind the hat and the strands obscured by shoulders completed in the same pink painterly style. Remove the hat, flower, face, body, clothing, book, bird and blue ribbons entirely. This is a separate wig/hair asset on a transparent background, no person underneath. Preserve the existing hairstyle, curl contours and original placement on the SAME 1085 x 1450 canvas. Hair crown stays near (500,235), front braid tips near (330,520) and (550,520), long back hair extends across x70..1005 y350..780. Do not enlarge or center it to fill the canvas. Preserve all the empty lower half of the canvas. No text, no panel divisions, no shadow, no background. Paint smooth continuous pink locks in the occluded areas, with no gaps from removed body or hat.",
+      "status": "hidden candidate; source canvas and some feature removal differ; not accepted"
+    },
+    {
+      "file": "book-underpaint-candidate.png",
+      "tool": "image_gen",
+      "prompt": "Edit the supplied artwork into an isolated book component for game animation. Keep ONLY the open blue-and-gold magic book at its original lower-left position, perspective, drawing style and scale. Remove the bird, the blue bookmark hanging across the front cover, all character parts and all other objects. Fill the small cover region previously behind the bookmark with continuous dark royal blue leather and restrained gold ornament matching the surrounding cover. Retain all ivory page fans, cover corners and golden spine details. The complete open book should remain approximately x90..405 y860..1090 on the original 1085x1450 canvas. Everything else transparent. DO NOT center, enlarge, rotate, zoom or crop the book. Preserve the empty margins so this can be placed back underneath the original bookmark layer. A single book only, no lettering or layout guides.",
+      "status": "hidden cover patch candidate; full isolated book retained; registration -4,-42 requires visual review"
+    }
+  ],
+  "failed": [
+    {
+      "part": "featureless-face-underpaint",
+      "result": "image tool rejected the request at output; no image saved; unresolved"
+    }
+  ],
+  "licenses": {
+    "portrait": "Derivative of owner's confirmed original; existing source unchanged.",
+    "hair": "Generated with image_gen from owner's supplied reference.",
+    "tutorials": "Only methodology referenced. Tutorial recordings/images not included."
+  }
+}
