@@ -37,12 +37,25 @@ test('profile is opt-in on actual three-owner material and dirty halo covers all
  const code=readFileSync(new URL('../src/systems/StreetRestorationSurface.mjs',import.meta.url),'utf8');assert.match(code,/poolBody\s*===\s*true\s*\?\s*8/);
 });
 
-test('actual incremental surface repaints the previous pool lip across a 32px dirty tile boundary',()=>{
+for(const flatPigment of [false,true])test('incremental surface matches full repaint across the 32px seam, flatPigment='+flatPigment,()=>{
  const pool=new Uint8ClampedArray(512*512*4).fill(255),planes=new Uint8ClampedArray(1254*1254*4);for(let p=0;p<1254*1254;p++)planes.set([128,128,128,255],p*4);
  let source;const canvas={getContext:()=>({drawImage(s){source=s;},getImageData:()=>({width:source.width,height:source.height,data:source.data.slice()})})};
  const node={setOrigin(){return this;},setDisplaySize(){return this;},setDepth(){return this;},setAlpha(){return this;},setBlendMode(){return this;},destroy(){}};
  const texture={context:{createImageData:(width,height)=>({width,height,data:new Uint8ClampedArray(width*height*4)}),putImageData(){}},setFilter(){},refresh(){}};
  const scene={_userCastPresentation:true,battleData:{performerId:'enjo',practiceMode:true},_isPublicStage1Round:()=>true,textures:{exists:()=>true,get:key=>({getSourceImage:()=>({width:key==='three-cast-comic-material'?1254:512,height:key==='three-cast-comic-material'?1254:512,data:key==='three-cast-comic-material'?planes:pool,ownerDocument:{createElement:()=>canvas}})}),createCanvas:()=>texture,remove(){}},add:{image:()=>node}};
- const s=new StreetPaintSurface(scene,()=>[],256,128);s.stamp(56,64,12,colors[0]);s.flush();const before=s.imageData.data.slice();s.stamp(80,64,12,colors[0]);s.flush();
- const full=new Uint8ClampedArray(s.raster.pixels.length);finishComicPigment(s.raster,full,{x:0,y:0,width:128,height:64},s.material);assert.deepEqual(s.imageData.data,full);assert.notDeepEqual(full.slice((32*128+31)*4,(32*128+31)*4+3),before.slice((32*128+31)*4,(32*128+31)*4+3));s.destroy();assert.equal(s.material,null);
+ const s=new StreetPaintSurface(scene,()=>[],256,128);
+ assert.equal(s.material.image.flatPigment,true);
+ s.material.image.flatPigment=flatPigment;
+ s.stamp(56,64,12,colors[0]);s.flush();
+ const before=s.imageData.data.slice();
+ s.stamp(80,64,12,colors[0]);s.flush();
+ const full=new Uint8ClampedArray(s.raster.pixels.length);
+ finishComicPigment(s.raster,full,{x:0,y:0,width:128,height:64},s.material);
+ assert.deepEqual(s.imageData.data,full);
+ assert.notDeepEqual(full,before);
+ const seam=(32*128+31)*4;
+ const sample=pixels=>pixels.slice(seam,seam+3);
+ if(flatPigment)assert.deepEqual(sample(full),sample(before));
+ else assert.notDeepEqual(sample(full),sample(before));
+ s.destroy();assert.equal(s.material,null);
 });

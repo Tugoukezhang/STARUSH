@@ -1,0 +1,700 @@
+测试位置	首轮失败项
+tests/archiveArt269.test.mjs:2:1	archive routes use one readable AI header, dark record labels and exact chapter selection
+tests/archiveArt269.test.mjs:9:1	23 original archive assets preserve true alpha provenance and never claim a selectable image engine
+tests/archiveJournal289.test.mjs:35:1	selector: renders every public chapter, derives the total and selects the fourth without writing
+tests/archiveStudio269.test.mjs:78:1	chapterArchive: current studio, four native tabs with state, keyed static hosts and one prepare
+tests/authoredPigmentColor.test.mjs:9:1	active authored color source replaces exactly one explicit image, not a directory
+tests/authoredPigmentColor.test.mjs:10:1	reviewed current art retains sparse actual RGB and the real loader cannot grayscale it again
+tests/backstageScreens.test.mjs:103:1	companion is a full scene with an explicit animated portrait interaction, not a catalogue banner
+tests/battleHeaderPresentation.test.mjs:44:1	failed lettering ignores a late load so hidden art cannot blank the native fallback
+tests/battleHudCompact.test.mjs:24:99	sakura commands use planned AI art as decoration under native label, name and meter
+tests/battleHudCompact.test.mjs:24:99	kai commands use planned AI art as decoration under native label, name and meter
+tests/battleHudCompact.test.mjs:24:99	enjo commands use planned AI art as decoration under native label, name and meter
+tests/battleHudCompact.test.mjs:38:1	repeated sync mounts detail control, panel and art exactly once and keeps live facts in place
+tests/battleHudCompact.test.mjs:70:1	a reused Phaser scene registers fresh shutdown cleanup after restart
+tests/chapterContentFramework.test.mjs:6:1	one immutable catalog owns metadata, story, pacing, briefing and real scene resources
+tests/chapterContentFramework.test.mjs:26:1	all actual consumers still expose byte-equivalent three-chapter content and challenge keeps its own set
+tests/chapterEnvironmentFrontages.test.mjs:67:1	new original shop and shed exports retain explicit existing payload paths and measured silhouettes
+tests/chapterOneDistinctMaterials.test.mjs:1:1	tests/chapterOneDistinctMaterials.test.mjs
+tests/chapterOnePresentationCohesion.test.mjs:23:1	tour uses four actual chapter maps and keeps locked previews read-only
+tests/chapterOneWorldWindow.test.mjs:19:1	public joystick uses a local dark backing while radii, origin and diagnostic colours remain unchanged
+tests/chapterResultStage.test.mjs:40:1	ordinary result hero uses the owned full portrait, never the Q body, for all three roles
+tests/chapterResultStage.test.mjs:54:1	portrait framing gives the three roles the same rendered head size and face anchor
+tests/chapterResultStage.test.mjs:69:1	portrait load gate: ready reveals the image, failure removes it without alternate art
+tests/chapterVenueArt.test.mjs:13:1	venue registry is a bounded immutable four-chapter family
+tests/chapterVenueArt.test.mjs:16:1	home receives one textless fixed-size decorative image above the actual map fallback
+tests/chapterVenueArt.test.mjs:21:1	wrong dimensions and network failure leave the actual map available
+tests/chapterVenueArt.test.mjs:27:1	a late image cannot mutate a rerendered or destroyed shell
+tests/chapterVenueArt.test.mjs:32:1	moved image events do not ready a different parent
+tests/chapterVenueArt.test.mjs:46:1	owner preflight uses venue hero but preserves real map in guide
+tests/chapterVenueArt.test.mjs:49:1	tour previews reflect all chapter IDs without unlocking or changing native button state
+tests/comicDirectionalMaterial.test.mjs:6:1	runtime replaces only the material source; reviewed historic source remains unchanged
+tests/comicGroundPlanes.test.mjs:17:1	directional comic planes ship as one exact replacement, not a second overdraw layer
+tests/comicGroundPlanes.test.mjs:24:1	reviewed generated RGB atlas has pinned geometry and bytes; every old coverage byte survives
+tests/comicGroundPlanes.test.mjs:30:1	four generated cells contain broad but bounded intentional ink inside the existing footprints
+tests/comicGroundPlanes.test.mjs:42:1	generated midgray planes reach the brush tone sampler instead of being discarded as zero ink
+tests/comicGroundPlanes.test.mjs:56:1	actual stamps and clipped overlapping fans preserve alpha, dirty bounds, ownership and replay for every member
+tests/comicScreenPrintFloor.test.mjs:15:1	reviewed authored bitmap is exact, opaque, quiet and bounded rather than a source directory or busy full-field noise
+tests/comicSurfacePresentation.test.mjs:11:1	only the seven reviewed exports enter the release; old source is kept outside shipment
+tests/comicSurfacePresentation.test.mjs:22:1	lobby uses the record-shop scene while keeping existing original character images
+tests/companionArt265.test.mjs:4:1	all8 companion art assets are explicitly runtime-owned; the dialogue requires explicit opaque ivory backing and surrounding samples transparent
+tests/companionBranchSurface.test.mjs:70:1	opening each topic shows that member's authored question and two native answers without writing
+tests/companionBranchSurface.test.mjs:101:1	an answer runs the actual reply command, updates history in place and disables only the accepted answer
+tests/companionBranchSurface.test.mjs:126:1	a failed answer keeps the retryable question and an honest warning, never a saved answer or count
+tests/companionBranchSurface.test.mjs:230:1	stylesheet: horizontal strip, contextual dock above navigation, per-role head framing, narrow and reduced-motion scope
+tests/companionConversationFlow.test.mjs:11:1	companion preview distinguishes the saved deployment label from the visible companion
+tests/companionConversationFlow.test.mjs:94:1	topics speak while portrait images load, but pointer speech still waits for decode
+tests/companionConversationFlow.test.mjs:156:1	all three members/topics update real records and canonical dialogue in place with the same portrait canvas
+tests/companionConversationFlow.test.mjs:183:1	unchanged saturated talk presents its canonical topic without rerendering or an invented visit
+tests/companionDialogueFrame.test.mjs:3:1	the low-profile dialogue uses one exact admitted AI export; no gesture sources enter runtime
+tests/companionStageHierarchy.test.mjs:51:1	members stay a native strip of whole names; B252 portrait anchors retain the existing scope
+tests/companionStudio265.test.mjs:78:1	a reply writes once, its button is disabled and the record drawer reflects current memory
+tests/consoleArt268.test.mjs:4:1	console registry fails unknown keys explicitly, all21 assets have truthful ownership/alpha provenance
+tests/currentCastTelegraphSeparation.test.mjs:13:41	sakura actual current atlas bounds reach the real Battle cue owner
+tests/currentCastTelegraphSeparation.test.mjs:13:41	kai actual current atlas bounds reach the real Battle cue owner
+tests/currentCastTelegraphSeparation.test.mjs:13:41	enjo actual current atlas bounds reach the real Battle cue owner
+tests/developmentDiagnosticPlugins.test.mjs:1:1	tests/developmentDiagnosticPlugins.test.mjs
+tests/duoSkillContact.test.mjs:4:1	selected two members preload exactly one new impact atlas and other casts never do
+tests/duoSkillContact.test.mjs:5:1	real skill accepted contacts use separate original frame banks without altering ordinary hits
+tests/encoreStageV2.test.mjs:30:1	Encore V2 shows current identity and native action, without duplicate face or baked placard
+tests/encoreStageV2.test.mjs:54:1	only real positive safe integer counts appear, retaining existing name text contract
+tests/enemyEnsemblePresentation.test.mjs:28:1	six coherent exports replace only the six enemy paths, keeping keys, sizes and radii
+tests/enjoFacialResponse.test.mjs:5:1	exact sparse eye export replaces one active atlas, preserves old closed pixels and touches no mouth or hair
+tests/enjoGaitContinuity.test.mjs:24:1	Enjo retains its six-cel walk beside the distinct four-cel rifle bank; all original motion banks remain
+tests/enjoGaitContinuity.test.mjs:30:1	only Enjo preloads the new bank, practice and other cast do not
+tests/enjoGaitContinuity.test.mjs:39:1	six walk phases follow unchanged 15px distance cadence while automatic fire continues
+tests/enjoGaitContinuity.test.mjs:46:1	idle, stationary release and action keep original cels; hurt uses its dedicated bank without changing counters
+tests/enjoGaitContinuity.test.mjs:56:1	pause holds gait phase and texture, missing optional bank retains legacy walk; teardown once
+tests/enjoGaitContinuity.test.mjs:65:1	cue exclusion follows the actual texture bounds, including mirrored gait and old idle
+tests/enjoGaitContinuity.test.mjs:73:1	direct walking damage switches to its dedicated hurt bank without changing world or hand anchors
+tests/enjoGaitContinuity.test.mjs:80:1	vertical walking uses the same distance gait and stop-then-fire restores the old release bank
+tests/enjoHurtContinuity.test.mjs:14:1	only Enjo exposes a four-frame optional hurt bank while all original cels remain
+tests/enjoHurtContinuity.test.mjs:19:1	preload adds the bank only for selected Enjo, never other cast or practice
+tests/enjoHurtContinuity.test.mjs:23:1	hurt plays all four cels in the existing 240ms with invariant size, origin and counters
+tests/enjoHurtContinuity.test.mjs:28:1	hurt has the existing precedence over action then resumes its remaining original action
+tests/enjoHurtContinuity.test.mjs:31:1	pause preserves the exact hurt cel and clock through resume without changing facing
+tests/enjoHurtContinuity.test.mjs:38:1	cue exclusion uses each actual hurt frame including mirrored bounds and teardown is once
+tests/enjoIndependentPortraitArtContract.test.mjs:1:1	tests/enjoIndependentPortraitArtContract.test.mjs
+tests/enjoLayeredPresentation.test.mjs:1:1	tests/enjoLayeredPresentation.test.mjs
+tests/enjoMesh285.test.mjs:12:1	candidate ships own matching-aspect rig and MIT notice without sample artwork
+tests/enjoRestCycle.test.mjs:16:1	enjo metadata offers one deeply frozen 4-cel rest bank beside walk/hurt; kai gets none and rifle keeps its own
+tests/enjoRestCycle.test.mjs:34:1	only selected enjo preloads its rest bank at 384x320; practice and later stages never enable it
+tests/enjoRestCycle.test.mjs:42:1	standing idle: ready12 until 400, rest 1..3 at 400/1000/1600, ready12 at 2200, no blink, repeats every 3600 without transforms
+tests/enjoRestCycle.test.mjs:52:1	rest cels drive hazard exclusion from their own bounds on both facings; hand origin unchanged and no muzzle
+tests/enjoRestCycle.test.mjs:60:1	movement, attack, action and hurt never show rest and each re-entry to idle restarts at ready12
+tests/enjoRestCycle.test.mjs:78:1	pause holds the active idle clock and current rest cel; resume continues on active time
+tests/enjoRestCycle.test.mjs:84:1	missing rest stays ready12; kai stays ready12; rifle rest and blink are unaffected
+tests/enjoRestCycle.test.mjs:92:1	destroy cleans up once and stops the rest cycle
+tests/enjoUnifiedArt.test.mjs:1:1	tests/enjoUnifiedArt.test.mjs
+tests/enjoVisualStudy.test.mjs:62:1	study resources get their own exact trial payload, not the default or previous ten-file list
+tests/enjoVisualStudy.test.mjs:102:1	installed Phaser parser retains cel registration and visible feet stay on their own measured baseline
+tests/enjoVisualStudy.test.mjs:128:1	front and rear gait registers alternating support shoes, not hashes masquerading as new poses
+tests/equipmentInventoryFramework.test.mjs:49:1	real inventory and workshop views reflect shared states; preview does not change deployment or profile
+tests/facilityRestorationArt.test.mjs:7:1	only the current restoration export ships; historic six-cell bytes remain exact with no raw/preview references
+tests/facilityRestorationArt.test.mjs:15:1	six alpha cels have safe transparent margins, no opaque backdrop and bounded decode
+tests/fanfireChoiceSurface.test.mjs:93:1	rifle library requests the rifle catalog, shows fanfire art and a rifle-only echo study
+tests/fiveQRebaseTrial.test.mjs:45:1	real attack feedback uses the current trial hand without replacing legal damage geometry
+tests/formalGameLayout.test.mjs:16:1	growth comparison has explicit current and planned column labels without save changes
+tests/fullMenuKeyArt.test.mjs:14:1	two full-height menu illustrations have exact versioned geometry, not previous chibi proportions
+tests/fullMenuKeyArt.test.mjs:18:1	exact two full-height files are explicitly admitted while previous menu images retain compatibility
+tests/fullMenuKeyArt.test.mjs:25:1	reviewed full illustration bytes decode sharply within the shared texture budget
+tests/fullMenuKeyArt.test.mjs:33:1	full-figure assets keep real alpha and64px layout safety without an opaque poster backdrop
+tests/fullMenuKeyArt.test.mjs:44:1	battle chibi, avatars and the existing rifle layered demo retain their original independent identity paths
+tests/gameSystemBreadth.test.mjs:49:1	play hub has functional goal/library/training/archive routes; goal preparation passes snapshot into battle
+tests/gameSystemBreadth.test.mjs:58:1	arrangement library previews nine existing combinations without selecting actual run choices or spending
+tests/genyaFaceMaterialProtection.test.mjs:13:2	public/art/genya-layered-20261006/genya-parts.webp: immutable reviewed face export and original UV
+tests/genyaFaceMaterialProtection.test.mjs:17:2	public/art/genya-layered-20261006/genya-parts.webp: approved full face/expression frames and all alpha
+tests/genyaFaceMaterialProtection.test.mjs:13:2	public/art/team-oblique-20261007/genya-oblique.webp: immutable reviewed face export and original UV
+tests/genyaFaceMaterialProtection.test.mjs:17:2	public/art/team-oblique-20261007/genya-oblique.webp: approved full face/expression frames and all alpha
+tests/genyaIndependentPortraitArtContract.test.mjs:1:1	tests/genyaIndependentPortraitArtContract.test.mjs
+tests/genyaLayeredPresentation.test.mjs:1:1	tests/genyaLayeredPresentation.test.mjs
+tests/genyaUnifiedArt.test.mjs:1:1	tests/genyaUnifiedArt.test.mjs
+tests/graffitiRuntime.test.mjs:32:1	neutral same-pigment hammer release is one bounded burst, not six duplicated jets
+tests/groundReadingMaterials.test.mjs:25:1	admitted exports are exact manifest bytes at two new public paths; raw sources stay out
+tests/groundReadingMaterials.test.mjs:31:1	release swaps the one ground path in its group and adds one owner-ui frame
+tests/groundReadingMaterials.test.mjs:42:1	Sakura cell becomes a narrow directional cutout; the other three cells stay exact clean RGBA
+tests/groundReadingMaterials.test.mjs:85:1	real rasters: other members paint byte-identically; Sakura stays clipped, owned and replay-stable
+tests/hammerReleaseComposition.test.mjs:13:1	heavy release has one primary burst and initially hidden breakup-only accepted contacts
+tests/heavyAuthoredMaterial.test.mjs:10:1	new heavy material is a separate explicit bank loaded only for selected Enjo
+tests/heavyAuthoredMaterial.test.mjs:25:1	heavy main and confirmed secondary use new material, not ordinary shot, contact or miss
+tests/heavyAuthoredMaterial.test.mjs:34:1	new main preserves 360ms while secondary remains delayed breakup4/5 for 220ms
+tests/heavyAuthoredMaterial.test.mjs:41:1	missing optional heavy texture falls back to original bank without inventing other ownership
+tests/heavyAuthoredMaterial.test.mjs:49:1	new material retains original radius/cover cap and never emits beyond an opaque wall
+tests/heavyAuthoredMaterial.test.mjs:53:1	paused material holds pixels and uses existing 24-node budget and exact teardown
+tests/heavyComicChain.test.mjs:12:1	new heavy family is one explicit twelve-cel export preloaded only for Enjo
+tests/heavyComicChain.test.mjs:21:1	one actual heavy hit selects contact and real-pigment residue from matching rows
+tests/heavyComicChain.test.mjs:24:1	miss has only low residue, never a false contact flash
+tests/heavyComicChain.test.mjs:25:1	six existing owner time slots sample four physical cels without adding timers
+tests/heavyComicChain.test.mjs:28:1	the real heavy release retains the airborne follow-through cel, not a second peak
+tests/heavyComicChain.test.mjs:29:1	late windup owns the full downswing span, early anticipation stays compact, pause and cancellation remain
+tests/heavyComicChain.test.mjs:37:1	registered elevated hammer trail uses its ground-plane cover receipt, not the projected head height
+tests/heavyInkChainV2.test.mjs:4:1	the admitted heavy chain is the reviewed twelve-cel source, not the rejected thin follow-through bank
+tests/heavyInkChainV2.test.mjs:8:1	all cels retain transparent gutters and real radius budgets; settled pigment stays neutral
+tests/heavyLandingChain.test.mjs:10:1	new heavy landing bank is explicit, enjo-only and has eight cells
+tests/heavyLandingChain.test.mjs:14:1	ordinary accepted contact has one short accent then no upright peak in the next preparation
+tests/heavyLandingChain.test.mjs:20:1	only the neutral floor row survives contact and follows the actual paint tint
+tests/heavyLandingChain.test.mjs:47:1	north heavy downswing crosses in front only after preparation, with no extra combat clock
+tests/heavyLiftPigmentChain.test.mjs:12:1	ordinary visible hammer trail uses the exact accepted snapshot pigment and safely rejects inherited names
+tests/heavyLiftPigmentChain.test.mjs:15:1	pause preserves trace pigment and absence of the neutral chain retains legacy unmodified stroke
+tests/heavyLiftPigmentChain.test.mjs:16:1	one exact twelve-cell candidate replaces only the active chain entry; old source remains available
+tests/heavyLiftPigmentChain.test.mjs:17:1	actual top4sources are near-neutral, radius-bounded and visibly staged; bottom8legacy remain exactRGBA
+tests/heavyPaletteImpact.test.mjs:7:1	heavy transient impact follows actor depth while permanent-style ground cues stay behind
+tests/heavyPaletteImpact.test.mjs:11:1	real main/residual construction selects each pigment row while preserving neutral tint and registered origins
+tests/heavyPaletteImpact.test.mjs:14:1	unknown malformed or inherited-name colors use neutral row without throwing or leaked nodes
+tests/heavyPaletteImpact.test.mjs:23:1	one exact36cell palette atlas replaces only the main-skill slot while original sources remain
+tests/heavyPigmentContinuity.test.mjs:5:1	ordinary heavy contact and low spread use the actual pigment, not fixed white or member hue
+tests/homeComponentFidelity.test.mjs:7:1	clean source atlas replaces opaque concept in payload without removing original reference file
+tests/homeComponentFidelity.test.mjs:8:1	every visible clean atlas RGB pixel equals the original reference; central character and exterior are transparent
+tests/homeComponentFidelity.test.mjs:9:1	extra original-unmatched play hub remains accessible inside home progress drawer, not over head
+tests/homeConceptBinding.test.mjs:74:1	owner desk header keeps native logo and eyebrow fallbacks beneath concept crops
+tests/homeConceptBinding.test.mjs:89:1	all five owner nav buttons keep native icon, label, state and callback beside their crop
+tests/homeConceptBinding.test.mjs:103:1	rerender binds fresh parents and stale image events cannot mark them
+tests/homeConceptBinding.test.mjs:116:1	legacy cast and redesigned nonhome roster have no concept crops; home retains its own composition
+tests/homeContinue.test.mjs:15:1	fresh home does not invent a usable continue button
+tests/homeContinue.test.mjs:16:1	real saved checkpoint offers continue with the saved actor/chapter, not current selection
+tests/homeContinue.test.mjs:20:1	new battle warns before replacing a midrun checkpoint; cancel keeps it byte-identical
+tests/homeDetailsInteraction.test.mjs:18:1	owner disclosure keeps a native first summary with its name and two decorative vector icons
+tests/homeDetailsInteraction.test.mjs:28:41	initial corrupt save warning opens the sheet with the collapse label
+tests/homeDetailsInteraction.test.mjs:28:41	initial pending save warning opens the sheet with the collapse label
+tests/homeDetailsInteraction.test.mjs:38:41	closed corrupt warning stays visible and does not force reopening on ordinary rerender
+tests/homeDetailsInteraction.test.mjs:38:41	closed pending warning stays visible and does not force reopening on ordinary rerender
+tests/homeDetailsInteraction.test.mjs:51:1	a newly occurring warning opens once even after a previously healthy sheet was explicitly closed
+tests/homeDetailsInteraction.test.mjs:58:1	new warning stays open across rapid renders before any delayed native toggle is delivered
+tests/homeDetailsInteraction.test.mjs:64:1	native toggle writes real expanded state, syncs labels and survives rerender
+tests/homeDetailsInteraction.test.mjs:72:1	reveal feedback occurs on a real open transition, not on restoring an already open sheet
+tests/homeDetailsInteraction.test.mjs:80:1	local Escape closes an open sheet immediately and returns focus to its summary
+tests/homeDetailsInteraction.test.mjs:87:1	other keys, handled, composing, and closed-sheet Escape are ignored
+tests/homeDetailsInteraction.test.mjs:98:1	queued events from detached sheets cannot write after rerender
+tests/homeDetailsInteraction.test.mjs:107:1	disposed views ignore toggle and Escape
+tests/homeDetailsInteraction.test.mjs:115:1	disclosure stays local and nonmodal without global handlers, timers, dialogs, or saves
+tests/homeIdentityFamily.test.mjs:6:1	Kai and Enjo home bind correct complete name/action plate without changing portrait or native identity
+tests/homeIdentityFamily.test.mjs:8:1	rerender/dispose and non-owner branches cannot acquire another performer plate
+tests/homeIdentityFamily.test.mjs:10:1	one reviewed alpha atlas is explicit in runtime, retains safe margins, and does not replace old lettering or concept
+tests/homeIntegrityInteraction.test.mjs:23:1	owner lobby has separate accessible interaction/change controls and rifle roster uses layered HD art
+tests/homeLettering.test.mjs:18:1	current-cast home attaches exactly the eight decorative lettering assets beside native labels
+tests/homeLettering.test.mjs:47:1	load marks only the owning label; error removes the image and restores native fallback
+tests/homeLettering.test.mjs:61:1	legacy cast home renders no lettering images and keeps its existing labels
+tests/homePortraitDemo.test.mjs:50:1	actual home mounts the rig and disposes it before navigation without changing the fallback asset
+tests/homePortraitResources.test.mjs:13:1	home demo admits exactly five reviewed exports, no raw concept or guide
+tests/homePortraitResponse.test.mjs:12:1	each response has its own admitted face, speaker and full un-stretched original dialogue
+tests/homePortraitStage.test.mjs:11:1	home backdrop is the one admitted owner-ui runtime file; old record shop stays exact
+tests/homePortraitStage.test.mjs:33:1	home renders the new backdrop over unchanged original portraits and keeps the override and error fallback
+tests/homeReferenceLayout.test.mjs:12:1	three illustrated home commands remain primary while the fourth hub is a named compact utility
+tests/homeReferenceLayout.test.mjs:18:1	progress disclosure has a native summary, readable name and library icon, not a permanent text band
+tests/homeReferenceLayout.test.mjs:25:1	preparation values are retained in the accessible progress drawer without floating across the face
+tests/homeReferenceLayout.test.mjs:30:1	new composition keeps native primary action, layered home only and existing navigation
+tests/homeReferenceLayout.test.mjs:49:41	home foreground drawer preserves operable corrupt save controls
+tests/homeReferenceLayout.test.mjs:49:41	home foreground drawer preserves operable pending save controls
+tests/homeSelectedCorrections.test.mjs:2:1	selected home keeps a truthful disabled resume action visible before the first checkpoint
+tests/inkRestorationPresentation.test.mjs:9:1	two exact source replacements retain the current419inventory and keep previous images available
+tests/innerPosterHierarchy.test.mjs:3:1	selected equipment stage and effects precede native chooser; browsing does not persist
+tests/innerPosterHierarchy.test.mjs:10:1	tour sequence contains three native locked-state chapter controls and original selection confirmation
+tests/innerPosterHierarchy.test.mjs:14:1	authored chassis only replaces its decoration after decode; errors and detached callbacks leave live native controls
+tests/innerScreenFamily.test.mjs:10:1	owner inner pages use five native navigation controls without home raster overlays
+tests/innerScreenFamily.test.mjs:21:1	inventory initially exposes six items and keeps an explicit collapse or expand choice
+tests/innerScreenFamily.test.mjs:34:1	all inventory cells use their real item art and mark actual equipment compatibility
+tests/innerScreenFamily.test.mjs:42:1	inventory title is native accessible text without a load-dependent bitmap overlay
+tests/innerScreenFamily.test.mjs:49:1	inventory item art failure keeps the established native icon fallback
+tests/innerScreenProduction.test.mjs:37:1	inventory uses every actual item art in grid and detail while directory summary remains native without persisting browsing
+tests/innerScreenProduction.test.mjs:52:1	locked footer shows real unlock requirement and refuses an unavailable equipment action
+tests/innerScreenProduction.test.mjs:57:1	roster and tour use native identity while chapter previews and legacy equipment stay unchanged
+tests/inventoryArt264.test.mjs:2:1	inventory preparation uses original AI lettering without hiding the explicit candidate deployment semantics
+tests/inventoryArt264.test.mjs:6:1	all nine original inventory assets have explicit runtime ownership and preserved alpha manifest
+tests/inventoryExhibition.test.mjs:3:1	inventory presents the actual selected object and effects before its catalogue without storing a preview
+tests/inventoryExhibition.test.mjs:4:1	preview state is independent of actual loadout and existing equip handler alone persists
+tests/inventoryExhibition.test.mjs:5:1	compact prepare icon retains its complete accessible action and tooltip; legacy is unchanged
+tests/inventoryLoadoutIdentity.test.mjs:4:1	actual equipped item stays visible and distinct from a browsed preview without writes
+tests/inventoryLoadoutIdentity.test.mjs:7:1	actual equipped mark is independent of selected aria-pressed and updates only after native equip or unequip
+tests/inventoryLoadoutIdentity.test.mjs:10:1	member preview reads its own saved one-slot loadout without changing the deployed member
+tests/inventoryLoadoutIdentity.test.mjs:13:1	locked, incompatible and rejected saves cannot manufacture an equipped badge or alter the current band
+tests/inventoryReward299.test.mjs:10:1	reward opens exact item once without deploying or writing
+tests/inventoryStudio264.test.mjs:93:1	grid shows native name and state per object; one context row, no actor portrait or selector
+tests/inventoryStudio264.test.mjs:187:1	equip and unequip use the existing callback for the shown actor only; wordmark hosts keep native labels
+tests/inventoryStudio264.test.mjs:241:1	browsing a non-deployed actor never deploys; its route asks explicitly
+tests/inventoryStudioMarkup.test.mjs:30:1	showcase layout is enabled only for the current owner inventory
+tests/inventoryStudioMarkup.test.mjs:42:3	native directory reports real owned count 0 of six, not the selected preview
+tests/inventoryStudioMarkup.test.mjs:42:3	native directory reports real owned count 2 of six, not the selected preview
+tests/inventoryStudioMarkup.test.mjs:42:3	native directory reports real owned count 6 of six, not the selected preview
+tests/inventoryStudioMarkup.test.mjs:63:1	native directory toggle survives preview rerenders and ignores detached/disposed toggle events
+tests/inventoryStudioMarkup.test.mjs:84:1	all three members and six previews retain canonical native identity, role, effects and no-write behavior
+tests/inventoryStudioMarkup.test.mjs:130:1	locked, owned, equipped and incompatible remain distinct in availability and existing equip policy
+tests/inventoryStudioMarkup.test.mjs:167:1	owner equip and catalog commands use existing native line icons with real accessible labels
+tests/inventoryStudioMarkup.test.mjs:183:1	comparison/back and prepared navigation preserve the selected item and saved loadout
+tests/inventoryStudioMarkup.test.mjs:216:1	legacy five-member six-item DOM stays identical to the pre-B241 markup baseline
+tests/journeyBriefing284.test.mjs:145:1	terminal copy is 本轮巡演 and no chapter promises a three-stop tour
+tests/kaiComicContact.test.mjs:5:1	selected casts retain ordinary contact preloads alongside the two-member skill bank
+tests/kaiComicContact.test.mjs:6:1	ordinary and skill real contacts choose separate dedicated banks at accepted points only
+tests/kaiComicContact.test.mjs:7:1	empty skill contacts, misses and unavailable art never invent a target explosion
+tests/kaiComicContact.test.mjs:8:1	Kai release/dash/projectile and other cast impact banks remain unchanged
+tests/kaiComicProjectile.test.mjs:15:1	only selected Kai preloads its bank and explicit payload keeps the legacy crescent available
+tests/kaiComicProjectile.test.mjs:18:1	Kai head is registered at the actual physics core and birth tail cannot project behind its spawn
+tests/kaiComicProjectile.test.mjs:21:1	four flight cels use their own 45ms active clock, not the rifle40ms or scene wall time
+tests/kaiComicProjectile.test.mjs:24:1	tail reveal follows maximum actual displacement at256/56 texels and never moves the body
+tests/kaiComicProjectile.test.mjs:27:1	missing Kai source retains the exact old untracked visual; Enjo and rifle fallbacks stay native
+tests/kaiComicProjectile.test.mjs:30:1	real BattleScene visual seam and direction rotation cannot mutate projectile physics
+tests/kaiComicProjectile.test.mjs:33:1	tracking remains bounded and cleanup never destroys a real projectile owned by BattleScene
+tests/kaiDashFx.test.mjs:15:1	Kai-only preload adds one explicit six-cel dash bank; selected Sakura adds its four rifle banks; other casts unchanged
+tests/kaiDashFx.test.mjs:23:1	dash release preserves issued direction, ordinary sweep and dedicated accepted-contact ownership
+tests/kaiDashFx.test.mjs:31:1	missing dash bank preserves exact old sweep fallback and other member releases
+tests/kaiDashFx.test.mjs:35:1	six existing sweep beats/240ms expiry and pause/dialog remain clock-owned
+tests/kaiDashFx.test.mjs:40:1	measured pixel radius, wall rejection and authored palette retain existing guard
+tests/kaiDashFx.test.mjs:44:1	dash rows obey existing24 budget, end/death disposal and idempotent cleanup
+tests/kaiDashFx.test.mjs:47:1	extremely narrow cover falls back to the old legal sweep instead of losing an existing release
+tests/kaiDashMaterial.test.mjs:18:1	selected Kai retains exact dash and separate contact preloads; other cast banks stay explicit
+tests/kaiDashMaterial.test.mjs:32:1	Kai runtime metadata stays exact: no alpha, depth, wall, clock or rifle-art workaround reaches the sword
+tests/kaiHurtContinuity.test.mjs:15:1	Kai exposes a frozen four-frame hurt bank while the original sword atlas and other cast stay unchanged
+tests/kaiHurtContinuity.test.mjs:23:1	preload adds the bank only for selected Kai, never other cast or practice
+tests/kaiHurtContinuity.test.mjs:30:1	Kai hurt plays all four cels in the existing 240ms with invariant size, origin and counters
+tests/kaiHurtContinuity.test.mjs:43:1	Kai hurt keeps existing precedence over action then resumes its remaining original action
+tests/kaiHurtContinuity.test.mjs:47:1	pause preserves the exact Kai hurt cel and clock through resume without changing facing
+tests/kaiHurtContinuity.test.mjs:55:1	cue exclusion uses each actual Kai hurt frame in both facings and teardown is once
+tests/kaiIndependentPortraitArtContract.test.mjs:1:1	tests/kaiIndependentPortraitArtContract.test.mjs
+tests/kaiLayeredPresentation.test.mjs:1:1	tests/kaiLayeredPresentation.test.mjs
+tests/kaiUnifiedArt.test.mjs:1:1	tests/kaiUnifiedArt.test.mjs
+tests/meleeAttackChain.test.mjs:49:1	missing shared stroke texture uses the existing hammer release fallback, and rifle never creates a melee owner
+tests/meleeAuthoredSequence.test.mjs:24:1	actual body presentation samples the eight-cel bank at constant half scale and the same world sole
+tests/meleeAuthoredSequence.test.mjs:27:1	missing attack art preserves the old pose bank; hurt/action remain authoritative
+tests/meleeAuthoredSequence.test.mjs:30:1	one role-specific local process sprite spans the actual attack and remains within committed reach
+tests/meleeDirectionalBody.test.mjs:9:1	actual body uses vertical origin/bounds and computes a real per-cel world weapon endpoint
+tests/meleeFollowThrough.test.mjs:7:1	directional selector and actual body/FX agree on the heavy hold with one existing process node
+tests/meleeFollowThrough.test.mjs:8:1	unreleased gate and hurt authority cannot display an authored impact or retain a stale hammer trail
+tests/meleeHeavyBridge.test.mjs:67:1	actual renderer uses native width/origin and mirrored exclusion bounds, not a stretched384 frame
+tests/meleeWeaponPath.test.mjs:13:1	north hammer release process follows preceding/current head midpoint, never the foot-to-head line
+tests/memberDetail306.test.mjs:5:81	sakura ability has one identity and restores the original panel without save writes
+tests/memberDetail306.test.mjs:5:81	sakura dossier has one identity and restores the original panel without save writes
+tests/memberDetail306.test.mjs:5:81	kai ability has one identity and restores the original panel without save writes
+tests/memberDetail306.test.mjs:5:81	kai dossier has one identity and restores the original panel without save writes
+tests/memberDetail306.test.mjs:5:81	enjo ability has one identity and restores the original panel without save writes
+tests/memberDetail306.test.mjs:5:81	enjo dossier has one identity and restores the original panel without save writes
+tests/memberRoster263.test.mjs:2:1	growth actor sheet uses the actual growth-member IDs and never requests undefined lettering
+tests/memberRoster263.test.mjs:3:1	roster profession glyph matches each performer and training command names its actual destination
+tests/menuCoherentCast.test.mjs:4:1	current menu bodies use B252 sources while the isolated legacy motion registration remains unchanged
+tests/menuCoherentCast.test.mjs:5:1	same-source menu head avatars are explicit and unsupported cast has no new art
+tests/menuCoherentCast.test.mjs:24:1	avatar waits for decode, validates dimensions, and explicitly reports new-source failure without Q
+tests/menuCoherentCast.test.mjs:25:1	detached or disposed avatar decode cannot change a new page
+tests/menuCoherentCast.test.mjs:29:1	only exact old Kai and new Enjo exports ship, transparent safety and texture budgets are explicit
+tests/menuEnjoIllustration.test.mjs:4:1	current Enjo and Kai use the admitted B252 bases and same-source avatars
+tests/menuEnjoIllustration.test.mjs:12:1	rebuilt menu exports have64px real alpha clearance and sparse current-face Enjo patches
+tests/menuHierarchy.test.mjs:176:1	tour: three compact chapter tabs and one selected venue; details remain secondary
+tests/menuHierarchy.test.mjs:269:1	wiring: sheet disposed before replaceChildren, compaction before navigation, no storage in new modules
+tests/menuIdentityCast.test.mjs:4:1	identity reset uses four processed same-source menu exports; rifle and battle remain separate
+tests/menuIdentityCast.test.mjs:6:1	both processed bodies have true64px transparent safety and bounded decode memory
+tests/menuLettering.test.mjs:4:1	every redesigned title is real accessible text with no decorative window or load-dependent state
+tests/menuLettering.test.mjs:10:1	legacy and home text remain unchanged and cached unrelated images cannot switch a v2 title
+tests/menuPortraitExpressionLoading.test.mjs:70:1	actual B252 presentation decodes one source-static body with explicit errors and no legacy expression mounts or Q revival
+tests/menuPortraitPresentation.test.mjs:14:1	two immutable full-height menu illustrations have explicit high resolution and unsupported ids stay untouched
+tests/menuPortraitPresentation.test.mjs:18:1	load waits for successful decoding before an atomic reveal; duplicate loads decode only once
+tests/menuPortraitPresentation.test.mjs:21:1	cached images still decode; rejection and incorrect dimensions explicitly fail without Q
+tests/menuPortraitPresentation.test.mjs:25:1	errors and late decode after disposal, movement or shell shutdown cannot revive a portrait
+tests/menuPortraitPresentation.test.mjs:28:1	without decode, only the exact fully loaded image can replace the original
+tests/menuPortraitPresentation.test.mjs:29:1	native lobby and only the large roster slot use new art; battle and small avatars keep originals
+tests/menuRefinedCast.test.mjs:2:1	current full portraits and same-source heads are explicitly limited to the two rebuilt menu identities
+tests/menuSeriesCast.test.mjs:7:1	two new menu candidates and exact same-source avatars are explicitly admitted
+tests/menuSeriesCast.test.mjs:24:1	padded lossless candidates have clear borders and full-resolution heads
+tests/mobileGameScreenFramework.test.mjs:53:1	inventory has a finite honest owned/locked set and uses actual atomic equipment commands
+tests/mobileGameScreenFramework.test.mjs:67:1	archive shows real records and unknown legacy states, not fake scores or rewards
+tests/mobileGameScreenFramework.test.mjs:76:1	play hub groups real preparation, growth and record routes with current saved status
+tests/mobileGameScreenFramework.test.mjs:110:1	training return command names its actual home destination, not the new dedicated preflight screen
+tests/mobileUiTestReadiness.test.mjs:39:1	back restores scroll and caller focus; root navigation drops deep history
+tests/movingRifleLayers.test.mjs:51:1	all 16 shoot/walk pairs draw the original shoot upper over the walk lower on both facings
+tests/movingRifleLayers.test.mjs:64:1	upper follows shot time only and lower follows travelled distance only
+tests/movingRifleLayers.test.mjs:75:1	moving upper keeps the 270ms rifle cel timing; standing shot stays the uncropped whole-body bank
+tests/movingRifleLayers.test.mjs:85:1	stop, hurt, action, idle and missing banks reset the lower crop and hide the single upper
+tests/movingRifleLayers.test.mjs:106:1	freeze holds both layer poses while positions follow the player; resume skips nothing
+tests/movingRifleLayers.test.mjs:117:1	missing either bank or no crop API falls back to the exact old whole-body walk without an extra node
+tests/movingRifleLayers.test.mjs:128:1	muzzle uses the upper shoot marker while layered; physical hand keeps its facing contract
+tests/movingRifleLayers.test.mjs:136:1	cue exclusion is the clipped upper/lower union on both facings, not the whole walk cel
+tests/movingRifleLayers.test.mjs:144:1	upper sits just above the lower body and below weapon FX, matching alpha and tint
+tests/movingRifleLayers.test.mjs:152:1	destroy releases the upper exactly once and later updates create nothing
+tests/ordinaryHammerContact.test.mjs:19:1	contact bank loads only for Enjo and preserves all common banks
+tests/ordinaryHammerContact.test.mjs:21:1	only accepted ordinary Enjo hits select new contact, with old 220ms lifetime and existing cap
+tests/ordinaryHammerContact.test.mjs:22:1	projectile, emission, missed ground, heavy, missing source and other actors remain on original banks
+tests/ordinaryWeaponPosePriority.test.mjs:97:1	melee pose samples actual windup/contact/recovery even while feet keep moving
+tests/ownerBattleUi.test.mjs:17:1	exactly fifteen generated battle UI exports ship, with source hashes kept outside public
+tests/ownerBattleUi.test.mjs:42:1	current cast action icon follows owner identity and never changes the charge or action state
+tests/ownerBuildContent.test.mjs:96:1	actual library includes preparation while remaining read-only and can return to preflight
+tests/ownerCastContinuityGrounding.test.mjs:73:1	matching committed action direction owns the body while automatic shots keep their own physical hand
+tests/ownerChapterCurve.test.mjs:56:1	archive keeps prior versioned scores readable without enabling current challenges or writing
+tests/ownerChapterEvents.test.mjs:52:1	rules2 remains readable history and cannot seed rules3 challenges
+tests/ownerChapterReplay.test.mjs:8:1	tour separates global completion, measured current-rules records and legacy without writes
+tests/ownerChapterReplay.test.mjs:25:1	home next destination previews locally without saving or launching
+tests/ownerChapterReplay.test.mjs:41:1	archive shows three members by four chapters without phantom clears
+tests/ownerChapterReplay.test.mjs:48:1	empty archive does not claim lost results, and a revoked write authority cannot enter goals
+tests/ownerChapterReplay.test.mjs:67:1	result completion review is based on durable actual evidence and absent on pending or diagnostic results
+tests/ownerContentTestAcceptance.test.mjs:4:2	TourRouteScene inventory hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	TourRouteScene growth hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	TourRouteScene library hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	TourRouteScene goals hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	IdolRosterScene inventory hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	IdolRosterScene growth hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	IdolRosterScene library hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:4:2	IdolRosterScene goals hands preparation back to the original Title start owner
+tests/ownerContentTestAcceptance.test.mjs:20:1	preparation confirmation rejects lost write authority instead of navigating standalone scene
+tests/ownerContentTestAcceptance.test.mjs:25:1	Title local preflight and modal veto remain intact
+tests/ownerCoreJourneyPresentation.test.mjs:18:1	preflight compact team owns actual saved member/build identity while preserving all six routes and original start data
+tests/ownerCoreJourneyPresentation.test.mjs:27:1	all three saved members and unlocked venues retain exact original preflight/start handoff
+tests/ownerDirectoryArchiveLibrary.test.mjs:18:1	hub categories expose one panel with proper controls and never write a save
+tests/ownerDirectoryArchiveLibrary.test.mjs:28:1	hub arrow/home/end navigation activates and restores tab focus without losing return category
+tests/ownerDirectoryArchiveLibrary.test.mjs:37:1	selected-member archive records precede the full preserved coverage overview
+tests/ownerDirectoryArchiveLibrary.test.mjs:44:1	current records and historical rule samples remain distinct after reordering
+tests/ownerDirectoryArchiveLibrary.test.mjs:50:1	replay proposal and cancel retain expanded coverage so restored focus remains visible
+tests/ownerDirectoryArchiveLibrary.test.mjs:64:1	library groups both original stages and previews before the expandable long guide
+tests/ownerEntryConsistency.test.mjs:40:1	current public UI queues required bitmap images in the same scene loader and restores loader mode
+tests/ownerEntryConsistency.test.mjs:60:1	UI load failure blocks creation and retries the exact original scene once through the existing recovery owner
+tests/ownerFlowPresentation.test.mjs:47:1	companion members sit in one strip before the portrait scene with whole headshot and name tiles
+tests/ownerFlowPresentation.test.mjs:86:1	venue rooms carry distinct admitted identity bitmaps and keep commands
+tests/ownerFlowPresentation.test.mjs:102:1	route stays one native button; each step is decorated with its real current and cleared facts
+tests/ownerFlowPresentation.test.mjs:126:1	expanded details keep the real summary, Escape focus and closed state without a cover panel
+tests/ownerFormalUiWholeModule.test.mjs:16:1	home keeps one character hero and explicitly groups the secondary session facts without writes
+tests/ownerFormalUiWholeModule.test.mjs:25:1	preflight visually identifies the actual member and venue without applying a build or starting
+tests/ownerFormalUiWholeModule.test.mjs:49:1	formal UI runtime candidates are explicit hash locked images with source sheets excluded
+tests/ownerGeneratedUi.test.mjs:46:1	post-render hook decorates only owner-three desk, lounge and venue
+tests/ownerGeneratedUi.test.mjs:56:1	home entrances use actual admitted decorative bitmaps and preserve commands and labels
+tests/ownerGeneratedUi.test.mjs:69:1	mount preserves nodes, listeners, data, details Escape and writes nothing; repeated mounts are idempotent
+tests/ownerGeneratedUi.test.mjs:87:1	home real progress, recent facts and route steps keep their data in unframed bands
+tests/ownerGeneratedUi.test.mjs:103:1	companion topic and cast callbacks and avatar children survive decoration
+tests/ownerGeneratedUi.test.mjs:123:1	venue hotspots, draft options, save and prepare retain their real commands
+tests/ownerGeneratedUi.test.mjs:138:1	rerender gives one decoration per target and no stale page scope
+tests/ownerGrowthEquipmentHub.test.mjs:24:1	returning from backpack shows the actual newly equipped gear, not a stale preview
+tests/ownerHarborGroundStrike.test.mjs:19:1	rules12 history and earned progression survive rules13 without seeding new-rule score goals
+tests/ownerJourneyContent.test.mjs:11:1	entry is concise, optional intro returns to the same borrowed pause and does not mark seen
+tests/ownerJourneyContent.test.mjs:32:1	journal shows chapter gates without leaking locked dialogue; directory preserves pause
+tests/ownerMilestoneReplayContent.test.mjs:13:1	milestones reflect durable campaign, member first clears and current-rule coverage separately
+tests/ownerMilestoneReplayContent.test.mjs:22:1	legacy records do not falsely complete current coverage; full coverage ends recommendation
+tests/ownerMilestoneReplayContent.test.mjs:62:1	home proposal and archive milestones use real consumer, cancel is read-only and confirm enters correct preflight
+tests/ownerMilestoneReplayContent.test.mjs:72:1	new replay commands consume existing bitmap icons and primary button surfaces
+tests/ownerMobileCandidateDelivery.test.mjs:80:1	current archive separates readable history without writes or enabling current challenges
+tests/ownerPersonalLoadoutContent.test.mjs:50:1	wrong-owner runtime snapshots fail closed; every valid modified build keeps original scalar effects
+tests/ownerPersonalLoadoutContent.test.mjs:121:1	all menus expose truthful ownership, personal eligibility and saved preflight without auto-switch
+tests/ownerPersonalLoadoutContent.test.mjs:134:1	earned result prefers its actual personal unlock and strips action review from saved run
+tests/ownerPreparationPlan.test.mjs:111:1	inventory-origin plan captures expected state and denied member handoff cannot advance
+tests/ownerPublicMenuUi.test.mjs:9:1	nineteen menu exports are explicit, hash-locked, and do not publish their source sheets
+tests/ownerPublicMenuUi.test.mjs:19:1	current root navigation uses consistent Lucide symbols while content retains its authored art
+tests/ownerPublicMenuUi.test.mjs:36:1	equipment art follows item identity while unavailable equip stays disabled and planning stays read-only
+tests/ownerRouteVariety.test.mjs:13:1	actual preparation buttons are preview-only and Title freezes their choice only on start
+tests/ownerRouteVariety.test.mjs:77:1	rules7 keeps original rules6 history and old progression without converting it to a current score
+tests/ownerSessionContent.test.mjs:5:1	current three-character stories are authored independently and keep unlock gates
+tests/ownerSessionContent.test.mjs:62:1	inventory handoff stays local and explicit equip does not change deployment
+tests/ownerSystemPreparationLayout.test.mjs:19:1	inventory presents a collapsible item chooser and synchronized full-width live detail in one workbench
+tests/ownerSystemPreparationLayout.test.mjs:33:1	inventory exposes structured projected effects, not an applied build, and keeps incompatible gear blocked
+tests/ownerSystemPreparationLayout.test.mjs:41:1	training action precedes the secondary notes explanation and catalog route
+tests/ownerSystemPreparationLayout.test.mjs:49:1	growth compares the current and planned effects before the gear choices and applies only after confirmation
+tests/ownerSystemPreparationLayout.test.mjs:71:1	new inventory detail cannot bypass the original unsaved or quota gates
+tests/ownerThreeMapIntegration.test.mjs:36:1	all three battle foundations use explicit versioned image assets
+tests/ownerTourEventJourney.test.mjs:7:1	route and arrangement travel together through actual member, tour and wallet Scene boundaries
+tests/ownerTourEventJourney.test.mjs:21:1	cancelled member and venue previews retain route, committed changes cannot resurrect it
+tests/ownerWholeLoopCloseout.test.mjs:34:1	current-cast preflight puts actual preparation and all configuration entries before detailed rules
+tests/ownerWholeLoopCloseout.test.mjs:51:1	native preparation disclosure remains open across route rerender and remains session-only
+tests/ownerWholeLoopCloseout.test.mjs:61:1	preflight summary follows the saved owner and equipment, not a local roster preview
+tests/p15131PlayerShotLaunchNoteFlick.test.mjs:1:1	tests/p15131PlayerShotLaunchNoteFlick.test.mjs
+tests/p15135AutoAimPriorityTargetAlignment.test.mjs:1:1	tests/p15135AutoAimPriorityTargetAlignment.test.mjs
+tests/p15225ManualFocusTargetActionContract.test.mjs:1:1	tests/p15225ManualFocusTargetActionContract.test.mjs
+tests/p15259PublicStage1WaveAuthoredPressureEventContract.test.mjs:1:1	tests/p15259PublicStage1WaveAuthoredPressureEventContract.test.mjs
+tests/p15322CpSweetQuintetRuntimeRetirement.test.mjs:1:1	tests/p15322CpSweetQuintetRuntimeRetirement.test.mjs
+tests/p15333PublicStage1BlueTempoControlRole.test.mjs:1:1	tests/p15333PublicStage1BlueTempoControlRole.test.mjs
+tests/p15343PublicStage1PinkBeatAccentContract.test.mjs:1:1	tests/p15343PublicStage1PinkBeatAccentContract.test.mjs
+tests/p15352PublicStage1OrangeExactConfirmationOwnership.test.mjs:1:1	tests/p15352PublicStage1OrangeExactConfirmationOwnership.test.mjs
+tests/p15367PublicStage1AttackExactTargetCommitment.test.mjs:1:1	tests/p15367PublicStage1AttackExactTargetCommitment.test.mjs
+tests/p15AssetBoundaryGuard.test.mjs:1:1	tests/p15AssetBoundaryGuard.test.mjs
+tests/p15IdolRosterArt.test.mjs:1:1	tests/p15IdolRosterArt.test.mjs
+tests/p15ProductionDeskShell.test.mjs:1:1	tests/p15ProductionDeskShell.test.mjs
+tests/p15TourRouteArt.test.mjs:1:1	tests/p15TourRouteArt.test.mjs
+tests/p15TourRouteReadOnlyScene.test.mjs:1:1	tests/p15TourRouteReadOnlyScene.test.mjs
+tests/p16012PublicStage1UnlitChaserRole.test.mjs:1:1	tests/p16012PublicStage1UnlitChaserRole.test.mjs
+tests/p16016PublicStage1ObjectiveDisruptorRole.test.mjs:1:1	tests/p16016PublicStage1ObjectiveDisruptorRole.test.mjs
+tests/p16036CanonicalBuildRoot.test.mjs:74:1	root is the real config directory, independent of the launch directory
+tests/p16036CanonicalBuildRoot.test.mjs:81:1	logical and physical config paths converge before HTML output naming
+tests/p16036CanonicalBuildRoot.test.mjs:100:1	existing output settings and exact seven-asset build-only guard are preserved
+tests/p16036CanonicalBuildRoot.test.mjs:113:1	dev server keeps its port without opening a browser automatically
+tests/p16036CanonicalBuildRoot.test.mjs:125:3	asset guard uses resolved root and default outDir, not cwd or the config default
+tests/p16036CanonicalBuildRoot.test.mjs:125:3	asset guard uses resolved root and nested relative outDir, not cwd or the config default
+tests/p16036CanonicalBuildRoot.test.mjs:125:3	asset guard uses resolved root and parent relative outDir, not cwd or the config default
+tests/p16036CanonicalBuildRoot.test.mjs:125:3	asset guard uses resolved root and absolute outDir, not cwd or the config default
+tests/p16036CanonicalBuildRoot.test.mjs:158:1	clean output and partial guarded re-entry are handled without broad deletion
+tests/p16044PublicCampaignContract.test.mjs:1:1	tests/p16044PublicCampaignContract.test.mjs
+tests/p16045PublicCampaignProgress.test.mjs:55:1	new root-v1 profiles include the exact empty campaign schema
+tests/p16045PublicCampaignProgress.test.mjs:63:1	legacy v1 migration credits historical clears only to opening and preserves root history
+tests/p16045PublicCampaignProgress.test.mjs:78:1	legacy zero-clear records remain at opening with no inferred progress
+tests/p16045PublicCampaignProgress.test.mjs:83:1	an old completed three-chapter save migrates without writing and still needs a real fourth victory
+tests/p16045PublicCampaignProgress.test.mjs:105:1	a future campaign version in old three-chapter shape is never migrated or overwritten
+tests/p16045PublicCampaignProgress.test.mjs:116:1	campaign helper returns isolated sanitized data and unlocks only a cleared predecessor chain
+tests/p16045PublicCampaignProgress.test.mjs:160:1	four real victories unlock each next chapter and only the fourth ends the finite campaign
+tests/p16045PublicCampaignProgress.test.mjs:205:1	four clears are not four chapters: replays never skip or complete the fourth chapter
+tests/p16045PublicCampaignProgress.test.mjs:224:1	failure records its actual chapter but changes no campaign progress or chapter selection
+tests/p16045PublicCampaignProgress.test.mjs:237:1	replaying a cleared chapter increments only its own count and never creates a fifth chapter
+tests/p16045PublicCampaignProgress.test.mjs:286:1	existing corrupt campaign data never turns root clears into invented chapter progress
+tests/p16045PublicCampaignProgress.test.mjs:310:1	campaign sanitization derives ordered clears and completion from validated counts only
+tests/p16045PublicCampaignProgress.test.mjs:321:1	claimed completion in a direct helper input needs four ordered counts backed by root clears
+tests/p16045PublicCampaignProgress.test.mjs:338:1	future campaign versions preserve raw storage and root stats while refusing writes
+tests/p16045PublicCampaignProgress.test.mjs:358:1	corrupt JSON and future root versions stay fail-safe for chapter helpers
+tests/p16045PublicCampaignProgress.test.mjs:389:1	a failed save of the fourth victory stays unpersisted and its retry counts once
+tests/p16045PublicCampaignProgress.test.mjs:424:3	last-known-good read keeps a neon settlement session-local during read failure and retries once
+tests/p16045PublicCampaignProgress.test.mjs:424:3	last-known-good write keeps a neon settlement session-local during read failure and retries once
+tests/p16045PublicCampaignProgress.test.mjs:485:1	null storage explicitly clears prior good and pending progress without reviving either cache
+tests/p16045PublicCampaignProgress.test.mjs:503:1	null storage also resets pending progress created beside an unreadable future-version file
+tests/p16045PublicCampaignProgress.test.mjs:515:1	removing campaign within a known current save cannot remigrate neon clears into opening
+tests/p16045PublicCampaignProgress.test.mjs:528:1	a valid replacement profile supersedes the last-known-good unlock history
+tests/p16045PublicCampaignProgress.test.mjs:613:1	default profile arguments safely handle a throwing localStorage getter
+tests/p16046PublicCampaignShell.test.mjs:8:1	desk renders chapter name and start as distinct DOM elements without a legacy CTA bitmap
+tests/p16046PublicCampaignShell.test.mjs:60:1	desk and model reflect four chapter states and finite completion without a fifth chapter
+tests/p16046PublicCampaignShell.test.mjs:117:1	tour disables locked chapter buttons and ignores both normal and synthetic clicks
+tests/p16046PublicCampaignShell.test.mjs:136:1	tour preview is unsaved until explicit confirmation, which saves once before returning and survives reload
+tests/p16056SharedPublicShell.test.mjs:62:1	fresh shell uses real member/action and chapter lock states, without a fourth chapter
+tests/p16056SharedPublicShell.test.mjs:87:1	selecting chapters and performers preserves earned progress and reports failed persistence
+tests/p16074ActorPresentation.test.mjs:76:1	real scene owns preload, update and release; old source atlas remains quarantined
+tests/p16080RuntimePayload.test.mjs:12:1	release inventory is exact, categorized, unique and covers existing runtime consumers
+tests/p16080RuntimePayload.test.mjs:108:1	public preload contains only current chapter, actor, UI and shared audio; hidden keeps legacy assets
+tests/p67FiveColorBulletGraphicsReadability.test.mjs:1:1	tests/p67FiveColorBulletGraphicsReadability.test.mjs
+tests/p69ResultClearsActivePlayerBulletGraphics.test.mjs:1:1	tests/p69ResultClearsActivePlayerBulletGraphics.test.mjs
+tests/p73Stage1EnemyReadabilityOutline.test.mjs:1:1	tests/p73Stage1EnemyReadabilityOutline.test.mjs
+tests/p78Stage15MovementPriorityTarget.test.mjs:1:1	tests/p78Stage15MovementPriorityTarget.test.mjs
+tests/pausePreparationHierarchy.test.mjs:16:1	current cast presents route before six preparation tools and preserves route start handoff
+tests/performanceChoicesV2.test.mjs:7:1	owner choice uses current venue and same-source full-resolution avatar, not a stretched legacy bitmap
+tests/performanceChoicesV2.test.mjs:8:1	all six genuine effects have distinct reviewed AI art, category and exact live consequence
+tests/performanceChoicesV2.test.mjs:9:1	presentation keeps one terminal selection, exact callbacks and input restoration without a save
+tests/performanceSequenceFlow.test.mjs:8:1	real Encore burst passes actual cleared count into the existing paused cinematic identity, not a replaceable notice
+tests/performerActionTimeline.test.mjs:52:2	sakura: late first rendered action samples real age instead of restarting from notification
+tests/performerHurtExpressionArtContract.test.mjs:1:1	tests/performerHurtExpressionArtContract.test.mjs
+tests/performerPlantedFootRig.test.mjs:72:1	real ActorPresentation uses rig for idle, moving action and hurt; old lower cel stays hidden
+tests/performerShotFeedback.test.mjs:49:1	all 32 own hand anchors lie on opaque palm pixels, never transparent fingers or sleeve
+tests/phaserArcadeBuildBoundary.test.mjs:9:1	Vite selects the installed official Arcade build only for the bare Phaser import
+tests/pigmentBodyTexture.test.mjs:50:1	candidate material is exact neutral opaque source with bounded unchanged decoded allocation
+tests/pigmentPoolBody.test.mjs:40:1	actual incremental surface repaints the previous pool lip across a 32px dirty tile boundary
+tests/planningArt270.test.mjs:4:1	AI planning atlas retains alpha and every registered crop has provenance
+tests/planningScreenFamily.test.mjs:3:1	planning family is owner-only and never expands to unrelated pages
+tests/planningStudio270.test.mjs:47:1	growth: visible gear summary reflects the real planned selection and opens the original equipment sheet
+tests/playableUiCandidate.test.mjs:26:1	live candidate preserves five navigation roots, actual preparation tools and read-only previews
+tests/playableWeaponLifecycle.test.mjs:13:1	real basic shots use rifle spray, sword sweep and hammer burst instead of three gun muzzles
+tests/portraitBaseRegistration.test.mjs:95:1	menu art and avatars resolve through the registry; Sakura avatar is unchanged
+tests/preflightArt271.test.mjs:4:1	all twelve preflight wordmarks have traceable alpha-preserving extraction
+tests/preflightDecisionVisibility.test.mjs:7:1	owner venue and full menu portrait lead the preparation page without hiding route decisions
+tests/preflightDecisionVisibility.test.mjs:22:1	existing footer reports actual route without persisting a preview or changing the run handoff
+tests/preflightDecisionVisibility.test.mjs:27:1	route invalidation is reflected in footer instead of keeping a stale selected line
+tests/preflightDecisionVisibility.test.mjs:30:1	primary tour confirmation cannot navigate on quota failure and has persistent visible status
+tests/preflightDecisionVisibility.test.mjs:33:1	success still commits and returns to preparation while cancellation and legacy do not change
+tests/preflightFirstScreenHierarchy.test.mjs:4:1	all selected members/chapters put actual route before optional rules and tools
+tests/preflightFirstScreenHierarchy.test.mjs:7:1	selected arrangement remains visible and complete but follows route without rewriting plan or profile
+tests/preflightFirstScreenHierarchy.test.mjs:10:1	subtitle remains authored text while the nonhome heading uses the native accessible title
+tests/preflightProductionFlow.test.mjs:28:1	production marker belongs only to owner preflight with actual chapter and preparation identity
+tests/preflightProductionFlow.test.mjs:52:1	all three owner portraits request animation with the existing scene artwork as background
+tests/preflightProductionFlow.test.mjs:71:1	absent or invalid plans show an honest empty state and an explicit native library command
+tests/preflightProductionFlow.test.mjs:145:1	adjust and clear keep their native behavior and clear returns to no-plan without granting defaults
+tests/preflightProductionFlow.test.mjs:172:1	route, disclosures and all six configuration trips preserve selected plan and uncommitted drafts
+tests/preflightRoutePresentation.test.mjs:8:1	all chapters and original members expose two semantic route facts without losing real rules
+tests/preflightRoutePresentation.test.mjs:22:1	route selection remains three native buttons with one selected state and real start handoff
+tests/preflightRoutePresentation.test.mjs:45:1	canonical finale steps stay whole without parsing or changing existing review prose
+tests/preflightStageV2.test.mjs:13:1	stage identity uses exact helper portraits and separate native performer rank and equipment labels
+tests/preflightStageV2.test.mjs:26:1	secondary tools and the only start command are native icon plus label without bitmap control skin
+tests/preflightStageV2.test.mjs:36:1	route and disclosures stay session only and start hands off real selected route and arrangement
+tests/preflightStageV2.test.mjs:53:1	all six secondary tools preserve real destinations and legacy remains unchanged
+tests/preflightStudio271.test.mjs:29:1	one summary owns saved snapshot; three config tools; one start; header/nav unchanged
+tests/preparationReadingHierarchy.test.mjs:13:1	candidate selection changes labels but does not spend or commit preparation
+tests/preparationReadingHierarchy.test.mjs:16:1	inventory chooser starts open, retains all six options and restores focus to the chosen item
+tests/preparationScreenFamily.test.mjs:3:1	existing inner family includes preparation and records without leaking into legacy or unrelated pages
+tests/preparationScreenFamily.test.mjs:4:1	training uses the existing source-owned raster title, its exact dimensions and native failure label
+tests/programArt267.test.mjs:16:1	new generated components are explicit payload entries and final art remains unapproved
+tests/programStudio267.test.mjs:27:1	events first view: current chapter scene, actual cleared count, one tour command and two equal secondary commands
+tests/programStudio267.test.mjs:57:1	chapters sheet lists the three real chapters with real states, closes without writing and restores focus
+tests/publicBossPresentation.test.mjs:47:1	four chapters label the same finale boss as an enemy with original chapter names
+tests/publicFailureRetryProgress.test.mjs:84:1	pause and failure agree on a rooftop hold and the result survives world cleanup
+tests/publicProductFramework.test.mjs:73:1	real shell navigation exposes registered module identity without new roots or profile writes
+tests/publicProfileInitialGetterRecovery.test.mjs:50:1	initial recovery replays commands over unseen progress without dropping training or equipment
+tests/publicProfileRecoveryConflict.test.mjs:34:1	pending results replay once on latest valid profile, preserving both tabs
+tests/publicShellRigRouting.test.mjs:14:58	desk uses the existing P2L player for animated Sakura, not layered strips
+tests/publicShellRigRouting.test.mjs:14:58	roster uses the existing P2L player for animated Sakura, not layered strips
+tests/publicShellRigRouting.test.mjs:14:58	preflight uses the existing P2L player for animated Sakura, not layered strips
+tests/publicShellRigRouting.test.mjs:14:58	lounge uses the existing P2L player for animated Sakura, not layered strips
+tests/publicShellRigRouting.test.mjs:20:1	nonanimated secondary portraits stay on the deliberate static art route
+tests/publicShellRigRouting.test.mjs:23:58	desk mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute
+tests/publicShellRigRouting.test.mjs:23:58	roster mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute
+tests/publicShellRigRouting.test.mjs:23:58	preflight mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute
+tests/publicShellRigRouting.test.mjs:23:58	lounge mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute
+tests/publicShellRigRouting.test.mjs:29:1	animated Sakura keeps its 853x1280 registration
+tests/publicShellRigRouting.test.mjs:30:1	Kai has no rig registration and stays on the static portrait route
+tests/publicShellRigRouting.test.mjs:33:1	nonanimated Enjo stays on the deliberate static route
+tests/publicShellSceneEntry.test.mjs:9:1	actual rehearsal draft survives roster, tour and home Scene lifecycles without granting or saving choices
+tests/publicShellSceneEntry.test.mjs:36:1	all actual menu owners retain rehearsal draft through wallet training and back, without confirming previews
+tests/publicShellSceneEntry.test.mjs:40:1	existing preparation plan returns locally from wallet training instead of inventing a second Scene restart
+tests/publicStreetCountdownReadiness.test.mjs:27:1	preparing three public streets is idempotent and leaves round, objectives and timers idle
+tests/publicUiPreparationContext.test.mjs:27:1	workshop preview remains local until explicit deploy; training and return do not silently deploy
+tests/publicUiStateHierarchy.test.mjs:20:1	desk route exposes actual completed, available and locked states
+tests/quietComicGround.test.mjs:24:1	historic quiet ink atlas preserves its sheet geometry and pinned bytes after replacement
+tests/quietComicGround.test.mjs:32:1	every original alpha byte is kept while RGB ink is meaningfully replaced
+tests/quietComicGround.test.mjs:43:1	in-mask black ink density per member cell is quiet and well below the replaced atlas
+tests/quietComicGround.test.mjs:53:1	actual member brushes keep identical coverage samples and change only ink
+tests/quietComicGround.test.mjs:70:1	real raster stamps, clipped fans and blocker holes keep exact coverage; only RGB changes
+tests/quietComicGround.test.mjs:98:1	release ships one current atlas in the same group and keeps loader recovery guards
+tests/raincheckPresentation294.test.mjs:47:1	raincheck has its own boss identity on the strip
+tests/readyLabelPlate.test.mjs:23:1	release contains exactly one owner-ui ready plate and unique runtime files
+tests/recordScreenFamily.test.mjs:3:1	record/field/hub family is owner-only and focuses the actual visible header
+tests/recordScreenFamily.test.mjs:5:1	current and historical rules stay separate and history is not restyled into a current score
+tests/recordScreenFamily.test.mjs:7:1	field heading uses unlocked venue only; original guide/map and locked prepare behavior survive
+tests/recordScreenFamily.test.mjs:8:1	hub still has all original categories and eleven commands without save or automatic unlock
+tests/rifleCelFamily.test.mjs:44:1	B58 active rifle paths replace B55 banks without altering the historical art or ground contracts
+tests/rifleCelFamily.test.mjs:57:1	historical B55 projectile cels share one white core at the [192,64] physics anchor and one common volume
+tests/rifleCelFamily.test.mjs:71:1	historical B55 contact runs six distinct cels that peak mid-sequence, centre their first white cores and stay inside .40
+tests/rifleCelFamily.test.mjs:80:1	ground atlas changes only the rifle cell: one compact white body, other three cells exact planes RGBA
+tests/rifleCelFamily.test.mjs:92:1	the new rifle brush stays radius, wall, occlusion and replay clipped; other members paint exactly as before
+tests/rifleComicFx.test.mjs:51:1	selected Sakura projectile uses the authored bank at its physics core; other casts and a missing bank keep the exact native visual
+tests/rifleFacingCadence.test.mjs:68:1	rifle shot cycle reads at ~270ms of the 333ms interval with four held recoil-to-ready cels
+tests/rifleFacingCadence.test.mjs:80:1	sword and hammer keep exact old cadence and movement-facing return
+tests/rifleFacingCadence.test.mjs:89:1	rifle shot reads a real recoil peak: half-recovery cel is on screen at 170ms, cels 27/122/81/40 of 270
+tests/rifleGroundOverlap.test.mjs:8:1	opaque merging is explicit and rifle-only; historical/default and other members keep old policy
+tests/rifleGroundOverlap.test.mjs:29:1	real authored108-stamp trail removes trapped ink while legacy alpha/paint owners remain byte-identical
+tests/rifleIdleBlink.test.mjs:10:1	only rifle metadata offers one deeply frozen closed-eye idle cel with ready12 landmarks
+tests/rifleIdleBlink.test.mjs:20:1	only selected rifle preloads its idle cel at the shared 384x320 frame; practice never enables it
+tests/rifleIdleBlink.test.mjs:27:1	standing idle stays native ready12, shows closed cel 0 for 120ms at 3420, then reopens and repeats every 3600
+tests/rifleIdleBlink.test.mjs:37:1	movement, attack, action and hurt never blink and each re-entry to idle restarts the 3420ms wait
+tests/rifleIdleBlink.test.mjs:54:1	pause holds the idle clock and current eye cel; resume continues on active time
+tests/rifleIdleBlink.test.mjs:62:1	missing idle texture and the other two members keep original frame12 through the blink window
+tests/rifleIdleBlink.test.mjs:68:1	closed cel drives muzzle and hazard exclusion from idle landmarks on both facings, hand origin unchanged
+tests/rifleIdleBlink.test.mjs:77:1	destroy cleans up once and stops the blink
+tests/rifleInkChain.test.mjs:6:1	active rifle family resolves only the three exact admitted PNGs; historical banks remain public
+tests/rifleMuzzleBank.test.mjs:40:1	actual post-physics Sakura muzzle uses the new bank once at the sampled barrel point and angle
+tests/rifleMuzzleBank.test.mjs:143:1	kai and enjo ordinary shots stay identical whether or not the muzzle bank exists
+tests/rifleMuzzleRegistration.test.mjs:16:1	rifle contact marker uses the existing cel origin and half scale, not the physical hand offset
+tests/rifleMuzzleRegistration.test.mjs:23:1	real actor queue waits for the current moving cel in the same postupdate frame
+tests/rifleMuzzleRegistration.test.mjs:32:1	queued visual snapshots survive same-frame projectile disposal without retaining its mutable origin
+tests/rifleMuzzleRegistration.test.mjs:46:1	cover between physical origin and drawn barrel rejects only the local muzzle
+tests/rifleMuzzleRegistration.test.mjs:79:1	unreviewed anticipation, hurt and missing cels do not invent a barrel marker
+tests/rifleProjectileLaunch.test.mjs:118:1	Kai, Enjo and a missing Sakura bank keep exact uncropped native visuals
+tests/rifleRecoilHold.test.mjs:8:1	standing rifle endpoints are .1/.55/.85/1 of the unchanged 270ms shot inside the 333ms fire interval
+tests/rifleRecoilHold.test.mjs:17:1	130ms is still the kick cel, 170ms half recovery, 245ms ready; both facings use the same cel and its own muzzle marker
+tests/rifleRecoilHold.test.mjs:26:1	paced shots keep old 80ms floor, .82 mapping and 270 cap; every paced cycle still shows all four cels
+tests/rifleRecoilHold.test.mjs:32:1	pause/dialog freeze the held kick; walk, action and hurt keep priority; fallback and other casts keep 14..17 quarters
+tests/rifleRestCycle.test.mjs:16:1	only rifle metadata offers one deeply frozen 4-cel rest bank; the blink cel stays unchanged
+tests/rifleRestCycle.test.mjs:34:1	only selected rifle preloads the rest bank at 384x320 beside idle; practice and later stages never enable it
+tests/rifleRestCycle.test.mjs:42:1	standing idle cycles ready12, rest 1..3, ready12, blink, ready12 on exact boundaries and repeats every 3600 without transforms
+tests/rifleRestCycle.test.mjs:51:1	rest cels drive muzzle and hazard exclusion from their own landmarks on both facings; hand origin unchanged
+tests/rifleRestCycle.test.mjs:59:1	movement, attack, action and hurt never show rest and each re-entry to idle restarts at ready12
+tests/rifleRestCycle.test.mjs:76:1	pause holds the active idle clock and current rest cel; resume continues on active time
+tests/rifleRestCycle.test.mjs:82:1	missing rest keeps ready12 with the original blink; missing blink keeps rest; both missing and kai stay ready12
+tests/rifleRestCycle.test.mjs:91:1	destroy cleans up once and stops the rest cycle
+tests/rifleShootRecovery.test.mjs:5:1	only rifle metadata offers optional reviewed shoot bank and four barrel landmarks
+tests/rifleShootRecovery.test.mjs:6:1	only selected rifle preloads its own extra bank; practice never enables it
+tests/rifleShootRecovery.test.mjs:7:1	standing rifle normal shot shows four finite recoil cels with fixed scale then original ready
+tests/rifleShootRecovery.test.mjs:9:1	rifle movement and real action/hurt keep old priority, bank and physical counters
+tests/rifleShootRecovery.test.mjs:10:1	pause freezes recoil frame and resume does not skip or replay the sequence
+tests/rifleShootRecovery.test.mjs:11:1	drawn barrel and hazard exclusions follow each new cel on both facings without moving hand origin
+tests/rifleVerticalStreak.test.mjs:87:1	sword and hammer keep exact old vertical-shot facing and never hold
+tests/rifleWalkVolume.test.mjs:32:1	rifle walk spec is deep-frozen, Sakura-only and leaves the other banks untouched
+tests/rifleWalkVolume.test.mjs:43:1	four walk phases split the same 90 world-pixel cycle at 22.5/45/67.5/90 in both directions
+tests/rifleWalkVolume.test.mjs:54:1	missing new texture keeps the old six 15px cels; Enjo and Kai walks are unchanged
+tests/rifleWalkVolume.test.mjs:72:1	new walk cels reuse the existing 192x160 display, 304/320 ground origin and zero angle
+tests/rifleWalkVolume.test.mjs:81:1	pause freezes walk phase and distance; resume continues; stopping returns to ready
+tests/rifleWalkVolume.test.mjs:91:1	shooting while walking keeps the walk bank; standing fire, action and hurt keep their own cels
+tests/rifleWalkVolume.test.mjs:102:1	walk muzzle and cue exclusion use the walk metadata on both sides; physical hand origin is unchanged
+tests/rifleWalkVolume.test.mjs:115:1	Phaser preload adds the rifle walk sheet for Sakura only
+tests/rosterRoleHierarchy.test.mjs:7:1	roster separates viewed avatar, actual deployment and distinct real combat roles
+tests/rosterShowcaseV3.test.mjs:34:1	showcase marker is set only by owner roster without replacing the shared UI pass
+tests/rosterShowcaseV3.test.mjs:52:1	current role has one native stage identity and its official battle emblem
+tests/rosterShowcaseV3.test.mjs:159:1	training stays a native command and returning keeps the unsaved member and preparation tab
+tests/rosterStageComposition.test.mjs:10:1	owner portrait stage contains the member rail and one reserved native identity
+tests/sakuraHairMaterialProtection.test.mjs:1:1	tests/sakuraHairMaterialProtection.test.mjs
+tests/sakuraHeadMaterialProtection.test.mjs:1:1	tests/sakuraHeadMaterialProtection.test.mjs
+tests/sakuraIndependentPortraitArtContract.test.mjs:1:1	tests/sakuraIndependentPortraitArtContract.test.mjs
+tests/sakuraLayeredAssets.test.mjs:12:1	attack atlas contains thirty-two complete registered 256px cells
+tests/sakuraLayeredAssets.test.mjs:21:1	new motion assets contain sixteen idle poses and twenty-four generated rig attachments
+tests/sakuraNativeConformance.test.mjs:1:1	tests/sakuraNativeConformance.test.mjs
+tests/sakuraNativeDetails.test.mjs:1:1	tests/sakuraNativeDetails.test.mjs
+tests/sakuraNativeDirections.test.mjs:20:1	three separately drawn skinned directions have distinct texture data and actual two-chain motion
+tests/sakuraNativeDirections.test.mjs:45:1	formal native presenter switches actual meshes, retains one clock/socket and destroys every direction
+tests/sakuraNativeDirections.test.mjs:67:1	directional feet register to the existing frontal ground plane, not a floating shorter leg
+tests/sakuraNativeHandArtExport.test.mjs:15:1	native preload and payload use only the three approved grip-hand texture exports
+tests/sakuraNativePresentation.test.mjs:1:1	tests/sakuraNativePresentation.test.mjs
+tests/sakuraNativeTransitions.test.mjs:1:1	tests/sakuraNativeTransitions.test.mjs
+tests/sakuraNativeTurnDefeat.test.mjs:1:1	tests/sakuraNativeTurnDefeat.test.mjs
+tests/sakuraObliqueRuntime.test.mjs:1:1	tests/sakuraObliqueRuntime.test.mjs
+tests/sakuraSecondaryAttachments.test.mjs:8:1	all sixty upper cels have registered parts and bounded mobile atlases
+tests/sakuraWorldDepth.test.mjs:6:1	Sakura complete body stays together on both sides of scenery after further updates
+tests/skillContactIndependentReleaseFit.test.mjs:29:1	actual Run paint receipt carries its pigment into both primary and accepted-contact FX
+tests/stageUiV2.test.mjs:9:1	nonhome owner screens opt into the explicit second UI composition without changing home markup
+tests/systemFrameworkCatalog.test.mjs:5:1	growth catalog reads actual ranks, costs and equipment without progress writes
+tests/systemFrameworkCatalog.test.mjs:22:1	growth page is reachable from hub and read-only selections return to the real parent
+tests/systemFrameworkCatalog.test.mjs:34:1	catalog-to-backpack requires existing explicit equip command and saves only then
+tests/systemScreenFrame.test.mjs:8:1	seven registered consumers mount one real shared frame without adding entries, changing root routes or writing a profile
+tests/systemScreenFrame.test.mjs:12:1	frame model is immutable, uses canonical page ownership and existing chapter/member assets, not invented modules
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/venus-layered-20261006/venus-parts.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/venus-layered-20261006/venus-parts.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/venus-oblique.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/venus-oblique.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/genya-layered-20261006/genya-parts.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/genya-layered-20261006/genya-parts.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/genya-oblique.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/genya-oblique.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/kai-layered-20261006/kai-parts.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/kai-layered-20261006/kai-parts.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/kai-oblique.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/kai-oblique.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/enjo-layered-20261007/enjo-parts.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/enjo-layered-20261007/enjo-parts.webp: all alpha and every reviewed garment frame remain exact
+tests/teamCostumeMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/enjo-oblique.webp: immutable reviewed garment export and unchanged atlas
+tests/teamCostumeMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/enjo-oblique.webp: all alpha and every reviewed garment frame remain exact
+tests/teamFaceMaterialProtection.test.mjs:13:2	public/art/venus-layered-20261006/venus-parts.webp: immutable reviewed head export and original UV
+tests/teamFaceMaterialProtection.test.mjs:17:2	public/art/venus-layered-20261006/venus-parts.webp: current complete expressions match review and retain original alpha
+tests/teamFaceMaterialProtection.test.mjs:13:2	public/art/team-oblique-20261007/venus-oblique.webp: immutable reviewed head export and original UV
+tests/teamFaceMaterialProtection.test.mjs:17:2	public/art/team-oblique-20261007/venus-oblique.webp: current complete expressions match review and retain original alpha
+tests/teamFaceMaterialProtection.test.mjs:13:2	public/art/kai-layered-20261006/kai-parts.webp: immutable reviewed head export and original UV
+tests/teamFaceMaterialProtection.test.mjs:17:2	public/art/kai-layered-20261006/kai-parts.webp: current complete expressions match review and retain original alpha
+tests/teamFaceMaterialProtection.test.mjs:13:2	public/art/team-oblique-20261007/kai-oblique.webp: immutable reviewed head export and original UV
+tests/teamFaceMaterialProtection.test.mjs:17:2	public/art/team-oblique-20261007/kai-oblique.webp: current complete expressions match review and retain original alpha
+tests/teamFaceMaterialProtection.test.mjs:13:2	public/art/enjo-layered-20261007/enjo-parts.webp: immutable reviewed head export and original UV
+tests/teamFaceMaterialProtection.test.mjs:17:2	public/art/enjo-layered-20261007/enjo-parts.webp: current complete expressions match review and retain original alpha
+tests/teamFaceMaterialProtection.test.mjs:13:2	public/art/team-oblique-20261007/enjo-oblique.webp: immutable reviewed head export and original UV
+tests/teamFaceMaterialProtection.test.mjs:17:2	public/art/team-oblique-20261007/enjo-oblique.webp: current complete expressions match review and retain original alpha
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/venus-layered-20261006/venus-parts.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/venus-layered-20261006/venus-parts.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/venus-oblique.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/venus-oblique.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/genya-layered-20261006/genya-parts.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/genya-layered-20261006/genya-parts.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/genya-oblique.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/genya-oblique.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/kai-layered-20261006/kai-parts.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/kai-layered-20261006/kai-parts.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/kai-oblique.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/kai-oblique.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/enjo-layered-20261007/enjo-parts.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/enjo-layered-20261007/enjo-parts.webp: all alpha and owned rear-hair frames remain exact
+tests/teamHairMaterialProtection.test.mjs:14:2	public/art/team-oblique-20261007/enjo-oblique.webp: reviewed rear-hair RGB and unchanged registration
+tests/teamHairMaterialProtection.test.mjs:18:2	public/art/team-oblique-20261007/enjo-oblique.webp: all alpha and owned rear-hair frames remain exact
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/venus-layered-20261006/venus-parts.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/venus-layered-20261006/venus-parts.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/team-oblique-20261007/venus-oblique.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/team-oblique-20261007/venus-oblique.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/genya-layered-20261006/genya-parts.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/genya-layered-20261006/genya-parts.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/team-oblique-20261007/genya-oblique.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/team-oblique-20261007/genya-oblique.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/kai-layered-20261006/kai-parts.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/kai-layered-20261006/kai-parts.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/team-oblique-20261007/kai-oblique.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/team-oblique-20261007/kai-oblique.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/enjo-layered-20261007/enjo-parts.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/enjo-layered-20261007/enjo-parts.webp: approved limb frames, alpha and registration
+tests/teamLimbMaterialProtection.test.mjs:15:2	public/art/team-oblique-20261007/enjo-oblique.webp: immutable reviewed limb export and atlas
+tests/teamLimbMaterialProtection.test.mjs:19:2	public/art/team-oblique-20261007/enjo-oblique.webp: approved limb frames, alpha and registration
+tests/threeCastAttackMotion.test.mjs:12:1	all three stationary shots draw actual contact and recovery cels, never idle or late anticipation
+tests/threeCastAttackMotion.test.mjs:21:1	taller attack envelope preserves half scale and original foot position for all three owners
+tests/threeCastAttackMotion.test.mjs:36:1	cue exclusions use current visible-frame bounds, including mirrored asymmetric sword origin
+tests/threeCastAttackMotion.test.mjs:46:1	a release between rendered frames starts contact without aging by the previous render gap
+tests/threeCastPaintLanding.test.mjs:90:1	protected or shield-like contacts (hit=false, deposition=false) keep the exact old path
+tests/threeCastPaintLanding.test.mjs:108:1	missing deposition texture falls back to the exact old path for all casts
+tests/tourInventoryV2.test.mjs:110:1	real tour preview preserves locked stops, venues and explicit confirmation
+tests/tourInventoryV2.test.mjs:134:1	six real inventory previews do not equip or save and keep real icon art
+tests/tourJourney.test.mjs:6:1	tour includes the authored fourth destination, not tabs plus one giant stage preview
+tests/tourProgramFlow.test.mjs:45:1	owner stop names and stop/command icons are native rather than baked lettering or bitmaps
+tests/tourProgramFlow.test.mjs:64:1	owner inline confirmation saves the selected chapter and opens preflight rather than desk
+tests/tourProgramFlow.test.mjs:84:1	direct TourRouteScene confirmation uses the existing preflight adapter and return context
+tests/tourProgramFlow.test.mjs:120:1	save failure or revoked unlock never navigates and retains visible failure status
+tests/tourWholeScreen.test.mjs:5:1	tour has one selected scenic stage, a compact real stop sequence and native record disclosure
+tests/venueArt266.test.mjs:5:1	unknown venue lettering fails explicitly; seventeen assets are allowlisted and alpha checked
+tests/venueShellPresentation.test.mjs:3:1	owner journey declares a single venue family but unrelated and legacy pages remain scoped out
+tests/venueShellPresentation.test.mjs:7:1	member change uses the existing bottom navigation rather than a patch floating over the portrait
+tests/venueShellPresentation.test.mjs:10:1	all three inventory names have their own stable semantic label separated from the slot description
+tests/venueStudio266.test.mjs:160:1	explicit save writes the backstage key, moves a member across rooms and never deploys
+tests/venueStudio266.test.mjs:200:1	prepare is explicit, persists and renders valid after a fresh shell
+tests/venusIndependentPortraitArtContract.test.mjs:1:1	tests/venusIndependentPortraitArtContract.test.mjs
+tests/venusUnifiedArt.test.mjs:1:1	tests/venusUnifiedArt.test.mjs
+tests/weaponContactIdentity.test.mjs:18:1	accepted rifle, sword and hammer contacts use distinct art and real arrival orientation; rifle keeps old spray without its contact bank
+tests/workshopCharacterStage.test.mjs:3:1	all three workshop previews reuse admitted static portrait owners, identity and actual rank without writes
