@@ -61,6 +61,9 @@
   &[data-reduced-motion=false] [data-phase=focus] .encore-stage-image {clip-path:polygon(0 23%,100% 0,100% 55%,0 78%)}
   &[data-reduced-motion=false] [data-phase=focus] .performance-encore-portrait {transform:translate(2%,3%) scale(1.22)}
   &[data-reduced-motion=false] [data-phase=focus] .encore-stage-heading {transform:translateX(3%)}
+  &[data-reduced-motion=false]:has([data-phase=exit]) {
+    opacity:0;transition:opacity 210ms ease-in;
+  }
   &[data-reduced-motion=false] [data-phase=exit] .encore-stage-image {clip-path:polygon(0 53%,100% 30%,100% 30%,0 53%)}
   &[data-reduced-motion=false] [data-phase=exit] .encore-stage-heading {transform:translateX(10%);opacity:0}
   &:is([data-reduced-motion=true],[data-cinematic-paused=true]) * {transition:none;animation:none}

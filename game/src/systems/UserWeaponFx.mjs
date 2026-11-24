@@ -82,6 +82,7 @@ export class UserWeaponFx{
     this.windArt=id==='kai'?GREEN_WIND_FX:null;
     this.spellArt=id==='enjo'?BLUE_SPELL_FX:null;
     this.inkWake=id==='sakura'?new RifleInkWake(scene):null;
+    this.motionPreference = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');
     this.contactFragments=new ContactInkFragments(scene,id);
     this.relayTransfer=new RelayInkTransfer(scene);
     this.meleeTrace=null;
@@ -138,7 +139,7 @@ export class UserWeaponFx{
     const node=this.scene.add.image(x,y,art.key,landing?landingOffset:chain?chainOffset:frameOffset+(secondary?4:bank*6)).setOrigin(...(origin||art.origin)).setDisplaySize(size*4/3,size*4/3)
       .setTint(pigmentTint)
       .setAlpha(secondary?0:alpha).setRotation(artKind==='rifle-deposition'&&!chain?0:angle).setDepth(ground ? .52 : 9.80002);
-    const row={kind,artKind,node,x,y,size,start,alpha,ground,sourceRadius,release,angle,...(landing?{heavyLanding:true,frameOffset:landingOffset}:{}),...(chain?{chainOffset}:{}),...(skillContact?{skillContact:true}:{}),...(artKind==='duo-contact'||artKind==='heavy'?{frameOffset}:{}),...(artKind==='rifle-deposition'?{bank}:{}),...(secondary?{releaseContact:true}:{})};
+    const row={kind,artKind,node,x,y,size,start,alpha,ground,sourceRadius,release,angle,...(landing?{heavyLanding:true,frameOffset:landingOffset}:{}),...(chain?{chainOffset}:{}),...(skillContact?{skillContact:true}:{}),...(artKind==='duo-contact'||artKind==='heavy'?{frameOffset}:{}),...(artKind==='rifle-deposition'?{bank,pigment:pigmentTint}:{}),...(secondary?{releaseContact:true}:{})};
     if(clipPoints?.length){
       const graphics=this.scene.make.graphics({add:false}).fillStyle(0xffffff,1).fillPoints(clipPoints,true);
       const mask=graphics.createGeometryMask();node.setMask(mask);row.clip={graphics,mask};
@@ -364,6 +365,14 @@ export class UserWeaponFx{
         const spread = 1 - Math.pow(1 - Math.min(1, progress / .45), 2);
         const diameter = row.size * 4 / 3 * (.76 + .24 * spread);
         row.node.setDisplaySize(diameter, diameter);
+        // A directional wet reflection uses the same clipped cel and disappears into the dry print.
+        // Keeping the first corner pure pigment also keeps one-colour renderers readable.
+        const gloss = this.motionPreference?.matches ? 0 : .78 * Math.max(0, 1 - progress / .82);
+        const tint = row.pigment;
+        const red = (tint >> 16) & 255, green = (tint >> 8) & 255, blue = tint & 255;
+        const reflected = (Math.round(red + (255-red)*gloss) << 16)
+          | (Math.round(green + (255-green)*gloss) << 8) | Math.round(blue + (255-blue)*gloss);
+        row.node.setTint(tint, reflected, tint, tint);
       }
       const contactEnd=transient?0:ends[2];
       const alpha=row.releaseContact?(progress<0?0:row.alpha*(1-progress))

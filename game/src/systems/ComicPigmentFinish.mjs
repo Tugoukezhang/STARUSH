@@ -234,6 +234,11 @@ export function finishComicPigment(raster, target, rect, material) {
   const relief=printed&&material.image.screenPrint===true&&material.image.groundRelief===true?material.relief:null;
   const markings=relief&&material.image.groundMarkings===true&&material.image.screenPrint===true?material.markings:null;
   const strength = Number.isFinite(raster.pigmentStrength) ? Math.max(0, Math.min(1, raster.pigmentStrength)) : 1;
+  // On the flat concert print, let the paint colour carry the area.
+  // Strong accents belong to the short impact animation above this persistent layer.
+  const flat = material.image.flatPigment === true && material.image.poolBody === true;
+  const inkDensity = flat ? .57 : .88;
+  const paperDensity = flat ? .61 : .9;
   for (let y = rect.y; y < rect.y + rect.height; y++) for (let x = rect.x; x < rect.x + rect.width; x++) {
     const p = y * w + x, i = p * 4, tone = tones[p];
     let edge = false;
@@ -270,19 +275,25 @@ export function finishComicPigment(raster, target, rect, material) {
           finishBodyInk(material,target,i,x,y,relief?.[p]??255,markings?.[p]??0,edge);
           continue;
         }
-        const ink=.88*Math.max(0,Math.min(1,(96-value)/64));
-        const paper=.9*Math.max(0,Math.min(1,(value-160)/72));
+        const ink=inkDensity*Math.max(0,Math.min(1,(96-value)/64));
+        const paper=paperDensity*Math.max(0,Math.min(1,(value-160)/72));
         const ground=relief?1-(1-relief[p]/255)*(1-ink)*(1-paper):1;
+        // Ink the outside of a connected patch. Same-colour overlaps have no seam;
+        // a narrow lower edge separates pigment from grey paving and enemy bullets.
+        let contour = edge ? .9 : 1;
+        if (flat && edge) contour = .64;
+        else if (flat && ((y+2<h && foreign(pixels,paintColors,p+2*w,owner))
+          || (x+2<w && foreign(pixels,paintColors,p+2,owner)))) contour = .86;
         const bodyProfile=material.image.poolBody===true;
         const mid=bodyProfile?Math.max(-1,Math.min(1,(value-128)/32)):0;
         const lip=bodyProfile&&material.image.flatPigment!==true?poolEdgeTone(pixels,paintColors,w,h,x,y,owner)*(1-ink)*(1-paper):0;
         for(let c=0;c<3;c++){
           const base=(((owner>>>(16-c*8))&255)*strength+255*(1-strength))*(.94+.06*luma)*ground;
-          const body=mid<0?base*(1+.16*mid):base+(255-base)*.18*mid;
+          const body=mid<0?base*(1+(flat ? .10 : .16)*mid):base+(255-base)*(flat ? .12 : .18)*mid;
           const shaped=lip<0?body*(1+lip):body+(255-body)*lip;
           const road=markings?shaped+(SCREEN_PAPER[c]-shaped)*markings[p]/255:shaped;
           const printed=road*(1-ink)+SCREEN_INK[c]*ink;
-          target[i+c]=Math.round((printed+(SCREEN_PAPER[c]-printed)*paper)*(edge?.9:1));
+          target[i+c]=Math.round((printed+(SCREEN_PAPER[c]-printed)*paper)*contour);
         }
         finishBodyInk(material,target,i,x,y,relief?.[p]??255,markings?.[p]??0,edge);
         continue;
