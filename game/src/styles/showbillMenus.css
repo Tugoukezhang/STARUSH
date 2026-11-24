@@ -592,3 +592,24 @@
     background:#e9debd;color:#32434b;text-align:center;font:850 22px/21px system-ui,sans-serif}
   & .sec-records-open:focus-visible {outline:3px solid #a86c24;outline-offset:-3px}
 }
+
+/* A locked goal still has useful instructions. Keep them legible on the same paper as the menu. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=goals] {
+  & .shell-content[data-hierarchy=goals] {background:#f1ede3;color:#233c43}
+  & .shell-page-heading {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  & .pg-goal-context {margin:0 0 12px;padding:8px 10px 8px 14px;border:0;border-left:4px solid #d99a4c;border-radius:6px;background:#223d46}
+  & .run-goal-options {gap:9px}
+  & .pg-goal-choice, & .pg-goal-choice:disabled {
+    align-items:center;border:1px solid #c7c2b5;border-radius:8px;background:#faf7ef;box-shadow:none;
+    opacity:1;filter:none;color:#243c42;padding:11px 13px;min-height:72px;
+  }
+  & .pg-goal-choice[aria-pressed=true] {background:#fff1c1;border-color:#a06d26;outline:0;box-shadow:inset 4px 0 #c2842e}
+  & .pg-goal-choice .pg-goal-mark {display:none}
+  & .pg-goal-choice strong.pg-sr {position:static;width:auto;height:auto;overflow:visible;clip-path:none;color:#273e43;font:750 16px/22px system-ui,sans-serif}
+  & .pg-goal-choice small {color:#41565a;font:500 13px/19px system-ui,sans-serif}
+  & .pg-goal-icon {width:30px;height:30px;display:grid;place-items:center;border-radius:6px;background:#d9ded4}
+  & .pg-goal-choice[aria-pressed=true] .pg-goal-icon {background:#3d4b49}
+  & .pg-goal-status {border-color:#c9c5b7;padding-top:9px}
+  & .pg-goal-status p {color:#44565a;font-size:13px;line-height:19px}
+  & .pg-goal-status .challenge-selection {color:#203a40}
+}

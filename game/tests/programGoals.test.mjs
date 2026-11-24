@@ -25,7 +25,8 @@ test('goals page keeps the three canonical choices with wordmarks, context and c
   assert.deepEqual(rows.map(b => b.querySelector('img.pg-goal-mark').src), ['standard', 'steady', 'pace'].map(id => `${ART}/goal-${id}.webp`));
   assert.deepEqual(rows.map(b => b.querySelector('strong').textContent), ['标准演出', '稳演挑战', '速演挑战'], 'screen-reader names kept');
   // Requirements stay the record-based native text; a fresh profile has no saved record.
-  assert.equal(rows[1].querySelector('small').textContent, '本成员本站尚无已保存实测纪录');
+  assert.equal(rows[1].querySelector('small').textContent, '通关本站，保存该成员的受击纪录');
+  assert.equal(rows[2].querySelector('small').textContent, '通关本站，保存该成员的用时纪录');
   assert.equal(h.query('h2.shell-page-heading').querySelector('img').src, `${ART}/letter-goals.webp`);
   assert.ok(h.query('.pg-goal-context').textContent.includes('·'), 'performer · chapter context');
   assert.match(h.query('.challenge-selection').textContent, /^预选：/);

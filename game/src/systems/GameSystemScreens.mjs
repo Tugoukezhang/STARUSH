@@ -168,7 +168,9 @@ export function renderRunGoals(view,main,model) {
   for(const row of rows){
     const button=view.button(choices,row.label,()=>{view.goalKind=row.id;view.render(`[data-goal="${row.id}"]`);},{className:'run-goal-option'});
     button.dataset.goal=row.id;button.disabled=!row.available;button.setAttribute('aria-pressed',String(view.goalKind===row.id));button.replaceChildren();
-    view.icon(row.available?'check':'lock',button);const text=view.element('span','',undefined,button);view.element('strong','',row.label,text);view.element('small','',row.description,text);
+    view.icon(row.available?'check':'lock',button);const text=view.element('span','',undefined,button);view.element('strong','',row.label,text);
+    const description=view.element('small','',row.description,text);
+    description.id='run-goal-description-'+row.id;button.setAttribute('aria-describedby',description.id);
   }
   const draft=rows.find(row=>row.id===view.goalKind),selection=view.element('p','challenge-selection',draft?'预选：'+draft.label+' · '+draft.description:'',main);selection.setAttribute('role','status');selection.setAttribute('aria-live','polite');
   view.element('p','system-context',`当前已确认：${describePublicRunGoal(goal)}`,main);

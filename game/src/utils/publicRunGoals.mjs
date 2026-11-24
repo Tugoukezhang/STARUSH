@@ -27,8 +27,8 @@ export function getPublicRunGoalOptions(profile) {
   return [
     {id:'standard',label:'标准演出',available:true,description:'完成本场巡演'},
     {id:'steady',label:'稳演挑战',available:!!record,description:record?
-      (record.bestHits.hitCount===0?'通关并保持无伤':`通关且受击少于 ${record.bestHits.hitCount} 次`):'本成员本站尚无已保存实测纪录'},
-    {id:'pace',label:'速演挑战',available:!!record,description:record?'通关用时短于 '+goalTime(record.bestTime.durationMs):'本成员本站尚无已保存实测纪录'},
+      (record.bestHits.hitCount===0?'通关并保持无伤':`通关且受击少于 ${record.bestHits.hitCount} 次`):'通关本站，保存该成员的受击纪录'},
+    {id:'pace',label:'速演挑战',available:!!record,description:record?'通关用时短于 '+goalTime(record.bestTime.durationMs):'通关本站，保存该成员的用时纪录'},
   ];
 }
 
