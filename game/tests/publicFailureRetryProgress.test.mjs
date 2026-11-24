@@ -5,6 +5,7 @@ import { getPublicCampaignResult, getRetryCampaignBattleData } from '../src/util
 import { loadPublicProfile, recordPublicRun } from '../src/utils/publicRunProgression.mjs';
 import { getPreparationResources } from '../src/utils/publicPreparation.mjs';
 import { BattleSurfaceView, getPublicResultSurfaceModel } from '../src/systems/BattleSurfaceView.mjs';
+import {configureUserCast,isUserCastEnabled} from '../src/utils/userCast.mjs';
 import { createDocument } from './helpers/publicShellHarness.mjs';
 
 function fixture(t, chapterId='opening') {
@@ -39,10 +40,10 @@ test('an uncompleted finale is not described as uncompleted facilities',t=>{
  assert.deepEqual(result.objectiveProgress,{completed:10,total:10,finaleReached:true});
  assert.match(text,/10 \/ 10/);assert.match(text,/压轴尚未完成/);
 });
-test('completed facilities awaiting required roles are distinguished from entering finale',t=>{
+test('completed facilities do not claim a specific blocker without a recorded cause',t=>{
  const {run,progress}=fixture(t);progress.completed=10;
  const text=getPublicCampaignResult(base,run.finish(false)).descriptionLines.join(' ');
- assert.match(text,/10 \/ 10/);assert.match(text,/舞台压力尚未解除/);
+ assert.match(text,/10 \/ 10/);assert.match(text,/尚未进入压轴/);assert.doesNotMatch(text,/舞台压力尚未解除/);
 });
 test('failure result snapshot survives scene destruction and settlement retries exactly once',t=>{
  const {run,scene,progress}=fixture(t);const result=run.finish(false);
@@ -79,4 +80,19 @@ test('positive note or known equipment rewards still render; unknown IDs are not
  assert.equal(getPublicResultSurfaceModel(base,{...run,reward:{notes:0,equipmentIds:['focus_lens']}}).reward.equipment.length,1);
  assert.equal(getPublicResultSurfaceModel(base,{...run,reward:{notes:0,equipmentIds:['unknown']}}).reward,null);
  assert.equal(getPublicResultSurfaceModel(base,{...run,recorded:false,reward:{notes:3,equipmentIds:[]}}).reward,null);
+});
+
+test('pause and failure agree on a rooftop hold and the result survives world cleanup',t=>{
+ const enabled=isUserCastEnabled();configureUserCast(true);t.after(()=>configureUserCast(enabled));
+ const {scene,run}=fixture(t);
+ scene._userCastPresentation=true;scene.battleData.campaignChapterId='raincheck';
+ Object.assign(scene.paintZone,{currentZone:1,devices:[{zone:1,required:true,chapterAwaitingCalibration:true,chapterCalibrationBuffered:false}]});
+ assert.match(run.getAttemptProgress().next,/连续校音 1.5 秒/);
+ scene.paintZone.devices[0].chapterCalibrationBuffered=true;
+ const before=run.getAttemptProgress();
+ assert.match(before.next,/已有供电/);
+ const result=run.finish(false);scene.paintZone=null;
+ const model=getPublicResultSurfaceModel(getPublicCampaignResult(base,result),result);
+ assert.deepEqual(model.attemptReview,before);
+ assert(!before.rows.some(row=>row.includes('压轴声浪')));
 });

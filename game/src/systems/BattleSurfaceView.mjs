@@ -637,8 +637,10 @@ export class BattleSurfaceView {
     if(!review)return;
     const section=this.element('section','battle-tour-review');section.dataset.attemptProgress=review.phase;
     section.append(this.element('h3',null,'本场推进'));
+    const retry=this.options.mode==='result'&&this.options.model?.victory===false;
+    section.append(this.element('p','attempt-next',retry?'再演提示 · '+review.next:review.next));
     for(const line of review.rows)section.append(this.element('p',null,line));
-    section.append(this.element('p',null,review.next));parent.append(section);return section;
+    parent.append(section);return section;
   }
   rejectResultSave(){
     if(this.disposed||this.options.mode!=='result')return;

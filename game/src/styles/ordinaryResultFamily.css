@@ -68,7 +68,7 @@
 #game-container #battle-result[data-result-stage=chapter] .battle-result-attempt {display:flex;flex-wrap:wrap;gap:5px 14px;margin:12px 0 6px;padding:0;border:0;background:none;box-shadow:none;}
 #game-container #battle-result[data-result-stage=chapter] .battle-result-attempt h3 {flex-basis:100%;margin:0;color:#294c53;font-size:14px;line-height:22px;}
 #game-container #battle-result[data-result-stage=chapter] .battle-result-attempt p {margin:0;color:#375d62;font-size:12px;line-height:20px;}
-#game-container #battle-result[data-result-stage=chapter] .battle-result-attempt p:last-child {flex-basis:100%;color:#6a453d;}
+#game-container #battle-result[data-result-stage=chapter] .battle-result-attempt .attempt-next {flex-basis:100%;padding:6px 9px;border-inline-start:3px solid #96604e;background:#f5ebe4;color:#563c34;line-height:1.55;}
 #game-container #battle-result[data-result-stage=chapter] .battle-save {margin:4px 0 0;padding:7px 10px;border-radius:0;font-size:12px;line-height:18px;}
 #game-container #battle-result[data-result-stage=chapter] .battle-save[data-save-state=saved] {padding:0 8px;border:0;background:transparent;color:#286350;font-weight:600;text-align:right;}
 #game-container #battle-result[data-result-stage=chapter] .battle-save[data-save-state=pending] {border-left:3px solid #ad6b21;background:#fff1cd;color:#68450b;font-weight:800;}

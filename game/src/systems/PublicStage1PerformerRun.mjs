@@ -137,14 +137,25 @@ export class PublicStage1PerformerRun {
   getAttemptProgress() {
     if(this.scene._isFinaleTrialRound?.())return null;
     if(this.destroyed||!this.scene._userCastPresentation||!this.scene.paintZone)return null;
-    const zone=this.scene.paintZone,devices=zone.devices||[];
-    const required=devices.filter(d=>d.required===true&&d.zone===zone.currentZone);
     return getPublicAttemptProgress({chapterId:getBattleChapter(this.scene.battleData).id,
-      objectiveProgress:{...zone.getObjectiveProgress?.(),finaleReached:zone.finaleMode===true},
-      chapterSideSet:zone.sideSet?.snapshot(devices),finaleResponses:this.finaleResponses,
-      activeZone:{index:zone.currentZone,total:required.length,completed:required.filter(d=>d.complete).length},
-      calibrationCount:devices.filter(d=>d.zone===zone.currentZone&&d.chapterAwaitingCalibration
-        &&!d.chapterLocked&&!d.complete&&!d.publicStage1Suppressed).length});
+      ...this.captureAttemptProgress(),chapterSideSet:this.scene.paintZone.sideSet?.snapshot(this.scene.paintZone.devices),finaleResponses:this.finaleResponses});
+  }
+  captureAttemptProgress() {
+    const zone=this.scene.paintZone;
+    if(!zone)return {};
+    const progress=zone.getObjectiveProgress?.();
+    if(!Number.isSafeInteger(progress?.total)||progress.total<=0||!Number.isSafeInteger(progress.completed)
+      ||progress.completed<0||progress.completed>progress.total)return {};
+    const devices=zone.devices||[];
+    const local=devices.filter(d=>d.zone===zone.currentZone);
+    const required=local.filter(d=>d.required===true);
+    const pending=local.filter(d=>d.chapterAwaitingCalibration&&!d.chapterLocked&&!d.complete&&!d.publicStage1Suppressed);
+    return {
+      objectiveProgress:{completed:progress.completed,total:progress.total,finaleReached:zone.finaleMode===true},
+      ...(required.length?{activeZone:{index:zone.currentZone,total:required.length,completed:required.filter(d=>d.complete).length}}:{}),
+      calibrationCount:pending.length,
+      calibrationBuffered:pending.length>0&&pending.every(d=>d.chapterCalibrationBuffered===true),
+    };
   }
   resumeClock() {
     if(this.pausedAt!==null){this.pausedMs+=Math.max(0,this.scene.time.now-this.pausedAt);this.pausedAt=null;}
@@ -449,10 +460,6 @@ export class PublicStage1PerformerRun {
     // Same-frame releases reach the Director before the Scene's next sync; read only, never advance it.
     if(this.scene._userCastPresentation&&!this.result)
       this.recordEncounterEvent(this.scene.publicStage1Encounter?.getChapterEventSnapshot?.(),{terminal:true});
-    const objective=this.scene.paintZone?.getObjectiveProgress?.();
-    const objectiveProgress=Number.isInteger(objective?.total) && objective.total>0
-      && Number.isInteger(objective.completed) && objective.completed>=0 && objective.completed<=objective.total
-      ? {completed:objective.completed,total:objective.total,finaleReached:this.scene.paintZone.finaleMode===true} : undefined;
     // Capture before battle-end cleanup; this is result context, not saved partial progress.
     const data=this.result || {runId:this.runId,performerId:this.member.id,chapterId:getBattleChapter(this.scene.battleData).id,victory,choices:[...this.growth.choices],durationMs:Math.max(0,this.now()-this.startedAt),
       ...(this.routePlan?{publicRoutePlan:this.routePlan}:{}),
@@ -465,7 +472,7 @@ export class PublicStage1PerformerRun {
       ...(this.rulesetId?{rulesetId:this.rulesetId}:{}),
       ...(Number.isSafeInteger(this.scene.battleRecord?.playerHitCount) ? {performance:{
         hitCount:this.scene.battleRecord.playerHitCount,actions:this.actions}} : {}),
-      ...(objectiveProgress ? {objectiveProgress} : {})};
+      ...this.captureAttemptProgress()};
     if(!this.result&&this.scene._userCastPresentation&&this.scene._isPublicStage1Round?.()===true){
       const fieldReport=captureChapterFieldReport(data);
       if(fieldReport)data.fieldReport=fieldReport;

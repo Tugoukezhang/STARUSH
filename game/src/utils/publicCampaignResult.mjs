@@ -35,7 +35,7 @@ export function getPublicCampaignResult(base, run) {
   const failureProgress=run.victory===false && Number.isInteger(progress?.total) && progress.total>0
     && Number.isInteger(progress.completed) && progress.completed>=0 && progress.completed<=progress.total
     ? `设施恢复 ${progress.completed} / ${progress.total}。${progress.finaleReached===true
-      ? '压轴尚未完成。' : progress.completed===progress.total ? '舞台压力尚未解除。' : ''}重试将从本站重新开始。` : null;
+      ? '压轴尚未完成。' : progress.completed===progress.total ? '尚未进入压轴。' : ''}重试将从本站重新开始。` : null;
   return {...base,
     continuation:run.victory&&run.recorded!==false&&next?{
       chapterId:next,name:getPublicChapter(next).name,
