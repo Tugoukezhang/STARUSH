@@ -60,9 +60,11 @@ const result={errors:[],httpErrors:[],assets:[],samples:[]};
   await p.locator('#skill-special').tap();await p.waitForTimeout(80);result.samples.push(await read());
   await p.keyboard.press('p');await p.waitForFunction(()=>window.__qaGame().scene.keys.BattleScene._battlePaused);
   await p.locator('.battle-pause-title-text:visible').waitFor();
+  assert.equal(await p.locator('#hud').isVisible(),false);
   await p.screenshot({path:path.join(dir,'pause.png'),animations:'disabled'});
   const frozen=await read();await p.waitForTimeout(300);assert.equal((await read()).clock,frozen.clock);
   await p.locator('[data-pause-action=resume]').tap();
+  await p.locator('#hud:visible').waitFor();
   // Meet real chasing enemies using the same movement keys as a player. No HP/position mutations.
   const deadline=Date.now()+300000;let keys=[];let damageSaved=false,defeatSaved=false,storySaved=false,lastHp=5,lastReport=0;
   while(Date.now()<deadline){
@@ -103,7 +105,9 @@ const result={errors:[],httpErrors:[],assets:[],samples:[]};
   for(let i=0;i<12;i++){const d=p.locator('#player-session-dialog');if(!await d.count())break;await d.locator('.session-primary').last().tap();await p.waitForTimeout(180);}
   await p.waitForFunction(()=>window.__qaGame().scene.keys.BattleScene.publicPerformerRun.canAct());
   result.restart=await read();assert.equal(result.restart.hp,5);assert.equal(result.restart.key,'owner-blue-academy-motion');assert.equal(result.restart.ended,false);assert.equal(result.restart.defeatKey,undefined);
-  await p.keyboard.down('ArrowRight');await p.waitForTimeout(350);await p.keyboard.up('ArrowRight');
+  await p.keyboard.down('ArrowRight');
+  try{await p.waitForFunction(x=>window.__qaGame().scene.keys.BattleScene.player.x>x,result.restart.x,{timeout:4000});}
+  finally{await p.keyboard.up('ArrowRight');}
   result.restartMoved=await read();assert(result.restartMoved.x>result.restart.x);assert.equal(result.restartMoved.key,'owner-blue-academy-motion');
   await p.screenshot({path:path.join(dir,'restart.png')});
   assert(result.samples.some(s=>s.melee),'actual automatic spell attack observed');assert(result.samples.some(s=>s.windTrace==='owner-blue-spell'),'wind effect observed');

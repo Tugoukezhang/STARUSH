@@ -50,7 +50,10 @@
   & .battle-surface-footer button[data-result-skin=primary]:not(:disabled) {border:1px solid #234844;border-image:none;border-radius:6px;background:#173c3d;color:#fff6df;box-shadow:inset 0 -3px #0c292e}
   & .battle-surface-footer button[data-result-skin=secondary]:not(:disabled) {border:1px solid #738e89;border-image:none;border-radius:6px;background:#f4f1e7;color:#203d42}
 }
-@media(prefers-reduced-motion:no-preference) {
-  #game-container #public-shell[data-edition=showbill] .showbill-cover {animation:showbill-reveal .22s ease-out both}
-  @keyframes showbill-reveal {from{opacity:.75}to{opacity:1}}
+
+/* When a full reading or pause surface owns input, keep its controls as the only HUD. */
+#game-container[data-battle-mode=public]:has(>.battle-surface,>#player-session-dialog) > #hud {visibility:hidden}
+#game-container #battle-pause.battle-surface[data-pause-family=true] .battle-pause-header,
+#game-container #run-choice.battle-surface[data-choice-family=true][data-choice-reading=true][data-choice-studio="303"] .battle-choice-header {
+  background:#1d3836;border-left:3px solid #93cdaf;
 }
