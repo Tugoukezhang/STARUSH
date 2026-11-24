@@ -76,6 +76,8 @@ export function preloadUserWeaponFx(scene,id){
 }
 
 // Rendering only: projectile bodies, paint, damage and timers belong to their existing owners.
+let nextPaintView = 0;
+
 export class UserWeaponFx{
   constructor(scene,id){
     this.scene=scene;this.id=id;this.rows=[];this.lastFrame=[];this.pendingShots=[];this.projectiles=[];this.disposed=false;this.seen=new WeakSet();
@@ -87,6 +89,29 @@ export class UserWeaponFx{
     this.relayTransfer=new RelayInkTransfer(scene);
     this.meleeTrace=null;
     this.stats={shots:0,releases:0,impacts:0,ground:0,choices:0,blocks:0,created:0,culled:0};this.choiceAt={};
+  }
+  // Phaser's Canvas renderer draws image RGB directly and ignores WebGL corner tints.
+  // Keep only the headings and colours actually used in this battle, at HUD-scale resolution.
+  canvasDepositKey(art, bank, tint) {
+    if (!this.scene.game?.renderer?.gameContext) return art.key;
+    this.canvasPaintId ??= ++nextPaintView;
+    this.canvasPaintKeys ??= new Set();
+    const key = `wet-paint-${this.canvasPaintId}-${bank}-${tint}`;
+    if (this.canvasPaintKeys.has(key)) return key;
+    const textures = this.scene.textures, source = textures.get(art.key).getSourceImage();
+    const side = 128, width = side * art.phases;
+    const strip = textures.createCanvas(key, width, side);
+    const ctx = strip.context;
+    ctx.drawImage(source, 0, bank*art.frameHeight, art.phases*art.frameWidth, art.frameHeight, 0, 0, width, side);
+    const image = ctx.getImageData(0, 0, width, side);
+    const red = (tint >> 16 & 255)/255, green = (tint >> 8 & 255)/255, blue = (tint & 255)/255;
+    for (let i=0; i<image.data.length; i+=4) {
+      image.data[i] *= red; image.data[i+1] *= green; image.data[i+2] *= blue;
+    }
+    ctx.putImageData(image, 0, 0);
+    for (let i=0; i<art.phases; i++) strip.add(bank*art.phases+i, 0, i*side, 0, side, side);
+    this.canvasPaintKeys.add(key);
+    return key;
   }
   now(fallback=0){return this.scene.publicPerformerRun?.now?.()??fallback;}
   ready(){const s=this.scene;return !this.disposed&&!!WEAPONS[this.id]&&s._userCastPresentation===true
@@ -136,7 +161,8 @@ export class UserWeaponFx{
     const palette=artKind==='heavy'?HEAVY_WEAPON_FX.palettes.indexOf(color):-1;
     const frameOffset=artKind==='heavy'?(palette<0?5:palette)*6:artKind==='duo-contact'&&this.id==='enjo'?6:0;
     const pigmentTint=artKind==='heavy'?0xffffff:landing&&typeof color==='string'&&Object.hasOwn(COLOR_HEX,color)?COLOR_HEX[color]:tint;
-    const node=this.scene.add.image(x,y,art.key,landing?landingOffset:chain?chainOffset:frameOffset+(secondary?4:bank*6)).setOrigin(...(origin||art.origin)).setDisplaySize(size*4/3,size*4/3)
+    const textureKey=art===RIFLE_PIGMENT_DEPOSITION?this.canvasDepositKey(art,bank,pigmentTint):art.key;
+    const node=this.scene.add.image(x,y,textureKey,landing?landingOffset:chain?chainOffset:frameOffset+(secondary?4:bank*6)).setOrigin(...(origin||art.origin)).setDisplaySize(size*4/3,size*4/3)
       .setTint(pigmentTint)
       .setAlpha(secondary?0:alpha).setRotation(artKind==='rifle-deposition'&&!chain?0:angle).setDepth(ground ? .52 : 9.80002);
     const row={kind,artKind,node,x,y,size,start,alpha,ground,sourceRadius,release,angle,...(landing?{heavyLanding:true,frameOffset:landingOffset}:{}),...(chain?{chainOffset}:{}),...(skillContact?{skillContact:true}:{}),...(artKind==='duo-contact'||artKind==='heavy'?{frameOffset}:{}),...(artKind==='rifle-deposition'?{bank,pigment:pigmentTint}:{}),...(secondary?{releaseContact:true}:{})};
@@ -387,5 +413,10 @@ export class UserWeaponFx{
   // Projectile nodes are references only; their real owner destroys them.
   destroyRow(row){const clip=row.clip;row.clip=null;if(clip)row.node.clearMask();row.node.destroy();clip?.mask.destroy();clip?.graphics.destroy();}
   clear(){for(const row of this.rows)this.destroyRow(row);this.rows=[];this.lastFrame=[];this.pendingShots.length=0;this.projectiles=[];this.inkWake?.clear();this.contactFragments.clear();this.relayTransfer.clear();this.meleeTrace?.node.destroy();this.meleeTrace=null;}
-  destroy(){if(this.disposed)return;this.clear();this.disposed=true;}
+  destroy(){
+    if(this.disposed)return;
+    this.clear();
+    for(const key of this.canvasPaintKeys??[])this.scene.textures.remove(key);
+    this.canvasPaintKeys?.clear();this.disposed=true;
+  }
 }
