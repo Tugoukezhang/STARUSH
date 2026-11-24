@@ -569,3 +569,13 @@
   & .pm-dossier .pm-role-name {color:#ffdb87}
   & [data-action=recruitment-open-roster] {width:100%;min-height:46px;margin:0;justify-content:center;background:#ffda70;border:2px solid #283e49;border-radius:10px 3px 10px 3px;color:#1f3440;font:800 16px/20px system-ui,sans-serif}
 }
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass]:is([data-page=finaleTrial],[data-page=rehearsal]) {
+  & .showbill-gate-stops {gap:5px}
+  & .showbill-gate-stops li {min-height:51px;border:1px solid #b5c3bc;background:#f8f3e7;color:#243b4a;border-radius:8px 3px 8px 3px}
+  & .showbill-gate-stops img {height:48px;width:62px;object-fit:contain;background:#e9debe}
+  & .showbill-gate-stops strong {font:800 16px/20px system-ui,sans-serif}
+  & .showbill-gate-stops span {padding:3px 6px;border-radius:4px;background:#e7dbbf;color:#4c4030;font:700 12px/16px system-ui,sans-serif}
+  & .showbill-gate-stops [data-state=cleared] span {background:#c9e9d9;color:#184f41}
+  & .rehearsal-build > summary {display:flex;align-items:center;box-sizing:border-box;min-height:46px}
+}

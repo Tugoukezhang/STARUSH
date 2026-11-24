@@ -10,7 +10,8 @@ import {getPublicPerformanceAccess} from '../utils/publicPerformanceAccess.mjs';
 export function getRehearsalMenuSetup(profile,chapterId,saved){
   const options=getRehearsalConfig(saved?{chapterId:saved.chapterId,focus:saved.focus}:null);
   const first=PUBLIC_CHAPTERS.find(c=>isRehearsalUnlocked(profile,c.id));
-  const config=options||{chapterId:isRehearsalUnlocked(profile,chapterId)?chapterId:first?.id||'opening',focus:'clear'};
+  const preferred=options?.chapterId??chapterId;
+  const config={chapterId:isRehearsalUnlocked(profile,preferred)?preferred:first?.id??'opening',focus:options?.focus??'clear'};
   const valid=options&&Array.isArray(saved.choices)&&saved.choices.length===FINALE_TRIAL_CHOICES.length&&FINALE_TRIAL_CHOICES.every((pool,i)=>Object.hasOwn(saved.choices,i)&&pool.includes(saved.choices[i]));
   return {...config,choices:valid?[...saved.choices]:['wide_brush','echo']};
 }

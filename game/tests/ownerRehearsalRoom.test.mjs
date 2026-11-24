@@ -97,3 +97,13 @@ test('actual Scene admits a saved single venue and returns reset rehearsal to it
  admit.call(scene,getFinaleTrialState,isFinaleTrialUnlocked,()=>({version:1,clears:0}),resolvePublicRunContext);assert.equal(redirect.openPage,'rehearsal');assert.deepEqual(redirect.rehearsalSetup,{chapterId:'opening',focus:'clean',choices:['wide_brush','echo']});
  scene.initialBattleData={...d,publicFinaleTrial:{...d.publicFinaleTrial,rehearsal:{chapterId:'invalid',focus:'clean'}}};admit.call(scene,getFinaleTrialState,isFinaleTrialUnlocked,()=>profile,resolvePublicRunContext);assert.equal(redirect.openPage,'finaleTrial');
 });
+
+test('a rehearsal draft from earlier progress can still enter an available room after a restore',()=>{
+ const e=loadScenes();
+ const {getRehearsalMenuSetup}=e.loadRuntime('systems/RehearsalMenu.mjs');
+ const saved={chapterId:'neon',focus:'action',choices:['tempo','overdrive']};
+ const next=getRehearsalMenuSetup(profile,'neon',saved);
+ assert.equal(next.chapterId,'opening');assert.equal(next.focus,'action');
+ assert.deepEqual(plain(next.choices),saved.choices);
+ assert.equal(saved.chapterId,'neon');
+});

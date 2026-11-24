@@ -1,4 +1,3 @@
-import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
 import{openHierarchySheet}from'./HierarchySheets.mjs';
 
 export function compactChallengeMenu(view,main,model){
@@ -20,13 +19,16 @@ export function compactChallengeMenu(view,main,model){
    const access=model.performance.modes.find(mode=>mode.modeId===(trial?'finale-trial':'rehearsal'));
    const list=view.element('ul','showbill-gate-stops',undefined,null);
    list.setAttribute('aria-label','开放此模式所需通关章节');
-   for(const id of access.requiredChapterIds){
+   const required=trial?access.requiredChapterIds:[view.rehearsalSetup.chapterId];
+   for(const id of required){
     const chapter=model.chapters.find(row=>row.id===id);
     const stop=view.element('li','',undefined,list);
+    const missing=trial?access.missingChapterIds.includes(id):true;
+    stop.dataset.state=missing?'pending':'cleared';
     const image=view.element('img','',undefined,stop);
-    image.src=CHAPTER_VENUE_ART[id];image.alt='';
+    image.src='art/showbill/stop-'+id+'.webp';image.alt='';
     view.element('strong','',chapter.name,stop);
-    view.element('span','',access.missingChapterIds.includes(id)?'待通关':'已通关',stop);
+    view.element('span','',missing?'待通关':'已通关',stop);
    }
    main.insertBefore(list,gate.nextSibling);
   }
