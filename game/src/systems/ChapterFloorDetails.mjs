@@ -103,10 +103,40 @@ function drawThreshold(g, prop, plan) {
   }
 }
 
+// The return concert shares the harbour architecture. In daylight its loading rails and
+// painted bay numbers identify the berth before any of the electrical relays light up.
+function drawReturnBerth(g) {
+  for (const x of [403, 587]) {
+    g.fillStyle(0x685f54, .56).fillRoundedRect(x, 260, 10, 1518, 2);
+    g.lineStyle(2, 0xf2e0b8, .8).lineBetween(x + 2, 260, x + 2, 1778);
+    g.lineStyle(2, 0x494d4b, .58).lineBetween(x + 7, 260, x + 7, 1778);
+    for (const y of [260, 1767]) {
+      g.fillStyle(0x535650, .75).fillRoundedRect(x - 7, y, 24, 11, 2);
+      g.lineStyle(2, 0xc4b89d, .8).lineBetween(x - 4, y + 3, x + 13, y + 3);
+    }
+    for (let y = 356; y < 1778; y += 164) {
+      g.fillStyle(0x635e55, .55).fillRoundedRect(x - 5, y, 20, 7, 2);
+      g.lineStyle(1, 0xd4c9af, .8).lineBetween(x - 3, y + 1, x + 12, y + 1);
+    }
+  }
+  // Split painted strokes form an industrial 05 stencil at each end of the quay.
+  for (const y of [378, 1486]) {
+    const x = 424;
+    g.lineStyle(5, 0x897556, .68);
+    const strokes = [
+      [2,0,14,0], [0,3,0,11], [0,16,0,25], [2,28,14,28], [16,25,16,16], [16,11,16,3],
+      [25,0,39,0], [23,2,23,12], [25,14,37,14], [39,16,39,25], [23,28,37,28],
+    ];
+    for (const [x1,y1,x2,y2] of strokes) g.lineBetween(x+x1,y+y1,x+x2,y+y2);
+    g.lineStyle(3, 0xa18866, .75).lineBetween(x-4,y+36,x+44,y+36);
+  }
+}
+
 export function attachChapterFloorDetails(scene, ground, chapter, depth, props = []) {
   const plan = stages[chapter];
   if (!plan || !scene.add.graphics) return;
   const graphics = scene.add.graphics().setDepth(depth + .01);
+  if (chapter === 'homecoming') drawReturnBerth(graphics);
   for (const prop of props) drawThreshold(graphics, prop, plan);
   for (const [x, y] of plan.stations) {
     drawPlate(graphics, x, y, plan.fixture, plan.ink);

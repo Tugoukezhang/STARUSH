@@ -4,8 +4,8 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {OldStreetState} from '../src/utils/oldStreetMap.mjs';
 import {OldStreetScene} from '../src/systems/OldStreetScene.mjs';
-import {NEON_STREET_CONFIG,NEON_STREET_DEVICES} from '../src/utils/neonStreetMap.mjs';
-import {HARBOR_STAGE_CONFIG,HARBOR_STAGE_DEVICES} from '../src/utils/harborStageMap.mjs';
+import {NEON_STREET_CONFIG,NEON_STREET_DEVICES,NEON_STREET_ASSETS} from '../src/utils/neonStreetMap.mjs';
+import {HARBOR_STAGE_CONFIG,HARBOR_STAGE_DEVICES,HARBOR_STAGE_ASSETS} from '../src/utils/harborStageMap.mjs';
 import {streetVisibleBounds} from '../src/systems/WorldGroundingPresentation.mjs';
 import {RUNTIME_PAYLOAD} from '../scripts/runtime-payload.mjs';
 const cases=[
@@ -73,5 +73,9 @@ test('new original shop and shed exports retain explicit existing payload paths 
   for(const [suffix,hash]of [['',color],['-muted',muted]]){const file=base+id+suffix+'.webp';assert.equal(RUNTIME_PAYLOAD.filter(a=>a.file===file).length,1);assert.equal(crypto.createHash('sha256').update(fs.readFileSync(new URL('../public/'+file,import.meta.url))).digest('hex'),hash);}
   const bounds=streetVisibleBounds(id,{x:0,y:0,width:w,height:h},chapter);assert.deepEqual(bounds,{x:l,y:t,width:r-l,height:b-t});
  }
- assert.equal(RUNTIME_PAYLOAD.filter(a=>!['owner-menu-portrait','owner-menu-motion','owner-equipment-art','owner-character-cast','owner-character-motion','owner-weapon-fx','owner-ui','owner-world-ground','owner-enemy-attack','owner-heavy-material','owner-dash-material','owner-dash-contrast-material','owner-character-gait','owner-character-hurt','owner-character-shoot','owner-character-idle','owner-character-walk','owner-facility-fx'].includes(a.group)&&!['fonts/NotoSansSC-UI.woff2','licenses/noto-sans-sc.txt'].includes(a.file)).length,163);assert(!RUNTIME_PAYLOAD.some(a=>/chapter-environments|raw|\.prompt\./.test(a.file)));
+ for(const [prefix,assets] of [['art/neon-cohesion-20261009/',NEON_STREET_ASSETS],['art/harbor-cohesion-20261009/',HARBOR_STAGE_ASSETS]]){
+  const files=RUNTIME_PAYLOAD.filter(row=>row.file.startsWith(prefix)).map(row=>row.file).sort();
+  assert.deepEqual(files,assets.map(id=>prefix+id+'.webp').sort());
+ }
+ assert(!RUNTIME_PAYLOAD.some(a=>/chapter-environments|raw|\.prompt\./.test(a.file)));
 });
