@@ -12,13 +12,13 @@ function home(saved=false,selected='sakura'){
  const cp=e.loadRuntime('utils/publicBattleCheckpoint.mjs');if(saved)assert.equal(cp.writePublicBattleCheckpoint(checkpoint(e.loadRuntime('utils/releaseIdentity.mjs').PUBLIC_RULESET_ID)).status,'saved');
  const h=e.harness(e.TitleScene);h.scene.create();return {e,cp,h};
 }
-test('fresh home does not invent a usable continue button',()=>{const {h}=home();assert.equal(h.query('[data-action=resume-run]'),null);h.click('[data-action=start]');assert.equal(h.starts[0][0],'BattleScene');h.shutdown();});
+test('fresh home does not invent a usable continue button',()=>{const {h}=home();assert.equal(h.query('[data-action=resume-run]'),null);h.click('[data-action=start]');assert.equal(h.scene._publicShell.page,'preflight');h.click('[data-action=start]');assert.equal(h.starts[0][0],'BattleScene');h.shutdown();});
 test('real saved checkpoint offers continue with the saved actor/chapter, not current selection',()=>{
- const {h}=home(true,'kai');const resume=h.query('[data-action=resume-run]');assert(resume);assert.match(h.query('.lobby-resume-summary').textContent,/步枪手/);assert.match(h.query('.lobby-resume-summary').textContent,/星光初演/);assert.match(h.query('.lobby-resume-summary').textContent,/20.00秒/);assert.equal(h.query('[data-action=start]').textContent,'新公演');
+ const {h}=home(true,'kai');const resume=h.query('[data-action=resume-run]');assert(resume);assert.match(h.query('.lobby-resume-summary').textContent,/战术女武神/);assert.match(h.query('.lobby-resume-summary').textContent,/星光初演/);assert.match(h.query('.lobby-resume-summary').textContent,/20.00秒/);assert.match(h.query('[data-action=start]').getAttribute('aria-label'),/公演/);
  h.click('[data-action=resume-run]');assert.equal(h.starts[0][0],'BattleScene');assert.equal(h.starts[0][1].performerId,'sakura');assert.equal(h.starts[0][1].publicBattleResume.runId,'home-continue-run');h.shutdown();
 });
 test('new battle warns before replacing a midrun checkpoint; cancel keeps it byte-identical',()=>{
- const {h,cp}=home(true);const before=plain(cp.readPublicBattleCheckpoint().checkpoint);h.click('[data-action=start]');assert.equal(h.starts.length,0);assert(h.query('[data-action=confirm-new-run]'));h.click('[data-action=cancel-new-run]');assert.equal(h.starts.length,0);assert.deepEqual(plain(cp.readPublicBattleCheckpoint().checkpoint),before);
+ const {h,cp}=home(true);const before=plain(cp.readPublicBattleCheckpoint().checkpoint);h.click('[data-action=start]');assert.equal(h.scene._publicShell.page,'preflight');h.click('[data-action=start]');assert.equal(h.starts.length,0);assert(h.query('[data-action=confirm-new-run]'));assert.equal(h.query('.shell-navigation').inert,true);h.click('[data-action=cancel-new-run]');assert.equal(h.starts.length,0);assert.deepEqual(plain(cp.readPublicBattleCheckpoint().checkpoint),before);
  h.click('[data-action=start]');h.click('[data-action=confirm-new-run]');assert.equal(h.starts[0][0],'BattleScene');assert(!h.starts[0][1].publicBattleResume);h.shutdown();
 });
 test('checkpoint disappearance between render and click reports a status without getting navigation stuck',()=>{

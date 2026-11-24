@@ -233,10 +233,9 @@ function renderHomeContinue(view,footer,actions,model){
   const rejected=view.scene.scene.settings.data?.publicBattleResumeRejected;
   if(view.homeResumeMessage||rejected||['corrupt','incompatible'].includes(saved.status))
     view.element('p','lobby-resume-message',view.homeResumeMessage||'中途记录暂不可恢复，已完成进度未更改。',footer).setAttribute('role','status');
-  renderNewRunConfirmation(view);
 }
 
-function renderNewRunConfirmation(view){
+export function renderNewRunConfirmation(view){
   if(!view.newRunConfirmation)return;
   const expected=view.newRunConfirmation.runId;
   for(const child of view.root.children)child.inert=true;
@@ -272,7 +271,7 @@ function preflightDetails(view,main,key,label) {
 export function renderPreflight(view,main,model) {
   if(view.root.dataset.uiPass==='hierarchy-v1'){
     renderCompactPreflight(view,main,model,{start:()=>beginHomePerformance(view)});
-    renderNewRunConfirmation(view);return;
+    return;
   }
   const currentCast=isUserCastEnabled();
   const equipment=PUBLIC_EQUIPMENT.find(item=>item.id===model.preparation.equipmentId);

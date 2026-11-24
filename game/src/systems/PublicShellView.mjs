@@ -21,7 +21,7 @@ import { getUiPerformerArt } from './UiPerformerArt.mjs';
 import {visualStudyEnabled} from './EnjoVisualStudy.mjs';
 import { getPublicPerformanceRecord, formatPerformanceTime } from '../utils/publicPerformanceRecords.mjs';
 import {PUBLIC_RULESET_ID} from '../utils/releaseIdentity.mjs';
-import { renderMobileLobby, renderPreflight, renderInventory, renderArchive } from './MobileGameScreens.mjs';
+import { renderMobileLobby, renderNewRunConfirmation, renderPreflight, renderInventory, renderArchive } from './MobileGameScreens.mjs';
 import {getPublicChapterPacing,getPublicTourReview} from '../utils/publicTourContent.mjs';
 import {renderPlayHub,renderRunGoals,renderArrangementLibrary,renderGrowthCatalog} from './GameSystemScreens.mjs';
 import {UI_CAST as PUBLIC_PERFORMERS,getUiPerformer as getPublicPerformer,isUserCastEnabled} from '../utils/userCast.mjs';
@@ -450,6 +450,7 @@ export class PublicShellView {
     this.navigation();
     owner?mountHierarchyUi(this):mountOwnerGeneratedUi(this);
     if(owner)mountSecondaryUi(this);
+    if(this.newRunConfirmation)renderNewRunConfirmation(this);
     main.scrollTop = scrollTop;
     if(owner&&this.page==='inventory'&&this.pendingInventoryDetailId){
       const itemId=this.pendingInventoryDetailId;

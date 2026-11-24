@@ -427,6 +427,7 @@ export class BattleScene extends Phaser.Scene {
   }
 
   init(data = {}) {
+    this._loadedChapterId = null;
     this._goalContextSavePending = false;
     this._nextChapterSavePending = false;
     this.initialBattleData = normalizeBattleData(data, getStageById);
@@ -445,10 +446,16 @@ export class BattleScene extends Phaser.Scene {
     // graphics fallback that is the accepted readability layer. particles-impact-atlas
     // is clean and is unaffected.
     if (Number(this.initialBattleData?.stageId || 1) === 1 && this.initialBattleData?.practiceMode !== true) {
-      preloadChapterScenePresentation(this, this.initialBattleData);
-      preloadActorPresentation(this, this.initialBattleData);
-      preloadPublicBattleUi(this, this.initialBattleData);
-      preloadFacilityCompletionFx(this, this.initialBattleData);
+      // Loading may start from an older chapter selection or a retained retry payload.
+      const entry=this.initialBattleData;
+      const chapterId=Object.hasOwn(entry,'publicFinaleTrial') ? entry.campaignChapterId
+        : resolvePublicChapterId(entry.campaignChapterId || 'opening');
+      this._loadedChapterId=chapterId;
+      const chapterEntry={...entry,campaignChapterId:chapterId};
+      preloadChapterScenePresentation(this, chapterEntry);
+      preloadActorPresentation(this, chapterEntry);
+      preloadPublicBattleUi(this, chapterEntry);
+      preloadFacilityCompletionFx(this, chapterEntry);
     } else {
       this.load.atlas('particles-impact', 'particles-impact-atlas.png', 'particles-impact-atlas.json');
       this.load.image(background.key, background.imagePath);
@@ -473,6 +480,13 @@ export class BattleScene extends Phaser.Scene {
     if (publicBattleResume.status === 'rejected') {
       this.scene.start('TitleScene', { suppressDebugAutoStart: true, publicBattleResumeRejected: publicBattleResume.reason });
       return;
+    }
+    const entry=this.initialBattleData || this.scene.settings.data || {};
+    const chapterId=entry.practiceMode===true ? null : Object.hasOwn(entry,'publicFinaleTrial')
+      ? entry.campaignChapterId : resolvePublicChapterId(entry.campaignChapterId || 'opening');
+    if(this._loadedChapterId && this._loadedChapterId!==chapterId){
+      // A save change during loading must not run one chapter with another chapter's textures.
+      this.scene.restart(entry);return;
     }
     this._publicBattleResume = publicBattleResume.checkpoint || null;
     this._publicBattleCheckpoint = null;
@@ -509,8 +523,9 @@ export class BattleScene extends Phaser.Scene {
     );
     this.battleData = {
       ...sceneData,
-      campaignChapterId: sceneData.practiceMode === true ? null
-        : resolvePublicChapterId(sceneData.campaignChapterId || 'opening'),
+      campaignChapterId: chapterId,
+      ...(Number(sceneData.stageId)===1 && chapterId && sceneData.campaignChapterId && chapterId!==sceneData.campaignChapterId
+        ? {stageName:getBattleChapter({campaignChapterId:chapterId}).name} : {}),
       p15Stage1ClearCount: this._p15Stage1ClearCount,
       p47Stage1ReplayObjectiveIndex: this._p47Stage1ReplayObjectiveIndex,
     };
