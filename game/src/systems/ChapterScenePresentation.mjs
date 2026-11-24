@@ -1,10 +1,10 @@
 import { attachChapterFloorDetails } from './ChapterFloorDetails.mjs';
 import { COLOR_HEX } from '../utils/config.js';
 import { getBattleChapter, getChapterDeviceLabel, getCumulativeChapterPaintProgress, PUBLIC_CHAPTER_COLORS } from '../utils/publicCampaign.mjs';
-import { isOldStreetChapter, OLD_STREET_ASSETS } from '../utils/oldStreetMap.mjs';
-import { isNeonStreetChapter, NEON_STREET_ASSETS, NEON_STREET_ART } from '../utils/neonStreetMap.mjs';
-import { isHarborStageChapter, HARBOR_STAGE_ASSETS, HARBOR_STAGE_ART } from '../utils/harborStageMap.mjs';
-import { isRooftopChapter } from '../utils/rooftopMap.mjs';
+import { isOldStreetChapter, OLD_STREET_PROPS, OLD_STREET_ASSETS } from '../utils/oldStreetMap.mjs';
+import { isNeonStreetChapter, NEON_STREET_PROPS, NEON_STREET_ASSETS, NEON_STREET_ART } from '../utils/neonStreetMap.mjs';
+import { isHarborStageChapter, HARBOR_STAGE_CONFIG, HOMECOMING_STAGE_CONFIG, HARBOR_STAGE_ASSETS, HARBOR_STAGE_ART } from '../utils/harborStageMap.mjs';
+import { isRooftopChapter, ROOFTOP_PROPS } from '../utils/rooftopMap.mjs';
 import { getChapterGroundArt,getChapterGroundColorArt } from './ChapterGroundArt.mjs';
 import { preloadChapterGroundColor } from './ChapterGroundSubstrate.mjs';
 import { oldStreetMaterialPath } from './StreetMaterialPresentation.mjs';
@@ -91,6 +91,16 @@ export function reuseChapterScenePreview(scene, data, root) {
   return reused;
 }
 
+function chapterFrontages(data) {
+  if (isOldStreetChapter(data)) return OLD_STREET_PROPS;
+  if (isNeonStreetChapter(data)) return NEON_STREET_PROPS;
+  if (isRooftopChapter(data)) return ROOFTOP_PROPS;
+  if (isHarborStageChapter(data)) {
+    return data.campaignChapterId === 'homecoming' ? HOMECOMING_STAGE_CONFIG.props : HARBOR_STAGE_CONFIG.props;
+  }
+  return [];
+}
+
 export function createChapterGround(scene, data, depth) {
   const config = getChapterScenePresentation(data);
   if (!config || !scene.textures.exists(config.groundKey)) return null;
@@ -113,7 +123,7 @@ export function createChapterGround(scene, data, depth) {
       .setDisplaySize(rect.width,rect.height).setDepth(depth-0.01).setFlip(rect.column!==1,rect.row!==1);
   });
   ground.southApron=ground.cameraAprons[6];
-  attachChapterFloorDetails(scene, ground, config.id, depth);
+  attachChapterFloorDetails(scene, ground, config.id, depth, chapterFrontages(data));
   ground.once('destroy', () => ground.cameraAprons.forEach(apron=>apron.destroy()));
   return ground;
 }

@@ -72,10 +72,42 @@ function drawSurround(graphics, x, y, fixture, ink) {
   }
 }
 
-export function attachChapterFloorDetails(scene, ground, chapter, depth) {
+// The frontage is registered to the building's feet. Narrow props keep their baked shadows.
+function drawThreshold(g, prop, plan) {
+  const foot = prop.footprint;
+  if (!prop.restorable || !foot || foot.width < 96) return;
+  const left = foot.x - 4;
+  const width = foot.width + 8;
+  const y = Math.max(prop.y, foot.y + foot.height);
+  const stone = plan.fixture === 'drain';
+  const dock = plan.fixture === 'berth' || plan.fixture === 'deck';
+  const thickness = stone ? 12 : 8;
+  // Contact shadow, slab and bevel are separate values, all quieter than wet pigment.
+  g.fillStyle(0x24343a, .20).fillRoundedRect(left + 3, y - 3, width, thickness + 6, 3);
+  g.fillStyle(plan.ink, .46).fillRoundedRect(left, y - 4, width, thickness, 2);
+  g.lineStyle(1.5, 0xd6d7bf, .60).lineBetween(left + 2, y + thickness - 5, left + width - 2, y + thickness - 5);
+  if (plan.fixture === 'inlay') {
+    // Broken insets at shop corners keep the sidewalk quieter than the stage lights.
+    for (const start of [left + 5, left + width - 38]) {
+      g.lineStyle(2, 0x90bebc, .68).lineBetween(start, y + 1, start + 33, y + 1);
+    }
+    return;
+  }
+  const count = Math.max(2, Math.round(width / (stone ? 32 : 46)));
+  g.lineStyle(1.5, 0x364044, .52);
+  for (let i = 1; i < count; i++) {
+    const at = left + width * i / count;
+    if (stone) g.lineBetween(at, y - 3, at - 2, y + 7);
+    else if (dock) g.lineBetween(at - 3, y + 2, at + 2, y - 3);
+    else g.lineBetween(at - 2, y, at + 2, y);
+  }
+}
+
+export function attachChapterFloorDetails(scene, ground, chapter, depth, props = []) {
   const plan = stages[chapter];
   if (!plan || !scene.add.graphics) return;
   const graphics = scene.add.graphics().setDepth(depth + .01);
+  for (const prop of props) drawThreshold(graphics, prop, plan);
   for (const [x, y] of plan.stations) {
     drawPlate(graphics, x, y, plan.fixture, plan.ink);
     drawSurround(graphics, x, y, plan.fixture, plan.ink);

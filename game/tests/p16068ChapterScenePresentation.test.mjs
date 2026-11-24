@@ -90,3 +90,17 @@ test('preload is limited to the actual public chapter and its authored objects',
   assert.equal(presentation.createChapterGround({textures:{exists:()=>false}},{stageId:1},-12),null);
   assert.equal(presentation.createDeviceSprite({textures:{exists:()=>false}},{}),null);
 });
+
+test('frontage bevel follows the actual building base, avoiding small props and the central road', async()=>{
+  const {attachChapterFloorDetails}=await import('../src/systems/ChapterFloorDetails.mjs');
+  for (const {id} of PUBLIC_CHAPTERS) {
+    const rects=[];
+    const graphics={setDepth(){return this;},fillStyle(){return this;},lineStyle(){return this;},
+      fillRoundedRect(...args){rects.push(args);return this;},strokeRoundedRect(){return this;},lineBetween(){return this;}};
+    const prop={y:905,restorable:true,footprint:{x:160,y:810,width:140,height:90}};
+    const small={...prop,footprint:{...prop.footprint,width:20}};
+    attachChapterFloorDetails({add:{graphics:()=>graphics}},{once(){}},id,-12,[prop,small]);
+    assert.deepEqual(rects[1].slice(0,3),[156,901,148]);
+    assert.equal(rects.length,6,'one two-layer threshold plus the four existing plates');
+  }
+});
