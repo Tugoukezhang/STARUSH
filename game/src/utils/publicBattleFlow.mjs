@@ -2,6 +2,10 @@ import {formatPaintObjectiveLine,getStage1RequiredObjectiveCount} from './stage1
 const count=(value,fallback=0)=>Number.isFinite(value)?Math.max(0,Math.floor(value)):fallback;
 const BLOCKERS=[['spotlight-captain','_publicStage1SpotlightCaptain'],['objective-disruptor','_publicStage1ObjectiveDisruptor'],['stage-cue-emitter','_publicStage1StageCueEmitter']];
 
+export function isLiveStageBlocker(enemy){
+ return enemy?.active===true&&enemy.destroyed!==true&&!(enemy.hp<=0)&&Number.isFinite(enemy.x)&&Number.isFinite(enemy.y);
+}
+
 // Read existing owners only. No progression, target selection, timers or saved state.
 export function getPublicBattleFlow(scene,{finaleState}={}){
  if(!scene)return null;
@@ -26,7 +30,7 @@ export function getPublicBattleFlow(scene,{finaleState}={}){
  const facilities=Object.freeze({completed:count(zone?.getPaintedCount?.()),total:count(zone?.getTotalCount?.())||getStage1RequiredObjectiveCount(),complete});
  const sideState=!complete?zone?.sideSet?.snapshot?.(zone.devices):null;
  const side=sideState?Object.freeze({completed:count(sideState.completed),total:count(sideState.total)}):null;
- const blockerRoles=Object.freeze(BLOCKERS.filter(([,key])=>{const e=scene[key];return e?.active===true&&Number.isFinite(e.x)&&Number.isFinite(e.y);}).map(([role])=>role));
+ const blockerRoles=Object.freeze(BLOCKERS.filter(([,key])=>isLiveStageBlocker(scene[key])).map(([role])=>role));
  const ready=complete&&!finale?.active&&!finale?.complete&&!finale?.failed?scene.publicStage1Encounter?.canEnterFinale?.():null;
  const finaleReady=typeof ready==='boolean'?ready:null;
  let phase='restore',headline=side?'设施 '+facilities.completed+'/'+facilities.total+' · 串场 '+side.completed+'/'+side.total

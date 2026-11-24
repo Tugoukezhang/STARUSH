@@ -10,3 +10,14 @@ test('zero buffered progress asks for contact instead of claiming retention',()=
 test('nearby suppressed calibration points at its cause even with another open facility',()=>{const {target,scene}=fixture();target.publicStage1Suppressed=true;target.chapterCalibrationMs=0;scene._publicStage1ObjectiveDisruptor={active:true,x:220,y:260,publicStage1ObjectiveDevice:target};scene.paintZone.getNearestObjective=()=>({id:'other',sourceLabel:'下一盏灯',x:188,y:340});const cue=resolvePublicObjectiveGuidanceTarget(scene);assert.equal(cue.key,'blocker-objective-disruptor');assert.equal(cue.hint,'校音清零 · 0%');});
 test('unfinished nearby calibration keeps its progress guide during a dodge, but not across the map',()=>{const {target,scene}=fixture();target.chapterCalibrationBuffered=true;const other={id:'other',sourceLabel:'下一盏灯',x:188,y:340};scene.paintZone.getNearestObjective=()=>other;scene.player.y=450;assert.equal(resolvePublicObjectiveGuidanceTarget(scene).key,target.id);scene.player.y=600;assert.equal(resolvePublicObjectiveGuidanceTarget(scene).key,other.id);});
 test('completed calibration removes obsolete power benefit from remaining required stations',()=>{const {target,scene}=fixture(),doc=createDocument();Object.assign(target,{id:'raincheck-side-0-1',chapterAwaitingCalibration:false,chapterSideSet:true,sideBranch:'west',sideIndex:1});scene.paintZone.devices.push({id:'rooftop-south-center',zone:0,complete:true,chapterCalibrationDurationMs:1500},{id:'raincheck-side-0-0',zone:0,chapterSideSet:true,sideBranch:'west',complete:true});const cue=resolvePublicObjectiveGuidanceTarget(scene);assert.equal(cue.hint,'串场 · 1/2');assert.equal(cue.supply,undefined);syncPublicObjectiveGuidance(scene,{doc});assert.equal(scene._publicObjectiveGuidance.hint.hidden,false);assert.equal(scene._publicObjectiveGuidance.supply.hidden,true);});
+
+test('an interrupted hold does not blame an unrelated or defeated enemy',()=>{
+ const {scene,target}=fixture();target.publicStage1Suppressed=true;
+ const other={id:'other',x:220,y:300,sourceLabel:'街灯'};
+ scene.paintZone.getNearestObjective=()=>other;
+ const enemy={active:true,x:200,y:260,hp:4,publicStage1ObjectiveDevice:other};
+ scene._publicStage1ObjectiveDisruptor=enemy;
+ assert.equal(resolvePublicObjectiveGuidanceTarget(scene).key,'other');
+ enemy.publicStage1ObjectiveDevice=target;enemy.hp=0;
+ assert.equal(resolvePublicObjectiveGuidanceTarget(scene).key,'other');
+});

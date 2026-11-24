@@ -3,7 +3,7 @@ const {PaintZoneSystem}=loadBattleScene({Phaser:{Scene:class{}},includeOwners:tr
 function fixture(){
  const near={id:'near',required:true,zone:0,x:100,y:100,sourceLabel:'灯柱',publicStage1Suppressed:true},far={id:'far',required:true,zone:0,x:200,y:200,sourceLabel:'灯箱'};
  const zone=Object.assign(Object.create(PaintZoneSystem.prototype),{chapterObjectives:{},devices:[near,far],currentZone:0,finaleMode:false,complete:false});
- const scene={player:{x:95,y:95},paintZone:zone,publicStage1Finale:{snapshot:()=>({active:false})},_publicStage1ObjectiveDisruptor:{active:true,x:120,y:180}};
+ const scene={player:{x:95,y:95},paintZone:zone,publicStage1Finale:{snapshot:()=>({active:false})},_publicStage1ObjectiveDisruptor:{active:true,x:120,y:180,publicStage1ObjectiveDevice:near}};
  return {scene,zone,near,far};
 }
 test('actual nearest-objective query excludes suppressed facilities and retains another real legal objective',()=>{

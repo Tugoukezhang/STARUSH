@@ -25,6 +25,10 @@ test('completed facilities with real remaining blocker cannot tell HUD to travel
 });
 test('destination remains original when ready or no live known blocker exists; stale/dead pointers do not block',()=>{
  for(const ready of [true,false]){const s=fixture({complete:true,ready});s._publicStage1ObjectiveDisruptor={active:false,x:1,y:2};const m=flow(s);assert.equal(m.phase,'to-finale');assert.equal(m.headline,'前往露天剧场');assert.equal(resolvePublicObjectiveGuidanceTarget(s).state,'destination');}
+ for(const stale of [{hp:0},{destroyed:true}]){
+  const scene=fixture({complete:true,ready:false});scene._publicStage1SpotlightCaptain={active:true,x:1,y:2,...stale};
+  assert.equal(flow(scene).phase,'to-finale');assert.equal(resolvePublicObjectiveGuidanceTarget(scene).state,'destination');
+ }
  const s=fixture({complete:true,ready:true});s._publicStage1SpotlightCaptain={active:true,x:1,y:2};assert.equal(flow(s).phase,'to-finale');
 });
 test('real finale phases take precedence over facility/pressure states and share weak point counters',()=>{

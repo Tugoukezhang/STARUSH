@@ -117,3 +117,38 @@ test('real device spawn/redraw keeps place labels and advances both zones withou
   assert.equal(zone.currentZone,1);assert.equal(zone.gateOpen,true);
   assert.equal(zone.getPaintedCount(),10);assert.equal(completed,1);assert.equal(zone.complete,true);
 });
+
+test('both side routes in every chapter reach the finale gate through paint and real calibration',()=>{
+  for (const chapterId of ['opening','neon','encore','raincheck','homecoming']) {
+    for (const branch of ['west','east']) {
+      const player={x:500,y:1600,hp:5,active:true};
+      const zone=new PaintZoneSystem({battleData:{stageId:1,campaignChapterId:chapterId},player,
+        _userCastPresentation:true,oldStreet:{clearLine:()=>true},
+        add:{circle:()=>({setDepth(){return this;}})},tweens:{add(){}}});
+      zone._createTileLayer=zone._drawGate=zone._scheduleNextDanmaku=zone._redrawDevice=()=>{};
+      zone._spawnDevice=def=>zone.devices.push({...def,paint:0,sequenceIndex:0,complete:false});
+      let gates=0,exits=0,now=0;
+      zone.onZoneComplete=()=>gates++;
+      zone.onAllComplete=()=>exits++;
+      zone.start();
+      for (let step=0;step<120&&!zone.complete;step++) {
+        const target=zone.devices.find(d=>d.zone===zone.currentZone&&(d.required||d.sideBranch===branch)
+          &&(zone.canReceivePaint(d)||d.chapterAwaitingCalibration));
+        assert(target,chapterId+' '+branch+' must have a legal next objective');
+        if(target.chapterAwaitingCalibration){
+          player.x=target.x;player.y=target.y;
+          zone.updateChapterObjectives(now+=100);
+          for(let i=0;i<15&&!target.complete;i++)zone.updateChapterObjectives(now+=100);
+          assert(target.complete,'a full uninterrupted hold completes the lamp');
+        }else{
+          assert(zone.applyPaint(target,target.paintMax,'pink'));
+        }
+      }
+      assert(zone.complete,chapterId+' '+branch);
+      assert.equal(zone.getPaintedCount(),zone.getTotalCount());
+      assert.deepEqual([...zone.sideSet.selected],[branch,branch]);
+      assert.equal(zone.sideSet.snapshot(zone.devices).completed,4);
+      assert.deepEqual([gates,exits],[1,1]);
+    }
+  }
+});

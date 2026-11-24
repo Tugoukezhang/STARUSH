@@ -1,7 +1,7 @@
 import {projectPublicFocusPoint,isPublicTargetFocusEnabled} from '../utils/publicTargetFocus.mjs';
 import {CHAPTER_CALIBRATION} from '../utils/chapterObjectives.mjs';
 import {canEnemyBePublicStage1PaintTarget} from './PublicStage1EnemyRoles.mjs';
-import {getPublicBattleFlow} from '../utils/publicBattleFlow.mjs';
+import {getPublicBattleFlow,isLiveStageBlocker} from '../utils/publicBattleFlow.mjs';
 // Logical 375x667 game-container pixels; #game-container is scaled as a whole, so camera screen space maps 1:1.
 const TOP=190,MARGIN=8,TAG_W=132,TAG_H=36,RING=40,GAP=6,PAD=6,JOYSTICK_RADIUS=64;
 const finite=p=>Number.isFinite(p?.x)&&Number.isFinite(p?.y);
@@ -17,9 +17,9 @@ function blocked(s){
 function blockerTarget(s,player,suppressed=[]){
  const blockers=[['spotlight-captain',s._publicStage1SpotlightCaptain,'击退领舞'],
   ['objective-disruptor',s._publicStage1ObjectiveDisruptor,'清除干扰'],['stage-cue-emitter',s._publicStage1StageCueEmitter,'清除声浪']];
- const candidates=blockers.filter(([,e])=>e?.active===true&&finite(e));
+ const candidates=blockers.filter(([,e])=>isLiveStageBlocker(e));
  const causes=candidates.filter(([,e])=>suppressed.includes(e.publicStage1ObjectiveDevice));
- const live=(causes.length?causes:candidates).sort((a,b)=>Math.hypot(a[1].x-player.x,a[1].y-player.y)-Math.hypot(b[1].x-player.x,b[1].y-player.y))[0];
+ const live=(suppressed.length?causes:candidates).sort((a,b)=>Math.hypot(a[1].x-player.x,a[1].y-player.y)-Math.hypot(b[1].x-player.x,b[1].y-player.y))[0];
  const device=live&&suppressed.includes(live[1].publicStage1ObjectiveDevice)?live[1].publicStage1ObjectiveDevice:null;
  return live?{key:'blocker-'+live[0],x:live[1].x,y:live[1].y,label:live[2],state:'blocker',...(device?{hint:deviceName(device)}:{})}:null;
 }
