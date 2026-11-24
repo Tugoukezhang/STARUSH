@@ -13,15 +13,20 @@ test('pause keeps resume outside the scrollable secondary context with existing 
  assert.equal(e.document.activeElement,resume);body.querySelector('[data-pause-action=settings]').click();resume.click();assert.deepEqual(calls,['settings','resume']);view.destroy();assert.equal(scene.input.enabled,true);
 });
 
-test('current cast presents route before six preparation tools and preserves route start handoff',()=>{
- const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);const h=e.harness(e.TitleScene);h.scene.create();const v=h.scene._publicShell;v.showPage('preflight');
- const tools=h.query('.preflight-tools');assert(tools,'preparation tools need a clear semantic group');assert.equal(tools.querySelector('h3').textContent,'调整出战配置');
- const main=h.query('.shell-content'),route=h.query('.preflight-route');assert(main.children.indexOf(route)<main.children.indexOf(tools));
- assert.equal(tools.querySelectorAll('button').length,6);
- for(const [action,page] of [['preflight-member','roster'],['preflight-training','workshop'],['preflight-inventory','inventory'],['preflight-chapter','tour'],['preflight-goals','goals'],['preflight-library','library']]){
-  const b=h.query('[data-action='+action+']');b.focus();h.click('[data-action='+action+']');assert.equal(v.page,page);v.backPage();assert.equal(v.page,'preflight');assert.equal(e.document.activeElement,h.query('[data-action='+action+']'));
+test('current cast separates configuration from run choices and starts the selected route',()=>{
+ const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);
+ const h=e.harness(e.TitleScene);h.scene.create();const v=h.scene._publicShell;v.showPage('preflight');
+ const tools=h.query('.ui-preflight-tools'),plans=h.query('.ui-preflight-plans');
+ assert.equal(tools.getAttribute('aria-label'),'演出配置');
+ assert.equal(plans.getAttribute('aria-label'),'本场选择');
+ assert.deepEqual(tools.querySelectorAll('button').map(button=>button.dataset.action),['preflight-member','preflight-equipment','preflight-training']);
+ assert.deepEqual(plans.querySelectorAll('button').map(button=>button.dataset.action),['preflight-route','preflight-arrangement','preflight-goals']);
+ for(const [action,page] of [['preflight-equipment','inventory'],['preflight-goals','goals']]){
+  const button=h.query('[data-action='+action+']');button.focus();button.click();assert.equal(v.page,page);
+  v.backPage();assert.equal(v.page,'preflight');assert.equal(e.document.activeElement,h.query('[data-action='+action+']'));
  }
- h.click('[data-route-choice=east]');h.click('[data-action=start]');assert.equal(h.starts.at(-1)[1].publicRoutePlan.id,'east');h.shutdown();
+ h.click('[data-action=preflight-route]');h.click('[data-route-choice=east]');h.click('[data-action=start]');
+ assert.equal(h.starts.at(-1)[1].publicRoutePlan.id,'east');h.shutdown();
 });
 
 test('legacy preparation keeps existing route-free presentation',()=>{

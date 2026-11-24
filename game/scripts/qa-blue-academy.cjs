@@ -58,6 +58,8 @@ const result={errors:[],httpErrors:[],assets:[],samples:[]};
   assert(result.samples.some(s=>s.x!==before.x));assert(result.samples.every(s=>s.key===before.key));
   await p.locator('#skill-special').tap();await p.waitForTimeout(80);result.samples.push(await read());
   await p.keyboard.press('p');await p.waitForFunction(()=>window.__qaGame().scene.keys.BattleScene._battlePaused);
+  await p.locator('.battle-pause-title-text:visible').waitFor();
+  await p.screenshot({path:path.join(dir,'pause.png'),animations:'disabled'});
   const frozen=await read();await p.waitForTimeout(300);assert.equal((await read()).clock,frozen.clock);
   await p.locator('[data-pause-action=resume]').tap();
   // Meet real chasing enemies using the same movement keys as a player. No HP/position mutations.

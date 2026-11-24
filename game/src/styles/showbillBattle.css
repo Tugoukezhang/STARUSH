@@ -1,0 +1,56 @@
+/* Playfield chrome uses compact opaque edges; central aiming space and hit areas remain free. */
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] {
+  & .mihoyo-player {background:linear-gradient(90deg,#12212eee 0%,#132332d9 76%,#13233200);border-radius:6px}
+  & .cw-portrait {border:2px solid #a4e1cf;border-radius:6px;box-shadow:0 1px 3px #07162299}
+  & #public-hp-meter {background:#213942;box-shadow:0 0 0 1px #99afa8}
+  & .cw-objective-row {background:linear-gradient(90deg,#10212eea,#112331cd 70%,transparent);border-left:3px solid #a4e1cf;padding-left:6px}
+  & #round-clock {font-variant-numeric:tabular-nums;color:#ffe5af}
+  & .skill-orb:focus-visible {outline:2px solid #fff4d2;outline-offset:2px}
+}
+#game-container #battle-pause.battle-surface[data-pause-family=true] {
+  & .battle-surface-content {color:#233745;background:#f4f2e9;border:1px solid #71878d;border-radius:10px}
+  & .battle-pause-header {padding:14px 16px;background:linear-gradient(90deg,#15212fe8,#16233860),url('/art/showbill/console.webp') center 48%/cover;border-radius:6px;border-left:3px solid #8fe2cf}
+  & .battle-pause-header .battle-eyebrow {color:#cbdfd8}
+  & .battle-pause-header h2 {min-height:48px;color:#fff7e7;font:850 30px/1.25 system-ui,sans-serif}
+  & .battle-pause-header .battle-pause-lettering {display:none}
+  & .battle-pause-header h2:has(.battle-pause-lettering) .battle-pause-title-text {position:static;width:auto;height:auto;clip-path:none;overflow:visible;white-space:normal}
+  & .battle-pause-context {color:#f2eadb}
+  & .battle-pause-scroll {scroll-padding:8px}
+  & [data-pause-action=resume] {min-height:46px;background:#a4ebd4;border:0;border-radius:5px;color:#142c2b;box-shadow:inset 0 -3px #5a9b8c}
+}
+#game-container #run-choice.battle-surface[data-choice-family=true][data-choice-reading=true][data-choice-studio="303"] {
+  & .battle-surface-content {padding:8px 2px;background:none;color:#f1f0e5}
+  & .battle-choice-header {padding:12px 14px;border-radius:6px;border-left:3px solid #8edcc6;background:linear-gradient(90deg,#142331ed,#14233175),url('/art/showbill/stage.webp') center/cover}
+  &[data-choice-ticket=ready] .battle-choice-list .battle-choice-row {border:1px solid #62747c;border-inline-start:4px solid #95ddcb;border-radius:6px;border-image:none;background:linear-gradient(110deg,#273e49,#182936);box-shadow:0 2px 5px #0b151d88}
+  &[data-choice-ticket=ready] .battle-choice-list .battle-choice-row[aria-pressed=true] {background:#284b4d;outline:2px solid #c5f2be}
+  & .battle-choice-row {border-radius:7px}
+  & .battle-choice-row[aria-pressed=true] {box-shadow:0 0 0 2px #a3f1d9}
+}
+#game-container #player-session-dialog .session-panel {border-color:#57737b}
+#game-container #player-session-dialog[data-console-skin="268"] {
+  & .session-panel {background:#f4f2e9;border:1px solid #829990;border-radius:10px}
+  & .session-header {padding:18px 20px;min-height:64px;border-bottom:3px solid #7bb59f;background:linear-gradient(90deg,#f4f2e9 30%,#f4f2e9ad 57%,#10263040),url('/art/showbill/console.webp') center 55%/cover}
+  &[data-mode=profile-backup] .session-header {background-image:linear-gradient(90deg,#f4f2e9 30%,#f4f2e9ad 57%,#10263040),url('/art/showbill/archive.webp')}
+  & .session-content {padding-top:12px}
+  & .session-settings-group {padding:0 0 8px;border-bottom:1px solid #c7d1c8}
+  & .session-setting {min-height:44px}
+  & input[type=range] {height:36px}
+  & .session-shortcut {background:#fffdf7;border:1px solid #cad5cc;border-radius:5px}
+  & .session-primary[data-console-return=close] {background:#f8f5e7;border:1px solid #90a39b;border-radius:6px}
+}
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .performance-story-dialogue {
+  background:linear-gradient(0deg,#101d2bf7 65%,#101d2bd9 85%,transparent);color:#f8f2e4;
+}
+#game-container #battle-result.battle-surface[data-result-stage=chapter] {
+  & .battle-surface-content {background:#f5f2e9;color:#20353b}
+  & .battle-performance-header {border-bottom:4px solid #7ebba9}
+  & .battle-result-stats {padding:11px 0;border-bottom:1px solid #c4ccc5}
+  & .battle-result-stats dd {font-weight:850;color:#24384b}
+  & .battle-result-attempt .attempt-next {border-left:4px solid #c27c61;background:#efe3d2;color:#493729;border-radius:2px}
+  & .battle-surface-footer button[data-result-skin=primary]:not(:disabled) {border:1px solid #234844;border-image:none;border-radius:6px;background:#173c3d;color:#fff6df;box-shadow:inset 0 -3px #0c292e}
+  & .battle-surface-footer button[data-result-skin=secondary]:not(:disabled) {border:1px solid #738e89;border-image:none;border-radius:6px;background:#f4f1e7;color:#203d42}
+}
+@media(prefers-reduced-motion:no-preference) {
+  #game-container #public-shell[data-edition=showbill] .showbill-cover {animation:showbill-reveal .22s ease-out both}
+  @keyframes showbill-reveal {from{opacity:.75}to{opacity:1}}
+}
