@@ -1,0 +1,114 @@
+{
+  "provenance": "2026-11-24 依据当前恢复分支中的八个发布文件重新测量。原始生成清单未寻回。",
+  "engineSelectable": false,
+  "approved_for_final_art": false,
+  "alphaCornerSample": {
+    "file": "art/program-studio-20261101/letter-chapters.webp",
+    "x": 0,
+    "y": 0
+  },
+  "alphaCorner": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "assets": [
+    {
+      "file": "art/program-studio-20261101/letter-chapters.webp",
+      "width": 821,
+      "height": 352,
+      "topLeftRGBA": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "0882f8c8f4aee5c55d3e50f74100e51106bbb6b480d3f79aaab270711881fa49"
+    },
+    {
+      "file": "art/program-studio-20261101/letter-goal-info.webp",
+      "width": 774,
+      "height": 306,
+      "topLeftRGBA": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "a97492b61f4cff8d97a393d27bb11f567c2f3ab292bf8fcc2a8dd75ee49ff046"
+    },
+    {
+      "file": "art/program-studio-20261101/letter-practice.webp",
+      "width": 799,
+      "height": 308,
+      "topLeftRGBA": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "276f23d3728ed97535c107bdc420f47f58b322febced0fc55a59bb0eff023fd5"
+    },
+    {
+      "file": "art/program-studio-20261101/letter-program.webp",
+      "width": 782,
+      "height": 281,
+      "topLeftRGBA": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "fb29357f90df4bf19dae2cb41019453618700be6599aa5d62b6b57667d16e8f0"
+    },
+    {
+      "file": "art/program-studio-20261101/letter-set-goal.webp",
+      "width": 1601,
+      "height": 492,
+      "topLeftRGBA": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "6c8fc9b0f194fd9e449e5530a972fcd040faa7117eb62eaa46bb4f220c7e6764"
+    },
+    {
+      "file": "art/program-studio-20261101/practice-score.webp",
+      "width": 768,
+      "height": 512,
+      "topLeftRGBA": [
+        186,
+        172,
+        149,
+        255
+      ],
+      "sha256": "df570c9d76bc33759e6c126a70099714088d606c3ef1e81d7134338c6961c824"
+    },
+    {
+      "file": "art/program-studio-20261101/practice-target.webp",
+      "width": 768,
+      "height": 512,
+      "topLeftRGBA": [
+        39,
+        67,
+        73,
+        255
+      ],
+      "sha256": "d132c8b98411c773ccff63e03bd8695cda8a6a4f108ed588fd2566c73d257df6"
+    },
+    {
+      "file": "art/program-studio-20261101/program-stage.webp",
+      "width": 1024,
+      "height": 1536,
+      "topLeftRGBA": [
+        53,
+        56,
+        51,
+        255
+      ],
+      "sha256": "ca4ba51c5cecca957eb5e6d2a93f7a7b95d79858e7dda14b0b3b05e47c643144"
+    }
+  ]
+}
