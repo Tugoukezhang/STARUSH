@@ -29,7 +29,7 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   const scene=view.element('div','ui-home-scene',undefined,view.root.parentNode);
   scene.setAttribute('aria-hidden','true');
   const background=view.element('img','ui-room-background',undefined,scene);
-  background.src='art/showbill/stage.webp';background.alt='';background.draggable=false;
+  background.src='art/showbill/openair.webp';background.alt='';background.draggable=false;
   view.homeSceneDispose=()=>scene.remove();
   const spaces=view.element('div','ui-home-spaces',undefined,main);
   view.button(spaces,'巡演后台',()=>view.showPage('backstage'),{className:'home-backstage',icon:'clapperboard',lineIcon:true,action:'home-open-backstage'});

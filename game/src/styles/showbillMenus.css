@@ -140,11 +140,10 @@
 }
 
 /* The performer, route or item is the focal point. Paper chrome is shared by all four destinations. */
-#game-container>.ui-home-scene {
-  background:radial-gradient(ellipse at 62% 34%,#fbf3e5 0 19%,transparent 62%),linear-gradient(155deg,#d1e8dc 0 46%,#b6d5cd 46% 68%,#f0e4d5 68%);
-}
+#game-container>.ui-home-scene {background:#152638}
 #game-container>.ui-home-scene>.ui-room-background {
-  opacity:.15;filter:grayscale(1);mask-image:linear-gradient(to top,#000 0%,transparent 60%);
+  inset:0 auto auto 0;width:100%;height:calc(100% - clamp(108px,16%,148px));max-width:none;
+  object-fit:cover;object-position:center bottom;opacity:1;filter:none;mask-image:none;
 }
 #game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
   --sheet:#f6f5ed;--text:#182e31;--soft:#536763;--hairline:#c4cfc7;
@@ -169,9 +168,13 @@
   & .ui-home-primary .showbill-start,& .ui-preflight-footer .showbill-deploy {
     border:0;border-radius:8px;background:#174d43;color:#fffef3;box-shadow:none;
   }
-  &[data-page=roster] .roster-portrait-stage,& .sec-training-stage {
-    background:radial-gradient(ellipse at 48% 40%,#faf2df,transparent 68%),linear-gradient(155deg,#cddfd7 0 65%,#abc7bb 65% 71%,#d7dcd0 71%);
+  &[data-page=roster] .roster-portrait-stage {
+    --cast-accent:#f49b77;--cast-light:#ffe8c4;
+    background:linear-gradient(112deg,var(--cast-light) 0 44%,var(--cast-accent) 44.3% 59%,#1d3443 59.3% 60%,#1d344366 60.3%),url('/art/showbill/console.webp') 70% center/cover;
   }
+  &[data-page=roster] .roster-portrait-stage:has(.member-mark-full[data-performer=kai]) {--cast-accent:#67c6ad;--cast-light:#e2f3d8}
+  &[data-page=roster] .roster-portrait-stage:has(.member-mark-full[data-performer=enjo]) {--cast-accent:#97bfea;--cast-light:#f0e2f0}
+  & .sec-training-stage {background:linear-gradient(102deg,#203249cc,#2937455c 45%,#081b34a6),url('/art/showbill/console.webp') center/cover}
   & .showbill-tour-heading {position:relative;align-items:center;gap:8px;padding:9px 14px;background:var(--sheet);border-bottom:1px solid var(--hairline);color:var(--text)}
   & .showbill-tour-heading>div {display:grid;grid-template-columns:auto auto;align-items:center;gap:2px 8px}
   & .showbill-tour-heading .showbill-caption {border:0;padding:0;color:var(--soft);letter-spacing:0}
@@ -179,12 +182,50 @@
   & .showbill-tour-heading .ui-tour-progress {grid-column:1/-1;justify-self:start;margin:0;padding:0;min-height:0;background:none;border:0;color:var(--soft);font:500 12px/18px system-ui,sans-serif}
   & .tour-reference-list {display:grid;gap:0}
   & .tour-reference-list button {min-height:48px;text-align:left;justify-content:flex-start;padding:8px 12px;background:var(--sheet);border:0;border-bottom:1px solid var(--hairline);box-shadow:none;color:var(--text);font:650 16px/22px system-ui,sans-serif}
-  & .journey-map {background:#e4ebe1}
-  & .journey-route {background:linear-gradient(90deg,transparent calc(50% - 2px),#b4c8bc calc(50% - 2px) calc(50% + 2px),transparent calc(50% + 2px))}
-  & .journey-chapter .shell-chapter-copy strong {font:750 16px/22px system-ui,sans-serif;color:#223c36}
+  & .journey-map {background:#f8e8c5 url('/art/showbill/harbor-map.webp') center/cover no-repeat}
+  & .journey-route {
+    --tour-step:clamp(142px,20vh,180px);box-sizing:border-box;height:auto;min-height:100%;
+    grid-template-rows:repeat(var(--journey-count),var(--tour-step));padding:12px 6% 16px;
+    background:none;
+  }
+  & .journey-route .journey-chapter {
+    --ticket:#ffbb67;position:relative;isolation:isolate;align-self:center;justify-content:flex-end;
+    width:65%;height:calc(var(--tour-step) - 14px);padding:0 7px 7px;
+    border:0;background:none;box-shadow:none;opacity:1;filter:none;
+  }
+  & .journey-chapter[data-chapter=neon] {--ticket:#f6afbf}
+  & .journey-chapter[data-chapter=encore] {--ticket:#9fd1ee}
+  & .journey-chapter[data-chapter=raincheck] {--ticket:#afaee6}
+  & .journey-chapter[data-chapter=homecoming] {--ticket:#8bd7c1}
+  & .journey-chapter::after {
+    content:'';position:absolute;z-index:-1;inset:25% 0 3px;pointer-events:none;transform:rotate(-2deg);
+    border:2px solid #243344;border-radius:4px;background:linear-gradient(114deg,#fff5df 0 62%,var(--ticket) 62.3%);
+    box-shadow:3px 3px 0 #253749;
+  }
+  & .journey-chapter[data-journey-side=right]::after {transform:rotate(2deg)}
+  /* From this stop's centre to the next row's centre; links remain aligned at every viewport. */
+  & .journey-chapter:not(:last-child)::before {
+    content:'';position:absolute;z-index:-2;pointer-events:none;left:50%;top:calc(50% - var(--tour-step));
+    width:53.85%;height:var(--tour-step);background:#d98629;
+    clip-path:polygon(0 96%,96% 0,100% 0,100% 4%,4% 100%,0 100%);
+  }
+  & .journey-chapter[data-journey-side=right]:not(:last-child)::before {left:auto;right:50%;transform:scaleX(-1)}
+  & .journey-chapter>.journey-landmark {
+    width:76%;height:calc(100% - 52px);max-width:100%;object-fit:contain;
+    opacity:1;filter:drop-shadow(1px 2px 0 #fff9e7);
+  }
+  & .journey-chapter:disabled>.journey-landmark {opacity:1;filter:saturate(.64) drop-shadow(1px 2px 0 #fff9e7)}
+  & .journey-chapter>.shell-chapter-number {position:absolute;inset:33% auto auto 4px;background:#203143;color:#fff4d7;border:0;border-radius:2px;padding:2px 5px;font:italic 850 16px/21px system-ui,sans-serif}
+  & .journey-chapter>.shell-chapter-copy,& .journey-chapter[aria-pressed=true]>.shell-chapter-copy {
+    width:100%;max-width:none;padding:2px 4px;background:none;color:#182b3a;border:0;box-shadow:none;
+  }
+  & .journey-chapter .shell-chapter-copy strong {font:850 clamp(16px,4.6vw,21px)/1.2 system-ui,sans-serif;color:#182b3a}
   & .journey-chapter .shell-chapter-copy .ui-letter-art {display:none}
-  & .journey-chapter[aria-pressed=true]>.shell-chapter-copy {background:#174d43;border:0;border-radius:6px}
-  & .journey-chapter[aria-pressed=true] .shell-chapter-copy strong {color:#faf8ec}
+  & .journey-chapter .shell-chapter-state,& .journey-chapter:disabled .shell-chapter-state {
+    display:block;width:auto;padding:1px 0;margin:0;background:none;color:#304355;font:600 12px/17px system-ui,sans-serif;
+  }
+  & .journey-chapter[aria-pressed=true] .shell-chapter-state {color:#2c3540}
+  & .journey-chapter[aria-pressed=true]::after {border-color:#172c41;background:linear-gradient(113deg,#ffe26f 0 64%,#ffb647 64.3%)}
   & [data-hierarchy=inventory] {background:var(--sheet);padding:12px}
   & .inv-context {display:flex;flex-wrap:wrap;align-items:center;gap:4px 9px;margin:0 0 10px;padding:4px 0 10px;border:0;border-bottom:1px solid var(--hairline);background:none;color:var(--text)}
   & .inv-context .inv-context-actor {font:750 19px/25px system-ui,sans-serif}
@@ -270,4 +311,37 @@
   & .ui-preflight-stage .ui-preflight-venue {mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.22) 55%,rgba(0,0,0,.4))}
   & .ui-preflight-brief {background:#1c342f;border:0}
   & .ui-preflight-plans .ui-preflight-entry {box-shadow:none;border:0;border-radius:4px}
+}
+
+/* Concert ticket, poster ink and a single active destination. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  --poster-ink:#192d40;--poster-paper:#fff4dc;--show-yellow:#ffde62;
+  & .shell-header {background:var(--poster-paper);border-bottom:2px solid var(--poster-ink)}
+  & .shell-header .shell-brand h1.showbill-title {color:var(--poster-ink);font-weight:850}
+  & .ui-root-nav {gap:2px;padding:3px 6px;background:#1b3044;border:0}
+  & .ui-root-nav .ui-nav-root {color:#e1e5e2;background:transparent;box-shadow:none}
+  & .ui-root-nav .ui-nav-root[aria-current] {color:var(--poster-ink);background:var(--show-yellow);border-radius:4px;box-shadow:none}
+  & :is(.ui-home-stage,.roster-portrait-stage) .member-portrait {filter:drop-shadow(2px 0 #fff1cd) drop-shadow(-2px 0 #fff1cd) drop-shadow(0 3px 0 #323148)}
+  & .ui-home-spaces .home-backstage,& .tour-reference-button {color:var(--poster-ink);background:var(--poster-paper);border:2px solid var(--poster-ink);border-radius:5px;box-shadow:2px 2px 0 var(--poster-ink)}
+  & .ui-home-dock {position:relative;background:#1b3044;color:var(--poster-paper);border:0;border-top:3px solid #ff9b59;padding:10px 14px 8px}
+  & .ui-home-caption .ui-home-identity {color:var(--poster-paper)!important;font-weight:850!important;font-size:clamp(17px,5.6vw,25px)!important;line-height:1.2!important}
+  & .ui-home-caption .ui-home-chapter,& .home-tour-progress {color:#c5e1da}
+  & .home-tour-progress progress::-webkit-progress-bar {background:#405466}
+  & .home-tour-progress progress::-webkit-progress-value {background:#7ed6bd}
+  & .ui-home-primary .showbill-start,& .ui-preflight-footer .showbill-deploy {
+    background:var(--show-yellow);color:var(--poster-ink);border:2px solid var(--poster-ink);border-radius:5px;
+    box-shadow:2px 3px 0 #091a2a;font-weight:850;
+  }
+  &[data-page=inventory] .inv-context {padding:10px 12px;margin-bottom:8px;gap:6px 10px;border:0;border-left:5px solid #f4ad65;background:var(--poster-ink)}
+  &[data-page=inventory] .inv-context .inv-context-actor {color:var(--poster-paper)}
+  &[data-page=inventory] .inv-context :is(.inv-context-deploy,.inv-context-slot) {color:#cfdfdb}
+  & .inv-filters .inv-filter[aria-pressed=true] {color:var(--poster-ink);background:var(--show-yellow);border-color:var(--poster-ink)}
+  & .ui-item-grid .ui-item-slot[data-state=equipped] {border:2px solid #247e79;box-shadow:inset 0 -3px #7ad2bb}
+  & .ui-sheet:has(.tour-reference-list,.roster-reference-list) {padding:0;background:var(--poster-paper);color:var(--poster-ink);border:2px solid var(--poster-ink);border-radius:8px;box-shadow:4px 5px 0 #142336}
+  & .ui-sheet:has(.tour-reference-list,.roster-reference-list) .ui-sheet-header {padding:3px 10px 3px 15px;margin:0;border:0;border-bottom:3px solid #ebac62;background:var(--poster-ink);color:var(--poster-paper)}
+  & .ui-sheet:has(.tour-reference-list,.roster-reference-list) .ui-sheet-title {color:var(--poster-paper);font:800 20px/28px system-ui,sans-serif}
+  & .ui-sheet:has(.tour-reference-list,.roster-reference-list) .ui-sheet-body {padding:6px 12px 10px;background:var(--poster-paper)}
+  & .showbill-tour-heading {background:var(--poster-ink);color:var(--poster-paper);border-bottom:3px solid #f4b356}
+  & .showbill-tour-heading :is(.showbill-caption,.ui-tour-progress) {color:#c8e0db}
+  & .shell-selection-footer button[data-command-face=plain]:not(:disabled) {background:var(--show-yellow)!important;color:var(--poster-ink);border:2px solid var(--poster-ink);border-radius:5px;box-shadow:2px 2px 0 var(--poster-ink)}
 }

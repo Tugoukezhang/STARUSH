@@ -25,7 +25,7 @@ export function mountTourJourney(view,main,model){
  for(const row of sequence.querySelectorAll('.shell-chapter-option')){
   const content=getChapterContent(row.dataset.chapter);row.classList.add('journey-chapter');row.style.setProperty('--journey-row',String(model.chapters.length-content.ordinal+1));
   row.dataset.journeySide=content.ordinal%2===1?'left':'right';
-  const art=view.element('img','journey-landmark',undefined,row);art.src=content.id==='raincheck'?'art/rooftop-20261103/landmark.webp':ART+(content.id==='homecoming'?'encore':content.id)+'.webp';art.alt='';art.draggable=false;
+  const art=view.element('img','journey-landmark',undefined,row);art.src='art/showbill/stop-'+content.id+'.webp';art.alt='';art.draggable=false;
   row.replaceChildren(art,row.querySelector('.shell-chapter-copy'),row.querySelector('.shell-chapter-number'));
  }
  const current=model.chapters.find(row=>row.id===view.selection.chapterId&&row.unlocked)||model.chapter;

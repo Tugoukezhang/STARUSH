@@ -6,6 +6,7 @@ function setup(cleared=[],chapter='opening'){
 test('the map shows five ordered venues and names the previous venue on each locked stop',()=>{
  const {h}=setup();assert(h.query('.journey-map'));const stops=h.query('.journey-route').querySelectorAll('.shell-chapter-option');
  assert.deepEqual(Array.from(stops,row=>row.dataset.chapter),['opening','neon','encore','raincheck','homecoming']);
+ for(const row of stops)assert.equal(row.querySelector('.journey-landmark').src,'art/showbill/stop-'+row.dataset.chapter+'.webp');
  for(let i=1;i<stops.length;i++){
   const previousName=stops[i-1].querySelector('.shell-chapter-copy').querySelector('strong').textContent;
   const label='通关'+previousName+'后开放';
