@@ -8,10 +8,12 @@ const SPRAYS = {
 
 // Secondary ink only. Accepted contacts, damage and clocks remain with their original owners.
 export class ContactInkFragments{
- constructor(scene, performer='sakura'){this.scene=scene;this.shards=SPRAYS[performer]??SPRAYS.sakura;this.rows=[];this.graphics=null;}
+ constructor(scene, performer='sakura'){this.scene=scene;this.motionPreference=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');this.shards=SPRAYS[performer]??SPRAYS.sakura;this.rows=[];this.graphics=null;}
  add({x,y,angle,color,start}){
   if(![x,y,angle,start].every(Number.isFinite)||!Number.isInteger(color)||color<0||color>0xffffff)return;
-  this.rows.push({x,y,angle,color,start});if(this.rows.length>MAX_CONTACTS)this.rows.shift();
+  // Successive contacts share the same cloud while each retains its own visible impact core.
+  const crowded=this.rows.some(row=>start>=row.start && start-row.start<80 && Math.hypot(x-row.x,y-row.y)<32);
+  this.rows.push({x,y,angle,color,start,crowded});if(this.rows.length>MAX_CONTACTS)this.rows.shift();
  }
  update(now,depth=9.8){
   if(!Number.isFinite(now))return;
@@ -20,9 +22,12 @@ export class ContactInkFragments{
   const g=this.graphics??=this.scene.add?.graphics?.();if(!g)return;g.setDepth(depth+.00001);
   for(const r of this.rows){
    const p=(now-r.start)/LIFE,ease=1-(1-Math.min(1,p*2.6))**3,alpha=.84*(1-p),clear=this.scene.oldStreet?.clearLine?.bind(this.scene.oldStreet);
+   const quiet=this.motionPreference?.matches===true;
    this.shards.forEach(([offset,distance,length],i)=>{
+    if((quiet||r.crowded)&&i%2===1)return;
+    const reach=quiet?distance*.48:distance;
     const a=r.angle+offset,dx=Math.cos(a),dy=Math.sin(a),nx=-dy,ny=dx;
-    const tip={x:r.x+dx*(3+(distance-3)*ease),y:r.y+dy*(3+(distance-3)*ease)};
+    const tip={x:r.x+dx*(3+(reach-3)*ease),y:r.y+dy*(3+(reach-3)*ease)};
     const tail={x:tip.x-dx*length*(.45+.55*(1-p)),y:tip.y-dy*length*(.45+.55*(1-p))};
     const width=(1.3+(i%3)*.55)*(1-p*.5),triangle=w=>[tip.x,tip.y,tail.x+nx*w,tail.y+ny*w,tail.x-nx*w,tail.y-ny*w];
     const outline=triangle(width+.7);
@@ -30,7 +35,7 @@ export class ContactInkFragments{
     g.fillStyle(0x19232c,alpha*.9).fillTriangle(...outline);
     g.fillStyle(r.color,alpha).fillTriangle(...triangle(width));
     // Inside the tested shard triangle, a short glint peaks before the pigment fades.
-    if (i % 2 === 1 && p < .7) {
+    if (!quiet && i % 2 === 1 && p < .7) {
       const midX = (tip.x + tail.x) / 2;
       const midY = (tip.y + tail.y) / 2;
       g.fillStyle(0xf5ffff, alpha * (1 - p / .7)).fillTriangle(

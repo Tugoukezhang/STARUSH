@@ -99,3 +99,21 @@ test('confirmed wind character facing and camera-only image motion never alter p
   assert.deepEqual(v.handWorld(),{x:484,y:988});assert.deepEqual(s.player,{x:500,y:1000});
   assert.equal(v.image.angle,0);
 });
+
+test('confirmed skill poses register the three rifle beats, the dash end and the instant spell',()=>{
+ const samples={
+  sakura:[[0,14],[60,15],[100,14],[160,15],[200,14],[268,16],[305,17]],
+  kai:[[0,14],[80,15],[159,15],[160,16],[250,17]],
+  enjo:[[0,14],[80,15],[160,16],[220,17]],
+ };
+ for(const [id,checks] of Object.entries(samples)){
+  const {scene,view}=fixture(id);
+  view.update(0,false);scene.publicPerformerRun.actions++;
+  for(const [age,cel] of checks){
+   view.update(10+age,false);
+   assert.equal(view.image.frame.name,cel,id+' at '+age+'ms');
+  }
+  assert.equal(scene.publicPerformerRun.actions,1);
+  view.destroy();
+ }
+});

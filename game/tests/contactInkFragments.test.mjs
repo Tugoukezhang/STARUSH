@@ -51,3 +51,18 @@ test('helper has no damage, paint, physics, preload, timer, RNG or extra scene u
  const source=fs.readFileSync(new URL('../src/systems/ContactInkFragments.mjs',import.meta.url),'utf8');
  assert(!/Math\.random|setTimeout|setInterval|\.time\.|\.physics\.|\.paint\(|takeDamage|\.load\.|events\.on|tweens/.test(source));
 });
+
+test('near-simultaneous impacts thin the secondary spray and reduced motion shortens its travel',()=>{
+ const {scene,triangles}=fixture(),fx=new ContactInkFragments(scene);
+ const add=(x,start)=>fx.add({x,y:100,angle:0,color:0xaabbcc,start});
+ add(100,500);fx.update(570);
+ const normal=triangles.length;
+ add(108,520);fx.update(570);
+ assert(triangles.length>normal&&triangles.length<normal*2);
+ fx.update(740);add(100,800);fx.motionPreference={matches:true};fx.update(870);
+ assert(triangles.length<normal);
+ for(const {points,color} of triangles){
+  assert.notEqual(color,0xf5ffff);
+  for(let i=0;i<6;i+=2)assert(Math.hypot(points[i]-100,points[i+1]-100)<24);
+ }
+});

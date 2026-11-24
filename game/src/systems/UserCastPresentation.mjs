@@ -21,6 +21,28 @@ const REST_AT=400,REST_FOR=600;
 // The moving-shot upper draws just above its lower body and below weapon FX (+.00002).
 const UPPER_DEPTH=.000001;
 
+// Select a pose from the confirmed atlas using the same beats as the actual skill.
+function skillCel(id, age, action) {
+  if (id === 'sakura') {
+    const beats = action.releaseBeats;
+    const last = beats[beats.length - 1];
+    let beat = 0;
+    for (const at of beats) if (at <= age) beat = at;
+    if (age - beat < 30) return 14; // Muzzle extension on each shot.
+    if (age < last + 55) return 15;
+    return age < last + 85 ? 16 : 17;
+  }
+  if (id === 'kai') {
+    if (age < action.dashMs * .3) return 14;
+    if (age < action.dashMs) return 15; // Hold the sweep until the dash ends.
+    return age < (action.dashMs + action.presentationMs) / 2 ? 16 : 17;
+  }
+  // The spell makes contact immediately; let the open book settle for the last half.
+  if (age < 48) return 14;
+  if (age < 140) return 15;
+  return age < 216 ? 16 : 17;
+}
+
 export class UserCastPresentation {
   constructor(scene,id){
     this.scene=scene;this.art=getUserCastArt(id);this.disposed=false;this.shotAt=-Infinity;this.depth=9.8;
@@ -28,7 +50,8 @@ export class UserCastPresentation {
     this.scale=this.art.motion.scale??.5;
     this.height=this.art.motion.frameHeight*this.scale;this.width=this.art.motion.frameWidth*this.scale;this.clock=0;this.lastNow=null;this.wasFrozen=false;this.walkDistance=0;
     this.shotDuration={sakura:270,kai:240,enjo:260}[this.art.id];
-    this.actionDuration=getPublicPerformerAction(this.art.id)?.presentationMs??320;
+    this.skill=getPublicPerformerAction(this.art.id);
+    this.actionDuration=this.skill?.presentationMs??320;
     this.shotClock=-Infinity;this.actionClock=-Infinity;this.hurtClock=-Infinity;this.streakUntil=-Infinity;this.idleClock=0;
     this.actions=scene.publicPerformerRun?.actions||0;this.hits=scene.battleRecord?.playerHitCount||0;
     this.shadow=scene.add.ellipse(scene.player.x,scene.player.y+25,30,9,0x182936,.22).setDepth(9.79);
@@ -107,7 +130,8 @@ export class UserCastPresentation {
     }
     else if(this.state==='action'){
       // Consequences remain owned by the run: hammer is instant; sword dashes for 160ms.
-      frame=sample([14,15,16,17],t-this.actionClock,this.actionDuration);
+      frame=this.art.confirmedDesign&&this.skill ? skillCel(this.art.id,t-this.actionClock,this.skill)
+        : sample([14,15,16,17],t-this.actionClock,this.actionDuration);
     }else if(melee){
       const pose=this.art.confirmedDesign?null:selectMeleeAttackBody(this.art.id,melee,k=>s.textures?.exists(k));
       if(pose){this.meleePose=pose;key=pose.art.key;frame=pose.frame;this.flip=pose.flip;}
