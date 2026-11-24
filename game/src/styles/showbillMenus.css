@@ -584,7 +584,7 @@
 #game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=records] .shell-content[data-archive-studio] {
   & .archive-record {position:relative;isolation:isolate;padding-right:44px}
   & .archive-record .sec-records-open {
-    position:absolute;inset:0;z-index:1;width:100%;height:100%;margin:0;padding:0;border:0;
+    position:absolute;grid-area:auto;inset:0;z-index:1;width:100%;height:100%;margin:0;padding:0;border:0;
     border-radius:inherit;background:transparent;box-shadow:none;font-size:0;
   }
   & .sec-records-open > * {display:none}
