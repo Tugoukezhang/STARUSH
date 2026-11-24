@@ -57,10 +57,10 @@
     background:#142236;color:#fff3d9;font:700 14px/18px system-ui,sans-serif;
   }
   & .session-footer button:focus-visible {outline:2px solid var(--stage-light);outline-offset:-2px}
-  &[data-reduced-motion=false] [data-phase=loading] .performance-encore-portrait {opacity:0}
+  &[data-reduced-motion=false] [data-phase=loading] .encore-stage-image {clip-path:polygon(0 23%,100% 0,100% 55%,0 78%)}
   &[data-reduced-motion=false] [data-phase=focus] .encore-stage-image {clip-path:polygon(0 23%,100% 0,100% 55%,0 78%)}
   &[data-reduced-motion=false] [data-phase=focus] .performance-encore-portrait {transform:translate(2%,3%) scale(1.22)}
-  &[data-reduced-motion=false] :is([data-phase=loading],[data-phase=focus]) .encore-stage-heading {transform:translateX(-24%);opacity:0}
+  &[data-reduced-motion=false] [data-phase=focus] .encore-stage-heading {transform:translateX(3%)}
   &[data-reduced-motion=false] [data-phase=exit] .encore-stage-image {clip-path:polygon(0 53%,100% 30%,100% 30%,0 53%)}
   &[data-reduced-motion=false] [data-phase=exit] .encore-stage-heading {transform:translateX(10%);opacity:0}
   &:is([data-reduced-motion=true],[data-cinematic-paused=true]) * {transition:none;animation:none}

@@ -57,3 +57,42 @@
 #game-container #run-choice.battle-surface[data-choice-family=true][data-choice-reading=true][data-choice-studio="303"] .battle-choice-header {
   background:#1d3836;border-left:3px solid #93cdaf;
 }
+
+/* Keep charge state inside each command so the player can see the ground to its left. */
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] {
+  & #skill-encore {--command-ink:#ffdb69}
+  & .skill-orb[data-command-feedback=staged] > :is(#special-state,#encore-state) {
+    top:47px;left:7px;width:58px;height:18px;padding:0 3px;text-align:center;
+    border:0;border-radius:8px 2px 8px 2px;background:#152133;color:#eaf0ec;font:750 12px/18px system-ui,sans-serif;
+  }
+  & .skill-orb[data-command-feedback=staged][data-charge-state=ready] > :is(#special-state,#encore-state) {background:var(--command-ink);color:#172734}
+  & .skill-orb[data-command-feedback=staged] .battle-command-art {object-fit:contain;object-position:center 40%;padding:0 2px 10px;box-sizing:border-box}
+  & .skill-orb[data-command-feedback=staged] .battle-command-phase {top:66px}
+  & .skill-orb[data-art=stage] > :is(#special-label,#encore-label) {
+    background:#172638eb;border-radius:9px;color:#f9f4e7;font:750 13px/18px system-ui,sans-serif;text-shadow:none;
+  }
+  & .mihoyo-player {background:linear-gradient(98deg,#122236 14%,#1a2b40e0 89%,transparent 90%);border-radius:4px}
+  & .cw-objective-row {background:linear-gradient(90deg,#142438f2 5%,#162638b5 78%,transparent);border-color:#f6d472}
+  & #battle-hud-detail-toggle {background:#1c2e40;color:#f5ecd9;border:1px solid #d5cfb9}
+  & #battle-hud-detail-toggle[aria-expanded=true] {background:#ffdc65;color:#162336}
+}
+#game-container :is(.battle-surface,#player-session-dialog) :is(button,summary,input):focus-visible {outline:3px solid #ecac50;outline-offset:-3px}
+#game-container :is(.battle-surface,#player-session-dialog) button:enabled:active {filter:brightness(.86)}
+#game-container #battle-pause.battle-surface[data-pause-family=true] {
+  & .battle-pause-header {background:linear-gradient(112deg,#15273a 60%,#24394a);border-color:#ffda71;border-radius:8px 2px 8px 2px}
+  & [data-pause-action=resume] {background:#ffdc65;color:#1b2936;box-shadow:inset 0 -3px #d39e46;border-radius:12px 4px 12px 4px}
+}
+#game-container #run-choice.battle-surface[data-choice-family=true][data-choice-reading=true][data-choice-studio="303"] {
+  & .battle-choice-header {background:#182c40;border-color:#ffd772}
+  &[data-choice-ticket=ready] .battle-choice-list .battle-choice-row {border-radius:12px 3px 12px 3px;background:#203346;border-inline-start-color:#8a9da6}
+  &[data-choice-ticket=ready] .battle-choice-list .battle-choice-row[aria-pressed=true] {background:#35444d;border-inline-start-color:#ffd772;outline-color:#ffd772}
+}
+#game-container #battle-result.battle-surface[data-result-stage=chapter] {
+  & .battle-performance-header {border-color:#dcb266}
+  & .battle-surface-footer button[data-result-skin=primary]:not(:disabled) {background:#ffdc65;color:#172536;border-color:#bd9451;border-radius:12px 4px 12px 4px;box-shadow:inset 0 -3px #d39e46}
+}
+#game-container #player-session-dialog[data-console-skin="268"] {
+  & .session-shortcut {border-radius:12px 4px 12px 4px;border-inline-start:3px solid #537279}
+  & .session-setting input {accent-color:#206d78}
+  & .session-header {border-color:#dcb266}
+}

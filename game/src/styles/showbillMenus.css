@@ -345,3 +345,109 @@
   & .showbill-tour-heading :is(.showbill-caption,.ui-tour-progress) {color:#c8e0db}
   & .shell-selection-footer button[data-command-face=plain]:not(:disabled) {background:var(--show-yellow)!important;color:var(--poster-ink);border:2px solid var(--poster-ink);border-radius:5px;box-shadow:2px 2px 0 var(--poster-ink)}
 }
+
+/* A concert programme has three control levels: the page tab, a destination, and the live cue. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  --sheet:#f2eee5; --text:#182536; --hairline:#c6c5bf; --show-yellow:#ffdc65;
+  & .shell-header {
+    background:linear-gradient(112deg,#f9f6ee 58%,#e5e4dc 58%,#f4f1e9 83%);
+    border-bottom:1px solid #b6b8b4;
+  }
+  & .shell-header .shell-brand h1.showbill-title {letter-spacing:.025em;font-weight:900}
+  & .shell-header .shell-icon-button {border-radius:50%;background:radial-gradient(circle,#192b3c 0 49%,transparent 51%);color:#fff9e9}
+  & .ui-root-nav {background:#132233;padding:2px 6px 3px;gap:0}
+  & .ui-root-nav .ui-nav-root {
+    position:relative;display:flex;align-items:center;justify-content:center;gap:3px;color:#c0ccd2;
+    border-radius:0; background:transparent;
+  }
+  & .ui-root-nav .ui-nav-root[aria-current] {
+    color:#ffdc65;background:linear-gradient(0deg,#303c43,transparent 82%);
+    border-radius:0;box-shadow:inset 0 -3px #ffdc65;
+  }
+  & .ui-root-nav .ui-nav-root[aria-current] > svg {stroke-width:2.4}
+  & :is(button,summary,[role=tab]):focus-visible {outline:3px solid #1677aa;outline-offset:-3px}
+  & button:enabled:not([aria-disabled=true]):active {filter:brightness(.86)}
+  & :is(.ui-home-primary .showbill-start,.ui-preflight-footer .showbill-deploy,.shell-selection-footer button[data-command-face=plain]:not(:disabled)) {
+    background:linear-gradient(110deg,#ffe996,#ffcb39)!important;color:#172636;border:1px solid #845f25;border-radius:12px 4px 12px 4px;
+    box-shadow:inset 0 1px #fff7ce,inset 0 -3px #d59a35;
+  }
+  & .ui-home-spaces .home-backstage,& .tour-reference-button,& .ui-roster-lane :is(.ui-actor-switch,.roster-reference) {
+    border:1px solid #beb9aa;border-radius:18px 6px 18px 6px;background:#fff9e9;color:#1d3042;box-shadow:0 2px 0 #29344055;
+  }
+  & :is(.sec-library-stage,.sec-growth-stage,.sec-records-stage,.pg-goal-context,.ui-preflight-brief,.sec-training-body) {
+    border:0;border-inline-start:4px solid #edb65f;background:linear-gradient(115deg,#1a293a,#273d48);color:#fff5e6;
+  }
+  & :is(.library-stage-tab,.pm-cast-option,.inv-filter,.pm-topic) {border-radius:12px 4px 12px 4px}
+  & :is(.arrangement-option,.pg-goal-choice,.library-stage-tab,.pm-cast-option)[aria-pressed=true] {
+    border-color:#e4b651;outline:2px solid #e4b651;outline-offset:-2px;box-shadow:inset 4px 0 #ffdc65;
+  }
+  & :is(.ui-preflight-entry,.sec-records-open,.sec-growth-gear,.thin-challenge-info,.pg-goal-info,.ps-more,.pm-record-tool,.sec-venue-edit) {
+    border-radius:12px 4px 12px 4px;border:1px solid #7b8a8c;box-shadow:0 2px 0 #15273633;
+  }
+  & :is(.ps-entry,.pg-mode,.pg-command,.pm-prepare) {border-inline-start:4px solid #ebbe77;border-radius:3px 10px 3px 10px}
+  & .inv-context {background:linear-gradient(110deg,#192b3d,#33424b);border-radius:3px 12px 3px 12px}
+  & .ui-item-grid .ui-item-slot {border-radius:12px 3px 12px 3px;background:linear-gradient(150deg,#fffdf7 53%,#ece9e0);border-color:#c7c5bb}
+  & .ui-item-grid .ui-item-slot[data-state=locked] .ui-item-name {color:#43505b}
+  & .inv-filters .inv-filter {border:0;border-radius:0;color:#415461}
+  & .inv-filters .inv-filter[aria-pressed=true] {background:transparent;color:#172838;box-shadow:inset 0 -3px #bf832b}
+  & .product-module-screen[data-console-page=backstage] .ui-backstage-grid {gap:10px;background:transparent}
+  & .product-module-screen[data-console-page=backstage] .cs-primary {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  & .product-module-screen[data-console-page=backstage] :is(.cs-primary,.cs-utility) .pm-entry {
+    position:relative;isolation:isolate;overflow:hidden;justify-content:space-between;box-sizing:border-box;
+    padding:12px 10px;background:linear-gradient(90deg,#142437 5%,#172940e8 44%,#16233345),var(--destination-art) 65% 52%/cover;
+    border:0;border-radius:12px 3px 12px 3px;box-shadow:inset 3px 0 #ddaf66;color:white;
+  }
+  & .product-module-screen[data-console-page=backstage] .cs-primary .pm-entry {
+    min-height:clamp(96px,16vh,135px);align-items:flex-end;background:linear-gradient(0deg,#111e30f5 2%,#14243799 42%,transparent 88%),var(--destination-art) center/cover;
+  }
+  & .product-module-screen[data-console-page=backstage] .cs-utility .pm-entry {min-height:58px}
+  & .product-module-screen[data-console-page=backstage] .pm-entry::before {color:#fff5df;font-weight:800}
+  & .product-module-screen[data-console-page=backstage] .pm-entry::after {color:#ffdb77}
+  & [data-action=backstage-open-events] {--destination-art:url('/art/program-studio-20261101/program-stage.webp')}
+  & [data-action=backstage-open-sideplay] {--destination-art:url('/art/venue-studio-20261101/rehearsal.webp')}
+  & [data-action=backstage-open-recruitment] {--destination-art:url('/art/showbill/archive.webp')}
+  & [data-action=backstage-open-services] {--destination-art:url('/art/showbill/console.webp')}
+  & [data-action=backstage-open-lounge] {--destination-art:url('/art/venue-studio-20261101/lounge.webp')}
+  & [data-action=backstage-open-venue] {--destination-art:url('/art/venue-studio-20261101/stage.webp')}
+  & .ui-sheet :is(button,summary):not(:disabled):active {background-color:#e6d8b0}
+  @media (forced-colors:active) {
+    & .ui-root-nav [aria-current],& [aria-pressed=true] {outline:2px solid Highlight;outline-offset:-2px}
+  }
+}
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  &[data-page=inventory] .ui-item-grid {
+    grid-template-columns:repeat(auto-fit,minmax(min(128px,46%),1fr));align-content:start;gap:9px;
+  }
+  &[data-page=inventory] .ui-item-grid .ui-item-slot {
+    display:grid;grid-template-columns:minmax(44px,35%) minmax(0,1fr);grid-template-rows:auto auto;align-content:center;
+    align-items:center;column-gap:6px;row-gap:3px;padding:8px 7px;min-height:78px;text-align:left;
+  }
+  & .ui-item-slot .equipment-art-slot {
+    grid-row:1 / 3;display:grid;place-items:center;justify-self:center;width:42px;height:44px;max-width:100%;
+    background:linear-gradient(145deg,#e6e6d9,#c6d3d0);border-radius:11px 3px 11px 3px;
+  }
+  & .ui-item-slot .ui-item-name,& .ui-item-slot .ui-item-state {position:static;white-space:normal;line-height:1.25;min-width:0;text-align:start}
+  & .ui-item-slot .ui-item-name {align-self:end;font-size:14px;font-weight:800}
+  & .ui-item-slot .ui-item-state {align-self:start;font-size:12px}
+  & .ui-item-slot .ui-item-lock {display:none}
+  & .ui-item-slot[data-state=equipped] .equipment-art-slot {background:#abdfcc}
+  & .shell-content[data-planning-studio] :is(.sec-growth-stage,.sec-library-stage),
+  & .shell-content[data-archive-studio] .sec-records-stage {
+    padding:12px 10px;border:0;border-radius:10px 3px 10px 3px;
+    background:linear-gradient(100deg,#192b3bf7 26%,#1b3044e0 65%,#1c2e4077),url('/art/showbill/archive.webp') 50% 44%/cover;color:#fff4db;
+  }
+  & .shell-content[data-planning-studio] :is(.library-preview,.sec-growth-compare) {
+    border:0;border-inline-start:3px solid #e2b75d;border-radius:3px 9px 3px 9px;background:#1e3140;color:#f7f1df;
+  }
+  &[data-page=records] .shell-content[data-archive-studio] .archive-record {
+    padding-block:8px;border:0;border-bottom:1px solid #cecbc2;border-radius:0;background:#fffaf0;
+  }
+  & .product-module-screen[data-console-page=services] .cs-local-console .pm-service-command {
+    border-radius:10px 3px 10px 3px;border-inline-start:4px solid #4b7983;box-shadow:0 2px #14243216;
+  }
+  @media(max-width:350px) {
+    &[data-page=inventory] .ui-item-grid .ui-item-slot {grid-template-columns:34px minmax(0,1fr);padding:7px 5px;gap:3px}
+    & .ui-item-slot .equipment-art-slot {width:34px;height:38px}
+  }
+}
