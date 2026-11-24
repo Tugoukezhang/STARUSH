@@ -1,5 +1,5 @@
 export const GRAFFITI_GROUND=Object.freeze({key:'graffiti-ground',path:'art/comic-ground-ribbons-20261022/ground-v2.png'});
-export const COMPACT_POOL_GROUND=Object.freeze({key:'compact-pool-ground',path:'art/rounded-ink-footprint-20261029/pool.png'});
+export const COMPACT_POOL_GROUND=Object.freeze({key:'compact-pool-ground',path:'art/infield/ground-footprints.webp'});
 export const COMIC_POOL_MATERIAL=Object.freeze({key:'comic-pool-material',path:'art/comic-paint-directional-20261023/planes.png'});
 export const SHARED_COMIC_MATERIAL=Object.freeze({key:'three-cast-comic-material',path:'art/comic-ink-planes-20261029/body.png',size:1254});
 
@@ -39,19 +39,22 @@ export function createGraffitiBrush({data,width,height},performer='sakura',merge
   },tone(u,v){return this.sample(u,v,'tone');}};
 }
 
-// Sakura's authored compact pool: one dense footprint whose 12px repeats union without combs.
-export function createCompactPoolBrush(image){
+// Four registered silhouettes share the same tint and merge into continuous ground paint.
+export function createCompactPoolBrush(image,grid=1){
   const {data,width,height}=image??{};
   let footprint=false;
   if(data&&Number.isInteger(width)&&width>0&&width===height&&data.length===width*height*4)
     for(let i=3;i<data.length&&!footprint;i+=4)footprint=data[i]>0;
   if(!footprint)throw new Error('Invalid compact pool image');
-  return {mergeOpaque:true,preserveSubstrate:true,sample(u,v,ink=false){
-    if(!Number.isFinite(u+v)||u<0||v<0||u>=1||v>=1)return 0;
-    const i=(Math.floor(v*height)*width+Math.floor(u*width))*4;
-    const value=Math.max(data[i],data[i+1],data[i+2]);
-    return ink==='tone'?value/255:ink?Math.max(0,1-value/128):data[i+3]/255;
-  },tone(u,v){return this.sample(u,v,'tone');}};
+  const cell=width/grid;
+  return {mergeOpaque:true,preserveSubstrate:true,
+    variantAt(x,y){return grid===1?0:(Math.floor(x/19)*3+Math.floor(y/23))&3;},
+    sample(u,v,ink=false,variant=0){
+      if(!Number.isFinite(u+v)||u<0||v<0||u>=1||v>=1)return 0;
+      const x=(variant%grid)*cell+Math.floor(u*cell),y=Math.floor(variant/grid)*cell+Math.floor(v*cell);
+      const i=(y*width+x)*4,value=Math.max(data[i],data[i+1],data[i+2]);
+      return ink==='tone'?value/255:ink?Math.max(0,1-value/128):data[i+3]/255;
+    },tone(u,v,variant){return this.sample(u,v,'tone',variant);}};
 }
 
 function readGround(scene,key,width,height,missing,invalid){
@@ -66,7 +69,7 @@ function readGround(scene,key,width,height,missing,invalid){
 export function loadGraffitiBrush(scene){
   if(scene._userCastPresentation!==true)return null;
   const performer=scene.publicPerformerRun?.member?.id??scene.battleData?.performerId??'sakura';
-  if(['sakura','kai','enjo'].includes(performer))return createCompactPoolBrush(readGround(scene,COMPACT_POOL_GROUND.key,512,512,'Required compact pool ground is missing','Invalid compact pool ground dimensions'));
+  if(['sakura','kai','enjo'].includes(performer))return createCompactPoolBrush(readGround(scene,COMPACT_POOL_GROUND.key,512,512,'Required compact pool ground is missing','Invalid compact pool ground dimensions'),2);
   return createGraffitiBrush(readGround(scene,GRAFFITI_GROUND.key,1024,256,'Required graffiti ground atlas is missing','Invalid graffiti ground atlas dimensions'),performer,false);
 }
 
@@ -87,6 +90,7 @@ export function loadGraffitiMaterial(scene){
   image.paintBodyTexture=true;
   image.unmirroredBody=true;
   image.flatPigment=true;
+  image.wetMargin=true;
   const data=scene.battleData;
   image.rooftopFinish=data?.campaignChapterId==='raincheck'&&data.practiceMode!==true
     &&data.defenseMode!==true&&Number(data.stageId||1)===1;

@@ -21,7 +21,7 @@ function fixture(id='sakura'){
 }
 
 test('four explicit bitmap FX sheets are preloaded only through the selected public-cast branch',()=>{
-  const calls=[],images=[];preloadUserWeaponFx({load:{spritesheet:(...args)=>calls.push(args),image:(...args)=>images.push(args)}});assert.deepEqual(images,[['graffiti-ground','art/comic-ground-ribbons-20261022/ground-v2.png'],['compact-pool-ground','art/rounded-ink-footprint-20261029/pool.png'],['three-cast-comic-material','art/comic-ink-planes-20261029/body.png']]);
+  const calls=[],images=[];preloadUserWeaponFx({load:{spritesheet:(...args)=>calls.push(args),image:(...args)=>images.push(args)}});assert.deepEqual(images,[['graffiti-ground','art/comic-ground-ribbons-20261022/ground-v2.png'],['compact-pool-ground','art/infield/ground-footprints.webp'],['three-cast-comic-material','art/comic-ink-planes-20261029/body.png']]);
   assert.equal(calls.length,4);assert.deepEqual(calls.map(c=>c[0]),Object.values(USER_WEAPON_FX).map(a=>a.key));
   assert(calls.every(c=>c[2].frameWidth===256&&c[2].frameHeight===256));
   const env=loadScenes();env.loadRuntime('utils/userCast.mjs').configureUserCast(true);

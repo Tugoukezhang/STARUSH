@@ -41,7 +41,7 @@ export const RIFLE_COMIC_CONTACT=Object.freeze({key:'user-rifle-contact-20261021
 export const RIFLE_COMIC_MUZZLE=Object.freeze({key:'user-rifle-muzzle-20261022',path:'art/rifle-compact-muzzle-20261022/muzzle.png',
   frames:6,frameWidth:256,frameHeight:256,origin:Object.freeze([.25,.5]),extent:.625});
 // Flat gray-white ground spread shared by ordinary sakura/kai/enjo bullet landings; tinted by the real pigment, private 300ms clock.
-export const RIFLE_PIGMENT_DEPOSITION=Object.freeze({key:'user-rifle-deposition-20261023',path:'art/rifle-pigment-deposition-20261023/deposition.png',
+export const RIFLE_PIGMENT_DEPOSITION=Object.freeze({key:'user-rifle-deposition-20261023',path:'art/infield/wet-splash.webp',
   frames:48,directions:8,phases:6,frameWidth:256,frameHeight:256,origin:Object.freeze([.5,.5]),extent:.43,duration:300,ends:Object.freeze([.08,.22,.48,.67,.84,1])});
 export const USER_WEAPON_FX=Object.freeze(Object.fromEntries([
   ['spray',140,[.25,.5],.625],['sweep',240,[.5,.5],.401],['burst',360,[.5,.625],.469],['impact',220,[.5,.625],.469],
@@ -319,7 +319,7 @@ export class UserWeaponFx{
         angle:hit&&this.id!=='enjo'?direction:0,ground:!hit,alpha:hit?(secondary?.66:.88):.38,sourceRadius:radius,
         skillContact,releaseContact:secondary,start});
       if(drawn){
-        if(hit&&!skillContact&&!releaseContact)this.contactFragments.add({x:p.x,y:p.y,angle:direction,color:COLOR_HEX[color],start});
+        if(hit&&(!releaseContact||skillContact))this.contactFragments.add({x:p.x,y:p.y,angle:direction,color:COLOR_HEX[color],start,skill:skillContact});
         this.stats[hit?'impacts':'ground']++;accepted=true;
       }
     }

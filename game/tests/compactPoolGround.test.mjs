@@ -48,8 +48,8 @@ const loaderScene=(performerId,sizes={})=>{
  load.image=(...a)=>queued.push(a);load.on('loaderror',e=>errors.push(e));
  return {load,events,queued,removed,errors,present,initialBattleData:{performerId},textures:{exists:k=>present.has(k),get:k=>({getSourceImage:()=>sizes[k]??{width:1,height:1}}),remove:k=>{removed.push(k);present.delete(k);}}};};
 
-test('compact pool is a Sakura-only constant key/path; legacy atlas constant is unchanged',()=>{
- assert.equal(COMPACT_POOL_GROUND.key,'compact-pool-ground');assert.equal(COMPACT_POOL_GROUND.path,'art/rounded-ink-footprint-20261029/pool.png');
+test('shared current pool uses the registered atlas key/path; legacy atlas constant is unchanged',()=>{
+ assert.equal(COMPACT_POOL_GROUND.key,'compact-pool-ground');assert.equal(COMPACT_POOL_GROUND.path,'art/infield/ground-footprints.webp');
  assert.equal(GRAFFITI_GROUND.key,'graffiti-ground');assert.equal(GRAFFITI_GROUND.path,'art/comic-ground-ribbons-20261022/ground-v2.png');
  assert(Object.isFrozen(COMPACT_POOL_GROUND));
 });
@@ -77,7 +77,7 @@ test('preload: wrong decoded pool size errors through the loader, retries a fres
  assert.equal(s.errors.length,1);assert.equal(s.errors[0].key,COMPACT_POOL_GROUND.key);assert.deepEqual(s.removed,[COMPACT_POOL_GROUND.key]);
  s.events.emit('shutdown');
  for(const k of [GRAFFITI_GROUND.key,COMPACT_POOL_GROUND.key])assert.equal(s.load.listenerCount('filecomplete-image-'+k),0,k);
- s.queued.length=0;preloadGraffitiGround(s);assert.equal(s.queued[1][0],COMPACT_POOL_GROUND.key);assert.match(s.queued[1][1],/pool\.png\?poolRetry=1$/);
+ s.queued.length=0;preloadGraffitiGround(s);assert.equal(s.queued[1][0],COMPACT_POOL_GROUND.key);assert.match(s.queued[1][1],/ground-footprints\.webp\?poolRetry=1$/);
  s.events.emit('shutdown');
  const ok=loaderScene('sakura',{[COMPACT_POOL_GROUND.key]:{width:512,height:512}});preloadGraffitiGround(ok);ok.load.emit('filecomplete-image-'+COMPACT_POOL_GROUND.key);assert.equal(ok.errors.length,0);assert.deepEqual(ok.removed,[]);
 });
@@ -183,4 +183,18 @@ test('destroy releases brush, substrate and ownership buffers',()=>{
  const r=new StreetPigmentRaster(40,40,null,.9,createCompactPoolBrush(poolImage(8)),groundOf(20,20));r.stamp(20,20,10,PINK);r.destroy();
  for(const k of ['pixels','brush','paintColors','substrate','dirty'])assert.equal(r[k],null,k);
  assert.equal(r.stamp(20,20,10,PINK),false);
+});
+
+test('each landing chooses one complete silhouette and revisiting its position reuses it',()=>{
+ const data=new Uint8ClampedArray(4*4*4);
+ for(let y=0;y<4;y++)for(let x=0;x<4;x++){
+  const q=Math.floor(y/2)*2+Math.floor(x/2);
+  data.set([10+q,10+q,10+q,64+q],(4*y+x)*4);
+ }
+ const brush=createCompactPoolBrush({data,width:4,height:4},2);
+ for(let i=0;i<4;i++){
+  const variant=brush.variantAt(0,23*i);
+  assert.equal(variant,i);assert.equal(brush.sample(.5,.5,false,variant),(64+i)/255);
+  assert.equal(brush.tone(.5,.5,variant),(10+i)/255);assert.equal(brush.variantAt(0,23*i),variant);
+ }
 });

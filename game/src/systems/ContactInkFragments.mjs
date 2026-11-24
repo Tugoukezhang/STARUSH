@@ -6,14 +6,36 @@ const SPRAYS = {
   enjo: [[-2.3,24,5],[-1.2,30,6],[-.18,38,7],[1.05,31,6],[2.2,25,5]],
 };
 
+// Local coordinates follow the attack. The wind bends, the rifle punches through,
+// and the book opens two facets on opposite sides of the contact.
+const SKILL_MARKS = {
+  sakura: [[-26,0,-4,-3,36,0],[-4,-3,36,0,2,3]],
+  kai: [[-24,13,-5,-3,9,-9],[-5,-3,9,-9,31,-13],[-24,13,-5,-3,-9,5]],
+  enjo: [[-22,-9,0,-4,-3,8],[0,-4,24,-12,4,7]],
+};
+
+function drawSkillMark(g,r,performer,age,clear){
+  const scale=.7+.3*Math.min(1,age/.2),cos=Math.cos(r.angle)*scale,sin=Math.sin(r.angle)*scale;
+  const alpha=1-age/.52;
+  for(const face of SKILL_MARKS[performer]??SKILL_MARKS.sakura){
+    const points=[];
+    for(let i=0;i<6;i+=2){
+      const x=r.x+face[i]*cos-face[i+1]*sin,y=r.y+face[i]*sin+face[i+1]*cos;
+      if(clear&&clear(r,{x,y},1)===false)break;
+      points.push(x,y);
+    }
+    if(points.length===6)g.fillStyle(age<.17?0xfff4ca:r.color,alpha).fillTriangle(...points);
+  }
+}
+
 // Secondary ink only. Accepted contacts, damage and clocks remain with their original owners.
 export class ContactInkFragments{
  constructor(scene, performer='sakura'){this.scene=scene;this.performer=performer;this.motionPreference=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');this.shards=SPRAYS[performer]??SPRAYS.sakura;this.rows=[];this.graphics=null;}
- add({x,y,angle,color,start}){
+ add({x,y,angle,color,start,skill=false}){
   if(![x,y,angle,start].every(Number.isFinite)||!Number.isInteger(color)||color<0||color>0xffffff)return;
   // Successive contacts share the same cloud while each retains its own visible impact core.
   const crowded=this.rows.some(row=>start>=row.start && start-row.start<80 && Math.hypot(x-row.x,y-row.y)<32);
-  this.rows.push({x,y,angle,color,start,crowded});if(this.rows.length>MAX_CONTACTS)this.rows.shift();
+  this.rows.push({x,y,angle,color,start,crowded,skill});if(this.rows.length>MAX_CONTACTS)this.rows.shift();
  }
  update(now,depth=9.8){
   if(!Number.isFinite(now))return;
@@ -23,6 +45,7 @@ export class ContactInkFragments{
   for(const r of this.rows){
    const p=(now-r.start)/LIFE,ease=1-(1-Math.min(1,p*2.6))**3,alpha=.84*(1-p),clear=this.scene.oldStreet?.clearLine?.bind(this.scene.oldStreet);
    const quiet=this.motionPreference?.matches===true;
+   if(r.skill&&!quiet&&!r.crowded&&p<.52)drawSkillMark(g,r,this.performer,p,clear);
    this.shards.forEach(([offset,distance,length],i)=>{
     if((quiet||r.crowded)&&i%2===1)return;
     const reach=quiet?distance*.48:distance;

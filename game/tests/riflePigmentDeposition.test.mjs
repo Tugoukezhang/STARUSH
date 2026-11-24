@@ -26,10 +26,10 @@ const snap=n=>({key:n.texture.key,x:n.x,y:n.y,origin:n.origin,w:n.displayWidth,h
 const run=(id,args,missing=[])=>{const f=fixture(id,missing);const ok=f.fx.impact(args);return {ok,nodes:f.nodes.map(snap),stats:{...f.fx.stats},rows:f.fx.rows.map(r=>r.artKind)};};
 const MISS={x:150,y:110,color:'pink',radius:108,angle:.3,hit:false};
 
-test('deposition descriptor is the exact frozen B75 contract',()=>{
+test('deposition uses eight headings and six timed liquid-impact cels',()=>{
   assert(Object.isFrozen(DEPOSITION)&&Object.isFrozen(DEPOSITION.origin)&&Object.isFrozen(DEPOSITION.ends));
   assert.deepEqual({...DEPOSITION,origin:[...DEPOSITION.origin],ends:[...DEPOSITION.ends]},
-    {key:KEY,path:'art/rifle-pigment-deposition-20261023/deposition.png',frames:48,directions:8,phases:6,frameWidth:256,frameHeight:256,
+    {key:KEY,path:'art/infield/wet-splash.webp',frames:48,directions:8,phases:6,frameWidth:256,frameHeight:256,
       origin:[.5,.5],extent:.43,duration:300,ends:[.08,.22,.48,.67,.84,1]});
 });
 
@@ -37,8 +37,8 @@ test('the three casts preload the shared deposition strip once; Sakura keeps it 
   const load=id=>{const calls=[];preloadUserWeaponFx({load:{spritesheet:(...a)=>calls.push(a),image(){}}},id);return calls;};
   const sakura=load('sakura');
   assert.deepEqual(sakura.slice(-2),[[CONTACT,'art/rifle-ink-chain-20261022/contact.png',{frameWidth:256,frameHeight:256}],
-    [KEY,'art/rifle-pigment-deposition-20261023/deposition.png',{frameWidth:256,frameHeight:256}]]);
-  for(const id of ['kai','enjo'])assert.deepEqual(load(id).filter(c=>c[0]===KEY),[[KEY,'art/rifle-pigment-deposition-20261023/deposition.png',{frameWidth:256,frameHeight:256}]],id);
+    [KEY,'art/infield/wet-splash.webp',{frameWidth:256,frameHeight:256}]]);
+  for(const id of ['kai','enjo'])assert.deepEqual(load(id).filter(c=>c[0]===KEY),[[KEY,'art/infield/wet-splash.webp',{frameWidth:256,frameHeight:256}]],id);
   assert.equal(load(undefined).filter(c=>c[0]===KEY).length,0);
 });
 

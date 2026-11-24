@@ -10,10 +10,12 @@ function fixture(id='sakura'){
  const scene={_userCastPresentation:true,player:{active:true,hp:5,x:100,y:100},publicPerformerRun:{now:()=>time},oldStreet:{clearLine:()=>true},textures:{exists:()=>true},add:{graphics(){const n=node();n.lineStyle=n.lineBetween=()=>n;return n;},image:node}};
  return{scene,nodes,triangles,clock:t=>time=t,fx:new UserWeaponFx(scene,id)};
 }
-test('only accepted ordinary contact creates directional pigment; miss, blocked and skills do not',()=>{
+test('only accepted ordinary and skill contacts create directional pigment',()=>{
  for(const id of ['sakura','kai','enjo']){
   const {fx,scene}=fixture(id);fx.impact({x:120,y:100,color:'pink',hit:false});fx.blocked({x:120,y:100});
-  fx.impact({x:120,y:100,color:'pink',hit:true,skillContact:true});assert.equal(fx.contactFragments.rows.length,0);
+  assert.equal(fx.contactFragments.rows.length,0);
+  fx.impact({x:120,y:100,color:'pink',hit:true,skillContact:true});assert.equal(fx.contactFragments.rows[0].skill,true);
+  fx.contactFragments.clear();
   fx.impact({x:120,y:100,color:'pink',hit:true,angle:.6,contacts:[{x:122,y:105,direct:true},{x:140,y:100}]});
   assert.deepEqual(fx.contactFragments.rows.map(r=>[r.x,r.y,r.angle,r.color]),[[122,105,.6,0xff69b4],[140,100,.6,0xff69b4]]);
   const before=fx.contactFragments.rows.length;scene.oldStreet.clearLine=()=>false;

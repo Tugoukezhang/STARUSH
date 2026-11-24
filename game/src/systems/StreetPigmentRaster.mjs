@@ -115,9 +115,10 @@ export class StreetPigmentRaster {
     blockers=blockers.filter(({footprint:r})=>r&&r.x<=x+reach&&r.x+r.width>=x-reach&&r.y<=y+reach&&r.y+r.height>=y-reach);
     if(this.brush){
       const angle=Number.isFinite(imprint?.angle)?imprint.angle:0,cos=Math.cos(angle),sin=Math.sin(angle);
+      const variant=this.brush.variantAt?.(x,y)??0;
       const sample=(dx,dy,ink=false)=>{
         const u=.5+(dx*cos+dy*sin)/(reach*2),v=.5+(dy*cos-dx*sin)/(reach*2);
-        return ink==='tone'?this.brush.tone(u,v):this.brush.sample(u,v,ink);
+        return ink==='tone'?this.brush.tone(u,v,variant):this.brush.sample(u,v,ink,variant);
       };
       return yield* this._paintRows(x,y,reach,color,blockers,(dx,dy)=>Math.hypot(dx,dy)<=reach?sample(dx,dy):0,undefined,true,(dx,dy)=>sample(dx,dy,true),this.brush.tone?(dx,dy)=>sample(dx,dy,'tone'):null);
     }
@@ -154,9 +155,10 @@ export class StreetPigmentRaster {
       left: Math.min(...points.map(p => p.x)), right: Math.max(...points.map(p => p.x)),
       top: Math.min(...points.map(p => p.y)), bottom: Math.max(...points.map(p => p.y)),
     };
+    const variant=this.brush?.variantAt?.(fan.x,fan.y)??0;
     const sample=(dx,dy,ink=false)=>{
       const u=(dx*cos+dy*sin)/fan.radius,v=.5+(dy*cos-dx*sin)/(2*fan.radius*sinHalf);
-      return ink==='tone'?this.brush.tone(u,v):this.brush?.sample(u,v,ink)??1;
+      return ink==='tone'?this.brush.tone(u,v,variant):this.brush?.sample(u,v,ink,variant)??1;
     };
     return yield* this._paintRows(fan.x, fan.y, fan.radius, color, blockers, (dx, dy) => {
       const forward = dx * cos + dy * sin, lateral = dy * cos - dx * sin;

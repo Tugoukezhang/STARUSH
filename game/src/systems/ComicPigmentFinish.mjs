@@ -236,7 +236,8 @@ export function finishComicPigment(raster, target, rect, material) {
   const strength = Number.isFinite(raster.pigmentStrength) ? Math.max(0, Math.min(1, raster.pigmentStrength)) : 1;
   // On the flat concert print, let the paint colour carry the area.
   // Strong accents belong to the short impact animation above this persistent layer.
-  const flat = material.image.flatPigment === true && material.image.poolBody === true;
+  const flat = material.image?.flatPigment === true && material.image.poolBody === true;
+  const wet = flat && material.image.wetMargin === true;
   const inkDensity = flat ? .57 : .88;
   const paperDensity = flat ? .61 : .9;
   for (let y = rect.y; y < rect.y + rect.height; y++) for (let x = rect.x; x < rect.x + rect.width; x++) {
@@ -286,7 +287,15 @@ export function finishComicPigment(raster, target, rect, material) {
           || (x+2<w && foreign(pixels,paintColors,p+2,owner)))) contour = .86;
         const bodyProfile=material.image.poolBody===true;
         const mid=bodyProfile?Math.max(-1,Math.min(1,(value-128)/32)):0;
-        const lip=bodyProfile&&material.image.flatPigment!==true?poolEdgeTone(pixels,paintColors,w,h,x,y,owner)*(1-ink)*(1-paper):0;
+        // Skim the upper edge of the joined pool, leaving a darker meniscus below.
+        // Sampling the union keeps a single reflection across overlapping shots.
+        let lip=0;
+        if(wet&&!edge){
+          if(y>=2&&foreign(pixels,paintColors,p-2*w,owner))lip=.38;
+          else if(x>=2&&foreign(pixels,paintColors,p-2,owner))lip=.21;
+        }else if(bodyProfile&&!flat){
+          lip=poolEdgeTone(pixels,paintColors,w,h,x,y,owner)*(1-ink)*(1-paper);
+        }
         for(let c=0;c<3;c++){
           const base=(((owner>>>(16-c*8))&255)*strength+255*(1-strength))*(.94+.06*luma)*ground;
           const body=mid<0?base*(1+(flat ? .10 : .16)*mid):base+(255-base)*(flat ? .12 : .18)*mid;

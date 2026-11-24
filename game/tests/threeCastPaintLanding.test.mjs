@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as weapon from '../src/systems/UserWeaponFx.mjs';
+import {BLUE_SPELL_FX} from '../src/utils/blueAcademyArt.mjs';
 import {COLOR_HEX} from '../src/utils/config.js';
 
 const {UserWeaponFx,USER_WEAPON_FX,RIFLE_PIGMENT_DEPOSITION:DEPOSITION,preloadUserWeaponFx}=weapon;
@@ -90,7 +91,7 @@ test('skill release and release contacts never receive the shared landing',()=>{
 test('protected or shield-like contacts (hit=false, deposition=false) keep the exact old path',()=>{
   for(const id of CASTS){
     const r=run(id,{...MISS});
-    assert(!r.nodes.some(n=>n.key===KEY),id);assert.deepEqual(r.nodes.map(n=>n.key),[USER_WEAPON_FX.burst.key],id);
+    assert(!r.nodes.some(n=>n.key===KEY),id);assert.deepEqual(r.nodes.map(n=>n.key),[id==='enjo'?BLUE_SPELL_FX.key:USER_WEAPON_FX.burst.key],id);
     assert.deepEqual(r,run(id,{...MISS},[KEY]),id);
     const hit=run(id,{...MISS,hit:true,contacts:CONTACTS});
     assert(!hit.nodes.some(n=>n.key===KEY),id);assert.deepEqual(hit,run(id,{...MISS,hit:true,contacts:CONTACTS},[KEY]),id);
@@ -110,7 +111,7 @@ test('missing deposition texture falls back to the exact old path for all casts'
     const gone=run(id,{...args,deposition:true},[KEY]);
     assert.deepEqual(gone,run(id,args,[KEY]),id);assert(!gone.nodes.some(n=>n.key===KEY),id);
   }
-  for(const id of CASTS)assert.deepEqual(run(id,{...MISS,deposition:true},[KEY]).nodes.map(n=>n.key),[USER_WEAPON_FX.burst.key],id);
+  for(const id of CASTS)assert.deepEqual(run(id,{...MISS,deposition:true},[KEY]).nodes.map(n=>n.key),[id==='enjo'?BLUE_SPELL_FX.key:USER_WEAPON_FX.burst.key],id);
 });
 
 test('sourceRadius and cover clamps hold for Kai and Enjo landings',()=>{
