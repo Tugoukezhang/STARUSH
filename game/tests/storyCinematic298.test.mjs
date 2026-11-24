@@ -14,7 +14,10 @@ test('history contains only encountered lines, resumes and resets with the reade
   assert.equal(ui.root.querySelector('.story-transcript'),null);
   click('story-history');let rows=ui.root.querySelector('.story-history-lines').children;
   assert.equal(rows.length,1);assert.equal(ui.root.querySelector('.story-history').hidden,false);
-  click('story-history-close');click('story-next');click('story-history');
+  click('story-history-close');click('story-next');
+  const speaker=ui.root.querySelector('.performance-story-speaker').textContent;
+  click('story-history');
+  assert.equal(ui.root.querySelector('.story-history-lines').children[1].querySelector('strong').textContent,speaker);
   assert.equal(ui.root.querySelector('.story-history-lines').children.length,2);
   click('story-history-close');click('story-close');ui.showStory('opening','intro');click('story-history');
   assert.equal(ui.root.querySelector('.story-history-lines').children.length,2);

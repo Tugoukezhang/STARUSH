@@ -4,7 +4,11 @@ import {getActiveUserCastArt,getDisplayPerformer} from '../utils/userCast.mjs';
 import {getMenuPortraitArt} from './MenuPortraitPresentation.mjs';
 import {PublicStoryPlayback} from '../utils/publicStoryPlayback.mjs';
 import {shellIcons} from '../vendor/shellIcons.mjs';
-const speakerIds={'步枪手':'sakura','机甲剑士':'kai','翡翠风歌':'kai','重锤手':'enjo','蔚蓝魔法师':'enjo'};
+const speakerIds={'战术女武神':'sakura','步枪手':'sakura','机甲剑士':'kai','翡翠风歌':'kai','重锤手':'enjo','蔚蓝魔法师':'enjo'};
+function speakerName(raw){
+ const id=speakerIds[raw];
+ return getActiveUserCastArt(id)?.confirmedDesign?getDisplayPerformer(id).name:raw;
+}
 function portrait(id){return getActiveUserCastArt(id)?.confirmedDesign?getActiveUserCastArt(id).portrait:id==='sakura'?getHomePortraitArt(id)?.layers.find(l=>l.id==='body')?.src:getMenuPortraitArt(id)?.src;}
 function node(parent,tag,cls,text){const e=parent.ownerDocument?.createElement(tag)||document.createElement(tag);e.className=cls;if(text!==undefined)e.textContent=text;parent.append(e);return e;}
 function image(parent,cls,src){const e=node(parent,'img',cls);e.alt='';e.draggable=false;e.setAttribute('aria-hidden','true');e.decoding='async';e.src=src;return e;}
@@ -44,7 +48,7 @@ export function mountStorySequence(ui,panel,beat,complete,{performerId,progress=
  }
  const historyButton=ui.command(toolbar,'已读台词',()=>{
   if(!live())return;pauseAuto();historyLines.replaceChildren();
-  for(const line of beat.lines.slice(0,playback.index+1)){const row=node(historyLines,'div','story-history-row');node(row,'strong','',line.speaker);node(row,'p','',line.text);}
+  for(const line of beat.lines.slice(0,playback.index+1)){const row=node(historyLines,'div','story-history-row');node(row,'strong','',speakerName(line.speaker));node(row,'p','',line.text);}
   history.hidden=false;root.dataset.storyHistory='true';historyClose.focus();historyLines.scrollTop=historyLines.scrollHeight;
  },true);historyButton.dataset.action='story-history';historyButton.setAttribute('aria-haspopup','dialog');iconButton(historyButton,'book-open','已读台词');
  const autoButton=ui.command(toolbar,'自动播放',()=>{
@@ -71,7 +75,7 @@ export function mountStorySequence(ui,panel,beat,complete,{performerId,progress=
   if(finished){if(saved)complete();else hold();return;}draw();
  });next.dataset.action='story-next';
  function draw(){
-  const index=playback.index,line=beat.lines[index],speakerId=speakerIds[line.speaker];speaker.textContent=getActiveUserCastArt(speakerId)?.confirmedDesign?getDisplayPerformer(speakerId).name:line.speaker;copy.textContent=line.text;count.textContent=`${index+1} / ${beat.lines.length}`;
+  const index=playback.index,line=beat.lines[index];speaker.textContent=speakerName(line.speaker);copy.textContent=line.text;count.textContent=`${index+1} / ${beat.lines.length}`;
   root.dataset.storyLine=String(index);root.dataset.storyRead=String(playback.read);root.dataset.storyNarration=String(line.speaker==='旁白');
   const id=line.speaker==='旁白'?performerId:speakerIds[line.speaker];root.dataset.performer=id;
   const src=portrait(id);if(figure.getAttribute('src')!==src)figure.src=src;

@@ -579,3 +579,16 @@
   & .showbill-gate-stops [data-state=cleared] span {background:#c9e9d9;color:#184f41}
   & .rehearsal-build > summary {display:flex;align-items:center;box-sizing:border-box;min-height:46px}
 }
+
+/* A chapter record has one destination. Its whole paper row is the native button target. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=records] .shell-content[data-archive-studio] {
+  & .archive-record {position:relative;isolation:isolate;padding-right:44px}
+  & .archive-record .sec-records-open {
+    position:absolute;inset:0;z-index:1;width:100%;height:100%;margin:0;padding:0;border:0;
+    border-radius:inherit;background:transparent;box-shadow:none;font-size:0;
+  }
+  & .sec-records-open > * {display:none}
+  & .sec-records-open::after {content:'›';position:absolute;right:12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;
+    background:#e9debd;color:#32434b;text-align:center;font:850 22px/21px system-ui,sans-serif}
+  & .sec-records-open:focus-visible {outline:3px solid #a86c24;outline-offset:-3px}
+}
