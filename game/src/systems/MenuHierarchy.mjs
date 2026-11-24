@@ -18,6 +18,7 @@ export function ownerRootFor(page,rootIdOf) {
 }
 
 export function renderHierarchyNavigation(view,roots,page,rootIdOf) {
+  if(!OWNER_ROOTS.includes(page))return null;
   const nav=view.element('nav','shell-navigation ui-root-nav');nav.setAttribute('aria-label','公演导航');
   const active=ownerRootFor(page,rootIdOf);
   for(const {id,navigation:{label,icon}} of roots.filter(row=>OWNER_ROOTS.includes(row.id))){
@@ -41,10 +42,10 @@ function iconCommand(view,parent,label,uiIcon,callback,{action,className=''}={})
   return button;
 }
 
-function sheetTool(view,parent,label,uiIcon,content,{action,className,before}={}) {
+function sheetTool(view,parent,label,uiIcon,content,{action,className,before,returnTrigger}={}) {
   const button=iconCommand(view,parent,label,uiIcon,()=>{
     before?.();
-    openHierarchySheet(view,{title:label,content,trigger:button});
+    openHierarchySheet(view,{title:label,content,trigger:returnTrigger||button});
   },{action,className});
   return button;
 }
@@ -72,12 +73,13 @@ function roster(view,main) {
   actorSwitch(view,lane,main.querySelector('.shell-member-strip'),box);
   const inspector=main.querySelector('.roster-inspector');box.append(inspector);
   hide(inspector.querySelector('.roster-inspector-tabs'));
-  const tools=view.element('div','ui-roster-actions',undefined,lane);
+  const tools=view.element('div','ui-roster-actions roster-reference-list',undefined,box);
+  const directory=view.button(lane,'成员资料',()=>openHierarchySheet(view,{title:'成员资料',content:tools,trigger:directory}),{action:'roster-reference',className:'roster-reference'});
   tools.setAttribute('role','toolbar');tools.setAttribute('aria-label','成员资料');
   for(const [id,uiIcon] of [['ability','skill'],['dossier','info']]){
     const tab=inspector.querySelector(`[data-roster-tab=${id}]`),panel=inspector.querySelector(`[data-roster-panel=${id}]`);
     // Clicking the hidden original tab keeps view.rosterPanel and the tab/panel state authoritative.
-    sheetTool(view,tools,tab.getAttribute('aria-label'),uiIcon,panel,{action:`roster-sheet-${id}`,before:()=>tab.click()});
+    sheetTool(view,tools,tab.getAttribute('aria-label'),uiIcon,panel,{action:`roster-sheet-${id}`,before:()=>tab.click(),returnTrigger:directory});
   }
   const training=inspector.querySelector('[data-action=member-training]');
   training.dataset.uiIcon='train';training.dataset.uiWidget='true';training.dataset.action='roster-sheet-preparation';
@@ -118,24 +120,25 @@ function tour(view,main,model) {
     hide(row.querySelector('.shell-route-preview'),row.querySelector('svg'));
     row.querySelector('.shell-chapter-number').hidden=false;
     const copy=row.querySelector('.shell-chapter-copy');
-    copy.querySelector('strong').dataset.uiLetter=`chapter-${row.dataset.chapter}`;
     // Subtitle is prose; name + real state stay, and the row's aria-label carries both.
     for(const child of copy.children)if(child.tagName==='SPAN')child.hidden=true;
   }
   const detail=view.element('div','ui-tour-detail',undefined,box);
   for(const node of [main.querySelector('.tour-chapter-plan'),main.querySelector('.tour-dossier'),main.querySelector('[data-action=chapter-goals]')])
     if(node)detail.append(node);
-  const tools=view.element('div','ui-tour-tools',undefined,main);
-  tools.setAttribute('role','toolbar');tools.setAttribute('aria-label','巡演资料');
-  sheetTool(view,tools,'路线与收获','route',detail,{action:'tour-sheet-route'});
+  const tools=view.element('div','tour-reference-list',undefined,box);
+  const launch=view.button(main,'巡演资料',()=>openHierarchySheet(view,{title:'巡演资料',content:tools,trigger:launch}),{className:'tour-reference-button',action:'tour-reference',icon:'book-open',lineIcon:true});
+  view.button(tools,'路线与收获',()=>openHierarchySheet(view,{title:'路线与收获',content:detail,trigger:launch}),{action:'tour-sheet-route'});
   const session=view.scene._sessionExperience;
-  const story=iconCommand(view,tools,'巡演手记','info',()=>session.showStoryJournal(),{action:'tour-story'});
+  const story=view.button(tools,'巡演手记',()=>{
+    view.hierarchySheetDispose({restoreFocus:true});
+    session.showStoryJournal();
+  },{action:'tour-story'});
   story.disabled=typeof session?.showStoryJournal!=='function';
-  iconCommand(view,tools,'演出档案','archive',()=>view.showPage('records'),{action:'tour-records'});
-  iconCommand(view,tools,'压轴排练','rehearsal',()=>view.showPage('playhub'),{action:'tour-modes'});
+  view.button(tools,'演出档案',()=>view.showPage('records'),{action:'tour-records'});
+  view.button(tools,'压轴排练',()=>view.showPage('playhub'),{action:'tour-modes'});
   const confirm=view.root.querySelector('[data-action=confirm-chapter]');
   confirm.dataset.uiLetter='tour-confirm';confirm.classList.add('ui-confirm');
-  for(const button of tools.children)button.dataset.uiWidget='true';
   const progress=view.element('p','ui-tour-progress',`已通关 ${model.clearedCount} / ${model.chapters.length} 站`,main);
   main.insertBefore(progress,sequence);
   mountTourJourney(view,main,model);
@@ -177,7 +180,7 @@ function lounge(view,main) {
 }
 
 // B268 console studio: the desk scene is the screen. Events/practice are the two illustrated preparation rows,
-// members/services two compact equal utilities. Lounge/venue stay hidden here (home reaches them directly).
+// The four secondary destinations share the lower directory.
 // The original wired buttons are re-parented, never recreated; static labels/glyphs are Codex art hosts.
 function backstage(view,main) {
   const screen=main.querySelector('.product-module-screen');
@@ -187,7 +190,7 @@ function backstage(view,main) {
   desk.src='art/showbill/console.webp';desk.alt='';desk.draggable=false;desk.setAttribute('aria-hidden','true');
   screen.insertBefore(desk,screen.children[0]);
   const grid=screen.querySelector('.pm-shortcuts');grid.classList.add('ui-backstage-grid');
-  for(const page of ['lounge','venue'])hide(grid.querySelector(`[data-category=${page}]`));
+
   const primary=view.element('div','cs-primary',undefined,grid),utility=view.element('div','cs-utility',undefined,grid);
   for(const [page,letter,icon]of [['events','events','program'],['sideplay','practice','practice'],['recruitment','members'],['services','services']]){
     const button=grid.querySelector(`[data-category=${page}]`);
@@ -198,6 +201,11 @@ function backstage(view,main) {
       const glyph=view.element('span','cs-glyph',undefined,null);glyph.dataset.consoleIcon=icon;glyph.setAttribute('aria-hidden','true');
       button.insertBefore(glyph,copy);primary.append(button);
     }else{copy.querySelector('small').remove();utility.append(button);}
+  }
+  for(const page of ['lounge','venue']){
+    const button=grid.querySelector(`[data-category=${page}]`);
+    button.querySelector('small')?.remove();
+    utility.append(button);
   }
   screen.querySelector('.pm-ledger').classList.add('cs-readout');
 }

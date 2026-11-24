@@ -18,10 +18,20 @@ async function inspectMenu(page, id, width, output) {
     const title = root.querySelector('.shell-header h1');
     const bounds = title.getBoundingClientRect();
     return {brokenImages:images.map(image => image.src), width:document.documentElement.scrollWidth,
+      rootBars:document.querySelectorAll('#public-shell .shell-navigation').length,
+      bottomTools:[...root.querySelectorAll('[role=toolbar], nav')].filter(node =>
+        !node.matches('.ui-root-nav') && node.offsetHeight && node.getBoundingClientRect().bottom > innerHeight-110).length,
       title:bounds.height > 4 && bounds.width > 4, activeTabs:root.querySelectorAll('.ui-root-nav [aria-current]').length};
   });
   assert.deepEqual(state.brokenImages, [], id);
-  assert(state.width <= width && state.title && state.activeTabs === 1, id+' '+JSON.stringify(state));
+  const expected = ['desk','roster','tour','inventory'].includes(id) ? 1 : 0;
+  assert(state.width <= width && state.title && state.activeTabs === expected && state.rootBars === expected, id+' '+JSON.stringify(state));
+  if(expected) assert.equal(state.bottomTools, 0, id+' has two bottom command bars');
+  if(id==='tour') {
+    const names=await shell.locator('.journey-chapter .shell-chapter-copy strong').evaluateAll(nodes =>
+      nodes.map(node=>({text:node.textContent.trim(),size:parseFloat(getComputedStyle(node).fontSize)})));
+    assert(names.length===5 && names.every(name=>name.text && name.size>=14),'all five map labels are legible');
+  }
   await page.screenshot({path:path.join(output,width+'-'+id+'.png')});
   // Scroll real containers to each enabled command; an overlay intercepting its centre is a failure.
   return shell.evaluate(root => {
@@ -38,6 +48,48 @@ async function inspectMenu(page, id, width, output) {
     }
     return checked;
   });
+}
+
+async function inspectNavigation(page, output) {
+  const action = id => page.locator('[data-action="'+id+'"]:visible');
+  const back = () => action('back').tap();
+  const shot = name => page.screenshot({path:path.join(output,name+'.png'),animations:'disabled'});
+  await page.evaluate(()=>window.qaMenu().showPage('desk'));
+  await action('settings').tap();
+  await page.locator('#player-session-dialog').waitFor();
+  assert.equal(await page.locator('.ui-root-nav:visible').count(),0);
+  await page.keyboard.press('Escape');
+  await action('home-open-backstage').tap();
+  for(const id of ['lounge','venue','events','sideplay','recruitment','services']){
+    await action('backstage-open-'+id).tap();
+    await page.locator('#public-shell[data-page="'+id+'"]').waitFor();
+    assert.equal(await page.locator('.ui-root-nav').count(),0);
+    await back();
+  }
+  await back();
+  await page.locator('[data-nav=roster]').tap();
+  await action('roster-reference').tap();
+  await shot('成员资料入口');
+  await action('roster-sheet-ability').tap();
+  await page.locator('dialog[data-sheet-kind=member-ability]').waitFor();
+  await page.keyboard.press('Escape');
+  assert.equal(await page.evaluate(()=>document.activeElement.dataset.action),'roster-reference');
+  await page.locator('[data-nav=tour]').tap();
+  await action('tour-reference').tap();
+  assert.equal(await page.locator('.ui-root-nav:visible').count(),0);
+  await shot('巡演资料入口');
+  await action('tour-sheet-route').tap();
+  await page.locator('dialog[aria-label="路线与收获"]').waitFor();
+  await page.keyboard.press('Escape');
+  assert.equal(await page.evaluate(()=>document.activeElement.dataset.action),'tour-reference');
+  await action('tour-reference').tap();
+  await action('tour-records').tap();
+  await back();
+  assert.equal(await page.evaluate(()=>document.activeElement.dataset.action),'tour-reference');
+  await action('tour-reference').tap();
+  await action('tour-story').tap();
+  await page.locator('#player-session-dialog').waitFor();
+  assert.equal(await page.locator('dialog[open]').count(),0);
 }
 
 async function main() {
@@ -60,6 +112,7 @@ async function main() {
       const routes = await page.evaluate(async () => (await import('/src/utils/publicShellNavigation.mjs')).PUBLIC_SHELL_ROUTES.map(row=>row.id));
       let commands = 0;
       for (const id of routes) commands += await inspectMenu(page,id,width,output);
+      if(width===390) await inspectNavigation(page,output);
       assert.deepEqual(errors,[]);
       console.log(width+'×'+height+' · '+routes.length+' pages · '+commands+' control centres');
       await page.close();

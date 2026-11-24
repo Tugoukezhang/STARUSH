@@ -1,13 +1,3 @@
-// A page heading describes the destination; each cover identifies the actual run or collection.
-const covers = {
-  inventory: ['console', '装备配置'],
-  goals: ['city', '当前场地'],
-  library: ['console', '编排场地'],
-  growth: ['console', '当前出战'],
-  records: ['archive', '巡演通关'],
-  playhub: ['stage', '当前出战'],
-};
-
 export function mountShowbillMenu(view, main, model) {
   const page = view.page;
   view.root.dataset.edition = 'showbill';
@@ -27,23 +17,18 @@ export function mountShowbillMenu(view, main, model) {
     const copy = view.element('div', '', undefined, banner);
     view.element('span', 'showbill-caption', next ? '下一站' : '本轮巡演', copy);
     view.element('strong', '', next ? next.name : '全程已通关', copy);
-    banner.append(map.querySelector('.ui-tour-progress'));
+    copy.append(map.querySelector('.ui-tour-progress'));
+    banner.append(main.querySelector('[data-action=tour-reference]'));
     main.insertBefore(banner, map);
   }
-  const spec = covers[page];
-  if (!spec) return;
-  const [art, label] = spec;
-  const cover = view.element('div', 'showbill-cover', undefined, null);
-  cover.dataset.cover = art;
-  if (page === 'inventory') {
-    const context = main.querySelector('.inv-context');
-    view.element('span', 'showbill-caption', label, cover);
-    cover.append(context);
-  } else {
-    const value = page === 'records' ? model.clearedCount+' / '+model.chapters.length
-      : ['goals','library'].includes(page) ? model.chapter.name : model.member.name;
-    view.element('span', 'showbill-caption', label, cover);
-    view.element('strong', 'showbill-value', value, cover);
+  if(page==='roster'){
+    const stage=main.querySelector('.roster-portrait-stage');
+    stage.append(view.root.querySelector('.shell-selection-footer'));
   }
-  main.insertBefore(cover, main.children[0]);
+  const actions=['train','confirm-member','plan-use','prepared-preflight','trial-tour','rehearsal-tour',
+    'trial-start','rehearsal-start','confirm-goal','report-prepare','story-journal','events-open-tour'];
+  for(const action of actions){
+    const button=view.root.querySelector('[data-action='+action+']');
+    if(button?.getAttribute('aria-label'))button.dataset.commandFace='plain';
+  }
 }

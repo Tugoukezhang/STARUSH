@@ -9,8 +9,10 @@ test('one immutable catalog registers exactly the existing pages and roots, reje
  const a=api(setup());assert.equal(typeof a.getPublicShellRoute,'function');assert.equal(a.PUBLIC_SHELL_ROUTES.length,21);assert.deepEqual(plain(a.PUBLIC_SHELL_ROOTS.map(r=>r.id)),['desk','roster','tour','inventory','records']);assert(Object.isFrozen(a.PUBLIC_SHELL_ROUTES));for(const r of a.PUBLIC_SHELL_ROUTES){assert(Object.isFrozen(r));assert(r.title&&r.domainId);assert(a.PUBLIC_SHELL_ROOTS.some(root=>root.id===r.rootId));let next=r,seen=new Set();while(next.parentId){assert(!seen.has(next.id));seen.add(next.id);next=a.getPublicShellRoute(next.parentId);assert(next);}}
  for(const id of ['gacha','missing','toString','__proto__',null,{}])assert.equal(a.getPublicShellRoute(id),null);
 });
-test('actual child page marks its root but keeps that root reachable and does not grow fake tabs',()=>{
- const e=setup(),h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'workshop'});h.scene.create();assert.equal(h.root.dataset.rootPage,'roster');const root=h.query('[data-nav=roster]');assert.equal(root.getAttribute('aria-current'),'location');assert.equal(root.disabled,false);assert.equal(Array.from(h.query('.shell-navigation').children).filter(n=>n.dataset.nav).length,4);assert.equal(h.query('[data-nav=venue]'),null);h.shutdown();
+test('deep owner pages have a return action and no global navigation bar',()=>{
+ const e=setup(),h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'workshop'});
+ h.scene.create();assert.equal(h.root.dataset.rootPage,'roster');
+ assert.equal(h.query('.shell-navigation'),null);assert.ok(h.query('[data-action=back]'));h.shutdown();
 });
 test('direct child entry falls back through registered parents rather than always returning home',()=>{
  const e=setup(),h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'growth'});h.scene.create();h.click('[data-action=back]');assert.equal(h.scene._publicShell.page,'workshop');assert.equal(h.starts.length,0);h.click('[data-action=back]');assert.equal(h.starts.at(-1)[0],'IdolRosterScene');h.shutdown();
@@ -38,11 +40,12 @@ test('tour archive returns to tour and a direct root jump clears its deep-page h
   const h = e.harness(e.TourRouteScene);
   h.scene.create();
   const shell = h.scene._publicShell;
+  h.click('[data-action=tour-reference]');
   h.click('[data-action=tour-records]');
   assert.equal(shell.page, 'records');
   h.click('[data-action=back]');
   assert.equal(shell.page, 'tour');
-  h.click('[data-action=tour-records]');
+  assert.equal(h.query('.ui-root-nav').children.length,4);
   h.click('[data-nav=roster]');
   assert.equal(h.starts.at(-1)[0], 'IdolRosterScene');
   assert.equal(shell.returnPage, null);

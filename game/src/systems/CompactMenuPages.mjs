@@ -31,13 +31,8 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   const background=view.element('img','ui-room-background',undefined,scene);
   background.src='art/showbill/stage.webp';background.alt='';background.draggable=false;
   view.homeSceneDispose=()=>scene.remove();
-  const spaces=view.element('nav','ui-home-spaces',undefined,main);spaces.setAttribute('aria-label','后台空间');
-  for(const [page,label,icon]of [['lounge','陪伴','companion'],['venue','场馆','venue'],['backstage','巡演后台','backstage']]){
-    const tool=iconTool(view,spaces,label,icon,()=>view.showPage(page),'home-open-'+page);
-    delete tool.dataset.uiIcon;
-    tool.querySelector('.ui-sr-label').className='home-space-name';
-    view.icon({lounge:'users',venue:'clapperboard',backstage:'route'}[page],tool,true);
-  }
+  const spaces=view.element('div','ui-home-spaces',undefined,main);
+  view.button(spaces,'巡演后台',()=>view.showPage('backstage'),{className:'home-backstage',icon:'clapperboard',lineIcon:true,action:'home-open-backstage'});
   const stage=view.element('section','ui-home-stage',undefined,main);
   const portrait=view.button(stage,'与'+model.member.name+'互动',()=>{}, {className:'ui-home-portrait',action:'portrait-interact'});
   portrait.dataset.performer=model.member.id;portrait.replaceChildren();

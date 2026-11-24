@@ -32,8 +32,8 @@ test('one summary owns saved snapshot; three config tools; one start; header/nav
   assert.equal(h.query('.shell-content').dataset.preflightStudio, 'b271');
   assert.equal(h.all('[data-action=start]').length, 1);
   assert.equal(h.query('[data-action=start]').getAttribute('aria-label'), '确认开演');
-  assert.deepEqual([...h.all('.ui-nav-root')].map(b => b.dataset.nav), ['desk', 'roster', 'tour', 'inventory']);
-  assert.equal(h.query('[data-nav=tour]').getAttribute('aria-current'), 'location');
+  assert.equal(h.query('.ui-root-nav'), null);
+  assert.ok(h.query('[data-action=back]'));
   for (const node of ['.ui-preflight-stage', '.ui-preflight-venue', '.ui-preflight-portrait', '.ui-preflight-caption', '.ui-preflight-actor'])
     assert.ok(h.query(node), node);
   assert.equal(h.query('.ui-preflight-caption').dataset.uiLetter, 'chapter-' + model.chapter.id);

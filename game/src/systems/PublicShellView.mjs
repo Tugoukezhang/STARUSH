@@ -218,7 +218,10 @@ export class PublicShellView {
     if(page==='rehearsal'&&typeof this.options.onRehearsal!=='function'){
       this.navigate(()=>this.startMenuScene('rehearsal',{returnToCurrent:true}));return true;
     }
-    const currentMain=this.root.querySelector('.shell-content'),active=this.doc.activeElement;
+    const currentMain=this.root.querySelector('.shell-content');
+    const focus=this.doc.activeElement;
+    const drawer=focus?.closest?.('.tour-reference-list,.roster-reference-list');
+    const active=drawer?this.root.querySelector('[data-action='+this.page+'-reference]'):focus;
     const key=this.root.contains(active)?['action','member','chapter','inventoryItem','nav'].find(key=>/^[\w-]+$/.test(active?.dataset?.[key]||'')):null;
     const attribute=key?.replace(/[A-Z]/g,letter=>`-${letter.toLowerCase()}`);
     this.pageSnapshots.set(this.page,{scrollTop:currentMain?.scrollTop||0,focus:key?`[data-${attribute}="${active.dataset[key]}"]`:null});
@@ -406,6 +409,7 @@ export class PublicShellView {
     if(owner){
       // Quiet native balance; training is reached from Member, not a header shortcut.
       const resource=this.element('span','shell-wallet ui-resource',undefined,header);
+      resource.hidden=this.page!=='desk';
       resource.setAttribute('role','status');resource.setAttribute('aria-label',`练习笔记 ${model.resources.balance}`);resource.title='练习笔记';
       const balance=this.element('strong','',String(model.resources.balance),resource);balance.dataset.resource='notes';
     }else{
@@ -418,7 +422,8 @@ export class PublicShellView {
     }
     const settings=this.button(header,'声音与公演规则',()=>this.scene._sessionExperience?.showSettings(),{
       className:'shell-icon-button',icon:'settings-2',iconOnly:true,action:'settings',lineIcon:isUserCastEnabled() });
-    if(this.page==='desk'&&isUserCastEnabled())mountHomeConceptArt(this,settings,'settings');
+    if(owner)settings.hidden=this.page!=='desk';
+    if(homeConcept)mountHomeConceptArt(this,settings,'settings');
     const context=this.element('div','shell-session-context');
     context.dataset.currentPerformer=model.member.id;context.dataset.currentChapter=model.chapter.id;
     context.setAttribute('aria-label','当前出战配置');

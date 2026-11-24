@@ -18,7 +18,7 @@ test('real saved checkpoint offers continue with the saved actor/chapter, not cu
  h.click('[data-action=resume-run]');assert.equal(h.starts[0][0],'BattleScene');assert.equal(h.starts[0][1].performerId,'sakura');assert.equal(h.starts[0][1].publicBattleResume.runId,'home-continue-run');h.shutdown();
 });
 test('new battle warns before replacing a midrun checkpoint; cancel keeps it byte-identical',()=>{
- const {h,cp}=home(true);const before=plain(cp.readPublicBattleCheckpoint().checkpoint);h.click('[data-action=start]');assert.equal(h.scene._publicShell.page,'preflight');h.click('[data-action=start]');assert.equal(h.starts.length,0);assert(h.query('[data-action=confirm-new-run]'));assert.equal(h.query('.shell-navigation').inert,true);h.click('[data-action=cancel-new-run]');assert.equal(h.starts.length,0);assert.deepEqual(plain(cp.readPublicBattleCheckpoint().checkpoint),before);
+ const {h,cp}=home(true);const before=plain(cp.readPublicBattleCheckpoint().checkpoint);h.click('[data-action=start]');assert.equal(h.scene._publicShell.page,'preflight');h.click('[data-action=start]');assert.equal(h.starts.length,0);assert(h.query('[data-action=confirm-new-run]'));assert.equal(h.query('.shell-navigation'),null);assert.equal(h.query('.shell-content').inert,true);assert.equal(h.query('.shell-header').inert,true);h.click('[data-action=cancel-new-run]');assert.equal(h.starts.length,0);assert.deepEqual(plain(cp.readPublicBattleCheckpoint().checkpoint),before);
  h.click('[data-action=start]');h.click('[data-action=confirm-new-run]');assert.equal(h.starts[0][0],'BattleScene');assert(!h.starts[0][1].publicBattleResume);h.shutdown();
 });
 test('checkpoint disappearance between render and click reports a status without getting navigation stuck',()=>{

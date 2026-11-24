@@ -35,18 +35,7 @@
   & .ui-root-nav .ui-nav-root::before,& .ui-root-nav .ui-nav-root::after {content:none}
   & .ui-root-nav .ui-nav-root[aria-current] {background:var(--foil);color:var(--on-foil)}
   & .ui-nav-root>.showbill-nav-label {display:block;position:static;width:auto;height:auto;overflow:visible;clip-path:none;font:700 11px/14px system-ui,sans-serif;white-space:nowrap;color:inherit}
-  & .showbill-cover {
-    position:relative;display:flex;flex:none;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:5px;
-    box-sizing:border-box;min-height:clamp(100px,18vh,160px);padding:15px 17px;margin:0 0 12px;
-    border:1px solid #61717a;border-radius:8px;background-color:var(--ink);background-size:cover;background-position:center;
-    color:var(--paper);isolation:isolate;overflow:hidden;text-align:left;
-  }
-  & [data-cover=console]{background-image:linear-gradient(90deg,#0b172ce8,#0b172c66 55%,transparent),url('/art/showbill/console.webp')}
-  & [data-cover=city]{background-image:linear-gradient(90deg,#18203ce8,#19253c66 55%,transparent),url('/art/showbill/city.webp')}
-  & [data-cover=stage]{background-image:linear-gradient(90deg,#1f1833e8,#16233566 55%,transparent),url('/art/showbill/stage.webp')}
-  & [data-cover=archive]{background-image:linear-gradient(90deg,#251c27eb,#18243366 55%,transparent),url('/art/showbill/archive.webp')}
   & .showbill-caption {padding-left:7px;border-left:3px solid var(--foil);color:#fff4e5;font:700 12px/15px system-ui,sans-serif;letter-spacing:.08em}
-  & .showbill-value {color:#fffaf2;font:850 clamp(24px,6vw,33px)/1.18 system-ui,sans-serif;letter-spacing:.02em;text-shadow:0 2px 5px #101a27}
   & .ui-home-spaces {left:9px;top:12px;gap:6px}
   & .ui-home-spaces .ui-icon-command {position:relative;display:flex;align-items:center;justify-content:flex-start;gap:5px;width:auto;max-width:92px;min-width:62px;height:44px;padding:3px 8px 3px 5px;background:#112331eb;border:1px solid #738b90;border-radius:6px;color:#f5f4eb;box-shadow:0 2px 5px #08152140}
   & .ui-home-spaces .ui-icon-command>.ui-glyph {position:static;display:block;width:23px;height:25px;object-fit:contain}
@@ -68,9 +57,6 @@
   & .journey-chapter[aria-pressed=true] .shell-chapter-state {color:#e5fff4}
   & :is(.ui-roster-actions,.ui-preflight-tools,.sec-training-tools) .ui-icon-command {border-radius:5px;background-color:#132331dd;border:1px solid #556d78}
   & [data-hierarchy=inventory] {padding:10px;background:var(--night)}
-  & .showbill-cover .inv-context {display:flex;flex-wrap:wrap;gap:5px 9px;align-items:center;padding:0;margin:0;background:none;border:0;color:white}
-  & .showbill-cover .inv-context-actor {flex:1 0 100%;color:#fff7ed;font:850 24px/1.2 system-ui,sans-serif}
-  & .showbill-cover :is(.inv-context-deploy,.inv-context-slot){background:#13242ee6;border:0;padding:2px 5px;border-radius:2px;color:#d5e9e4;font:650 11px/16px system-ui,sans-serif}
   & .inv-filters {gap:5px;margin-bottom:9px}
   & .ui-item-grid {gap:7px;align-content:start}
   & .ui-item-grid .ui-item-slot {padding:6px 4px;border:1px solid #4c6270;border-radius:7px;background:linear-gradient(145deg,#334956,#1b2a38 76%);box-shadow:inset 0 2px #6b8289;color:#e9ede8}
@@ -91,9 +77,6 @@
   & .ui-sheet-header {border-bottom:1px solid #70868a}
 }
 #game-container>.ui-home-scene>.ui-room-background {left:0;top:0;width:100%;height:100%;object-position:49% 50%;filter:none}
-@media(max-height:650px){
-  #game-container #public-shell[data-edition=showbill] .showbill-cover {min-height:85px;margin-bottom:7px;padding:9px 12px}
-}
 #game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
   /* A calm photographic set behind the illustrated performer; the portrait remains interactive. */
   &[data-page=roster] .roster-portrait-stage {background:linear-gradient(90deg,#182c39ad,#18263655 60%,#192a36b3),url('/art/showbill/console.webp') 62% center/cover}
@@ -154,4 +137,134 @@
   & .pm-scene-portrait .member-portrait {width:100%;height:100%;object-fit:contain;object-position:50% 100%}
   & .pm-cast-strip {padding-block:8px;gap:4px}
   & .pm-cast-option[aria-pressed=true] {outline:2px solid #efbdab;outline-offset:-2px;background:#33404a}
+}
+
+/* The performer, route or item is the focal point. Paper chrome is shared by all four destinations. */
+#game-container>.ui-home-scene {
+  background:radial-gradient(ellipse at 62% 34%,#fbf3e5 0 19%,transparent 62%),linear-gradient(155deg,#d1e8dc 0 46%,#b6d5cd 46% 68%,#f0e4d5 68%);
+}
+#game-container>.ui-home-scene>.ui-room-background {
+  opacity:.15;filter:grayscale(1);mask-image:linear-gradient(to top,#000 0%,transparent 60%);
+}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  --sheet:#f6f5ed;--text:#182e31;--soft:#536763;--hairline:#c4cfc7;
+  & .shell-header,& .ui-root-nav {background:var(--sheet);border-color:var(--hairline);color:var(--text)}
+  & .shell-header .shell-brand h1.showbill-title {border:0;padding:0;color:var(--text);letter-spacing:0;font-weight:750}
+  & .shell-header .shell-icon-button {color:var(--text);background:none}
+  & .shell-header [hidden] {display:none}
+  & .ui-root-nav .ui-nav-root {border-radius:0;color:var(--soft)}
+  & .ui-root-nav .ui-nav-root[aria-current] {background:none;color:#074b43;box-shadow:inset 0 3px #167562}
+  & .ui-home-spaces {top:12px;left:12px}
+  & .ui-home-spaces .home-backstage,& .tour-reference-button {
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;width:auto;min-height:44px;
+    padding:6px 12px;border:1px solid var(--hairline);border-radius:22px;background:var(--sheet);box-shadow:none;color:var(--text);font:700 14px/20px system-ui,sans-serif;
+  }
+  & :is(.home-backstage,.tour-reference-button)>svg {position:static;display:block;width:18px;height:18px}
+  & :is(.home-backstage,.tour-reference-button)>span {position:static;clip-path:none;width:auto;height:auto;font:inherit}
+  & .ui-home-dock {background:var(--sheet);color:var(--text);border-top:0}
+  & .ui-home-caption .ui-home-identity {color:var(--text)!important}
+  & .ui-home-caption .ui-home-chapter,& .home-tour-progress {color:var(--soft)}
+  & .home-tour-progress progress::-webkit-progress-bar {background:#d0dcd2}
+  & .home-tour-progress progress::-webkit-progress-value {background:#24715d}
+  & .ui-home-primary .showbill-start,& .ui-preflight-footer .showbill-deploy {
+    border:0;border-radius:8px;background:#174d43;color:#fffef3;box-shadow:none;
+  }
+  &[data-page=roster] .roster-portrait-stage,& .sec-training-stage {
+    background:radial-gradient(ellipse at 48% 40%,#faf2df,transparent 68%),linear-gradient(155deg,#cddfd7 0 65%,#abc7bb 65% 71%,#d7dcd0 71%);
+  }
+  & .showbill-tour-heading {position:relative;align-items:center;gap:8px;padding:9px 14px;background:var(--sheet);border-bottom:1px solid var(--hairline);color:var(--text)}
+  & .showbill-tour-heading>div {display:grid;grid-template-columns:auto auto;align-items:center;gap:2px 8px}
+  & .showbill-tour-heading .showbill-caption {border:0;padding:0;color:var(--soft);letter-spacing:0}
+  & .showbill-tour-heading strong {margin:0;font-size:20px}
+  & .showbill-tour-heading .ui-tour-progress {grid-column:1/-1;justify-self:start;margin:0;padding:0;min-height:0;background:none;border:0;color:var(--soft);font:500 12px/18px system-ui,sans-serif}
+  & .tour-reference-list {display:grid;gap:0}
+  & .tour-reference-list button {min-height:48px;text-align:left;justify-content:flex-start;padding:8px 12px;background:var(--sheet);border:0;border-bottom:1px solid var(--hairline);box-shadow:none;color:var(--text);font:650 16px/22px system-ui,sans-serif}
+  & .journey-map {background:#e4ebe1}
+  & .journey-route {background:linear-gradient(90deg,transparent calc(50% - 2px),#b4c8bc calc(50% - 2px) calc(50% + 2px),transparent calc(50% + 2px))}
+  & .journey-chapter .shell-chapter-copy strong {font:750 16px/22px system-ui,sans-serif;color:#223c36}
+  & .journey-chapter .shell-chapter-copy .ui-letter-art {display:none}
+  & .journey-chapter[aria-pressed=true]>.shell-chapter-copy {background:#174d43;border:0;border-radius:6px}
+  & .journey-chapter[aria-pressed=true] .shell-chapter-copy strong {color:#faf8ec}
+  & [data-hierarchy=inventory] {background:var(--sheet);padding:12px}
+  & .inv-context {display:flex;flex-wrap:wrap;align-items:center;gap:4px 9px;margin:0 0 10px;padding:4px 0 10px;border:0;border-bottom:1px solid var(--hairline);background:none;color:var(--text)}
+  & .inv-context .inv-context-actor {font:750 19px/25px system-ui,sans-serif}
+  & .inv-context :is(.inv-context-deploy,.inv-context-slot) {background:none;color:var(--soft);font:550 13px/18px system-ui,sans-serif}
+  & .inv-filters .inv-filter {display:flex;gap:5px;align-items:center;justify-content:center;background:none;color:var(--soft);border:0;border-bottom:2px solid var(--hairline);border-radius:0;box-shadow:none}
+  & .inv-filters .inv-filter[aria-pressed=true] {border-color:#167562;color:#074b43;background:#e4efe6}
+  & .inv-filter :is(.inventory-letter-art,.inventory-filter-glyph) {display:none}
+  & .inv-filter :is(.inv-filter-label,.inv-filter-count) {position:static;display:inline;clip-path:none;width:auto;height:auto;background:none;color:inherit;font:650 14px/20px system-ui,sans-serif}
+  & .ui-item-grid .ui-item-slot {background:#fffef9;border:1px solid var(--hairline);border-radius:8px;box-shadow:none;color:var(--text)}
+  & .ui-item-slot .ui-item-name {color:var(--text);text-shadow:none}
+  & .ui-item-slot .ui-item-state {color:var(--soft);text-shadow:none}
+  & .ui-item-slot[data-state=locked] {opacity:1}
+  & .ui-preflight-stage .ui-preflight-venue {opacity:.4;filter:saturate(.55)}
+  & .product-module-screen[data-console-page=backstage] .cs-utility {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  & .product-module-screen[data-console-page=backstage] .cs-utility .pm-entry {min-height:44px;color:var(--sheet)}
+  & .product-module-screen[data-console-page=backstage] .cs-utility .pm-entry-copy strong {color:var(--sheet)}
+  & .product-module-screen[data-console-page]>.cs-desk {filter:saturate(.62) brightness(.75)}
+  & :is(.pg-venue-art,.ps-venue-art,.pm-scene-art) {filter:saturate(.78)}
+  &[data-page=lounge] .pm-scene-art {filter:saturate(.45) brightness(.7)}
+  & .ui-sheet {border:1px solid var(--hairline);box-shadow:0 8px 25px #13252433}
+}
+#game-container:has(#player-session-dialog) #public-shell[data-edition=showbill] .ui-root-nav,
+#game-container #public-shell[data-edition=showbill]:has(dialog[open]) .ui-root-nav {visibility:hidden;pointer-events:none}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  & .ui-home-dock::before,& .ui-home-stage::after {content:none}
+  & .ui-home-dock {grid-template-columns:minmax(0,1fr) minmax(135px,1.15fr)}
+  & .ui-home-caption .ui-home-identity {font-size:clamp(16px,4.6vw,20px)!important;white-space:nowrap}
+  & .inv-context .inv-context-actor {color:var(--text)}
+  &[data-page=roster] .roster-portrait-stage .shell-selection-footer {
+    position:absolute;z-index:2;bottom:10px;left:12px;right:12px;display:flex;align-items:center;gap:8px;
+    width:auto;min-height:44px;height:auto;padding:0;border:0;background:none;box-shadow:none;
+  }
+  &[data-page=roster] .shell-selection-footer .ui-current-deploy {margin-left:auto;padding:4px 8px;color:#233f37;background:#edf2e8;border-radius:4px}
+  &[data-page=roster] .roster-portrait-stage .shell-selection-footer .roster-stage-identity {flex:0 1 auto;min-height:40px;background:#f6f5ede8;border:0;border-radius:6px}
+  &[data-page=roster] .shell-selection-footer .roster-stage-identity h2 {color:var(--text)!important}
+  & .shell-selection-footer button[data-command-face=plain],& button[data-command-face=plain] {
+    display:flex;align-items:center;justify-content:center;gap:0;min-height:46px;height:auto;padding:9px 12px;
+    border:0;border-image:none;border-radius:7px;background:#174d43;color:#fffdf3;box-shadow:none;
+    font:700 16px/22px system-ui,sans-serif;text-shadow:none;text-indent:0;
+  }
+  & button[data-command-face=plain]:disabled {background:#d6ded7;color:#4b5f58;opacity:1}
+  & button[data-command-face=plain]>* {display:none!important}
+  & button[data-command-face=plain]::before {content:none}
+  & button[data-command-face=plain]::after {
+    content:attr(aria-label);position:static;display:block;inset:auto;transform:none;clip-path:none;background:none;border:0;
+    width:auto;height:auto;white-space:normal;color:inherit;opacity:1;font:700 16px/22px system-ui,sans-serif;
+  }
+  & button[data-command-face=plain][hidden] {display:none}
+  &:is([data-page=goals],[data-page=growth],[data-page=library],[data-page=records],[data-page=chapterArchive],[data-page=rehearsal],[data-page=finaleTrial],[data-page=playhub]) {background:var(--sheet)}
+  & .shell-content:is([data-planning-studio],[data-archive-studio]),&[data-page=chapterArchive] .shell-content {background:var(--sheet)}
+  &[data-page=records] .shell-content[data-archive-studio] .sec-records-stage {margin-top:0;background:#243b39;border:0}
+  &[data-page=records] .shell-content[data-archive-studio] .archive-record {border:0;border-bottom:1px solid var(--hairline);border-radius:0;background:#fffef8;color:var(--text);box-shadow:none}
+  & .product-module-screen[data-console-studio][data-console-page] {justify-content:flex-start;padding:0 14px 18px;gap:12px;background:var(--sheet);color:var(--text)}
+  & .product-module-screen[data-console-studio][data-console-page]>.cs-desk {position:relative;z-index:0;inset:auto;width:calc(100% + 28px);max-width:none;margin:0 -14px;height:clamp(100px,24vh,200px);flex:none;object-position:50% 45%;filter:saturate(.75)}
+  & .product-module-screen[data-console-page=backstage] .ui-backstage-grid {padding:0}
+  & .product-module-screen[data-console-page=backstage] :is(.cs-primary,.cs-utility) .pm-entry,
+  & .product-module-screen[data-console-page=services] .cs-local-console .pm-service-command {
+    display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;min-height:48px;
+    background:#fffef8;color:var(--text);border:1px solid var(--hairline);border-radius:6px;box-shadow:none;
+  }
+  & .product-module-screen[data-console-page=backstage] .pm-entry>*,& .cs-local-console .pm-service-command>* {display:none}
+  & .product-module-screen[data-console-page=backstage] .pm-entry::before,& .cs-local-console .pm-service-command::before {content:attr(aria-label);position:static;width:auto;height:auto;background:none;color:var(--text);font:700 16px/22px system-ui,sans-serif}
+  & .product-module-screen[data-console-page=backstage] .pm-entry::after,& .cs-local-console .pm-service-command::after {content:'›';position:static;width:auto;height:auto;background:none;color:var(--soft);font:500 22px/24px system-ui,sans-serif}
+  & .product-module-screen[data-console-page=backstage] .cs-readout {color:var(--soft);background:none;text-shadow:none}
+  & .product-module-screen[data-console-page=services] .cs-local-console {padding:8px 0;border:0;background:none;box-shadow:none}
+}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  & .ui-roster-lane {left:auto;right:12px;top:12px;width:84px;max-width:none;display:flex;flex-direction:column;align-items:stretch;gap:6px}
+  & .ui-roster-lane :is(.ui-actor-switch,.roster-reference) {display:grid;place-items:center;width:100%;min-width:0;max-width:none;white-space:nowrap;min-height:44px;height:auto;padding:6px 8px;background:var(--sheet);color:var(--text);border:1px solid var(--hairline);border-radius:7px;box-shadow:none}
+  & .ui-roster-lane .ui-actor-switch>* {display:none}
+  & .ui-roster-lane .ui-actor-switch::after {content:'切换成员';position:static;display:block;width:auto;height:auto;background:none;color:inherit;font:650 14px/20px system-ui,sans-serif}
+  & .ui-roster-lane .roster-reference span {font:650 14px/20px system-ui,sans-serif;position:static;width:auto;height:auto;clip-path:none}
+  & .ui-sheet .roster-reference-list {position:static;display:grid;width:100%;height:auto;max-width:none;gap:0;padding:0;background:var(--sheet)}
+  & .ui-sheet .roster-reference-list button {position:static;display:flex;align-items:center;justify-content:flex-start;width:100%;max-width:none;height:auto;min-height:48px;padding:9px 12px;border:0;border-bottom:1px solid var(--hairline);border-radius:0;background:var(--sheet);color:var(--text);box-shadow:none}
+  & .ui-sheet .roster-reference-list button>* {display:none}
+  & .ui-sheet .roster-reference-list button::after {content:attr(aria-label);display:block;position:static;width:auto;height:auto;background:none;opacity:1;color:var(--text);font:650 16px/22px system-ui,sans-serif}
+  & button[data-command-face=plain]:not(:disabled) {background:#174d43!important;border-image:none!important}
+  & button[data-command-face=plain]:disabled {background:#d6ded7!important;border-image:none!important}
+  & .ui-preflight-stage {background:#c6d2c4}
+  & .ui-preflight-stage .ui-preflight-venue {mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.22) 55%,rgba(0,0,0,.4))}
+  & .ui-preflight-brief {background:#1c342f;border:0}
+  & .ui-preflight-plans .ui-preflight-entry {box-shadow:none;border:0;border-radius:4px}
 }

@@ -1,6 +1,7 @@
 // UNRUN when written (Claude has no shell). Codex: `node --test tests/menuHierarchy.test.mjs`.
 // Own minimal DOM stub with a native-like <dialog>; production code has no showModal fallback.
 import test from 'node:test';
+import {loadScenes} from './helpers/publicShellHarness.mjs';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {openHierarchySheet} from '../src/systems/HierarchySheets.mjs';
@@ -106,12 +107,13 @@ test('owner navigation: four icon roots, no archive, archive pages highlight tou
   assert.deepEqual(OWNER_ROOTS,['desk','roster','tour','inventory']);
   const view=makeView('chapterArchive'),opened=[];
   view.openRoot=page=>opened.push(page);
-  const nav=renderHierarchyNavigation(view,PUBLIC_SHELL_ROOTS,'chapterArchive',()=>'records');
+  assert.equal(renderHierarchyNavigation(view,PUBLIC_SHELL_ROOTS,'chapterArchive',()=>'records'),null);
+  const nav=renderHierarchyNavigation(view,PUBLIC_SHELL_ROOTS,'tour',()=>'tour');
   const buttons=nav.querySelectorAll('button');
   assert.deepEqual(buttons.map(b=>b.dataset.nav),['desk','roster','tour','inventory']);
   assert.deepEqual(buttons.map(b=>b.dataset.uiIcon),['home','member','tour','bag']);
-  assert.ok(buttons.every(b=>b.getAttribute('aria-label')&&!b.querySelector('span')),'icon-only with accessible names');
-  assert.equal(nav.querySelector('[data-nav=tour]').getAttribute('aria-current'),'location');
+  assert.ok(buttons.every(b=>b.getAttribute('aria-label')&&b.querySelector('.showbill-nav-label')),'visible captions and accessible names');
+  assert.equal(nav.querySelector('[data-nav=tour]').getAttribute('aria-current'),'page');
   assert.equal(ownerRootFor('records',()=>'records'),'tour');
   buttons[1].click();assert.deepEqual(opened,['roster']);
   const current=renderHierarchyNavigation(makeView('tour'),PUBLIC_SHELL_ROOTS,'tour',()=>'tour').querySelector('[data-nav=tour]');
@@ -152,13 +154,13 @@ test('close command and Escape restore node, hidden state and focus; one live di
   assert.equal(view.root.querySelector('dialog'),null);assert.equal(strip.parentNode,holder);
   assert.equal(strip.hidden,false);assert.equal(view.doc.activeElement,trigger);
   const skill=view.root.querySelector('[data-ui-icon=skill]');
-  trigger.click();skill.click();
+  trigger.click();view.root.querySelector('[data-action=roster-reference]').click();skill.click();
   assert.equal(view.root.querySelectorAll('dialog').length,1);
   assert.equal(strip.parentNode,holder,'previous sheet restored when replaced');
   const dialog=view.root.querySelector('dialog'),escape=new Event('cancel',{cancelable:true});
   dialog.dispatchEvent(escape);
   assert.equal(escape.defaultPrevented,true);
-  assert.equal(view.root.querySelector('dialog'),null);assert.equal(view.doc.activeElement,skill);
+  assert.equal(view.root.querySelector('dialog'),null);assert.equal(view.doc.activeElement.dataset.action,'roster-reference');
   assert.equal(panels.ability.hidden,false,'original select() state survives restore');
 });
 
@@ -173,46 +175,22 @@ test('roster equipment tool goes directly to training; skill and dossier retain 
   assert.ok(!view.calls.includes('confirm'));
 });
 
-test('tour: three compact chapter tabs and one selected venue; details remain secondary',()=>{
-  const view=makeView('tour'),main=view.element('main','shell-content');
-  view.element('div','shell-tour-heading',undefined,main);
-  const seq=view.element('section','tour-stop-sequence',undefined,main);
-  for(const id of ['opening','neon','encore']){
-    const row=view.button(seq,id,()=>view.calls.push('pick:'+id),{className:'shell-chapter-option'});row.replaceChildren();row.dataset.chapter=id;
-    row.disabled=id==='encore';row.dataset.state=id==='encore'?'locked':'available';
-    view.element('span','shell-chapter-number','01',row);
-    const copy=view.element('span','shell-chapter-copy',undefined,row);
-    view.element('strong','',id,copy);view.element('span','','subtitle',copy);view.element('small','shell-chapter-state','可挑战',copy);
-  }
-  const venue=view.element('section','tour-selected-venue',undefined,main);
-  const caption=view.element('div','tour-venue-caption',undefined,venue);
-  view.element('h2','','星光初演',caption);view.element('p','tour-story-title','序幕',caption);
-  view.selection.chapterId='opening';
-  view.element('section','tour-chapter-plan',undefined,main);
-  view.element('details','tour-dossier',undefined,main);
-  view.element('p','shell-selection-context',undefined,main);
-  view.button(main,'确认场地并选择目标',()=>view.calls.push('goals'),{className:'shell-tour-goals',action:'chapter-goals'});
-  const footer=view.element('footer','shell-selection-footer');
-  view.button(footer,'确认场地并查看准备',()=>view.calls.push('confirm-chapter'),{className:'shell-primary shell-confirm',action:'confirm-chapter'});
-  compactHierarchyPage(view,main,{member:{id:'sakura'},clearedCount:0,chapters:[{id:'opening'},{id:'neon'},{id:'encore'}]});
-  const rows=main.querySelectorAll('.shell-chapter-option').filter(visible);
-  assert.deepEqual(rows.map(r=>r.dataset.chapter),['opening','neon','encore']);
-  assert.equal(rows[2].disabled,true);
-  assert.ok(main.querySelectorAll('.shell-chapter-number').every(visible));
-  assert.equal(visible(venue),false);assert(main.querySelector('.journey-map'));assert.equal(caption.querySelector('h2').dataset.uiLetter,'chapter-opening');
-  assert.equal(main.querySelector('.ui-tour-progress').textContent,'已通关 0 / 3 站');
-  for(const s of ['.tour-chapter-plan','.tour-dossier','.shell-tour-heading','.shell-selection-context','.shell-tour-goals'])
-    assert.equal(visible(main.querySelector(s)),false,s);
-  assert.equal(view.root.querySelectorAll('[data-action=confirm-chapter]').filter(visible).length,0,'prepare is in the selected chapter sheet');
-  const tools=main.querySelector('.ui-tour-tools').querySelectorAll('button');
-  assert.deepEqual(tools.map(b=>b.dataset.uiIcon),['route','info','archive','rehearsal']);
-  tools[1].click();tools[2].click();
-  assert.deepEqual(view.calls,['story','page:records']);
-  tools[3].click();assert.equal(view.calls.at(-1),'page:playhub');
+test('tour keeps five stops on the map and all four references in one drawer',()=>{
+  const runtime=loadScenes();runtime.loadRuntime('utils/userCast.mjs').configureUserCast(true);
+  runtime.seed([]);const h=runtime.harness(runtime.TourRouteScene);h.scene.create();
+  const map=h.query('.journey-map'),rows=map.querySelectorAll('.journey-chapter');
+  assert.equal(rows.length,5);assert.equal(rows.filter(row=>row.disabled).length,4);
+  assert.equal(h.query('.ui-tour-progress').textContent,'已通关 0 / 5 站');
+  assert.equal(h.query('.ui-tour-tools'),null);
+  assert.equal(h.query('.tour-reference-list').parentNode.hidden,true);
+  h.click('[data-action=tour-reference]');
+  const tools=h.query('dialog').querySelector('.tour-reference-list').querySelectorAll('button');
+  assert.deepEqual(tools.map(b=>b.dataset.action),['tour-sheet-route','tour-story','tour-records','tour-modes']);
   tools[0].click();
-  const dialog=view.root.querySelector('dialog');
-  assert.ok(dialog.querySelector('.tour-chapter-plan')&&dialog.querySelector('[data-action=chapter-goals]'));
-  rows[0].click();assert.ok(view.calls.includes('pick:opening'));
+  assert.equal(h.query('dialog').getAttribute('aria-label'),'路线与收获');
+  assert.ok(h.query('dialog').querySelector('.tour-chapter-plan'));
+  h.click('.ui-sheet-close');assert.equal(runtime.document.activeElement?.dataset.action,'tour-reference');
+  h.shutdown();
 });
 
 test('playhub: the two real challenge modes become framed artwork entries keeping their handler and availability',()=>{
@@ -268,7 +246,7 @@ test('lounge: one actor switch, labelled AI topics, secondary record and unchang
 
 test('wiring: sheet disposed before replaceChildren, compaction before navigation, no storage in new modules',()=>{
   const shell=readFileSync(new URL('../src/systems/PublicShellView.mjs',import.meta.url),'utf8');
-  const render=shell.slice(shell.indexOf('  render(focusSelector)'));
+  const render=shell.slice(shell.indexOf('  render(focusSelector'));
   assert.ok(render.indexOf('this.hierarchySheetDispose?.()')<render.indexOf('this.root.replaceChildren()'));
   assert.ok(render.indexOf('compactHierarchyPage(this,main,model)')<render.indexOf('this.navigation()'));
   assert.match(render,/owner\?mountHierarchyUi\(this\):mountOwnerGeneratedUi\(this\)/);

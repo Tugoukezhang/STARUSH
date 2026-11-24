@@ -449,6 +449,7 @@ export function renderProductModuleScreen(view, main, model) {
   if (view.page === 'recruitment') recruitment(view, root, member);
   if (view.page === 'sideplay') sideplay(view, root, model, profile);
   if (view.page === 'services') services(view, root, model);
+  if(isUserCastEnabled() && view.page==='recruitment')return true;
   const footer = view.element('footer', 'pm-footer', undefined, root);
   const direct=['backstage','lounge','venue'].includes(view.page);
   command(view, footer, direct ? '返回主界面' : '返回', () => direct ? view.openRoot('desk') : view.backPage(),
