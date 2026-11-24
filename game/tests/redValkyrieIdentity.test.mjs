@@ -84,3 +84,14 @@ test('portrait becomes usable only after decoding; a failed or canceled load can
  assert.equal(mark.dataset.portraitState,'unavailable');assert.equal(mark.querySelector('img').src,ART.portrait);
  h.shutdown();
 });
+
+test('moving releases in the confirmed cast show a weapon pose before returning to stride',()=>{
+ for(const id of ['sakura','kai','enjo']){
+  const {view,scene,step}=fixture(id);
+  step(0);view.beginShot(0,1,0,400);scene.player.x+=6;step(10);
+  assert.equal(view.state,'move-attack');assert.equal(view.image.frame.name,14);
+  scene.player.x+=8;step(view.shotDuration*.8);
+  assert(view.image.frame.name>=6&&view.image.frame.name<=11);
+  assert.equal(scene.publicPerformerRun.actions,0);view.destroy();
+ }
+});

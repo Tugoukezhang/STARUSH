@@ -29,7 +29,8 @@ function skillCel(id, age, action) {
     let beat = 0;
     for (const at of beats) if (at <= age) beat = at;
     if (age - beat < 30) return 14; // Muzzle extension on each shot.
-    if (age < last + 55) return 15;
+    if (age - beat < 55) return 15;
+    if (age < last) return 13;
     return age < last + 85 ? 16 : 17;
   }
   if (id === 'kai') {
@@ -138,6 +139,9 @@ export class UserCastPresentation {
       else {frame=this.art.confirmedDesign?(melee.phase==='windup'?13:melee.phase==='release'?(melee.progress<.5?14:15):(melee.progress<.5?16:17))
         :melee.phase==='windup'?14:melee.phase==='release'?(melee.progress<.5?15:16):17;
         this.flip=this.facesLeft?Math.cos(melee.angle)>0:Math.cos(melee.angle)<0;}
+    }else if(this.state==='move-attack' && this.art.motion.singleAtlas && t-this.shotClock<this.shotDuration*.65){
+      // Show the release on the actual shot, then return to the distance-driven stride.
+      frame=sample([14,15,16],t-this.shotClock,this.shotDuration*.65);
     }else if(moving){
       // Every walk bank spans the same 90 world pixels; the original atlas and unloaded banks keep six 15px cels.
       const walk=this.art.motion.walk,banked=walk&&s.textures?.exists(walk.key),cels=banked&&walk.frames||6;
