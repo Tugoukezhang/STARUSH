@@ -29,9 +29,9 @@ function setup(id = 'sakura', reduced = false) {
 
 test('Encore V2 shows current identity and native action, without duplicate face or baked placard', () => {
   const sources = {
-    sakura: 'art/home-portrait-demo-20261022/sakura-body.webp',
-    kai: 'art/portrait-base-20261101/kai.webp',
-    enjo: 'art/portrait-base-20261101/enjo.webp',
+    sakura: 'art/red-valkyrie-20261123/portrait.png',
+    kai: 'art/green-windsong-20261123/portrait.png',
+    enjo: 'art/blue-academy-20261123/portrait.png',
   };
   for (const [id, src] of Object.entries(sources)) {
     const {ui} = setup(id);
@@ -40,7 +40,7 @@ test('Encore V2 shows current identity and native action, without duplicate face
       assert.equal(ui.root.dataset.encoreStage, 'v2');
       assert.equal(ui.root.querySelector('.encore-stage-action')?.textContent, '安可返场');
       assert.equal(ui.root.querySelector('.encore-stage-performer')?.textContent,
-        {sakura: '步枪手', kai: '机甲剑士', enjo: '重锤手'}[id]);
+        {sakura: '战术女武神', kai: '翡翠风歌', enjo: '蔚蓝魔法师'}[id]);
       assert.equal(ui.root.querySelector('.encore-stage-clear')?.textContent, ' · 清弹 7');
       assert.equal(ui.root.querySelector('.performance-encore-portrait').src, src);
       assert.equal(ui.root.querySelectorAll('img').length, 2);
@@ -56,12 +56,12 @@ test('only real positive safe integer counts appear, retaining existing name tex
   try {
     for (const cleared of [0, NaN, Infinity, -1, 1.5, Number.MAX_SAFE_INTEGER + 1, '3']) {
       assert(ui.showEncore({cleared}));
-      assert.equal(ui.root.querySelector('.performance-encore-name').textContent, '步枪手');
+      assert.equal(ui.root.querySelector('.performance-encore-name').textContent, '战术女武神');
       assert.equal(ui.root.querySelector('.encore-stage-clear'), null);
       ui.close();
     }
     ui.showEncore({cleared: 3});
-    assert.equal(ui.root.querySelector('.performance-encore-name').textContent, '步枪手 · 清弹 3');
+    assert.equal(ui.root.querySelector('.performance-encore-name').textContent, '战术女武神 · 清弹 3');
   } finally { ui.destroy(); }
 });
 

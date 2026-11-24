@@ -10,10 +10,10 @@ test('real Encore burst passes actual cleared count into the existing paused cin
  s.publicPerformerRun={member:{id:'sakura',name:'步枪手'}};s.player={x:100,y:200};s.currentColor='pink';
  const stamps=[];s.paintZone={stampPaint:(...a)=>stamps.push(a)};s._playPublicEncoreCutin=Scene.prototype._playPublicEncoreCutin;
  Scene.prototype._spawnPaintEncoreBurst.call(s,100,200,3);
- assert.equal(ui.root.querySelector('.performance-encore-name').textContent,'步枪手 · 清弹 3');
+ assert.equal(ui.root.querySelector('.performance-encore-name').textContent,'战术女武神 · 清弹 3');
  assert(s._battlePaused);assert.equal(stamps.length,1);assert.equal(stamps[0][2],210);
- ui.close();assert(ui.showEncore({cleared:0}));assert.equal(ui.root.querySelector('.performance-encore-name').textContent,'步枪手');ui.close();
- for(const cleared of [NaN,Infinity,-1,1.5,Number.MAX_SAFE_INTEGER+1,'3']){assert(ui.showEncore({cleared}));assert.equal(ui.root.querySelector('.performance-encore-name').textContent,'步枪手');ui.close();}
+ ui.close();assert(ui.showEncore({cleared:0}));assert.equal(ui.root.querySelector('.performance-encore-name').textContent,'战术女武神');ui.close();
+ for(const cleared of [NaN,Infinity,-1,1.5,Number.MAX_SAFE_INTEGER+1,'3']){assert(ui.showEncore({cleared}));assert.equal(ui.root.querySelector('.performance-encore-name').textContent,'战术女武神');ui.close();}
  ui.destroy();
 });
 test('hidden cinematic cannot auto-resume battle; skip and destroy cancel pending UI work',()=>{const {e,s,ui,jobs,step}=setup();ui.showEncore();ui.root.querySelector('.performance-encore-portrait').dispatchEvent({type:'load'});step(0);e.document.hidden=true;step(3000);assert(ui.root&&s._battlePaused);e.document.hidden=false;step(4000);assert(ui.root);ui.root.querySelector('[data-action=encore-continue]').click();assert.equal(ui.root,null);assert.equal(jobs.size,0);ui.showEncore();ui.destroy();assert.equal(jobs.size,0);assert.equal(ui.root,null);});
