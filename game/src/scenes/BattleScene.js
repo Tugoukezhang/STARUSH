@@ -1358,8 +1358,8 @@ export class BattleScene extends Phaser.Scene {
     if(this._battleEnded)return true;
     if(this.publicPerformerRun?.buildContext?.modification?.id==='rain_relay')this.publicPerformerRun.releaseRainRelay(origin);
     if(this._battleEnded)return true;
-    this._spawnPaintEncoreBurst(origin.x, origin.y, cleared);
-    this._showRoundBanner(cleared > 0 ? `安可清弹 ×${cleared} · 返场五秒` : 'Encore · 返场五秒');
+    const cardShown=this._spawnPaintEncoreBurst(origin.x, origin.y, cleared);
+    if(cardShown!==true)this._showRoundBanner(cleared > 0 ? `安可清弹 ×${cleared} · 返场五秒` : 'Encore · 返场五秒');
     this._updateHUD();
     return true;
     };
@@ -7264,7 +7264,7 @@ export class BattleScene extends Phaser.Scene {
       const member = this.publicPerformerRun?.member || getPublicPerformer(this.battleData?.performerId);
       this.ultCutinImg?.removeAttribute('src');
       this.ultCutinEl?.classList.remove('show');
-      if(this._sessionExperience?.showEncore?.({cleared}))return;
+      if(this._sessionExperience?.showEncore?.({cleared}))return true;
       this._showPublicBattleNotice(`${member.name} · 释放安可`, { kind: 'action', duration: 980 });
       return;
     }
@@ -7292,7 +7292,7 @@ export class BattleScene extends Phaser.Scene {
     const originX = x ?? this.player?.x ?? STAGE1_PAINT_PLAYER_START.x;
     const originY = y ?? this.player?.y ?? STAGE1_PAINT_PLAYER_START.y;
     this.paintZone?.stampPaint(originX, originY, 210, this.currentColor, 255, false);
-    this._playPublicEncoreCutin(cleared);
+    return this._playPublicEncoreCutin(cleared);
   }
 
   _showFirstPlayHint(message, duration = 2800) {

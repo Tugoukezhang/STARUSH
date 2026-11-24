@@ -149,6 +149,7 @@ export class PlayerSessionExperience {
     this.command(panel, this.scene.publicPerformerRun?.choiceOpen ? '返回本场编排' : '返回公演', () => this.close());
   }
   open(title, mode) {
+    this.clearEncore();
     this.sequenceDispose?.();this.sequenceDispose=null;
     this.backupPanel?.dispose();this.backupPanel=null;
     if (!this.root) {
@@ -439,15 +440,22 @@ export class PlayerSessionExperience {
     this.lease.release(resume, restoreControls);
     if (restoreControls && this.previousFocus?.isConnected && !this.previousFocus.closest?.('canvas')) this.previousFocus.focus?.({ preventScroll: true });
   }
+  clearEncore(){
+    this.encoreDispose?.();
+    this.encoreDispose=null;
+  }
   showEncore({cleared=0}={}){
-    if(this.disposed||!this.battle||!isUserCastEnabled()||this.root||this.scene._battlePaused||this.scene._battleEnded||this.scene.battleData?.practiceMode||this.scene.battleData?.defenseMode||this.scene.publicPerformerRun?.choiceOpen||this.scene._isPublicStage1Round?.()!==true)return false;
+    if(this.disposed||!this.battle||!isUserCastEnabled()||this.root||this.encoreDispose||this.scene._battlePaused||this.scene._battleEnded||this.scene.battleData?.practiceMode||this.scene.battleData?.defenseMode||this.scene.publicPerformerRun?.choiceOpen||this.scene._isPublicStage1Round?.()!==true)return false;
     const id=this.scene.battleData?.performerId||'sakura';if(!['sakura','kai','enjo'].includes(id))return false;
-    const panel=this.open('安可返场','encore');this.scene._clearBattlePauseOverlay?.();
-    this.sequenceDispose=mountEncoreSequence(this,panel,id,()=>this.close(),cleared);return true;
+    const host=document.getElementById('game-container');
+    if(!host)return false;
+    this.encoreDispose=mountEncoreSequence(this,host,id,()=>this.clearEncore(),cleared);
+    return true;
   }
   destroy() {
     if (this.disposed) return;
     this.disposed = true;
+    this.clearEncore();
     this.scene.events?.off?.('destroy', this.onSceneDestroy);
     this.unbind?.();
     this.close(false, false);

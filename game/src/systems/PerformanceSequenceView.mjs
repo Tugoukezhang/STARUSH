@@ -86,28 +86,32 @@ export function mountStorySequence(ui,panel,beat,complete,{performerId,progress=
  return()=>{disposed=true;clearTimeout(timer);document.removeEventListener('visibilitychange',visibility);};
 }
 
-export function mountEncoreSequence(ui,panel,id,complete,cleared=0){
- const root=ui.root,win=window,doc=document;root.dataset.performanceEncore='true';root.dataset.performer=id;root.dataset.encoreStage='v2';
- const stage=node(panel,'div','performance-encore');stage.dataset.phase='loading';
- image(stage,'performance-encore-venue',CHAPTER_VENUE_ART[ui.chapterId()]);
- const heading=node(stage,'header','encore-stage-heading');node(heading,'span','encore-stage-kicker','ENCORE');node(heading,'h3','encore-stage-action','安可返场');
- const frame=node(stage,'div','encore-stage-image');
- const figure=image(frame,'performance-encore-portrait',portrait(id));
- const name=getActiveUserCastArt(id)?.confirmedDesign?getDisplayPerformer(id).name:{'sakura':'步枪手','kai':'机甲剑士','enjo':'重锤手'}[id];
- const caption=node(stage,'div','encore-stage-caption'),identity=node(caption,'p','performance-encore-name');
- node(identity,'strong','encore-stage-performer',name);
+// A cast callout lives alongside the HUD. It never takes focus or owns a battle pause.
+export function mountEncoreSequence(ui,host,id,complete,cleared=0){
+ const card=node(host,'aside','performance-encore');
+ card.setAttribute('role','status');
+ card.setAttribute('aria-atomic','true');
+ card.dataset.performer=id;
+ card.dataset.phase='focus';
+ image(card,'performance-encore-portrait',portrait(id));
+ const copy=node(card,'div','encore-card-copy');
+ node(copy,'strong','encore-stage-action','安可返场');
+ const identity=node(copy,'p','performance-encore-name');
+ node(identity,'span','encore-stage-performer',getDisplayPerformer(id).name);
  if(Number.isSafeInteger(cleared)&&cleared>0)node(identity,'span','encore-stage-clear',' · 清弹 '+cleared);
- const reduced=win.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches===true;root.dataset.reducedMotion=String(reduced);
- let disposed=false,started=false,raf=null,elapsed=0,last=null;
- const live=()=>!disposed&&!ui.disposed&&ui.root===root&&root.dataset.mode==='encore';
- const request=fn=>win.requestAnimationFrame?win.requestAnimationFrame(fn):win.setTimeout?win.setTimeout(()=>fn(Date.now()),16):setTimeout(()=>fn(Date.now()),16);
- const cancel=n=>win.cancelAnimationFrame?win.cancelAnimationFrame(n):clearTimeout(n);
- const finish=()=>{if(live())complete();};
- const tick=stamp=>{raf=null;if(!live())return;if(doc.hidden){last=null;root.dataset.cinematicPaused='true';raf=request(tick);return;}root.dataset.cinematicPaused='false';if(last!==null)elapsed+=Math.max(0,stamp-last);last=stamp;stage.dataset.phase=reduced?'hero':elapsed<180?'focus':elapsed<900?'hero':'exit';if(elapsed>=(reduced?240:1180)){finish();return;}raf=request(tick);};
- const start=()=>{if(!live()||started)return;started=true;clearTimeout(wait);raf=request(tick);};
- const loaded=()=>{if(!live())return;if(typeof figure.decode==='function'){try{Promise.resolve(figure.decode()).then(start,start);}catch{start();}}else start();};
- const wait=setTimeout(start,1800);figure.addEventListener('load',loaded);figure.addEventListener('error',start);if(figure.complete&&figure.naturalWidth>0)loaded();
- const visibility=()=>{last=null;root.dataset.cinematicPaused=String(doc.hidden);};doc.addEventListener('visibilitychange',visibility);
- ui.command(panel,'继续公演',finish).dataset.action='encore-continue';
- return()=>{if(disposed)return;disposed=true;clearTimeout(wait);if(raf!==null)cancel(raf);doc.removeEventListener('visibilitychange',visibility);figure.removeEventListener('load',loaded);figure.removeEventListener('error',start);};
+ const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches===true;
+ card.dataset.reducedMotion=String(reduced);
+ let frame,started;
+ const request=window.requestAnimationFrame?.bind(window)??(callback=>setTimeout(()=>callback(Date.now()),16));
+ const cancel=window.cancelAnimationFrame?.bind(window)??clearTimeout;
+ const tick=now=>{
+   if(ui.disposed||ui.root||ui.scene._battleEnded||ui.scene._battlePaused||ui.scene.publicPerformerRun?.choiceOpen||document.hidden){complete();return;}
+   started??=now;
+   const elapsed=now-started;
+   if(elapsed>=980){complete();return;}
+   card.dataset.phase=reduced?'hero':elapsed<120?'focus':elapsed<770?'hero':'exit';
+   frame=request(tick);
+ };
+ frame=request(tick);
+ return ()=>{cancel(frame);card.remove();};
 }
