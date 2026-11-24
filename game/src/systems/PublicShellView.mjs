@@ -1,3 +1,4 @@
+import {mountShowbillMenu} from './ShowbillMenus.mjs';
 import { PUBLIC_CHAPTERS } from '../utils/publicCampaign.mjs';
 import {getChapterContent} from '../utils/publicChapterContent.mjs';
 import { loadPublicProfile, getPublicCampaignProgress,
@@ -449,7 +450,8 @@ export class PublicShellView {
     if(owner){compactHierarchyPage(this,main,model);composeSecondaryScene(this,main);}
     this.navigation();
     owner?mountHierarchyUi(this):mountOwnerGeneratedUi(this);
-    if(owner)mountSecondaryUi(this);
+    if(owner){mountSecondaryUi(this);mountShowbillMenu(this,main,model);}
+    else delete this.root.dataset.edition;
     if(this.newRunConfirmation)renderNewRunConfirmation(this);
     main.scrollTop = scrollTop;
     if(owner&&this.page==='inventory'&&this.pendingInventoryDetailId){

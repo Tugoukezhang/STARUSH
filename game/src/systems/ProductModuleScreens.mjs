@@ -70,6 +70,7 @@ function scene(view, root, model, member) {
   backdrop.src = page === 'events' ? CHAPTER_VENUE_ART[model.chapter.id]
     : venueScene ? 'art/venue-shell-20261026/venue.webp'
       : companion ? 'art/companion-room-20261031/lounge.webp' : 'art/home-comic-backstage-20261022/backstage.webp';
+  if (page === 'recruitment' && isUserCastEnabled()) backdrop.src = 'art/showbill/archive.webp';
   backdrop.alt = ''; backdrop.width = venueScene || companion ? 1024 : 768;
   backdrop.height = venueScene || companion ? 1536 : page === 'events' ? 512 : 1280;
   const copy = view.element('div', 'pm-scene-copy', undefined, stage);
@@ -367,7 +368,7 @@ function services(view, root, model) {
   const session = view.scene._sessionExperience;
   root.dataset.consoleStudio = '268'; root.dataset.consolePage = 'services';
   root.querySelector('.pm-scene').hidden = true;
-  const desk=view.element('img','cs-desk',undefined,root);desk.src='art/console-studio-20261102/desk.webp';desk.alt='';desk.draggable=false;
+  const desk=view.element('img','cs-desk',undefined,root);desk.src='art/showbill/archive.webp';desk.alt='';desk.draggable=false;
   root=view.element('section','cs-local-console',undefined,root);
   view.element('h3', 'cs-heading', '本机记录', root).dataset.consoleLetter = 'local';
   const ledger = view.element('div', 'pm-local-state', undefined, root);

@@ -37,7 +37,8 @@ test('one summary owns saved snapshot; three config tools; one start; header/nav
   for (const node of ['.ui-preflight-stage', '.ui-preflight-venue', '.ui-preflight-portrait', '.ui-preflight-caption', '.ui-preflight-actor'])
     assert.ok(h.query(node), node);
   assert.equal(h.query('.ui-preflight-caption').dataset.uiLetter, 'chapter-' + model.chapter.id);
-  assert.equal(h.query('.ui-preflight-actor').dataset.uiLetter, model.member.id);
+  assert.equal(h.query('.ui-preflight-actor').dataset.confirmedName, model.member.id);
+  assert.equal(h.query('.ui-preflight-actor').textContent, model.member.name);
   const brief = h.query('.ui-preflight-brief');
   assert.ok(brief.contains(h.query('.ui-preflight-facts')));
   assert.equal(h.query('.ui-preflight-facts').textContent, `阶位 ${model.preparation.trainingLevel} · 未装备配件`);

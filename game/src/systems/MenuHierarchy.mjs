@@ -23,6 +23,7 @@ export function renderHierarchyNavigation(view,roots,page,rootIdOf) {
   for(const {id,navigation:{label,icon}} of roots.filter(row=>OWNER_ROOTS.includes(row.id))){
     const button=view.button(nav,label,()=>view.openRoot(id),{className:'ui-nav-root',nav:id,icon,lineIcon:true,iconOnly:true});
     button.dataset.uiIcon=ROOT_ICONS[id];
+    const caption=view.element('span','showbill-nav-label',label,button);caption.setAttribute('aria-hidden','true');
     if(id==='roster')button.dataset.action='choose-member';
     if(id===page){button.setAttribute('aria-current','page');button.disabled=true;}
     else if(id===active)button.setAttribute('aria-current','location');
@@ -183,7 +184,7 @@ function backstage(view,main) {
   screen.dataset.consoleStudio='268';screen.dataset.consolePage='backstage';
   hide(screen.querySelector('.pm-scene'),screen.querySelector('.pm-directory'),screen.querySelector('.pm-footer'));
   const desk=view.element('img','cs-desk',undefined,null);
-  desk.src='art/console-studio-20261102/desk.webp';desk.alt='';desk.draggable=false;desk.setAttribute('aria-hidden','true');
+  desk.src='art/showbill/console.webp';desk.alt='';desk.draggable=false;desk.setAttribute('aria-hidden','true');
   screen.insertBefore(desk,screen.children[0]);
   const grid=screen.querySelector('.pm-shortcuts');grid.classList.add('ui-backstage-grid');
   for(const page of ['lounge','venue'])hide(grid.querySelector(`[data-category=${page}]`));

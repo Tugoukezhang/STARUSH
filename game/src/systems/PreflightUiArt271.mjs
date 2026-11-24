@@ -6,8 +6,6 @@ export function mountPreflightUi271(view,root){
   const title=root.querySelector('.shell-brand').querySelector('h1');
   delete title.dataset.uiLetter;for(const image of title.querySelectorAll('.ui-letter-art'))image.remove();
   title.textContent='开演前确认';title.dataset.flightLetter='preflight';title.setAttribute('aria-label','开演前确认');
-  const start=root.querySelector('[data-action=start]');delete start.dataset.uiLetter;
-  for(const image of start.querySelectorAll('.ui-letter-art'))image.remove();start.dataset.flightLetter='start';
   for(const[action,key]of [['cancel-new-run','keep'],['confirm-new-run','restart']])for(const button of root.querySelectorAll('[data-action='+action+']'))button.dataset.flightLetter=key;
   const stage=root.querySelector('.ui-preflight-stage');
   const status=view.element('span','flight-loading-status',undefined,stage);status.setAttribute('role','status');status.setAttribute('aria-live','polite');

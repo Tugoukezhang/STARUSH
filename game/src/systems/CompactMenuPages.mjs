@@ -29,11 +29,14 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   const scene=view.element('div','ui-home-scene',undefined,view.root.parentNode);
   scene.setAttribute('aria-hidden','true');
   const background=view.element('img','ui-room-background',undefined,scene);
-  background.src='art/hierarchy-ui-20261101/backstage.webp';background.alt='';background.draggable=false;
+  background.src='art/showbill/stage.webp';background.alt='';background.draggable=false;
   view.homeSceneDispose=()=>scene.remove();
   const spaces=view.element('nav','ui-home-spaces',undefined,main);spaces.setAttribute('aria-label','后台空间');
   for(const [page,label,icon]of [['lounge','陪伴','companion'],['venue','场馆','venue'],['backstage','巡演后台','backstage']]){
-    iconTool(view,spaces,label,icon,()=>view.showPage(page),'home-open-'+page).dataset.uiWidget='true';
+    const tool=iconTool(view,spaces,label,icon,()=>view.showPage(page),'home-open-'+page);
+    delete tool.dataset.uiIcon;
+    tool.querySelector('.ui-sr-label').className='home-space-name';
+    view.icon({lounge:'users',venue:'clapperboard',backstage:'route'}[page],tool,true);
   }
   const stage=view.element('section','ui-home-stage',undefined,main);
   const portrait=view.button(stage,'与'+model.member.name+'互动',()=>{}, {className:'ui-home-portrait',action:'portrait-interact'});
@@ -45,13 +48,19 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   const caption=view.element('div','ui-home-caption',undefined,dock);
   const identity=view.element('strong','ui-home-identity',model.member.name,caption);identity.dataset.uiLetter=model.member.id;
   const chapter=view.element('strong','ui-home-chapter',model.chapter.name,caption);
-  chapter.dataset.uiLetter=chapterLetter(model.chapter.id);
+
   const actions=view.element('div','ui-home-primary',undefined,dock);
   const hasResume=getPublicBattleCheckpointAvailability().available&&!!view.options.onResume;
-  const play=view.button(actions,hasResume?'开始新公演':'开始公演',()=>view.showPage('preflight'),{className:'ui-primary-command ui-start-illustration',action:'start'});
-  play.replaceChildren();const startArt=view.element('img','ui-start-art',undefined,play);startArt.src='art/home-integrity-20261025/start.png';startArt.alt='';startArt.draggable=false;
+  const play=view.button(actions,hasResume?'开始新公演':'开始公演',()=>view.showPage('preflight'),{className:'ui-primary-command showbill-start',action:'start'});
+  play.replaceChildren();view.element('span','showbill-play-label',play.getAttribute('aria-label'),play);
+  view.icon('arrow-right',play,true);
   if(hasResume){play.title='开始新公演：确认后替换中途记录';}
   renderContinue(view,dock,actions,model);
+  const progress=view.element('div','home-tour-progress',undefined,dock);
+  view.element('span','','巡演通关',progress);
+  const meter=view.element('progress','',undefined,progress);
+  meter.max=model.chapters.length;meter.value=model.clearedCount;meter.setAttribute('aria-label','巡演通关章节');
+  view.element('strong','',model.clearedCount+' / '+model.chapters.length,progress);
   const resume=actions.querySelector('[data-action=resume-run]');if(resume){resume.dataset.uiLetter='resume';resume.className='ui-secondary-command';}
   if(model.recovery||model.hasPendingSave){
     const warning=view.element('section','ui-home-save-warning',undefined,main);
@@ -212,5 +221,5 @@ export function renderCompactPreflight(view,main,model,{start}){
   for(const button of tools.children)button.dataset.uiWidget='true';
   tools.querySelector('[data-ui-icon=switch]').dataset.uiIcon='member';
   const footer=view.element('footer','ui-preflight-footer');
-  const command=view.button(footer,'确认开演',start,{className:'ui-primary-command',action:'start'});command.dataset.uiLetter='open';command.dataset.flightLetter='start';
+  const command=view.button(footer,'确认开演',start,{className:'showbill-deploy',action:'start'});view.icon('play',command,true);
 }

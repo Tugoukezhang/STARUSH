@@ -1,3 +1,4 @@
+import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
 import{openHierarchySheet}from'./HierarchySheets.mjs';
 
 export function compactChallengeMenu(view,main,model){
@@ -15,6 +16,20 @@ export function compactChallengeMenu(view,main,model){
   const gate=view.element('section','thin-challenge-gate',undefined,null);gate.setAttribute('role','status');
   const icon=view.element('span','thin-challenge-lock',undefined,gate);icon.dataset.uiIcon='lock';
   gate.append([...main.children].find(row=>row.classList.contains('shell-save-status')));main.insertBefore(gate,hero.nextSibling);
+  if(main.dataset.availability==='locked'){
+   const access=model.performance.modes.find(mode=>mode.modeId===(trial?'finale-trial':'rehearsal'));
+   const list=view.element('ul','showbill-gate-stops',undefined,null);
+   list.setAttribute('aria-label','开放此模式所需通关章节');
+   for(const id of access.requiredChapterIds){
+    const chapter=model.chapters.find(row=>row.id===id);
+    const stop=view.element('li','',undefined,list);
+    const image=view.element('img','',undefined,stop);
+    image.src=CHAPTER_VENUE_ART[id];image.alt='';
+    view.element('strong','',chapter.name,stop);
+    view.element('span','',access.missingChapterIds.includes(id)?'待通关':'已通关',stop);
+   }
+   main.insertBefore(list,gate.nextSibling);
+  }
   if(!trial){
    main.querySelector('.rehearsal-stage-tabs').hidden=true;main.querySelector('.rehearsal-focus').hidden=true;main.querySelector('.challenge-stages').hidden=true;
    const start=view.root.querySelector('[data-action=rehearsal-start]');start.hidden=true;
