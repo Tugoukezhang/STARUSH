@@ -19,7 +19,7 @@ export const PUBLIC_SHELL_ROUTES=Object.freeze([
   {id:'lounge',title:'成员休息室',domainId:'members',rootId:'desk',parentId:'desk'},
   {id:'venue',title:'场馆事务',domainId:'venue',rootId:'desk',parentId:'desk'},
   {id:'events',title:'公演企划',domainId:'operations',rootId:'desk',parentId:'backstage'},
-  {id:'recruitment',title:'成员邀请',domainId:'operations',rootId:'desk',parentId:'backstage'},
+  {id:'recruitment',title:'成员介绍',domainId:'operations',rootId:'desk',parentId:'backstage'},
   {id:'sideplay',title:'练习广场',domainId:'performance',rootId:'desk',parentId:'backstage'},
   {id:'services',title:'设置与服务',domainId:'foundation',rootId:'desk',parentId:'backstage'},
 ].map(row=>Object.freeze({...row,moduleId:getPublicPageModuleId(row.id)})));

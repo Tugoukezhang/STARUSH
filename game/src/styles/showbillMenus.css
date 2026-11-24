@@ -552,3 +552,20 @@
   & .pg-command-copy small {display:block;margin-top:5px;white-space:normal;color:#405865;font:600 13px/18px system-ui,sans-serif}
   & .ps-entry-enter {width:18px;height:18px;filter:brightness(.35)}
 }
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=recruitment] {
+  & .shell-content {padding:0;background:#f5eee1}
+  & .product-module-screen[data-product-page=recruitment] {
+    width:100%;max-width:100%;min-width:0;min-height:100%;margin:0;padding:0 12px 14px;box-sizing:border-box;
+    gap:10px;background:#f5eee1;color:#203746;justify-content:flex-start;
+  }
+  & .pm-scene {align-self:stretch;flex:none;width:calc(100% + 24px);max-width:none;margin:0 -12px;height:clamp(164px,32vh,278px)}
+  & .pm-cast-strip {gap:6px;padding:0;margin:0}
+  & button.pm-cast-option {display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;min-height:76px;padding:5px 2px;gap:3px;
+    background:#fffaf1;border:1px solid #bdc0b7;border-radius:10px 3px 10px 3px;color:#213748;font:750 13px/17px system-ui,sans-serif}
+  & .pm-cast-option .pm-member-headshot {width:39px;height:39px;object-fit:cover;border-radius:8px}
+  & .pm-cast-option[aria-pressed=true] {outline:0;background:#ffe5a0;border:2px solid #344954}
+  & .pm-dossier {margin:0;padding:14px;border:0;border-left:4px solid #dc9b5b;border-radius:2px 12px 2px 12px;background:#213646;color:#fff6e5}
+  & .pm-dossier .pm-role-name {color:#ffdb87}
+  & [data-action=recruitment-open-roster] {width:100%;min-height:46px;margin:0;justify-content:center;background:#ffda70;border:2px solid #283e49;border-radius:10px 3px 10px 3px;color:#1f3440;font:800 16px/20px system-ui,sans-serif}
+}
