@@ -98,9 +98,12 @@ function performerKeepout(s,camera){
 export function layoutPublicObjectiveGuidance(p,origin,{width=375,height=667,avoid=[],tagWidth:tw=TAG_W,tagHeight:th=TAG_H,fallbackBelow=false}={}){
  const ring={x:p.x-RING/2,y:p.y-RING/2,w:RING,h:RING};
  if(p.x>=RING/2&&p.x<=width-RING/2&&p.y>=TOP+RING/2&&p.y<=height-MARGIN-RING/2&&!avoid.some(c=>hits(ring,c))){
-  const x=clamp(p.x-tw/2,MARGIN,width-MARGIN-tw),above=p.y-RING/2-GAP-th>=TOP;
-  const tag={x,y:above?p.y-RING/2-GAP-th:p.y+RING/2+GAP,w:tw,h:th};
-  if(tag.y+th<=height-MARGIN&&!avoid.some(c=>hits(tag,c)))return {mode:'target',ring,tag,bearing:above?90:-90};
+  const x=clamp(p.x-tw/2,MARGIN,width-MARGIN-tw);
+  // Keep the ring on a visible target when only one side of its label is obstructed.
+  for (const [y,bearing] of [[p.y-RING/2-GAP-th,90],[p.y+RING/2+GAP,-90]]) {
+   const tag={x,y,w:tw,h:th};
+   if(y>=TOP&&y+th<=height-MARGIN&&!avoid.some(c=>hits(tag,c)))return {mode:'target',ring,tag,bearing};
+  }
  }
  // Edge bearing: walk from the performer toward the target and stop at the safe frame or the target, whichever is first.
  const xmin=MARGIN+tw/2,xmax=width-MARGIN-tw/2,ymin=TOP+th/2,ymax=height-MARGIN-th/2;
@@ -163,9 +166,9 @@ export function syncPublicObjectiveGuidance(scene,{doc=globalThis.document}={}){
  }
  const avoid=keepouts(scene,camera.height),calibration=target.state==='calibration',bossCue=target.state==='boss-weak-point'||target.state==='boss-body';
  const causal=target.state==='blocker'&&!!target.hint;
- const detail=calibration||bossCue||causal||!!target.hint,performer=detail||scene.actorPresentation?.userCastView?.heavyRig?.active?performerKeepout(scene,camera):null;
+ const detail=calibration||bossCue||causal||!!target.hint,performer=performerKeepout(scene,camera);
  if(performer)avoid.push(performer);
- const layout=layoutPublicObjectiveGuidance(point,origin,{width:camera.width,height:camera.height,avoid,...(detail?{tagWidth:176,tagHeight:56,fallbackBelow:true}:{})});
+ const layout=layoutPublicObjectiveGuidance(point,origin,{width:camera.width,height:camera.height,avoid,fallbackBelow:!!performer||detail,...(detail?{tagWidth:176,tagHeight:56}:{})});
  if(detour||bossCue||causal)layout.bearing=Math.round(Math.atan2(point.y-origin.y,point.x-origin.x)*1800/Math.PI)/10;
  const changed=owner.lastKey!==target.key,reduced=doc?.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches===true;
  if(changed)owner.root.dataset.motion=owner.rebase||reduced?'steady':'arrive';

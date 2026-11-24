@@ -95,3 +95,33 @@
   cursor:pointer;
 }
 #game-loading progress {accent-color:#75d9c9;}
+
+/* Preserve the illustrated icon size while giving narrow-screen controls a full finger target. */
+#game-container #public-shell[data-cast=owner-three] :is(
+  .shell-header .shell-icon-button,
+  [data-action="goals-rules"], [data-action="challenge-rules"],
+  [data-action="library-sheet-study"], [data-action="library-sheet-guide"],
+  [data-action="prepared-preflight"], [data-action="venue-edit"]
+) {
+  min-inline-size: 44px !important;
+  min-block-size: 44px !important;
+}
+
+/* The three other tools have lettering baked into their icon; weapon art has none. */
+#game-container #public-shell[data-page=roster] [data-action="roster-sheet-ability"] {
+  position: relative;
+}
+#game-container #public-shell[data-page=roster] .member-profession-glyph {
+  translate: 0 -6px;
+}
+#game-container #public-shell[data-page=roster] [data-action="roster-sheet-ability"]::after {
+  content: "能力";
+  position: absolute;
+  inset: auto 4px 0;
+  border-radius: 3px;
+  background: #1c3033ef;
+  color: #f3f8f5;
+  font: 600 11px/15px system-ui, sans-serif;
+  text-align: center;
+  pointer-events: none;
+}

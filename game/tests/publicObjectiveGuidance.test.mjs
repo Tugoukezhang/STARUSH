@@ -122,3 +122,12 @@ test('source and style stay timer-free, non-interactive, admitted art/font, read
  const refs=[...css.matchAll(/url\('([^']+)'\)/g),...src.matchAll(/'(art\/[^']+)'/g)].map(m=>m[1].replace(/^\//,''));assert(refs.length>0);
  for(const p of refs){assert(existsSync(new URL('../public/'+p,import.meta.url)),'admitted asset exists: '+p);assert.match(p,/^art\/(formal-ui-20261016|playable-ui-20261018|battle-signals-b293|rooftop-supply-297)\//);}
 });
+
+test('an ordinary paint target keeps its ring with the caption below a nearby performer',()=>{
+ const doc=createDocument(),s=fixture({devices:[{id:'lamp',sourceLabel:'灯',required:true,x:200,y:420}]});
+ s.actorPresentation={userCastView:{cueExclusionBounds:()=>({x:183,y:350,right:218,bottom:376})}};
+ syncPublicObjectiveGuidance(s,{doc});
+ assert.equal(root(doc).dataset.mode,'target');
+ assert.equal(root(doc).dataset.bearing,'-90');
+ assert.equal(part(doc,'ring').hidden,false);
+});
