@@ -535,3 +535,20 @@
   & .ps-more .pg-letter {display:none}
   & .ps-more .pg-sr {position:static;display:inline;width:auto;height:auto;clip-path:none;color:#253c4a;font:750 15px/20px system-ui,sans-serif}
 }
+
+/* Backstage practice: equipment and target are the two destinations in this room. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=sideplay] .product-module-screen[data-practice-studio] {
+  justify-content:flex-start;gap:0;padding:0;background:#f3ecdf;color:#213744;
+  & .ps-stage {position:static;flex:none;z-index:auto;width:100%;height:clamp(125px,29vh,245px);object-position:50% 48%;filter:none}
+  & .ps-actor {position:relative;align-self:flex-start;margin:-42px 12px 14px;padding:5px 10px;background:#182d3df2;color:white;border-left:3px solid #ffda70;border-radius:2px}
+  & .ps-entries {display:grid;gap:12px;margin:14px 12px;padding:0}
+  & .ps-entry {display:grid;position:relative;grid-template-columns:minmax(74px,33%) 1fr 20px;gap:12px;align-items:center;min-height:clamp(90px,15vh,134px);padding:0 12px 0 0;overflow:hidden;
+    background:#fff9eb;color:#213744;border:1px solid #bec3b8;border-radius:14px 4px 14px 4px;box-shadow:0 2px 0 #20354325}
+  & .ps-entry-art {width:100%;height:100%;min-height:inherit;margin:0;border-radius:0;object-fit:cover}
+  & .pg-command-copy {min-width:0;align-self:center}
+  & .pg-command-letter {height:auto}
+  & .pg-command-letter .pg-letter {display:none}
+  & .pg-command-letter .pg-sr {position:static;display:block;width:auto;height:auto;clip-path:none;color:#1b3446;font:850 18px/24px system-ui,sans-serif}
+  & .pg-command-copy small {display:block;margin-top:5px;white-space:normal;color:#405865;font:600 13px/18px system-ui,sans-serif}
+  & .ps-entry-enter {width:18px;height:18px;filter:brightness(.35)}
+}
