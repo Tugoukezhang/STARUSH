@@ -48,6 +48,9 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   const hasResume=getPublicBattleCheckpointAvailability().available&&!!view.options.onResume;
   const play=view.button(actions,hasResume?'开始新公演':'开始公演',()=>view.showPage('preflight'),{className:'ui-primary-command showbill-start',action:'start'});
   play.replaceChildren();view.element('span','showbill-play-label',play.getAttribute('aria-label'),play);
+  const venue=view.element('img','home-ticket-art',undefined,play);
+  venue.src='art/showbill/stop-'+model.chapter.id+'.webp';venue.alt='';venue.draggable=false;
+  play.append(chapter);
   view.icon('arrow-right',play,true);
   if(hasResume){play.title='开始新公演：确认后替换中途记录';}
   renderContinue(view,dock,actions,model);

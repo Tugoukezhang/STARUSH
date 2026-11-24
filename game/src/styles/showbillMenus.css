@@ -451,3 +451,65 @@
     & .ui-item-slot .equipment-art-slot {width:34px;height:38px}
   }
 }
+
+/* Raised paper objects are the four destinations. The action ticket sits on the scene. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  & .ui-root-nav {
+    min-height:62px;gap:4px;padding:3px 7px 4px;
+    background:#fff8e8;border-top:2px solid #273442;box-shadow:0 -2px 0 #faf3dc;
+  }
+  & .ui-root-nav .ui-nav-root {
+    display:grid;grid-template-rows:32px auto;justify-items:center;align-content:center;gap:0;
+    min-height:50px;border:0;border-radius:7px;background:none;color:#304053;box-shadow:none;
+  }
+  & .ui-root-nav .ui-nav-root[aria-current] {
+    background:linear-gradient(170deg,#fff4c4,#ffdf78);color:#172c38;border-radius:12px 3px 12px 3px;
+    box-shadow:inset 0 -3px #bd852c;
+  }
+  & .ui-root-nav .ui-nav-root > :is(svg,.ui-glyph) {display:none}
+  & .ui-root-nav .ui-nav-root > img.nav-sticker {
+    display:block;position:static;inset:auto;width:37px;height:34px;max-width:none;max-height:none;
+    align-self:end;object-fit:contain;opacity:1;clip-path:none;transform:none;
+  }
+  & .ui-root-nav .ui-nav-root[aria-current] > img.nav-sticker {width:43px;height:39px}
+  & .ui-root-nav .showbill-nav-label {font:800 13px/16px system-ui,sans-serif;color:inherit}
+  &[data-page=desk] .ui-home-dock {
+    position:absolute;z-index:3;inset:auto 0 65px;min-height:0;height:auto;
+    display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);grid-template-areas:"identity play" "progress play";
+    align-items:end;gap:0 10px;padding:0 10px 8px;border:0;background:none;box-shadow:none;pointer-events:none;
+  }
+  & .ui-home-caption {grid-area:identity;justify-self:start;max-width:100%;padding:5px 9px;background:#fff8e8;color:#1b3040;border-left:4px solid #ef8154;box-shadow:2px 2px #192d3b}
+  & .ui-home-caption .ui-home-identity {color:#233141!important;font-size:clamp(15px,4.5vw,21px)!important;line-height:1.15!important}
+  & .home-tour-progress {grid-area:progress;align-self:start;width:100%;min-width:0;box-sizing:border-box;gap:3px;margin:3px 0 0;padding:3px 6px;background:#1b3044ec;color:#fff3d8;border:0;border-radius:2px}
+  & .ui-home-primary {grid-area:play;justify-self:stretch;display:grid;gap:4px;pointer-events:auto}
+  & .ui-home-primary .showbill-start {
+    position:relative;display:grid;grid-template-columns:minmax(0,1fr) 19px;align-content:center;
+    justify-items:start;align-items:center;gap:2px 0;min-height:64px;width:100%;overflow:hidden;
+    padding:5px 8px 5px clamp(40px,13vw,63px);
+    border:2px solid #243341;border-radius:13px 3px 15px 4px;
+    background:linear-gradient(111deg,#ffdf91 5%,#fff1c4 44%,#ffda65 100%)!important;
+    box-shadow:2px 3px 0 #243341;
+  }
+  & .showbill-start .home-ticket-art {display:block;position:absolute;left:-3px;bottom:2px;width:35%;height:90%;object-fit:contain}
+  & .showbill-start .showbill-play-label {grid-column:1;grid-row:2;white-space:nowrap;font:900 clamp(17px,4.8vw,24px)/1.1 system-ui,sans-serif}
+  & .showbill-start .ui-home-chapter {grid-column:1 / -1;grid-row:1;position:static;display:block;color:#584526;font:700 12px/16px system-ui,sans-serif}
+  & .showbill-start > svg {grid-column:2;grid-row:2;width:18px;height:18px}
+  & .ui-home-primary .ui-secondary-command {min-height:44px}
+  &[data-page=desk] .ui-home-stage {bottom:clamp(52px,8vh,74px)}
+  &[data-page=desk] .ui-home-spaces {top:12px;left:auto;right:10px}
+  &[data-page=inventory] .inv-context {
+    position:relative;isolation:isolate;overflow:hidden;min-height:74px;align-content:center;
+    padding-inline:14px min(26%,100px);color:#fff8dd;border-radius:3px 13px 3px 13px;
+    background:linear-gradient(105deg,#1c3444 48%,#356075 100%);
+  }
+  &[data-page=inventory] .inv-context::after {
+    content:"";position:absolute;inset:3px 5px 3px auto;width:26%;pointer-events:none;
+    background:url('/art/infield/nav-inventory.webp') center/contain no-repeat;
+  }
+  &[data-page=roster] .ui-roster-lane .ui-actor-switch {
+    border:2px solid #283c48;background:#ffe395;box-shadow:2px 2px #283c48;
+  }
+  & .ui-preflight-brief {background:#223847;border-top:3px solid #e2b969}
+  & .ui-preflight-plans .ui-preflight-entry {background:#fff0d1;color:#213440;border-left:3px solid #dba457}
+}
+#game-container:has(#public-shell[data-page=desk]) > .ui-home-scene > .ui-room-background {height:calc(100% - 60px)}

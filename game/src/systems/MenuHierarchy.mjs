@@ -24,6 +24,8 @@ export function renderHierarchyNavigation(view,roots,page,rootIdOf) {
   for(const {id,navigation:{label,icon}} of roots.filter(row=>OWNER_ROOTS.includes(row.id))){
     const button=view.button(nav,label,()=>view.openRoot(id),{className:'ui-nav-root',nav:id,icon,lineIcon:true,iconOnly:true});
     button.dataset.uiIcon=ROOT_ICONS[id];
+    const sticker=view.element('img','nav-sticker',undefined,button);
+    sticker.src='art/infield/nav-'+id+'.webp';sticker.alt='';sticker.draggable=false;
     const caption=view.element('span','showbill-nav-label',label,button);caption.setAttribute('aria-hidden','true');
     if(id==='roster')button.dataset.action='choose-member';
     if(id===page){button.setAttribute('aria-current','page');button.disabled=true;}
