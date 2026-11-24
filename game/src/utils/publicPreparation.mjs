@@ -13,8 +13,8 @@ export const PUBLIC_EQUIPMENT = Object.freeze([
   // behavior marks a chapter item whose effect is prose, not stats; it is not the runtime trigger.
   {id:'rain_relay', name:'雨后继电器', chapterId:'raincheck', unlock:'首通雨后返场',
     description:'安可释放后，向380范围内最近的最多两座可涂染设施各补色至多20点；不穿墙，不跳过校音与配色顺序。Boss阶段不触发。', behavior:true},
-  {id:'travelling_nozzle',name:'随行喷头',performerId:'sakura',ownerName:'步枪手',art:'nozzle',
-    unlock:'步枪手首次通关任意章节',description:'扫射每一拍从当前站位出手；朝向不重新锁定。'},
+  {id:'travelling_nozzle',name:'随行喷头',performerId:'sakura',ownerName:'战术女武神',art:'nozzle',
+    unlock:'战术女武神首次通关任意章节',description:'扫射每一拍从当前站位出手；朝向不重新锁定。'},
   {id:'return_edge',name:'回响风铃',performerId:'kai',ownerName:'翡翠风歌',art:'lens',
     unlock:'翡翠风歌首次通关任意章节',description:'突进结束后在起点追加一次回风；人不返回，不提供无敌。'},
   {id:'delayed_hammer',name:'回响书签',performerId:'enjo',ownerName:'蔚蓝魔法师',art:'tempo',

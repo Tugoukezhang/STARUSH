@@ -50,7 +50,36 @@ test('real inventory and workshop views reflect shared states; preview does not 
  const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.seed(['opening','neon','encore']);
  const h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'inventory'});h.scene.create();
  try{const model=e.loadRuntime('utils/publicEquipmentInventory.mjs');assert.equal(typeof model.getPublicEquipmentInventory,'function');
-  const before=e.storage.getItem('starush.public-profile');for(const id of ['sakura','kai','enjo']){h.click('[data-member='+id+']');const m=model.getPublicEquipmentInventory(e.profile.loadPublicProfile(),id);for(const row of m.items){const button=h.query('[data-inventory-item='+row.id+']');assert.equal(button.dataset.state,row.owned?'owned':'locked');assert.equal(button.dataset.compatible,String(row.compatible));assert.equal(button.dataset.equipped,String(row.equipped));}assert.equal(h.query('.inventory-loadout').dataset.equipment,m.equippedItem?.id||'none');}assert.equal(e.storage.getItem('starush.public-profile'),before);
-  h.scene._publicShell.showPage('workshop');const m=model.getPublicEquipmentInventory(e.profile.loadPublicProfile(),'enjo');for(const row of m.compatibleItems)assert.equal(h.query('[data-equipment='+row.id+']').dataset.state,!row.owned?'locked':row.equipped?'equipped':'available');assert.equal(e.storage.getItem('starush.public-profile'),before);
+  const before=e.storage.getItem('starush.public-profile');
+  const view=h.scene._publicShell;
+  for(const id of ['sakura','kai','enjo']){
+    view.showPage('roster');
+    h.click('[data-action=actor-switch]');
+    h.click('[data-member='+id+']');
+    h.click('[data-nav=inventory]');
+    const m=model.getPublicEquipmentInventory(e.profile.loadPublicProfile(),id);
+    const context=h.query('.inv-context');
+    assert.equal(context.dataset.performer,id);
+    assert.equal(context.dataset.deployed,String(id==='sakura'));
+    assert.match(h.query('.inv-context-slot').textContent,new RegExp(m.equippedItem?.name||'空'));
+    for(const row of m.items){
+      const button=h.query('[data-inventory-item='+row.id+']');
+      assert.equal(button.dataset.state,!row.owned?'locked':!row.compatible?'incompatible':row.equipped?'equipped':'owned');
+      assert.equal(button.dataset.owned,String(row.owned));
+      assert.equal(button.dataset.equipped,String(row.equipped));
+    }
+    h.click('[data-inventory-item=travelling_nozzle]');
+    assert.match(h.query('.inv-detail-role').textContent,/战术女武神专用/);
+    assert.match(h.query('.inv-source-unlock').textContent,/战术女武神首次通关/);
+    assert.equal(h.query('[data-action=equip-selected]').disabled,id!=='sakura');
+    h.click('[data-action=sheet-close]');
+    view.showPage('workshop');h.click('[data-action=workshop-sheet-equipment]');
+    for(const row of m.compatibleItems){
+      const option=h.query('.ui-sheet').querySelector('[data-equipment='+row.id+']');
+      assert.equal(option.dataset.state,!row.owned?'locked':row.equipped?'equipped':'available');
+    }
+    h.click('[data-action=sheet-close]');
+  }
+  assert.equal(e.storage.getItem('starush.public-profile'),before);
  }finally{h.shutdown();}
 });
