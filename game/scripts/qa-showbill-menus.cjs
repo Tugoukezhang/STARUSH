@@ -32,6 +32,23 @@ async function inspectMenu(page, id, width, output) {
       nodes.map(node=>({text:node.textContent.trim(),size:parseFloat(getComputedStyle(node).fontSize)})));
     assert(names.length===5 && names.every(name=>name.text && name.size>=14),'all five map labels are legible');
   }
+  if (id === 'goals') {
+    const contrasts = await shell.locator('.pg-goal-choice').evaluateAll(buttons => {
+      const luminance = color => {
+        const [r,g,b] = color.match(/[0-9.]+/g).slice(0,3).map(value => {
+          const channel = Number(value)/255;
+          return channel <= 0.04045 ? channel/12.92 : ((channel+0.055)/1.055)**2.4;
+        });
+        return r*0.2126+g*0.7152+b*0.0722;
+      };
+      return buttons.map(button => {
+        const paper = luminance(getComputedStyle(button).backgroundColor);
+        const ink = luminance(getComputedStyle(button.querySelector('small')).color);
+        return (Math.max(paper,ink)+0.05)/(Math.min(paper,ink)+0.05);
+      });
+    });
+    assert(contrasts.length===3 && contrasts.every(value=>value>=4.5),'goal instructions must stay readable in every state: '+contrasts);
+  }
   await page.screenshot({path:path.join(output,width+'-'+id+'.png')});
   // Scroll real containers to each enabled command; an overlay intercepting its centre is a failure.
   return shell.evaluate(root => {
@@ -84,6 +101,12 @@ async function inspectNavigation(page, output) {
   assert.equal(await page.evaluate(()=>document.activeElement.dataset.action),'tour-reference');
   await action('tour-reference').tap();
   await action('tour-records').tap();
+  const ticket = page.locator('.archive-record').first();
+  const box = await ticket.boundingBox();
+  await page.touchscreen.tap(box.x+18,box.y+box.height/2);
+  await page.waitForSelector('#public-shell[data-page=chapterArchive]');
+  await back();
+  await page.waitForSelector('#public-shell[data-page=records]');
   await back();
   assert.equal(await page.evaluate(()=>document.activeElement.dataset.action),'tour-reference');
   await action('tour-reference').tap();
@@ -95,10 +118,12 @@ async function inspectNavigation(page, output) {
 async function main() {
   const output = process.env.STARUSH_QA_OUTPUT || path.join(os.tmpdir(),'starush-showbill');
   fs.mkdirSync(output,{recursive:true});
+  const cleared = process.env.STARUSH_QA_PROFILE === 'cleared';
+  const sizes = cleared ? [[390,844]] : [[320,568],[390,844],[430,932]];
   const browser = await chromium.launch({headless:true,executablePath:process.env.STARUSH_CHROMIUM||undefined,
     args:['--no-sandbox','--disable-dev-shm-usage']});
   try {
-    for (const [width,height] of [[320,568],[390,844],[430,932]]) {
+    for (const [width,height] of sizes) {
       const page = await browser.newPage({viewport:{width,height},hasTouch:true,isMobile:true});
       const errors = [];
       page.on('pageerror',error => errors.push(error.message));
@@ -109,9 +134,30 @@ async function main() {
       });
       await page.goto(process.env.STARUSH_QA_URL||'http://127.0.0.1:5173/',{waitUntil:'domcontentloaded'});
       await page.waitForSelector('#public-shell[data-page=desk]');
+      if (cleared) {
+        await page.evaluate(async () => {
+          const api = await import('/src/utils/publicRunProgression.mjs');
+          const {PUBLIC_RULESET_ID} = await import('/src/utils/releaseIdentity.mjs');
+          for (const chapterId of ['opening','neon','encore','raincheck','homecoming']) {
+            api.recordPublicRun({runId:'menu-review-'+chapterId,chapterId,performerId:'sakura',victory:true,
+              rulesetId:PUBLIC_RULESET_ID,durationMs:40000,performance:{hitCount:2,actions:4}});
+          }
+          if (api.loadPublicProfile().campaign.chapterClears.homecoming !== 1) throw Error('missing fifth clear');
+        });
+        await page.reload();
+        await page.waitForSelector('#public-shell[data-page=desk]');
+      }
       const routes = await page.evaluate(async () => (await import('/src/utils/publicShellNavigation.mjs')).PUBLIC_SHELL_ROUTES.map(row=>row.id));
       let commands = 0;
       for (const id of routes) commands += await inspectMenu(page,id,width,output);
+      if(cleared){
+        await page.evaluate(()=>window.qaMenu().showPage('goals'));
+        assert.equal(await page.locator('.run-goal-option:enabled').count(),3);
+        await page.locator('[data-goal=pace]').tap();
+        assert.match(await page.locator('.challenge-selection').innerText(),/40\.000秒/);
+        await page.locator('[data-action=confirm-goal]').tap();
+        await page.waitForSelector('#public-shell[data-page=preflight]');
+      }
       if(width===390) await inspectNavigation(page,output);
       assert.deepEqual(errors,[]);
       console.log(width+'×'+height+' · '+routes.length+' pages · '+commands+' control centres');
