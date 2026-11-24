@@ -120,9 +120,6 @@ function tour(view,main,model) {
     copy.querySelector('strong').dataset.uiLetter=`chapter-${row.dataset.chapter}`;
     // Subtitle is prose; name + real state stay, and the row's aria-label carries both.
     for(const child of copy.children)if(child.tagName==='SPAN')child.hidden=true;
-    const state=copy.querySelector('small');
-    if(state&&state.textContent.includes('01'))state.textContent='通关星光初演后开放';
-    if(state&&state.textContent.includes('02'))state.textContent='通关霓虹街口后开放';
   }
   const detail=view.element('div','ui-tour-detail',undefined,box);
   for(const node of [main.querySelector('.tour-chapter-plan'),main.querySelector('.tour-dossier'),main.querySelector('[data-action=chapter-goals]')])

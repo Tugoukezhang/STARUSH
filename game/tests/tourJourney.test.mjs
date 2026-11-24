@@ -3,8 +3,15 @@ function setup(cleared=[],chapter='opening'){
  const s=loadScenes();s.loadRuntime('utils/userCast.mjs').configureUserCast(true);s.seed(cleared,chapter);
  const h=s.harness(s.TourRouteScene,{suppressDebugAutoStart:true});h.scene.create();return{s,h};
 }
-test('tour includes the authored fourth destination, not tabs plus one giant stage preview',()=>{
- const {h}=setup();assert(h.query('.journey-map'));assert.equal(h.query('.journey-route').querySelectorAll('.shell-chapter-option').length,4);
+test('the map shows five ordered venues and names the previous venue on each locked stop',()=>{
+ const {h}=setup();assert(h.query('.journey-map'));const stops=h.query('.journey-route').querySelectorAll('.shell-chapter-option');
+ assert.deepEqual(Array.from(stops,row=>row.dataset.chapter),['opening','neon','encore','raincheck','homecoming']);
+ for(let i=1;i<stops.length;i++){
+  const previousName=stops[i-1].querySelector('.shell-chapter-copy').querySelector('strong').textContent;
+  const label='通关'+previousName+'后开放';
+  assert.equal(stops[i].querySelector('.shell-chapter-state').textContent,label);
+  assert(stops[i].getAttribute('aria-label').includes(label));assert(stops[i].disabled);
+ }
  assert.equal(h.query('[data-chapter=neon]').disabled,true);assert.equal(h.query('[data-action=confirm-chapter]').hidden,true);h.shutdown();
 });
 test('chapter preview opens real story eligibility and does not write or unlock progress',()=>{

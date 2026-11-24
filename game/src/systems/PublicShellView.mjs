@@ -707,8 +707,7 @@ export class PublicShellView {
       this.element('span','',chapter.subtitle,copy);
       const state=!chapter.unlocked ? `通关${model.chapters[chapter.ordinal-2].name}后开放`
         : chapter.cleared ? '已通关 · 可再演' : '可挑战';
-      const compactState=isUserCastEnabled()&&!chapter.unlocked?`通关0${chapter.ordinal-1}后开放`:state;
-      this.element('small','shell-chapter-state',compactState,copy);
+      this.element('small','shell-chapter-state',state,copy);
       if(isUserCastEnabled()){row.setAttribute('aria-label',`${chapter.name}，${state}`);row.title=state;}
       this.icon(!chapter.unlocked ? 'lock' : selected ? 'check' : 'arrow-right',row,isUserCastEnabled());
       row.style.setProperty('--chapter-accent',hex(chapter.accent));

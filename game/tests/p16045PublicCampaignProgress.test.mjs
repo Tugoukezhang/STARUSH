@@ -3,9 +3,9 @@ import test from 'node:test';
 import * as api from '../src/utils/publicRunProgression.mjs';
 import { createPublicPreparation } from '../src/utils/publicPreparation.mjs';
 
-const chapterIds = ['opening', 'neon', 'encore', 'raincheck'];
+const chapterIds = ['opening', 'neon', 'encore', 'raincheck', 'homecoming'];
 const emptyCampaign = () => ({ version: 1, selectedChapterId: 'opening', clearedChapterIds: [],
-  chapterClears: { opening: 0, neon: 0, encore: 0, raincheck: 0 }, completed: false });
+  chapterClears: { opening: 0, neon: 0, encore: 0, raincheck: 0, homecoming: 0 }, completed: false });
 // Storage fixture only: the exact bytes an old three-chapter finisher has on disk.
 const oldThreeChapterCampaign = () => ({ version: 1, selectedChapterId: 'encore',
   clearedChapterIds: ['opening', 'neon', 'encore'],
@@ -65,7 +65,7 @@ test('legacy v1 migration credits historical clears only to opening and preserve
   const state = memoryStorage(original);
   const profile = api.loadPublicProfile(state.storage);
   assert.deepEqual(profile.campaign, { ...emptyCampaign(), clearedChapterIds: ['opening'],
-    chapterClears: { opening: 3, neon: 0, encore: 0, raincheck: 0 } });
+    chapterClears: { opening: 3, neon: 0, encore: 0, raincheck: 0, homecoming: 0 } });
   for (const key of ['version', 'selectedId', 'attempts', 'clears', 'clearsByPerformer', 'recordedRunIds']) {
     assert.deepEqual(profile[key], original[key]);
   }
@@ -80,25 +80,28 @@ test('legacy zero-clear records remain at opening with no inferred progress', ()
   assert.deepEqual(api.loadPublicProfile(state.storage).campaign, emptyCampaign());
 });
 
-test('an old completed three-chapter save migrates without writing and still needs a real fourth victory', () => {
+test('an old completed three-chapter save migrates without writing and still needs victories in both new chapters', () => {
   const original = { ...legacyProfile(3), campaign: oldThreeChapterCampaign() };
   const state = memoryStorage(original);
   const loaded = api.loadPublicProfile(state.storage);
   assert.deepEqual(loaded.campaign, { version: 1, selectedChapterId: 'encore',
     clearedChapterIds: ['opening', 'neon', 'encore'],
-    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 0 }, completed: false });
+    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 0, homecoming: 0 }, completed: false });
   assert.equal(loaded.persisted, true);
   assert.equal(api.isPublicChapterUnlocked('raincheck', loaded), true);
   assert.equal(state.writes, 0, 'migration is read-only until an intentional save');
   assert.equal(state.raw, JSON.stringify(original));
-  const finished = finish(state, 'raincheck', 'old-save-raincheck');
-  assert.deepEqual(finished.campaign, { version: 1, selectedChapterId: 'raincheck',
+  const fourth = finish(state, 'raincheck', 'old-save-raincheck');
+  assert.equal(fourth.campaign.completed, false);
+  assert.equal(fourth.campaign.selectedChapterId, 'homecoming');
+  const finished = finish(state, 'homecoming', 'old-save-homecoming');
+  assert.deepEqual(finished.campaign, { version: 1, selectedChapterId: 'homecoming',
     clearedChapterIds: chapterIds,
-    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 1 }, completed: true });
-  assert.equal(finished.clears, 4);
-  assert.equal(finished.attempts, 6);
+    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 1, homecoming: 1 }, completed: true });
+  assert.equal(finished.clears, 5);
+  assert.equal(finished.attempts, 7);
   assert.equal(finished.persisted, true);
-  assert.equal(state.writes, 1);
+  assert.equal(state.writes, 2);
   assert.deepEqual(JSON.parse(state.raw).campaign, finished.campaign);
 });
 
@@ -116,7 +119,7 @@ test('a future campaign version in old three-chapter shape is never migrated or 
 test('campaign helper returns isolated sanitized data and unlocks only a cleared predecessor chain', () => {
   const { getPublicCampaignProgress, isPublicChapterUnlocked } = campaignApi();
   const profile = api.loadPublicProfile(memoryStorage(legacyProfile()).storage);
-  assert.deepEqual(chapterIds.map(id => isPublicChapterUnlocked(id, profile)), [true, true, false, false]);
+  assert.deepEqual(chapterIds.map(id => isPublicChapterUnlocked(id, profile)), [true, true, false, false, false]);
   for (const id of [null, undefined, '', 'unknown', '__proto__', {}, 1]) {
     assert.equal(isPublicChapterUnlocked(id, profile), false);
   }
@@ -157,7 +160,7 @@ test('chapter resolution prefers a valid unlocked request then the unlocked sele
   assert.equal(resolvePublicChapterId('neon', null), 'opening');
 });
 
-test('four real victories unlock each next chapter and only the fourth ends the finite campaign', () => {
+test('five real victories unlock each next chapter and only the fifth ends the finite campaign', () => {
   const { isPublicChapterUnlocked } = campaignApi();
   const state = memoryStorage();
   let profile = finish(state);
@@ -173,20 +176,24 @@ test('four real victories unlock each next chapter and only the fourth ends the 
   profile = finish(state, 'encore');
   assert.deepEqual(profile.campaign, { version: 1, selectedChapterId: 'raincheck',
     clearedChapterIds: ['opening', 'neon', 'encore'],
-    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 0 }, completed: false });
+    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 0, homecoming: 0 }, completed: false });
   assert.equal(isPublicChapterUnlocked('raincheck', profile), true);
   assert.equal(profile.clears, 3);
   assert.deepEqual(api.loadPublicProfile(memoryStorage(state.raw).storage), profile);
   profile = finish(state, 'raincheck');
-  assert.deepEqual(profile.campaign, { version: 1, selectedChapterId: 'raincheck',
-    clearedChapterIds: chapterIds, chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 1 }, completed: true });
-  assert.equal(profile.clears, 4);
-  assert.equal(profile.attempts, 4);
-  assert.equal(profile.clearsByPerformer.kai, 4);
+  assert.equal(profile.campaign.completed, false);
+  assert.equal(profile.campaign.selectedChapterId, 'homecoming');
+  assert.equal(isPublicChapterUnlocked('homecoming', profile), true);
+  profile = finish(state, 'homecoming');
+  assert.deepEqual(profile.campaign, { version: 1, selectedChapterId: 'homecoming',
+    clearedChapterIds: chapterIds, chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 1, homecoming: 1 }, completed: true });
+  assert.equal(profile.clears, 5);
+  assert.equal(profile.attempts, 5);
+  assert.equal(profile.clearsByPerformer.kai, 5);
   assert.equal(isPublicChapterUnlocked('fourth', profile), false);
   assert.equal(isPublicChapterUnlocked('fifth', profile), false);
   assert.deepEqual(api.loadPublicProfile(memoryStorage(state.raw).storage), profile);
-  assert.deepEqual(finish(state, 'raincheck'), profile, 'the same fourth run cannot count twice');
+  assert.deepEqual(finish(state, 'homecoming'), profile, 'the same fifth run cannot count twice');
 });
 
 test('fourth-chapter failure or a reused run id cannot complete the campaign', () => {
@@ -208,7 +215,7 @@ test('four clears are not four chapters: replays never skip or complete the four
   for (const runId of ['o1', 'o2', 'o3', 'o4']) profile = finish(openingOnly, 'opening', runId);
   assert.equal(profile.clears, 4);
   assert.deepEqual(profile.campaign.clearedChapterIds, ['opening']);
-  assert.deepEqual(profile.campaign.chapterClears, { opening: 4, neon: 0, encore: 0, raincheck: 0 });
+  assert.deepEqual(profile.campaign.chapterClears, { opening: 4, neon: 0, encore: 0, raincheck: 0, homecoming: 0 });
   assert.equal(profile.campaign.completed, false);
   assert.equal(api.isPublicChapterUnlocked('raincheck', profile), false);
   const threeChapters = memoryStorage();
@@ -216,7 +223,7 @@ test('four clears are not four chapters: replays never skip or complete the four
   profile = finish(threeChapters, 'opening', 'replay-before-fourth');
   assert.equal(profile.clears, 4);
   assert.deepEqual(profile.campaign.clearedChapterIds, ['opening', 'neon', 'encore']);
-  assert.deepEqual(profile.campaign.chapterClears, { opening: 2, neon: 1, encore: 1, raincheck: 0 });
+  assert.deepEqual(profile.campaign.chapterClears, { opening: 2, neon: 1, encore: 1, raincheck: 0, homecoming: 0 });
   assert.equal(profile.campaign.completed, false);
   assert.equal(api.isPublicChapterUnlocked('raincheck', profile), true);
 });
@@ -234,24 +241,24 @@ test('failure records its actual chapter but changes no campaign progress or cha
   assert.equal(failure.clears, 1);
 });
 
-test('replaying a cleared chapter increments only its own count and never creates a fifth chapter', () => {
+test('replaying a cleared chapter increments only its own count and never creates a sixth chapter', () => {
   campaignApi();
   const state = memoryStorage();
   for (const id of chapterIds) finish(state, id);
   const replay = finish(state, 'opening', 'replay-opening');
-  assert.deepEqual(replay.campaign.chapterClears, { opening: 2, neon: 1, encore: 1, raincheck: 1 });
+  assert.deepEqual(replay.campaign.chapterClears, { opening: 2, neon: 1, encore: 1, raincheck: 1, homecoming: 1 });
   assert.deepEqual(replay.campaign.clearedChapterIds, chapterIds);
   assert.equal(replay.campaign.completed, true);
   assert.equal(replay.campaign.selectedChapterId, 'opening');
-  assert.equal(replay.clears, 5);
+  assert.equal(replay.clears, 6);
   const finalReplay = finish(state, 'raincheck', 'replay-raincheck');
-  assert.deepEqual(finalReplay.campaign.chapterClears, { opening: 2, neon: 1, encore: 1, raincheck: 2 });
+  assert.deepEqual(finalReplay.campaign.chapterClears, { opening: 2, neon: 1, encore: 1, raincheck: 2, homecoming: 1 });
   assert.deepEqual(finalReplay.campaign.clearedChapterIds, chapterIds);
   assert.equal(finalReplay.campaign.completed, true);
   assert.equal(finalReplay.campaign.selectedChapterId, 'raincheck');
-  assert.equal(finalReplay.clears, 6);
-  assert.equal(api.isPublicChapterUnlocked('fifth', finalReplay), false);
-  assert.deepEqual(finish(state, 'fifth', 'fifth-run'), finalReplay);
+  assert.equal(finalReplay.clears, 7);
+  assert.equal(api.isPublicChapterUnlocked('sixth', finalReplay), false);
+  assert.deepEqual(finish(state, 'sixth', 'sixth-run'), finalReplay);
 });
 
 test('missing chapter defaults to opening but explicit unknown or locked settlements are rejected', () => {
@@ -313,23 +320,23 @@ test('campaign sanitization derives ordered clears and completion from validated
     chapterClears: { opening: 1, neon: 0, encore: 1, raincheck: 0, unknown: 99 },
     clearedChapterIds: ['encore', 'opening', 'opening', 'unknown'], completed: true, cloud: true } };
   assert.deepEqual(getPublicCampaignProgress(profile), { ...emptyCampaign(),
-    clearedChapterIds: ['opening'], chapterClears: { opening: 1, neon: 0, encore: 0, raincheck: 0 } });
+    clearedChapterIds: ['opening'], chapterClears: { opening: 1, neon: 0, encore: 0, raincheck: 0, homecoming: 0 } });
   assert.equal(isPublicChapterUnlocked('encore', profile), false);
   assert.equal(profile.campaign.chapterClears.encore, 1, 'sanitization must not mutate caller data');
 });
 
-test('claimed completion in a direct helper input needs four ordered counts backed by root clears', () => {
+test('claimed completion in a direct helper input needs five ordered counts backed by root clears', () => {
   const { getPublicCampaignProgress, isPublicChapterUnlocked } = campaignApi();
   const claim = chapterClears => ({ ...legacyProfile(), campaign: { ...emptyCampaign(),
     selectedChapterId: 'raincheck', clearedChapterIds: chapterIds, chapterClears, completed: true } });
-  const three = claim({ opening: 1, neon: 1, encore: 1, raincheck: 0 });
+  const three = claim({ opening: 1, neon: 1, encore: 1, raincheck: 0, homecoming: 0 });
   assert.deepEqual(getPublicCampaignProgress(three), { version: 1, selectedChapterId: 'raincheck',
     clearedChapterIds: ['opening', 'neon', 'encore'],
-    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 0 }, completed: false });
+    chapterClears: { opening: 1, neon: 1, encore: 1, raincheck: 0, homecoming: 0 }, completed: false });
   const skipped = claim({ opening: 1, neon: 1, encore: 0, raincheck: 1 });
   assert.deepEqual(getPublicCampaignProgress(skipped), { ...emptyCampaign(),
     clearedChapterIds: ['opening', 'neon'],
-    chapterClears: { opening: 1, neon: 1, encore: 0, raincheck: 0 } });
+    chapterClears: { opening: 1, neon: 1, encore: 0, raincheck: 0, homecoming: 0 } });
   assert.equal(isPublicChapterUnlocked('raincheck', skipped), false);
   const unbacked = claim({ opening: 1, neon: 1, encore: 1, raincheck: 1 });
   assert.deepEqual(getPublicCampaignProgress(unbacked), emptyCampaign(), 'four counts cannot exceed three root clears');
@@ -386,25 +393,25 @@ test('storage write failure retains usable session unlocks and retries without c
   assert.equal(JSON.parse(state.raw).campaign.selectedChapterId, 'neon');
 });
 
-test('a failed save of the fourth victory stays unpersisted and its retry counts once', () => {
+test('a failed save of the fifth victory stays unpersisted and its retry counts once', () => {
   const state = memoryStorage();
-  for (const id of ['opening', 'neon', 'encore']) finish(state, id);
+  for (const id of chapterIds.slice(0, -1)) finish(state, id);
   const raw = state.raw;
   state.failWrite = true;
-  const unsaved = finish(state, 'raincheck');
+  const unsaved = finish(state, 'homecoming');
   assert.equal(unsaved.persisted, false);
   assert.equal(unsaved.campaign.completed, true);
   assert.equal(state.raw, raw);
-  assert.equal(JSON.parse(state.raw).campaign.completed, false, 'disk has not recorded the fourth victory');
+  assert.equal(JSON.parse(state.raw).campaign.completed, false, 'disk has not recorded the fifth victory');
   state.failWrite = false;
-  const retried = finish(state, 'raincheck');
+  const retried = finish(state, 'homecoming');
   assert.equal(retried.persisted, true);
-  assert.equal(retried.clears, 4);
-  assert.equal(retried.attempts, 4);
-  assert.equal(retried.campaign.chapterClears.raincheck, 1);
+  assert.equal(retried.clears, 5);
+  assert.equal(retried.attempts, 5);
+  assert.equal(retried.campaign.chapterClears.homecoming, 1);
   assert.equal(JSON.parse(state.raw).campaign.completed, true);
   const writes = state.writes;
-  assert.deepEqual(finish(state, 'raincheck'), retried);
+  assert.deepEqual(finish(state, 'homecoming'), retried);
   assert.equal(state.writes, writes);
 });
 
@@ -434,7 +441,7 @@ for (const source of ['read', 'write']) {
     assert.equal(unsaved.attempts, attempts + 1);
     assert.equal(unsaved.clears, clears + 1);
     assert.equal(unsaved.clearsByPerformer.kai, clears + 1);
-    assert.deepEqual(unsaved.campaign.chapterClears, { opening: 1, neon: 1, encore: 0, raincheck: 0 });
+    assert.deepEqual(unsaved.campaign.chapterClears, { opening: 1, neon: 1, encore: 0, raincheck: 0, homecoming: 0 });
     assert.equal(unsaved.campaign.selectedChapterId, 'encore');
     assert.equal(unsaved.lastRun.chapterId, 'neon');
     assert.equal(unsaved.persisted, false);
@@ -522,7 +529,7 @@ test('removing campaign within a known current save cannot remigrate neon clears
   const fallback = api.loadPublicProfile(state.storage);
   assert.equal(fallback.persisted, false);
   assert.deepEqual(fallback.campaign, known.campaign);
-  assert.deepEqual(finish(state, 'encore').campaign.chapterClears, { opening: 1, neon: 1, encore: 1, raincheck: 0 });
+  assert.deepEqual(finish(state, 'encore').campaign.chapterClears, { opening: 1, neon: 1, encore: 1, raincheck: 0, homecoming: 0 });
 });
 
 test('a valid replacement profile supersedes the last-known-good unlock history', () => {
