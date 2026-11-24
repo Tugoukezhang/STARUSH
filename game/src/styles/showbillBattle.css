@@ -96,3 +96,38 @@
   & .session-setting input {accent-color:#206d78}
   & .session-header {border-color:#dcb266}
 }
+
+/* A weapon, its name and its real charge share one thumb target. */
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] {
+  & .mihoyo-skills {right:10px;gap:12px}
+  & .skill-orb[data-art=stage][data-command-feedback=staged] {
+    width:72px;height:84px;isolation:isolate;box-sizing:border-box;
+    border-radius:16px 6px 16px 6px;background:#1c3140f5;
+    box-shadow:inset 0 0 0 1.5px #aebbb9,0 2px 1px #101d28a6;
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged]::before {
+    inset:auto 8px 6px;height:3px;mask:none;border:0;border-radius:2px;
+    background:linear-gradient(to right,var(--command-ink) var(--charge-width),#566875 var(--charge-width));
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged]::after {
+    inset:3px 5px auto;width:auto;height:43px;border:0;border-radius:12px 4px 12px 4px;
+    background:linear-gradient(135deg,#375763,#1b3140);box-shadow:none;
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready] {
+    box-shadow:inset 0 0 0 2px var(--command-ink),0 2px 2px #101d28ab;
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready]::after {
+    background:linear-gradient(130deg,#6b7160,#2a4652);
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged] > .battle-command-art {
+    inset:2px auto auto 8px;width:56px;height:44px;object-fit:contain;object-position:center;padding:0;
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged] > :is(#special-label,#encore-label) {
+    inset:44px 2px auto;width:auto;height:16px;border-radius:0;background:none;color:#fff5dd;font:850 14px/16px system-ui,sans-serif;
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged] > :is(#special-state,#encore-state) {
+    inset:60px 2px auto;width:auto;height:14px;background:none;color:#c6d7d8;font:700 12px/14px system-ui,sans-serif;
+  }
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready] > :is(#special-state,#encore-state) {color:var(--command-ink)}
+  & .skill-orb[data-art=stage][data-command-feedback=staged] .battle-command-phase {inset:auto 8px 6px;width:auto;height:3px}
+}

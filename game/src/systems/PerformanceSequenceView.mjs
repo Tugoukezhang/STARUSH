@@ -93,7 +93,7 @@ export function mountEncoreSequence(ui,host,id,complete,cleared=0){
  card.setAttribute('aria-atomic','true');
  card.dataset.performer=id;
  card.dataset.phase='focus';
- image(card,'performance-encore-portrait',portrait(id));
+ image(card,'performance-encore-portrait',getActiveUserCastArt(id)?.avatar||portrait(id));
  const copy=node(card,'div','encore-card-copy');
  node(copy,'strong','encore-stage-action','安可返场');
  const identity=node(copy,'p','performance-encore-name');

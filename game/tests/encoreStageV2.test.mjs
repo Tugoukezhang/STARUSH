@@ -33,7 +33,7 @@ test('three matching portraits appear in a live status card with no pause, input
    assert.equal(f.card().parentNode,f.e.document.getElementById('game-container'));
    assert.equal(f.card().getAttribute('role'),'status');
    assert.equal(f.card().querySelector('.performance-encore-name').textContent,title+' · 清弹 7');
-   assert(f.card().querySelector('img').src.includes(asset));
+   assert(f.card().querySelector('img').src.endsWith(asset+'-20261123/avatar.png'));
    assert.equal(f.ui.root,null);assert.equal(f.ui.isBlocking(),false);assert(!f.s._battlePaused);
    assert(f.s.input.enabled && f.s.input.keyboard.enabled);assert.equal(f.ui.showEncore(),false);
    f.step(0);f.step(150);assert.equal(f.card().dataset.phase,'hero');

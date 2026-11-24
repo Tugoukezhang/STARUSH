@@ -11,7 +11,7 @@
   &[data-performer=kai] {--flash:#a1ecd0;--shadow:#267366}
   &[data-performer=enjo] {--flash:#b1daff;--shadow:#575793}
   & .performance-encore-portrait {
-    position:absolute;left:0;top:0;height:100%;width:47%;object-fit:cover;object-position:50% 13%;
+    position:absolute;left:0;top:0;height:100%;width:46%;object-fit:cover;object-position:50% 40%;
     mask-image:linear-gradient(95deg,#000 80%,transparent);z-index:-1;
   }
   & .encore-card-copy {width:55%;box-sizing:border-box;padding-right:8%;text-align:left}

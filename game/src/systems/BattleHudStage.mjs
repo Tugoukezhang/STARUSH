@@ -51,6 +51,7 @@ export function syncBattleHudStage(scene,doc,member,action,encore){
   if(!meter){meter=doc.createElement('span');meter.className='battle-command-charge';for(const [key,value]of Object.entries({role:'meter','aria-valuemin':'0','aria-valuemax':'100'}))meter.setAttribute(key,value);button.append(meter);}
   meter.setAttribute('aria-label',id==='special'?member.actionName+'充能':'安可充能');meter.setAttribute('aria-valuenow',String(fact.charge));
   button.style.setProperty('--charge-turn',String(fact.charge/100)+'turn');
+  button.style.setProperty('--charge-width',fact.charge+'%');
   button.dataset.art='stage';button.dataset.chargeState=fact.state;button.setAttribute('title',button.getAttribute('aria-label'));
   syncBattleCommandFeedback(scene,doc,button,id,member,fact);
  }

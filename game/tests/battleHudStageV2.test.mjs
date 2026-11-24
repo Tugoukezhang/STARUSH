@@ -21,7 +21,7 @@ for(const [id,name,icon]of [['sakura','战术女武神','rifle'],['kai','翡翠�
  const b=f.doc.getElementById('skill-special'),ring=b.querySelector('.battle-command-charge');
  assert.equal(b.dataset.commandIcon,icon);assert.equal(b.querySelector('img.battle-command-art').getAttribute('aria-hidden'),'true');assert.equal(b.querySelector('svg'),null,'no code-drawn command icon');
  assert.equal(ring.getAttribute('role'),'meter');assert.equal(ring.getAttribute('aria-valuenow'),'42');assert.equal(ring.getAttribute('aria-valuemax'),'100');
- assert.equal(b.style['--charge-turn'],'0.42turn');assert.equal(f.doc.getElementById('skill-encore').style['--charge-turn'],'0.73turn');
+ assert.equal(b.style['--charge-width'],'42%');assert.equal(b.style['--charge-turn'],'0.42turn');assert.equal(f.doc.getElementById('skill-encore').style['--charge-turn'],'0.73turn');
  assert.equal(f.doc.getElementById('skill-special').getAttribute('aria-disabled'),'true');assert.equal(JSON.stringify(f.abilities),before);
  assert.equal(f.scene._battleHeader,undefined,'no old header lettering owner');
  const first=b.querySelector('img.battle-command-art'),face=f.avatar.querySelector('img');f.sync();assert.equal(b.querySelectorAll('img').length,1);assert.equal(b.querySelector('img.battle-command-art'),first);assert.equal(f.avatar.querySelector('img'),face);
