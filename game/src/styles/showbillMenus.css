@@ -513,3 +513,25 @@
   & .ui-preflight-plans .ui-preflight-entry {background:#fff0d1;color:#213440;border-left:3px solid #dba457}
 }
 #game-container:has(#public-shell[data-page=desk]) > .ui-home-scene > .ui-room-background {height:calc(100% - 60px)}
+
+/* The programme leads with the selected venue, followed by the actual tour stops. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=events] .product-module-screen[data-program-studio] {
+  box-sizing:border-box;padding:12px;gap:9px;background:#f6f0e3;color:#203545;justify-content:flex-start;
+  & .pg-venue {position:relative;isolation:isolate;overflow:hidden;flex:1 0 175px;max-height:52dvh;border:0;border-radius:15px 4px 15px 4px}
+  & .pg-venue-art {position:absolute;inset:0;display:block;z-index:0;opacity:1;filter:none}
+  & .pg-venue-plate {z-index:1;box-sizing:border-box;margin:0;padding:40px 14px 12px;background:linear-gradient(transparent,#142737eb 90%);border:0;color:#fff8e8}
+  & .pg-venue-plate h2 {font:850 24px/1.2 system-ui,sans-serif;color:#fff5d9}
+  & .ps-status {color:#203545}
+  & .ps-chapter-state {background:#204a4b;color:white;border-radius:5px}
+  & :is(.ps-progress,.pg-track-count) {color:#294551}
+  & .program-stop-strip {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;gap:4px;margin:0;padding:3px 0 7px;list-style:none}
+  & .program-stop-strip li {border-bottom:3px solid #c8c6b9;min-width:0}
+  & .program-stop-strip img {display:block;width:100%;height:clamp(42px,8vh,69px);object-fit:contain}
+  & .program-stop-strip [data-state=locked] img {filter:grayscale(.88);opacity:.66}
+  & .program-stop-strip [data-state=cleared] {border-color:#3c9287}
+  & .program-stop-strip [aria-current] {border-color:#cc792c}
+  & .pg-command.pg-primary[data-command-face=plain]:enabled {background:#ffdc71!important;color:#172f3d;border:2px solid #283e49;border-radius:12px 3px 12px 3px}
+  & .ps-more {background:#fffaf0;border:1px solid #b9bbae;border-radius:6px;color:#253c4a}
+  & .ps-more .pg-letter {display:none}
+  & .ps-more .pg-sr {position:static;display:inline;width:auto;height:auto;clip-path:none;color:#253c4a;font:750 15px/20px system-ui,sans-serif}
+}

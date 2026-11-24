@@ -37,8 +37,6 @@ const STUDIO_ART = 'art/program-studio-20261101';
 export function renderProgramEvents(view, root, model, profile) {
   dropScene(root);
   root.dataset.programStudio = '267';
-  const backdrop = view.element('img', 'ps-stage', undefined, root);
-  backdrop.src = `${STUDIO_ART}/program-stage.webp`; backdrop.alt = ''; backdrop.draggable = false;
   const catalog = model.performance;
   const current = catalog.chapters.find(access => access.chapterId === model.chapter.id);
   const currentState = current.cleared ? 'cleared' : current.state;
@@ -54,6 +52,17 @@ export function renderProgramEvents(view, root, model, profile) {
   view.element('b', 'ps-chapter-state', STOP_LABELS[currentState], status).dataset.state = currentState;
   const progress = view.element('span', 'ps-progress', '通关 ', status);
   view.element('b', 'pg-track-count', `${catalog.clearedCount}/${catalog.chapterCount}`, progress);
+  const progressStrip = view.element('ol', 'program-stop-strip', undefined, root);
+  progressStrip.setAttribute('aria-label', '五站巡演进度');
+  for (const chapter of catalog.chapters) {
+    const stop = view.element('li', '', undefined, progressStrip);
+    stop.dataset.state = chapter.cleared ? 'cleared' : chapter.state;
+    if (chapter.chapterId === model.chapter.id) stop.setAttribute('aria-current', 'step');
+    const name = model.chapters.find(row => row.id === chapter.chapterId).name;
+    const image = view.element('img', '', undefined, stop);
+    image.src = 'art/showbill/stop-' + chapter.chapterId + '.webp';
+    image.alt = name + ' · ' + STOP_LABELS[stop.dataset.state]; image.draggable = false;
+  }
   go(view, root, 'tour', '巡演路线', model.chapter.name, 'tour', 'events-open-tour', 'tour', 'pg-command pg-primary');
 
   // Chapter track and goal list are read on demand; their hidden sections are borrowed by the sheet.
@@ -82,7 +91,8 @@ export function renderProgramEvents(view, root, model, profile) {
   letter(view, view.element('h3', '', undefined, head), 'program', '巡演企划');
   view.element('b', 'ps-sheet-count', `${catalog.clearedCount}/${catalog.chapterCount}`, head);
   const preview = view.element('figure', 'ps-current-venue', undefined, track);
-  art.alt = `${model.chapter.name}场地`; preview.append(art);
+  const previewArt = view.element('img', 'pg-venue-art', undefined, preview);
+  previewArt.src = art.src; previewArt.alt = model.chapter.name + '场地'; previewArt.draggable = false;
   const stops = view.element('ol', 'pg-stops', undefined, track);
   for (const [index, access] of catalog.chapters.entries()) {
     const state = access.cleared ? 'cleared' : access.state;

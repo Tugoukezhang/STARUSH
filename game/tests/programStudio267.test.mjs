@@ -29,13 +29,14 @@ test('events first view: current chapter scene, actual cleared count, one tour c
     const {s, h, before, catalog, model} = open('events', cleared);
     const page = h.query('.product-module-screen');
     assert.equal(page.dataset.programStudio, '267');
-    assert.equal(page.querySelector('.ps-stage').src, `${STUDIO}/program-stage.webp`);
+    assert.equal(page.querySelector('.program-stop-strip').children.length, catalog.chapterCount);
+    assert.equal(page.querySelector('.pg-venue-art').parentNode.className, 'pg-venue');
     assert.equal(page.querySelector('.pg-venue-art').src, `art/chapter-venues-20261024/${model.chapter.id}.webp`);
     assert.equal(page.querySelector('.pg-venue').querySelector('h2').textContent, model.chapter.name);
     const current = catalog.chapters.find(c => c.chapterId === model.chapter.id);
     assert.equal(page.querySelector('.ps-chapter-state').dataset.state, current.cleared ? 'cleared' : current.state);
     assert.equal(page.querySelector('.pg-track-count').textContent, `${catalog.clearedCount}/${catalog.chapterCount}`);
-    assert.equal(page.querySelector('.pg-track-count').textContent, `${cleared.length}/3`);
+    assert.equal(page.querySelector('.pg-track-count').textContent, `${cleared.length}/${catalog.chapterCount}`);
     assert.deepEqual(screenButtons(h), ['events-open-tour', 'events-chapters', 'events-goal-info', 'events-return']);
     assert.equal(page.querySelectorAll('.pg-primary').filter(shown).length, 1);
     assert.ok(h.query('[data-action=events-open-tour]').classList.contains('pg-primary'));
@@ -54,7 +55,7 @@ test('events first view: current chapter scene, actual cleared count, one tour c
   }
 });
 
-test('chapters sheet lists the three real chapters with real states, closes without writing and restores focus', () => {
+test('chapters sheet lists every registered chapter with real states, closes without writing and restores focus', () => {
   for (const cleared of [[], ['opening', 'neon', 'encore']]) {
     const {s, h, before, view, catalog, model} = open('events', cleared);
     const goalKind = view.goalKind;
@@ -62,13 +63,13 @@ test('chapters sheet lists the three real chapters with real states, closes with
     const sheet = h.query('dialog.ui-sheet');
     assert.ok(sheet.open); assert.equal(sheet.getAttribute('aria-label'), '章节进度'); assert.equal(sheet.dataset.programSheet, 'chapters');
     const stops = sheet.querySelectorAll('[data-program-chapter]');
-    assert.equal(stops.filter(shown).length, 3);
+    assert.equal(stops.filter(shown).length, catalog.chapterCount);
     assert.deepEqual(stops.map(n => n.dataset.programChapter), plain(catalog.chapters.map(c => c.chapterId)));
     assert.deepEqual(stops.map(n => n.dataset.state), plain(catalog.chapters.map(c => c.cleared ? 'cleared' : c.state)));
     assert.deepEqual(stops.map(n => n.querySelector('strong').textContent), plain(catalog.chapters.map(c => model.chapters.find(m => m.id === c.chapterId).name)));
     assert.equal(stops.filter(n => n.dataset.state === 'cleared').length, cleared.length);
     assert.equal(stops.find(n => n.getAttribute('aria-current') === 'step').dataset.programChapter, model.chapter.id);
-    assert.equal(sheet.querySelector('.ps-sheet-count').textContent, `${cleared.length}/3`);
+    assert.equal(sheet.querySelector('.ps-sheet-count').textContent, `${cleared.length}/${catalog.chapterCount}`);
     sheet.querySelector('[data-action=sheet-close]').click();
     assert.equal(h.query('dialog.ui-sheet'), null);
     assert.equal(h.document.activeElement, trigger, 'focus returns to the trigger');
