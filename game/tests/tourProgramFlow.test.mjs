@@ -42,22 +42,19 @@ test('each owner preview captions the actual authored story title without saving
   h.shutdown();
 });
 
-test('owner stop names and stop/command icons are native rather than baked lettering or bitmaps',()=>{
+test('each stop shows its own landmark, readable chapter name and a named preparation command',()=>{
   const {e,h}=setup();
   for(const chapter of e.model().chapters){
     const row=h.query('[data-chapter='+chapter.id+']');
     assert.equal(row.querySelector('strong').textContent,chapter.name);
-    assert.ok(!row.querySelector('.home-concept-art'));
-    assert.equal(row.querySelector('.menu-art'),null);
-    assert.ok(row.querySelector('svg'));
+    assert.equal(row.querySelector('.journey-landmark').src,'art/showbill/stop-'+chapter.id+'.webp');
+    if(!row.disabled){
+      row.click();
+      assert.equal(h.query('.journey-detail-name').textContent,chapter.name);
+      assert.equal(h.query('[data-action=journey-prepare]').getAttribute('aria-label'),'前往准备 · '+chapter.name);
+      h.click('[data-action=sheet-close]');
+    }
   }
-  for(const action of ['confirm-chapter','chapter-goals']){
-    const button=h.query('[data-action='+action+']');
-    assert.equal(button.querySelector('img'),null);
-    assert.ok(button.querySelector('svg'));
-  }
-  assert.equal(h.query('[data-action=confirm-chapter]').getAttribute('aria-label'),'\u786e\u8ba4\u573a\u5730\u5e76\u67e5\u770b\u51c6\u5907');
-  assert.equal(h.query('.shell-selection-footer').querySelectorAll('button').length,1);
   h.shutdown();
 });
 
@@ -68,12 +65,12 @@ test('owner inline confirmation saves the selected chapter and opens preflight r
     v.render();
     const before=plain(e.profile.loadPublicProfile());
     h.click('[data-chapter='+id+']');
-    h.click('[data-action=confirm-chapter]');
+    h.click('[data-action=journey-prepare]');
     assert.equal(v.page,'preflight');
     assert.equal(h.starts.length,0);
     const after=plain(e.profile.loadPublicProfile());
     assert.deepEqual(after,{...before,campaign:{...before.campaign,selectedChapterId:id}});
-    assert.equal(h.query('.preflight-team').dataset.performerId,'kai');
+    assert.equal(h.query('.ui-preflight-actor').textContent,'翡翠风歌');
     h.click('[data-action=start]');
     assert.equal(h.starts.at(-1)[1].campaignChapterId,id);
     assert.equal(h.starts.at(-1)[1].performerId,'kai');
@@ -84,14 +81,14 @@ test('owner inline confirmation saves the selected chapter and opens preflight r
 test('direct TourRouteScene confirmation uses the existing preflight adapter and return context',()=>{
   const {e,h}=setup({scene:'TourRouteScene'});
   h.click('[data-chapter=neon]');
-  h.click('[data-action=confirm-chapter]').click();
+  h.click('[data-action=journey-prepare]');
   assert.deepEqual(plain(h.starts),[['TitleScene',{suppressDebugAutoStart:true,openPage:'preflight',shellReturnPage:'tour'}]]);
   assert.equal(e.profile.loadPublicProfile().campaign.selectedChapterId,'neon');
   const data=h.starts[0][1];
   h.shutdown();
   const next=e.harness(e.TitleScene,data);next.scene.create();
   assert.equal(next.root.dataset.page,'preflight');
-  assert.equal(next.query('[data-preflight-manifest]').dataset.chapterId,'neon');
+  assert.equal(next.query('.ui-preflight-caption').dataset.uiLetter,'chapter-neon');
   next.shutdown();
 });
 
@@ -127,7 +124,7 @@ test('save failure or revoked unlock never navigates and retains visible failure
     h.click('[data-action='+action+']');
     assert.equal(v.page,'tour');assert.equal(h.starts.length,0);
     assert.equal(e.storage.getItem('starush.public-profile'),before);
-    assert.match(h.query('.shell-selection-footer').querySelector('[role=status]').textContent,/\u573a\u5730\u672a\u80fd\u4fdd\u5b58\u6216\u5df2\u4e0d\u53ef\u7528/);
+    assert.match(h.query('.shell-save-notice[role=status]').textContent,/\u573a\u5730\u672a\u80fd\u4fdd\u5b58\u6216\u5df2\u4e0d\u53ef\u7528/);
     assert.equal(v.selection.chapterId,e.model().chapter.id);
     h.shutdown();
   }

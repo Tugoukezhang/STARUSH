@@ -72,8 +72,14 @@ test('build guard rejects absent owner sources, mismatched routes, bad policies 
 
 test('real shell navigation exposes registered module identity without new roots or profile writes',()=>{
  ready();const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);const h=e.harness(e.TitleScene);h.scene.create();const shell=h.scene._publicShell,before=e.storage.getItem('starush.public-profile'),a=e.loadRuntime('utils/publicProductModules.mjs');
- for(const page of ['desk','roster','tour','inventory','records','workshop','preflight','playhub','goals','library','growth','finaleTrial','rehearsal','chapterArchive']){
-  shell.showPage(page);assert.equal(shell.root.dataset.moduleId,a.getPublicPageModuleId(page),page);assert.equal(shell.root.querySelector('.shell-navigation').querySelectorAll('[data-nav]').length,5);
+ const rootPages=['desk','roster','tour','inventory'];
+ const routes=e.loadRuntime('utils/publicShellNavigation.mjs').PUBLIC_SHELL_ROUTES;
+ for(const {id} of routes){
+  shell.showPage(id);
+  assert.equal(shell.root.dataset.moduleId,a.getPublicPageModuleId(id),id);
+  const bars=shell.root.querySelectorAll('.shell-navigation');
+  assert.equal(bars.length,rootPages.includes(id)?1:0,id);
+  if(bars.length)assert.deepEqual([...bars[0].querySelectorAll('[data-nav]')].map(button=>button.dataset.nav),rootPages,id);
  }
  assert.equal(e.storage.getItem('starush.public-profile'),before);h.shutdown();
 });
