@@ -42,14 +42,14 @@ test('all authored facilities and performer colors retain monotonic total progre
 test('drawn bar and tint retain earned progress at stage rollover without new input labels', () => {
   const chain = () => new Proxy({}, { get: (target, key) => key in target ? target[key] : () => proxy });
   const proxy = chain();
-  const device = { ...fresh(harbor), x: 200, y: 300, sprite: proxy, gfx: proxy, label: proxy,
-    barBg: proxy, barFill: { setPosition() { return this; }, setVisible(value) { this.visible = value; return this; }, setFillStyle() {} } };
+  const lines = [];
+  const gfx = {clear:()=>proxy,lineStyle(){},lineBetween:(...line)=>lines.push(line)};
+  const device = {...fresh(harbor), x:200, y:300, sprite:proxy, gfx, label:proxy};
   Object.assign(device, resolveChapterPaintHit(device, 14, 'pink'));
   const before = getDevicePresentation(device).tint;
   Object.assign(device, resolveChapterPaintHit(device, 14, 'pink'));
   assert.equal(drawDevicePresentation(device, 0), true);
-  assert.equal(device.barFill.width, 19);
-  assert.equal(device.barFill.visible, true);
+  assert.deepEqual(lines.at(-1), [180,331,200,331], 'half of the 40-unit inlay');
   assert.notEqual(getDevicePresentation(device).tint, 0xCED5D8);
   assert.notEqual(getDevicePresentation(device).tint, before);
 });
@@ -84,4 +84,25 @@ test('presentation does not remove phases or transfer excess paint across them',
   assert.equal(device.paint, 0);
   assert.equal(harbor.paintMax, 26);
   assert.equal(harbor.colorSequence.length, 2);
+});
+
+test('facility progress shows the accepted pigment in both render paths and one progress bar', () => {
+  const {PaintZoneSystem} = loadBattleScene({Phaser:{Scene:class {}}, includeOwners:true});
+  const zone = new PaintZoneSystem({});
+  for (const sprite of [true,false]) for (const [color,hex] of [['pink',0xff69b4],['blue',0x00ced1],['orange',0xff8c00]]) {
+    const strokes = [], inks = [];
+    const chain = new Proxy({}, {get:(_,key) => (...args) => {
+      if (key==='lineBetween') strokes.push(args);
+      if (key==='lineStyle') inks.push(args[1]);
+      return chain;
+    }});
+    const device = {...fresh(harbor),x:200,y:300,paintColor:color,paint:14,gfx:chain,label:null,
+      sprite:sprite ? chain : null,barBg:chain,barFill:{setPosition(){return this;},
+        setVisible(){return this;},setFillStyle(value){this.color=value;}}};
+    zone._redrawDevice(device);
+    if (sprite) {
+      assert.equal(inks.at(-1),hex,color);
+      assert.equal(strokes.filter(([,y1,,y2])=>y1===331 && y2===331).length,2,'one track and one fill');
+    } else assert.equal(device.barFill.color,hex,color);
+  }
 });

@@ -99,8 +99,13 @@ test('frontage bevel follows the actual building base, avoiding small props and 
       fillRoundedRect(...args){rects.push(args);return this;},strokeRoundedRect(){return this;},lineBetween(){return this;}};
     const prop={y:905,restorable:true,footprint:{x:160,y:810,width:140,height:90}};
     const small={...prop,footprint:{...prop.footprint,width:20}};
-    attachChapterFloorDetails({add:{graphics:()=>graphics}},{once(){}},id,-12,[prop,small]);
-    assert.deepEqual(rects[1].slice(0,3),[156,901,148]);
-    assert.equal(rects.length,6,'one two-layer threshold plus the four existing plates');
+    const scene={add:{graphics:()=>graphics}}, ground={once(){}};
+    attachChapterFloorDetails(scene,ground,id,-12,[]);
+    const surroundings=rects.splice(0);
+    attachChapterFloorDetails(scene,ground,id,-12,[prop,small]);
+    const threshold=rects.filter(([x,y])=>(x===156&&y===901)||(x===159&&y===902));
+    assert.deepEqual(threshold.map(rect=>rect.slice(0,3)),[[159,902,148],[156,901,148]]);
+    assert.deepEqual(rects.filter(rect=>!threshold.includes(rect)),surroundings,
+      'small props and existing chapter floor details keep their original shapes');
   }
 });

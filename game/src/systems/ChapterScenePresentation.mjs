@@ -162,7 +162,8 @@ export function getDevicePresentation(device, currentZone = 0) {
     width: device.sceneArt ? 42 : device.required ? 76 : 38, height: device.sceneArt ? 60 : device.required ? 76 : 38,
     alpha: locked ? 0.38 : suppressed ? 0.65 : 1,
     tint: locked || suppressed ? 0x89969F : mixColor(0xCED5D8, pigment, device.complete ? 0.72 : progress * 0.6),
-    accent: device.complete ? pigment : COLOR_HEX[requiredColor] || 0x77D6C3,
+    accent: device.complete || (device.paintPolicy === 'performer' && state === 'painting')
+      ? pigment : COLOR_HEX[requiredColor] || 0x77D6C3,
     showProgress: !!(device.required||device.chapterSideSet) && !locked && !suppressed && !device.complete,
   };
 }
@@ -226,17 +227,6 @@ export function drawDevicePresentation(device, currentZone) {
   }
   // State marks stay local to the actual paint contact, never create a second target.
   if ((device.required||device.chapterSideSet) && view.state !== 'locked') {
-    // Five inlaid segments stay aligned to the device and fill at the real paint level.
-    for (let segment = 0; segment < 5; segment++) {
-      const left = x - 26 + segment * 11;
-      const fill = Math.max(0, Math.min(1, view.progress * 5 - segment));
-      gfx.lineStyle(3, 0x25353b, .72);
-      gfx.lineBetween(left, y + 31, left + 8, y + 31);
-      if (fill > 0) {
-        gfx.lineStyle(2, view.accent, view.state === 'suppressed' ? .4 : .95);
-        gfx.lineBetween(left, y + 31, left + 8 * fill, y + 31);
-      }
-    }
     if (view.state === 'complete') {
       gfx.lineStyle(2.5, view.accent, 1);
       gfx.lineBetween(x + 18, y + 21, x + 22, y + 25);
@@ -247,11 +237,15 @@ export function drawDevicePresentation(device, currentZone) {
       gfx.lineBetween(x + 8, y - 12, x - 8, y + 4);
     }
   }
-  if (device.barBg && device.barFill) {
-    device.barBg.setPosition(x, y - 43).setVisible(view.showProgress);
-    device.barFill.setPosition(x - 19, y - 43).setVisible(view.showProgress);
-    device.barFill.width = 38 * view.progress;
-    device.barFill.setFillStyle(view.accent, 1);
+  if (view.showProgress && (view.progress > 0 || view.state === 'calibrating')) {
+    const left = x - 20;
+    const baseline = y + 31;
+    gfx.lineStyle(5, 0x25353b, .94);
+    gfx.lineBetween(left - 1, baseline, left + 41, baseline);
+    if (view.progress > 0) {
+      gfx.lineStyle(3, view.accent, 1);
+      gfx.lineBetween(left, baseline, left + 40 * view.progress, baseline);
+    }
   }
   device.label?.setPosition(x, y + 43).setText(getCompactDeviceLabel(device, currentZone))
     .setColor(getDeviceLabelInk(device));

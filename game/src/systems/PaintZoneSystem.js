@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 import { COLOR_HEX } from '../utils/config.js';
-import { getBattleChapter, getChapterDeviceLabel, getCumulativeChapterPaintProgress, resolveChapterPaintHit } from '../utils/publicCampaign.mjs';
+import { getBattleChapter, getChapterDeviceLabel, resolveChapterPaintHit } from '../utils/publicCampaign.mjs';
 import { createStreetZoneGate } from './StreetZoneGate.mjs';
-import { createDeviceSprite, drawDevicePresentation, layoutDeviceLabels, getDeviceLabelInk } from './ChapterScenePresentation.mjs';
+import { createDeviceSprite, drawDevicePresentation, getDevicePresentation, layoutDeviceLabels, getDeviceLabelInk } from './ChapterScenePresentation.mjs';
 import { StreetPaintSurface } from './StreetRestorationSurface.mjs';
 import {PaintWorkQueue} from './PaintWorkQueue.mjs';
 import { ChapterObjectiveContract } from '../utils/chapterObjectives.mjs';
@@ -463,19 +463,21 @@ export class PaintZoneSystem {
   }
 
   _spawnDevice(def) {
+    const sprite = createDeviceSprite(this.scene, def);
+    const needsFallbackBar = !sprite && (def.required === true || def.chapterSideSet === true);
     const device = {
       ...def,
-      sprite: null,
+      sprite,
       paintColor: null,
       paint: 0,
       paintMax: def.paintMax || STAGE1_PAINT_DEVICE_MAX,
       complete: false,
       publicStage1Suppressed: false,
       gfx: this.scene.add.graphics().setDepth(2.4),
-      barBg: def.required === true||def.chapterSideSet===true
+      barBg: needsFallbackBar
         ? this.scene.add.rectangle(def.x, def.y - 36, 42, 5, 0x111827, 0.9).setDepth(2.5)
         : null,
-      barFill: def.required === true||def.chapterSideSet===true
+      barFill: needsFallbackBar
         ? this.scene.add.rectangle(def.x - 19, def.y - 36, 0, 3, 0x7ADF7A, 1)
           .setOrigin(0, 0.5)
           .setDepth(2.6)
@@ -494,7 +496,6 @@ export class PaintZoneSystem {
         }).setOrigin(0.5).setDepth(2.6)
         : null,
     };
-    device.sprite = createDeviceSprite(this.scene, device);
     this.devices.push(device);
     this._redrawDevice(device);
   }
@@ -519,10 +520,10 @@ export class PaintZoneSystem {
     this.scene.oldStreet?.updateRestoration?.(device, this.devices);
     if (drawDevicePresentation(device, this.currentZone)) return;
     const accent = COLOR_HEX[device.paintPolicy==='performer' ? device.paintColor : device.colorSequence?.[device.sequenceIndex || 0]] || KIND_COLORS[device.kind] || 0xFFD700;
-    const locked = device.zone > this.currentZone;
-    const suppressed = device.publicStage1Suppressed === true;
-    const ratio = device.paintPolicy === 'performer' ? getCumulativeChapterPaintProgress(device)
-      : device.paintMax > 0 ? device.paint / device.paintMax : 0;
+    const view = getDevicePresentation(device, this.currentZone);
+    const locked = view.state === 'locked';
+    const suppressed = view.state === 'suppressed';
+    const ratio = view.progress;
     const fill = locked || suppressed ? 0x2A3142 : this._paintFillColor(device, ratio);
     device.gfx.clear();
     if (locked) {
@@ -547,7 +548,7 @@ export class PaintZoneSystem {
     if (device.barFill && device.barBg) {
       device.barFill.width = 38 * ratio;
       const barColor = ratio > 0.66 ? 0x7ADF7A : ratio > 0.33 ? 0xE2D15A : 0xE36B6B;
-      device.barFill.setFillStyle(device.complete ? fill : barColor, 1);
+      device.barFill.setFillStyle(device.paintPolicy === 'performer' ? view.accent : device.complete ? fill : barColor, 1);
       device.barBg.setVisible(!device.complete && !locked && !suppressed);
       device.barFill.setVisible(!device.complete && !locked && !suppressed);
     }
