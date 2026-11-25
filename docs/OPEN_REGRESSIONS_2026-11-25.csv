@@ -136,8 +136,6 @@ heavyPaletteImpact.test.mjs,26,all palette rows preserve alpha and bright neutra
 heavyPermanentInk.test.mjs,1,tests/heavyPermanentInk.test.mjs,test failed
 heavyPigmentContinuity.test.mjs,5,"ordinary heavy contact and low spread use the actual pigment, not fixed white or member hue",Expected values to be strictly equal:
 heavySkillInkWave.test.mjs,19,malformed color objects cannot throw after allocation or leave an untracked image,Got unwanted exception.
-hierarchyBehavior.test.mjs,23,owner navigation has exactly four first-level roots; archive lives under tour,Cannot read properties of null (reading 'getAttribute')
-hierarchyBehavior.test.mjs,58,home start opens the in-shell preflight; no battle start and no writes,Cannot read properties of null (reading 'getAttribute')
 homeComponentFidelity.test.mjs,7,clean source atlas replaces opaque concept in payload without removing original reference file,The expression evaluated to a falsy value:
 homeComponentFidelity.test.mjs,8,every visible clean atlas RGB pixel equals the original reference; central character and exterior are transparent,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
 homeComponentFidelity.test.mjs,9,"extra original-unmatched play hub remains accessible inside home progress drawer, not over head",Cannot read properties of null (reading 'parentNode')
