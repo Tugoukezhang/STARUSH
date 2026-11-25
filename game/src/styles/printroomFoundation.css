@@ -1,0 +1,71 @@
+/* Original illustrated stock. Each role keeps its live label and its native hit area. */
+#game-container {
+  --print-ink:#201b37;
+  --print-paper:#fff6df;
+  --print-lime:#ddef38;
+  --print-coral:#fd735e;
+  --print-primary-face:url('/art/printroom/primary.webp');
+  --print-paper-face:url('/art/printroom/paper.webp');
+  --print-ink-face:url('/art/printroom/ink.webp');
+}
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  & .shell-header {
+    position:relative;isolation:isolate;min-height:48px;gap:8px;padding-inline:8px;
+    border:0;border-bottom:3px solid var(--print-ink);box-shadow:none;
+    background:linear-gradient(115deg,transparent 73%,#d5d4bc 73.2% 74%,transparent 74.2%),
+      linear-gradient(115deg,#fff8e6 76%,#e8e4cf 76.3%);color:var(--print-ink);
+  }
+  & .shell-header .shell-brand h1.showbill-title {
+    margin:0;padding-inline:1px 5px;background:none;color:var(--print-ink);
+    letter-spacing:.035em;font:950 clamp(19px,5.9vw,25px)/1.18 system-ui,sans-serif;text-shadow:none;
+  }
+  & .shell-header .shell-icon-button {
+    position:relative;flex:none;width:44px;min-width:44px;height:44px;min-height:44px;padding:6px;border:0;
+    background:transparent;color:var(--print-paper);box-shadow:none;border-radius:0;isolation:isolate;
+  }
+  & .shell-header .shell-icon-button::before {
+    position:absolute;z-index:-1;inset:6px 4px;content:'';display:block;width:auto;height:auto;
+    background:var(--print-ink);border:0;border-radius:5px 2px 6px 2px;clip-path:polygon(13% 0,100% 0,100% 77%,84% 100%,0 100%,0 20%);
+  }
+  & .shell-header .shell-icon-button svg {color:var(--print-paper);stroke-width:2.7}
+  & :is(.ui-home-primary .showbill-start,.ui-preflight-footer .showbill-deploy,
+       .shell-selection-footer button[data-command-face=plain],.pg-command.pg-primary[data-command-face=plain]):enabled {
+    color:#17142a;background:transparent var(--print-primary-face) center/100% 100% no-repeat!important;
+    border:0;border-radius:0;box-shadow:none;text-shadow:none;padding-inline-end:max(18px,10%);
+  }
+  & .ui-home-primary .showbill-start .ui-home-chapter {color:#2d3527}
+  & .ui-home-primary .showbill-start > svg {display:none}
+  & .shell-selection-footer button[data-command-face=plain]:enabled {justify-content:center}
+  & .ui-root-nav {
+    min-height:66px;gap:4px;padding:4px 8px;
+    background:var(--print-ink);border:0;border-top:2px solid #14132c;box-shadow:none;
+  }
+  & .ui-root-nav .ui-nav-root,
+  & .ui-root-nav .ui-nav-root:not([aria-current]) {
+    min-width:0;display:grid;grid-template-rows:33px 17px;align-content:center;justify-items:center;
+    background:transparent;color:#fff5df;border:0;border-radius:0;box-shadow:none;opacity:1;
+  }
+  & .ui-root-nav .ui-nav-root[aria-current] {
+    border:0;background:var(--print-lime);color:#18162e;box-shadow:inset 0 -3px #afc72c;
+    clip-path:polygon(7px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 7px);
+    opacity:1;
+  }
+  & .ui-root-nav .ui-nav-root .nav-sticker {
+    display:block;width:39px;height:34px;max-width:100%;object-fit:contain;filter:none;
+  }
+  & .ui-root-nav .ui-nav-root[aria-current] .nav-sticker {width:43px;height:37px}
+  & .ui-root-nav .ui-nav-root .showbill-nav-label {
+    position:static;color:inherit;background:none;font:800 13px/16px system-ui,sans-serif;letter-spacing:.035em;text-shadow:none;
+  }
+  & :is(.home-backstage,.tour-reference-button,.ui-roster-lane .ui-actor-switch,.ui-roster-lane .roster-reference) {
+    border:0;border-radius:0;background:transparent var(--print-ink-face) center/100% 100% no-repeat!important;
+    box-shadow:none;color:var(--print-paper)!important;
+  }
+  & :is(button,summary):focus-visible {outline:3px solid #1288bb;outline-offset:-3px}
+  & button:enabled:active {filter:brightness(.88)}
+  @media (forced-colors:active) {
+    & .ui-root-nav .ui-nav-root[aria-current] {outline:2px solid Highlight;outline-offset:-3px}
+    & button:enabled {border:1px solid ButtonText}
+  }
+}
