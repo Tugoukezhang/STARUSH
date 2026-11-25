@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
-const {chromium} = require(process.env.STARUSH_PLAYWRIGHT_MODULE || 'playwright');
+const playwright = require(process.env.STARUSH_PLAYWRIGHT_MODULE || 'playwright');
 
 const {seedClearedMenuProfile} = require('./qa-menu-profile.cjs');
 
@@ -14,6 +14,15 @@ const screens = [
   {name:'tablet',width:768,height:1024,touch:true},
   {name:'desktop',width:1366,height:768,touch:false},
 ];
+function selectedScreens(viewport) {
+  if (!viewport) return screens;
+  const preset=screens.find(screen=>screen.name===viewport || screen.width+'x'+screen.height===viewport);
+  if (preset) return [preset];
+  const size=/^([1-9]\d{1,3})x([1-9]\d{1,3})$/.exec(viewport);
+  assert(size,'STARUSH_QA_VIEWPORT must be a preset name or a size such as 390x844');
+  const width=Number(size[1]), height=Number(size[2]);
+  return [{name:viewport,width,height,touch:width<=height}];
+}
 const sheets = {
   desk:['settings'],
   roster:['actor-switch','roster-reference','roster-reference/roster-sheet-ability','roster-reference/roster-sheet-dossier'],
@@ -114,7 +123,9 @@ async function checkRehearsalGoals(page) {
 }
 
 async function runScreen(browser, screen) {
-  const page = await browser.newPage({viewport:{width:screen.width,height:screen.height},isMobile:screen.touch,hasTouch:screen.touch});
+  const supportsMobileLayout=browser.browserType().name()!=='firefox';
+  const page = await browser.newPage({viewport:{width:screen.width,height:screen.height},
+    isMobile:supportsMobileLayout && screen.touch,hasTouch:screen.touch});
   const rows = [], errors = [];
   page.on('pageerror',e=>errors.push(e.message));
   async function check(loc, route) {
@@ -181,14 +192,21 @@ async function runScreen(browser, screen) {
 }
 
 (async()=>{
-  const browser=await chromium.launch({executablePath:process.env.STARUSH_CHROMIUM || undefined,args:['--no-sandbox','--disable-webgl']});
+  const engine=process.env.STARUSH_QA_ENGINE || 'chromium';
+  assert(['chromium','firefox','webkit'].includes(engine),'STARUSH_QA_ENGINE must be chromium, firefox or webkit');
+  const viewports=selectedScreens(process.env.STARUSH_QA_VIEWPORT);
+  const executablePath=process.env.STARUSH_QA_EXECUTABLE || (engine==='chromium' ? process.env.STARUSH_CHROMIUM : undefined);
+  const browser=await playwright[engine].launch({executablePath,
+    args:engine==='chromium'?['--no-sandbox','--disable-webgl']:[],
+    ...(engine==='firefox'?{firefoxUserPrefs:{'webgl.disabled':true}}:{})});
   const output=process.env.STARUSH_QA_OUTPUT || path.join(os.tmpdir(),'starush-menu-details');
   fs.mkdirSync(output,{recursive:true});
   try {
-    for (const screen of screens) {
+    for (const screen of viewports) {
       const rows=await runScreen(browser,screen);
-      fs.writeFileSync(path.join(output,screen.name+'.json'),JSON.stringify(rows,null,2));
-      console.log(screen.name,rows.length,'pages and sheets',rows.reduce((n,r)=>n+r.commands.length,0),'control checks');
+      const label=engine==='chromium' ? screen.name : engine+'-'+screen.name;
+      fs.writeFileSync(path.join(output,label+'.json'),JSON.stringify(rows,null,2));
+      console.log(label,rows.length,'pages and sheets',rows.reduce((n,r)=>n+r.commands.length,0),'control checks');
     }
   } finally { await browser.close(); }
 })().catch(e=>{console.error(e);process.exitCode=1;});
