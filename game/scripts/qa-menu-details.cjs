@@ -43,6 +43,44 @@ async function measure(locator) {
   });
 }
 
+async function checkButtonStates(page) {
+  await page.evaluate(()=>window.qaShell().showPage('roster'));
+  const switchMember=page.getByRole('button',{name:'切换成员',exact:true});
+  const contrast=await switchMember.evaluate(button=>{
+    function luminance(rgb) {
+      const linear=rgb.match(/[\d.]+/g).slice(0,3).map(Number).map(n=>{
+        const s=n/255;
+        return s<=0.04045?s/12.92:((s+0.055)/1.055)**2.4;
+      });
+      return linear[0]*0.2126+linear[1]*0.7152+linear[2]*0.0722;
+    }
+    const a=luminance(getComputedStyle(button,'::after').color);
+    const b=luminance(getComputedStyle(button).backgroundColor);
+    return (Math.max(a,b)+0.05)/(Math.min(a,b)+0.05);
+  });
+  assert(contrast>=4.5,'切换成员文字对比度 '+contrast);
+  await switchMember.click();
+  const close=page.getByRole('button',{name:'关闭',exact:true}).last();
+  const bounds=await close.boundingBox();
+  assert(bounds && Math.min(bounds.height,bounds.width)>=44,'角色弹窗关闭热区');
+  await close.focus();
+  await page.keyboard.press('Enter');
+  await close.waitFor({state:'hidden'});
+
+  await page.evaluate(()=>window.qaShell().showPage('inventory'));
+  const all=page.locator('[data-action=bag-filter-all]');
+  const owned=page.locator('[data-action=bag-filter-owned]');
+  await all.click();
+  const selected=await all.evaluate(el=>getComputedStyle(el).backgroundColor);
+  const idle=await owned.evaluate(el=>getComputedStyle(el).backgroundColor);
+  assert.notEqual(selected,idle,'仓库筛选需要可见的选中态');
+  await owned.click();
+  assert.equal(await all.getAttribute('aria-pressed'),'false');
+  assert.equal(await owned.getAttribute('aria-pressed'),'true');
+  assert.equal(await owned.evaluate(el=>getComputedStyle(el).backgroundColor),selected);
+  assert.equal(await page.locator('.ui-item-slot[data-owned=false]:visible').count(),0);
+}
+
 async function runScreen(browser, screen) {
   const page = await browser.newPage({viewport:{width:screen.width,height:screen.height},isMobile:screen.touch,hasTouch:screen.touch});
   const rows = [], errors = [];
@@ -101,6 +139,7 @@ async function runScreen(browser, screen) {
         await dialog.waitFor({state:'hidden'});
       }
     }
+    await checkButtonStates(page);
     assert.deepEqual(errors,[]);
     return rows;
   } finally { await page.close(); }

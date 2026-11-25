@@ -622,3 +622,106 @@
   align-content:center;
   cursor:pointer;
 }
+
+/* The printed pass marks the next action. Small dark tools lead to information;
+   the inset mark on a filter stays visible even without its selected colour. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  --pass-ink:#17323c;
+  --pass-paper:#fff9e9;
+  --pass-lime:#e3ef81;
+  --pass-mint:#ace3d1;
+
+  & :is(.ui-home-primary .showbill-start,.ui-preflight-footer .showbill-deploy,
+         .shell-selection-footer button[data-command-face=plain],.pg-command.pg-primary[data-command-face=plain]):enabled {
+    color:var(--pass-ink);
+    border:2px solid var(--pass-ink);
+    border-radius:14px 5px 14px 5px;
+    background:linear-gradient(105deg,transparent 74%,#f2f8ba 74% 78%,transparent 78%),var(--pass-lime)!important;
+    box-shadow:inset 0 2px #f9ffd8,0 3px 0 var(--pass-ink);
+    text-shadow:none;
+  }
+  & .ui-home-primary .showbill-start .ui-home-chapter {color:#314f48}
+  & .ui-home-primary .showbill-start > svg {color:var(--pass-ink);stroke-width:3}
+  & .shell-selection-footer button[data-command-face=plain]:enabled::before {
+    content:'';display:block;position:static;flex:0 0 0;width:0;height:0;margin-inline-end:9px;
+    border:0;border-left:9px solid currentColor;border-block:6px solid transparent;border-radius:0;
+    background:none;clip-path:none;transform:none;
+  }
+  & .shell-selection-footer button[data-command-face=plain]:disabled {
+    opacity:1;color:#40585c;background:#dce3de!important;border:1px dashed #748580;border-radius:12px 4px 12px 4px;box-shadow:none;
+  }
+
+  & :is(.ui-home-spaces .home-backstage,.tour-reference-button,.ui-roster-lane .ui-actor-switch,.ui-roster-lane .roster-reference) {
+    color:var(--pass-paper);background:#243e48;border:2px solid var(--pass-paper);
+    border-radius:16px 6px 16px 6px;box-shadow:0 2px 0 #16303d8c;text-shadow:none;
+  }
+  & :is(.home-backstage,.tour-reference-button,.ui-roster-lane .ui-actor-switch,.ui-roster-lane .roster-reference) > svg {color:var(--pass-mint)}
+  & .ui-root-nav .ui-nav-root[aria-current] {
+    background:#d5eee1;border:1px solid #397067;border-radius:12px 4px 12px 4px;
+    color:#163c40;box-shadow:inset 0 -3px #478373;
+  }
+  & .ui-root-nav .ui-nav-root:not([aria-current]) {color:#334c53}
+  & .inv-filters {
+    padding:3px;gap:3px;border:1px solid #cec8b9;border-radius:12px;background:#e7e3d7;
+  }
+  & .inv-filters .inv-filter {
+    min-width:0;border:0;border-radius:8px;background:transparent;color:#3d5357;box-shadow:none;
+  }
+  & .inv-filters .inv-filter[aria-pressed=true] {
+    color:var(--pass-paper);background:var(--pass-ink);box-shadow:inset 0 -3px var(--pass-mint);
+  }
+  & .ui-item-slot[data-state=locked] .equipment-art-slot {
+    background:#e8e6dc;border-radius:10px 3px 10px 3px;
+  }
+  & .ui-sheet .ui-sheet-close {
+    position:relative;box-sizing:border-box;min-height:44px;min-width:44px;color:var(--pass-paper);
+    border:2px solid var(--pass-paper);border-radius:13px 5px 13px 5px;background:#233e48;box-shadow:none;
+  }
+  & .ui-sheet .ui-sheet-close > :is(svg,img,.ui-glyph) {display:none}
+  & .ui-sheet .ui-sheet-close::after {
+    content:'';display:block;position:absolute;inset:50% auto auto 50%;width:16px;height:16px;
+    transform:translate(-50%,-50%);
+    background:linear-gradient(45deg,transparent 44%,var(--pass-paper) 45% 55%,transparent 56%),
+      linear-gradient(-45deg,transparent 44%,var(--pass-paper) 45% 55%,transparent 56%);pointer-events:none;
+  }
+  & .ui-roster-lane .ui-actor-switch {background:#243e48!important;color:var(--pass-paper)!important}
+  & .ui-item-grid .ui-item-slot .ui-item-state {
+    justify-self:start;border-radius:4px;padding:2px 5px;background:#e6e4db;color:#3e5353;
+    font:650 12px/15px system-ui,sans-serif;
+  }
+  & .ui-item-grid .ui-item-slot[data-state=equipped] .ui-item-state {background:#c2e9d6;color:#153f36}
+  & .chapter-report-tabs .arrangement-option[aria-pressed=true],
+  & .library-stage-tab[aria-selected=true],
+  & .pm-cast-option[aria-pressed=true] {
+    outline:2px solid #367b71;outline-offset:-2px;box-shadow:inset 0 -4px var(--pass-mint);
+  }
+  & .product-module-screen[data-console-page=services] .cs-local-console .pm-service-command {
+    display:grid;grid-template-columns:40px minmax(0,1fr) 18px;align-items:center;gap:8px;
+    padding:6px 12px;min-height:52px;background:#fffdf6;border:1px solid #b7c2b9;
+    border-radius:12px 4px 12px 4px;box-shadow:0 2px 0 #c1c8bc;
+  }
+  & .cs-local-console .pm-service-command .cs-glyph {
+    display:grid;place-items:center;position:static;grid-area:1/1;width:36px;height:36px;
+    border-radius:9px;background:#e1eee5;
+  }
+  & .cs-local-console .pm-service-command .cs-glyph img {position:static;width:30px;height:30px;object-fit:contain}
+  & .cs-local-console .pm-service-command::before {grid-area:1/2;justify-self:start;text-align:left}
+  & .cs-local-console .pm-service-command::after {grid-area:1/3;justify-self:center}
+  & .cs-local-console .pm-service-command:disabled .pm-unavailable-reason {display:block;grid-column:2/-1;color:#435b5b}
+  & .product-module-screen[data-console-page=services] .cs-network {
+    display:flex;align-items:center;justify-content:space-between;width:100%;min-height:46px;
+    padding:8px 13px;margin-top:8px;border:1px dashed #66847c;border-radius:10px 4px;
+    color:#294c49;background:#edf3e8;box-shadow:none;
+  }
+  & .cs-network > span {display:none}
+  & .cs-network::before {content:attr(aria-label);position:static;color:inherit;font:700 15px/20px system-ui,sans-serif}
+  & .cs-network::after {content:'›';position:static;color:inherit;font:800 20px/20px system-ui,sans-serif}
+  & :is(.showbill-start,.showbill-deploy,.shell-selection-footer button,.inv-filter,.ui-sheet-close):enabled:active {
+    filter:brightness(.92);box-shadow:inset 0 2px 0 #17323c45;
+  }
+  & :is(button,summary):focus-visible {outline:3px solid #1374ab;outline-offset:-3px}
+  @media (forced-colors:active) {
+    & .inv-filter[aria-pressed=true],& .ui-nav-root[aria-current] {outline:2px solid Highlight;outline-offset:-3px}
+    & .ui-sheet .ui-sheet-close::after {content:'×';width:auto;height:auto;background:none;color:ButtonText}
+  }
+}
