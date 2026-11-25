@@ -12,4 +12,4 @@ python3 restore.py --key "/path/to/cat-kitchen-backup-recovery.key" --out restor
 
 默认取最新版本，也可在命令末尾指定 `--version 3.2.0`。工具会检查各分片，恢复并重新验证每个 ZIP。输出包括小游戏源码、网页试玩包、美术源图包和旧版对比工具需要的资料。网页包解压后用本地 HTTP 服务打开，小游戏工程可导入微信开发者工具。美术包的 `originals/` 保存原始 PNG。
 
-要在同原工程一致的 Linux 布局下复跑全部审查，解压源码并将顶层文件夹改名为 `/workspace/cat-kitchen/game`，将美术包的 `originals/*.png` 放入 `/workspace/generated_images`，把对比资料 ZIP 直接解压到 `/workspace/cat-kitchen`。开发工具使用 Node 24、Python 3、Chromium、FFmpeg。如需重跑画面和浏览器检查，可在游戏目录安装 `sharp@0.35.5`、`@napi-rs/canvas@0.1.100` 和 `playwright@1.62.1`。字库重建使用 FontTools 与 Noto Serif CJK SC。游戏自带所需的运行素材。
+要在同原工程一致的 Linux 布局下复跑全部审查，解压源码并将顶层文件夹改名为 `/workspace/cat-kitchen/game`，将美术包的 `originals/*.png` 放入 `/workspace/generated_images`，把对比资料 ZIP 直接解压到 `/workspace/cat-kitchen`。v3.3 及之后的快照还输出 `cat-kitchen-game-v3.2.0.zip`，将该 ZIP 放在 `/workspace/cat-kitchen` 供新旧版本比较。开发工具使用 Node 24、Python 3、Chromium、FFmpeg。如需重跑画面和浏览器检查，可在游戏目录安装 `sharp@0.35.5`、`@napi-rs/canvas@0.1.100` 和 `playwright@1.62.1`。字库重建使用 FontTools 与 Noto Serif CJK SC。游戏自带所需的运行素材。

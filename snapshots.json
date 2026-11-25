@@ -212,6 +212,71 @@
           "sha256": "cb1f02e56a0ce08fc2ff4ac1cb22d66748698b382a2e39452f797c8e951e6b34"
         }
       ]
+    },
+    "cat-kitchen-game-v3.3.0.zip": {
+      "bytes": 88591061,
+      "sha256": "e536c68105436e5e2267f5ff5b3bda3c60f12f2cfa691434c962a68f185046b0",
+      "parts": [
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.000.gpg",
+          "sha256": "21dc5853bf60935df67dad6c54d74e4c33221d285a153cb2487bbecebb138afa"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.001.gpg",
+          "sha256": "4e10a166acb06c9c680f99547a982ad891afb08979c44512e15420624ed2f02d"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.002.gpg",
+          "sha256": "7d6cfc040ca93755fe583904e2a9069769c95ef764847b11786d2611870833c6"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.003.gpg",
+          "sha256": "22bed1addc61206b185ac68d46eb1e07e5a56bde77d6f9cc074b1ab62642c32b"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.004.gpg",
+          "sha256": "925ccb5f390167f24b00a076b350513be298e86ce170812a9c4a1853e1321eaf"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.005.gpg",
+          "sha256": "1740815a4f411ca53ffaaabfacf5ac62ed4e5f877e37147f017f28f0888c5328"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.006.gpg",
+          "sha256": "be74b35b839e43ec76f411e1ab19607ed8746ee7e82aa1d7b74b95ce6764de66"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.007.gpg",
+          "sha256": "542a748ea602dbe92d5f0c4315f43aed7284ef8aec6ae7d4257e9634e5c004df"
+        },
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-game-v3.3.0.008.gpg",
+          "sha256": "d2fa3053e5dd644b7c39211338b8aa1db8080490809d43b3ce4e422d03663912"
+        }
+      ],
+      "basis": "cat-kitchen-game-v3.2.0.zip"
+    },
+    "cat-kitchen-browser-v3.3.0.zip": {
+      "bytes": 5677796,
+      "sha256": "8f405daa46199abe0d39c2aa7f43adb0c2ea9c741cf2bdfadf2dba4c362b6fb9",
+      "parts": [
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-browser-v3.3.0.000.gpg",
+          "sha256": "764f5aa8746697fca36f3101c1e8ed49676af9a3e02a77ee19b40c5bd35fa712"
+        }
+      ],
+      "basis": "cat-kitchen-browser-v3.2.0.zip"
+    },
+    "cat-kitchen-art-v3.3.0.zip": {
+      "bytes": 71005272,
+      "sha256": "23c8be3864a589d60009ab83413c0baad8ff0311a3e842b97a4d82232f6504d6",
+      "parts": [
+        {
+          "path": "snapshots/3.3.0/cat-kitchen-art-v3.3.0.000.gpg",
+          "sha256": "dcb2f2d0675e174d2f62c67e63b6ea5d4ad496cfdcaab1c7a019da6597b8ff48"
+        }
+      ],
+      "basis": "cat-kitchen-art-v3.2.0.zip"
     }
   },
   "versions": {
@@ -220,7 +285,14 @@
       "cat-kitchen-browser-v3.2.0.zip",
       "cat-kitchen-art-v3.2.0.zip",
       "cat-kitchen-comparison-fixtures.zip"
+    ],
+    "3.3.0": [
+      "cat-kitchen-game-v3.3.0.zip",
+      "cat-kitchen-browser-v3.3.0.zip",
+      "cat-kitchen-art-v3.3.0.zip",
+      "cat-kitchen-comparison-fixtures.zip",
+      "cat-kitchen-game-v3.2.0.zip"
     ]
   },
-  "latest": "3.2.0"
+  "latest": "3.3.0"
 }
