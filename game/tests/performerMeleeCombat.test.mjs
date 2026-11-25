@@ -98,3 +98,12 @@ for(const id of ['kai','enjo'])test(id+' protects against immediate contact with
  const weak=f.add(160,100,'finale-weak-point');assert.equal(f.combat.selectTarget(),weak);
  f.scene.publicTargetFocus={getTarget:()=>lamp};assert.equal(f.combat.selectTarget(),lamp);
 });
+
+for(const id of ['kai','enjo'])test(id+' keeps the last swing on close ties and switches immediately after losing sight',()=>{
+ const f=fixture(id),rival=f.add(162),chosen=f.add(40);
+ assert.equal(f.combat.selectTarget(),chosen);assert(f.combat.beginBasic(chosen,1000));
+ rival.x=155;assert.equal(f.combat.selectTarget(),chosen);
+ rival.x=144;assert.equal(f.combat.selectTarget(),rival);
+ rival.x=155;f.scene.oldStreet.clearLine=(p,t)=>t!==chosen;
+ assert.equal(f.combat.selectTarget(),rival);
+});

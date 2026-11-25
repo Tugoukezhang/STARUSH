@@ -32,6 +32,7 @@ import {HarborReturnField} from './HarborReturnField.mjs';
 export class PublicStage1PerformerRun {
   constructor(scene) {
     this.scene = scene;
+    this.lastBasicTarget=null;
     this.lastPaintReceipt=null;
     this.lastPaintFeedback=null;
     this.context = resolvePublicRunContext(scene.battleData);
@@ -486,6 +487,7 @@ export class PublicStage1PerformerRun {
     this.groundEcho?.destroy();
     this.swordEcho?.destroy();
     this.harborReturn?.destroy();
+    this.lastBasicTarget=null;
     this.lastPaintReceipt=null;
     this.lastPaintFeedback=null;
     this.sakuraCombat?.destroy();

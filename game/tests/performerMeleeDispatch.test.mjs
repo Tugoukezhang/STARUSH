@@ -20,3 +20,48 @@ test('ranged automatic fire protects against a visible nearby chaser and honours
  chaser.x=40;s.oldStreet.clearLine=()=>false;assert.equal(s._selectAutoAimTarget(),lamp);
  s.oldStreet.clearLine=()=>true;s.publicTargetFocus={getTarget:()=>lamp};assert.equal(s._selectAutoAimTarget(),lamp);
 });
+
+test('a far required lamp cannot silence a reachable optional lamp',()=>{
+ const Phaser={Scene:class{},Math:{Distance:{Between:(x,y,a,b)=>Math.hypot(x-a,y-b)}}};
+ const {BattleScene,PaintZoneSystem}=loadBattleScene({Phaser,includeOwners:true});
+ const s=new BattleScene(), far={x:300,y:100,required:true,zone:0}, near={x:35,y:100,zone:0};
+ Object.assign(s,{_userCastPresentation:true,_isPublicStage1Round:()=>true,player:{x:10,y:100},
+  _getPublicStage1PaintShotOrigin:()=>({x:10,y:100})});
+ s.paintZone=Object.assign(Object.create(PaintZoneSystem.prototype),{scene:s,devices:[far,near],currentZone:0});
+ assert.equal(s._selectAutoAimTarget(),near);
+ far.x=279;assert.equal(s._selectAutoAimTarget(),far,'in-range required objective still wins');
+});
+
+test('auto rifle keeps a shootable chaser through slight crossings but yields to a real threat or obstruction',()=>{
+ const Phaser={Scene:class{},Math:{Distance:{Between:(x,y,a,b)=>Math.hypot(x-a,y-b)}}};
+ const {BattleScene}=loadBattleScene({Phaser,includeOwners:true}),s=new BattleScene();
+ const chaser=x=>({x,y:0,active:true,hp:20,publicStage1EnemyRole:'unlit-chaser'});
+ const previous=chaser(-70),crossing=chaser(66),targets=[crossing,previous];
+ Object.assign(s,{_isPublicStage1Round:()=>true,_userCastPresentation:true,player:{x:0,y:0},
+  publicPerformerRun:{lastBasicTarget:previous},enemies:{children:{iterate:f=>targets.forEach(f)}},
+  oldStreet:{clearLine:()=>true},_getPublicStage1PaintShotOrigin:()=>({x:0,y:0})});
+ assert.equal(s._selectAutoAimTarget(),previous);
+ crossing.x=56;assert.equal(s._selectAutoAimTarget(),crossing);
+ previous.x=-50;crossing.x=48;assert.equal(s._selectAutoAimTarget(),crossing,'48-unit priority uses real distance');
+ previous.x=-46;s.oldStreet.clearLine=(from,to)=>to!==previous;assert.equal(s._selectAutoAimTarget(),crossing);
+ previous.x=-284;crossing.x=278;s.oldStreet.clearLine=()=>true;assert.equal(s._selectAutoAimTarget(),crossing);
+});
+
+test('automatic attacks skip the target scan while cooling down',()=>{
+ const s=new Battle();let scans=0;
+ Object.assign(s,{player:{x:0,y:0},lastShotTime:1000,support:{getCenterStageFireRateMultiplier:()=>1},
+  _isPublicStage1Round:()=>true,_selectAutoAimTarget:()=>{scans++;return null;}});
+ for(let i=0;i<10;i++)s._tryShoot(1000+i*8);
+ assert.equal(scans,0);s._tryShoot(2000);assert.equal(scans,1);
+});
+
+test('out-of-range ordinary enemies never need a shot corridor check',()=>{
+ const Phaser={Scene:class{},Math:{Distance:{Between:(x,y,a,b)=>Math.hypot(x-a,y-b)}}};
+ const {BattleScene}=loadBattleScene({Phaser,includeOwners:true}),s=new BattleScene();
+ const enemies=Array.from({length:30},(_,i)=>({x:400+i,y:0,hp:20,active:true,publicStage1EnemyRole:'unlit-chaser'}));
+ let checks=0;
+ Object.assign(s,{_isPublicStage1Round:()=>true,_userCastPresentation:true,player:{x:0,y:0},
+  enemies:{children:{iterate:f=>enemies.forEach(f)}},oldStreet:{clearLine:()=>{checks++;return true;}},
+  _getPublicStage1PaintShotOrigin:()=>({x:0,y:0})});
+ assert.equal(s._selectAutoAimTarget(),null);assert.equal(checks,0);
+});

@@ -85,6 +85,7 @@ import {
   PUBLIC_STAGE1_ENEMY_STATES,
   canEnemyDealContactDamage,
   isCloseContactThreat,
+  getBasicAimDistance,
   canEnemyBePublicStage1PaintTarget,
   isProtectedPublicStage1Boss,
   canEnemyUseLegacyBottomChaseAI,
@@ -4604,10 +4605,13 @@ export class BattleScene extends Phaser.Scene {
       const combat = this.publicPerformerRun?.sakuraCombat;
       const canAim = target => combat?.canAimAt?.(target) !== false
         &&(!this._userCastPresentation||this._getPublicStage1PaintShotOrigin(target)!==null);
-      let nearest = this.paintZone?.getNearestPaintable(this.player.x, this.player.y, canAim) || null;
+      let nearest = this.paintZone?.getNearestPaintable(this.player.x, this.player.y, target =>
+        (!this._userCastPresentation || Math.hypot(target.x-this.player.x,target.y-this.player.y)<=STAGE1_PAINT_SHOT_RANGE)
+        && canAim(target)) || null;
       let nearestDist = nearest
         ? Phaser.Math.Distance.Between(this.player.x, this.player.y, nearest.x, nearest.y)
         : Infinity;
+      let nearestScore = nearestDist;
       let contactThreat = null;
       let contactDistance = Infinity;
       let nearestStageCueEmitter = null;
@@ -4622,8 +4626,9 @@ export class BattleScene extends Phaser.Scene {
       let nearestFinaleBossDist = Infinity;
       this.enemies?.children?.iterate?.((enemy) => {
         if (!canEnemyBePublicStage1PaintTarget(enemy) || enemy.hp <= 0) return;
-        if(this.oldStreet?.clearLine(this.player,enemy)===false || !canAim(enemy))return;
         const dist = Phaser.Math.Distance.Between(this.player.x, this.player.y, enemy.x, enemy.y);
+        if (this._userCastPresentation && dist > this._getPublicStage1PaintTargetRange(enemy)) return;
+        if(this.oldStreet?.clearLine(this.player,enemy)===false || !canAim(enemy))return;
         if (
           enemy.publicStage1EnemyRole === PUBLIC_STAGE1_ENEMY_ROLES.STAGE_CUE_EMITTER
           && dist < nearestStageCueEmitterDist
@@ -4659,13 +4664,16 @@ export class BattleScene extends Phaser.Scene {
           nearestFinaleBoss = enemy;
           nearestFinaleBossDist = dist;
         }
-        if (this._userCastPresentation && dist < contactDistance && isCloseContactThreat(enemy, dist)) {
+        const aimDistance = this._userCastPresentation
+          ? getBasicAimDistance(enemy, dist, this.publicPerformerRun?.lastBasicTarget) : dist;
+        if (this._userCastPresentation && aimDistance < contactDistance && isCloseContactThreat(enemy, dist)) {
           contactThreat = enemy;
-          contactDistance = dist;
+          contactDistance = aimDistance;
         }
-        if (dist < nearestDist) {
+        if (dist <= STAGE1_PAINT_SHOT_RANGE && aimDistance < nearestScore) {
           nearest = enemy;
           nearestDist = dist;
+          nearestScore = aimDistance;
         }
       });
       if (
@@ -4769,13 +4777,13 @@ export class BattleScene extends Phaser.Scene {
   }
 
   _tryShoot(time) {
-    const nearestEnemy = this._selectAutoAimTarget();
-    if (!nearestEnemy) return;
     const fireRate = SHOOT_CONFIG.FIRE_RATE / this.support.getCenterStageFireRateMultiplier();
     const paintTempo = (this._isPublicStage1Round?.() && this.paintZone)
       ? getPaintFireRateMultiplier(this.paintZone.getHeat(), this._publicFeverActive ? 1 : 0)
       : 1;
     if (time - this.lastShotTime < fireRate / paintTempo) return;
+    const nearestEnemy = this._selectAutoAimTarget();
+    if (!nearestEnemy) return;
     if (this.publicPerformerRun?.sakuraCombat) {
       if (this.publicPerformerRun.sakuraCombat.beginBasic(nearestEnemy, time, fireRate / paintTempo)) {
         this.lastShotTime = time;
@@ -4819,6 +4827,14 @@ export class BattleScene extends Phaser.Scene {
         const time = dist / SHOOT_CONFIG.BULLET_SPEED;
         predX = nearestEnemy.x + (nearestEnemy.moveVx || 0) * time;
         predY = nearestEnemy.y + (nearestEnemy.moveVy || 0) * time;
+      }
+      if (publicPaintShot && this._userCastPresentation && (predX !== nearestEnemy.x || predY !== nearestEnemy.y)) {
+        const intercept = {x:predX,y:predY};
+        if (this.oldStreet?.clearLine(nearestEnemy,intercept,2) === false
+          || this.oldStreet?.clearLine({x:originX,y:originY},intercept,2) === false) {
+          predX = nearestEnemy.x;
+          predY = nearestEnemy.y;
+        }
       }
       const dx = predX - aimX;
       const dy = predY - aimY;
@@ -4880,6 +4896,7 @@ export class BattleScene extends Phaser.Scene {
     });
     }
     const bullet=primaryBullet;
+    if (this._userCastPresentation && publicPaintShot && this.publicPerformerRun) this.publicPerformerRun.lastBasicTarget=nearestEnemy;
     // Ordinary rifle casts face the accepted hand side; the bullet keeps its own aim.
     const facingVx = publicPaintShot && this._userCastPresentation && this.actorPresentation?.userCastView?.art?.id === 'sakura'
       ? Math.sign(originX - Phaser.Math.Clamp(this.player.x, 8, STAGE1_PAINT_WORLD_WIDTH - 8)) || aimVx : aimVx;

@@ -26,6 +26,12 @@ export function isCloseContactThreat(enemy, distance) {
     && enemy.chapterChaserMotion?.state !== 'recovery';
 }
 
+// One chaser body radius of tolerance between ordinary attacks avoids left/right oscillation.
+export function getBasicAimDistance(target, distance, previous) {
+  return target === previous && target?.publicStage1EnemyRole === PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER
+    ? distance - 12 : distance;
+}
+
 export function canEnemyBePublicStage1PaintTarget(enemy) {
   if (!enemy?.active || enemy.destroyed === true) return false;
   if (enemy.publicStage1EnemyRole === PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER) return true;

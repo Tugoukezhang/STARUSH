@@ -1,4 +1,4 @@
-import {canEnemyBePublicStage1PaintTarget,isCloseContactThreat} from './PublicStage1EnemyRoles.mjs';
+import {canEnemyBePublicStage1PaintTarget,isCloseContactThreat,getBasicAimDistance} from './PublicStage1EnemyRoles.mjs';
 import {circleIntersectsFan} from './SakuraCombat.mjs';
 import {STAGE1_PAINT_PER_HIT} from '../utils/stage1PaintRound.mjs';
 import {PublicPaintContactReceipt} from './PublicPaintContactReceipt.mjs';
@@ -34,8 +34,9 @@ export class PerformerMeleeCombat{
    if(t===protectedBoss||!this.canAimAt(t))continue;
    const distance=Math.hypot(t.x-p.x,t.y-p.y);
    const priority=PRIORITY[t.publicStage1EnemyRole] || (isCloseContactThreat(t,distance) ? 0.5 : 0);
-   if(priority>bestPriority || (priority===bestPriority && distance<bestDistance)){
-    best=t;bestPriority=priority;bestDistance=distance;
+   const aimDistance=getBasicAimDistance(t,distance,this.run.lastBasicTarget);
+   if(priority>bestPriority || (priority===bestPriority && aimDistance<bestDistance)){
+    best=t;bestPriority=priority;bestDistance=aimDistance;
    }
   }
   return best||(this.canAimAt(protectedBoss)?protectedBoss:null);
@@ -47,6 +48,7 @@ export class PerformerMeleeCombat{
   if(s.actorPresentation?.notifyBasicShot?.(now,Math.cos(angle),Math.sin(angle),cycle)===false)return false;
   this.attack={id:++this.sequence,target,startedAt:now,angle,cycle,windup:this.kit.windup,active:this.kit.active,
    actions:this.run.actions,hits:s.battleRecord?.playerHitCount||0,color:s.currentColor||this.run.member.color,released:false};
+  this.run.lastBasicTarget=target;
   this.nextAt=now+cycle;this.stats.started++;return true;
  }
  snapshot(now=this.run.now()){

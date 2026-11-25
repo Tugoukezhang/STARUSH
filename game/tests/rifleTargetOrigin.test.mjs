@@ -233,3 +233,13 @@ test('world-inset centre fallback cannot invent a facing side outside the eight-
   assert.equal(r.v.flip,side<0);
  }
 });
+
+test('rifle aims at the visible enemy when its predicted path would send the shot into cover',()=>{
+ const target={x:635,y:988,moveVy:150};
+ const wall=new OldStreetState([{id:'cover',footprint:{x:578,y:1000,width:16,height:36}}]);
+ const r=rig({street:wall}),{bullet}=shoot(r,target);
+ assert(bullet);const origin={x:bullet.x,y:bullet.y};
+ assert(wall.clearLine(origin,target,2));
+ assert(!wall.clearLine(origin,{x:635,y:1024},2),'the projected shot must cross solid cover');
+ assert.equal(bullet.moveVx,500);assert.equal(bullet.moveVy,0);
+});
