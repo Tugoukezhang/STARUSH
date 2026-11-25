@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import {loadBattleScene} from './helpers/loadBattleScene.mjs';
 import {
   STAGE1_AMBIENT_PROP_COUNT,
   STAGE1_PAINT_DEVICES,
@@ -24,17 +25,25 @@ assert.equal(STAGE1_REQUIRED_OBJECTIVE_COUNT, 10);
 assert.equal(STAGE1_AMBIENT_PROP_COUNT, 18);
 assert.equal(STAGE1_PAINT_DEVICES.filter((item) => item.required === true).length, 10);
 
-const spawnBlock = sourceBlock('  _spawnDevice(def) {', '  _paintFillColor(');
-assert.ok(spawnBlock.includes('sprite: null'),
-  'paint interactions must stay data/graphics owned instead of creating one physics host each');
-assert.equal(spawnBlock.includes('physics.add'), false,
-  'paint interactions must not allocate Arcade bodies');
-assert.ok(spawnBlock.includes('barBg: def.required === true||def.chapterSideSet===true'),
-  'bar backgrounds exist only for primary anchors and authored branch stops, never ambient props');
-assert.ok(spawnBlock.includes('barFill: def.required === true||def.chapterSideSet===true'),
-  'bar fills exist only for primary anchors and authored branch stops, never ambient props');
-assert.ok(spawnBlock.includes('label: (def.required === true||def.chapterSideSet===true) && def.label'),
-  'labels exist only for primary anchors and authored branch stops');
+const {PaintZoneSystem} = loadBattleScene({Phaser:{Scene:class {}}, includeOwners:true});
+for (const textured of [false,true]) {
+  for (const [required,chapterSideSet] of [[true,false],[false,true],[false,false]]) {
+    const calls = {image:0,rectangle:0,text:0};
+    const display = new Proxy({}, {get:()=>()=>display});
+    const scene = {textures:{exists:()=>textured},add:{
+      image(){calls.image++;return display;},
+      rectangle(){calls.rectangle++;return display;},
+      text(){calls.text++;return display;},
+      graphics(){return display;},
+    }};
+    // No physics service is supplied. Facilities can only allocate display objects.
+    const system = Object.assign(Object.create(PaintZoneSystem.prototype),{scene,devices:[],_redrawDevice(){}});
+    system._spawnDevice({x:100,y:200,zone:0,kind:'light',label:'test',required,chapterSideSet});
+    assert.equal(calls.image,Number(textured));
+    assert.equal(calls.rectangle,!textured && (required || chapterSideSet) ? 2 : 0);
+    assert.equal(calls.text,Number(required || chapterSideSet));
+  }
+}
 
 const finaleBlock = sourceBlock('  enterFinaleMode() {', '  destroy() {');
 [
