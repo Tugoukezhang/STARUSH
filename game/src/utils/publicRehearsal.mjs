@@ -15,12 +15,12 @@ export function getRehearsalConfig(value){
 export function isRehearsalUnlocked(profile,chapterId){
   return !!profile&&getPublicPerformanceAccess(profile,{modeId:'rehearsal',chapterId}).canStart;
 }
-export function evaluateRehearsal(value,{victory=false,hitCount=0,actions=0}={}){
+export function evaluateRehearsal(value,{victory=false,hitCount=0,actions=0,finished=false}={}){
   const config=getRehearsalConfig(value);
   if(!config||typeof victory!=='boolean'||![hitCount,actions].every(n=>Number.isSafeInteger(n)&&n>=0))return null;
   const focus=REHEARSAL_FOCI.find(f=>f.id===config.focus);
   const condition=focus.id==='clean'?hitCount===0:focus.id==='action'?actions>0:true;
-  const state=victory?(condition?'passed':'missed'):focus.id==='clean'&&!condition?'missed':focus.id!=='clear'&&condition?'ready':'active';
+  const state=finished||victory?(victory&&condition?'passed':'missed'):focus.id==='clean'&&!condition?'missed':focus.id!=='clear'&&condition?'ready':'active';
   return {id:focus.id,label:focus.label,state,met:victory&&condition,
-    progress:focus.id==='clean'?`受击 ${hitCount} 次`:focus.id==='action'?`行动 ${actions} 次`:victory?'压轴已完成':'压轴进行中'};
+    progress:focus.id==='clean'?`受击 ${hitCount} 次`:focus.id==='action'?`行动 ${actions} 次`:victory?'压轴已完成':finished?'本轮未击败压轴':'压轴进行中'};
 }

@@ -44,11 +44,14 @@ class FinaleTrialResult extends BattleSurfaceView{
     if(owner)this.root.dataset.challengeFamily='true';
     if(rehearsal)this.root.dataset.rehearsal=result.rehearsal.focus;
     const header=this.element('header','battle-performance-header');this.content.append(header);
-    this.heading(rehearsal?(result.victory&&!result.focusOutcome.met?'压轴排练 · 压轴完成':'压轴排练'):'压轴连演',rehearsal?(result.focusOutcome.met?'排练课题完成':result.victory?'课题未达成':'本轮排练结束'):result.complete?'三站连演完成':result.victory?'本站完成':'本轮连演结束',header);
+    this.heading(rehearsal?(result.victory&&!result.focusOutcome.met?'压轴排练 · 压轴完成':'压轴排练'):'压轴连演',rehearsal?(result.focusOutcome.met?'排练课题完成':'课题未达成'):result.complete?'三站连演完成':result.victory?'本站完成':'本轮连演结束',header);
     this.performerVisual(model.member,header);
-    this.content.append(this.element('p','battle-lead',
-      '已完成 '+result.rounds.filter(row=>row.victory).length+'/'+result.roundCount+'站 · 剩余生命 '+result.hp+'/5'));
-    if(rehearsal){const focus=this.element('p','battle-run-goal',result.focusOutcome.label+' · '+result.focusOutcome.progress+' · '+(result.focusOutcome.met?'课题达成':'课题未达成'));focus.dataset.rehearsalOutcome=result.focusOutcome.met?'passed':'missed';this.content.append(focus);}
+    const completed=result.rounds.filter(row=>row.victory).length;
+    const lead=rehearsal?result.focusOutcome.label+' · '+result.focusOutcome.progress
+      : '已过 '+completed+' / '+result.roundCount+' 站 · '+(result.victory&&!result.complete?'下一站继承生命 ':'剩余生命 ')+result.hp+'/5';
+    const progress=this.element('p','battle-lead',lead);
+    if(rehearsal)progress.dataset.rehearsalOutcome=result.focusOutcome.met?'passed':'missed';
+    (owner?header:this.content).append(progress);
     if(owner){
       const stats=this.element('dl','challenge-result-stats');this.content.append(stats);
       for(const [label,value]of [['公演用时',(result.durationMs/1000).toFixed(1)+'秒'],['受击',result.totalHits+'次'],['主动演出',result.actions+'次'],['剩余生命',result.hp+'/5']]){const item=this.element('div');item.append(this.element('dt',null,label),this.element('dd',null,value));stats.append(item);}

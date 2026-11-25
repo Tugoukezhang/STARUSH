@@ -256,3 +256,25 @@
   & .battle-surface-footer .battle-primary:enabled {border:0;border-image:var(--set-stub) 42 fill / 9px stretch;background:#dce99a;color:#292637;box-shadow:none}
   & .battle-surface-footer .battle-secondary:enabled {border:0;border-image:var(--set-card) 42 fill / 8px stretch;background:#fff1da;color:#302b39;box-shadow:none}
 }
+
+#game-container #run-choice[data-choice-reading=true] .battle-choice-list > .battle-choice-detail {
+  grid-column:1/-1;width:auto;min-height:0;margin:0 0 5px;padding:6px 11px;border-left:4px solid #9dd254;
+}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-detail:empty {display:none}
+#game-container #run-choice[data-choice-reading=true] .battle-choice-row[aria-pressed=true] .battle-choice-delta {color:#184832;font-weight:850}
+#game-container #hud[data-layout=stage-v2] #wave-text {transform-origin:left center}
+#game-container #battle-pause[data-pause-family=true] .battle-lead {background:#e9efcc;color:#214437;border-left:4px solid #51856b}
+#game-container #battle-result[data-challenge-family=true] .battle-performance-header .battle-lead {
+  position:relative;z-index:2;grid-column:1/-1;justify-self:start;max-width:100%;margin:5px 0 0;
+  padding:5px 10px;background:#172e35;color:#edffc5;border-left:3px solid #c0d86b;
+}
+
+/* The safe gameplay plane stays fitted. The surrounding venue takes the remaining screen space. */
+#game-container:is([data-battle-mode=public],[data-battle-mode=result]):not(:has(#public-shell))::before {
+  content:"";pointer-events:none;position:absolute;z-index:-1;
+  left:var(--battle-matte-left,0);top:var(--battle-matte-top,0);width:var(--battle-matte-width,100%);height:var(--battle-matte-height,100%);
+  background:linear-gradient(155deg,#081e29ac,#253139a8 42%,#2b1923bc),var(--battle-matte-venue,none) center / cover,#172b32;
+}
+#game-container:is([data-battle-mode=public],[data-battle-mode=result]):not(:has(#public-shell)) > canvas {
+  box-shadow:0 -1px #b1b5a1,0 1px #aca394,0 3px 15px #111a2180;
+}

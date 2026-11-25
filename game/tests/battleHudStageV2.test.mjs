@@ -63,3 +63,10 @@ test('public pause is a single native command and releases its scene on shutdown
  for(const close of shutdown)close();
  assert.equal(f.doc.getElementById('battle-hud-pause'),null);
 });
+
+test('the live stage HUD pulses its real facility counter only on a new connection',()=>{
+ const f=fixture(),label=f.doc.createElement('span');label.id='wave-text';f.hud.append(label);
+ const seen=[];label.animate=(frames,opts)=>{seen.push(opts.duration);return {cancel(){}};};
+ f.sync();let count=0;f.scene.paintZone={getPaintedCount:()=>count};f.sync();count++;f.sync();f.sync();
+ assert.deepEqual(seen,[420]);f.scene._battlePaused=true;count++;f.sync();f.scene._battlePaused=false;f.sync();assert.deepEqual(seen,[420]);
+});

@@ -1,9 +1,32 @@
+import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
 import {getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
 import {countdownUrgency} from './BattleHeaderPresentation.mjs';
 import {syncBattleCommandFeedback} from './BattleCommandFeedback.mjs';
 import {getActiveUserCastArt} from '../utils/userCast.mjs';
 const actions={sakura:'rifle',kai:'sword',enjo:'hammer'};
 const collapseOnShutdown=new WeakSet();
+const facilityTallies=new WeakMap();
+
+function syncFacilityTally(scene,doc){
+ const label=doc.getElementById('wave-text');
+ if(!label)return;
+ const count=scene.paintZone?.getPaintedCount?.();
+ let state=facilityTallies.get(scene);
+ if(!state){state={count:undefined,animation:null};facilityTallies.set(scene,state);}
+ const gained=Number.isFinite(state.count)&&count>state.count;
+ state.count=count;
+ const blocked=scene._battlePaused||scene._battleEnded||scene._publicBattleDialog||scene._publicBattleResume;
+ if(blocked||doc.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)').matches){
+   state.animation?.cancel();state.animation=null;return;
+ }
+ if(!gained||!label.animate)return;
+ state.animation?.cancel();
+ state.animation=label.animate([
+   {color:'#fff',transform:'scale(1)'},{color:'#edffc0',transform:'scale(1.13)',offset:.22},
+   {color:'#fff',transform:'scale(1)'}
+ ],{duration:420,easing:'ease-out'});
+}
+
 
 function setDetail(doc,open){
  doc.getElementById('battle-hud-detail-toggle').setAttribute('aria-expanded',String(open));
@@ -49,13 +72,21 @@ function mountPause(scene,doc,hud){
 // Called only by the explicit stage-v2 HUD with canonical public ability facts.
 export function syncBattleHudStage(scene,doc,member,action,encore){
  const hud=doc.getElementById('hud');hud.dataset.performer=member.id;
+ const chapter=scene.battleData?.campaignChapterId||'opening';
+ if(hud.dataset.venue!==chapter){
+   hud.dataset.venue=chapter;
+   const venue=CHAPTER_VENUE_ART[chapter]||CHAPTER_VENUE_ART.opening;
+   const url=doc.baseURI?new URL(venue,doc.baseURI).href:venue;
+   doc.getElementById('game-container')?.style.setProperty?.('--battle-matte-venue',`url("${url}")`);
+ }
+ syncFacilityTally(scene,doc);
  if(!doc.getElementById('battle-hud-detail-toggle'))mountDetail(doc,hud);
  if(scene._battlePauseControl&&!doc.getElementById('battle-hud-pause'))mountPause(scene,doc,hud);
  const empty=doc.getElementById('battle-hud-empty-context'),context=[];
  if(!doc.getElementById('run-build').textContent.trim())context.push('编排：未选择');
  if(doc.getElementById('run-goal').hidden)context.push('课题：未设置');
  empty.textContent=context.join(' · ');empty.hidden=context.length===0;
- if(!collapseOnShutdown.has(scene)){collapseOnShutdown.add(scene);scene.events.once('shutdown',()=>{collapseOnShutdown.delete(scene);setDetail(doc,false);});}
+ if(!collapseOnShutdown.has(scene)){collapseOnShutdown.add(scene);scene.events.once('shutdown',()=>{collapseOnShutdown.delete(scene);facilityTallies.get(scene)?.animation?.cancel();facilityTallies.delete(scene);setDetail(doc,false);});}
  const hp=scene.player.hp,max=scene.player.maxHp;
  doc.querySelector('.mihoyo-player-meta').dataset.health=hp===0?'empty':hp/max<=.4?'critical':'normal';
  doc.getElementById('round-clock').dataset.urgency=countdownUrgency(scene);

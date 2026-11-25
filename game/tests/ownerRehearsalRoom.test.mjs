@@ -28,7 +28,10 @@ test('course ready never masquerades as complete and a clear can honestly miss i
  for(const [focus,hits,actions,met]of [['clear',2,0,true],['clean',0,0,true],['clean',1,1,false],['action',0,0,false],['action',1,1,true]]){
   const r=finishFinaleTrialRound(make({...setup,focus}),{victory:true,hp:4,durationMs:10,hitCount:hits,actions});assert(r.victory&&r.complete);assert.equal(r.focusOutcome.met,met);
  }
- const failed=finishFinaleTrialRound(make({...setup,focus:'action'}),{victory:false,hp:0,durationMs:10,hitCount:5,actions:1});assert(!failed.complete&&!failed.focusOutcome.met);
+ const failed=finishFinaleTrialRound(make({...setup,focus:'action'}),{victory:false,hp:0,durationMs:10,hitCount:5,actions:1});assert(!failed.complete&&!failed.focusOutcome.met);assert.equal(failed.focusOutcome.state,'missed');
+ const unfinished=evaluateRehearsal({...setup,focus:'clear'});assert.equal(unfinished.progress,'压轴进行中');
+ const loss=finishFinaleTrialRound(make({...setup,focus:'clear'}),{victory:false,hp:0,durationMs:10,hitCount:5,actions:1});
+ assert.equal(loss.focusOutcome.progress,'本轮未击败压轴');
 });
 test('three members share authoritative saved setup without rehearsal writes or rewards',()=>{
  for(const id of ['sakura','kai','enjo']){const d=createRehearsalData({...base,performerId:id,characterId:id,team:[{characterId:id}]},['tempo','overdrive'],profile,setup);assert(d);assert.equal(d.performerId,id);assert.equal(getFinaleTrialState(d).roundCount,1);}
@@ -37,7 +40,7 @@ test('three members share authoritative saved setup without rehearsal writes or 
 });
 test('real hub/menu/Title handoff respects clear gates and never writes an unlock or preparation',()=>{
  const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);
- let h=e.harness(e.TitleScene);h.scene.create();const pristine=e.storage.getItem('starush.public-profile');h.scene._publicShell.showPage('tour');h.click('[data-action=tour-modes]');h.click('[data-action=hub-rehearsal]');assert(h.query('[data-action=rehearsal-start]').disabled);assert.match(h.text,/该场地保存通关后开放排练/);assert.equal(e.storage.getItem('starush.public-profile'),pristine);h.shutdown();
+ let h=e.harness(e.TitleScene);h.scene.create();const pristine=e.storage.getItem('starush.public-profile');h.scene._publicShell.showPage('tour');h.click('[data-action=tour-modes]');h.click('[data-action=hub-rehearsal]');assert(h.query('[data-action=rehearsal-start]').disabled);assert.match(h.text,/先通关「星光初演」并保存，即可排练/);assert.equal(e.storage.getItem('starush.public-profile'),pristine);h.shutdown();
  e.seed(['opening']);e.profile.selectPublicPerformer('enjo');h=e.harness(e.TitleScene);h.scene.create();h.scene._publicShell.showPage('tour');h.click('[data-action=tour-modes]');h.click('[data-action=hub-rehearsal]');const before=e.storage.getItem('starush.public-profile');
  assert(h.query('[data-rehearsal-chapter=neon]').disabled);h.click('[data-rehearsal-focus=action]');h.click('[data-rehearsal-choice=tempo]');h.click('[data-rehearsal-choice=overdrive]');h.click('[data-action=rehearsal-start]');
  const [key,d]=h.starts.at(-1);assert.equal(key,'BattleScene');assert.equal(d.performerId,'enjo');assert.equal(d.campaignChapterId,'opening');assert.deepEqual(plain(d.publicFinaleTrial.rehearsal),{chapterId:'opening',focus:'action'});assert.deepEqual(plain(d.publicFinaleTrial.choices),['tempo','overdrive']);assert.equal(e.storage.getItem('starush.public-profile'),before);h.shutdown();

@@ -31,6 +31,9 @@ import {getEquipmentIconArt} from './EquipmentIconArt.mjs';
 import {RELAY_TRANSFER_ART} from './RelayInkTransfer.mjs';
 import {evaluateRehearsal} from '../utils/publicRehearsal.mjs';
 import {getArrangementPlanReview} from '../utils/publicArrangementPlan.mjs';
+import {resolvePublicObjectiveGuidanceTarget} from './PublicObjectiveGuidance.mjs';
+import {getPublicBattleFlow} from '../utils/publicBattleFlow.mjs';
+import {getChapterBriefing} from '../utils/playerPreferences.mjs';
 import {syncBattleHeader} from './BattleHeaderPresentation.mjs';
 import {syncBattleHudStage} from './BattleHudStage.mjs';
 import {PUBLIC_STAGE1_SAKURA_ENCORE_WINDOW_MS} from './PublicStage1SakuraActionContract.mjs';
@@ -313,7 +316,11 @@ export class BattleSurfaceView {
         row.button.setAttribute('aria-pressed',String(selected));row.mark.style.visibility=selected?'visible':'hidden';
       }
       const row=choiceRows.get(id);
-      detail.replaceChildren(this.element('strong',null,row.label),this.element('span',null,row.delta),...(row.detail?[this.element('small',null,row.detail)]:[]));
+      detail.replaceChildren(this.element('strong',null,'选后变化'),this.element('span',null,row.delta),...(row.detail?[this.element('small',null,row.detail)]:[]));
+      detail.id='choice-current-preview';
+      for(const option of choiceRows.values())option.button.removeAttribute('aria-describedby');
+      row.button.setAttribute('aria-describedby',detail.id);
+      rows.insertBefore(detail,row.button.nextElementSibling||null);
       confirm.disabled=false;
     };
     for(const option of o.options){
@@ -676,13 +683,20 @@ export class BattleSurfaceView {
       const member=getPublicPerformer(this.scene.publicPerformerRun?.member?.id||this.scene.battleData?.performerId);
       header.append(this.element('p','battle-pause-context',getPublicChapter(this.scene.battleData?.campaignChapterId).name+' · '+member.name));
     }else this.heading('ST☆RUSH','公演暂停');
-    this.content.append(this.element('p','battle-lead','本次演出保留在原处。'));
+    const progressNow=this.scene.publicPerformerRun?.getAttemptProgress?.();
+    const flow=family?getPublicBattleFlow(this.scene):null;
+    const destination=flow?resolvePublicObjectiveGuidanceTarget(this.scene):null;
+    const left=flow?.facilities?Math.max(0,flow.facilities.total-flow.facilities.completed):null;
+    const remaining=left>0?'还需接通 '+left+' 处设施':null;
+    const current=[destination?.label,remaining||flow?.headline].filter(Boolean).join(' · ');
+    const cue=current||progressNow?.next||(family?getChapterBriefing(this.scene.battleData.campaignChapterId).goal:null);
+    this.content.append(this.element('p','battle-lead',cue||'本次演出保留在原处。'));
     this.command(this.content,'继续公演',o.onResume,{primary:true,icon:'play',data:{pauseAction:'resume'}});
     const context=this.element('div','battle-pause-scroll');this.content.append(context);
-    this.command(context,'声音与公演规则',o.onSettings,{icon:'settings-2',terminal:false,data:{pauseAction:'settings'}});
+    this.command(context,'声音与演出设置',o.onSettings,{icon:'settings-2',terminal:false,data:{pauseAction:'settings'}});
     this.command(context,'重新开始',o.onRetry,{icon:'repeat-2',data:{pauseAction:'retry'}});
     this.command(context,'返回制作台',o.onLeave,{icon:'arrow-left',data:{pauseAction:'title'}});
-    this.attemptProgress(this.scene.publicPerformerRun?.getAttemptProgress?.(),context);
+    this.attemptProgress(progressNow,context);
     if(isUserCastEnabled())this.routeReview(getPublicRouteReview(this.scene.battleData?.publicRoutePlan,this.scene.battleData),context);
     this.buildSummary(this.scene.publicPerformerRun?.getBuildSnapshot?.(),context);
     const progress=this.scene.publicPerformerRun?.getGoalProgress?.();

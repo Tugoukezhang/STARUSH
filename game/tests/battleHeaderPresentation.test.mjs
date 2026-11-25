@@ -43,7 +43,7 @@ const truth=s=>JSON.stringify({hp:s.player.hp,maxHp:s.player.maxHp,special:s._sp
 
 test('failed lettering ignores a late load so hidden art cannot blank the native fallback',()=>{
  const f=fixture();f.sync();const image=lettering(f)[0];image.dispatchEvent({type:'error'});image.dispatchEvent({type:'load'});
- assert.equal(image.hidden,true);assert.notEqual(f.meta.dataset.headerLettering,'loaded');assert.equal(f.name.textContent,'步枪手');
+ assert.equal(image.hidden,true);assert.notEqual(f.meta.dataset.headerLettering,'loaded');assert.equal(f.name.textContent,f.e.loadRuntime('utils/userCast.mjs').getDisplayPerformer('sakura').name);
 });
 test('early cleanup unregisters its one shutdown listener before a later owner can be created',()=>{
  const f=fixture();f.s.events=new EventEmitter();f.sync();assert.equal(f.s.events.listenerCount('shutdown'),1);

@@ -66,7 +66,7 @@ export function finishFinaleTrialRound(data,row){
   const rounds=[...state.rounds,entry];
   return {trial:true,recorded:false,persisted:false,performerId:data.performerId,
     victory:entry.victory,complete:entry.victory&&rounds.length===state.roundCount,roundIndex:state.roundIndex,roundCount:state.roundCount,
-    ...(state.rehearsal?{rehearsal:{...state.rehearsal},focusOutcome:evaluateRehearsal(state.rehearsal,entry)}:{}),
+    ...(state.rehearsal?{rehearsal:{...state.rehearsal},focusOutcome:evaluateRehearsal(state.rehearsal,{...entry,finished:true})}:{}),
     choices:[...state.choices],rounds,hp:entry.hp,
     durationMs:rounds.reduce((sum,r)=>sum+r.durationMs,0),
     totalHits:rounds.reduce((sum,r)=>sum+r.hitCount,0),actions:rounds.reduce((sum,r)=>sum+r.actions,0)};

@@ -132,6 +132,10 @@ export function bindGameViewport(game, host = window) {
     container.style.setProperty?.('--menu-scene-top',`${(viewport.offsetTop-frame.y)/frame.scale}px`);
     container.style.setProperty?.('--menu-scene-height',`${viewport.height}px`);
     container.style.setProperty?.('--menu-safe-bottom',`${viewport.safeArea.bottom}px`);
+    // Bleed the venue art to the screen edge while keeping pointers on the fitted combat plane.
+    const matte={left:(viewport.offsetLeft-frame.x)/frame.scale,top:(viewport.offsetTop-frame.y)/frame.scale,
+      width:viewport.width/frame.scale,height:viewport.height/frame.scale};
+    for(const [edge,value] of Object.entries(matte))container.style.setProperty?.('--battle-matte-'+edge,value+'px');
     // NONE keeps logical dimensions; refresh reads the transformed bounds for Phaser input.
     game.scale.refresh();
   };
