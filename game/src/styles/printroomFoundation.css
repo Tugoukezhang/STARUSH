@@ -1,4 +1,5 @@
-/* Original illustrated stock. Each role keeps its live label and its native hit area. */
+/* Shared furniture around every screen. The nav icons, balance and headings
+   remain live elements; only the stock and edge of each part are illustrated. */
 #game-container {
   --print-ink:#201b37;
   --print-paper:#fff6df;
@@ -10,62 +11,253 @@
 }
 
 #game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  /* An ivory pass rail holds the dark venue nameplate. A short unused end
+     of paper is visible even when the page title is short. */
   & .shell-header {
-    position:relative;isolation:isolate;min-height:48px;gap:8px;padding-inline:8px;
-    border:0;border-bottom:3px solid var(--print-ink);box-shadow:none;
-    background:linear-gradient(115deg,transparent 73%,#d5d4bc 73.2% 74%,transparent 74.2%),
-      linear-gradient(115deg,#fff8e6 76%,#e8e4cf 76.3%);color:var(--print-ink);
+    position:relative;
+    isolation:isolate;
+    align-items:center;
+    min-height:48px;
+    gap:4px;
+    padding-inline:6px max(8px,env(safe-area-inset-right));
+    border:0;
+    border-bottom:2px solid #2b2b42;
+    color:var(--print-ink);
+    background:#eee4cb;
+    border-image:var(--set-card) 42 fill / 7px stretch;
+    box-shadow:0 2px 0 #241f3515;
+  }
+  & .shell-header .shell-brand {
+    display:flex;
+    align-items:center;
+    align-self:stretch;
+    min-width:0;
+    margin:0;
+    padding:0;
+    transform:none;
+    translate:none;
   }
   & .shell-header .shell-brand h1.showbill-title {
-    margin:0;padding-inline:1px 5px;background:none;color:var(--print-ink);
-    letter-spacing:.035em;font:950 clamp(19px,5.9vw,25px)/1.18 system-ui,sans-serif;text-shadow:none;
+    position:relative;
+    inset:auto;
+    display:flex;
+    align-items:center;
+    width:fit-content;
+    max-width:100%;
+    min-height:35px;
+    height:auto;
+    margin:0;
+    padding:2px 24px 3px 11px;
+    transform:none;
+    color:#fff7dd;
+    background:#29253e;
+    border:0;
+    border-image:var(--set-strip) 42 fill / 7px stretch;
+    letter-spacing:.025em;
+    font:900 clamp(19px,5.5vw,24px)/1.2 system-ui,sans-serif;
+    text-shadow:0 1px 1px #161426;
   }
   & .shell-header .shell-icon-button {
-    position:relative;flex:none;width:44px;min-width:44px;height:44px;min-height:44px;padding:6px;border:0;
-    background:transparent;color:var(--print-paper);box-shadow:none;border-radius:0;isolation:isolate;
+    position:relative;
+    flex:none;
+    width:44px;
+    min-width:44px;
+    height:44px;
+    min-height:44px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:var(--print-paper);
+    box-shadow:none;
+    border-radius:0;
+    isolation:isolate;
   }
   & .shell-header .shell-icon-button::before {
-    position:absolute;z-index:-1;inset:6px 4px;content:'';display:block;width:auto;height:auto;
-    background:var(--print-ink);border:0;border-radius:5px 2px 6px 2px;clip-path:polygon(13% 0,100% 0,100% 77%,84% 100%,0 100%,0 20%);
+    content:'';
+    display:block;
+    position:absolute;
+    z-index:-1;
+    inset:4px;
+    width:auto;
+    height:auto;
+    border:0;
+    border-radius:0;
+    clip-path:none;
+    background:#293942;
+    border-image:var(--set-monitor) 42 fill / 7px stretch;
   }
-  & .shell-header .shell-icon-button svg {color:var(--print-paper);stroke-width:2.7}
-  & :is(.ui-home-primary .showbill-start,.ui-preflight-footer .showbill-deploy,
-       .shell-selection-footer button[data-command-face=plain],.pg-command.pg-primary[data-command-face=plain]):enabled {
-    color:#17142a;background:transparent var(--print-primary-face) center/100% 100% no-repeat!important;
-    border:0;border-radius:0;box-shadow:none;text-shadow:none;padding-inline-end:max(18px,10%);
+  & .shell-header .shell-icon-button[data-action=back]::before {
+    background:#29253e;
+    border-image-source:var(--set-strip);
   }
-  & .ui-home-primary .showbill-start .ui-home-chapter {color:#2d3527}
-  & .ui-home-primary .showbill-start > svg {display:none}
-  & .shell-selection-footer button[data-command-face=plain]:enabled {justify-content:center}
+  & .shell-header .shell-icon-button svg {
+    color:var(--print-paper);
+    stroke-width:2.75;
+  }
+  & .shell-header .shell-wallet.ui-resource:not([hidden]) {
+    display:inline-flex;
+    align-items:center;
+    flex:none;
+    gap:5px;
+    width:auto;
+    height:32px;
+    min-width:52px;
+    min-height:0;
+    padding:3px 10px 3px 5px;
+    border:0;
+    border-radius:16px;
+    box-shadow:inset 0 -2px #0d2528;
+    background:#243f46;
+    color:#fff9df;
+    font:800 14px/1.2 system-ui,sans-serif;
+    font-variant-numeric:tabular-nums;
+  }
+  & .shell-header .shell-wallet.ui-resource:not([hidden])::before {
+    content:'♪';
+    position:static;
+    display:grid;
+    place-items:center;
+    flex:0 0 20px;
+    width:20px;
+    height:20px;
+    padding:0;
+    border-radius:50%;
+    background:#f6d676;
+    color:#382b36;
+    font:900 14px/1 system-ui,sans-serif;
+  }
+
+  /* Rounded symbol keycaps sit on one paper strip. Only the current
+     destination gets an ink plate and a lit mark next to its name. */
   & .ui-root-nav {
-    min-height:66px;gap:4px;padding:4px 8px;
-    background:var(--print-ink);border:0;border-top:2px solid #14132c;box-shadow:none;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    justify-items:stretch;
+    align-items:stretch;
+    min-height:66px;
+    gap:2px;
+    padding:3px max(6px,env(safe-area-inset-right)) 4px max(6px,env(safe-area-inset-left));
+    background:#f1e7cc;
+    border:0;
+    border-top:2px solid #242139;
+    border-image:var(--set-card) 42 fill / 8px stretch;
+    box-shadow:0 -2px 0 #24213935;
   }
   & .ui-root-nav .ui-nav-root,
   & .ui-root-nav .ui-nav-root:not([aria-current]) {
-    min-width:0;display:grid;grid-template-rows:33px 17px;align-content:center;justify-items:center;
-    background:transparent;color:#fff5df;border:0;border-radius:0;box-shadow:none;opacity:1;
-  }
-  & .ui-root-nav .ui-nav-root[aria-current] {
-    border:0;background:var(--print-lime);color:#18162e;box-shadow:inset 0 -3px #afc72c;
-    clip-path:polygon(7px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 7px);
+    position:relative;
+    display:grid;
+    grid-template-rows:33px 18px;
+    justify-items:center;
+    align-content:center;
+    width:100%;
+    min-width:0;
+    max-width:none;
+    min-height:49px;
+    padding:1px 3px;
+    margin:0;
+    transform:none;
+    border:0;
+    border-radius:0;
+    clip-path:none;
+    box-shadow:none;
+    background:transparent;
+    color:#352b40;
     opacity:1;
   }
+  & .ui-root-nav .ui-nav-root[aria-current] {
+    background:#302b45;
+    color:#fff8dc;
+    border:0;
+    border-image:var(--set-strip) 42 fill / 9px stretch;
+  }
   & .ui-root-nav .ui-nav-root .nav-sticker {
-    display:block;width:39px;height:34px;max-width:100%;object-fit:contain;filter:none;
+    display:block;
+    width:39px;
+    height:34px;
+    max-width:100%;
+    object-fit:contain;
+    filter:none;
   }
-  & .ui-root-nav .ui-nav-root[aria-current] .nav-sticker {width:43px;height:37px}
+  & .ui-root-nav .ui-nav-root[aria-current] .nav-sticker {width:42px;height:36px}
   & .ui-root-nav .ui-nav-root .showbill-nav-label {
-    position:static;color:inherit;background:none;font:800 13px/16px system-ui,sans-serif;letter-spacing:.035em;text-shadow:none;
+    position:static;
+    display:flex;
+    align-items:center;
+    gap:3px;
+    background:none;
+    color:inherit;
+    font:800 13px/16px system-ui,sans-serif;
+    letter-spacing:.025em;
+    text-shadow:none;
   }
+  & .ui-root-nav .ui-nav-root[aria-current] .showbill-nav-label::before {
+    content:'';
+    width:5px;
+    height:5px;
+    background:#e3f572;
+    border-radius:50%;
+  }
+
+  & :is(.ui-home-primary .showbill-start,.ui-preflight-footer .showbill-deploy,
+        .shell-selection-footer button[data-command-face=plain],.pg-command.pg-primary[data-command-face=plain]):enabled {
+    color:#201b35;
+    background:#e7ed9c!important;
+    border:0;
+    border-image:var(--set-stub) 42 fill / 9px stretch;
+    border-radius:0;
+    text-shadow:none;
+    box-shadow:0 2px 0 #28213965;
+    padding-inline-end:max(16px,7%);
+  }
+  & .ui-home-primary .showbill-start .ui-home-chapter {color:#303336}
+  & .ui-home-primary .showbill-start > svg {display:none}
+  & .shell-selection-footer button[data-command-face=plain]:enabled {justify-content:center}
   & :is(.home-backstage,.tour-reference-button,.ui-roster-lane .ui-actor-switch,.ui-roster-lane .roster-reference) {
-    border:0;border-radius:0;background:transparent var(--print-ink-face) center/100% 100% no-repeat!important;
-    box-shadow:none;color:var(--print-paper)!important;
+    border:0;
+    border-radius:0;
+    background:#2d3544!important;
+    border-image:var(--set-monitor) 42 fill / 7px stretch;
+    box-shadow:none;
+    color:var(--print-paper)!important;
   }
-  & :is(button,summary):focus-visible {outline:3px solid #1288bb;outline-offset:-3px}
+  & :is(.shell-primary,.pg-command)[data-command-face=plain]:disabled {
+    border:1px dashed #7f7866;
+    background:#e6e2d0;
+    color:#4a4640;
+    box-shadow:none;
+    opacity:1;
+  }
+
+  & :is(button,summary):focus-visible {
+    outline:3px solid #0089a7!important;
+    outline-offset:-3px;
+  }
+  & .ui-root-nav .ui-nav-root:focus-visible,
+  & .shell-header .shell-icon-button:focus-visible {
+    outline:3px solid #00617a!important;
+    outline-offset:-3px;
+    box-shadow:inset 0 0 0 5px #fff7d9;
+  }
+  @media (hover:hover) and (pointer:fine) {
+    & .ui-root-nav .ui-nav-root:not([aria-current]):hover {
+      background:#e8e3c7;
+      box-shadow:inset 0 -2px #526c77;
+    }
+    & .shell-header .shell-icon-button:hover::before {filter:brightness(1.18)}
+  }
   & button:enabled:active {filter:brightness(.88)}
+  & .ui-root-nav .ui-nav-root:enabled:active .nav-sticker,
+  & .shell-header .shell-icon-button:enabled:active svg {transform:translateY(1px)}
+
+  @media (prefers-reduced-motion:reduce) {
+    & .ui-root-nav .ui-nav-root:enabled:active .nav-sticker,
+    & .shell-header .shell-icon-button:enabled:active svg {transform:none}
+  }
   @media (forced-colors:active) {
-    & .ui-root-nav .ui-nav-root[aria-current] {outline:2px solid Highlight;outline-offset:-3px}
+    & .shell-header .shell-icon-button::before,
+    & .shell-header .shell-brand h1.showbill-title,
+    & .ui-root-nav .ui-nav-root[aria-current] {border-image:none}
+    & .ui-root-nav .ui-nav-root[aria-current] {outline:2px solid Highlight!important;outline-offset:-2px}
     & button:enabled {border:1px solid ButtonText}
   }
 }
