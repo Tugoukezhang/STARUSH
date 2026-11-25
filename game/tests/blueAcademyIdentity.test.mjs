@@ -64,7 +64,7 @@ test('blue production preload and selected roster cannot load old hammer body or
 test('blue source/runtime images are identical RGBA files with six independent spell cells and 24 body cells',()=>{
  for(const [name,w,h]of [['motion',1536,1024],['portrait',1085,1450],['avatar',1254,1254],['weapon',1254,1254],['spell',1536,1024]]){
   const a=fs.readFileSync(new URL('../public/art/blue-academy-20261123/'+name+'.png',import.meta.url)),b=fs.readFileSync(new URL('../../01-美术/blue-academy-chibi-20261123/'+name+'.png',import.meta.url));
-  assert.deepEqual(a,b);assert.equal(a.readUInt32BE(16),w);assert.equal(a.readUInt32BE(20),h);assert.equal(a[25],6);
+  assert(a.equals(b),name+'.png must match its editable source');assert.equal(a.readUInt32BE(16),w);assert.equal(a.readUInt32BE(20),h);assert.equal(a[25],6);
  }
  for(const [l,t,r,b] of ART.motion.bounds){assert(l>0&&t>0&&r<256&&b<256,'body must not cross a cell boundary');}
  const sheets=[];preloadUserWeaponFx({load:{image(){},spritesheet:(...a)=>sheets.push(a)}},'enjo');

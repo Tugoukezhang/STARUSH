@@ -961,3 +961,14 @@
   & .sec-records-tools {position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));min-width:0;gap:4px}
   & .sec-records-tools .ui-icon-command {min-width:0;width:100%;gap:3px;padding-inline:3px}
 }
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=roster] {
+  & .shell-selection-footer:has(button[data-action=confirm-member]:not([hidden])) {
+    display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:6px;align-items:center;
+  }
+  & .shell-selection-footer button.ui-confirm[data-action=confirm-member]:not([hidden]) {
+    min-width:82px;width:auto;max-width:none;height:46px;min-height:44px;padding:6px 9px;white-space:nowrap;gap:3px;
+  }
+  & .shell-selection-footer button.ui-confirm[data-action=confirm-member]:not([hidden]) > :is(span,img,svg) {display:none!important}
+  & .shell-selection-footer button.ui-confirm[data-action=confirm-member]:not([hidden])::before {display:none}
+  & .shell-selection-footer button.ui-confirm[data-action=confirm-member]:not([hidden])::after {content:'确认出战'!important;position:static;display:block;width:auto;height:auto;white-space:nowrap;font:800 15px/21px system-ui;color:#273931}
+}

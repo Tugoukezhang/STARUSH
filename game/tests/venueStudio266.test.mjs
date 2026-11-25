@@ -8,7 +8,7 @@ import {loadScenes} from './helpers/publicShellHarness.mjs';
 
 const KEY = 'starush.backstage.v1', PROFILE = 'starush.public-profile';
 const ROOMS = {stage: '舞台', rehearsal: '排练室', lounge: '休息室'};
-const NAMES = {sakura: '步枪手', kai: '机甲剑士', enjo: '重锤手'};
+const NAMES = {sakura: '战术女武神', kai: '翡翠风歌', enjo: '蔚蓝魔法师'};
 const cssUrl = new URL('../src/styles/venueStudio266.css', import.meta.url);
 
 function venue(prepare, s = loadScenes()) {
@@ -65,10 +65,11 @@ test('one selected-room scene, the exact three-room dock and a single prepare ou
   // One small, named edit command.
   const edits = h.all('[data-action=venue-edit]');
   assert.equal(edits.length, 1);
-  assert.equal(edits[0].getAttribute('aria-label'), '编辑排班');
+  assert.equal(edits[0].getAttribute('aria-label'), '先安排成员');
+  assert.equal(prepare(h).hidden,true,'the prepare action appears after assigning a member');
   assert.equal(edits[0].dataset.uiIcon, undefined);
   assert.equal(edits[0].dataset.venueGlyph, 'schedule');
-  assert.equal(edits[0].querySelector('[data-venue-letter]').dataset.venueLetter, 'schedule');
+  assert.equal(edits[0].querySelector('span').textContent,'先安排成员');
   assert.equal(root.querySelectorAll('[data-secondary-letter]').length, 0, 'no double skin inside the venue screen');
   // Short summary: member + program + prepared, empty rooms do not print a default program as scheduled.
   assert.equal(field(h, 'member').textContent, '未排班');
@@ -121,8 +122,8 @@ test('the opaque editor borrows the original member/program/save nodes and stays
   for (const id of ['sakura', 'enjo']) assert.equal(live.querySelector(`[data-room-member-option=${id}]`).getAttribute('aria-pressed'), 'false');
   const draft = live.querySelector('.pm-room-draft');
   assert.equal(draft.dataset.draftState, 'dirty');
-  assert.match(draft.textContent, /未保存/);
-  assert.match(draft.textContent, /本机记录/, 'draft line names the persisted record it differs from');
+  assert.match(draft.textContent, /待保存/);
+  assert.match(draft.textContent, /翡翠风歌.*舞台试音/, 'the editor names the proposed performer and program at the save step');
   live.querySelector('[data-room-program-option=stage-blocking]').click();
   assert.equal(sheet(h)?.open, true);
   assert.equal(sheet(h).querySelector('[data-room-program-option=stage-blocking]').getAttribute('aria-pressed'), 'true');
