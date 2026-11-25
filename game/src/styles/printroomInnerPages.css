@@ -468,13 +468,6 @@
   }
 }
 
-#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=workshop] .shell-preparation-footer[data-training-state] button[data-action=train] {
-  min-height:48px;padding:7px 14px;border:0;border-radius:1px;filter:none;opacity:1;
-  background:var(--print-primary-face) center/100% 100% no-repeat!important;color:#242438;box-shadow:none;font-weight:850;
-}
-#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=workshop] .shell-preparation-footer[data-training-state] button[data-action=train]:disabled {
-  border:2px dashed #605d60;border-left:6px solid #868175;border-radius:1px;background:#e5dfce!important;color:#423e42;filter:none;opacity:1;
-}
 #game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=library] .sec-library-idle > summary {
   display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:5px 11px;
   border:1px solid #c2b9a5;border-left:5px solid #fa856a;border-radius:1px;background:#f8f1dc;color:#242438;
@@ -723,5 +716,112 @@
     & .pm-local-state::before {z-index:1}
     & .cs-local-console .pm-service-command {background:#ede3cd;border:0;border-image:var(--set-note) 42 fill / 8px stretch;box-shadow:none}
     & .cs-network {padding:8px 12px}
+  }
+}
+
+/* Read the actual command and its state even when only the button is visible. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page] {
+  &[data-page=workshop] .shell-preparation-footer[data-training-state] button[data-action=train],
+  &[data-page=venue] .product-module-screen[data-venue-studio] .sec-venue-dock button.pm-prepare {
+    display:flex;position:relative;align-items:center;justify-content:center;gap:8px;
+    min-height:48px;padding:7px 12px;border:0;border-radius:2px;opacity:1;filter:none;
+    background:#e7eeaa!important;border-image:var(--set-stub) 42 fill / 9px stretch;
+    color:#283632;box-shadow:0 2px 3px #16253140;
+    &::before {
+      content:'';position:static;display:block;flex:0 0 24px;width:24px;height:24px;
+      transform:none;clip-path:none;opacity:1;background:var(--command-glyph) center/contain no-repeat;
+    }
+    &:disabled {
+      background:#f2e7d0!important;border:0;border-image:var(--set-note) 42 fill / 10px stretch;
+      color:#554747;box-shadow:none;--command-glyph:url('/art/hierarchy-ui-20261101/widget-lock.webp');
+    }
+    &:focus-visible {outline:3px solid #1a6672;outline-offset:-4px}
+    &:enabled:active {transform:translateY(1px);filter:brightness(.91);box-shadow:none}
+  }
+  &[data-page=workshop] .shell-preparation-footer[data-training-state] button[data-action=train] {
+    --command-glyph:url('/art/hierarchy-ui-20261101/widget-train.webp');
+    border-image:var(--set-stub) 42 fill / 9px stretch!important;
+    &:disabled {--command-glyph:url('/art/hierarchy-ui-20261101/widget-lock.webp');border-image:var(--set-note) 42 fill / 10px stretch!important}
+  }
+  &[data-page=venue] .product-module-screen[data-venue-studio] .sec-venue-dock button.pm-prepare {
+    --command-glyph:url('/art/hierarchy-ui-20261101/widget-selected.webp');
+    &:disabled {--command-glyph:url('/art/hierarchy-ui-20261101/widget-lock.webp')}
+    & > span[data-venue-letter] {width:auto;height:auto;min-width:0;color:inherit;font:800 15px/20px system-ui,sans-serif!important}
+    & .venue-letter-art {display:none}
+  }
+
+  /* A compact guide is a paper tab, visually separate from play and confirm. */
+  &:is([data-page=finaleTrial],[data-page=rehearsal]) .shell-content .thin-challenge-hero button.thin-challenge-info,
+  &[data-page=goals] .shell-content[data-hierarchy=goals] .pg-goal-context button.pg-goal-info {
+    display:inline-flex;align-items:center;justify-content:center;gap:5px;
+    width:auto;min-width:83px;max-width:111px;min-height:44px;padding:5px 9px;
+    color:#3a3836;background:#fcf0d6;border:0;border-image:var(--set-note) 42 fill / 8px stretch;
+    border-radius:0;box-shadow:0 2px 5px #16253156;
+    & > img.ui-glyph {position:static;display:block;flex:0 0 18px;width:18px;height:18px;transform:none;object-fit:contain}
+    &::before {display:none}
+    &::after {content:attr(aria-label);display:block;position:static;width:auto;height:auto;padding:0;background:none;color:inherit;font:800 13px/18px system-ui,sans-serif;white-space:nowrap}
+    &:focus-visible {outline:3px solid #19626b;outline-offset:-3px}
+    &:active {background-color:#e6deb8;filter:brightness(.91)}
+  }
+
+  &[data-page=lounge] .product-module-screen[data-companion-studio] {
+    & :is(button.ui-actor-switch,button.pm-record-tool) {
+      width:102px;min-width:0;max-width:none;height:44px;min-height:44px;right:8px;padding:5px 7px;gap:4px;
+      border:0;border-radius:2px;background:#f9efd4;border-image:var(--set-note) 42 fill / 7px stretch;
+      color:#2b363c;box-shadow:0 2px 4px #18283d48;
+    }
+    & button.ui-actor-switch {top:8px}
+    & button.pm-record-tool {top:60px;color:#fff8e6;background:#263b42;border-image-source:var(--set-monitor)}
+    & :is(button.ui-actor-switch,button.pm-record-tool)::before {
+      content:'';position:static;display:block;flex:0 0 19px;width:19px;height:19px;
+      transform:none;clip-path:none;background:url('/art/hierarchy-ui-20261101/widget-switch.webp') center/contain no-repeat;
+    }
+    & button.pm-record-tool::before {background-image:url('/art/hierarchy-ui-20261101/widget-archive.webp')}
+    & :is(button.ui-actor-switch,button.pm-record-tool)::after {font-size:13px;line-height:17px;color:inherit;white-space:nowrap}
+    & :is(button.ui-actor-switch,button.pm-record-tool):focus-visible {outline:3px solid #d69a45;outline-offset:-3px}
+    & :is(button.ui-actor-switch,button.pm-record-tool):active {filter:brightness(.91);transform:translateY(1px)}
+  }
+  &[data-page=services] .product-module-screen[data-console-page=services] .cs-local-console button.cs-network {
+    display:flex;align-items:center;justify-content:flex-start;gap:8px;padding:7px 12px;min-height:46px;
+    border:0;border-radius:2px;background:#233844;border-image:var(--set-monitor) 42 fill / 9px stretch;
+    color:#fff9e9;box-shadow:none;
+    &::before {
+      content:'';position:static;flex:0 0 20px;width:20px;height:20px;display:block;transform:none;
+      background:url('/art/hierarchy-ui-20261101/widget-info.webp') center/contain no-repeat;
+    }
+    & > span[data-console-letter] {display:inline;flex:1;color:inherit;text-align:left;font:800 14px/19px system-ui,sans-serif!important}
+    & .console-letter-art {display:none}
+    &::after {content:'›';position:static;width:auto;height:auto;background:none;color:#efe7a6;font:700 20px/20px system-ui,sans-serif}
+    &:focus-visible {outline:3px solid #e4cd83;outline-offset:-4px}
+    &:active {transform:translateY(1px);filter:brightness(.91)}
+  }
+
+  &[data-page=workshop] [data-secondary-page=workshop] .sec-training-stage .ui-workshop-tools button.ui-icon-command {
+    --tool-icon:url('/art/hierarchy-ui-20261101/icons-info.webp');
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    width:90px;min-width:90px;height:44px;min-height:44px;padding:4px 6px;
+    border:0;border-radius:2px;background:#27363f;border-image:var(--set-monitor) 42 fill / 7px stretch;
+    box-shadow:0 2px 4px #1a29363d;color:#fff9e9;
+    &[data-action=actor-switch] {--tool-icon:url('/art/hierarchy-ui-20261101/icons-switch.webp')}
+    &[data-action=workshop-sheet-equipment] {--tool-icon:url('/art/hierarchy-ui-20261101/icons-equipment.webp')}
+    & > .ui-glyph {display:none}
+    &::before {content:'';position:static;display:block;flex:0 0 17px;width:17px;height:17px;background:var(--tool-icon) center/contain no-repeat}
+    &::after {content:attr(aria-label);position:static;display:block;width:auto;height:auto;background:none;color:inherit;font:750 12px/17px system-ui,sans-serif}
+    &:focus-visible {outline:3px solid #e6ca71;outline-offset:-3px}
+    &:active {filter:brightness(.9)}
+  }
+  &[data-page=library] .shell-content[data-planning-studio] {
+    & .sec-library-composition .library-stage-tab {border:0;border-image:var(--set-monitor) 42 fill / 8px stretch}
+    & .sec-library-composition .library-stage-tab[aria-selected=true] {border:0;border-image:var(--set-stub) 42 fill / 8px stretch}
+    & .sec-library-choices .arrangement-option[aria-pressed=true] {border:0;background:#e3edab;border-image:var(--set-stub) 42 fill / 9px stretch;box-shadow:none}
+    & .sec-library-idle > summary {border:0;border-image:var(--set-note) 42 fill / 8px stretch}
+    & .sec-library-idle[open] > summary {border-image-source:var(--set-stub)}
+    & :is(.library-stage-tab,.arrangement-option,summary):focus-visible {outline:3px solid #296971;outline-offset:-4px}
+  }
+  &[data-page=growth] .shell-content[data-planning-studio] .sec-growth-stages {
+    & [data-growth-rank] {border:0;border-image:var(--set-monitor) 42 fill / 8px stretch;background:#24373d}
+    & [data-growth-rank][aria-pressed=true] {border:0;border-image:var(--set-stub) 42 fill / 9px stretch;color:#2e343c;background:#e4eba9}
+    & [data-growth-rank]:focus-visible {outline:3px solid #e5b55e;outline-offset:-4px}
+    & [data-growth-rank]:active {filter:brightness(.92)}
   }
 }
