@@ -7,8 +7,12 @@ const ART=Object.freeze({...Object.fromEntries(IDS.map(id=>[id,Object.freeze({sr
   rain_relay:Object.freeze({src:'art/rain-relay-295/rain_relay.webp',width:256,height:256})});
 export const getEquipmentIconArt=id=>Object.hasOwn(ART,id)?ART[id]:null;
 
-export function mountEquipmentIcon(view,parent,id,fallback){
-  const art=getEquipmentIconArt(id);
+const compactIcons=Object.freeze({return_edge:'chime-icon.png',delayed_hammer:'book-icon.png'});
+
+export function mountEquipmentIcon(view,parent,id,fallback,{thumbnail=false}={}){
+  const art=thumbnail && Object.hasOwn(compactIcons,id)
+    ? {src:'art/printroom/'+compactIcons[id],width:256,height:256}
+    : getEquipmentIconArt(id);
   if(!art||!parent||!view?.doc||view.disposed)return null;
   const image=view.element('img','menu-art equipment-art',undefined,parent);
   image.alt='';image.setAttribute('aria-hidden','true');image.width=art.width;image.height=art.height;

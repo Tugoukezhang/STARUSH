@@ -51,6 +51,7 @@ import './styles/performanceInterface.css';
 import './styles/showbillMenus.css';
 import './styles/showbillBattle.css';
 import './styles/printroomFoundation.css';
+import './styles/printroomStagePages.css';
 import './styles/printroomInnerPages.css';
 import './styles/printroomSheets.css';
 import './styles/printroomBattle.css';

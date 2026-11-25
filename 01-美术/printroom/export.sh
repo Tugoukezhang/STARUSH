@@ -19,3 +19,11 @@ sprite rooms gear '835x470+837+0' '680x' 84
 sprite rooms records '835x470+0+471' '680x' 84
 sprite rooms rehearsal '835x470+837+471' '680x' 84
 convert speaker-original.png -resize 360x360 -quality 87 "$out/motif.webp"
+
+# Full-resolution owner weapons stay in the stage and item detail views.
+gear_thumbnail() {
+  convert "$out/../$1/weapon.png" -filter Lanczos -resize 256x256 -strip \
+    -define png:exclude-chunks=date,time "PNG32:$out/$2-icon.png"
+}
+gear_thumbnail green-windsong-20261123 chime
+gear_thumbnail blue-academy-20261123 book

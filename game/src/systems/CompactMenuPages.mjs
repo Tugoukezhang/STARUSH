@@ -153,7 +153,7 @@ export function renderCompactInventory(view,main,model){
     },{className:'ui-item-slot'});
     button.dataset.inventoryItem=item.id;button.dataset.equipped=String(item.equipped);button.dataset.owned=String(item.owned);button.dataset.state=state;
     button.replaceChildren();
-    const art=view.element('span','equipment-art-slot',undefined,button);mountEquipmentIcon(view,art,item.id);
+    const art=view.element('span','equipment-art-slot',undefined,button);mountEquipmentIcon(view,art,item.id,null,{thumbnail:true});
     view.element('span','ui-item-name',item.name,button);
     view.element('span','ui-item-state',stateText,button);
     if(state==='locked')view.element('span','ui-item-lock',undefined,button).dataset.uiIcon='lock';
