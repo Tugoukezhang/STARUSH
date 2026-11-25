@@ -91,7 +91,7 @@ assert.equal(pkg.scripts['qa:gpu'], 'node scripts/qa-gpu-capture.mjs');
 assert.equal(pkg.dependencies.spectorjs, undefined);
 const config = fs.readFileSync(path.join(root, 'vite.config.js'), 'utf8');
 assert.doesNotMatch(config, /tooling-plugins|spectorjs|rollup-plugin-visualizer/);
-assert.match(config, /plugins:\s*\[p15AssetBoundaryGuard\(OUT_DIR\), runtimePayloadPlugin\(\)\]/);
+assert.match(config, /plugins:\s*\[chapterContentGuard\(\), productFrameworkGuard\(\), p15AssetBoundaryGuard\(OUT_DIR\), runtimePayloadPlugin\(\[\.\.\.RUNTIME_PAYLOAD, \.\.\.HOME_PAYLOAD\]\)\]/);
 assert.match(fs.readFileSync(path.join(root, 'scripts/analyze-build.mjs'), 'utf8'), /plugins: createBundleAnalysisPlugins\(root, \{ enabled: true \}\)/);
 
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry =>

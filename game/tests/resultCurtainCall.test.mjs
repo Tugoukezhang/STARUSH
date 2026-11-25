@@ -3,16 +3,17 @@ import assert from 'node:assert/strict';
 import {EventEmitter} from 'node:events';
 import {loadScenes} from './helpers/publicShellHarness.mjs';
 
-function fixture(id='sakura',overrides={}){
+function fixture(id='sakura',overrides={},equipmentIds=['wide_nozzle']){
  const env=loadScenes();env.loadRuntime('utils/userCast.mjs').configureUserCast(true);
  const api=env.loadRuntime('systems/BattleSurfaceView.mjs');
  const scene={events:new EventEmitter(),input:{enabled:true,keyboard:{enabled:true,resetKeys(){}},resetPointers(){}},player:{body:{setVelocity(){}}},sound:null,
   _userCastPresentation:true,battleData:{stageId:1,performerId:id,campaignChapterId:'opening'},publicPerformerRun:{runId:'curtain-fixture'}};
- const model=api.getPublicResultSurfaceModel({buttons:[{label:'Next',action:'campaign-next'},{label:'Retry',action:'retry'}]},
-  {performerId:id,chapterId:'opening',victory:true,durationMs:65000,actions:4,choices:['wide_brush'],recorded:true,persisted:true,reward:{notes:6,equipmentIds:['wide_nozzle']}});
+ const run={performerId:id,chapterId:'opening',victory:true,durationMs:65000,actions:4,choices:['wide_brush'],recorded:true,persisted:true,reward:{notes:6,equipmentIds}};
+ scene._publicRunResult=run;
+ const model=api.getPublicResultSurfaceModel({buttons:[{label:'Next',action:'campaign-next'},{label:'Retry',action:'retry'}]},run);
  Object.assign(model,{continuation:{chapterId:'neon',name:'霓虹街口',persisted:true,available:true},earnedEquipment:{id:'wide_nozzle'}},overrides);
  const actions=[],view=new api.BattleSurfaceView(scene,{mode:'result',model,onAction:a=>{actions.push(a);return false;}},env.document);
- return{view,model,actions,api};
+ return{view,model,actions,api,env,run};
 }
 
 test('three cast curtain calls show one chapter heading and no repeated outcome/action stack',()=>{
@@ -40,6 +41,29 @@ test('compact reward icons and quantities remain visible; new equipment inspect 
  const inspect=root.querySelector('[data-result-action=earned-equipment]'),prepare=root.querySelector('[data-result-action=preparation]');
  assert.equal(inspect.parentNode,summary);assert(api.getBattleFocusable(root).includes(inspect));assert(!api.getBattleFocusable(root).includes(prepare));
  inspect.click();assert.deepEqual(actions,['earned-equipment']);details.open=true;assert(api.getBattleFocusable(root).includes(prepare));view.destroy();
+});
+
+test('two different first-clear rewards fit in place without counting the run twice',()=>{
+ const ids=['wide_nozzle','travelling_nozzle'];
+ const {view,env,run}=fixture('sakura',{},ids);env.seed(['opening']);
+ const handoff=env.loadRuntime('utils/publicSessionContent.mjs').getEarnedEquipmentHandoff;
+ const read=()=>env.profile.loadPublicProfile(),before=read();
+ view.options.onAction=(action,id)=>{
+  assert.equal(action,'earned-equipment');
+  return view.inspectEarnedItem(handoff(run,read(),id));
+ };
+ const next=view.root.querySelector('[data-result-action=campaign-next]');
+ for(const id of ids){
+  const trigger=view.root.querySelector('[data-reward-id='+id+']');trigger.click();
+  const preview=view.root.querySelector('#result-reward-fitting');
+  assert.equal(preview.querySelector('img').src,trigger.querySelector('img').src);
+  const equip=preview.querySelector('[data-action=equip-reward]');equip.click();
+  assert.equal(equip.disabled,true);assert.equal(read().preparation.equipmentByPerformer.sakura,id);
+  preview.querySelector('[data-action=close-reward]').click();
+  assert.equal(view.root.querySelector('#result-reward-fitting'),null);assert.equal(trigger.getAttribute('aria-expanded'),'false');
+ }
+ assert.equal(view.root.querySelector('[data-result-action=campaign-next]'),next);assert.equal(next.disabled,false);
+ assert.deepEqual(read().recordedRunIds,before.recordedRunIds);assert.equal(read().clears,before.clears);view.destroy();
 });
 
 test('one next-station command names its destination and retains all three persistence states',()=>{

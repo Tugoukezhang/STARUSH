@@ -63,8 +63,9 @@ test('release inventory is exact, categorized, unique and covers existing runtim
  // The normal Vite build ships the separate home-space manifest alongside the main game.
  const homePayload=JSON.parse(fs.readFileSync(new URL('../home-payload.json',import.meta.url),'utf8'));
  const release=[...RUNTIME_PAYLOAD,...homePayload];
- assert.equal(RUNTIME_PAYLOAD.length,803);
- assert.equal(release.length,869);
+ assert.equal(RUNTIME_PAYLOAD.length,835);
+ assert.equal(homePayload.length,29);
+ assert.equal(release.length,864);
  assert.equal(new Set(release.map(a=>a.file)).size,release.length);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='mobile-lobby').map(a=>a.file),['art/mobile-lobby-20261014/home-background.webp']);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='owner-character-walk').map(a=>a.file),['art/rifle-walk-volume-20261022/walk.png']);
@@ -89,9 +90,35 @@ test('release inventory is exact, categorized, unique and covers existing runtim
  assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group==='public-scenes').length,7);
  assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group==='shared-audio').length,7);
  assert.ok(RUNTIME_PAYLOAD.every(a=>Object.isFrozen(a)));
- const rows=validateRuntimePayload(new URL('../public/',import.meta.url),release);assert.equal(rows.length,869);
+ const rows=validateRuntimePayload(new URL('../public/',import.meta.url),release);assert.equal(rows.length,864);
+ assert.equal(rows.reduce((total,row)=>total+row.bytes,0),155428640);
  assert.ok(rows.every(a=>a.bytes>0&&/^[a-f0-9]{64}$/.test(a.sha256)));
+ const practiceArt=rows.filter(row=>row.group==='owner-program-studio'&&row.file.includes('/practice-'));
+ assert.deepEqual(practiceArt.map(({file,bytes,sha256})=>[file,bytes,sha256]),[
+  ['art/program-studio-20261101/practice-score.webp',56928,'f793ae0fe62f0a22b67c51c6fe0fc9680fc6398433cb9f585bc84e8266e0ffb4'],
+  ['art/program-studio-20261101/practice-target.webp',68452,'11cd56cb0f4b36431d576aa0306251367d90c37bad268d8ddee3ada255a62e7c']
+ ]);
  assert.ok(!rows.some(a=>/base-gray|gray-plaza|sakura-hud-portrait|art\/desk|art\/phase15/.test(a.file)));
+});
+test('the shipped landmarks, combat poses, portraits, navigation and resident have exact file manifests',()=>{
+ const home=JSON.parse(fs.readFileSync(new URL('../home-payload.json',import.meta.url),'utf8'));
+ const release=[...RUNTIME_PAYLOAD,...home];
+ const groupFiles=group=>release.filter(row=>row.group===group).map(row=>row.file).sort();
+ const members=['sakura','kai','enjo'];
+ const expected=[
+  ['performer-and-enemy-poses','art/performance-poses/',[...members,'rifle-stride','stage-crew']],
+  ['chapter-landmarks','art/chapter-landmarks/',['record','headphones','cup','shed','shed-muted','sail-left','sail-right','roof-console']],
+  ['cast-encounters','art/cast-encounters-20261125/',members.flatMap(id=>['room','victory','defeat','dialogue'].map(state=>id+'-'+state))],
+  ['concert-navigation','art/infield/',['nav-desk','nav-roster','nav-tour','nav-inventory']],
+ ];
+ for(const [group,prefix,names] of expected)assert.deepEqual(groupFiles(group),names.map(name=>prefix+name+'.webp').sort(),group);
+ assert.deepEqual(groupFiles('owner-weapon-fx').filter(file=>file.startsWith('art/infield/')),
+  ['art/infield/ground-footprints.webp','art/infield/wet-splash.webp']);
+ const roomFiles=['companion.html','resident.mjs','home-release.json','assets/room-scene.js','assets/companion-Caut8jIA.css',
+  ...['computer','tv','icon-computer','icon-fan','icon-lamp','icon-tv'].map(name=>'assets/'+name+'.webp'),
+  ...['sit','wave'].map(action=>'chibi/action-'+action+'-v2.webp'),...['back','close'].map(name=>'studio/'+name+'.webp'),
+  ...['linen','plaster','velvet','wood'].map(name=>'studio/materials/'+name+'.webp')];
+ assert.deepEqual(groupFiles('home-space-276'),roomFiles.map(file=>'home-space/'+file).sort());
 });
 test('unknown public files never ship; source bytes and generated bundle stay intact',()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'starush-payload-'));

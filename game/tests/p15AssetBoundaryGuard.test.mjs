@@ -82,7 +82,7 @@ function collectRuntimeSourceFiles(directoryUrl) {
     'the guard should remove a guarded asset that reached the output directory'
   );
   assert.ok(
-    /plugins:\s*\[p15AssetBoundaryGuard\(OUT_DIR\), runtimePayloadPlugin\(\)\]/.test(viteConfigSource),
+    /plugins:\s*\[chapterContentGuard\(\), productFrameworkGuard\(\), p15AssetBoundaryGuard\(OUT_DIR\), runtimePayloadPlugin\(\[\.\.\.RUNTIME_PAYLOAD, \.\.\.HOME_PAYLOAD\]\)\]/.test(viteConfigSource),
     'the guard must be registered in the build plugin list, or it never runs'
   );
 }
