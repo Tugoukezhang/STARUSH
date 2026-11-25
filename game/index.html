@@ -104,7 +104,7 @@
     #game-loading p, #portrait-protection p { max-width: 330px; font-size: 16px; line-height: 25px; }
     #game-loading small { max-width: 330px; font-size: 13px; line-height: 21px; color: #56616d; }
     #game-loading-retry { min-height: 48px; padding: 12px 28px; border: 2px solid #252932; border-radius: 8px; background: #ffe064; color: #252932; font-size: 16px; font-weight: 900; box-shadow: 0 4px 0 #252932; }
-    #portrait-protection { z-index: 1100; }
+    #portrait-protection { z-index: 1100; width:100%; height:100%; max-width:none; max-height:none; box-sizing:border-box; border:0; margin:0; }
     #game-loading {display:grid; grid-template-rows:auto minmax(120px,1fr) auto; justify-items:center; gap:12px; padding:24px 16px 16px; overflow:auto; background:#d9f0f1 url('/art/playable-ui-20261018/plaza.webp') center / cover no-repeat;}
     #game-loading .loading-brand {width:100%; max-width:440px; padding:4px 0;}
     #game-loading h1 {margin:0; padding:8px 12px; border:0; font-size:40px; line-height:50px; color:#fff; -webkit-text-stroke:1px #202b30; text-shadow:2px 3px 0 #202b30;}
@@ -404,10 +404,10 @@
     </div>
     <noscript>此游戏需要启用 JavaScript。</noscript>
   </section>
-  <section id="portrait-protection" role="status" hidden>
-    <p>请将手机转回竖屏</p>
-    <p>演出已暂停，转回后可继续。</p>
-  </section>
+  <dialog id="portrait-protection" aria-labelledby="portrait-protection-title" hidden>
+    <p id="portrait-protection-title" tabindex="-1" autofocus>请将手机转回竖屏</p>
+    <p>转回后可继续操作。</p>
+  </dialog>
   <div id="viewport-safe-area" aria-hidden="true"></div>
   <div id="game-container">
     <div id="hud" data-layout="stage-v2" style="display:none">

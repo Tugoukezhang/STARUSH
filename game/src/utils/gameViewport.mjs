@@ -48,6 +48,8 @@ export function bindMobileOrientation(game, host = window) {
   const banner = host.document.getElementById('portrait-protection');
   if (!banner || !container) return () => {};
   let active = false, disposed = false;
+  const keepProtection = event => event.preventDefault();
+  banner.addEventListener?.('cancel', keepProtection);
   let protectedSessions = new WeakSet();
   const protectNewBattles = () => {
     if (!active || disposed) return;
@@ -70,10 +72,13 @@ export function bindMobileOrientation(game, host = window) {
       // A battle can finish loading after the resize has already been handled.
       game.events?.on?.('poststep', protectNewBattles);
       protectNewBattles();
+      // Native menu sheets sit in the browser top layer, above any fixed overlay.
+      banner.showModal?.();
       container.inert = true;
     } else {
       game.events?.off?.('poststep', protectNewBattles);
       container.inert = host.document.getElementById('game-loading')?.hidden === false;
+      if (banner.open) banner.close();
     }
   };
   host.addEventListener('resize', update);
@@ -87,6 +92,8 @@ export function bindMobileOrientation(game, host = window) {
     host.removeEventListener('orientationchange', update);
     banner.hidden = true;
     if (active) container.inert = host.document.getElementById('game-loading')?.hidden === false;
+    banner.removeEventListener?.('cancel', keepProtection);
+    if (banner.open) banner.close();
   };
 }
 
