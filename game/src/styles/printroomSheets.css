@@ -201,8 +201,85 @@
   & .inv-detail .inv-detail-reason {padding:6px 9px;border-inline-start:3px solid #a1654a;background:#f5e9d3}
   & .inv-detail :is(.inv-equip,.shell-primary):enabled {border:0;border-image:var(--set-stub) 42 fill / 9px stretch}
   & .inv-detail :is(.inv-equip,.shell-primary):disabled {border:1px dashed #807b77;background:#ede8dc;color:#504b50}
-  & .journey-detail .journey-detail-tabs {padding:3px;background:#e4dac4;border:0;border-radius:3px}
-  & .journey-detail .journey-detail-tab[aria-selected=true] {border:0;border-image:var(--set-monitor) 42 fill / 9px stretch;box-shadow:none}
+  /* Directory links turn the page; route, gear and cast choices keep a selected state. */
+  & .ui-sheet-body button:is([data-action=chapter-goals],[data-action=training-catalog],[data-action=growth-inventory],[data-action=growth-training]) {
+    position:relative;min-height:44px;min-width:44px;padding:8px 26px 8px 12px;
+    border:0;border-image:var(--set-card) 42 fill / 9px stretch;background:#f3ead3;color:#283b3e;box-shadow:none;
+  }
+  & .ui-sheet-body button:is([data-action=chapter-goals],[data-action=training-catalog],[data-action=growth-inventory],[data-action=growth-training])::after {
+    content:'';position:absolute;right:11px;top:50%;width:7px;height:7px;
+    border-top:2px solid #3a5958;border-right:2px solid #3a5958;transform:translateY(-50%) rotate(45deg);
+  }
+  & .ui-route-options .ui-route-choice,
+  & .ui-sheet-body .growth-equipment-pool button.arrangement-option,
+  & .sec-venue-editor .pm-room-members button.pm-room-member {
+    position:relative;min-width:0;min-height:44px;padding:9px 12px;
+    color:#293a3f;background:#f5ecd7;border:0;border-image:var(--set-card) 42 fill / 9px stretch;box-shadow:none;
+  }
+  & .ui-route-options .ui-route-choice[aria-pressed=true],
+  & .ui-sheet-body .growth-equipment-pool button.arrangement-option[aria-pressed=true],
+  & .sec-venue-editor .pm-room-members button.pm-room-member[aria-pressed=true] {
+    color:#282e30;background:#e9edaa;border-image-source:var(--set-stub);box-shadow:none;
+  }
+  & .ui-route-options .ui-route-choice[aria-pressed=true]::after,
+  & .sec-venue-editor .pm-room-members button.pm-room-member[aria-pressed=true]::after {
+    content:'';position:absolute;right:9px;top:8px;width:8px;height:4px;
+    border-left:2px solid #384c3d;border-bottom:2px solid #384c3d;transform:rotate(-45deg);
+  }
+  & .ui-sheet-body .growth-equipment-pool button.arrangement-option[data-equipment-state=locked][aria-pressed=false],
+  & .ui-sheet-body .growth-equipment-pool button.arrangement-option:disabled,
+  & .sec-venue-editor .pm-room-members button.pm-room-member:disabled {
+    border:1px dashed #9d9688;border-image:none;background:#eae6dc;color:#58544f;opacity:1;
+  }
+  & .ui-route-options .ui-route-choice :is(strong,small,span),
+  & .ui-sheet-body .growth-equipment-pool button.arrangement-option :is(strong,small,span),
+  & .sec-venue-editor .pm-room-members button.pm-room-member span {color:inherit}
+  /* These are tabs in the chapter folder, including its live unread indicator. */
+  & .journey-detail .journey-detail-tabs {
+    display:flex;gap:6px;padding:3px 4px;background:#d3c6a6;border:0;border-radius:4px;
+  }
+  & .journey-detail .journey-detail-tab {
+    display:flex;align-items:center;justify-content:center;gap:6px;flex:1 1 0;min-width:0;min-height:44px;
+    padding:5px 8px;border:0;background:#f8ecd2;border-image:var(--set-card) 42 fill / 9px stretch;
+    color:#354044;font:760 15px/1.2 system-ui,sans-serif;
+  }
+  & .journey-detail .journey-detail-tab[aria-selected=true] {
+    color:#fff7df;background:#23393e;border-image-source:var(--set-monitor);box-shadow:none;
+  }
+  & .journey-detail .journey-detail-tab[aria-selected=true]::before {
+    content:'';width:9px;height:5px;flex:none;border-left:2px solid #dceaa2;border-bottom:2px solid #dceaa2;
+    transform:rotate(-45deg) translateY(-1px);
+  }
+  & .journey-detail .journey-detail-tab .journey-unread,
+  & .journey-detail .journey-detail-tab[aria-selected=true] .journey-unread {
+    padding:2px 5px;background:#f2db8f;color:#44361d;font:700 11px/15px system-ui,sans-serif;border-radius:7px 2px;
+  }
+  & .journey-detail .journey-stories button {
+    color:#273a39;border:0;border-image:var(--set-card) 42 fill / 8px stretch;background:#f5ecd7;
+  }
+  & .journey-detail .journey-stories button:disabled {
+    border:1px dashed #9a9489;border-image:none;background:#e9e5dc;color:#57534f;opacity:1;
+  }
+  & .journey-detail .journey-stories button:disabled :is(strong,small,svg) {color:#57534f}
+  & .ui-sheet-body .library-studies .arrangement-options {gap:8px}
+  & .ui-sheet-body .library-studies button.arrangement-option {
+    display:flex;align-items:center;justify-content:flex-start;gap:8px;position:relative;
+    padding:8px 18px 8px 9px;min-height:54px;min-width:0;border:0;
+    color:#2e3539;background:#f5e9cd;border-image:var(--set-card) 42 fill / 9px stretch;
+  }
+  & .ui-sheet-body .library-studies button.arrangement-option > :is(img,.menu-art) {
+    width:27px;height:27px;flex:0 0 27px;object-fit:contain;
+  }
+  & .ui-sheet-body .library-studies button.arrangement-option strong {
+    min-width:0;overflow-wrap:anywhere;color:inherit;font:760 14px/1.25 system-ui,sans-serif;text-align:start;
+  }
+  & .ui-sheet-body .library-studies button.arrangement-option[aria-pressed=true] {
+    color:#fff7e4;background:#23373b;border-image-source:var(--set-monitor);box-shadow:none;
+  }
+  & .ui-sheet-body .library-studies button.arrangement-option[aria-pressed=true]::after {
+    content:'';position:absolute;right:8px;top:8px;width:8px;height:4px;
+    border-left:2px solid #deea96;border-bottom:2px solid #deea96;transform:rotate(-45deg);
+  }
   & .journey-detail :is(.journey-objective-section,.journey-reward-strip) {
     padding:8px 10px;border:0;border-image:var(--set-note) 42 fill / 10px stretch;
   }
@@ -280,6 +357,21 @@
     color:#252a30;font-variant-numeric:tabular-nums;
   }
   & .session-settings-group[data-settings-group=audio] input {accent-color:#def456}
+  & .session-settings-group[data-settings-group=audio] input[type=checkbox] {
+    appearance:none;position:relative;flex:none;width:46px;height:25px;min-width:46px;min-height:25px;
+    margin:0;padding:0;border:2px solid #b7c5be;border-radius:18px;background:#354447;cursor:pointer;
+  }
+  & .session-settings-group[data-settings-group=audio] input[type=checkbox]::before {
+    content:'';position:absolute;left:3px;top:2px;width:17px;height:17px;
+    background:#f8efd8;border-radius:50%;box-shadow:0 1px 1px #233;
+  }
+  & .session-settings-group[data-settings-group=audio] input[type=checkbox]:checked {
+    border-color:#e1ed9d;background:#cddf70;
+  }
+  & .session-settings-group[data-settings-group=audio] input[type=checkbox]:checked::before {
+    left:22px;background:#304138;
+  }
+  & .session-settings-group[data-settings-group=audio] input[type=checkbox]:focus-visible {outline:3px solid #fff2aa;outline-offset:2px}
   & .session-settings-group[data-settings-group=audio] input[type=range] {
     width:100%;height:44px;margin:0;appearance:none;background:transparent;cursor:pointer;
   }
@@ -431,7 +523,7 @@
     background:#fff3d4;border:2px solid #28283b;border-radius:50%;box-shadow:1px 2px 0 #29283b;
   }
   &::after {
-    content:'';position:absolute;inset:14px;
+    content:'';position:absolute;inset:50% auto auto 50%;width:16px;height:16px;transform:translate(-50%,-50%);
     background:linear-gradient(45deg,transparent 42%,#432c40 44% 56%,transparent 58%),
                linear-gradient(-45deg,transparent 42%,#432c40 44% 56%,transparent 58%);
   }
@@ -441,5 +533,7 @@
 
 @media (forced-colors:active) {
   #game-container .profile-backup-picker:focus-within {outline-color:Highlight}
-  #game-container #player-session-dialog input[type=range] {appearance:auto}
+  #game-container #player-session-dialog input[type=range],
+  #game-container #player-session-dialog input[type=checkbox] {appearance:auto}
+  #game-container #player-session-dialog input[type=checkbox]::before {display:none}
 }
