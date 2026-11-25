@@ -117,10 +117,11 @@ export function renderProgramEvents(view, root, model, profile) {
     view.element('b', 'ps-goal-availability', goal.available ? '可设定' : '需本章纪录', row);
     view.element('small', '', goal.available ? goal.description : goal.id === 'steady' ? '保存当前成员本章纪录后，挑战无伤或更少受击' : '保存当前成员本章纪录后，挑战更短通关用时', row);
   }
-  go(view, goals, 'set-goal', '设定目标', '开演前选择，本场生效', 'goals', 'events-open-goals', 'selected', 'pg-command pg-primary');
+  const choose=go(view, goals, 'set-goal', '设置本场目标', '选定后在备战页确认本场条件', 'goals', 'events-open-goals', 'selected', 'pg-command pg-primary');
+  choose.setAttribute('aria-label','设置本场目标');
 }
 
-// Practice is the two preparation tools only; challenge modes live once, in playhub.
+// Keep the practice floor and preparation tools reachable from the same directory.
 // Two stacked horizontal entries (picture | wordmark + one dynamic line) over the stage, for one performer.
 export function renderPracticeTools(view, root, model, profile) {
   dropScene(root);
@@ -130,6 +131,13 @@ export function renderPracticeTools(view, root, model, profile) {
   const arrangements = getArrangementCatalog(model.member.id), options = getPublicRunGoalOptions(profile);
   const actor = view.element('p', 'ps-actor', undefined, root);
   view.element('small', '', '当前成员', actor); view.element('strong', '', model.member.name, actor);
+  const mode=model.performance.modes.find(row=>row.modeId==='rehearsal');
+  const destination=model.chapters.find(row=>row.id===mode.chapterId)?.name||model.chapter.name;
+  const practice=view.button(root,'单站实战排练',()=>{if(view.page==='sideplay'&&view.root.contains(practice))view.showPage('rehearsal');},{className:'ps-floor-entry',icon:'play',action:'sideplay-open-rehearsal'});
+  const words=practice.querySelector('span');
+  words.textContent=mode.canStart?'配置单站排练':'查看单站排练条件';
+  view.element('small','',mode.canStart?destination+' · 本轮无巡演奖励':mode.state==='locked'?'先通关「'+destination+'」':mode.reason,practice);
+  practice.setAttribute('aria-label',words.textContent+' · '+practice.querySelector('small').textContent);
   const tools = view.element('section', 'ps-entries', undefined, root); tools.setAttribute('aria-label', '演出准备');
   for (const [letterKey, label, detail, page, action, uiIcon, picture] of [
     ['plan', '编排资料库', `两段编排 · ${arrangements.first.length * arrangements.second.length} 种组合`, 'library', 'sideplay-open-library', 'info', 'practice-score'],

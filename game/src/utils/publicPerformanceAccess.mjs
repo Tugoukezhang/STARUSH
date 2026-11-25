@@ -21,7 +21,7 @@ export function getPublicPerformanceAccess(profile=loadPublicProfile(),options={
    reason=canStart?'':`通关${missing.map(id=>PUBLIC_CHAPTERS.find(c=>c.id===id).name).join('、')}后开放。`;
   }else if(profile?.recovery){state='save-protected';reason='当前存档需恢复或受保护，请先处理存档状态。';}
   else if(profile?.hasPendingSave){state='save-pending';reason='有进度尚未保存，请先重试保存。';}
-  else if(missing.length){state='locked';reason=modeId==='rehearsal'?'该场地保存通关后开放排练。':'完成前三站巡演并保存后开放。';}
+  else if(missing.length){state='locked';reason=modeId==='rehearsal'?'先通关「'+PUBLIC_CHAPTERS.find(c=>c.id===chapterId).name+'」并保存，即可排练。':'完成前三站巡演并保存后开放。';}
   else if(!profile||profile.persisted===false){state='save-required';reason='已满足通关条件，保存本机进度后开放。';}
   else{state='ready';reason='';canStart=true;}
  }

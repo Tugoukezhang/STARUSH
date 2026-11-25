@@ -50,5 +50,6 @@ export function renderRehearsal(view,main,model){
   const build=getPublicBuildModel(model.preparation,model.member.id,setup.choices);
   if(build){const details=view.element('details','rehearsal-build',undefined,main);view.element('summary','','本轮配置 · '+build.preparationLabel,details);for(const row of build.rows)view.element('p','system-context',row.label+' · '+row.value,details);}
   const footer=view.element('footer',isUserCastEnabled()?'shell-selection-footer challenge-command-footer':'shell-selection-footer');
+  if(unlocked)view.element('small','mode-session-policy','单站课题 · 本轮没有巡演奖励',footer);
   const start=view.button(footer,'开始本站排练',()=>view.navigate(()=>view.options.onRehearsal?.({...setup,choices:[...setup.choices]})),{className:'shell-primary',icon:'play',action:'rehearsal-start'});start.disabled=!unlocked;
 }

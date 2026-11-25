@@ -96,8 +96,16 @@ test('hub renders every model section/entry with truthful availability and uniqu
 });
 
 test('each new page has its own parent-route return action', () => {
-  const {v, calls, click} = setup();
-  for (const page of pages) {v.page = page; v.render(); click(`${page}-return`); assert.equal(calls.at(-1), ['backstage','lounge','venue'].includes(page) ? 'desk' : 'backstage');}
+  const {v, e, calls, click} = setup();
+  for (const page of pages) {
+    v.page = page; v.render();
+    if (page==='recruitment') {
+      // The full-screen cast introduction uses the shell header for navigation.
+      assert.equal(e.loadRuntime('utils/publicShellNavigation.mjs').getPublicShellRoute(page).parentId,'backstage');
+    } else {
+      click(`${page}-return`);assert.equal(calls.at(-1), ['backstage','lounge','venue'].includes(page) ? 'desk' : 'backstage');
+    }
+  }
 });
 
 test('companion is a full scene with an explicit animated portrait interaction, not a catalogue banner', () => {
@@ -107,7 +115,8 @@ test('companion is a full scene with an explicit animated portrait interaction, 
   assert.equal(query('.pm-scene-portrait').tagName, 'BUTTON');
   assert.equal(query('.pm-scene').querySelector('.portrait-dialogue'), null);
   assert.ok(query('.pm-dialogue').querySelector('.pm-response'));
-  assert.equal(query('.home-portrait-rig').dataset.static, undefined);
+  const portrait=query('.pm-scene-portrait').querySelector('.member-portrait');
+  assert(portrait);assert.equal(portrait.src,'art/red-valkyrie-20261123/portrait.png');
 });
 
 test('venue scene selects a room before rendering its management panel', () => {
@@ -299,10 +308,10 @@ test('events is the current tour program: venue art, real 0..3 stops, goal optio
   assert.deepEqual(plain([...e.storage.values]), before, 'rendering the program never writes a save');
 });
 
-test('sideplay is preparation practice only: library and personal goals, no challenge duplicates', () => {
+test('practice directory reaches single-stage practice and both preparation tools', () => {
   const {v, e, calls, query, click} = setup('sideplay');
   const profile = e.profile.loadPublicProfile(), goals = e.loadRuntime('utils/publicRunGoals.mjs');
-  assert.deepEqual(v.root.querySelectorAll('button').map(b => b.dataset.action), ['sideplay-open-library', 'sideplay-open-goals', 'sideplay-return']);
+  assert.deepEqual(v.root.querySelectorAll('button').map(b => b.dataset.action), ['sideplay-open-rehearsal', 'sideplay-open-library', 'sideplay-open-goals', 'sideplay-return']);
   assert.doesNotMatch(v.root.textContent, /压轴|连演|排练室|PRACTICE|CATALOG|每日|领取|次数/);
   const catalog = goals.getArrangementCatalog(e.model().member.id);
   assert.ok(query('[data-action="sideplay-open-library"]').textContent.includes(`${catalog.first.length * catalog.second.length} 种组合`));
@@ -311,6 +320,8 @@ test('sideplay is preparation practice only: library and personal goals, no chal
   assert.deepEqual(['sideplay-open-library', 'sideplay-open-goals'].map(a => query(`[data-action="${a}"]`).querySelector('[data-ui-icon]').dataset.uiIcon), ['back', 'back']);
   assert.deepEqual(['sideplay-open-library', 'sideplay-open-goals'].map(a => query(`[data-action="${a}"]`).querySelector('img.pg-letter').src),
     ['art/chapter-journey-20261101/letter-plan.webp', 'art/chapter-journey-20261101/letter-goals.webp']);
+  assert.match(query('[data-action="sideplay-open-rehearsal"]').textContent,/配置单站排练.*星光初演/);
+  click('sideplay-open-rehearsal');assert.equal(calls.at(-1),'rehearsal');
   click('sideplay-open-library'); assert.equal(calls.at(-1), 'library');
   click('sideplay-open-goals'); assert.equal(calls.at(-1), 'goals');
 });

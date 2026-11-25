@@ -117,14 +117,14 @@ test('stale detached events controls never open sheets or navigate', () => {
   h.shutdown();
 });
 
-test('sideplay: one actor over the stage, exactly two horizontal illustrated entries, native routes and back stack', () => {
+test('practice directory surfaces training access, two illustrated preparation tools and native back navigation', () => {
   const {s, h, before, model, profile} = open('sideplay');
   const page = h.query('.product-module-screen');
   assert.equal(page.dataset.practiceStudio, '267');
   assert.equal(page.querySelector('.ps-stage').src, `${JOURNEY}/practice-room.webp`);
   assert.equal(page.querySelectorAll('.ps-actor').length, 1);
   assert.ok(page.querySelector('.ps-actor').textContent.includes(model.member.name));
-  assert.deepEqual(screenButtons(h), ['sideplay-open-library', 'sideplay-open-goals', 'sideplay-return']);
+  assert.deepEqual(screenButtons(h), ['sideplay-open-rehearsal', 'sideplay-open-library', 'sideplay-open-goals', 'sideplay-return']);
   const goals = s.loadRuntime('utils/publicRunGoals.mjs'), catalog = goals.getArrangementCatalog(model.member.id);
   const options = goals.getPublicRunGoalOptions(profile);
   const entries = page.querySelectorAll('.ps-entry');
@@ -176,6 +176,6 @@ test('program studio stylesheet: exact root scope, page/sheet-scoped selectors, 
 
 test('only the two page renderers changed: playhub/goals framers still exported and untouched by the new sheets', () => {
   const src = fs.readFileSync(new URL('../src/systems/ProgramMenuPages.mjs', import.meta.url), 'utf8');
-  assert.doesNotMatch(src, /selectPublic|recordPublic|updateBackstage|goalKind\s*=|localStorage/);
+  assert.doesNotMatch(src, /selectPublic|recordPublic|updateBackstage|goalKind\s*=(?!=)|localStorage/);
   assert.match(src, /export function framePlayModes\(view, main\)/); assert.match(src, /export function frameRunGoals\(view, main\)/);
 });

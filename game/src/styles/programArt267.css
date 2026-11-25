@@ -30,3 +30,18 @@
  & .product-module-screen[data-practice-studio="267"] .ps-entry-enter .ui-glyph{width:100%;height:100%;object-fit:contain}
  @media(max-width:340px){& .product-module-screen[data-practice-studio="267"] .ps-entry{grid-template-columns:72px minmax(0,1fr) 24px}}
 }
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=sideplay] .product-module-screen[data-practice-studio] button.ps-floor-entry {
+  flex:none;align-self:stretch;display:grid;
+  grid-template-columns:24px 1fr auto;align-items:center;gap:7px;
+  min-height:46px;margin:8px 0 0;padding:6px 10px;
+  border:2px solid #27363a;border-radius:3px;
+  background:#dceba7;color:#1d3438;text-align:left;
+  font:800 14px/1.25 system-ui,sans-serif;
+}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=sideplay] button.ps-floor-entry svg {width:21px;height:21px}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=sideplay] button.ps-floor-entry small {font:650 11px/1.3 system-ui,sans-serif;color:#31463e}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=sideplay] button.ps-floor-entry:focus-visible {outline:3px solid #1b7791;outline-offset:1px}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass]:is([data-page=rehearsal],[data-page=finaleTrial]) .mode-session-policy {
+  padding:2px 5px;color:#302938;text-align:center;font:650 12px/1.25 system-ui,sans-serif;
+}

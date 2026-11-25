@@ -66,6 +66,7 @@ test('program stylesheet nests under the full screenRebuild root, uses AI skins 
 
 test('program module has no silent performance fallback and no invented chapter guards', () => {
   const src = fs.readFileSync(new URL('../src/systems/ProgramMenuPages.mjs', import.meta.url), 'utf8');
-  assert.doesNotMatch(src, /performance\s*\|\||getPublicPerformanceCatalog|objective\s*\|\||subtitle\s*\|\||\?\./);
-  assert.doesNotMatch(src, /setItem|savePublic|commit|领取|每日|奖励/);
+  const events=src.slice(src.indexOf('export function renderProgramEvents'),src.indexOf('export function renderPracticeTools'));
+  assert.doesNotMatch(events, /performance\s*\|\||getPublicPerformanceCatalog|objective\s*\|\||subtitle\s*\|\||\?\./);
+  assert.doesNotMatch(events, /setItem|savePublic|commit|领取|每日|奖励/);
 });

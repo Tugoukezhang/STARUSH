@@ -84,7 +84,12 @@ export function renderPlayHub(view,main,model) {
       if(availability){button.dataset.performanceMode=availability.modeId;button.dataset.availability=availability.state;button.setAttribute('aria-label',label+' · '+availability.label+(availability.reason?' · '+availability.reason:''));}
       button.replaceChildren();view.icon(icon,button);
       const content=view.element('span','system-entry-copy',undefined,button);
-      view.element('strong','',label,content);view.element('small','',availability?availability.label+' · '+(availability.reason||detail):detail,content);view.icon('arrow-right',button);
+      view.element('strong','',label,content);
+      const modeCard=action==='hub-rehearsal'||action==='hub-finale-trial';
+      const status=modeCard?(availability.canStart?'配置排练 · '+(action==='hub-finale-trial'?'三站生命继承':'单站课题'):'查看开放条件')
+        :availability?availability.label+' · '+(availability.reason||detail):detail;
+      view.element('small','',status,content);view.icon('arrow-right',button);
+      if(modeCard)button.setAttribute('aria-label',label+' · '+status+(availability.reason?' · '+availability.reason:''));
     }
   }
 }

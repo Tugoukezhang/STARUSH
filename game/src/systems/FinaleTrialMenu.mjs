@@ -44,6 +44,7 @@ export function renderFinaleTrial(view,main,model){
   const guide=view.element('details','challenge-guide',undefined,main);view.element('summary','','编排效果说明',guide);
   for(const id of FINALE_TRIAL_CHOICES.flat()){const row=getRunChoice(id);view.element('p','system-context',row.label+' · '+row.description,guide);}
   const footer=view.element('footer',owner?'shell-selection-footer challenge-command-footer':'shell-selection-footer');
+  if(owner)view.element('small','mode-session-policy','三站生命继承 · 本轮没有巡演奖励',footer);
   view.button(footer,'开始压轴连演',()=>view.navigate(()=>view.options.onFinaleTrial?.([...view.trialChoices])),
     {className:'shell-primary',icon:'play',action:'trial-start'});
 }
