@@ -513,7 +513,7 @@
 
 /* The visible cap is smaller than the 44px target. Its X stays clear on illustrated headers. */
 #game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] dialog.ui-sheet[data-sheet-kind] .ui-sheet-close,
-#game-container #player-session-dialog[data-mode=settings][data-reading-family] .session-primary[data-console-return=close],
+#game-container #player-session-dialog[data-mode=settings][data-reading-family][data-console-skin] .session-footer .session-primary[data-console-return=close],
 #game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-header [data-action=story-history-close] {
   width:44px;height:44px;min-width:44px;min-height:44px;isolation:isolate;
   background:transparent;border:0;border-radius:0;box-shadow:none;
