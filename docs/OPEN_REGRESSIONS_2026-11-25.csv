@@ -1,0 +1,599 @@
+测试文件（game/tests）,行号,用例,失败现象摘要（根因待复核）
+archiveArt269.test.mjs,2,"archive routes use one readable AI header, dark record labels and exact chapter selection",Cannot read properties of null (reading 'src')
+archiveArt269.test.mjs,9,23 original archive assets preserve true alpha provenance and never claim a selectable image engine,"ENOENT: no such file or directory, open '[本地路径]"
+archiveJournal289.test.mjs,35,"selector: renders every public chapter, derives the total and selects the fourth without writing",Expected values to be strictly equal:
+archiveStudio269.test.mjs,78,"chapterArchive: current studio, four native tabs with state, keyed static hosts and one prepare",Expected values to be strictly deep-equal:
+authoredPigmentColor.test.mjs,9,"active authored color source replaces exactly one explicit image, not a directory",Expected values to be strictly equal:
+authoredPigmentColor.test.mjs,10,reviewed current art retains sparse actual RGB and the real loader cannot grayscale it again,"ENOENT: no such file or directory, open '[本地路径]"
+authoredPigmentFootprint.test.mjs,7,historical footprint remains available while rounded successor uses the stable loader key,Expected values to be strictly equal:
+authoredPigmentFootprint.test.mjs,9,"source export has transparent safety margin, white dense core and economical flat ink","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+authoredPigmentFootprint.test.mjs,15,"all exported alpha belongs to one connected body, not detached fringe confetti","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+authoredPigmentFootprint.test.mjs,20,real raster keeps authored paint inside the existing range and occlusion rays,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+authoredPigmentFootprint.test.mjs,26,adjacent ordinary footprints still merge a continuous opaque center,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+backstageScreens.test.mjs,98,each new page has its own parent-route return action,recruitment-return
+backstageScreens.test.mjs,103,"companion is a full scene with an explicit animated portrait interaction, not a catalogue banner",Cannot read properties of null (reading 'dataset')
+battleHeaderLayout.test.mjs,37,"admitted authored frame and two emblems retain exact PNG bytes, geometry and unclipped alpha","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+battleHeaderPresentation.test.mjs,44,failed lettering ignores a late load so hidden art cannot blank the native fallback,Expected values to be strictly equal:
+battleHudCompact.test.mjs,24,"enjo commands use planned AI art as decoration under native label, name and meter",The input did not match the regular expression /^art\/battle-controls-20261031\/hammer\.webp$/. Input:
+battleHudCompact.test.mjs,24,"kai commands use planned AI art as decoration under native label, name and meter",The input did not match the regular expression /^art\/battle-controls-20261031\/sword\.webp$/. Input:
+battleHudCompact.test.mjs,24,"sakura commands use planned AI art as decoration under native label, name and meter",The input did not match the regular expression /^art\/battle-controls-20261031\/rifle\.webp$/. Input:
+battleHudCompact.test.mjs,38,"repeated sync mounts detail control, panel and art exactly once and keeps live facts in place","one shutdown hook per scene, not per sync"
+battleHudCompact.test.mjs,70,a reused Phaser scene registers fresh shutdown cleanup after restart,Phaser reuses the scene object; once cleanup must rearm
+chapterOneDistinctMaterials.test.mjs,1,tests/chapterOneDistinctMaterials.test.mjs,test failed
+chapterOnePresentationCohesion.test.mjs,23,tour uses four actual chapter maps and keeps locked previews read-only,Expected values to be strictly equal:
+chapterOneWorldWindow.test.mjs,19,"public joystick uses a local dark backing while radii, origin and diagnostic colours remain unchanged",Expected values to be strictly deep-equal:
+chapterResultStage.test.mjs,40,"ordinary result hero uses the owned full portrait, never the Q body, for all three roles",Expected values to be strictly equal:
+chapterResultStage.test.mjs,54,portrait framing gives the three roles the same rendered head size and face anchor,The expression evaluated to a falsy value:
+chapterResultStage.test.mjs,69,"portrait load gate: ready reveals the image, failure removes it without alternate art",Expected values to be strictly equal:
+chapterVenueArt.test.mjs,13,venue registry is a bounded immutable four-chapter family,Expected values to be strictly deep-equal:
+chapterVenueArt.test.mjs,16,home receives one textless fixed-size decorative image above the actual map fallback,Cannot read properties of null (reading 'querySelector')
+chapterVenueArt.test.mjs,21,wrong dimensions and network failure leave the actual map available,Cannot read properties of null (reading 'querySelector')
+chapterVenueArt.test.mjs,27,a late image cannot mutate a rerendered or destroyed shell,Cannot read properties of null (reading 'querySelector')
+chapterVenueArt.test.mjs,32,moved image events do not ready a different parent,Cannot read properties of null (reading 'querySelector')
+chapterVenueArt.test.mjs,46,owner preflight uses venue hero but preserves real map in guide,Missing shell control: [data-action=preflight]
+chapterVenueArt.test.mjs,49,tour previews reflect all chapter IDs without unlocking or changing native button state,Expected values to be strictly equal:
+comicDirectionalMaterial.test.mjs,1,tests/comicDirectionalMaterial.test.mjs,test failed
+comicGroundMaterialAsset.test.mjs,12,exact authored material is512square grayscale3planes with safe transparent padding,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+comicGroundPlanes.test.mjs,1,tests/comicGroundPlanes.test.mjs,test failed
+comicScreenPrintFloor.test.mjs,15,"reviewed authored bitmap is exact, opaque, quiet and bounded rather than a source directory or busy full-field noise","ENOENT: no such file or directory, open '[本地路径]"
+comicSurfacePresentation.test.mjs,11,only the seven reviewed exports enter the release; old source is kept outside shipment,The expression evaluated to a falsy value:
+comicSurfacePresentation.test.mjs,22,lobby uses the record-shop scene while keeping existing original character images,Cannot read properties of null (reading 'src')
+commandStateFamily.test.mjs,1,tests/commandStateFamily.test.mjs,test failed
+compactPoolAsset.test.mjs,1,tests/compactPoolAsset.test.mjs,test failed
+compactRoundedFootprint.test.mjs,1,tests/compactRoundedFootprint.test.mjs,test failed
+companionArt265.test.mjs,4,all8 companion art assets are explicitly runtime-owned; the dialogue requires explicit opaque ivory backing and surrounding samples transparent,"ENOENT: no such file or directory, open '[本地路径]"
+companionBranchSurface.test.mjs,70,opening each topic shows that member's authored question and two native answers without writing,Expected values to be strictly equal:
+companionBranchSurface.test.mjs,101,"an answer runs the actual reply command, updates history in place and disables only the accepted answer",Expected values to be strictly equal:
+companionBranchSurface.test.mjs,126,"a failed answer keeps the retryable question and an honest warning, never a saved answer or count",throw
+companionBranchSurface.test.mjs,230,"stylesheet: horizontal strip, contextual dock above navigation, per-role head framing, narrow and reduced-motion scope",kai --portrait-head:0.131076
+companionConversationFlow.test.mjs,11,companion preview distinguishes the saved deployment label from the visible companion,The input did not match the regular expression /出战 · 步枪手/. Input:
+companionConversationFlow.test.mjs,94,"topics speak while portrait images load, but pointer speech still waits for decode",Expected values to be strictly equal:
+companionConversationFlow.test.mjs,156,all three members/topics update real records and canonical dialogue in place with the same portrait canvas,Expected values to be strictly equal:
+companionConversationFlow.test.mjs,183,unchanged saturated talk presents its canonical topic without rerendering or an invented visit,Expected values to be strictly equal:
+companionDialogueFrame.test.mjs,3,the low-profile dialogue uses one exact admitted AI export; no gesture sources enter runtime,The expression evaluated to a falsy value:
+companionRoomAdmission.test.mjs,1,tests/companionRoomAdmission.test.mjs,test failed
+companionStageHierarchy.test.mjs,51,members stay a native strip of whole names; B252 portrait anchors retain the existing scope,--portrait-head:0.131076;--face-x:0.498264;--face-y:0.195613;
+companionStudio265.test.mjs,78,"a reply writes once, its button is disabled and the record drawer reflects current memory",The input did not match the regular expression /步枪手/. Input:
+consoleArt268.test.mjs,4,"console registry fails unknown keys explicitly, all21 assets have truthful ownership/alpha provenance","ENOENT: no such file or directory, open '[本地路径]"
+consoleStudio268.test.mjs,26,"backstage: desk scene, exactly four destinations as two primary rows and two compact utilities",Expected values to be strictly equal:
+consoleStudio268.test.mjs,60,"backstage: lounge/venue stay hidden originals, never duplicated",lounge
+consoleStudio268.test.mjs,71,backstage: each destination routes and returns to the same desk; root return unchanged,Missing shell control: [data-action=recruitment-return]
+currentCastTelegraphSeparation.test.mjs,13,enjo actual current atlas bounds reach the real Battle cue owner,Expected values to be strictly deep-equal:
+currentCastTelegraphSeparation.test.mjs,13,kai actual current atlas bounds reach the real Battle cue owner,Expected values to be strictly deep-equal:
+currentCastTelegraphSeparation.test.mjs,13,sakura actual current atlas bounds reach the real Battle cue owner,Expected values to be strictly deep-equal:
+developmentDiagnosticPlugins.test.mjs,1,tests/developmentDiagnosticPlugins.test.mjs,test failed
+duoSkillContact.test.mjs,4,selected two members preload exactly one new impact atlas and other casts never do,Expected values to be strictly equal:
+duoSkillContact.test.mjs,5,real skill accepted contacts use separate original frame banks without altering ordinary hits,Expected values to be strictly equal:
+duoSkillContact.test.mjs,9,runtime skill atlas has twelve distinct padded alpha cells and conservative cover bounds,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+enemyEnsemblePresentation.test.mjs,28,"six coherent exports replace only the six enemy paths, keeping keys, sizes and radii",Expected values to be strictly equal:
+enjoFacialResponse.test.mjs,5,"exact sparse eye export replaces one active atlas, preserves old closed pixels and touches no mouth or hair","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+enjoGaitContinuity.test.mjs,24,Enjo retains its six-cel walk beside the distinct four-cel rifle bank; all original motion banks remain,Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,30,"only Enjo preloads the new bank, practice and other cast do not",Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,39,six walk phases follow unchanged 15px distance cadence while automatic fire continues,Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,46,"idle, stationary release and action keep original cels; hurt uses its dedicated bank without changing counters",Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,56,"pause holds gait phase and texture, missing optional bank retains legacy walk; teardown once",Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,65,"cue exclusion follows the actual texture bounds, including mirrored gait and old idle",Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,73,direct walking damage switches to its dedicated hurt bank without changing world or hand anchors,Expected values to be strictly equal:
+enjoGaitContinuity.test.mjs,80,vertical walking uses the same distance gait and stop-then-fire restores the old release bank,Expected values to be strictly equal:
+enjoHurtContinuity.test.mjs,14,only Enjo exposes a four-frame optional hurt bank while all original cels remain,Expected values to be strictly equal:
+enjoHurtContinuity.test.mjs,19,"preload adds the bank only for selected Enjo, never other cast or practice",Expected values to be strictly equal:
+enjoHurtContinuity.test.mjs,23,"hurt plays all four cels in the existing 240ms with invariant size, origin and counters",Cannot read properties of undefined (reading 'key')
+enjoHurtContinuity.test.mjs,28,hurt has the existing precedence over action then resumes its remaining original action,Expected values to be strictly equal:
+enjoHurtContinuity.test.mjs,31,pause preserves the exact hurt cel and clock through resume without changing facing,Expected values to be strictly equal:
+enjoHurtContinuity.test.mjs,38,cue exclusion uses each actual hurt frame including mirrored bounds and teardown is once,Expected values to be strictly equal:
+enjoIndependentPortraitArtContract.test.mjs,1,tests/enjoIndependentPortraitArtContract.test.mjs,test failed
+enjoLayeredPresentation.test.mjs,1,tests/enjoLayeredPresentation.test.mjs,test failed
+enjoMesh285.test.mjs,12,candidate ships own matching-aspect rig and MIT notice without sample artwork,"ENOENT: no such file or directory, open '[本地路径]"
+enjoRestCycle.test.mjs,1,tests/enjoRestCycle.test.mjs,test failed
+enjoUnifiedArt.test.mjs,1,tests/enjoUnifiedArt.test.mjs,test failed
+enjoVisualStudy.test.mjs,62,"study resources get their own exact trial payload, not the default or previous ten-file list",The expression evaluated to a falsy value:
+enjoVisualStudy.test.mjs,102,installed Phaser parser retains cel registration and visible feet stay on their own measured baseline,"ENOENT: no such file or directory, open '[本地路径]"
+enjoVisualStudy.test.mjs,128,"front and rear gait registers alternating support shoes, not hashes masquerading as new poses","ENOENT: no such file or directory, open '[本地路径]"
+facilityRestorationArt.test.mjs,1,tests/facilityRestorationArt.test.mjs,test failed
+fanfireChoiceSurface.test.mjs,93,"rifle library requests the rifle catalog, shows fanfire art and a rifle-only echo study",Expected values to be strictly equal:
+fiveQRebaseTrial.test.mjs,45,real attack feedback uses the current trial hand without replacing legal damage geometry,"ENOENT: no such file or directory, open '[本地路径]"
+formalGameLayout.test.mjs,16,growth comparison has explicit current and planned column labels without save changes,Missing shell control: [data-action=hub-growth]
+fullMenuKeyArt.test.mjs,1,tests/fullMenuKeyArt.test.mjs,test failed
+gameSystemBreadth.test.mjs,49,play hub has functional goal/library/training/archive routes; goal preparation passes snapshot into battle,Expected values to be strictly equal:
+gameSystemBreadth.test.mjs,58,arrangement library previews nine existing combinations without selecting actual run choices or spending,Missing shell control: [data-action=hub-library]
+genyaFaceMaterialProtection.test.mjs,1,tests/genyaFaceMaterialProtection.test.mjs,test failed
+genyaIndependentPortraitArtContract.test.mjs,1,tests/genyaIndependentPortraitArtContract.test.mjs,test failed
+genyaLayeredPresentation.test.mjs,1,tests/genyaLayeredPresentation.test.mjs,test failed
+genyaUnifiedArt.test.mjs,1,tests/genyaUnifiedArt.test.mjs,test failed
+graffitiRuntime.test.mjs,28,three graffiti families have six stages and default Sakura queues legacy plus compact bitmap ground,Expected values to be strictly deep-equal:
+graffitiRuntime.test.mjs,32,"neutral same-pigment hammer release is one bounded burst, not six duplicated jets",Expected values to be strictly equal:
+groundReadingMaterials.test.mjs,1,tests/groundReadingMaterials.test.mjs,test failed
+hammerReleaseComposition.test.mjs,13,heavy release has one primary burst and initially hidden breakup-only accepted contacts,The expression evaluated to a falsy value:
+heavyAuthoredMaterial.test.mjs,10,new heavy material is a separate explicit bank loaded only for selected Enjo,Expected values to be strictly equal:
+heavyAuthoredMaterial.test.mjs,25,"heavy main and confirmed secondary use new material, not ordinary shot, contact or miss",The expression evaluated to a falsy value:
+heavyAuthoredMaterial.test.mjs,34,new main preserves 360ms while secondary remains delayed breakup4/5 for 220ms,Expected values to be strictly equal:
+heavyAuthoredMaterial.test.mjs,41,missing optional heavy texture falls back to original bank without inventing other ownership,The expression evaluated to a falsy value:
+heavyAuthoredMaterial.test.mjs,49,new material retains original radius/cover cap and never emits beyond an opaque wall,Expected values to be strictly equal:
+heavyAuthoredMaterial.test.mjs,53,paused material holds pixels and uses existing 24-node budget and exact teardown,Expected values to be strictly equal:
+heavyComicChain.test.mjs,12,new heavy family is one explicit twelve-cel export preloaded only for Enjo,Expected values to be strictly equal:
+heavyComicChain.test.mjs,16,"candidate export is explicitly shipped, alpha padded, neutral where tinted, and within every existing radius budget","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+heavyComicChain.test.mjs,21,one actual heavy hit selects contact and real-pigment residue from matching rows,Expected values to be strictly deep-equal:
+heavyComicChain.test.mjs,24,"miss has only low residue, never a false contact flash",Expected values to be strictly equal:
+heavyComicChain.test.mjs,25,six existing owner time slots sample four physical cels without adding timers,Expected values to be strictly deep-equal:
+heavyComicChain.test.mjs,28,"the real heavy release retains the airborne follow-through cel, not a second peak",Expected values to be strictly equal:
+heavyComicChain.test.mjs,29,"late windup owns the full downswing span, early anticipation stays compact, pause and cancellation remain",Expected values to be strictly equal:
+heavyComicChain.test.mjs,37,"registered elevated hammer trail uses its ground-plane cover receipt, not the projected head height",visible elevated arc must not collide with facade footprint as if it were a ground object
+heavyInkChainV2.test.mjs,4,"the admitted heavy chain is the reviewed twelve-cel source, not the rejected thin follow-through bank","ENOENT: no such file or directory, open '[本地路径]"
+heavyInkChainV2.test.mjs,8,all cels retain transparent gutters and real radius budgets; settled pigment stays neutral,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+heavyLandingChain.test.mjs,10,"new heavy landing bank is explicit, enjo-only and has eight cells",Expected values to be strictly equal:
+heavyLandingChain.test.mjs,14,ordinary accepted contact has one short accent then no upright peak in the next preparation,Expected values to be strictly equal:
+heavyLandingChain.test.mjs,20,only the neutral floor row survives contact and follows the actual paint tint,Expected values to be strictly equal:
+heavyLandingChain.test.mjs,47,"north heavy downswing crosses in front only after preparation, with no extra combat clock",descending head crosses the rear hair occluder
+heavyLiftPigmentChain.test.mjs,12,ordinary visible hammer trail uses the exact accepted snapshot pigment and safely rejects inherited names,Expected values to be strictly equal:
+heavyLiftPigmentChain.test.mjs,15,pause preserves trace pigment and absence of the neutral chain retains legacy unmodified stroke,Expected values to be strictly equal:
+heavyLiftPigmentChain.test.mjs,16,one exact twelve-cell candidate replaces only the active chain entry; old source remains available,Expected values to be strictly equal:
+heavyLiftPigmentChain.test.mjs,17,"actual top4sources are near-neutral, radius-bounded and visibly staged; bottom8legacy remain exactRGBA","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+heavyPaletteImpact.test.mjs,7,heavy transient impact follows actor depth while permanent-style ground cues stay behind,the short impact must not be buried behind the actor
+heavyPaletteImpact.test.mjs,11,real main/residual construction selects each pigment row while preserving neutral tint and registered origins,Expected values to be strictly deep-equal:
+heavyPaletteImpact.test.mjs,14,unknown malformed or inherited-name colors use neutral row without throwing or leaked nodes,Expected values to be strictly equal:
+heavyPaletteImpact.test.mjs,23,one exact36cell palette atlas replaces only the main-skill slot while original sources remain,The expression evaluated to a falsy value:
+heavyPaletteImpact.test.mjs,26,all palette rows preserve alpha and bright neutral source pixels exactly,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+heavyPermanentInk.test.mjs,1,tests/heavyPermanentInk.test.mjs,test failed
+heavyPigmentContinuity.test.mjs,5,"ordinary heavy contact and low spread use the actual pigment, not fixed white or member hue",Expected values to be strictly equal:
+heavySkillInkWave.test.mjs,19,malformed color objects cannot throw after allocation or leave an untracked image,Got unwanted exception.
+hierarchyBehavior.test.mjs,23,owner navigation has exactly four first-level roots; archive lives under tour,Cannot read properties of null (reading 'getAttribute')
+hierarchyBehavior.test.mjs,58,home start opens the in-shell preflight; no battle start and no writes,Cannot read properties of null (reading 'getAttribute')
+homeComponentFidelity.test.mjs,7,clean source atlas replaces opaque concept in payload without removing original reference file,The expression evaluated to a falsy value:
+homeComponentFidelity.test.mjs,8,every visible clean atlas RGB pixel equals the original reference; central character and exterior are transparent,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+homeComponentFidelity.test.mjs,9,"extra original-unmatched play hub remains accessible inside home progress drawer, not over head",Cannot read properties of null (reading 'parentNode')
+homeConceptBinding.test.mjs,74,owner desk header keeps native logo and eyebrow fallbacks beneath concept crops,Expected values to be strictly equal:
+homeConceptBinding.test.mjs,89,"all five owner nav buttons keep native icon, label, state and callback beside their crop",desk
+homeConceptBinding.test.mjs,103,rerender binds fresh parents and stale image events cannot mark them,Cannot read properties of null (reading 'children')
+homeConceptBinding.test.mjs,116,legacy cast and redesigned nonhome roster have no concept crops; home retains its own composition,Expected values to be strictly equal:
+homeDetailsInteraction.test.mjs,18,owner disclosure keeps a native first summary with its name and two decorative vector icons,Cannot read properties of null (reading 'children')
+homeDetailsInteraction.test.mjs,28,initial corrupt save warning opens the sheet with the collapse label,Cannot read properties of null (reading 'children')
+homeDetailsInteraction.test.mjs,28,initial pending save warning opens the sheet with the collapse label,Cannot read properties of null (reading 'children')
+homeDetailsInteraction.test.mjs,38,closed corrupt warning stays visible and does not force reopening on ordinary rerender,Cannot read properties of null (reading 'dispatchEvent')
+homeDetailsInteraction.test.mjs,38,closed pending warning stays visible and does not force reopening on ordinary rerender,Cannot read properties of null (reading 'dispatchEvent')
+homeDetailsInteraction.test.mjs,51,a newly occurring warning opens once even after a previously healthy sheet was explicitly closed,Cannot set properties of null (setting 'open')
+homeDetailsInteraction.test.mjs,58,new warning stays open across rapid renders before any delayed native toggle is delivered,Cannot read properties of null (reading 'open')
+homeDetailsInteraction.test.mjs,64,"native toggle writes real expanded state, syncs labels and survives rerender",Cannot set properties of null (setting 'open')
+homeDetailsInteraction.test.mjs,72,"reveal feedback occurs on a real open transition, not on restoring an already open sheet",Cannot read properties of null (reading 'dataset')
+homeDetailsInteraction.test.mjs,80,local Escape closes an open sheet immediately and returns focus to its summary,Cannot set properties of null (setting 'open')
+homeDetailsInteraction.test.mjs,87,"other keys, handled, composing, and closed-sheet Escape are ignored",Cannot set properties of null (setting 'open')
+homeDetailsInteraction.test.mjs,98,queued events from detached sheets cannot write after rerender,"Expected ""actual"" to be strictly unequal to: null"
+homeDetailsInteraction.test.mjs,107,disposed views ignore toggle and Escape,Cannot set properties of null (setting 'open')
+homeDetailsInteraction.test.mjs,115,"disclosure stays local and nonmodal without global handlers, timers, dialogs, or saves",Cannot set properties of null (setting 'open')
+homeIdentityFamily.test.mjs,6,Kai and Enjo home bind correct complete name/action plate without changing portrait or native identity,Cannot read properties of null (reading 'querySelector')
+homeIdentityFamily.test.mjs,8,rerender/dispose and non-owner branches cannot acquire another performer plate,Cannot read properties of null (reading 'querySelector')
+homeIdentityFamily.test.mjs,10,"one reviewed alpha atlas is explicit in runtime, retains safe margins, and does not replace old lettering or concept",Expected values to be strictly equal:
+homeIntegrityInteraction.test.mjs,23,owner lobby has separate accessible interaction/change controls and rifle roster uses layered HD art,The expression evaluated to a falsy value:
+homeLettering.test.mjs,18,current-cast home attaches exactly the eight decorative lettering assets beside native labels,sakura
+homeLettering.test.mjs,47,load marks only the owning label; error removes the image and restores native fallback,Cannot read properties of null (reading 'querySelector')
+homeLettering.test.mjs,61,legacy cast home renders no lettering images and keeps its existing labels,Expected values to be strictly equal:
+homePortraitDemo.test.mjs,50,actual home mounts the rig and disposes it before navigation without changing the fallback asset,actual home must mount the layered portrait
+homePortraitResources.test.mjs,1,tests/homePortraitResources.test.mjs,test failed
+homePortraitResponse.test.mjs,12,"each response has its own admitted face, speaker and full un-stretched original dialogue",Expected values to be strictly equal:
+homePortraitStage.test.mjs,11,home backdrop is the one admitted owner-ui runtime file; old record shop stays exact,Expected values to be strictly equal:
+homePortraitStage.test.mjs,20,admitted backdrop decodes as the exact 768x1280 candidate and no rejected cleanplate ships,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+homePortraitStage.test.mjs,33,home renders the new backdrop over unchanged original portraits and keeps the override and error fallback,Cannot read properties of null (reading 'src')
+homeReferenceLayout.test.mjs,12,three illustrated home commands remain primary while the fourth hub is a named compact utility,The expression evaluated to a falsy value:
+homeReferenceLayout.test.mjs,18,"progress disclosure has a native summary, readable name and library icon, not a permanent text band",Cannot read properties of null (reading 'querySelector')
+homeReferenceLayout.test.mjs,25,preparation values are retained in the accessible progress drawer without floating across the face,Cannot read properties of null (reading 'parentNode')
+homeReferenceLayout.test.mjs,30,"new composition keeps native primary action, layered home only and existing navigation",The expression evaluated to a falsy value:
+homeReferenceLayout.test.mjs,49,home foreground drawer preserves operable corrupt save controls,Expected values to be strictly equal:
+homeReferenceLayout.test.mjs,49,home foreground drawer preserves operable pending save controls,Expected values to be strictly equal:
+homeSelectedCorrections.test.mjs,2,selected home keeps a truthful disabled resume action visible before the first checkpoint,selected design secondary action is present even before save
+homeSurfacePolish.test.mjs,1,tests/homeSurfacePolish.test.mjs,test failed
+inkPocketGroundMaterial.test.mjs,6,"the exact source has small ink/highlight detail in all sixteen map regions, not a giant diagonal dark band","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+inkRestorationPresentation.test.mjs,1,tests/inkRestorationPresentation.test.mjs,test failed
+innerPosterHierarchy.test.mjs,3,selected equipment stage and effects precede native chooser; browsing does not persist,selected object gets a dedicated display bay
+innerPosterHierarchy.test.mjs,10,tour sequence contains three native locked-state chapter controls and original selection confirmation,Expected values to be strictly equal:
+innerPosterHierarchy.test.mjs,14,authored chassis only replaces its decoration after decode; errors and detached callbacks leave live native controls,The expression evaluated to a falsy value:
+innerScreenFamily.test.mjs,10,owner inner pages use five native navigation controls without home raster overlays,Cannot read properties of null (reading 'querySelector')
+innerScreenFamily.test.mjs,21,inventory initially exposes six items and keeps an explicit collapse or expand choice,Cannot read properties of null (reading 'open')
+innerScreenFamily.test.mjs,34,all inventory cells use their real item art and mark actual equipment compatibility,The expression evaluated to a falsy value:
+innerScreenFamily.test.mjs,49,inventory item art failure keeps the established native icon fallback,Cannot read properties of null (reading 'dispatchEvent')
+innerScreenProduction.test.mjs,37,inventory uses every actual item art in grid and detail while directory summary remains native without persisting browsing,Cannot read properties of null (reading 'querySelectorAll')
+innerScreenProduction.test.mjs,52,locked footer shows real unlock requirement and refuses an unavailable equipment action,Cannot read properties of null (reading 'textContent')
+innerScreenProduction.test.mjs,57,roster and tour use native identity while chapter previews and legacy equipment stay unchanged,Expected values to be strictly equal:
+inventoryArt264.test.mjs,2,inventory preparation uses original AI lettering without hiding the explicit candidate deployment semantics,The input did not match the regular expression /确认机甲剑士出战/. Input:
+inventoryArt264.test.mjs,6,all nine original inventory assets have explicit runtime ownership and preserved alpha manifest,"ENOENT: no such file or directory, open '[本地路径]"
+inventoryExhibition.test.mjs,3,inventory presents the actual selected object and effects before its catalogue without storing a preview,Cannot read properties of null (reading 'children')
+inventoryExhibition.test.mjs,4,preview state is independent of actual loadout and existing equip handler alone persists,Missing shell control: [data-action=equip-selected]
+inventoryExhibition.test.mjs,5,compact prepare icon retains its complete accessible action and tooltip; legacy is unchanged,Cannot read properties of null (reading 'querySelector')
+inventoryLoadoutIdentity.test.mjs,4,actual equipped item stays visible and distinct from a browsed preview without writes,actual loadout has its own identity band
+inventoryLoadoutIdentity.test.mjs,7,actual equipped mark is independent of selected aria-pressed and updates only after native equip or unequip,Missing shell control: [data-action=equip-selected]
+inventoryLoadoutIdentity.test.mjs,10,member preview reads its own saved one-slot loadout without changing the deployed member,Missing shell control: [data-member=kai]
+inventoryLoadoutIdentity.test.mjs,13,"locked, incompatible and rejected saves cannot manufacture an equipped badge or alter the current band",Missing shell control: [data-action=equip-selected]
+inventoryStudio264.test.mjs,93,"grid shows native name and state per object; one context row, no actor portrait or selector",The input did not match the regular expression /步枪手/. Input:
+inventoryStudio264.test.mjs,158,personal items describe behaviour without inventing numeric rows,The input did not match the regular expression /步枪手专用/. Input:
+inventoryStudio264.test.mjs,187,equip and unequip use the existing callback for the shown actor only; wordmark hosts keep native labels,Expected values to be strictly equal:
+inventoryStudio264.test.mjs,241,browsing a non-deployed actor never deploys; its route asks explicitly,The input did not match the regular expression /机甲剑士/. Input:
+inventoryStudioMarkup.test.mjs,30,showcase layout is enabled only for the current owner inventory,Expected values to be strictly equal:
+inventoryStudioMarkup.test.mjs,42,"native directory reports real owned count 0 of six, not the selected preview",Cannot read properties of null (reading 'tagName')
+inventoryStudioMarkup.test.mjs,42,"native directory reports real owned count 2 of six, not the selected preview",Cannot read properties of null (reading 'tagName')
+inventoryStudioMarkup.test.mjs,42,"native directory reports real owned count 6 of six, not the selected preview",Cannot read properties of null (reading 'tagName')
+inventoryStudioMarkup.test.mjs,63,native directory toggle survives preview rerenders and ignores detached/disposed toggle events,Cannot read properties of null (reading 'open')
+inventoryStudioMarkup.test.mjs,84,"all three members and six previews retain canonical native identity, role, effects and no-write behavior",Missing shell control: [data-member=sakura]
+inventoryStudioMarkup.test.mjs,130,"locked, owned, equipped and incompatible remain distinct in availability and existing equip policy",Cannot read properties of null (reading 'dataset')
+inventoryStudioMarkup.test.mjs,167,owner equip and catalog commands use existing native line icons with real accessible labels,Cannot read properties of null (reading 'getAttribute')
+inventoryStudioMarkup.test.mjs,183,comparison/back and prepared navigation preserve the selected item and saved loadout,Missing shell control: [data-action=equip-selected]
+inventoryStudioMarkup.test.mjs,216,legacy five-member six-item DOM stays identical to the pre-B241 markup baseline,Expected values to be strictly equal:
+journeyBriefing284.test.mjs,145,terminal copy is 本轮巡演 and no chapter promises a three-stop tour,raincheck
+kaiComicContact.test.mjs,5,selected casts retain ordinary contact preloads alongside the two-member skill bank,Expected values to be strictly equal:
+kaiComicContact.test.mjs,6,ordinary and skill real contacts choose separate dedicated banks at accepted points only,The expression evaluated to a falsy value:
+kaiComicContact.test.mjs,7,"empty skill contacts, misses and unavailable art never invent a target explosion",Expected values to be strictly equal:
+kaiComicContact.test.mjs,8,Kai release/dash/projectile and other cast impact banks remain unchanged,Expected values to be strictly equal:
+kaiComicContact.test.mjs,11,candidate asset is six distinct transparent cels and explicitly runtime inventoried,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+kaiComicProjectile.test.mjs,10,reviewed original strip preserves four distinct aligned white cores and transparent cell margins,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+kaiComicProjectile.test.mjs,15,only selected Kai preloads its bank and explicit payload keeps the legacy crescent available,Expected values to be strictly equal:
+kaiComicProjectile.test.mjs,18,Kai head is registered at the actual physics core and birth tail cannot project behind its spawn,Expected values to be strictly deep-equal:
+kaiComicProjectile.test.mjs,21,"four flight cels use their own 45ms active clock, not the rifle40ms or scene wall time",Expected values to be strictly equal:
+kaiComicProjectile.test.mjs,24,tail reveal follows maximum actual displacement at256/56 texels and never moves the body,Expected values to be strictly equal:
+kaiComicProjectile.test.mjs,27,missing Kai source retains the exact old untracked visual; Enjo and rifle fallbacks stay native,Expected values to be strictly deep-equal:
+kaiComicProjectile.test.mjs,30,real BattleScene visual seam and direction rotation cannot mutate projectile physics,Expected values to be strictly equal:
+kaiComicProjectile.test.mjs,33,tracking remains bounded and cleanup never destroys a real projectile owned by BattleScene,Expected values to be strictly equal:
+kaiDashFx.test.mjs,15,Kai-only preload adds one explicit six-cel dash bank; selected Sakura adds its four rifle banks; other casts unchanged,Expected values to be strictly equal:
+kaiDashFx.test.mjs,23,"dash release preserves issued direction, ordinary sweep and dedicated accepted-contact ownership",Expected values to be strictly equal:
+kaiDashFx.test.mjs,31,missing dash bank preserves exact old sweep fallback and other member releases,Expected values to be strictly equal:
+kaiDashFx.test.mjs,35,six existing sweep beats/240ms expiry and pause/dialog remain clock-owned,Expected values to be strictly equal:
+kaiDashFx.test.mjs,40,"measured pixel radius, wall rejection and authored palette retain existing guard",Expected values to be strictly equal:
+kaiDashFx.test.mjs,44,"dash rows obey existing24 budget, end/death disposal and idempotent cleanup",The expression evaluated to a falsy value:
+kaiDashFx.test.mjs,47,extremely narrow cover falls back to the old legal sweep instead of losing an existing release,The expression evaluated to a falsy value:
+kaiDashMaterial.test.mjs,18,selected Kai retains exact dash and separate contact preloads; other cast banks stay explicit,Expected values to be strictly equal:
+kaiDashMaterial.test.mjs,32,"Kai runtime metadata stays exact: no alpha, depth, wall, clock or rifle-art workaround reaches the sword",Expected values to be strictly deep-equal:
+kaiHurtContinuity.test.mjs,15,Kai exposes a frozen four-frame hurt bank while the original sword atlas and other cast stay unchanged,Expected values to be strictly equal:
+kaiHurtContinuity.test.mjs,23,"preload adds the bank only for selected Kai, never other cast or practice",Expected values to be strictly equal:
+kaiHurtContinuity.test.mjs,30,"Kai hurt plays all four cels in the existing 240ms with invariant size, origin and counters",Expected values to be strictly equal:
+kaiHurtContinuity.test.mjs,43,Kai hurt keeps existing precedence over action then resumes its remaining original action,Expected values to be strictly equal:
+kaiHurtContinuity.test.mjs,47,pause preserves the exact Kai hurt cel and clock through resume without changing facing,Expected values to be strictly equal:
+kaiHurtContinuity.test.mjs,55,cue exclusion uses each actual Kai hurt frame in both facings and teardown is once,Expected values to be strictly equal:
+kaiIndependentPortraitArtContract.test.mjs,1,tests/kaiIndependentPortraitArtContract.test.mjs,test failed
+kaiLayeredPresentation.test.mjs,1,tests/kaiLayeredPresentation.test.mjs,test failed
+kaiUnifiedArt.test.mjs,1,tests/kaiUnifiedArt.test.mjs,test failed
+lobbyReachability.test.mjs,10,home retains separate spaces and restores the actual backstage route,lounge
+lobbyReachability.test.mjs,24,tour owns the challenge-mode entry instead of burying it in a general gamepad drawer,Expected values to be strictly equal:
+meleeAttackChain.test.mjs,49,"missing shared stroke texture uses the existing hammer release fallback, and rifle never creates a melee owner",The expression evaluated to a falsy value:
+meleeAuthoredSequence.test.mjs,24,actual body presentation samples the eight-cel bank at constant half scale and the same world sole,Expected values to be strictly equal:
+meleeAuthoredSequence.test.mjs,27,missing attack art preserves the old pose bank; hurt/action remain authoritative,Expected values to be strictly equal:
+meleeAuthoredSequence.test.mjs,30,one role-specific local process sprite spans the actual attack and remains within committed reach,Expected values to be strictly equal:
+meleeDirectionalBody.test.mjs,9,actual body uses vertical origin/bounds and computes a real per-cel world weapon endpoint,Expected values to be strictly equal:
+meleeFollowThrough.test.mjs,7,directional selector and actual body/FX agree on the heavy hold with one existing process node,Expected values to be strictly equal:
+meleeFollowThrough.test.mjs,8,unreleased gate and hurt authority cannot display an authored impact or retain a stale hammer trail,Expected values to be strictly equal:
+meleeHeavyBridge.test.mjs,67,"actual renderer uses native width/origin and mirrored exclusion bounds, not a stretched384 frame",Expected values to be strictly equal:
+meleeWeaponPath.test.mjs,13,"north hammer release process follows preceding/current head midpoint, never the foot-to-head line",Expected values to be strictly equal:
+memberDetail306.test.mjs,5,enjo ability has one identity and restores the original panel without save writes,Cannot read properties of null (reading 'dataset')
+memberDetail306.test.mjs,5,enjo dossier has one identity and restores the original panel without save writes,Cannot read properties of null (reading 'dataset')
+memberDetail306.test.mjs,5,kai ability has one identity and restores the original panel without save writes,Cannot read properties of null (reading 'dataset')
+memberDetail306.test.mjs,5,kai dossier has one identity and restores the original panel without save writes,Cannot read properties of null (reading 'dataset')
+memberDetail306.test.mjs,5,sakura ability has one identity and restores the original panel without save writes,Cannot read properties of null (reading 'dataset')
+memberDetail306.test.mjs,5,sakura dossier has one identity and restores the original panel without save writes,Cannot read properties of null (reading 'dataset')
+memberRoster263.test.mjs,2,growth actor sheet uses the actual growth-member IDs and never requests undefined lettering,Expected values to be strictly deep-equal:
+memberRoster263.test.mjs,3,roster profession glyph matches each performer and training command names its actual destination,Expected values to be strictly equal:
+menuCoherentCast.test.mjs,4,current menu bodies use B252 sources while the isolated legacy motion registration remains unchanged,Expected values to be strictly equal:
+menuCoherentCast.test.mjs,5,same-source menu head avatars are explicit and unsupported cast has no new art,Expected values to be strictly deep-equal:
+menuCoherentCast.test.mjs,24,"avatar waits for decode, validates dimensions, and explicitly reports new-source failure without Q",resolve is not a function
+menuCoherentCast.test.mjs,25,detached or disposed avatar decode cannot change a new page,resolve is not a function
+menuCoherentCast.test.mjs,29,"only exact old Kai and new Enjo exports ship, transparent safety and texture budgets are explicit","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+menuEnjoIllustration.test.mjs,4,current Enjo and Kai use the admitted B252 bases and same-source avatars,Expected values to be strictly deep-equal:
+menuEnjoIllustration.test.mjs,12,rebuilt menu exports have64px real alpha clearance and sparse current-face Enjo patches,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+menuExpressionAssets.test.mjs,1,tests/menuExpressionAssets.test.mjs,test failed
+menuIdentityCast.test.mjs,4,identity reset uses four processed same-source menu exports; rifle and battle remain separate,Expected values to be strictly equal:
+menuIdentityCast.test.mjs,6,both processed bodies have true64px transparent safety and bounded decode memory,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+menuLettering.test.mjs,4,every redesigned title is real accessible text with no decorative window or load-dependent state,Expected values to be strictly equal:
+menuLettering.test.mjs,10,legacy and home text remain unchanged and cached unrelated images cannot switch a v2 title,Expected values to be strictly equal:
+menuPortraitExpressionLoading.test.mjs,70,actual B252 presentation decodes one source-static body with explicit errors and no legacy expression mounts or Q revival,Expected values to be strictly equal:
+menuPortraitPresentation.test.mjs,14,two immutable full-height menu illustrations have explicit high resolution and unsupported ids stay untouched,Expected values to be strictly equal:
+menuPortraitPresentation.test.mjs,18,load waits for successful decoding before an atomic reveal; duplicate loads decode only once,Expected values to be strictly equal:
+menuPortraitPresentation.test.mjs,21,cached images still decode; rejection and incorrect dimensions explicitly fail without Q,Expected values to be strictly equal:
+menuPortraitPresentation.test.mjs,25,"errors and late decode after disposal, movement or shell shutdown cannot revive a portrait",Expected values to be strictly equal:
+menuPortraitPresentation.test.mjs,28,"without decode, only the exact fully loaded image can replace the original",Expected values to be strictly equal:
+menuPortraitPresentation.test.mjs,29,native lobby and only the large roster slot use new art; battle and small avatars keep originals,The expression evaluated to a falsy value:
+menuRefinedCast.test.mjs,2,current full portraits and same-source heads are explicitly limited to the two rebuilt menu identities,Expected values to be strictly equal:
+menuSeriesCast.test.mjs,7,two new menu candidates and exact same-source avatars are explicitly admitted,Expected values to be strictly deep-equal:
+menuSeriesCast.test.mjs,24,padded lossless candidates have clear borders and full-resolution heads,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+mobileGameScreenFramework.test.mjs,53,inventory has a finite honest owned/locked set and uses actual atomic equipment commands,Expected values to be strictly equal:
+mobileGameScreenFramework.test.mjs,67,"archive shows real records and unknown legacy states, not fake scores or rewards",Expected values to be strictly equal:
+mobileGameScreenFramework.test.mjs,76,"play hub groups real preparation, growth and record routes with current saved status",Expected values to be strictly equal:
+mobileGameScreenFramework.test.mjs,110,"training return command names its actual home destination, not the new dedicated preflight screen",The input did not match the regular expression /返回主界面/. Input:
+mobileUiTestReadiness.test.mjs,39,back restores scroll and caller focus; root navigation drops deep history,Cannot read properties of undefined (reading '0')
+movingRifleLayers.test.mjs,51,all 16 shoot/walk pairs draw the original shoot upper over the walk lower on both facings,s0 w0 right
+movingRifleLayers.test.mjs,64,upper follows shot time only and lower follows travelled distance only,Expected values to be strictly deep-equal:
+movingRifleLayers.test.mjs,75,moving upper keeps the 270ms rifle cel timing; standing shot stays the uncropped whole-body bank,Expected values to be strictly deep-equal:
+movingRifleLayers.test.mjs,85,"stop, hurt, action, idle and missing banks reset the lower crop and hide the single upper",stop
+movingRifleLayers.test.mjs,106,freeze holds both layer poses while positions follow the player; resume skips nothing,layered upper exists
+movingRifleLayers.test.mjs,117,missing either bank or no crop API falls back to the exact old whole-body walk without an extra node,Expected values to be strictly deep-equal:
+movingRifleLayers.test.mjs,128,muzzle uses the upper shoot marker while layered; physical hand keeps its facing contract,s0 1
+movingRifleLayers.test.mjs,136,"cue exclusion is the clipped upper/lower union on both facings, not the whole walk cel",s0 w0 1
+movingRifleLayers.test.mjs,144,"upper sits just above the lower body and below weapon FX, matching alpha and tint",layered upper exists
+movingRifleLayers.test.mjs,152,destroy releases the upper exactly once and later updates create nothing,Expected values to be strictly equal:
+ordinaryHammerContact.test.mjs,12,"ordinary source has real alpha, safe contact radius and distinct evolving cels","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+ordinaryHammerContact.test.mjs,19,contact bank loads only for Enjo and preserves all common banks,Expected values to be strictly equal:
+ordinaryHammerContact.test.mjs,21,"only accepted ordinary Enjo hits select new contact, with old 220ms lifetime and existing cap",Expected values to be strictly equal:
+ordinaryHammerContact.test.mjs,22,"projectile, emission, missed ground, heavy, missing source and other actors remain on original banks",Expected values to be strictly equal:
+ordinaryWeaponPosePriority.test.mjs,97,melee pose samples actual windup/contact/recovery even while feet keep moving,kai windup
+otherPerformerTextureContract.test.mjs,1,tests/otherPerformerTextureContract.test.mjs,test failed
+ownerArrangementPlan.test.mjs,97,"previewing another venue is cancellable, but confirming it clears plan permanently for this menu session",Missing shell control: [data-nav=tour]
+ownerArrangementPlan.test.mjs,124,bottom-member navigation and root return retain the current plan across real Scene boundaries,Missing shell control: [data-nav=roster]
+ownerBattleUi.test.mjs,17,"exactly fifteen generated battle UI exports ship, with source hashes kept outside public","ENOENT: no such file or directory, open '[本地路径]"
+ownerBattleUi.test.mjs,42,current cast action icon follows owner identity and never changes the charge or action state,Expected values to be strictly equal:
+ownerBuildContent.test.mjs,96,actual library includes preparation while remaining read-only and can return to preflight,The input did not match the regular expression /机甲剑士.*阶位 1/. Input:
+ownerCastContinuityGrounding.test.mjs,73,matching committed action direction owns the body while automatic shots keep their own physical hand,Expected values to be strictly equal:
+ownerChapterCurve.test.mjs,56,archive keeps prior versioned scores readable without enabling current challenges or writing,The input did not match the regular expression /实测纪录 0 \/ 12/. Input:
+ownerChapterEvents.test.mjs,52,rules2 remains readable history and cannot seed rules3 challenges,Expected values to be strictly equal:
+ownerChapterReplay.test.mjs,8,"tour separates global completion, measured current-rules records and legacy without writes",The expression evaluated to a falsy value:
+ownerChapterReplay.test.mjs,25,home next destination previews locally without saving or launching,The input did not match the regular expression /下一站.*霓虹街口/. Input:
+ownerChapterReplay.test.mjs,41,archive shows three members by four chapters without phantom clears,The input did not match the regular expression /实测纪录 3 \/ 12/. Input:
+ownerChapterReplay.test.mjs,48,"empty archive does not claim lost results, and a revoked write authority cannot enter goals",The input did not match the regular expression /实测纪录 0 \/ 12/. Input:
+ownerChapterReplay.test.mjs,67,result completion review is based on durable actual evidence and absent on pending or diagnostic results,The expression evaluated to a falsy value:
+ownerContentTestAcceptance.test.mjs,4,IdolRosterScene goals hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,IdolRosterScene growth hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,IdolRosterScene inventory hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,IdolRosterScene library hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,TourRouteScene goals hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,TourRouteScene growth hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,TourRouteScene inventory hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,4,TourRouteScene library hands preparation back to the original Title start owner,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,20,preparation confirmation rejects lost write authority instead of navigating standalone scene,Missing shell control: [data-member=kai]
+ownerContentTestAcceptance.test.mjs,25,Title local preflight and modal veto remain intact,Missing shell control: [data-action=preflight]
+ownerCoreJourneyPresentation.test.mjs,18,preflight compact team owns actual saved member/build identity while preserving all six routes and original start data,The expression evaluated to a falsy value:
+ownerCoreJourneyPresentation.test.mjs,27,all three saved members and unlocked venues retain exact original preflight/start handoff,Cannot read properties of null (reading 'dataset')
+ownerDirectoryArchiveLibrary.test.mjs,18,hub categories expose one panel with proper controls and never write a save,Expected values to be strictly equal:
+ownerDirectoryArchiveLibrary.test.mjs,28,hub arrow[本地路径],Expected values to be strictly equal:
+ownerDirectoryArchiveLibrary.test.mjs,37,selected-member archive records precede the full preserved coverage overview,The expression evaluated to a falsy value:
+ownerDirectoryArchiveLibrary.test.mjs,44,current records and historical rule samples remain distinct after reordering,Cannot read properties of null (reading 'textContent')
+ownerDirectoryArchiveLibrary.test.mjs,50,replay proposal and cancel retain expanded coverage so restored focus remains visible,Missing shell control: [data-action=replay-proposal]
+ownerDirectoryArchiveLibrary.test.mjs,64,library groups both original stages and previews before the expandable long guide,Expected values to be strictly equal:
+ownerEntryConsistency.test.mjs,40,current public UI queues required bitmap images in the same scene loader and restores loader mode,load.spritesheet is not a function
+ownerEntryConsistency.test.mjs,60,UI load failure blocks creation and retries the exact original scene once through the existing recovery owner,load.spritesheet is not a function
+ownerFlowPresentation.test.mjs,47,companion members sit in one strip before the portrait scene with whole headshot and name tiles,Expected values to be strictly equal:
+ownerFlowPresentation.test.mjs,86,venue rooms carry distinct admitted identity bitmaps and keep commands,Cannot read properties of null (reading 'src')
+ownerFlowPresentation.test.mjs,102,route stays one native button; each step is decorated with its real current and cleared facts,Cannot read properties of null (reading 'tagName')
+ownerFlowPresentation.test.mjs,126,"expanded details keep the real summary, Escape focus and closed state without a cover panel",Cannot read properties of null (reading 'querySelector')
+ownerFormalUiWholeModule.test.mjs,16,home keeps one character hero and explicitly groups the secondary session facts without writes,home long-form progress needs an explicit secondary disclosure
+ownerFormalUiWholeModule.test.mjs,25,preflight visually identifies the actual member and venue without applying a build or starting,Missing shell control: [data-action=preflight]
+ownerFormalUiWholeModule.test.mjs,49,formal UI runtime candidates are explicit hash locked images with source sheets excluded,formal UI export manifest missing
+ownerGeneratedUi.test.mjs,46,"post-render hook decorates only owner-three desk, lounge and venue",desk
+ownerGeneratedUi.test.mjs,56,home entrances use actual admitted decorative bitmaps and preserve commands and labels,Cannot read properties of null (reading 'querySelector')
+ownerGeneratedUi.test.mjs,69,"mount preserves nodes, listeners, data, details Escape and writes nothing; repeated mounts are idempotent",Cannot read properties of null (reading 'querySelector')
+ownerGeneratedUi.test.mjs,87,"home real progress, recent facts and route steps keep their data in unframed bands",Cannot read properties of null (reading 'dataset')
+ownerGeneratedUi.test.mjs,103,companion topic and cast callbacks and avatar children survive decoration,Expected values to be strictly equal:
+ownerGeneratedUi.test.mjs,123,"venue hotspots, draft options, save and prepare retain their real commands",Expected values to be strictly equal:
+ownerGeneratedUi.test.mjs,138,rerender gives one decoration per target and no stale page scope,The expression evaluated to a falsy value:
+ownerGrowthEquipmentHub.test.mjs,24,"returning from backpack shows the actual newly equipped gear, not a stale preview",Missing shell control: [data-action=equip-selected]
+ownerHarborGroundStrike.test.mjs,19,rules12 history and earned progression survive rules13 without seeding new-rule score goals,Expected values to be strictly equal:
+ownerJourneyContent.test.mjs,11,"entry is concise, optional intro returns to the same borrowed pause and does not mark seen",The expression evaluated to a falsy value:
+ownerJourneyContent.test.mjs,32,journal shows chapter gates without leaking locked dialogue; directory preserves pause,Expected values to be strictly equal:
+ownerMilestoneReplayContent.test.mjs,13,"milestones reflect durable campaign, member first clears and current-rule coverage separately",Expected values to be strictly deep-equal:
+ownerMilestoneReplayContent.test.mjs,22,legacy records do not falsely complete current coverage; full coverage ends recommendation,Cannot read properties of null (reading 'performerId')
+ownerMilestoneReplayContent.test.mjs,62,"home proposal and archive milestones use real consumer, cancel is read-only and confirm enters correct preflight",The expression evaluated to a falsy value:
+ownerMilestoneReplayContent.test.mjs,72,new replay commands consume existing bitmap icons and primary button surfaces,Cannot read properties of null (reading 'className')
+ownerMobileCandidateDelivery.test.mjs,80,current archive separates readable history without writes or enabling current challenges,Missing shell control: [data-action=home-records]
+ownerPersonalLoadoutContent.test.mjs,50,wrong-owner runtime snapshots fail closed; every valid modified build keeps original scalar effects,The input did not match the regular expression /随行|回锋|余震/. Input:
+ownerPersonalLoadoutContent.test.mjs,121,"all menus expose truthful ownership, personal eligibility and saved preflight without auto-switch",The input did not match the regular expression /机甲剑士专用/. Input:
+ownerPersonalLoadoutContent.test.mjs,134,earned result prefers its actual personal unlock and strips action review from saved run,Expected values to be strictly deep-equal:
+ownerPreparationPlan.test.mjs,111,inventory-origin plan captures expected state and denied member handoff cannot advance,Expected values to be strictly equal:
+ownerPublicMenuUi.test.mjs,9,"nineteen menu exports are explicit, hash-locked, and do not publish their source sheets","ENOENT: no such file or directory, open '[本地路径]"
+ownerPublicMenuUi.test.mjs,19,current root navigation uses consistent Lucide symbols while content retains its authored art,Cannot read properties of null (reading 'querySelector')
+ownerPublicMenuUi.test.mjs,36,equipment art follows item identity while unavailable equip stays disabled and planning stays read-only,Expected values to be strictly equal:
+ownerRouteVariety.test.mjs,13,actual preparation buttons are preview-only and Title freezes their choice only on start,Expected values to be strictly equal:
+ownerRouteVariety.test.mjs,77,rules7 keeps original rules6 history and old progression without converting it to a current score,Expected values to be strictly equal:
+ownerSessionContent.test.mjs,5,current three-character stories are authored independently and keep unlock gates,The expression evaluated to a falsy value:
+ownerSessionContent.test.mjs,62,inventory handoff stays local and explicit equip does not change deployment,The input did not match the regular expression /机甲剑士/. Input:
+ownerSystemPreparationLayout.test.mjs,19,inventory presents a collapsible item chooser and synchronized full-width live detail in one workbench,The expression evaluated to a falsy value:
+ownerSystemPreparationLayout.test.mjs,33,"inventory exposes structured projected effects, not an applied build, and keeps incompatible gear blocked",The expression evaluated to a falsy value:
+ownerSystemPreparationLayout.test.mjs,41,training action precedes the secondary notes explanation and catalog route,The expression evaluated to a falsy value:
+ownerSystemPreparationLayout.test.mjs,49,growth compares the current and planned effects before the gear choices and applies only after confirmation,The expression evaluated to a falsy value:
+ownerSystemPreparationLayout.test.mjs,71,new inventory detail cannot bypass the original unsaved or quota gates,Cannot read properties of null (reading 'disabled')
+ownerThreeMapIntegration.test.mjs,36,all three battle foundations use explicit versioned image assets,"ENOENT: no such file or directory, open '[本地路径]"
+ownerTourEventJourney.test.mjs,7,"route and arrangement travel together through actual member, tour and wallet Scene boundaries",Missing shell control: [data-nav=roster]
+ownerTourEventJourney.test.mjs,21,"cancelled member and venue previews retain route, committed changes cannot resurrect it",Missing shell control: [data-member=kai]
+ownerWholeLoopCloseout.test.mjs,34,current-cast preflight puts actual preparation and all configuration entries before detailed rules,The expression evaluated to a falsy value:
+ownerWholeLoopCloseout.test.mjs,51,native preparation disclosure remains open across route rerender and remains session-only,The expression evaluated to a falsy value:
+ownerWholeLoopCloseout.test.mjs,61,"preflight summary follows the saved owner and equipment, not a local roster preview",The expression evaluated to a falsy value:
+p15131PlayerShotLaunchNoteFlick.test.mjs,1,tests/p15131PlayerShotLaunchNoteFlick.test.mjs,test failed
+p15135AutoAimPriorityTargetAlignment.test.mjs,1,tests/p15135AutoAimPriorityTargetAlignment.test.mjs,test failed
+p15225ManualFocusTargetActionContract.test.mjs,1,tests/p15225ManualFocusTargetActionContract.test.mjs,test failed
+p15259PublicStage1WaveAuthoredPressureEventContract.test.mjs,1,tests/p15259PublicStage1WaveAuthoredPressureEventContract.test.mjs,test failed
+p15322CpSweetQuintetRuntimeRetirement.test.mjs,1,tests/p15322CpSweetQuintetRuntimeRetirement.test.mjs,test failed
+p15333PublicStage1BlueTempoControlRole.test.mjs,1,tests/p15333PublicStage1BlueTempoControlRole.test.mjs,test failed
+p15343PublicStage1PinkBeatAccentContract.test.mjs,1,tests/p15343PublicStage1PinkBeatAccentContract.test.mjs,test failed
+p15352PublicStage1OrangeExactConfirmationOwnership.test.mjs,1,tests/p15352PublicStage1OrangeExactConfirmationOwnership.test.mjs,test failed
+p15367PublicStage1AttackExactTargetCommitment.test.mjs,1,tests/p15367PublicStage1AttackExactTargetCommitment.test.mjs,test failed
+p15AssetBoundaryGuard.test.mjs,1,tests/p15AssetBoundaryGuard.test.mjs,test failed
+p15IdolRosterArt.test.mjs,1,tests/p15IdolRosterArt.test.mjs,test failed
+p15ProductionDeskShell.test.mjs,1,tests/p15ProductionDeskShell.test.mjs,test failed
+p15TourRouteArt.test.mjs,1,tests/p15TourRouteArt.test.mjs,test failed
+p15TourRouteReadOnlyScene.test.mjs,1,tests/p15TourRouteReadOnlyScene.test.mjs,test failed
+p16016PublicStage1ObjectiveDisruptorRole.test.mjs,1,tests/p16016PublicStage1ObjectiveDisruptorRole.test.mjs,test failed
+p16036CanonicalBuildRoot.test.mjs,74,"root is the real config directory, independent of the launch directory",Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,81,logical and physical config paths converge before HTML output naming,Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,100,existing output settings and exact seven-asset build-only guard are preserved,Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,113,dev server keeps its port without opening a browser automatically,Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,125,"asset guard uses resolved root and absolute outDir, not cwd or the config default",Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,125,"asset guard uses resolved root and default outDir, not cwd or the config default",Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,125,"asset guard uses resolved root and nested relative outDir, not cwd or the config default",Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,125,"asset guard uses resolved root and parent relative outDir, not cwd or the config default",Cannot find module './scripts/check-chapter-content.mjs
+p16036CanonicalBuildRoot.test.mjs,158,clean output and partial guarded re-entry are handled without broad deletion,Cannot find module './scripts/check-chapter-content.mjs
+p16044PublicCampaignContract.test.mjs,1,tests/p16044PublicCampaignContract.test.mjs,test failed
+p16046PublicCampaignShell.test.mjs,8,desk renders chapter name and start as distinct DOM elements without a legacy CTA bitmap,Expected values to be strictly equal:
+p16046PublicCampaignShell.test.mjs,60,desk and model reflect four chapter states and finite completion without a fifth chapter,Expected values to be strictly deep-equal:
+p16046PublicCampaignShell.test.mjs,117,tour disables locked chapter buttons and ignores both normal and synthetic clicks,Expected values to be strictly equal:
+p16046PublicCampaignShell.test.mjs,136,"tour preview is unsaved until explicit confirmation, which saves once before returning and survives reload",Expected values to be strictly equal:
+p16056SharedPublicShell.test.mjs,62,"fresh shell uses real member/action and chapter lock states, without a fourth chapter",Expected values to be strictly deep-equal:
+p16056SharedPublicShell.test.mjs,87,selecting chapters and performers preserves earned progress and reports failed persistence,Expected values to be strictly equal:
+p16074ActorPresentation.test.mjs,76,"real scene owns preload, update and release; old source atlas remains quarantined","The input did not match the regular expression /preloadActorPresentation\(this, this.initialBattleData\)/. Input:"
+p16080RuntimePayload.test.mjs,12,"release inventory is exact, categorized, unique and covers existing runtime consumers",Expected values to be strictly equal:
+p16080RuntimePayload.test.mjs,108,"public preload contains only current chapter, actor, UI and shared audio; hidden keeps legacy assets",resolvePublicChapterId is not defined
+p67FiveColorBulletGraphicsReadability.test.mjs,1,tests/p67FiveColorBulletGraphicsReadability.test.mjs,test failed
+p69ResultClearsActivePlayerBulletGraphics.test.mjs,1,tests/p69ResultClearsActivePlayerBulletGraphics.test.mjs,test failed
+p73Stage1EnemyReadabilityOutline.test.mjs,1,tests/p73Stage1EnemyReadabilityOutline.test.mjs,test failed
+p78Stage15MovementPriorityTarget.test.mjs,1,tests/p78Stage15MovementPriorityTarget.test.mjs,test failed
+performanceChoicesV2.test.mjs,7,"owner choice uses current venue and same-source full-resolution avatar, not a stretched legacy bitmap",Expected values to be strictly equal:
+performanceChoicesV2.test.mjs,8,"all six genuine effects have distinct reviewed AI art, category and exact live consequence",Expected values to be strictly deep-equal:
+performanceChoicesV2.test.mjs,9,"presentation keeps one terminal selection, exact callbacks and input restoration without a save",Expected values to be strictly deep-equal:
+performerActionTimeline.test.mjs,52,sakura: late first rendered action samples real age instead of restarting from notification,160ms into original 320ms action
+performerActionTimeline.test.mjs,58,sakura: expired unseen action does not replay; pause and hurt do not resurrect it,Expected values to be strictly equal:
+performerHurtExpressionArtContract.test.mjs,1,tests/performerHurtExpressionArtContract.test.mjs,test failed
+performerPlantedFootRig.test.mjs,72,"real ActorPresentation uses rig for idle, moving action and hurt; old lower cel stays hidden","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+performerRosterGrounding.test.mjs,1,tests/performerRosterGrounding.test.mjs,test failed
+performerShotFeedback.test.mjs,49,"all 32 own hand anchors lie on opaque palm pixels, never transparent fingers or sleeve","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+phaserArcadeBuildBoundary.test.mjs,9,Vite selects the installed official Arcade build only for the bare Phaser import,Expected values to be strictly deep-equal:
+pigmentBodyTexture.test.mjs,50,candidate material is exact neutral opaque source with bounded unchanged decoded allocation,"ENOENT: no such file or directory, open '[本地路径]"
+planningArt270.test.mjs,3,growth and library use isolated AI headers without replacing dynamic values,Expected values to be strictly equal:
+planningArt270.test.mjs,4,AI planning atlas retains alpha and every registered crop has provenance,"ENOENT: no such file or directory, open '[本地路径]"
+planningScreenFamily.test.mjs,3,planning family is owner-only and never expands to unrelated pages,Expected values to be strictly equal:
+planningStudio270.test.mjs,47,growth: visible gear summary reflects the real planned selection and opens the original equipment sheet,The input did not match the regular expression /equipment-identity-20261025\/rain_relay\.png$/. Input:
+playableUiCandidate.test.mjs,26,"live candidate preserves five navigation roots, actual preparation tools and read-only previews",The expression evaluated to a falsy value:
+playableWeaponLifecycle.test.mjs,13,"real basic shots use rifle spray, sword sweep and hammer burst instead of three gun muzzles",kai
+portraitBaseRegistration.test.mjs,95,menu art and avatars resolve through the registry; Sakura avatar is unchanged,Expected values to be strictly equal:
+portraitSafeAreaLayout.test.mjs,66,"home: name and chapter form one dock caption beside the commands, nothing lettered over the figure",view.icon is not a function
+portraitSafeAreaLayout.test.mjs,113,roster: utility lane is separate from the figure; name leaves the blade-tip corner,Cannot read properties of null (reading 'querySelectorAll')
+preflightArt271.test.mjs,3,preflight has a dedicated AI heading and clear loading state without changing the single start command,Expected values to be strictly equal:
+preflightArt271.test.mjs,4,all twelve preflight wordmarks have traceable alpha-preserving extraction,"ENOENT: no such file or directory, open '[本地路径]"
+preflightDecisionVisibility.test.mjs,7,owner venue and full menu portrait lead the preparation page without hiding route decisions,Cannot read properties of null (reading 'parentNode')
+preflightDecisionVisibility.test.mjs,22,existing footer reports actual route without persisting a preview or changing the run handoff,Cannot read properties of null (reading 'textContent')
+preflightDecisionVisibility.test.mjs,27,route invalidation is reflected in footer instead of keeping a stale selected line,Cannot read properties of null (reading 'textContent')
+preflightDecisionVisibility.test.mjs,30,primary tour confirmation cannot navigate on quota failure and has persistent visible status,The expression evaluated to a falsy value:
+preflightDecisionVisibility.test.mjs,33,success still commits and returns to preparation while cancellation and legacy do not change,Missing shell control: [data-action=preflight-chapter]
+preflightFirstScreenHierarchy.test.mjs,4,all selected members/chapters put actual route before optional rules and tools,The expression evaluated to a falsy value:
+preflightFirstScreenHierarchy.test.mjs,7,selected arrangement remains visible and complete but follows route without rewriting plan or profile,The expression evaluated to a falsy value:
+preflightFirstScreenHierarchy.test.mjs,10,subtitle remains authored text while the nonhome heading uses the native accessible title,Cannot read properties of null (reading 'querySelector')
+preflightProductionFlow.test.mjs,28,production marker belongs only to owner preflight with actual chapter and preparation identity,Expected values to be strictly equal:
+preflightProductionFlow.test.mjs,52,all three owner portraits request animation with the existing scene artwork as background,Expected values to be strictly equal:
+preflightProductionFlow.test.mjs,71,absent or invalid plans show an honest empty state and an explicit native library command,The expression evaluated to a falsy value:
+preflightProductionFlow.test.mjs,145,adjust and clear keep their native behavior and clear returns to no-plan without granting defaults,The expression evaluated to a falsy value:
+preflightProductionFlow.test.mjs,172,"route, disclosures and all six configuration trips preserve selected plan and uncommitted drafts","Expected ""actual"" to be reference-equal to ""expected"":"
+preflightRoutePresentation.test.mjs,8,all chapters and original members expose two semantic route facts without losing real rules,route facts missing
+preflightRoutePresentation.test.mjs,22,route selection remains three native buttons with one selected state and real start handoff,Cannot read properties of null (reading 'textContent')
+preflightRoutePresentation.test.mjs,45,canonical finale steps stay whole without parsing or changing existing review prose,The expression evaluated to a falsy value:
+preflightStageV2.test.mjs,13,stage identity uses exact helper portraits and separate native performer rank and equipment labels,Expected values to be strictly equal:
+preflightStageV2.test.mjs,26,secondary tools and the only start command are native icon plus label without bitmap control skin,Cannot read properties of null (reading 'querySelectorAll')
+preflightStageV2.test.mjs,36,route and disclosures stay session only and start hands off real selected route and arrangement,"Expected ""actual"" to be reference-equal to ""expected"":"
+preflightStageV2.test.mjs,53,all six secondary tools preserve real destinations and legacy remains unchanged,Expected values to be strictly equal:
+preparationReadingHierarchy.test.mjs,13,candidate selection changes labels but does not spend or commit preparation,The input did not match the regular expression /机甲剑士/. Input:
+preparationReadingHierarchy.test.mjs,16,"inventory chooser starts open, retains all six options and restores focus to the chosen item",The expression evaluated to a falsy value:
+preparationScreenFamily.test.mjs,3,existing inner family includes preparation and records without leaking into legacy or unrelated pages,roster
+preparationScreenFamily.test.mjs,4,"training uses the existing source-owned raster title, its exact dimensions and native failure label",The expression evaluated to a falsy value:
+printedFloorPigment.test.mjs,71,"reviewed actual print bitmap is opaque continuous grayscale, exact SHA and explicitly admitted once","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+publicBossPresentation.test.mjs,47,four chapters label the same finale boss as an enemy with original chapter names,Expected values to be strictly deep-equal:
+publicShellRigRouting.test.mjs,14,"desk uses the existing P2L player for animated Sakura, not layered strips",Cannot read properties of null (reading 'querySelector')
+publicShellRigRouting.test.mjs,14,"lounge uses the existing P2L player for animated Sakura, not layered strips",Cannot read properties of null (reading 'querySelector')
+publicShellRigRouting.test.mjs,14,"preflight uses the existing P2L player for animated Sakura, not layered strips",Cannot read properties of null (reading 'querySelector')
+publicShellRigRouting.test.mjs,14,"roster uses the existing P2L player for animated Sakura, not layered strips",Cannot read properties of null (reading 'querySelector')
+publicShellRigRouting.test.mjs,20,nonanimated secondary portraits stay on the deliberate static art route,The expression evaluated to a falsy value:
+publicShellRigRouting.test.mjs,23,"desk mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute",Expected values to be strictly equal:
+publicShellRigRouting.test.mjs,23,"lounge mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute",Expected values to be strictly equal:
+publicShellRigRouting.test.mjs,23,"preflight mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute",Expected values to be strictly equal:
+publicShellRigRouting.test.mjs,23,"roster mounts the registered Enjo model for animated Enjo with its own aspect, never a static or Sakura substitute",Expected values to be strictly equal:
+publicShellRigRouting.test.mjs,29,animated Sakura keeps its 853x1280 registration,Expected values to be strictly equal:
+publicShellRigRouting.test.mjs,30,Kai has no rig registration and stays on the static portrait route,Expected values to be strictly equal:
+publicShellRigRouting.test.mjs,33,nonanimated Enjo stays on the deliberate static route,Expected values to be strictly equal:
+publicShellSceneEntry.test.mjs,9,"actual rehearsal draft survives roster, tour and home Scene lifecycles without granting or saving choices",Missing shell control: [data-action=play-hub]
+publicShellSceneEntry.test.mjs,36,"all actual menu owners retain rehearsal draft through wallet training and back, without confirming previews",Missing shell control: [data-nav=workshop]
+publicShellSceneEntry.test.mjs,40,existing preparation plan returns locally from wallet training instead of inventing a second Scene restart,Missing shell control: [data-action=home-preflight]
+publicStreetCountdownReadiness.test.mjs,27,"preparing three public streets is idempotent and leaves round, objectives and timers idle",isRooftopChapter is not defined
+publicUiPreparationContext.test.mjs,27,workshop preview remains local until explicit deploy; training and return do not silently deploy,Expected values to be strictly equal:
+publicUiStateHierarchy.test.mjs,20,"desk route exposes actual completed, available and locked states",Expected values to be strictly deep-equal:
+quietComicGround.test.mjs,1,tests/quietComicGround.test.mjs,test failed
+raincheckPresentation294.test.mjs,47,raincheck has its own boss identity on the strip,no chapter reuses another boss name
+readyLabelPlate.test.mjs,1,tests/readyLabelPlate.test.mjs,test failed
+recordScreenFamily.test.mjs,3,record/field/hub family is owner-only and focuses the actual visible header,Expected values to be strictly equal:
+recordScreenFamily.test.mjs,5,current and historical rules stay separate and history is not restyled into a current score,Cannot read properties of null (reading 'textContent')
+recordScreenFamily.test.mjs,7,field heading uses unlocked venue only; original guide/map and locked prepare behavior survive,Expected values to be strictly equal:
+recordScreenFamily.test.mjs,8,hub still has all original categories and eleven commands without save or automatic unlock,Expected values to be strictly equal:
+rifleCelFamily.test.mjs,1,tests/rifleCelFamily.test.mjs,test failed
+rifleComicFx.test.mjs,39,only the selected Sakura branch preloads the rifle muzzle/projectile/contact banks; old banks stay unchanged,Expected values to be strictly deep-equal:
+rifleComicFx.test.mjs,51,selected Sakura projectile uses the authored bank at its physics core; other casts and a missing bank keep the exact native visual,Expected values to be strictly deep-equal:
+rifleCompactMuzzle.test.mjs,1,tests/rifleCompactMuzzle.test.mjs,test failed
+rifleDepositionArt.test.mjs,1,tests/rifleDepositionArt.test.mjs,test failed
+rifleFacingCadence.test.mjs,68,rifle shot cycle reads at ~270ms of the 333ms interval with four held recoil-to-ready cels,Expected values to be strictly equal:
+rifleFacingCadence.test.mjs,80,sword and hammer keep exact old cadence and movement-facing return,Expected values to be strictly equal:
+rifleFacingCadence.test.mjs,89,"rifle shot reads a real recoil peak: half-recovery cel is on screen at 170ms, cels 27/122/81/40 of 270",Expected values to be strictly equal:
+rifleGroundOverlap.test.mjs,1,tests/rifleGroundOverlap.test.mjs,test failed
+rifleIdleBlink.test.mjs,10,only rifle metadata offers one deeply frozen closed-eye idle cel with ready12 landmarks,Expected values to be strictly equal:
+rifleIdleBlink.test.mjs,20,only selected rifle preloads its idle cel at the shared 384x320 frame; practice never enables it,Expected values to be strictly equal:
+rifleIdleBlink.test.mjs,27,"standing idle stays native ready12, shows closed cel 0 for 120ms at 3420, then reopens and repeats every 3600",t0
+rifleIdleBlink.test.mjs,37,"movement, attack, action and hurt never blink and each re-entry to idle restarts the 3420ms wait",Expected values to be strictly deep-equal:
+rifleIdleBlink.test.mjs,54,pause holds the idle clock and current eye cel; resume continues on active time,Expected values to be strictly deep-equal:
+rifleIdleBlink.test.mjs,62,missing idle texture and the other two members keep original frame12 through the blink window,Expected values to be strictly equal:
+rifleIdleBlink.test.mjs,68,"closed cel drives muzzle and hazard exclusion from idle landmarks on both facings, hand origin unchanged",Expected values to be strictly deep-equal:
+rifleIdleBlink.test.mjs,77,destroy cleans up once and stops the blink,Expected values to be strictly deep-equal:
+rifleInkChain.test.mjs,1,tests/rifleInkChain.test.mjs,test failed
+rifleMuzzleBank.test.mjs,40,actual post-physics Sakura muzzle uses the new bank once at the sampled barrel point and angle,Expected values to be strictly deep-equal:
+rifleMuzzleBank.test.mjs,143,kai and enjo ordinary shots stay identical whether or not the muzzle bank exists,Expected values to be strictly equal:
+rifleMuzzleRegistration.test.mjs,16,"rifle contact marker uses the existing cel origin and half scale, not the physical hand offset",Expected values to be strictly equal:
+rifleMuzzleRegistration.test.mjs,23,real actor queue waits for the current moving cel in the same postupdate frame,Cannot read properties of undefined (reading 'key')
+rifleMuzzleRegistration.test.mjs,32,queued visual snapshots survive same-frame projectile disposal without retaining its mutable origin,Expected values to be strictly equal:
+rifleMuzzleRegistration.test.mjs,46,cover between physical origin and drawn barrel rejects only the local muzzle,Expected values to be strictly equal:
+rifleMuzzleRegistration.test.mjs,79,"unreviewed anticipation, hurt and missing cels do not invent a barrel marker",Expected values to be strictly equal:
+rifleProjectileLaunch.test.mjs,118,"Kai, Enjo and a missing Sakura bank keep exact uncropped native visuals",kai
+rifleRecoilHold.test.mjs,8,standing rifle endpoints are .1/.55/.85/1 of the unchanged 270ms shot inside the 333ms fire interval,Expected values to be strictly equal:
+rifleRecoilHold.test.mjs,17,"130ms is still the kick cel, 170ms half recovery, 245ms ready; both facings use the same cel and its own muzzle marker",Expected values to be strictly equal:
+rifleRecoilHold.test.mjs,26,"paced shots keep old 80ms floor, .82 mapping and 270 cap; every paced cycle still shows all four cels",Expected values to be strictly equal:
+rifleRecoilHold.test.mjs,32,"pause/dialog freeze the held kick; walk, action and hurt keep priority; fallback and other casts keep 14..17 quarters",Expected values to be strictly equal:
+rifleRestCycle.test.mjs,1,tests/rifleRestCycle.test.mjs,test failed
+rifleShootRecovery.test.mjs,5,only rifle metadata offers optional reviewed shoot bank and four barrel landmarks,Expected values to be strictly equal:
+rifleShootRecovery.test.mjs,6,only selected rifle preloads its own extra bank; practice never enables it,Expected values to be strictly equal:
+rifleShootRecovery.test.mjs,7,standing rifle normal shot shows four finite recoil cels with fixed scale then original ready,Expected values to be strictly equal:
+rifleShootRecovery.test.mjs,9,"rifle movement and real action/hurt keep old priority, bank and physical counters",Cannot read properties of undefined (reading 'key')
+rifleShootRecovery.test.mjs,10,pause freezes recoil frame and resume does not skip or replay the sequence,Expected values to be strictly equal:
+rifleShootRecovery.test.mjs,11,drawn barrel and hazard exclusions follow each new cel on both facings without moving hand origin,Expected values to be strictly equal:
+rifleVerticalStreak.test.mjs,87,sword and hammer keep exact old vertical-shot facing and never hold,Expected values to be strictly equal:
+rifleWalkVolume.test.mjs,1,tests/rifleWalkVolume.test.mjs,test failed
+rosterRoleHierarchy.test.mjs,7,"roster separates viewed avatar, actual deployment and distinct real combat roles",member rail belongs to the illustration stage
+rosterShowcaseV3.test.mjs,34,showcase marker is set only by owner roster without replacing the shared UI pass,Expected values to be strictly equal:
+rosterShowcaseV3.test.mjs,52,current role has one native stage identity and its official battle emblem,"Expected ""actual"" to be reference-equal to ""expected"":"
+rosterShowcaseV3.test.mjs,159,training stays a native command and returning keeps the unsaved member and preparation tab,Cannot read properties of null (reading 'querySelector')
+rosterStageComposition.test.mjs,10,owner portrait stage contains the member rail and one reserved native identity,The expression evaluated to a falsy value:
+rosterStageComposition.test.mjs,18,"all three roster names use exact transparent exports with uniform native aspect, old home names stay separate","The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+rosterStudioAsset.test.mjs,2,roster stage admits only its exact reviewed textless environment export,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+sakuraCostumeMaterialProtection.test.mjs,1,tests/sakuraCostumeMaterialProtection.test.mjs,test failed
+sakuraGarmentAtlasProtection.test.mjs,1,tests/sakuraGarmentAtlasProtection.test.mjs,test failed
+sakuraHairMaterialProtection.test.mjs,1,tests/sakuraHairMaterialProtection.test.mjs,test failed
+sakuraHandSleeveAtlasProtection.test.mjs,1,tests/sakuraHandSleeveAtlasProtection.test.mjs,test failed
+sakuraHeadMaterialProtection.test.mjs,1,tests/sakuraHeadMaterialProtection.test.mjs,test failed
+sakuraIndependentPortraitArtContract.test.mjs,1,tests/sakuraIndependentPortraitArtContract.test.mjs,test failed
+sakuraLayeredAssets.test.mjs,12,attack atlas contains thirty-two complete registered 256px cells,"ENOENT: no such file or directory, open '[本地路径]"
+sakuraLayeredAssets.test.mjs,21,new motion assets contain sixteen idle poses and twenty-four generated rig attachments,"ENOENT: no such file or directory, open '[本地路径]"
+sakuraNativeConformance.test.mjs,1,tests/sakuraNativeConformance.test.mjs,test failed
+sakuraNativeDetails.test.mjs,1,tests/sakuraNativeDetails.test.mjs,test failed
+sakuraNativeDirections.test.mjs,20,three separately drawn skinned directions have distinct texture data and actual two-chain motion,"ENOENT: no such file or directory, open '[本地路径]"
+sakuraNativeDirections.test.mjs,45,"formal native presenter switches actual meshes, retains one clock/socket and destroys every direction","ENOENT: no such file or directory, open '[本地路径]"
+sakuraNativeDirections.test.mjs,67,"directional feet register to the existing frontal ground plane, not a floating shorter leg","ENOENT: no such file or directory, open '[本地路径]"
+sakuraNativeHandArtExport.test.mjs,15,native preload and payload use only the three approved grip-hand texture exports,Expected values to be strictly equal:
+sakuraNativePresentation.test.mjs,1,tests/sakuraNativePresentation.test.mjs,test failed
+sakuraNativeTransitions.test.mjs,1,tests/sakuraNativeTransitions.test.mjs,test failed
+sakuraNativeTurnDefeat.test.mjs,1,tests/sakuraNativeTurnDefeat.test.mjs,test failed
+sakuraObliqueRuntime.test.mjs,1,tests/sakuraObliqueRuntime.test.mjs,test failed
+sakuraRefinedRuntime.test.mjs,17,only padded derived atlas and geometry preload; source metadata/media never ship,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
+sakuraSecondaryAttachments.test.mjs,8,all sixty upper cels have registered parts and bounded mobile atlases,"ENOENT: no such file or directory, open '[本地路径]"
+sakuraWorldDepth.test.mjs,6,Sakura complete body stays together on both sides of scenery after further updates,this.flushPaintSurfaces is not a function
+skillCommandArt.test.mjs,1,tests/skillCommandArt.test.mjs,test failed
+skillContactIndependentReleaseFit.test.mjs,29,actual Run paint receipt carries its pigment into both primary and accepted-contact FX,The expression evaluated to a falsy value:
+stageUiV2.test.mjs,9,nonhome owner screens opt into the explicit second UI composition without changing home markup,Expected values to be strictly equal:
+systemFrameworkCatalog.test.mjs,5,"growth catalog reads actual ranks, costs and equipment without progress writes",Expected values to be strictly equal:
+systemFrameworkCatalog.test.mjs,22,growth page is reachable from hub and read-only selections return to the real parent,Missing shell control: [data-action=hub-growth]
+systemFrameworkCatalog.test.mjs,34,catalog-to-backpack requires existing explicit equip command and saves only then,Missing shell control: [data-action=hub-growth]
+systemScreenFrame.test.mjs,8,"seven registered consumers mount one real shared frame without adding entries, changing root routes or writing a profile",Cannot read properties of null (reading 'querySelectorAll')
+systemScreenFrame.test.mjs,12,"frame model is immutable, uses canonical page ownership and existing chapter/member assets, not invented modules",Expected values to be strictly equal:
+teamCostumeMaterialProtection.test.mjs,1,tests/teamCostumeMaterialProtection.test.mjs,test failed
+teamFaceMaterialProtection.test.mjs,1,tests/teamFaceMaterialProtection.test.mjs,test failed
+teamHairMaterialProtection.test.mjs,1,tests/teamHairMaterialProtection.test.mjs,test failed
+teamLimbMaterialProtection.test.mjs,1,tests/teamLimbMaterialProtection.test.mjs,test failed
+threeCastAttackMotion.test.mjs,12,"all three stationary shots draw actual contact and recovery cels, never idle or late anticipation",sakura must start at already committed contact
+threeCastAttackMotion.test.mjs,21,taller attack envelope preserves half scale and original foot position for all three owners,Expected values to be strictly equal:
+threeCastAttackMotion.test.mjs,36,"cue exclusions use current visible-frame bounds, including mirrored asymmetric sword origin",Cannot read properties of undefined (reading 'bounds')
+threeCastAttackMotion.test.mjs,46,a release between rendered frames starts contact without aging by the previous render gap,sakura
+tourInventoryV2.test.mjs,110,"real tour preview preserves locked stops, venues and explicit confirmation",Expected values to be strictly equal:
+tourInventoryV2.test.mjs,134,six real inventory previews do not equip or save and keep real icon art,Expected values to be strictly equal:
+tourWholeScreen.test.mjs,5,"tour has one selected scenic stage, a compact real stop sequence and native record disclosure",Expected values to be strictly equal:
+userCastMotion.test.mjs,53,"walk phases follow actual distance, continue while shooting, and stop when position stops",walking cels survive automatic fire
+userCastMotion.test.mjs,103,"confirmed skill poses register the three rifle beats, the dash end and the instant spell",sakura at 60ms
+venueArt266.test.mjs,5,unknown venue lettering fails explicitly; seventeen assets are allowlisted and alpha checked,"ENOENT: no such file or directory, open '[本地路径]"
+venueShellPresentation.test.mjs,3,owner journey declares a single venue family but unrelated and legacy pages remain scoped out,desk
+venueShellPresentation.test.mjs,7,member change uses the existing bottom navigation rather than a patch floating over the portrait,Expected values to be strictly equal:
+venueShellPresentation.test.mjs,10,all three inventory names have their own stable semantic label separated from the slot description,Missing shell control: [data-member=sakura]
+venueStudio266.test.mjs,160,"explicit save writes the backstage key, moves a member across rooms and never deploys",Expected values to be strictly equal:
+venueStudio266.test.mjs,200,"prepare is explicit, persists and renders valid after a fresh shell",The input did not match the regular expression /重锤手.*已筹备/. Input:
+venusIndependentPortraitArtContract.test.mjs,1,tests/venusIndependentPortraitArtContract.test.mjs,test failed
+venusUnifiedArt.test.mjs,1,tests/venusUnifiedArt.test.mjs,test failed
+weaponContactIdentity.test.mjs,18,"accepted rifle, sword and hammer contacts use distinct art and real arrival orientation; rifle keeps old spray without its contact bank",Expected values to be strictly equal:
+workshopCharacterStage.test.mjs,3,"all three workshop previews reuse admitted static portrait owners, identity and actual rank without writes",Expected values to be strictly equal:
+worldGroundMaterialAsset.test.mjs,4,exact reviewed world pigment asset is opaque grayscale and explicitly admitted without removing older clients,"The argument 'filename' must be a file URL object, file URL string, or absolute path string. Received '[本地路径]"
