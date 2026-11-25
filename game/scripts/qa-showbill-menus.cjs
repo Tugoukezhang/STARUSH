@@ -5,6 +5,8 @@ const path = require('node:path');
 const os = require('node:os');
 const {chromium} = require(process.env.STARUSH_PLAYWRIGHT_MODULE || 'playwright');
 
+const {seedClearedMenuProfile} = require('./qa-menu-profile.cjs');
+
 async function inspectMenu(page, id, width, output) {
   await page.evaluate(route => window.qaMenu().showPage(route), id);
   const shell = page.locator('#public-shell[data-edition=showbill][data-page="'+id+'"]');
@@ -173,19 +175,7 @@ async function main() {
       });
       await page.goto(process.env.STARUSH_QA_URL||'http://127.0.0.1:5173/',{waitUntil:'domcontentloaded'});
       await page.waitForSelector('#public-shell[data-page=desk]');
-      if (cleared) {
-        await page.evaluate(async () => {
-          const api = await import('/src/utils/publicRunProgression.mjs');
-          const {PUBLIC_RULESET_ID} = await import('/src/utils/releaseIdentity.mjs');
-          for (const chapterId of ['opening','neon','encore','raincheck','homecoming']) {
-            api.recordPublicRun({runId:'menu-review-'+chapterId,chapterId,performerId:'sakura',victory:true,
-              rulesetId:PUBLIC_RULESET_ID,durationMs:40000,performance:{hitCount:2,actions:4}});
-          }
-          if (api.loadPublicProfile().campaign.chapterClears.homecoming !== 1) throw Error('missing fifth clear');
-        });
-        await page.reload();
-        await page.waitForSelector('#public-shell[data-page=desk]');
-      }
+      if (cleared) await seedClearedMenuProfile(page);
       const routes = await page.evaluate(async () => (await import('/src/utils/publicShellNavigation.mjs')).PUBLIC_SHELL_ROUTES.map(row=>row.id));
       let commands = 0;
       for (const id of routes) commands += await inspectMenu(page,id,width,output);

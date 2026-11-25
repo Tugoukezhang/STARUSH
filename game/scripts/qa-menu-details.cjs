@@ -5,7 +5,10 @@ const path = require('node:path');
 const os = require('node:os');
 const {chromium} = require(process.env.STARUSH_PLAYWRIGHT_MODULE || 'playwright');
 
+const {seedClearedMenuProfile} = require('./qa-menu-profile.cjs');
+
 const screens = [
+  {name:'smallest',width:320,height:568,touch:true},
   {name:'compact',width:360,height:640,touch:true},
   {name:'notch',width:393,height:852,touch:true,safe:true},
   {name:'tablet',width:768,height:1024,touch:true},
@@ -62,7 +65,7 @@ async function checkButtonStates(page) {
   await switchMember.click();
   const close=page.getByRole('button',{name:'关闭',exact:true}).last();
   const bounds=await close.boundingBox();
-  assert(bounds && Math.min(bounds.height,bounds.width)>=44,'角色弹窗关闭热区');
+  assert(bounds && Math.min(bounds.height,bounds.width)>=44-0.01,'角色弹窗关闭热区 '+JSON.stringify(bounds));
   await close.focus();
   await page.keyboard.press('Enter');
   await close.waitFor({state:'hidden'});
@@ -79,6 +82,35 @@ async function checkButtonStates(page) {
   assert.equal(await owned.getAttribute('aria-pressed'),'true');
   assert.equal(await owned.evaluate(el=>getComputedStyle(el).backgroundColor),selected);
   assert.equal(await page.locator('.ui-item-slot[data-owned=false]:visible').count(),0);
+}
+
+async function checkMemberPickerKeyboard(page) {
+  for (const route of ['roster','workshop','growth','records','lounge']) {
+    await page.evaluate(id=>window.qaShell().showPage(id),route);
+    const trigger=page.locator('[data-action=actor-switch]:visible');
+    await trigger.focus();
+    await page.keyboard.press('Enter');
+    const dialog=page.locator('dialog[data-sheet-kind=actors][open]');
+    const choice=dialog.locator('.ui-actor-grid button[aria-pressed=false]').first();
+    await choice.focus();
+    await page.keyboard.press('Enter');
+    await dialog.waitFor({state:'hidden'});
+    assert(await trigger.evaluate(el=>el===document.activeElement),route+' 选人后焦点须回到切换成员');
+  }
+}
+
+async function checkRehearsalGoals(page) {
+  await page.evaluate(()=>window.qaShell().showPage('rehearsal'));
+  const options=page.locator('.rehearsal-focus-options');
+  for (const id of ['clean','action','clear']) {
+    const choice=options.locator('[data-rehearsal-focus='+id+']');
+    await choice.scrollIntoViewIfNeeded();
+    const box=await choice.boundingBox();
+    assert(box && Math.min(box.height,box.width)>=44-0.01,'排练课题热区 '+id);
+    await choice.click({position:{x:box.width/2,y:box.height-3}});
+    assert.equal(await choice.getAttribute('aria-pressed'),'true');
+    assert.equal(await options.locator('[aria-pressed=true]').count(),1);
+  }
 }
 
 async function runScreen(browser, screen) {
@@ -102,6 +134,7 @@ async function runScreen(browser, screen) {
     await page.goto(process.env.STARUSH_QA_URL || 'http://127.0.0.1:5173/',{waitUntil:'domcontentloaded'});
     const shell = page.locator('#public-shell');
     await page.locator('#public-shell[data-page=desk]').waitFor();
+    if (process.env.STARUSH_QA_PROFILE==='cleared') await seedClearedMenuProfile(page);
     if (screen.safe) {
       await page.addStyleTag({content:'#viewport-safe-area {padding:38px 0 28px !important}'});
       await page.evaluate(()=>dispatchEvent(new Event('resize')));
@@ -140,6 +173,8 @@ async function runScreen(browser, screen) {
       }
     }
     await checkButtonStates(page);
+    await checkMemberPickerKeyboard(page);
+    if (process.env.STARUSH_QA_PROFILE==='cleared') await checkRehearsalGoals(page);
     assert.deepEqual(errors,[]);
     return rows;
   } finally { await page.close(); }

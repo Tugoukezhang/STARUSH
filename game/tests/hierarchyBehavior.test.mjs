@@ -49,9 +49,13 @@ test('owner navigation has exactly four first-level roots; archive lives under t
 
   const route = open(s, s.TourRouteScene);
   assert.equal(route.all('.ui-nav-root').length, 4);
+  route.click('[data-action=tour-reference]');
   route.click('[data-action=tour-records]');
   assert.equal(route.root.dataset.page, 'records');
-  assert.equal(route.query('[data-nav=tour]').getAttribute('aria-current'), 'location');
+  assert.equal(route.all('.ui-nav-root').length, 0);
+  route.click('[data-action=back]');
+  assert.equal(route.root.dataset.page, 'tour');
+  assert.equal(route.query('[data-nav=tour]').getAttribute('aria-current'), 'page');
   route.shutdown();
 });
 
@@ -68,7 +72,8 @@ test('home start opens the in-shell preflight; no battle start and no writes', (
   assert.equal(writes(s), before);
   assert.equal(h.all('[data-action=start]').length, 1);
   assert.equal(h.query('[data-action=start]').getAttribute('aria-label'), '确认开演');
-  assert.equal(h.query('[data-nav=tour]').getAttribute('aria-current'), 'location');
+  assert.equal(h.all('.ui-nav-root').length, 0);
+  assert.equal(h.query('[data-action=back]').getAttribute('aria-label'), '返回');
   // Route prose and arrangement stay second level until their icon is used.
   for (const selector of ['.ui-route-options', '.ui-arrangement-summary'])
     assert.equal(h.query(selector).parentNode.hidden, true, selector);

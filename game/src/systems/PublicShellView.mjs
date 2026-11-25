@@ -332,6 +332,11 @@ export class PublicShellView {
     }
   }
   render(focusSelector,trainingPortrait=null) {
+    // A selected actor moves back into a hidden strip when the page refreshes.
+    // Its visible switch is the keyboard return point on the refreshed page.
+    if (focusSelector && this.root.querySelector('dialog[data-sheet-kind=actors]')?.querySelector(focusSelector)) {
+      focusSelector='[data-action=actor-switch]';
+    }
     // A live sheet holds borrowed nodes; return them before the page is replaced.
     this.hierarchySheetDispose?.();
     const owner=isUserCastEnabled();
