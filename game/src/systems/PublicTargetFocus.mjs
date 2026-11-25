@@ -50,12 +50,31 @@ export class PublicTargetFocus{
   if(this.target&&!this.eligible(this.target)){this.target=null;this.view.hide();}
   return this.ready()?this.target:null;
  }
- suspend(){this.gesture.clear();this.view.hide();}
+ previewNextShot(previousShot){
+  if(this.previewedShot===previousShot||!this.ready()||this.target)return;
+  this.previewedShot=previousShot;
+  this.observeAutoTarget(this.scene._selectAutoAimTarget());
+ }
+ observeAutoTarget(target){
+  if(this.target||target===this.autoTarget)return;
+  this.autoTarget=target;
+  this.autoUntil=this.clock()+190;
+ }
+ suspend(){this.gesture.clear();this.autoTarget=null;this.previewedShot=null;this.view.hide();this.view.hideAuto();}
  update(){
   if(!this.ready()){this.suspend();return;}
-  const t=this.getTarget();if(!t){this.view.hide();return;}
+  const t=this.getTarget();
+  if(!t){
+   this.view.hide();
+   const auto=this.autoTarget;
+   if(auto&&auto.active!==false&&!auto.complete&&this.clock()<this.autoUntil&&this.visible(auto)){
+    this.view.showAuto(this.project(auto),this.scene.paintZone.devices?.includes(auto)===true);
+   }else this.view.hideAuto();
+   return;
+  }
   const p=this.project(t),c=this.scene.cameras.main,melee=this.scene.publicPerformerRun?.meleeCombat;
-  this.view.show(p,this.label(t),c.width,c.height,melee?melee.canAimAt(t):true);
+  this.view.showAuto(p,this.scene.paintZone.devices?.includes(t)===true);
+  this.view.show(p,this.label(t),c.width,c.height,melee?melee.canAimAt(t):true,this.project(this.scene.player));
  }
  destroy(){
   if(this.disposed)return;this.disposed=true;this.target=null;this.gesture.clear();this.view.destroy();

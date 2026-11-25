@@ -4785,17 +4785,28 @@ export class BattleScene extends Phaser.Scene {
     const paintTempo = (this._isPublicStage1Round?.() && this.paintZone)
       ? getPaintFireRateMultiplier(this.paintZone.getHeat(), this._publicFeverActive ? 1 : 0)
       : 1;
-    if (time - this.lastShotTime < fireRate / paintTempo) return;
+    const untilShot = fireRate / paintTempo - (time - this.lastShotTime);
+    if (untilShot > 0) {
+      if (untilShot <= 110) this.publicTargetFocus?.previewNextShot?.(this.lastShotTime);
+      return;
+    }
     const nearestEnemy = this._selectAutoAimTarget();
-    if (!nearestEnemy) return;
+    if (!nearestEnemy) {
+      this.publicTargetFocus?.observeAutoTarget?.(null);
+      return;
+    }
     if (this.publicPerformerRun?.sakuraCombat) {
       if (this.publicPerformerRun.sakuraCombat.beginBasic(nearestEnemy, time, fireRate / paintTempo)) {
+        this.publicTargetFocus?.observeAutoTarget?.(nearestEnemy);
         this.lastShotTime = time;
       }
       return;
     }
     if(this.publicPerformerRun?.meleeCombat){
-      if(this.publicPerformerRun.meleeCombat.beginBasic(nearestEnemy,time,fireRate/paintTempo))this.lastShotTime=time;
+      if(this.publicPerformerRun.meleeCombat.beginBasic(nearestEnemy,time,fireRate/paintTempo)){
+        this.publicTargetFocus?.observeAutoTarget?.(nearestEnemy);
+        this.lastShotTime=time;
+      }
       return;
     }
     const colorHex = COLOR_HEX[this.currentColor] || 0xFFFFFF;
@@ -4900,6 +4911,7 @@ export class BattleScene extends Phaser.Scene {
     });
     }
     const bullet=primaryBullet;
+    if(bullet)this.publicTargetFocus?.observeAutoTarget?.(nearestEnemy);
     if (this._userCastPresentation && publicPaintShot && this.publicPerformerRun) this.publicPerformerRun.lastBasicTarget=nearestEnemy;
     // Ordinary rifle casts face the accepted hand side; the bullet keeps its own aim.
     const facingVx = publicPaintShot && this._userCastPresentation && this.actorPresentation?.userCastView?.art?.id === 'sakura'

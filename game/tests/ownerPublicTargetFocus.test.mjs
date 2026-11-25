@@ -91,3 +91,18 @@ test('actual Scene and street geometry release focus at a grazing gun corridor a
  assert.equal(scene.publicTargetFocus.getTarget(),null);assert.equal(scene._selectAutoAimTarget(),other);
  Object.assign(scene.player,{x:337,y:460});f.tap(garden.x,garden.y);assert.equal(scene.publicTargetFocus.getTarget(),garden);Object.assign(scene.player,{x:270,y:440});assert.equal(scene.oldStreet.clearLine(scene.player,garden),false);assert.equal(scene.publicTargetFocus.getTarget(),null);assert.notEqual(scene._selectAutoAimTarget(),garden);scene.publicTargetFocus.destroy();
 });
+
+test('automatic sights follow the selected fixture or enemy and leave the manual focus independent',()=>{
+ const f=fixture();
+ let calls=0;
+ f.scene._selectAutoAimTarget=()=>++calls===1?f.device:f.enemy;
+ f.focus.previewNextShot(0);f.focus.previewNextShot(0);f.focus.update();
+ const auto=f.doc.getElementById('public-auto-target');
+ assert.equal(auto.dataset.kind,'fixture');assert.equal(calls,1);
+ assert.equal(f.focus.getTarget(),null);
+ f.focus.previewNextShot(400);f.focus.update();assert.equal(auto.dataset.kind,'enemy');
+ f.focus.clock=()=>10000;f.focus.update();assert.equal(auto.hidden,true);
+ f.focus.observeAutoTarget(f.device);f.focus.update();assert.equal(auto.hidden,false);
+ f.focus.suspend();assert.equal(auto.hidden,true);
+ f.focus.destroy();assert.equal(f.doc.getElementById('public-auto-target'),null);
+});
