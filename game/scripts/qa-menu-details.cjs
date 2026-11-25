@@ -55,6 +55,29 @@ async function measure(locator) {
   });
 }
 
+async function checkHomeTicketSpacing(shell) {
+  const ticket=shell.locator('.ui-home-primary .showbill-start');
+  const gaps=await ticket.evaluate(async button=>{
+    const art=button.querySelector('.home-ticket-art');
+    await art.decode();
+    await document.fonts.ready;
+    const edge=art.getBoundingClientRect().right;
+    return ['.ui-home-chapter','.showbill-play-label'].map(selector=>{
+      const label=button.querySelector(selector);
+      const text=[...label.childNodes].find(node=>node.nodeType===Node.TEXT_NODE && node.textContent.trim());
+      const first=text.textContent.search(/\S/u);
+      const glyph=String.fromCodePoint(text.textContent.codePointAt(first));
+      const line=document.createRange();
+      line.setStart(text,first);
+      line.setEnd(text,first+glyph.length);
+      return {label:label.textContent,gap:line.getBoundingClientRect().left-edge};
+    });
+  });
+  for (const {label,gap} of gaps) {
+    assert(gap>=4-0.01,'首页插画与“'+label+'”的首字须保留 4 CSS 像素，实测 '+gap);
+  }
+}
+
 async function checkButtonStates(page) {
   await page.evaluate(()=>window.qaShell().showPage('roster'));
   const switchMember=page.getByRole('button',{name:'切换成员',exact:true});
@@ -83,6 +106,10 @@ async function checkButtonStates(page) {
   const all=page.locator('[data-action=bag-filter-all]');
   const owned=page.locator('[data-action=bag-filter-owned]');
   await all.click();
+  await page.waitForFunction(()=>{
+    const slots=document.querySelectorAll('button[data-inventory-item] .equipment-art-slot');
+    return slots.length===7 && [...slots].every(slot=>slot.dataset.equipmentArtState==='ready');
+  },undefined,{timeout:12000});
   const art=await page.locator('button[data-inventory-item] .equipment-art').evaluateAll(async images=>{
     await Promise.all(images.map(image=>image.decode()));
     return images.map(image=>({src:image.currentSrc,visible:!image.hidden && image.offsetWidth>0 && image.naturalWidth>0}));
@@ -162,6 +189,7 @@ async function runScreen(browser, screen) {
         await page.locator('#public-shell[data-page="'+id+'"]').waitFor();
       };
       await open();
+      if (id==='desk') await checkHomeTicketSpacing(shell);
       await check(shell,id);
       const paths = id==='inventory' ? await shell.locator('[data-inventory-item]').evaluateAll(nodes=>
         nodes.map(el=>'[data-inventory-item="'+el.dataset.inventoryItem+'"]')) : sheets[id] || [];
