@@ -429,7 +429,7 @@ export class UserWeaponFx{
       if(!transient)row.node.setFrame(row.heavyLanding?frame+row.frameOffset:Number.isInteger(row.chainOffset)?row.chainOffset+HEAVY_CHAIN_CELS[frame]:frame+(deposit?row.bank*6:0)+(row.frameOffset||0));
       row.node.setAlpha(alpha).setDepth(row.ground&&row.artKind!=='heavy' ? .52 : (view?.depth??9.8)+.00002);
       if(row.kind==='choice')row.node.setPosition(row.x,row.y-24-10*age/CHOICE_LIFE);
-      if(row.kind==='blocked')row.node.setPosition(row.x-Math.cos(row.angle)*8*progress,row.y-Math.sin(row.angle)*8*progress);
+      if(row.kind==='blocked'&&!this.contactFragments.motionPreference?.matches)row.node.setPosition(row.x-Math.cos(row.angle)*8*progress,row.y-Math.sin(row.angle)*8*progress);
       this.lastFrame.push({kind:row.kind,artKind:row.artKind,angle:row.angle,...(row.choice?{choice:row.choice}:{}),...(row.releaseContact?{releaseContact:true}:{}),frame,x:row.x,y:row.y,size:row.size,alpha,sourceRadius:row.sourceRadius});return true;
     });
   }
