@@ -93,7 +93,7 @@ export class PaintZoneSystem {
   updateDeviceLabels() {
     this.streetSurface?.flush({budgetMs:3});
     if (this.finaleMode) return;
-    const guidance=this.chapterObjectives?.id==='homecoming'?this.scene._publicObjectiveGuidance:null;
+    const guidance=this.scene._publicObjectiveGuidance;
     const guidedId=guidance&&!guidance.root.hidden?guidance.lastKey:null;
     const layout = layoutDeviceLabels(this.devices, this.currentZone, this.scene.player, this.scene.cameras?.main,guidedId);
     for (const device of this.devices) {
