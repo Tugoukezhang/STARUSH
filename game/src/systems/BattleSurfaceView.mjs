@@ -616,7 +616,7 @@ export class BattleSurfaceView {
     this.command(this.content,'继续公演',o.onResume,{primary:true,icon:'play',data:{pauseAction:'resume'}});
     const context=this.element('div','battle-pause-scroll');this.content.append(context);
     this.command(context,'声音与公演规则',o.onSettings,{icon:'settings-2',terminal:false,data:{pauseAction:'settings'}});
-    this.command(context,'重新开始',o.onRetry,{icon:'play',data:{pauseAction:'retry'}});
+    this.command(context,'重新开始',o.onRetry,{icon:'repeat-2',data:{pauseAction:'retry'}});
     this.command(context,'返回制作台',o.onLeave,{icon:'arrow-left',data:{pauseAction:'title'}});
     this.attemptProgress(this.scene.publicPerformerRun?.getAttemptProgress?.(),context);
     if(isUserCastEnabled())this.routeReview(getPublicRouteReview(this.scene.battleData?.publicRoutePlan,this.scene.battleData),context);

@@ -58,7 +58,12 @@ fs.mkdirSync(dir,{recursive:true});
     await button.tap();await p.waitForTimeout(420);
     // A real finger can touch an aria-disabled target; do not let Playwright wait for recharging.
     await p.touchscreen.tap(result.targetBefore.x+result.targetBefore.width/2,result.targetBefore.y+result.targetBefore.height/2);
-    await p.waitForTimeout(100);await p.keyboard.press('p');
+    await p.waitForTimeout(100);
+    const pause=p.getByRole('button',{name:'暂停公演',exact:true});
+    const bounds=await pause.boundingBox();assert(bounds && Math.min(bounds.width,bounds.height)>=43.9);
+    const detail=await p.locator('#battle-hud-detail-toggle').boundingBox();
+    assert(detail.y+detail.height<=bounds.y,'暂停和详情的热区应分开');
+    if(reduced){await pause.focus();await p.keyboard.press('Enter');}else await pause.tap();
     await p.waitForFunction(()=>window.__qaGame().scene.keys.BattleScene._battlePaused);
     const pausedAt=await p.evaluate(()=>window.__qaGame().scene.keys.BattleScene.publicPerformerRun.now());
     await p.waitForTimeout(300);assert.equal(await p.evaluate(()=>window.__qaGame().scene.keys.BattleScene.publicPerformerRun.now()),pausedAt);

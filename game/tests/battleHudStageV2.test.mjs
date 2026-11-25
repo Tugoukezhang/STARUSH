@@ -46,3 +46,20 @@ test('battle stage skin is explicitly bound after old styles and removes old UI 
  const css=fs.readFileSync(new URL('../src/styles/battleHudV2.css',import.meta.url),'utf8');assert.match(css,/data-layout=stage-v2/);assert.match(css,/conic-gradient/);assert.match(css,/prefers-reduced-motion/);assert.doesNotMatch(css,/art\/.*(?:status-|skill-command|frame\.png)/);
  assert.match(css,/\.mihoyo-portrait::after\s*\{display:none/,'legacy painted avatar is explicitly suppressed');
 });
+
+test('public pause is a single native command and releases its scene on shutdown',()=>{
+ const f=fixture(),shutdown=[],calls=[];
+ const canvas=[];
+ f.scene.events.once=(_,callback)=>shutdown.push(callback);
+ f.scene._battlePauseControl={bg:{disableInteractive:()=>canvas.push('disabled'),setVisible:v=>canvas.push(v)},label:{setVisible:v=>canvas.push(v)}};
+ f.scene._toggleBattlePause=()=>calls.push(true);
+ f.sync();f.sync();
+ const button=f.doc.getElementById('battle-hud-pause');
+ assert.equal(f.hud.querySelectorAll('#battle-hud-pause').length,1);
+ assert.equal(button.getAttribute('aria-label'),'暂停公演');
+ assert.deepEqual(canvas,['disabled',false,false]);
+ f.scene._publicBattleDialog={};button.click();assert.deepEqual(calls,[]);
+ f.scene._publicBattleDialog=null;button.click();assert.deepEqual(calls,[true]);
+ for(const close of shutdown)close();
+ assert.equal(f.doc.getElementById('battle-hud-pause'),null);
+});

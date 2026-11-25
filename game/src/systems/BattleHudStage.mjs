@@ -24,10 +24,33 @@ function mountDetail(doc,hud){
  hud.append(toggle,panel);
 }
 
+function mountPause(scene,doc,hud){
+ const button=doc.createElement('button');
+ button.id='battle-hud-pause';
+ button.type='button';
+ button.title='暂停公演';
+ button.setAttribute('aria-label','暂停公演');
+ button.setAttribute('aria-haspopup','dialog');
+ button.addEventListener('click',()=>{
+  if(!scene._battlePaused&&!scene._publicBattleDialog&&!scene._sessionExperience?.isBlocking())scene._toggleBattlePause();
+ });
+ for(const type of ['keydown','keyup'])button.addEventListener(type,event=>{
+  if(event.key==='Enter'||event.key===' ') event.stopPropagation();
+ });
+ hud.append(button);
+ // The native command owns pointer, keyboard and screen-reader activation on this HUD.
+ const control=scene._battlePauseControl;
+ control.bg.disableInteractive();
+ control.bg.setVisible(false);
+ control.label.setVisible(false);
+ scene.events.once('shutdown',()=>button.remove());
+}
+
 // Called only by the explicit stage-v2 HUD with canonical public ability facts.
 export function syncBattleHudStage(scene,doc,member,action,encore){
  const hud=doc.getElementById('hud');hud.dataset.performer=member.id;
  if(!doc.getElementById('battle-hud-detail-toggle'))mountDetail(doc,hud);
+ if(scene._battlePauseControl&&!doc.getElementById('battle-hud-pause'))mountPause(scene,doc,hud);
  const empty=doc.getElementById('battle-hud-empty-context'),context=[];
  if(!doc.getElementById('run-build').textContent.trim())context.push('编排：未选择');
  if(doc.getElementById('run-goal').hidden)context.push('课题：未设置');
