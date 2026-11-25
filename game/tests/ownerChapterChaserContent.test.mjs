@@ -100,7 +100,7 @@ test('real Scene spawn owns the new motion/cue and destruction; opening retains 
    _drawUnlitBlobGfx(){},_publicStage1ColorCueSequence:0,
    oldStreet:{freePoint:()=>({x:100,y:200}),clearLine:()=>true},enemies:{add:n=>nodes.push(n),getChildren:()=>nodes},
    add:{graphics:()=>node()},physics:{add:{sprite:node}},time:{addEvent:t=>{timers.push(t);return t;}}};
-  Object.assign(s,{_usesOpeningStreetPursuit:methods._usesOpeningStreetPursuit,_updateChapterChaser:methods._updateChapterChaser,_drawChapterChaserCue:methods._drawChapterChaserCue});return {s,nodes,timers};
+  Object.assign(s,{_usesOrdinaryStreetPursuit:methods._usesOrdinaryStreetPursuit,_updateChapterChaser:methods._updateChapterChaser,_drawChapterChaserCue:methods._drawChapterChaserCue});return {s,nodes,timers};
  }
  const {s,nodes,timers}=fixture('neon');methods._spawnUnlitBlob.call(s);
  const e=nodes[0];assert(e.chapterChaserMotion);assert.equal(timers.length,0);

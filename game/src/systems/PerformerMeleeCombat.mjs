@@ -1,4 +1,4 @@
-import {canEnemyBePublicStage1PaintTarget} from './PublicStage1EnemyRoles.mjs';
+import {canEnemyBePublicStage1PaintTarget,isCloseContactThreat} from './PublicStage1EnemyRoles.mjs';
 import {circleIntersectsFan} from './SakuraCombat.mjs';
 import {STAGE1_PAINT_PER_HIT} from '../utils/stage1PaintRound.mjs';
 import {PublicPaintContactReceipt} from './PublicPaintContactReceipt.mjs';
@@ -29,10 +29,14 @@ export class PerformerMeleeCombat{
   let best=s.paintZone?.getNearestPaintable?.(p.x,p.y,t=>this.canAimAt(t))||null;
   if(best&&!this.canAimAt(best))best=null;
   const protectedBoss=s._getPublicStage1ProtectedBossTarget?.();
+  let bestPriority=0,bestDistance=best?Math.hypot(best.x-p.x,best.y-p.y):Infinity;
   for(const t of this.enemies()){
    if(t===protectedBoss||!this.canAimAt(t))continue;
-   const priority=PRIORITY[t.publicStage1EnemyRole]||0,bestPriority=PRIORITY[best?.publicStage1EnemyRole]||0;
-   if(!best||priority>bestPriority||priority===bestPriority&&Math.hypot(t.x-p.x,t.y-p.y)<Math.hypot(best.x-p.x,best.y-p.y))best=t;
+   const distance=Math.hypot(t.x-p.x,t.y-p.y);
+   const priority=PRIORITY[t.publicStage1EnemyRole] || (isCloseContactThreat(t,distance) ? 0.5 : 0);
+   if(priority>bestPriority || (priority===bestPriority && distance<bestDistance)){
+    best=t;bestPriority=priority;bestDistance=distance;
+   }
   }
   return best||(this.canAimAt(protectedBoss)?protectedBoss:null);
  }

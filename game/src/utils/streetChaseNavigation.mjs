@@ -53,7 +53,13 @@ export class StreetChaseNavigation {
    }
    route={at:now,target:{x:target.x,y:target.y},points,index:0};this.routes.set(owner,route);
   }
-  while(route.index<route.points.length&&Math.hypot(route.points[route.index].x-from.x,route.points[route.index].y-from.y)<=4)route.index++;
+  while(route.index<route.points.length){
+   const corner=route.points[route.index],next=route.points[route.index+1];
+   if(Math.hypot(corner.x-from.x,corner.y-from.y)>4)break;
+   // The centre can be close to the corner while the body still clips the next leg.
+   if(next&&!this.state.clearLine(from,next,RADIUS))break;
+   route.index++;
+  }
   for(let i=Math.min(route.index+5,route.points.length-1);i>=route.index;i--){
    if(this.state.clearLine(from,route.points[i],RADIUS)){route.index=i;return {...route.points[i]};}
   }

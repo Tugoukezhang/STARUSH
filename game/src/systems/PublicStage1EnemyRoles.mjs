@@ -19,6 +19,13 @@ export function canEnemyDealContactDamage({ enemy, isPublicStage1 = false } = {}
   return enemy.publicStage1EnemyRole === PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER;
 }
 
+// One second of ordinary approach at 48 units/s. A spent rush has no contact damage.
+export function isCloseContactThreat(enemy, distance) {
+  return distance <= 48 && enemy?.publicStage1EnemyRole === PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER
+    && enemy.active === true && !enemy.destroyed && enemy.hp > 0
+    && enemy.chapterChaserMotion?.state !== 'recovery';
+}
+
 export function canEnemyBePublicStage1PaintTarget(enemy) {
   if (!enemy?.active || enemy.destroyed === true) return false;
   if (enemy.publicStage1EnemyRole === PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER) return true;

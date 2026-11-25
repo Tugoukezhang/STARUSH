@@ -86,3 +86,15 @@ test('presentation snapshots are compact values and never expose live Phaser tar
 test('cancelled callbacks cannot paint after a synchronous run finish or target-array mutation',()=>{
  const f=fixture(),a=f.add(),b=f.add(165,110);const paint=f.scene._paintPublicStage1TargetsAt;f.scene._paintPublicStage1TargetsAt=(...args)=>{const result=paint(...args);f.run.destroyed=true;f.enemies.splice(0);return result;};assert(f.combat.beginBasic(a,1000));f.tick(1200);assert.equal(f.paint.length,1);assert.equal(b.hp,80);assert.equal(f.receipts.length,0);assert.equal(f.combat.attack,null);
 });
+
+for(const id of ['kai','enjo'])test(id+' protects against immediate contact without stealing a manual lock or boss weakness',()=>{
+ const f=fixture(id),lamp={x:110,y:100,zone:0,complete:false};
+ f.devices.push(lamp);
+ const chaser=f.add(148,100);
+ assert.equal(f.combat.selectTarget(),chaser);
+ chaser.x=149;assert.equal(f.combat.selectTarget(),lamp);
+ chaser.x=147;chaser.chapterChaserMotion={state:'recovery'};assert.equal(f.combat.selectTarget(),lamp);
+ chaser.chapterChaserMotion.state='rush';
+ const weak=f.add(160,100,'finale-weak-point');assert.equal(f.combat.selectTarget(),weak);
+ f.scene.publicTargetFocus={getTarget:()=>lamp};assert.equal(f.combat.selectTarget(),lamp);
+});

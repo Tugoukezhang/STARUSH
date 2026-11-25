@@ -84,6 +84,7 @@ import {
   PUBLIC_STAGE1_ENEMY_ROLES,
   PUBLIC_STAGE1_ENEMY_STATES,
   canEnemyDealContactDamage,
+  isCloseContactThreat,
   canEnemyBePublicStage1PaintTarget,
   isProtectedPublicStage1Boss,
   canEnemyUseLegacyBottomChaseAI,
@@ -1789,7 +1790,7 @@ export class BattleScene extends Phaser.Scene {
         }
       }
     }
-    if((chaserProfile||this._usesOpeningStreetPursuit())&&this.oldStreet){
+    if((chaserProfile||this._usesOrdinaryStreetPursuit())&&this.oldStreet){
       const point=this.oldStreet.freePoint({x,y},12);
       if(!Number.isFinite(point?.x+point?.y)||!this.oldStreet.clearLine(point,point,12)
         ||Math.hypot(point.x-this.player.x,point.y-this.player.y)<96
@@ -1843,16 +1844,16 @@ export class BattleScene extends Phaser.Scene {
     }else{
       retarget();
       enemy.chaseTimer = this.time.addEvent({ delay: 720, loop: true, callback: retarget });
-      // Opening user-cast chasers route each frame around street cover; the timer remains the legacy fallback.
-      enemy.openingStreetPursuit=this._usesOpeningStreetPursuit();
+      // Ordinary street chasers route each frame around cover; the timer remains the legacy fallback.
+      enemy.ordinaryStreetPursuit=this._usesOrdinaryStreetPursuit();
     }
     this.enemies.add(enemy);
   }
 
-  _usesOpeningStreetPursuit() {
+  _usesOrdinaryStreetPursuit() {
     const data=this.battleData;
     return this._userCastPresentation===true&&this._isPublicStage1Round?.()===true
-      &&data?.stageId===1&&data.campaignChapterId==='opening'
+      &&data?.stageId===1&&['opening','raincheck','homecoming'].includes(data.campaignChapterId)
       &&data.practiceMode!==true&&data.defenseMode!==true&&!Object.hasOwn(data,'publicFinaleTrial')
       &&this._isFinaleTrialRound?.()!==true&&this._qRebaseTrialRequested!==true
       &&!['p15ManualFocusExperiment','p15SetlistCueExperiment','p15HostileProjectileExperiment',
@@ -1864,7 +1865,7 @@ export class BattleScene extends Phaser.Scene {
   _updateChapterChaser(enemy, now, deltaMs) {
     if(!enemy.chapterChaserMotion){
       // Restored chasers are rebuilt without transient spawn metadata.
-      if(!this._usesOpeningStreetPursuit()||enemy.unlitBlob!==true
+      if(!this._usesOrdinaryStreetPursuit()||enemy.unlitBlob!==true
         ||enemy.publicStage1EnemyRole!==PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER)return;
       // Overwrites the timer vector before movement. No legal route holds still rather than cutting through cover.
       enemy.moveVx=0;enemy.moveVy=0;
@@ -4607,6 +4608,8 @@ export class BattleScene extends Phaser.Scene {
       let nearestDist = nearest
         ? Phaser.Math.Distance.Between(this.player.x, this.player.y, nearest.x, nearest.y)
         : Infinity;
+      let contactThreat = null;
+      let contactDistance = Infinity;
       let nearestStageCueEmitter = null;
       let nearestStageCueEmitterDist = Infinity;
       let nearestObjectiveDisruptor = null;
@@ -4618,7 +4621,7 @@ export class BattleScene extends Phaser.Scene {
       let nearestFinaleBoss = null;
       let nearestFinaleBossDist = Infinity;
       this.enemies?.children?.iterate?.((enemy) => {
-        if (!canEnemyBePublicStage1PaintTarget(enemy)) return;
+        if (!canEnemyBePublicStage1PaintTarget(enemy) || enemy.hp <= 0) return;
         if(this.oldStreet?.clearLine(this.player,enemy)===false || !canAim(enemy))return;
         const dist = Phaser.Math.Distance.Between(this.player.x, this.player.y, enemy.x, enemy.y);
         if (
@@ -4656,6 +4659,10 @@ export class BattleScene extends Phaser.Scene {
           nearestFinaleBoss = enemy;
           nearestFinaleBossDist = dist;
         }
+        if (this._userCastPresentation && dist < contactDistance && isCloseContactThreat(enemy, dist)) {
+          contactThreat = enemy;
+          contactDistance = dist;
+        }
         if (dist < nearestDist) {
           nearest = enemy;
           nearestDist = dist;
@@ -4682,6 +4689,7 @@ export class BattleScene extends Phaser.Scene {
       if (nearestStageCueEmitter && nearestStageCueEmitterDist <= STAGE1_PAINT_SHOT_RANGE) {
         return nearestStageCueEmitter;
       }
+      if (contactThreat) return contactThreat;
       if (nearest && nearestDist <= STAGE1_PAINT_SHOT_RANGE) return nearest;
       const protectedBoss = this._getPublicStage1ProtectedBossTarget();
       return protectedBoss && this.oldStreet?.clearLine(this.player,protectedBoss) !== false && canAim(protectedBoss)

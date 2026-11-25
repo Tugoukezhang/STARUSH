@@ -75,7 +75,7 @@ for(const performerId of CASTS)test(performerId+' restored opening chaser derive
   {x:350,y:1425,hp:36,color:'pink',vx:0,vy:-48,motion:null,guardId:null},
  ]}});
  assert(result.restored.includes('chasers'));const e=s.enemies.getChildren()[0];
- assert.equal(e.openingStreetPursuit,undefined,'real restore does not copy transient spawn metadata');
+ assert.equal(e.ordinaryStreetPursuit,undefined,'real restore does not copy transient spawn metadata');
  const r=chase(s,e);assert(r.routed>0,'restored owner was stranded on legacy vector');
  assert(r.distance<=24,'restored owner stalled '+JSON.stringify(r));assert.equal(e.hp,36);
  assert.equal(e.chapterChaserMotion,undefined);assert.equal(e.chaseTimer.delay,720);
@@ -100,7 +100,7 @@ for(const performerId of CASTS)test(performerId+' opening chaser detours the act
  assert(r.routed>0,'actual street navigation unused');
  assert(r.distance<=24,'stalled: '+JSON.stringify({...r,x:e.x,y:e.y}));
  assert(r.maxDetour>=110,'reached contact without a real detour');
- assert.equal(e.hp,e.maxHp);assert.equal(s.player.hp,100);assert.equal(e.active,true);assert.equal(e.openingStreetPursuit,true);
+ assert.equal(e.hp,e.maxHp);assert.equal(s.player.hp,100);assert.equal(e.active,true);assert.equal(e.ordinaryStreetPursuit,true);
 });
 
 test('clear direct line overwrites the stale timer vector with a straight 48px/s approach',()=>{
@@ -186,7 +186,7 @@ test('dead enemies and ended battles never route or revive',()=>{
 test('later chapters keep chapter motion; legacy and ineligible opening keep the timer owner',()=>{
  for(const chapter of ['neon','encore']){
   const s=makeScene({chapter}),e=spawn(s);
-  assert(e.chapterChaserMotion,'chapter motion missing');assert.equal(e.chaseTimer,undefined);assert.notEqual(e.openingStreetPursuit,true);
+  assert(e.chapterChaserMotion,'chapter motion missing');assert.equal(e.chaseTimer,undefined);assert.notEqual(e.ordinaryStreetPursuit,true);
  }
  const variants=[{data:{practiceMode:true}},{data:{defenseMode:true}},{data:{publicFinaleTrial:{chapterId:'opening'}}},
   {data:{publicFinaleTrial:false}},{data:{publicFinaleTrial:null}},{data:{stageId:null}},
@@ -198,16 +198,30 @@ test('later chapters keep chapter motion; legacy and ineligible opening keep the
  for(const variant of variants){
   const s=makeScene(variant),e=spawn(s),label=JSON.stringify(variant);let calls=0;
   if(s.oldStreet)s.oldStreet.chaseWaypoint=()=>{calls++;return {x:e.x,y:e.y-10};};
-  assert.equal(e.chaseTimer?.delay,720,label);assert.notEqual(e.openingStreetPursuit,true,label);
+  assert.equal(e.chaseTimer?.delay,720,label);assert.notEqual(e.ordinaryStreetPursuit,true,label);
   e.moveVx=31;e.moveVy=7;s._updateChapterChaser(e,0,16);
   assert.equal(calls,0);assert.equal(e.moveVx,31);assert.equal(e.moveVy,7);
   s.timers[0].callback();assert(Math.abs(e.moveVy+48)<1e-9,'legacy retarget changed');
  }
  const s=makeScene();let calls=0;s.oldStreet.chaseWaypoint=()=>{calls++;return {x:0,y:0};};
  const base={active:true,x:350,y:1425,hp:5,moveVx:5,moveVy:6};
- for(const other of [{...base,type:'normal'},{...base,openingStreetPursuit:true,unlitBlob:false},
-  {...base,openingStreetPursuit:true,unlitBlob:true,publicStage1EnemyRole:'other'}]){
+ for(const other of [{...base,type:'normal'},{...base,ordinaryStreetPursuit:true,unlitBlob:false},
+  {...base,ordinaryStreetPursuit:true,unlitBlob:true,publicStage1EnemyRole:'other'}]){
   s._updateChapterChaser(other,0,16);assert.equal(other.moveVx,5);assert.equal(other.moveVy,6);
  }
  assert.equal(calls,0);
+});
+
+for(const [chapter,file,configName,x] of [
+ ['raincheck','rooftopMap','ROOFTOP_CONFIG',195],
+ ['homecoming','harborStageMap','HOMECOMING_STAGE_CONFIG',730],
+]) test(chapter+' pursues around its own solid cover using the ordinary contact enemy',()=>{
+ const s=makeScene({chapter}),config=env.loadRuntime('utils/'+file+'.mjs')[configName];
+ s.oldStreet.state=new OldStreetState(config.props,config.terrain);
+ Object.assign(s.player,{x,y:1170});
+ const enemy=spawn(s,{x,y:1360});
+ assert.equal(s.oldStreet.clearLine(enemy,s.player,12),false,'fixture must block a straight approach');
+ const result=chase(s,enemy);
+ assert(result.routed>0 && result.distance<=24,JSON.stringify(result));
+ assert.equal(enemy.chapterChaserMotion,undefined);
 });
