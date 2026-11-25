@@ -1,0 +1,9 @@
+/* At 320 × 200 native pixels every movable edge begins 42 pixels inside its frame. */
+:root {
+  --set-card: url('/art/setdesign/card.webp');
+  --set-note: url('/art/setdesign/note.webp');
+  --set-monitor: url('/art/setdesign/monitor.webp');
+  --set-dialog: url('/art/setdesign/dialog.webp');
+  --set-strip: url('/art/setdesign/strip.webp');
+  --set-stub: url('/art/setdesign/stub.webp');
+}

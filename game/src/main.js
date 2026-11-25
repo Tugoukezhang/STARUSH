@@ -50,6 +50,7 @@ import './styles/memberDetails306.css';
 import './styles/performanceInterface.css';
 import './styles/showbillMenus.css';
 import './styles/showbillBattle.css';
+import './styles/setDesignArt.css';
 import './styles/printroomFoundation.css';
 import './styles/printroomStagePages.css';
 import './styles/printroomInnerPages.css';
