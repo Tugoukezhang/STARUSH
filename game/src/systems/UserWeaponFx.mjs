@@ -80,7 +80,7 @@ let nextPaintView = 0;
 
 export class UserWeaponFx{
   constructor(scene,id){
-    this.scene=scene;this.id=id;this.rows=[];this.lastFrame=[];this.pendingShots=[];this.projectiles=[];this.disposed=false;this.seen=new WeakSet();
+    this.scene=scene;this.id=id;this.rows=[];this.lastFrame=[];this.pendingShots=[];this.volleyBeat=null;this.projectiles=[];this.disposed=false;this.seen=new WeakSet();
     this.windArt=id==='kai'?GREEN_WIND_FX:null;
     this.spellArt=id==='enjo'?BLUE_SPELL_FX:null;
     this.inkWake=id==='sakura'?new RifleInkWake(scene):null;
@@ -127,7 +127,7 @@ export class UserWeaponFx{
     }
     return 0;
   }
-  push(kind,{x,y,size,angle=0,color,alpha=.8,ground=false,start=this.now(),sourceRadius=null,release=false,artKind=kind,origin,extent,releaseContact=false,skillContact=false,tint=0xffffff}){
+  push(kind,{x,y,size,angle=0,color,alpha=.8,ground=false,start=this.now(),sourceRadius=null,release=false,artKind=kind,origin,extent,releaseContact=false,skillContact=false,volleyMuzzle=false,tint=0xffffff}){
     const heavyRelease=this.id==='enjo'&&((kind==='burst'&&release===true)||(kind==='impact'&&releaseContact===true));
     if(artKind==='heavy'&&!heavyRelease)return false;
     if(artKind==='dash'&&!(this.id==='kai'&&kind==='sweep'&&release===true&&ground===true))return false;
@@ -165,7 +165,7 @@ export class UserWeaponFx{
     const node=this.scene.add.image(x,y,textureKey,landing?landingOffset:chain?chainOffset:frameOffset+(secondary?4:bank*6)).setOrigin(...(origin||art.origin)).setDisplaySize(size*4/3,size*4/3)
       .setTint(pigmentTint)
       .setAlpha(secondary?0:alpha).setRotation(artKind==='rifle-deposition'&&!chain?0:angle).setDepth(ground ? .52 : 9.80002);
-    const row={kind,artKind,node,x,y,size,start,alpha,ground,sourceRadius,release,angle,...(landing?{heavyLanding:true,frameOffset:landingOffset}:{}),...(chain?{chainOffset}:{}),...(skillContact?{skillContact:true}:{}),...(artKind==='duo-contact'||artKind==='heavy'?{frameOffset}:{}),...(artKind==='rifle-deposition'?{bank,pigment:pigmentTint}:{}),...(secondary?{releaseContact:true}:{})};
+    const row={kind,artKind,node,x,y,size,start,alpha,ground,sourceRadius,release,angle,...(volleyMuzzle?{volleyMuzzle:true}:{}),...(landing?{heavyLanding:true,frameOffset:landingOffset}:{}),...(chain?{chainOffset}:{}),...(skillContact?{skillContact:true}:{}),...(artKind==='duo-contact'||artKind==='heavy'?{frameOffset}:{}),...(artKind==='rifle-deposition'?{bank,pigment:pigmentTint}:{}),...(secondary?{releaseContact:true}:{})};
     if(clipPoints?.length){
       const graphics=this.scene.make.graphics({add:false}).fillStyle(0xffffff,1).fillPoints(clipPoints,true);
       const mask=graphics.createGeometryMask();node.setMask(mask);row.clip={graphics,mask};
@@ -234,9 +234,33 @@ export class UserWeaponFx{
       artKind:this.id==='sakura'?'muzzle':undefined});
     return true;
   }
+  queueVolleyMuzzle(row){
+    if(this.id!=='sakura'||!Number.isInteger(row.sequence)||!Number.isInteger(row.beat)
+      ||row.beat<0||row.beat>2||!Number.isFinite(row.angle))return;
+    // Three rays share one discharge. Their accepted directions locate the center of the fan.
+    const last=this.volleyBeat;
+    if(last?.sequence===row.sequence&&last.beat===row.beat){
+      if(!last.shown){last.dx+=Math.cos(row.angle);last.dy+=Math.sin(row.angle);}
+      return;
+    }
+    this.volleyBeat={sequence:row.sequence,beat:row.beat,start:row.start,color:row.color,
+      dx:Math.cos(row.angle),dy:Math.sin(row.angle),shown:false};
+  }
+  drawVolleyMuzzle(view,time){
+    const beat=this.volleyBeat;
+    if(!beat||beat.shown)return;
+    beat.shown=true;
+    if(time-beat.start<0||time-beat.start>=86||view?.state!=='action'||view.art?.id!=='sakura')return;
+    const tip=view.muzzleWorld?.(true);
+    if(!tip||this.scene.oldStreet?.clearLine(this.scene.player,tip,1)===false)return;
+    const reduced=this.motionPreference?.matches===true;
+    this.push('spray',{...tip,start:beat.start,color:beat.color,angle:Math.atan2(beat.dy,beat.dx),
+      size:reduced?20:30,alpha:reduced ? .55 : .78,artKind:'muzzle',volleyMuzzle:true});
+  }
   release(row){
     if(!this.ready()||!Number.isFinite(row?.x+row?.y+row?.radius+row?.start)||row.radius<=0
       ||this.scene.oldStreet?.clearLine(this.scene.player,row)===false)return false;
+    this.queueVolleyMuzzle(row);
     const kind=WEAPONS[this.id],size=Math.min(this.id==='enjo'?240:156,row.radius*(this.id==='enjo'?1.25:1.6));
     const heavy=this.id==='enjo'&&this.scene.textures?.exists(HEAVY_WEAPON_FX.key);
     const dash=this.id==='kai'&&this.scene.textures?.exists(KAI_DASH_FX.key);
@@ -378,7 +402,7 @@ export class UserWeaponFx{
     if(this.disposed)return;
     const s=this.scene;
     if(s._battleEnded||s.player?.active===false||s.player?.hp<=0||view?.disposed){this.clear();return;}
-    if(s._battlePaused||s._publicBattleDialog){this.pendingShots.length=0;return;}
+    if(s._battlePaused||s._publicBattleDialog){this.pendingShots.length=0;if(this.volleyBeat)this.volleyBeat.shown=true;return;}
     const time=this.now(now);this.lastFrame=[];
     this.syncMeleeStroke(view,time);
     this.inkWake?.update(time);
@@ -391,6 +415,7 @@ export class UserWeaponFx{
       revealProjectileTail(row);return true;
     });
     // The actor has now sampled its final post-physics cel. Never replay a skipped frame.
+    this.drawVolleyMuzzle(view,time);
     const pending=this.pendingShots.splice(0),kind=WEAPONS[this.id];
     const canRelease=view?.art?.id===this.id&&!['hurt','action'].includes(view.state);
     const muzzle=pending.length&&canRelease&&this.id==='sakura'?view.muzzleWorld?.():null;
@@ -401,7 +426,7 @@ export class UserWeaponFx{
     }
     this.rows=this.rows.filter(row=>{
       const deposit=row.artKind==='rifle-deposition',transient=row.kind==='choice'||row.kind==='blocked';
-      const art=row.heavyLanding?{frames:4,duration:deposit?300:120}:row.kind==='blocked'?{frames:1,duration:180}:row.kind==='choice'?{frames:1,duration:CHOICE_LIFE}:deposit?RIFLE_PIGMENT_DEPOSITION:USER_WEAPON_FX[row.kind],age=time-row.start;
+      const art=row.volleyMuzzle?{frames:6,duration:this.motionPreference?.matches?60:86}:row.heavyLanding?{frames:4,duration:deposit?300:120}:row.kind==='blocked'?{frames:1,duration:180}:row.kind==='choice'?{frames:1,duration:CHOICE_LIFE}:deposit?RIFLE_PIGMENT_DEPOSITION:USER_WEAPON_FX[row.kind],age=time-row.start;
       const ends=row.heavyLanding?(deposit?[.08,.42,.76,1]:[.2,.45,.7,1]):deposit?RIFLE_PIGMENT_DEPOSITION.ends:FRAME_ENDS[row.kind];
       if(age<0||age>=art.duration){this.destroyRow(row);return false;}
       // A hammer has one primary peak; accepted targets shed only authored residual cels.
@@ -435,7 +460,7 @@ export class UserWeaponFx{
   }
   // Projectile nodes are references only; their real owner destroys them.
   destroyRow(row){const clip=row.clip;row.clip=null;if(clip)row.node.clearMask();row.node.destroy();clip?.mask.destroy();clip?.graphics.destroy();}
-  clear(){for(const row of this.rows)this.destroyRow(row);this.rows=[];this.lastFrame=[];this.pendingShots.length=0;this.projectiles=[];this.inkWake?.clear();this.contactFragments.clear();this.relayTransfer.clear();this.meleeTrace?.node.destroy();this.meleeTrace=null;}
+  clear(){for(const row of this.rows)this.destroyRow(row);this.rows=[];this.lastFrame=[];this.pendingShots.length=0;this.volleyBeat=null;this.projectiles=[];this.inkWake?.clear();this.contactFragments.clear();this.relayTransfer.clear();this.meleeTrace?.node.destroy();this.meleeTrace=null;}
   destroy(){
     if(this.disposed)return;
     this.clear();

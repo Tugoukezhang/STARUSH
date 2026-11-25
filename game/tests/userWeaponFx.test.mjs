@@ -102,3 +102,22 @@ test('the actual actor shot queue uses the current bitmap owner instead of old n
   Object.assign(actor,{disposed:false,userCastView:{weaponFx:{shot:(...a)=>{calls.push(a);return true;}}}});
   assert.equal(actor.queueBasicShotFx(b,500),true);assert.deepEqual(calls,[[b,500,actor.userCastView]]);
 });
+
+test('three accepted fan rays share one short barrel flash per real beat, with no enemy hit on empty ground',()=>{
+ const {scene,fx,view,setTime}=fixture();
+ scene.game={loop:{frame:50}};view.art={id:'sakura'};view.state='action';view.muzzleWorld=active=>active?{x:120,y:90}:null;
+ fx.motionPreference={matches:true};
+ for(let beat=0;beat<3;beat++){
+   const start=500+100*beat;setTime(start);
+   for(const angle of [-.3,0,.3])fx.release({x:150,y:100,radius:40,color:'pink',sequence:1,beat,angle,start,hit:false,contacts:[]});
+   fx.update(start,view);fx.update(start,view);
+   const flashes=fx.rows.filter(r=>r.volleyMuzzle);
+   assert.equal(flashes.length,1);const [flash]=flashes;
+   assert.equal(flash.x,120);assert.equal(flash.y,90);assert.equal(flash.size,20);assert(Math.abs(flash.angle)<.001);
+   assert.equal(fx.stats.impacts,0);
+   setTime(start+65);fx.update(start+65,view);assert(!fx.rows.some(r=>r.volleyMuzzle));
+ }
+ scene.oldStreet.clearLine=()=>false;
+ assert.equal(fx.release({x:150,y:100,radius:40,sequence:2,beat:0,angle:0,start:800}),false);
+ fx.update(800,view);assert(!fx.rows.some(r=>r.volleyMuzzle));
+});

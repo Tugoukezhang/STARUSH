@@ -164,3 +164,14 @@ test('a sideways shot carries the real north and south steps under the aiming sh
   assert.equal(view.image.texture.key,'stage-performer-sakura');
   assert(view.image.frame.name<4);
 });
+
+test('the visible stationary volley tip and frontal barrel track the painted sprite',()=>{
+ const {scene,view}=fixture('sakura',true);
+ view.update(0,false);scene.publicPerformerRun.actions++;view.update(5,false);
+ assert.equal(view.muzzleWorld(),null);
+ const tip=view.muzzleWorld(true);
+ assert.deepEqual(tip,{x:view.image.x+(239-152)*view.scale,y:view.image.y+(118-251)*view.scale});
+ view.update(380,false);view.beginShot(380,0,1,500);scene.player.y+=18;view.update(400,false);
+ assert(view.muzzleWorld());view.beginShot(402,0,-1,500);scene.player.y-=18;view.update(420,false);
+ assert.equal(view.muzzleWorld(),null,'the ponytail hides the barrel on the north-facing pose');
+});

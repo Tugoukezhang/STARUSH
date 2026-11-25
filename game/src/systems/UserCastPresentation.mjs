@@ -16,6 +16,9 @@ const RIFLE_MUZZLES=[
 // Rifle shoot-bank cel ends as fractions of the shot: release, kick, half recovery, ready (27/121.5/81/40.5ms of 270).
 const RIFLE_SHOT_CELS=[.1,.55,.85,1];
 const CROSS_SHOULDERS=[6,7,9,10];
+// North-facing barrels are hidden by the silhouette. South and signature cels show these tips.
+const STAGE_RIFLE_TIPS=[null,null,null,null,[177,135],[184,134],[169,134],[168,134],
+  [220,151],[239,118],[222,74],[221,141],[222,135]];
 function rifleStrideFrame(recoil, stride, sideFrame) {
   if(stride.axis==='side')return recoil*6+sideFrame;
   return 24+recoil*8+(stride.axis==='up'?0:4)+stride.lastFrame;
@@ -280,20 +283,20 @@ export class UserCastPresentation {
     const flip=aimed&&Math.abs(dx)>.15?dx<0:aimed&&this.clock<=this.streakUntil?this.flip:(this.handFlip??this.flip);
     return {x:p.x+(flip?-1:1)*nativeFacing*16,y:p.y-12};
   }
-  muzzleWorld(){
-    if(this.disposed||this.art.id!=='sakura'||this.state==='hurt'||this.state==='action')return null;
+  muzzleWorld(allowAction=false){
+    if(this.disposed||this.art.id!=='sakura'||this.state==='hurt'||(!allowAction&&this.state==='action'))return null;
     const shoot=this.art.motion.shoot,idle=this.art.motion.idle,rest=this.art.motion.rest,walk=this.art.motion.walk,texture=this.image.texture?.key;
     const cel=Number(this.image.frame.name),stride=texture===RIFLE_STRIDE;
-    if(this.expanded&&texture===this.expanded.key)return null;
+    const stage=this.expanded&&texture===this.expanded.key;
     // Registered moving-shot shoulders recoil over the current step, keeping the visible tip anchored.
     const cross=cel>=24,step=cross?CROSS_SHOULDERS[(cel-24)%4]:6+cel%6;
     const recoil=cross?Math.floor((cel-24)/8):Math.floor(cel/6);
     const walkMarker=stride?this.art.motion.muzzles[step]:null;
-    const marker=walkMarker?[walkMarker[0]-[0,10,5,1][recoil],walkMarker[1]]:this.upperCel>=0?shoot.muzzles[this.upperCel]
+    const marker=stage?STAGE_RIFLE_TIPS[cel]:walkMarker?[walkMarker[0]-[0,10,5,1][recoil],walkMarker[1]]:this.upperCel>=0?shoot.muzzles[this.upperCel]
       :(this.art.motion.muzzles|| (shoot&&texture===shoot.key?shoot.muzzles:idle&&texture===idle.key?idle.muzzles:rest&&texture===rest.key?rest.muzzles:walk&&texture===walk.key?walk.muzzles:RIFLE_MUZZLES))?.[this.image.frame.name];if(!marker)return null;
-    const [x,y]=marker,p=this.scene.player,m=this.art.motion;
-    return {x:p.x+(this.flip?-1:1)*(x-m.originX*m.frameWidth)*this.width/m.frameWidth,
-      y:p.y+26+(y-m.originY*m.frameHeight)*this.height/m.frameHeight};
+    const [x,y]=marker,p=this.scene.player,m=this.art.motion,flip=this.image.flipX??this.flip;
+    return {x:(this.image.x??p.x)+(flip?-1:1)*(x-m.originX*m.frameWidth)*this.width/m.frameWidth,
+      y:(this.image.y??p.y+26)+(y-m.originY*m.frameHeight)*this.height/m.frameHeight};
   }
   cueExclusionBounds(){
     if(this.disposed)return null;
