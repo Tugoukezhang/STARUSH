@@ -1,0 +1,488 @@
+/* Inner destinations use their own scene and the real progress, choices and cast.
+   Geometry stays in the scrolling content; the shared shell owns the header and footer. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] {
+  --stage-paper:#f7f2df;
+  --stage-ink:#202237;
+  --stage-cream:#fffbea;
+  --stage-lime:#ddf543;
+  --stage-coral:#ff775e;
+  --stage-stroke:#292b40;
+
+  /* Control room: the actual tour tally becomes the caption of the mixing desk.
+     Feature art leads to the two activities, compact tickets lead to utilities. */
+  &[data-page=backstage] .product-module-screen[data-console-page=backstage] {
+    background:linear-gradient(157deg,transparent 0 76%,#e8e2cb 76% 78%,transparent 78%),var(--stage-paper);
+    gap:0;padding:0 13px 20px;
+    & .cs-desk {content:url("/art/printroom/dressing.webp");order:-3;display:block;flex:none;width:calc(100% + 26px);max-width:none;margin:0 -13px;height:clamp(144px,26vh,245px);object-fit:cover;object-position:center 55%;border:0}
+    & .cs-readout {order:-2;position:relative;display:flex;align-items:center;justify-content:space-between;margin:-9px 0 15px;padding:7px 12px;min-height:36px;border:2px solid var(--stage-stroke);border-left:10px solid var(--stage-coral);background:var(--stage-ink);color:var(--stage-cream);box-shadow:3px 3px 0 #b8b39e}
+    & .cs-readout span {color:inherit;font-weight:800}
+    & .ui-backstage-grid {margin:0;padding:0;gap:14px}
+    & .cs-primary {display:grid;grid-template-columns:1.18fr 1fr;gap:9px}
+    & .cs-primary .pm-entry {display:flex;align-items:flex-end;justify-content:space-between;min-height:clamp(108px,19vh,174px);padding:10px 7px;border:2px solid var(--stage-stroke);border-radius:1px 14px 1px 1px;box-shadow:3px 4px 0 var(--stage-stroke);
+      background:linear-gradient(0deg,#202237ef 0 23%,transparent 65%),var(--destination-art) 50% 42%/cover}
+    & .cs-primary .pm-entry::before {padding:3px 5px;background:var(--stage-lime);color:var(--stage-ink);font-size:clamp(16px,4vw,20px);font-weight:900}
+    & .cs-primary .pm-entry:nth-child(2)::before {background:var(--stage-coral)}
+    & .cs-primary .pm-entry::after {color:var(--stage-cream)}
+    & .cs-utility {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    & .cs-utility .pm-entry {display:flex;align-items:center;justify-content:space-between;min-height:54px;padding:7px 6px 7px clamp(32px,9vw,50px);border:1px solid var(--stage-stroke);border-radius:2px;background:linear-gradient(97deg,transparent 0 21%,var(--stage-cream) 21%),var(--destination-art) left center/58% auto no-repeat,var(--stage-cream);box-shadow:0 2px 0 #bab29a}
+    & .cs-utility .pm-entry::before {color:var(--stage-ink);font-size:14px;font-weight:850}
+    & .cs-utility .pm-entry::after {color:var(--stage-ink)}
+  }
+
+  /* In the lounge the portrait is the focus. Only the spoken line and replies
+     share the paper strip at the bottom; nothing crosses the face. */
+  &[data-page=lounge] .product-module-screen[data-companion-studio] {
+    padding-inline:12px;gap:7px;
+    & .pm-scene {inset:0;left:0;right:0;width:100%;margin:0}
+    & .pm-scene-art {content:url("/art/printroom/dressing.webp");object-position:center;filter:brightness(.84)}
+    & button.pm-scene-portrait {left:50%;right:auto;top:3%;bottom:auto;width:139%;height:100%;max-height:none;transform:translateX(-50%);clip-path:none;overflow:visible}
+    & .pm-scene-portrait .member-mark-full {inset:0;width:100%;height:100%}
+    & .pm-scene-portrait .member-portrait {object-fit:contain;object-position:50% 12%;clip-path:none;mask:none;filter:drop-shadow(2px 0 0 #fff8db) drop-shadow(-2px 0 0 #fff8db)}
+    & .pm-dialogue {padding:25px 16px 13px;background:var(--stage-cream);border:2px solid var(--stage-stroke);border-radius:0 13px 1px 1px;box-shadow:4px 4px 0 var(--stage-ink)}
+    & .pm-dialogue::before {content:'';position:absolute;left:21px;top:-8px;width:12px;height:12px;transform:rotate(45deg);background:var(--stage-coral);border:0}
+    & .pm-dialogue-heading {left:12px;top:-12px;padding:0 12px;border:2px solid var(--stage-ink);border-radius:0 6px 0 0;transform:rotate(-2deg);background:var(--stage-coral)}
+    & .pm-dialogue .pm-speaker {color:var(--stage-ink);font-weight:900}
+    & .pm-dialogue .pm-response {color:var(--stage-ink);font-size:15px;line-height:1.55}
+    & .pm-choices {padding:2px 0;background:transparent}
+    & .pm-topics,.pm-replies {gap:6px}
+    & button.pm-topic {position:relative;border:1px solid var(--stage-stroke);border-radius:1px 7px 1px 1px;background:var(--stage-cream);color:var(--stage-ink);box-shadow:0 3px 0 var(--stage-ink)}
+    & button.pm-topic[aria-pressed=true] {background:var(--stage-lime)}
+    & button.pm-topic .companion-letter-art,& button.pm-topic .companion-glyph-art {display:none}
+    & button.pm-topic::after {content:attr(aria-label);width:auto;height:auto;padding:0;background:none;color:var(--stage-ink);font:800 13px/1.25 system-ui,sans-serif;white-space:nowrap}
+    & button.pm-topic img:first-of-type {width:22px;height:22px}
+    & :is(button.ui-actor-switch,button.pm-record-tool) {
+      position:absolute;left:auto;right:9px;bottom:auto;top:9px;z-index:5;display:flex;align-items:center;justify-content:center;gap:5px;
+      width:auto;min-width:76px;max-width:108px;height:44px;padding:3px 7px;
+      border:2px solid var(--stage-paper);border-radius:1px 9px 1px 1px;background:var(--stage-ink);box-shadow:2px 2px 0 var(--stage-ink);color:var(--stage-cream);
+    }
+    & button.pm-record-tool {top:60px}
+    & button.pm-record-tool > *,& button.ui-actor-switch > * {display:none}
+    & :is(button.ui-actor-switch,button.pm-record-tool)::after {content:attr(aria-label);position:static;display:block;width:auto;height:auto;background:none;color:var(--stage-cream);font:800 14px/19px system-ui,sans-serif}
+    & .pm-home-entry {border:2px solid var(--stage-paper);border-radius:2px 9px 2px 2px;background:var(--stage-ink);box-shadow:2px 2px 0 var(--stage-ink)}
+    & .pm-home-label {color:var(--stage-cream)}
+  }
+
+  /* Rooms read as one venue photograph in a black mount, followed by the
+     actual room choices and the saved staffing record. */
+  &[data-page=venue] .product-module-screen[data-venue-studio] {
+    box-sizing:border-box;padding:9px 9px 0;gap:8px;background:var(--stage-ink);
+    & .pm-scene {border:2px solid var(--stage-paper);border-radius:1px 18px 0 0;box-shadow:none;background:var(--stage-ink)}
+    & .pm-scene-art {bottom:61px;height:calc(100% - 61px);object-position:center 58%}
+    & .vs-room-identity {padding:5px 12px 5px 18px;border:1px solid var(--stage-ink);border-left:6px solid var(--stage-coral);border-radius:1px 6px 1px 1px;background:var(--stage-paper);box-shadow:3px 3px 0 var(--stage-ink);color:var(--stage-ink)}
+    & .pm-room-map {height:61px;gap:3px;padding:4px;background:var(--stage-ink);border-top:3px solid var(--stage-paper)}
+    & button.pm-room-hotspot {height:51px;background:#34354c;border:1px solid #717186;border-radius:1px 6px 1px 1px;color:white}
+    & button.pm-room-hotspot span,& button.pm-room-hotspot small {color:#fff8e7}
+    & button.pm-room-hotspot[aria-pressed=true] :is(span,small) {color:var(--stage-ink)}
+    & button.pm-room-hotspot[aria-pressed=true] {background:var(--stage-lime);color:var(--stage-ink);border-color:var(--stage-lime);box-shadow:inset 0 -4px #a6ab3b}
+    & button.pm-room-hotspot span[data-venue-letter] {font:800 14px/18px system-ui,sans-serif}
+    & button.pm-room-hotspot span[data-venue-letter] img {display:none}
+    & .sec-venue-dock {padding:8px 10px 10px;border:2px solid var(--stage-paper);border-top:6px solid var(--stage-coral);border-radius:0;background:var(--stage-paper);color:var(--stage-ink)}
+    & .vs-summary {gap:8px}
+    & .pm-room-saved {color:var(--stage-ink);text-shadow:none}
+    & .sec-venue-edit {border:1px solid var(--stage-ink);border-radius:1px 7px 1px 1px;background:var(--stage-cream);color:var(--stage-ink)}
+    & .pm-prepare:enabled {background:var(--print-primary-face) center / 100% 100% no-repeat;color:var(--stage-ink);border:0;box-shadow:none}
+    & .pm-prepare:disabled {opacity:1;background:#e6e1ce;border:1px dashed #827c6e;color:#544f49;box-shadow:none}
+  }
+
+  /* Programme: a venue cover with an offset title, above its five real stops. */
+  &[data-page=events] .product-module-screen[data-program-studio] {
+    gap:8px;padding:10px 12px 14px;background:var(--stage-paper);
+    & .pg-venue {position:relative;flex:1 0 155px;max-height:47dvh;border:3px solid var(--stage-stroke);border-radius:1px 24px 2px 2px;box-shadow:4px 4px 0 var(--stage-stroke)}
+    & .pg-venue-plate {inset:auto 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:34px 12px 13px;background:linear-gradient(0deg,#202237e8,transparent)}
+    & .pg-venue-plate h2 {display:inline-block;width:fit-content;max-width:100%;margin:0;padding:2px 10px;transform:rotate(-2deg);background:var(--stage-lime);color:var(--stage-ink);font:900 clamp(22px,6.5vw,34px)/1.15 system-ui,sans-serif;text-shadow:none}
+    & .pg-venue-plate p {padding:2px 6px;background:var(--stage-ink);color:var(--stage-cream);text-shadow:none}
+    & .ps-status {margin-top:7px;padding:1px 0;font-weight:850}
+    & .ps-chapter-state {border-radius:0 6px 0 0;background:var(--stage-ink);color:var(--stage-lime)}
+    & .program-stop-strip {gap:3px;padding:6px 4px;border:1px solid #afa98e;background:var(--stage-cream)}
+    & .program-stop-strip li {border-bottom:3px solid #acaa9d}
+    & .program-stop-strip li[aria-current] {border-color:var(--stage-ink);background:#e8edb1}
+    & .program-stop-strip img {height:clamp(35px,7vh,62px)}
+    & .pg-command.pg-primary[data-command-face=plain]:enabled {
+      min-height:56px;border:0;border-radius:0;box-shadow:none;
+      background:var(--print-primary-face) center / 100% 100% no-repeat!important;color:var(--stage-ink);
+    }
+    & .ps-more {min-height:44px;background:var(--stage-cream);border:1px solid var(--stage-ink);border-radius:1px 6px 1px 1px}
+  }
+
+  /* Two modes, two covers: championship in coral, single rehearsal in lime.
+     The locked chapters form a punch card; unlocked controls keep their names. */
+  &:is([data-page=finaleTrial],[data-page=rehearsal]) .shell-content {
+    --mode-paper:var(--stage-coral);
+    background:var(--stage-paper);color:var(--stage-ink);
+    & .thin-challenge-hero {isolation:isolate;position:relative;margin:0 0 15px;border:2px solid var(--stage-stroke);border-radius:0 20px 0 0;box-shadow:4px 5px 0 var(--stage-stroke)}
+    & .thin-challenge-hero {height:clamp(185px,36vh,300px);min-height:185px}
+    & .system-frame-venue {filter:none}
+    & .thin-challenge-mark {display:none}
+    & .system-frame-kicker {position:absolute;display:block;inset:auto auto 44px 11px;width:fit-content;max-width:90%;height:auto;padding:0 9px;color:var(--stage-ink);background:var(--mode-paper);border:0;transform:rotate(-3deg);font:950 clamp(23px,6.8vw,38px)/1.4 system-ui,sans-serif;text-shadow:none}
+    & .system-frame-progress {background:var(--stage-ink);color:var(--stage-cream);padding:3px 8px;font-weight:800;border-left:5px solid var(--mode-paper);border-radius:0}
+    & .thin-challenge-info {
+      width:auto;max-width:108px;min-width:80px;min-height:44px;display:inline-flex;gap:4px;align-items:center;justify-content:center;padding:4px 8px;
+      border:2px solid var(--stage-paper);border-radius:1px 9px 1px 1px;background:var(--stage-ink);color:var(--stage-cream);box-shadow:2px 2px 0 var(--stage-ink);
+    }
+    & .thin-challenge-info .ui-glyph {width:18px;height:18px;object-fit:contain}
+    & .thin-challenge-info::after {content:attr(aria-label);display:block;position:static;width:auto;height:auto;background:none;color:var(--stage-cream);font:800 13px/18px system-ui,sans-serif}
+    & .thin-challenge-summary {padding:3px 8px;background:var(--stage-ink);color:var(--stage-cream);font-weight:700}
+    & .thin-challenge-gate {margin:6px 0 9px;border:0;border-inline-start:6px solid var(--mode-paper);border-radius:0;background:var(--stage-ink);color:var(--stage-paper)}
+    & .thin-challenge-gate p {color:var(--stage-cream)}
+    & .showbill-gate-stops {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-block:8px 12px;padding:0}
+    & .showbill-gate-stops li {display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:center;gap:4px;min-height:104px;padding:5px 3px;border:1px solid var(--stage-ink);border-top:4px solid var(--mode-paper);border-radius:1px 7px 1px 1px;background:var(--stage-cream);color:var(--stage-ink)}
+    & .showbill-gate-stops img {grid-area:auto;width:auto;height:clamp(37px,6vh,58px)}
+    & .showbill-gate-stops li strong {font-size:14px;line-height:20px;color:var(--stage-ink)}
+    & .showbill-gate-stops li span {background:#eae3ce;color:#47423b;padding:2px 6px;font-size:12px}
+    & .showbill-gate-stops li[data-state=cleared] span {background:var(--stage-lime);color:var(--stage-ink)}
+    & .challenge-stages h3,& .rehearsal-focus h3 {color:var(--stage-ink)}
+    & .rehearsal-build {background:var(--stage-cream);color:var(--stage-ink)}
+    & .rehearsal-build > summary {background:var(--stage-ink);color:var(--stage-cream);padding:7px 10px;border-left:6px solid var(--mode-paper)}
+    & .rehearsal-build .system-context,& .rehearsal-focus .system-context {color:#454459}
+  }
+  &[data-page=rehearsal] .shell-content {
+    --mode-paper:var(--stage-lime);
+    & .system-frame-venue {content:url("/art/printroom/rehearsal.webp");object-position:50% 46%}
+    & .showbill-gate-stops {grid-template-columns:1fr}
+    & .showbill-gate-stops li {grid-template-columns:auto 1fr auto;justify-items:start;text-align:left;min-height:60px;padding:3px 10px;border-top:1px solid var(--stage-ink);border-left:6px solid var(--mode-paper)}
+    & .showbill-gate-stops img {width:65px;height:48px}
+    & .showbill-gate-stops :is(strong,span) {align-self:center}
+  }
+
+  /* Practice: a pair of tall illustrated folders below the stage sign. */
+  &[data-page=sideplay] .product-module-screen[data-practice-studio] {
+    padding:0 12px 18px;gap:0;background:linear-gradient(158deg,transparent 0 82%,#e4dfc6 82% 85%,transparent 85%),var(--stage-paper);
+    & .ps-stage {content:url("/art/printroom/rehearsal.webp");width:calc(100% + 24px);max-width:none;margin:0 -12px;height:clamp(140px,30vh,266px);border-bottom:5px solid var(--stage-ink)}
+    & .ps-actor {margin:-25px 4px 8px;padding:6px 12px;align-self:flex-start;background:var(--stage-lime);border:2px solid var(--stage-ink);border-radius:0 7px 0 0;box-shadow:3px 3px 0 var(--stage-ink);color:var(--stage-ink);transform:rotate(-2deg)}
+    & .ps-actor :is(small,strong) {color:inherit}
+    & .ps-entries {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:10px;margin:16px 0 0;padding:0}
+    & .ps-entry {display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;gap:0;position:relative;align-self:start;min-height:0;margin:0;padding:0;border:2px solid var(--stage-stroke);border-radius:0 10px 0 0;background:var(--stage-cream);box-shadow:3px 4px 0 var(--stage-stroke)}
+    & .ps-entry:nth-child(2) {margin-top:18px}
+    & .ps-entry-art {grid-area:1/1;min-height:0;height:clamp(93px,18vh,156px);width:100%;object-fit:cover;border:0;border-bottom:4px solid var(--stage-coral)}
+    & .ps-entry:nth-child(2) .ps-entry-art {border-color:var(--stage-lime)}
+    & .pg-command-copy {grid-area:2/1;display:block;align-self:stretch;padding:12px 8px;text-align:start}
+    & .pg-command-copy .pg-sr {font:900 clamp(15px,4.4vw,21px)/1.35 system-ui,sans-serif;color:var(--stage-ink)}
+    & .pg-command-copy small {margin-top:5px;font-size:12px;line-height:1.45;color:#46435b}
+    & .ps-entry-enter {position:absolute;top:6px;right:6px;border-radius:50%;background:var(--stage-cream);filter:none}
+  }
+
+  /* Service counter: local record gets its own file cover under the reading-room
+     photograph. Sound and backup have the same rank; connectivity is a query. */
+  &[data-page=services] .product-module-screen[data-console-page=services] {
+    gap:0;padding:0 13px 20px;background:var(--stage-paper);
+    & .cs-desk {content:url("/art/printroom/gear.webp");width:calc(100% + 26px);max-width:none;margin:0 -13px;height:clamp(145px,28vh,245px);object-fit:cover;border-bottom:5px solid var(--stage-ink)}
+    & .cs-local-console {position:relative;margin:-16px 0 0;padding:0 10px 11px;box-sizing:border-box;background:var(--stage-cream);border:2px solid var(--stage-ink);border-radius:0 13px 0 0;box-shadow:4px 4px 0 var(--stage-ink)}
+    & .cs-heading {position:relative;display:block;width:fit-content;height:auto;min-height:0;margin:-10px 0 12px;padding:4px 13px;border:2px solid var(--stage-ink);border-radius:0;background:var(--stage-lime);color:var(--stage-ink);font:900 20px/1.3 system-ui,sans-serif;transform:rotate(-2deg)}
+    & .cs-heading[data-console-letter] {font-size:20px!important;line-height:1.3}
+    & .cs-heading img {display:none}
+    & .pm-local-state {margin:0 0 12px;padding:11px 9px 11px 55px;border-inline-start:4px solid var(--stage-coral);border-radius:1px;background-color:var(--stage-ink);color:white}
+    & .pm-local-state :is(strong,span,small) {color:var(--stage-cream);text-shadow:none}
+    & .cs-local-console .pm-service-command {border-color:var(--stage-ink);border-radius:1px 8px 1px 1px;background:var(--stage-cream);box-shadow:0 2px 0 #c3bfa7}
+    & .cs-local-console .pm-service-command .cs-glyph {background:#e7e2cc;border-radius:1px}
+    & .cs-network {background:#eae6d4;color:var(--stage-ink);border-color:#727080}
+  }
+}
+
+/* Touring programme, member dossier and rehearsal selection. Real venue and
+   performer artwork stays tied to the selection made by the player. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page] {
+  --programme-ink: #242438;
+  --programme-paper: #fff9e8;
+  --programme-lime: #e3f56b;
+  --programme-coral: #ff816f;
+  --programme-rule: #bdb8a6;
+
+  &:is([data-page=records], [data-page=chapterArchive], [data-page=growth], [data-page=library],
+       [data-page=goals], [data-page=playhub], [data-page=recruitment]) > .shell-content {
+    background:linear-gradient(117deg, transparent 72%, #f2e9cf 72%) bottom right / 100% min(36%,240px) no-repeat, var(--programme-paper);
+    color:var(--programme-ink);
+  }
+
+  /* Archive index. A contact sheet of the five actual stages; the whole
+     photograph and caption remain the existing single chapter target. */
+  &[data-page=records] .shell-content[data-archive-studio] {
+    & .sec-records-stage {
+      min-height:94px; padding:13px 10px; border:0; border-bottom:5px solid var(--programme-coral); border-radius:0;
+      background:linear-gradient(95deg,#242438f5 8%,#242438bf 50%,#24243825 100%),url('/art/printroom/records.webp') 62% 58%/cover;
+    }
+    & .sec-records-caption {color:var(--programme-paper);font-size:14px;font-weight:750}
+    & .archive-current-records {
+      display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:13px 9px;
+    }
+    & .archive-current-records .archive-record {
+      position:relative; display:flex; flex-direction:column; align-items:stretch;
+      min-width:0; min-height:0; padding:0 0 9px; margin:0;
+      border:2px solid var(--programme-ink); border-radius:2px; overflow:hidden;
+      background:var(--programme-paper); color:var(--programme-ink); box-shadow:2px 3px 0 var(--programme-ink);
+    }
+    & .archive-record .archive-record-venue {
+      position:relative; flex:none; width:100%; height:auto; aspect-ratio:2.25;
+      min-height:0; margin:0; border:0; border-bottom:2px solid var(--programme-ink); border-radius:0; filter:none;
+    }
+    & .archive-record .archive-record-venue img:not([hidden]) {display:block;width:100%;height:100%;object-fit:cover}
+    & .archive-record::before {
+      content:attr(data-record-index); position:absolute; z-index:1; inset:4px auto auto 4px; margin:0;
+      width:auto;height:auto; padding:2px 6px; border-radius:1px; background:var(--programme-ink);
+      color:var(--programme-lime); font:800 12px/16px system-ui,sans-serif; pointer-events:none;
+    }
+    & .archive-record h2[data-archive-letter] {
+      position:static;align-self:stretch;text-align:left;margin:5px 24px 2px 7px;min-height:20px;padding:0;
+      color:var(--programme-ink);font:800 16px/22px system-ui,sans-serif!important;
+    }
+    & .archive-record h2[data-archive-letter] .archive-letter-art {display:none}
+    & .archive-record :is(.archive-empty,.archive-record-stats) {margin:0 7px;color:#46505c;font-size:12px;line-height:17px}
+    & .archive-record p.archive-empty {white-space:normal}
+    & .archive-record .sec-records-open {inset:0;width:100%;height:100%}
+    & .archive-record .sec-records-open::after {inset:auto 4px 22px auto;transform:none;background:none;color:var(--programme-ink)}
+  }
+
+  /* Chapter detail reads as one large bordered stage photograph and a bound log. */
+  &[data-page=chapterArchive] .shell-content[data-archive-page=chapter] {
+    padding:12px 0 18px;gap:12px;
+    & .chapter-report-heading {
+      margin-inline:12px; border:3px solid var(--programme-ink); border-bottom-width:6px; box-shadow:3px 3px 0 #aba797;
+    }
+    & .chapter-report-venue {max-height:26dvh;min-height:150px;aspect-ratio:2.15}
+    & .chapter-report-heading > small {
+      top:0;left:0;padding:4px 9px;border-radius:0;background:var(--programme-lime);color:var(--programme-ink);font-weight:800
+    }
+    & .chapter-report-heading > h3 {bottom:9px;left:9px;right:auto;max-width:60%;background:var(--programme-ink);padding:4px 7px}
+    & .chapter-report-heading > .chapter-report-status {
+      inset:auto 0 0 auto; padding:4px 7px; border-radius:0; background:var(--programme-ink);color:var(--programme-paper);
+    }
+    & .chapter-report-tabs {gap:3px}
+    & .chapter-report-tabs .arrangement-option {
+      border:1px solid var(--programme-rule);border-bottom:3px solid var(--programme-rule);border-radius:2px;background:#f3efdf;color:var(--programme-ink)
+    }
+    & .chapter-report-tabs .arrangement-option[aria-pressed=true] {
+      background:var(--programme-lime);border-color:var(--programme-ink);box-shadow:none;outline:0
+    }
+    & .chapter-report-stories > button {
+      aspect-ratio:auto;min-height:58px;padding:8px 12px;border:1px solid var(--programme-ink);
+      border-inline-start:7px solid var(--programme-coral);border-radius:0;background:#fffdf5;color:var(--programme-ink)
+    }
+    & .chapter-story-status {border-radius:2px;background:var(--programme-ink);color:var(--programme-paper)}
+    & :is(.chapter-report-field,.chapter-report-guide) > summary {
+      border:0;border-block-end:1px solid var(--programme-ink); border-radius:0;background:#f4ecd7;color:var(--programme-ink);
+    }
+  }
+
+  /* Training is a character poster. Leave the portrait, hit area and overlays
+     as siblings so changing the stage scenery cannot cover the actor. */
+  &[data-page=workshop] [data-secondary-page=workshop] {
+    & .sec-training-stage {
+      background:linear-gradient(108deg,transparent 62%,#ff816f 62% 64%,#ff816f26 64%),
+        linear-gradient(160deg,transparent 66%,#242438 66% 100%),
+        linear-gradient(90deg,#fff0caed 0%,#fff5dbb2 55%,#fbe4d17d),url('/art/printroom/gear.webp') 62% center/cover;
+    }
+    & .workshop-portrait-stage {background:transparent}
+    & .sec-training-stage .workshop-member-copy {
+      top:12px;left:10px;max-width:min(46%,156px);width:auto;padding:8px 10px;
+      border:2px solid var(--programme-ink);border-inline-start:7px solid var(--programme-coral);
+      border-radius:0;background:var(--programme-paper);box-shadow:3px 3px 0 var(--programme-ink);text-shadow:none
+    }
+    & .workshop-member-copy :is(small,.workshop-member-role) {
+      margin:0;background:none;padding:0;color:#47465b;font-weight:650
+    }
+    & .sec-training-stage .workshop-member-copy strong {
+      color:var(--programme-ink);filter:none;text-shadow:none;font-size:clamp(17px,4.5vw,23px);line-height:1.22
+    }
+    & .sec-training-stage .ui-workshop-tools .ui-icon-command {
+      background:#28263b;box-shadow:1px 2px 0 #1110246b;border:1px solid #f4e5c8;border-radius:8px 2px;
+    }
+    & .sec-training-body {
+      padding:8px 12px 9px;background:var(--programme-ink);color:var(--programme-paper);border-top:5px solid var(--programme-lime);
+    }
+    & .sec-training-body::before {background:none}
+    & .sec-training-body .workshop-rank-track li[data-state=current] {border-color:var(--programme-lime)}
+    & .workshop-rank-track li[data-state=current] :is(b,span) {color:var(--programme-lime)}
+  }
+
+  /* Growth. Keep the known and proposed values on the same line. */
+  &[data-page=growth] .shell-content[data-planning-studio] {
+    & .sec-growth-stage {
+      padding:13px;gap:10px; grid-template-columns:clamp(75px,23vw,110px) minmax(0,1fr);
+      background:linear-gradient(118deg,#ff816f 0 26%,#242438ed 26% 45%,#24243888 79%),url('/art/printroom/gear.webp') 70% 55%/cover;border:2px solid var(--programme-ink);border-radius:0;
+    }
+    & .sec-growth-portrait {width:100%;height:110px;border:2px solid var(--programme-paper);border-radius:2px;background:#ece0c5}
+    & .sec-growth-caption {padding:0;color:var(--programme-paper);font-weight:750;white-space:normal}
+    & .sec-growth-stages {gap:5px;background:none}
+    & .sec-growth-stages [data-growth-rank] {
+      border:1px solid #797882;border-radius:1px;background:#343346;color:var(--programme-paper)
+    }
+    & .sec-growth-stages [data-growth-rank][aria-pressed=true] {background:#505438;border:2px solid var(--programme-lime);box-shadow:none}
+    & .sec-growth-stages [data-growth-rank]::before {border-color:var(--programme-lime);box-shadow:none}
+    & .sec-growth-stages [data-growth-rank] :is(strong,small) {color:var(--programme-paper)}
+    & .sec-growth-compare {
+      padding:13px 12px;background:#fffdf5;color:var(--programme-ink);border:1px solid var(--programme-ink);border-top:5px solid var(--programme-ink);border-radius:0
+    }
+    & .sec-growth-compare > h2 {color:var(--programme-ink);font:800 16px/22px system-ui,sans-serif}
+    & .sec-growth-compare > h2 .planning-letter-art {filter:brightness(0)}
+    & .sec-growth-compare .growth-comparison-labels :is(span,span:last-child){color:#4e4b57}
+    & .sec-growth-compare .growth-effects > div {min-height:36px;border-radius:0;border-bottom:1px solid #c9c5b6;background:transparent}
+    & .sec-growth-compare .growth-effects :is(dt,dd) {color:var(--programme-ink)}
+    & .sec-growth-compare .growth-effects dd:last-child {background:#e8edba;color:var(--programme-ink);padding-inline:5px}
+    & .sec-growth-gear {border:2px solid var(--programme-ink);border-radius:0;background:#fff9e8}
+    & .sec-growth-gear .sec-growth-gear-copy :is(strong,span) {color:var(--programme-ink)}
+  }
+
+  /* Programme catalogue. The mode title is printed on the photograph; the
+     availability condition has its own high-contrast paper band underneath. */
+  &[data-page=playhub] .shell-content {
+    & .pg-modes {display:grid;gap:18px;padding:3px 1px 10px}
+    & .pg-mode {
+      display:grid;position:relative;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:0;
+      align-content:start;min-width:0;width:100%;margin:0;padding:0;overflow:hidden;background:var(--programme-ink);
+      border:2px solid var(--programme-ink);border-radius:1px;box-shadow:3px 4px 0 #aaa69a;text-align:left;
+    }
+    & .pg-mode .pg-mode-art {grid-area:1/1;display:block;width:100%;height:clamp(117px,18dvh,176px);object-fit:cover;border:0;border-radius:0}
+    & .pg-mode[data-action=hub-rehearsal] .pg-mode-art {content:url('/art/printroom/rehearsal.webp')}
+    & .pg-mode:not([data-availability=ready]) .pg-mode-art {filter:saturate(.65) contrast(.94)}
+    & .pg-mode .pg-mode-plate {display:block;position:static;min-height:49px;padding:12px 38px 10px 10px;background:var(--programme-paper);color:var(--programme-ink)}
+    & .pg-mode .pg-mode-plate small {margin:0;color:#454351;font-size:13px;line-height:19px;white-space:normal}
+    & .pg-mode .pg-mode-letter {
+      position:absolute;left:0;bottom:auto;top:clamp(73px,calc(18dvh - 44px),132px);
+      display:block;width:fit-content;max-width:83%;padding:6px 13px;background:var(--programme-coral);border:0;color:var(--programme-ink)
+    }
+    & .pg-mode:nth-child(2) .pg-mode-letter {background:var(--programme-lime)}
+    & .pg-mode .pg-mode-letter .pg-letter {display:none}
+    & .pg-mode .pg-mode-letter strong.pg-sr {
+      position:static;display:block;clip-path:none;overflow:visible;width:auto;height:auto;margin:0;
+      color:var(--programme-ink);font:900 21px/27px system-ui,sans-serif;
+    }
+    & .pg-mode .pg-mode-enter {top:auto;right:7px;bottom:9px;translate:none;background:var(--programme-ink)}
+    & .pg-mode .pg-mode-lock {width:36px;height:36px;right:9px;top:9px}
+  }
+
+  /* Goal ticket. The two comparison goals continue to explain their own
+     unlock conditions even when disabled. */
+  &[data-page=goals] .shell-content[data-hierarchy=goals] {
+    padding:12px;
+    & .pg-goal-context {
+      min-height:clamp(78px,16dvh,134px);margin:0 0 16px;padding:18px 12px;align-items:flex-end;
+      background:linear-gradient(100deg,#242438f5 20%,#242438c4 46%,#24243828 76%),url('/art/printroom/rehearsal.webp') center 53%/cover;
+      border:2px solid var(--programme-ink);border-bottom:6px solid var(--programme-coral);border-radius:0;color:var(--programme-paper);font:800 16px/21px system-ui,sans-serif
+    }
+    & .run-goal-options {gap:10px}
+    & .pg-goal-choice {
+      min-height:76px;padding:10px 13px;gap:12px;border:2px solid var(--programme-ink);border-radius:1px;
+      background:#fffdf5;color:var(--programme-ink);outline:0;box-shadow:2px 2px 0 #a7a196;
+    }
+    & .pg-goal-choice:disabled {opacity:1;background:#eee9d9;border:1px solid #aba694;box-shadow:none}
+    & .pg-goal-choice[aria-pressed=true] {background:var(--programme-lime);border:2px solid var(--programme-ink);box-shadow:3px 3px 0 var(--programme-ink)}
+    & .pg-goal-choice strong.pg-sr {color:var(--programme-ink);font-size:18px;line-height:25px}
+    & .pg-goal-choice small {color:#414151}
+    & .pg-goal-choice .pg-goal-icon {width:38px;height:38px;border-radius:50%;background:#dad5c7}
+    & .pg-goal-choice[aria-pressed=true] .pg-goal-icon {background:var(--programme-ink)}
+    & .pg-goal-status {
+      margin-block:14px 8px;padding:10px 12px;border:1px solid var(--programme-ink);border-inline-start:6px solid var(--programme-coral);background:var(--programme-paper)
+    }
+  }
+
+  /* Arrangement workbench. The two stages stay paired, and each available
+     item receives a large actual icon beside the name. */
+  &[data-page=library] .shell-content[data-planning-studio] {
+    & .sec-library-stage {
+      padding:13px 11px;gap:11px; border:0;border-block-end:5px solid var(--programme-coral);border-radius:0;
+      background:linear-gradient(100deg,#242438f5 13%,#242438dd 54%,#24243844),url('/art/printroom/records.webp') right 68%/cover;
+    }
+    & .sec-library-caption {color:var(--programme-paper);font-weight:700}
+    & .sec-library-composition {gap:5px;background:none}
+    & .sec-library-composition .library-stage-tab {padding:6px 8px;border:1px solid #918f94;border-radius:2px;background:#353447;box-shadow:none}
+    & .sec-library-composition .library-stage-tab[aria-selected=true] {outline:0;border:2px solid var(--programme-lime);background:#4e5038}
+    & .sec-library-composition .library-stage-tab strong {color:var(--programme-paper)}
+    & .sec-library-choices {grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+    & .sec-library-choices .arrangement-option {
+      display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px;align-items:center;padding:8px 7px;min-height:58px;
+      background:#fffdf5;border:1px solid #8c8793;border-radius:2px;box-shadow:none;outline:0;
+    }
+    & .sec-library-choices .arrangement-option[aria-pressed=true] {background:var(--programme-lime);border:2px solid var(--programme-ink);box-shadow:2px 2px 0 var(--programme-ink)}
+    & .sec-library-choices .arrangement-option .menu-art {grid-area:1/1;width:36px;height:36px}
+    & .sec-library-choices .arrangement-option strong {grid-area:1/2;min-width:0;max-width:100%;white-space:normal;color:var(--programme-ink);font:750 14px/18px system-ui,sans-serif}
+    & .sec-library-pick {padding:7px 10px;min-height:42px;border-inline-start:5px solid var(--programme-coral);background:var(--programme-paper);color:var(--programme-ink)}
+    & .sec-library-body .library-preview {padding:12px;border:0;border-top:5px solid var(--programme-coral);border-radius:0;background:var(--programme-ink);color:var(--programme-paper)}
+    & .sec-library-body .library-preview dd {color:var(--programme-lime);font-weight:750}
+  }
+
+  /* Initial cast dossier. Text and artwork occupy separate halves of the
+     printed spread; the portrait is always the member being previewed. */
+  &[data-page=recruitment] .product-module-screen[data-product-page=recruitment] {
+    padding:0 12px 15px;gap:12px;background:var(--programme-paper);color:var(--programme-ink);
+    & .pm-scene {
+      display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);height:clamp(180px,32dvh,310px);
+      background:linear-gradient(114deg,#242438 46%,var(--programme-coral) 46% 48%,#f8d8ab 48%);border-bottom:5px solid var(--programme-ink)
+    }
+    & .pm-scene-art {content:url('/art/printroom/dressing.webp');opacity:.66;object-position:68% 50%;filter:none;mix-blend-mode:multiply}
+    & .pm-scene-copy {margin:0 0 20px 13px;z-index:1}
+    & .pm-scene-member {padding:1px 0;background:none;color:var(--programme-paper);border:0;font:900 clamp(21px,6vw,29px)/1.22 system-ui,sans-serif}
+    & .pm-scene-role {padding:4px 7px;max-width:100%;background:var(--programme-coral);color:var(--programme-ink);font-size:14px}
+    & .pm-scene-caption {background:var(--programme-ink);color:var(--programme-paper)}
+    & .pm-cast-strip {gap:7px}
+    & .pm-cast-option {
+      min-height:84px;gap:4px;padding:5px 2px;border:1px solid var(--programme-rule);border-radius:1px;background:#fffdf7;color:var(--programme-ink)
+    }
+    & .pm-cast-option .pm-member-headshot {width:43px;height:43px;border-radius:50%;background:#ede6cf}
+    & .pm-cast-option[aria-pressed=true] {outline:0;border:2px solid var(--programme-ink);background:var(--programme-lime);box-shadow:2px 2px 0 var(--programme-ink)}
+    & .pm-dossier {padding:14px;border:2px solid var(--programme-ink);border-inline-start:7px solid var(--programme-coral);border-radius:0;background:#fffdf5;color:var(--programme-ink)}
+    & .pm-dossier :is(.pm-section-heading,.pm-role-name,h3,p) {color:var(--programme-ink);text-shadow:none}
+    & .pm-dossier .pm-role-name {display:block;padding-block:5px;border-top:1px solid var(--programme-rule);font-size:20px}
+    & .pm-dossier .pm-section-heading small {padding:2px 6px;background:var(--programme-ink);color:var(--programme-paper)}
+  }
+
+  /* An information toolbar reads in the order of its actual commands. Use
+     the native accessible names so a renamed command also changes its face. */
+  &[data-page=records] .shell-content[data-archive-studio] .sec-records-stage {
+    display:grid; grid-template-columns:minmax(0,1fr); gap:9px;
+    & .sec-records-caption {grid-area:1/1;min-width:0;width:auto;margin:0;align-self:center}
+    & .sec-records-tools {grid-area:2/1;width:100%}
+  }
+  &[data-page=growth] .shell-content[data-planning-studio] .sec-growth-stage {
+    & .sec-growth-caption {grid-row:1/3;align-self:center}
+    & .sec-growth-tools {grid-column:1/-1;grid-row:3;width:100%}
+    & .sec-growth-stages {grid-column:1/-1;grid-row:4}
+  }
+  &[data-page=library] .shell-content[data-planning-studio] .sec-library-stage {
+    & .sec-library-caption {grid-column:1/-1;grid-row:1}
+    & .sec-library-tools {grid-column:1/-1;grid-row:2;width:100%}
+    & .sec-library-composition {grid-column:1/-1;grid-row:3}
+  }
+  &:is([data-page=records],[data-page=growth],[data-page=library])
+    :is(.sec-records-tools,.sec-growth-tools,.sec-library-tools) {
+    display:flex;align-items:stretch;flex-wrap:wrap;gap:5px;
+    & .ui-icon-command {
+      position:relative;display:flex;align-items:center;justify-content:center;flex:1 1 auto;gap:5px;
+      width:auto;height:auto;min-width:44px;min-height:44px;padding:5px 8px;box-sizing:border-box;
+      border:1px solid #9c9a9e;border-radius:3px;background:#242438;box-shadow:none;color:var(--programme-paper);
+    }
+    & .ui-icon-command > :is(img,svg) {display:none}
+    & .ui-icon-command::after {
+      content:attr(aria-label);position:static;width:auto;height:auto;transform:none;
+      background:none;color:var(--programme-paper);font:700 13px/17px system-ui,sans-serif;
+    }
+    & .ui-icon-command::before {
+      content:'';position:static;flex:none;width:6px;height:6px;box-sizing:border-box;
+      background:none;border:solid var(--programme-coral);border-width:2px 2px 0 0;rotate:45deg;transform:none;
+    }
+    & .ui-actor-switch::before {border-color:var(--programme-lime)}
+    & .ui-icon-command:focus-visible {outline:2px solid var(--programme-lime);outline-offset:-3px}
+  }
+  &[data-page=recruitment] .product-module-screen[data-product-page=recruitment] [data-action=recruitment-open-roster] {
+    display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;padding:8px 14px;
+    background:var(--programme-lime);color:var(--programme-ink);border:2px solid var(--programme-ink);border-radius:1px;
+    box-shadow:3px 3px 0 var(--programme-ink);font:800 17px/23px system-ui,sans-serif;
+    &::after {content:'›';position:static;width:auto;height:auto;background:none;color:inherit;font-size:23px}
+    & > svg {display:none}
+  }
+}
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=workshop] .shell-preparation-footer[data-training-state] button[data-action=train] {
+  min-height:48px;padding:7px 14px;border:0;border-radius:1px;filter:none;opacity:1;
+  background:var(--print-primary-face) center/100% 100% no-repeat!important;color:#242438;box-shadow:none;font-weight:850;
+}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=workshop] .shell-preparation-footer[data-training-state] button[data-action=train]:disabled {
+  border:2px dashed #605d60;border-left:6px solid #868175;border-radius:1px;background:#e5dfce!important;color:#423e42;filter:none;opacity:1;
+}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=library] .sec-library-idle > summary {
+  display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:5px 11px;
+  border:1px solid #c2b9a5;border-left:5px solid #fa856a;border-radius:1px;background:#f8f1dc;color:#242438;
+  & .sec-library-idle-count {min-width:22px;text-align:center;background:#242438;color:#fff8e6;border-radius:2px;font:750 13px/21px system-ui,sans-serif}
+  & img {display:none}
+  & > span:first-child {font:800 14px/20px system-ui,sans-serif!important;color:#242438}
+  &::after {content:'';width:7px;height:7px;border:solid currentColor;border-width:0 2px 2px 0;rotate:45deg}
+}
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-ui-rebuild][data-shell-family][data-inner-family][data-ui-pass][data-core-journey][data-home-demo][data-page=library] .sec-library-idle[open] > summary::after {rotate:225deg}
