@@ -27,3 +27,12 @@ frame monitor '768x310+0+350'
 frame dialog '768x310+768+350'
 frame strip '768x316+0+660'
 frame stub '768x316+768+660'
+
+# Small cast portraits serve both the first-paint passes and the 50px member selector.
+headshot() {
+  convert "../../game/public/art/$2/avatar.png" -filter Lanczos -resize 180x180 -strip \
+    -define webp:method=6 -quality 89 "$out/avatar-$1.webp"
+}
+headshot sakura red-valkyrie-20261123
+headshot kai green-windsong-20261123
+headshot enjo blue-academy-20261123

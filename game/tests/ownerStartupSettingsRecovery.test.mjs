@@ -12,11 +12,19 @@ function boot(earlyImage=null){
 test('boot uses existing raster stage and exactly three owner designs before module download',()=>{
  assert.match(html,/class="loading-cast"/);for(const file of ['red-valkyrie-20261123/portrait.png','green-windsong-20261123/portrait.png','blue-academy-20261123/portrait.png'])assert(html.includes('art/'+file));
  assert.doesNotMatch(html,/cat-rifle/);
- assert.match(html,/<progress[^>]+id="game-loading-progress"/);assert.match(html,/art\/playable-ui-20261018\/plaza.webp/);
+ assert.match(html,/<progress[^>]+id="game-loading-progress"/);assert.match(html,/art\/setdesign\/foyer\.webp/);
 });
 test('legacy theme no longer overrides the independent boot presentation owner',()=>{const css=fs.readFileSync(new URL('../src/styles/gameUiTheme.css',import.meta.url),'utf8');assert.doesNotMatch(css,/#game-loading/);});
 test('failed decorative boot portraits disappear without blocking the stage or triggering reload',()=>{
  const f=boot(),image={tagName:'IMG',hidden:false};f.nodes['game-loading'].contains=n=>n===image;f.listeners.error({target:image});assert.equal(image.hidden,true);assert.equal(f.nodes['game-loading'].dataset.state,'loading');assert.equal(f.reloads(),0);
+});
+test('a failed small cast portrait first falls back to its original and a second failure hides only that image',()=>{
+ const f=boot(),image={tagName:'IMG',hidden:false,srcset:'preview.webp 1x',removeAttribute(name){delete this[name];}};
+ f.nodes['game-loading'].contains=n=>n===image;
+ f.listeners.error({target:image});
+ assert.equal(image.srcset,undefined);assert.equal(image.hidden,false);
+ f.listeners.error({target:image});
+ assert.equal(image.hidden,true);assert.equal(f.nodes['game-loading'].dataset.state,'loading');
 });
 test('portraits that failed before bootstrap installed its listener are reconciled at startup',()=>{const image={complete:true,naturalWidth:0,hidden:false};const f=boot(image);assert.equal(image.hidden,true);assert.equal(f.nodes['game-loading'].dataset.state,'loading');});
 test('real queue progress is finite and start is indeterminate, not an invented completion percent',()=>{
