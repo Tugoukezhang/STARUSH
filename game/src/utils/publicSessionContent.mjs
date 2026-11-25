@@ -41,12 +41,13 @@ export function getPublicArrangementGuide(first,second,memberId,chapterId){
       +(isUserCastEnabled()?` ${getChapterEncounterSummary(chapterId)}`:'')};
 }
 
-export function getEarnedEquipmentHandoff(run,profile){
+export function getEarnedEquipmentHandoff(run,profile,equipmentId){
   if(!run?.victory||run.recorded!==true||run.persisted!==true||profile?.persisted!==true
     ||!UI_CAST.some(member=>member.id===run.performerId))return null;
   const items=getOwnedEquipment(profile).filter(item=>
     (item.performerId===run.performerId||item.chapterId===run.chapterId)
     &&Array.isArray(run.reward?.equipmentIds)&&run.reward.equipmentIds.includes(item.id));
-  const earned=items.find(item=>item.performerId===run.performerId)||items[0];
+  const earned=equipmentId===undefined ? items.find(item=>item.performerId===run.performerId)||items[0]
+    : items.find(item=>item.id===equipmentId);
   return earned?{memberId:run.performerId,equipmentId:earned.id}:null;
 }

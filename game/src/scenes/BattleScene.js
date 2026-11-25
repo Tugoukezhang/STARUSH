@@ -1224,7 +1224,7 @@ export class BattleScene extends Phaser.Scene {
     if (state.failed) {
       this._publicStage1FinaleOutcome = PUBLIC_STAGE1_FINALE_OUTCOMES.TIMEOUT;
       this._clearPublicStage1Finale('timeout');
-      this._endBattle(BATTLE_RESULT_TYPES.PLAYER_DEFEAT);
+      this._endBattle(BATTLE_RESULT_TYPES.PLAYER_DEFEAT, 'finale-timeout');
     }
     return state;
   }
@@ -7418,8 +7418,9 @@ export class BattleScene extends Phaser.Scene {
     this._endBattle(BATTLE_RESULT_TYPES.DEFENSE_DEFEAT);
   }
 
-  _endBattle(type) {
+  _endBattle(type, defeatCause = null) {
     if (this._battleEnded) return;
+    this._publicDefeatCause = defeatCause;
     this.paintZone?.settlePaint?.();
     const defeatPose = this.actorPresentation ? captureSakuraDefeat(this.actorPresentation, type) : null;
     this._publicRunResult = this.publicPerformerRun?.finish(type === BATTLE_RESULT_TYPES.VICTORY) || null;
@@ -7571,8 +7572,8 @@ export class BattleScene extends Phaser.Scene {
     if (this._publicRunResult && !preview) {
       result = getPublicCampaignResult(result, this._publicRunResult);
       this._battleResultPanel = new BattleSurfaceView(this, {
-        mode: 'result', model: getPublicResultSurfaceModel(result, this._publicRunResult),
-        onAction: (action) => this._handleBattleResultAction(action),
+        mode: 'result', model: getPublicResultSurfaceModel({...result, defeatCause:this._publicDefeatCause}, this._publicRunResult),
+        onAction: (action, equipmentId) => this._handleBattleResultAction(action, equipmentId),
       });
       return;
     }
@@ -7649,7 +7650,7 @@ export class BattleScene extends Phaser.Scene {
     return text;
   }
 
-  _handleBattleResultAction(action) {
+  _handleBattleResultAction(action, equipmentId) {
     if (this._battleResultNavigating) return;
     if(this._isFinaleTrialRound?.())return handleFinaleTrialAction(this,action);
 
@@ -7681,8 +7682,9 @@ export class BattleScene extends Phaser.Scene {
     }
 
     if(action==='earned-equipment'){
-      const earnedEquipment=getEarnedEquipmentHandoff(this._publicRunResult,loadPublicProfile());
+      const earnedEquipment=getEarnedEquipmentHandoff(this._publicRunResult,loadPublicProfile(),equipmentId);
       if(!earnedEquipment)return false;
+      if (this._publicBattleDialog?.inspectEarnedItem?.(earnedEquipment)) return true;
       this._battleResultNavigating=true;
       setBattleHudVisible(false);
       this._releaseBattleRuntimeObjects('earned-equipment');
@@ -7932,7 +7934,7 @@ export class BattleScene extends Phaser.Scene {
     this._updatePublicStage1Finale();
 
     if (this._paintRoundEndsAt && (this.publicPerformerRun?.now() ?? this.time.now) >= this._paintRoundEndsAt && this.paintZone && !this.paintZone.isComplete()) {
-      this._endBattle(BATTLE_RESULT_TYPES.PLAYER_DEFEAT);
+      this._endBattle(BATTLE_RESULT_TYPES.PLAYER_DEFEAT, 'route-timeout');
       return;
     }
     this._updatePlayerReadabilityMarker(this.isMoving);
@@ -8291,7 +8293,7 @@ export class BattleScene extends Phaser.Scene {
   }
 
   _onPlayerDeath() {
-    this._endBattle(BATTLE_RESULT_TYPES.PLAYER_DEFEAT);
+    this._endBattle(BATTLE_RESULT_TYPES.PLAYER_DEFEAT, 'health');
   }
 
   _scheduleStage1WavePressureEvent(waveIndex) {

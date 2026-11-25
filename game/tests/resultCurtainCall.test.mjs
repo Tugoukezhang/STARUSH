@@ -29,10 +29,10 @@ test('three cast curtain calls show one chapter heading and no repeated outcome/
 test('compact reward icons and quantities remain visible; new equipment inspect is not buried',()=>{
  const {view,api,actions}=fixture(),root=view.root,reward=root.querySelector('.battle-result-reward'),summary=reward.querySelector('.battle-result-reward-summary'),details=reward.querySelector('.battle-result-reward-details');
  assert(summary.textContent.includes('练习笔记 +6'));assert(summary.textContent.includes('扩幅导流器'));
- assert.equal(summary.querySelectorAll('img').length,2);for(const i of summary.querySelectorAll('img'))assert(i.src.endsWith('.webp'));
+ assert.equal(summary.querySelectorAll('img').length,2);assert(summary.querySelector('[data-reward-id=wide_nozzle]').querySelector('img').src.endsWith('/wide_nozzle.png'));
  assert.equal(details.open,undefined);assert(details.querySelector('.battle-earned-equipment'));
  const inspect=root.querySelector('[data-result-action=earned-equipment]'),prepare=root.querySelector('[data-result-action=preparation]');
- assert.equal(inspect.parentNode,reward);assert(api.getBattleFocusable(root).includes(inspect));assert(!api.getBattleFocusable(root).includes(prepare));
+ assert.equal(inspect.parentNode,summary);assert(api.getBattleFocusable(root).includes(inspect));assert(!api.getBattleFocusable(root).includes(prepare));
  inspect.click();assert.deepEqual(actions,['earned-equipment']);details.open=true;assert(api.getBattleFocusable(root).includes(prepare));view.destroy();
 });
 

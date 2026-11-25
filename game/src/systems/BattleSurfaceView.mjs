@@ -1,4 +1,4 @@
-import { getRunChoice } from '../utils/publicRunProgression.mjs';
+import { equipPublicPerformer, getRunChoice } from '../utils/publicRunProgression.mjs';
 import { getDisplayPerformer as getPublicPerformer, getActiveUserCastArt,isUserCastEnabled } from '../utils/userCast.mjs';
 import {BLUE_ACADEMY_PORTRAIT,BLUE_ACADEMY_ART} from '../utils/blueAcademyArt.mjs';
 import {RED_VALKYRIE_PORTRAIT} from '../utils/redValkyrieArt.mjs';
@@ -11,7 +11,7 @@ import {gameplayIcons} from '../vendor/gameplayIcons.mjs';
 import {getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
 import {getPortraitBase,portraitBaseMetrics} from './PortraitBaseRegistration.mjs';
 import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
-import { PUBLIC_EQUIPMENT } from '../utils/publicPreparation.mjs';
+import { getPreparationSnapshot, PUBLIC_EQUIPMENT } from '../utils/publicPreparation.mjs';
 import { getChapterStory } from '../utils/publicStory.mjs';
 import { getUiPerformerArt, uiPerformerAvatarCss } from './UiPerformerArt.mjs';
 import { normalizePerformanceSample } from '../utils/publicPerformanceRecords.mjs';
@@ -26,7 +26,8 @@ import {getChapterEventReview} from '../utils/chapterEncounterEvents.mjs';
 import {getChapterSideSetReview} from '../utils/chapterSideSets.mjs';
 import {getPublicAttemptProgress} from '../utils/publicAttemptProgress.mjs';
 import {getPublicRouteReview} from '../utils/publicRoutePlan.mjs';
-import {PUBLIC_MENU_ART,EQUIPMENT_MENU_ART} from './PublicMenuArt.mjs';
+import {PUBLIC_MENU_ART} from './PublicMenuArt.mjs';
+import {getEquipmentIconArt} from './EquipmentIconArt.mjs';
 import {RELAY_TRANSFER_ART} from './RelayInkTransfer.mjs';
 import {evaluateRehearsal} from '../utils/publicRehearsal.mjs';
 import {getArrangementPlanReview} from '../utils/publicArrangementPlan.mjs';
@@ -174,6 +175,7 @@ export class BattleSurfaceView {
     this.root.addEventListener('keydown',e=>{
       e.stopPropagation();
       if(scene._sessionExperience?.isBlocking())return;
+      if(e.key==='Escape'&&this.rewardPreview){e.preventDefault();this.closeRewardPreview(true);return;}
       if(e.key==='Escape'&&options.mode==='pause'){
         e.preventDefault();
         resumePlayerAudioFromGesture(scene.sound);
@@ -450,6 +452,17 @@ export class BattleSurfaceView {
       record.append(this.element('p',null,lines.join(' · ')||'个人纪录保持 · 可再演挑战'));
       this.content.append(record);
     }
+    const causes={
+      health:['生命耗尽','横移避开预警，再绕到设施旁出手。'],
+      'route-timeout':['场地计时结束','沿箭头先恢复本区设施，再完成串场。'],
+      'finale-timeout':['压轴计时结束','避开声浪，在破绽出现时集中攻击。'],
+    };
+    const cause=stage&&!m.victory&&causes[m.defeatCause];
+    const failure=cause?this.element('section','result-failure-cause'):null;
+    if(failure){
+      failure.append(this.element('h3',null,cause[0]),this.element('p',null,cause[1]));
+      this.content.insertBefore(failure,this.content.children[1]||null);
+    }
     const attempt=this.attemptProgress(m.attemptReview);
     if(combatFlow&&!m.victory&&attempt)attempt.classList.add('battle-result-attempt');
     this.routeReview(m.routeReview);
@@ -497,10 +510,22 @@ export class BattleSurfaceView {
           icon.src=PUBLIC_MENU_ART.notes;icon.alt='';icon.width=40;icon.height=40;
           notes.append(icon,this.element('strong',null,`练习笔记 +${m.reward.notes}`));summary.append(notes);
         }
+        this.rewardTriggers=new Map();
         for(const item of m.reward.equipment){
-          const earned=this.element('span','result-reward-item'),icon=this.element('img','result-reward-icon');
-          icon.src=PUBLIC_MENU_ART[EQUIPMENT_MENU_ART[item.id]];icon.alt='';icon.width=40;icon.height=40;
-          earned.append(icon,this.element('span',null,`新配件 ${item.name}`));summary.append(earned);
+          const handoffReady=m.earnedEquipment!=null;
+          const label=item.name;
+          const earned=handoffReady
+            ? this.command(summary,label,()=>this.options.onAction('earned-equipment',item.id),{terminal:false,data:{resultAction:'earned-equipment',rewardId:item.id}})
+            : this.element('span',null,label);
+          earned.className='result-reward-item result-gear';
+          if(handoffReady){
+            earned.setAttribute('aria-label','查看'+item.name);
+            earned.setAttribute('aria-expanded','false');
+            this.rewardTriggers.set(item.id,earned);
+          }else summary.append(earned);
+          const icon=this.element('img','result-reward-icon');
+          icon.src=getEquipmentIconArt(item.id).src;icon.alt='';icon.width=40;icon.height=40;
+          earned.replaceChildren(icon,this.element('span',null,label));
         }
         rewardBody=this.element('details','battle-result-reward-details');rewardBody.append(this.element('summary',null,'收获详情'));
         reward.append(summary,rewardBody);
@@ -511,7 +536,7 @@ export class BattleSurfaceView {
         rewardBody.append(earned);
       }
       this.command(rewardBody,'整理收获',()=>this.requestResultAction('preparation'),{icon:'settings-2',data:{resultAction:'preparation'}});
-      if(m.earnedEquipment)this.command(reward,'查看新配件',()=>this.options.onAction('earned-equipment'),{
+      if(!stage&&m.earnedEquipment&&m.reward.equipment.length)this.command(reward,'查看新配件',()=>this.options.onAction('earned-equipment'),{
         icon:'backpack',data:{resultAction:'earned-equipment'}});
       if(stage)reward.dataset.ownerUiBand='ledger';
       this.content.append(reward);
@@ -566,7 +591,7 @@ export class BattleSurfaceView {
       detail.append(this.element('summary',null,'演出明细'));
       const retrySave=this.content.querySelector('[data-result-action=retry-save-result]');
       const reward=this.content.querySelector('.battle-result-reward');
-      const summaryNodes=new Set([header,identity,stats,save,retrySave,reward,this.resultContinuation,storySection,...(!m.victory&&attempt?[attempt]:[])]);
+      const summaryNodes=new Set([header,identity,stats,save,retrySave,reward,failure,this.resultContinuation,storySection,...(!m.victory&&attempt?[attempt]:[])]);
       for(const node of [...this.content.children]){
         // Keep each review control with its content, including the hidden story it toggles.
         if(summaryNodes.has(node))continue;
@@ -585,6 +610,45 @@ export class BattleSurfaceView {
       if(stage&&b.action==='campaign-next'&&m.continuation)button.disabled=!m.continuation.available;
       if(namedNext)button.setAttribute('aria-describedby',this.resultContinuation.id);
     });
+  }
+  inspectEarnedItem({memberId,equipmentId}){
+    const trigger=this.rewardTriggers?.get(equipmentId);
+    const item=PUBLIC_EQUIPMENT.find(row=>row.id===equipmentId);
+    if(!trigger||!item)return false;
+    this.closeRewardPreview();
+    const panel=this.element('section','reward-fitting');
+    this.rewardPreview={trigger,panel};
+    panel.id='result-reward-fitting';
+    trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-controls',panel.id);
+    const title=this.element('h3',null,item.name);title.setAttribute('tabindex','-1');
+    const status=this.element('p','reward-equipped-status');status.setAttribute('role','status');
+    const art=this.element('img','reward-fitting-art');art.alt='';art.src=getEquipmentIconArt(item.id).src;
+    panel.append(art,title,this.element('p','reward-effect',item.description),status);
+    const update=profile=>{
+      const current=getPreparationSnapshot(profile,memberId)?.equipmentId;
+      equip.disabled=current===item.id;
+      equip.querySelector('span').textContent=equip.disabled?'已装备':'装备给'+this.options.model.member.name;
+      const worn=PUBLIC_EQUIPMENT.find(row=>row.id===current);
+      status.textContent=profile.preparationStatus==='storage-error'||!profile.persisted
+        ? '保存未完成，请重试。' : worn?'当前装备 · '+worn.name:'当前配件位为空';
+    };
+    const equip=this.command(panel,'装备给'+this.options.model.member.name,()=>{
+      const profile=loadPublicProfile();
+      if(!getEarnedEquipmentHandoff(this.scene._publicRunResult,profile,equipmentId)){
+        status.textContent='本机记录已变化，请重新查看背包。';equip.disabled=true;return;
+      }
+      update(equipPublicPerformer(memberId,equipmentId));
+    },{primary:true,terminal:false,data:{action:'equip-reward'}});
+    this.command(panel,'收起',()=>this.closeRewardPreview(true),{terminal:false,data:{action:'close-reward'}});
+    const summary=trigger.parentNode;summary.parentNode.insertBefore(panel,summary.nextElementSibling||null);
+    update(loadPublicProfile());
+    title.focus({preventScroll:true});panel.scrollIntoView?.({block:'nearest'});return true;
+  }
+  closeRewardPreview(focus=false){
+    if(!this.rewardPreview)return;
+    const {trigger,panel}=this.rewardPreview;panel.remove();
+    trigger.setAttribute('aria-expanded','false');trigger.removeAttribute('aria-controls');
+    this.rewardPreview=null;if(focus)trigger.focus();
   }
   requestResultAction(action){
     const m=this.options.model;
