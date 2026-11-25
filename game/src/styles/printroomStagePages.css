@@ -224,9 +224,10 @@
     & [data-inventory-item=delayed_hammer] {--gear-print:url('/art/printroom/item-leaf.webp');--gear-stock:#bad6e9}
     & .ui-item-grid .ui-item-slot {
       grid-template-columns:minmax(0,1fr);grid-template-rows:clamp(74px,22vw,96px) auto auto;
-      align-content:start;justify-items:center;gap:0;min-height:0;height:auto;padding:0 0 8px;
-      overflow:hidden;border:0;border-bottom:2px solid #918890;border-radius:3px 9px 4px 4px;
-      background:#fffaee;box-shadow:0 2px 2px #2a234c25;text-align:center;
+      --rail:#313f46;--label:#eff0da;--label-ink:#293932;
+      position:relative;align-content:start;justify-items:stretch;gap:0;min-height:0;height:auto;padding:3px;
+      overflow:hidden;border:1px solid #36484d;border-radius:7px 3px 7px 3px;
+      background:#bcc4bb;box-shadow:inset 0 1px #fff5db,0 2px 0 #3c474b;text-align:center;
     }
     & .ui-item-grid .ui-item-slot > .equipment-art-slot {
       position:relative;isolation:isolate;grid-area:1/1;width:100%;height:100%;max-width:none;
@@ -241,15 +242,28 @@
       filter:drop-shadow(1px 1px 0 #fff5de) drop-shadow(0 2px 1px #2320307a);
     }
     & .ui-item-grid .ui-item-slot .ui-item-name {
-      grid-area:2/1;align-self:center;margin:6px 2px 0;color:var(--stage-ink);
-      text-align:center;font:850 clamp(13px,3.7vw,16px)/1.22 system-ui,sans-serif;
+      grid-area:2/1;display:block;min-width:0;margin:0;padding:4px 2px 3px;
+      border-top:2px solid var(--gear-stock);background:var(--rail);color:#fff7e5;
+      text-align:center;font:800 clamp(13px,3.65vw,16px)/1.2 system-ui,sans-serif;
     }
     & .ui-item-grid .ui-item-slot .ui-item-state {
-      grid-area:3/1;justify-self:center;margin-top:3px;padding:0 4px;border:0;border-radius:2px;
-      background:transparent;color:#4d5158;text-align:center;font:650 12px/16px system-ui,sans-serif;
+      grid-area:3/1;display:flex;align-items:center;justify-content:center;gap:4px;justify-self:stretch;
+      margin:0;padding:2px;border:0;border-radius:0 0 2px 2px;background:var(--label);color:var(--label-ink);
+      text-align:center;font:700 12px/16px system-ui,sans-serif;
     }
-    & .ui-item-grid .ui-item-slot[data-state=equipped] {border-color:#1b5942;background:#e8f1dc}
-    & .ui-item-grid .ui-item-slot[data-state=equipped] .ui-item-state {background:#1b5942;color:#fffaf0}
+    & .ui-item-grid .ui-item-slot[data-state=locked] {--rail:#465158;--label:#ede7d7;--label-ink:#44453c}
+    & .ui-item-grid .ui-item-slot[data-state=incompatible] {--rail:#544353;--label:#f0e4dc;--label-ink:#563948}
+    & .ui-item-grid .ui-item-slot[data-state=equipped] {
+      --rail:#174d46;--label:#d6ecb6;--label-ink:#173e32;
+      background:#a7d3ad;border-color:#205f51;box-shadow:inset 0 1px #f5ffe1,0 2px 0 #235249;
+    }
+    & .ui-item-grid .ui-item-slot[data-state=equipped] .ui-item-state::before {
+      content:'';width:4px;height:8px;margin-top:-2px;border:solid currentColor;border-width:0 2px 2px 0;rotate:45deg;
+    }
+    & .ui-item-grid .ui-item-slot:enabled:active {
+      translate:0 2px;box-shadow:inset 0 1px 2px #243c4270;filter:none;
+    }
+    & .ui-item-grid .ui-item-slot:focus-visible {outline:3px solid #136890;outline-offset:1px}
 
   }
 
