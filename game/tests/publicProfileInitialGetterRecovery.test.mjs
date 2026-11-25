@@ -58,7 +58,7 @@ test('initial recovery replays commands over unseen progress without dropping tr
   state.denied = false;
   const saved = api.retryPublicProfileSave();
   assert.equal(saved.clears, 3);
-  assert.deepEqual(saved.campaign.chapterClears, { opening: 2, neon: 1, encore: 0 });
+  assert.deepEqual(saved.campaign.chapterClears, { opening: 2, neon: 1, encore: 0, raincheck: 0, homecoming: 0 });
   assert.equal(saved.preparation.trainingLevels.kai, 2);
   assert.equal(saved.preparation.equipmentByPerformer.kai, 'wide_nozzle');
   assert.equal(saved.selectedId, 'genya');

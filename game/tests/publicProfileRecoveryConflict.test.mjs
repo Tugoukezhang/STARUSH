@@ -45,7 +45,7 @@ test('pending results replay once on latest valid profile, preserving both tabs'
   const recovered = a.recordPublicRun(win('offline-neon', 'neon', 'kai'), sa);
   assert.equal(recovered.clears, 3);
   assert.equal(recovered.attempts, 3);
-  assert.deepEqual(recovered.campaign.chapterClears, { opening: 2, neon: 1, encore: 0 });
+  assert.deepEqual(recovered.campaign.chapterClears, { opening: 2, neon: 1, encore: 0, raincheck: 0, homecoming: 0 });
   assert.equal(recovered.clearsByPerformer.venus, 1);
   assert.equal(recovered.clearsByPerformer.kai, 1);
   assert.equal(recovered.persisted, true);

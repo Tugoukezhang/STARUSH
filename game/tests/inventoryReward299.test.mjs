@@ -12,7 +12,7 @@ test('reward opens exact item once without deploying or writing',()=>{
   const before=JSON.stringify([...s.storage.values]);
   assert.equal(h.query('dialog')?.querySelector('.ui-item-detail')?.dataset.item,'wide_nozzle');
   assert.equal(s.profile.loadPublicProfile().selectedId,'sakura');
-  assert.match(h.query('.inv-detail-target').textContent,/机甲剑士/);
+  assert.match(h.query('.inv-detail-target').textContent,/翡翠风歌/);
   h.click('[data-action=sheet-close]');view.render();
   assert.equal(h.all('dialog').length,0);
   view.showPage('preflight');view.showPage('inventory');
