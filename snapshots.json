@@ -1,0 +1,226 @@
+{
+  "schema": 1,
+  "files": {
+    "cat-kitchen-game-v3.2.0.zip": {
+      "bytes": 86942185,
+      "sha256": "0fe8cff3686917f5d5d8da5da54d19da795cc92766dcae9c00ad033f3494f4f5",
+      "parts": [
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.000.gpg",
+          "sha256": "c1bae2d00f05e73634e712a73a34666e7e75913bc14a4c1f793382a49c898c3c"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.001.gpg",
+          "sha256": "877609893cce332ba6144bdcf30e21f4c7a5cb5d4fc2717e8f8ac03a7cb17cd3"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.002.gpg",
+          "sha256": "78494489c50c604e289622bcafb8e3c7ef0e198411508a842bac4e5c90e1cc7b"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.003.gpg",
+          "sha256": "fe60992e441b9b2e5d725fb0216beb7618b6fc4bfcd2b59015d59788e6176060"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.004.gpg",
+          "sha256": "ddd5a63f99c5a673d88e367fbd2717756e629ac9b8ec89f17246adb4942473ea"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.005.gpg",
+          "sha256": "ee7ff666413731d624039f8b08dfad14e89513558421af6350d94b7256753d37"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.006.gpg",
+          "sha256": "2ef1f0383d06a84ec8f05f5ce696dcb4ab05d45e1274070373476e323f9026cc"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.007.gpg",
+          "sha256": "7114560f06601796c15aee8189267beb6e580299de9e8c2aa674d67d3b093f60"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.008.gpg",
+          "sha256": "de39d21674551cf6688c63a896b26d77c7ecc7e0223ddc971b111072198af33a"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.009.gpg",
+          "sha256": "e4f226d096f4556e748e88a9474768528f95579ff546b77753a4574fd8ab60cf"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.010.gpg",
+          "sha256": "00bbdaa4a08a913cebec7523bc4e33f982daa99bc969a9ff29de325e50fefb5b"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.011.gpg",
+          "sha256": "38068c47ed3d58133c968f2ba75afa4ad26f193c11085fb94f47f359f9482a34"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.012.gpg",
+          "sha256": "85f806928a59828de29d913d396bc430f0986b4c8c2f96d8a2384df7f0f6f263"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.013.gpg",
+          "sha256": "30f89943ab59f6ea537bac2cc64a4e55fcf69f5e936bd7c7c5e2108e78279279"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.014.gpg",
+          "sha256": "fc815f991f2e069ec3bfd4da5db83ae142ed2eec5e800e220d70e4f8385505a4"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.015.gpg",
+          "sha256": "42fdb3fcc1bba97dfca93463754914d6f292dca34ffc7f73b06cc13ca3080b85"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.016.gpg",
+          "sha256": "12d9353de3e27f5ffe2fa289e04bb1393850b7978fdf22615e78ed95b2df9918"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.017.gpg",
+          "sha256": "6dd63098a381a3c6c81165c81edb67f9718ed8425a5349b819f77896e0ca9ab6"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.018.gpg",
+          "sha256": "43c1de2798913b8a838ad30696afda3dba7db8c802810e7c5af6db3dbb404883"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.019.gpg",
+          "sha256": "2254401e257f1725f863e2fba739f159d0441d2e863e6d9b0f54f0b007e73877"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-game-v3.2.0.020.gpg",
+          "sha256": "a93f694de4481cc9456814a03a51be8ef38cba42446558cc518481bceeaa374f"
+        }
+      ]
+    },
+    "cat-kitchen-browser-v3.2.0.zip": {
+      "bytes": 5523364,
+      "sha256": "77b2fc772705474f951311e06b3ee9900ee65ad0bc7f2d33bdf26acbd9ce30f9",
+      "parts": [
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-browser-v3.2.0.000.gpg",
+          "sha256": "1717f49959c4971ea9ce74e6a4438815618a1c907aa75ab4525eac82064a59a0"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-browser-v3.2.0.001.gpg",
+          "sha256": "50f0e913ee8b5f700bd2b3e1b9c5030c06b91561a5c74433292d8c356ab50ede"
+        }
+      ]
+    },
+    "cat-kitchen-art-v3.2.0.zip": {
+      "bytes": 67677352,
+      "sha256": "288f5201d28cdd0c70c53a4336c43a28324798ab7cbf481f616e74740092cb2f",
+      "parts": [
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.000.gpg",
+          "sha256": "0335d9707b5272b2f391e2e68d23460ca6f9f30a58659115b550a34d802df7ac"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.001.gpg",
+          "sha256": "390ab19001b153975b8f00e8627c4d35bb93a37726de06815e8decb425e11300"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.002.gpg",
+          "sha256": "2090c3b81979013ac5d9fb32517804d35f45aa722abd8573fa333c6c49a023f3"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.003.gpg",
+          "sha256": "14b2e92d44374e7efce26b80c5ef9516ad7b8cd70329545e52f51cd85459726b"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.004.gpg",
+          "sha256": "e16dae7b39ee4a472b936bb803d1375f3af541098e91135e1696541d05c9a5b0"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.005.gpg",
+          "sha256": "961568ae77819d4ece5b94754ec07eb773e510cdfa890bbb0b43dee9f3ee359d"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.006.gpg",
+          "sha256": "d9381e6fdd0b503017b43c3be6015ce334510b2ed9e1f51d7e024a708d884ff2"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.007.gpg",
+          "sha256": "fdccfc19f4a1561c2611984917e30c2b8df52b7eca23ede1430499cb993a4f28"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.008.gpg",
+          "sha256": "3d80089d230f3e3e4ea6c085df9cc705e8c9df6e1fe4f23c4047449b4e20a69d"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.009.gpg",
+          "sha256": "c2181ea611603c9a0ed925a192ae3ceb8dea34ed26f8ed73a6a5b2c7cb170f1e"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.010.gpg",
+          "sha256": "39931338ad77a45f2ff51a3301d8f0ede4d429efd5fe2afcbca02b8df5573353"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.011.gpg",
+          "sha256": "bfaeca069a347cb182e1c7b47035fccb86caf087875eb2e6909f9b98f2fbced3"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.012.gpg",
+          "sha256": "bbc1133f49262c6ae5d3a2c0b717ce4a150865aabad3be2d8c8228a7c68d5ba7"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.013.gpg",
+          "sha256": "736bfb2d884c0bd70475484821e99def384a45c73321b2978b0003fd6e6f1c5c"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.014.gpg",
+          "sha256": "949882c84f417251647a27d42c26f20bfa108ac34a6c1f4050cc65aa18ad889f"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.015.gpg",
+          "sha256": "dcdd0ed73d27a85135061c72670379c16db11158db95ba251068f16fade14953"
+        },
+        {
+          "path": "snapshots/3.2.0/cat-kitchen-art-v3.2.0.016.gpg",
+          "sha256": "842a2952ce8acae87e2742bbdcee590863f5cbffb967f8307cfd215e98153548"
+        }
+      ]
+    },
+    "cat-kitchen-comparison-fixtures.zip": {
+      "bytes": 27243057,
+      "sha256": "7554074a6e9982a70252b0e49de210b30408c81af04414dd1e6b1a773edceecd",
+      "parts": [
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.000.gpg",
+          "sha256": "719a5eb542dca11abf80bd57a1f177525e10458ef3c73e2b8145e3910e45c92a"
+        },
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.001.gpg",
+          "sha256": "02a4992b2ed225c7c278b1fc816ced1becf160eec360861e05c96e0cf381f4ce"
+        },
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.002.gpg",
+          "sha256": "a20c35f102c520e8420cb26a7ab40165f6989603e7d86d130e2c55066a1ff57e"
+        },
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.003.gpg",
+          "sha256": "33e3ede3de365a610adbada534b53f1bba0cec51c49b8a2a2df0badafccb8cc9"
+        },
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.004.gpg",
+          "sha256": "e54e9b3fde35ad1a8d036f1f7629f08d8ba6d3864474848c5b6f4b7c7331fd7f"
+        },
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.005.gpg",
+          "sha256": "952590a57ce9d28b636b68fae34801508c19e66f4e4a1fc8c5729e172df30176"
+        },
+        {
+          "path": "snapshots/support/cat-kitchen-comparison-fixtures.006.gpg",
+          "sha256": "cb1f02e56a0ce08fc2ff4ac1cb22d66748698b382a2e39452f797c8e951e6b34"
+        }
+      ]
+    }
+  },
+  "versions": {
+    "3.2.0": [
+      "cat-kitchen-game-v3.2.0.zip",
+      "cat-kitchen-browser-v3.2.0.zip",
+      "cat-kitchen-art-v3.2.0.zip",
+      "cat-kitchen-comparison-fixtures.zip"
+    ]
+  },
+  "latest": "3.2.0"
+}
