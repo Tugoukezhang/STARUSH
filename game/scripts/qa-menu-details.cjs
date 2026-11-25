@@ -29,7 +29,7 @@ const sheets = {
   tour:['tour-reference','tour-reference/tour-sheet-route','[data-chapter=opening]'],
   records:['records-sheet-info','actor-switch','story-journal'],
   workshop:['workshop-sheet-equipment','workshop-sheet-info','actor-switch'],
-  preflight:['preflight-info','preflight-route'], goals:['goals-rules'],
+  preflight:['preflight-info','preflight-route','preflight-arrangement','preflight-story'], goals:['goals-rules'],
   library:['library-sheet-study','library-sheet-guide'],
   growth:['growth-sheet-equipment','growth-sheet-info','actor-switch'],
   finaleTrial:['challenge-rules'], rehearsal:['challenge-rules'], chapterArchive:['report-story-intro'],
