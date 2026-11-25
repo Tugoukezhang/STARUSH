@@ -103,6 +103,7 @@ export function mountEncoreSequence(ui,host,id,complete,cleared=0){
  const identity=node(copy,'p','performance-encore-name');
  node(identity,'span','encore-stage-performer',getDisplayPerformer(id).name);
  if(Number.isSafeInteger(cleared)&&cleared>0)node(identity,'span','encore-stage-clear',' · 清弹 '+cleared);
+ if(cleared===0)node(copy,'span','encore-stage-no-clear','范围内未清弹');
  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches===true;
  card.dataset.reducedMotion=String(reduced);
  let frame,started;

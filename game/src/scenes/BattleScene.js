@@ -1385,10 +1385,14 @@ export class BattleScene extends Phaser.Scene {
         || (!bullet.publicFinaleReturn && !(Math.hypot(bullet.moveVx,bullet.moveVy) > 0))
         || Math.hypot(bullet.x-origin.x,bullet.y-origin.y) > STAGE1_PAINT_BURST_RADIUS
         || this.oldStreet.clearLine(origin,bullet) !== true) continue;
+      const {x,y}=bullet;
       const disposed = bullet.publicStage1StageCuePulse
         ? this._consumePublicStage1StageCuePulse(bullet,'encore-clear')
         : this._disposeEnemyProjectile(bullet,'encore-clear');
-      if (disposed) cleared++;
+      if (disposed) {
+        cleared++;
+        this.actorPresentation?.userCastView?.weaponFx?.encoreClearAt?.(x,y);
+      }
     }
     return cleared;
   }

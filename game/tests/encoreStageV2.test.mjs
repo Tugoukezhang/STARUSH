@@ -46,6 +46,7 @@ test('reduced motion, unavailable art and interruptions never hold play or resum
  for(const reason of ['hidden','ended','paused','choice','destroy','settings']){
   const f=setup('kai',true);assert(f.ui.showEncore({cleared:0}));f.step(0);
   assert.equal(f.card().querySelector('.encore-stage-clear'),null);
+  assert.equal(f.card().querySelector('.encore-stage-no-clear').textContent,'范围内未清弹');
   assert.equal(f.card().dataset.phase,'hero');
   if(reason==='hidden')f.e.document.hidden=true;
   if(reason==='ended')f.s._battleEnded=true;

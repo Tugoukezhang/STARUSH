@@ -17,7 +17,8 @@
   & .encore-card-copy {width:55%;box-sizing:border-box;padding-right:8%;text-align:left}
   & .encore-stage-action {display:block;font:900 italic clamp(19px,5.3vw,26px)/1.2 system-ui,sans-serif;color:var(--flash)}
   & .performance-encore-name {margin:4px 0 0;font:750 13px/1.25 system-ui,sans-serif}
-  & .encore-stage-clear {display:block;color:#cbd6db;font-weight:550}
+  & .encore-stage-clear, & .encore-stage-no-clear {display:block;color:#ffdf9c;font:650 11px/1.15 system-ui,sans-serif}
+  & .encore-stage-no-clear {color:#cbd6db}
   &[data-phase=focus][data-reduced-motion=false] {animation:encore-card-enter 120ms ease-out both}
   &[data-phase=exit][data-reduced-motion=false] {opacity:0;transform:translateX(-24%)}
 }

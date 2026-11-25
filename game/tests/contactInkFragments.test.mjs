@@ -68,3 +68,27 @@ test('near-simultaneous impacts thin the secondary spray and reduced motion shor
   for(let i=0;i<6;i+=2)assert(Math.hypot(points[i]-100,points[i+1]-100)<24);
  }
 });
+
+test('cleared bullets leave paired marks at the removed projectile and expire on the combat clock',()=>{
+ const lines=[];
+ const g={clear(){lines.length=0;},setDepth(){},lineStyle(){return this;},lineBetween(...points){lines.push(points);},destroy(){}};
+ const fx=new ContactInkFragments({add:{graphics:()=>g}});
+ fx.clearBullet(120,160,40);fx.update(70);
+ assert.equal(lines.length,8);
+ for(const [x,y,x2,y2] of lines){
+  assert(Math.max(Math.abs(x-120),Math.abs(x2-120))<12);
+  assert(Math.max(Math.abs(y-160),Math.abs(y2-160))<=4);
+ }
+ fx.update(291);assert.equal(lines.length,0);fx.clear();
+});
+
+test('tight cover retains the actual enemy contact and omits wall or fixture stars',()=>{
+ const {scene,fx,triangles}=fixture();
+ scene.oldStreet.clearLine=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<=10;
+ const enemies=[102,145,188,231].map(x=>({x,y:100,kind:'enemy'}));
+ fx.impact({x:100,y:100,color:'pink',hit:true,contacts:[{x:100,y:99,kind:'fixture',direct:true},...enemies]});
+ assert.deepEqual(fx.contactFragments.rows.map(r=>r.x),enemies.map(r=>r.x));
+ assert(fx.contactFragments.rows.every(r=>r.enemy));
+ fx.contactFragments.update(530,12);
+ for(const {x,y} of enemies)assert(triangles.some(t=>t.color===0xfff4cb&&Math.hypot(t.points[0]-x,t.points[1]-y)<9));
+});

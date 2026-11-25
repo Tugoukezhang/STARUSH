@@ -303,6 +303,9 @@ export class UserWeaponFx{
     this.lastFrame.push({kind:row.kind,phase:row.phase,id:row.id,x,y,size,angle:a.angle,rotation,frame,alpha,sourceRadius:a.reach,...(registered?{weaponTip:{x:tip.x,y:tip.y}}:{}),...(path?{weaponPath:path}:{})});
     return true;
   }
+  encoreClearAt(x,y){
+    if(this.ready())this.contactFragments.clearBullet(x,y,this.now());
+  }
   blocked({x,y,angle=0,start=this.now()}){
     if(!this.ready()||!Number.isFinite(x+y+angle+start)||typeof this.scene.add?.graphics!=='function'
       ||this.scene.oldStreet?.clearLine({x,y},{x,y},1)===false)return false;
@@ -325,18 +328,19 @@ export class UserWeaponFx{
       &&Number.isFinite(x+y+radius+angle)&&radius>0&&this.scene.textures?.exists(RIFLE_PIGMENT_DEPOSITION.key);
     const seen=new Set();
     const points=hit&&Array.isArray(contacts)?contacts.filter(p=>Number.isFinite(p?.x+p?.y))
-      .slice().sort((a,b)=>Number(b.direct===true)-Number(a.direct===true)
+      .slice().sort((a,b)=>Number(b.kind==='enemy')-Number(a.kind==='enemy')||Number(b.direct===true)-Number(a.direct===true)
         ||Math.hypot(a.x-x,a.y-y)-Math.hypot(b.x-x,b.y-y))
-      .filter(p=>{const key=p.x+','+p.y;if(seen.has(key))return false;seen.add(key);return true;}).slice(0,2):hit||!landing?[{x,y}]:[];
+      .filter(p=>{const key=p.x+','+p.y;if(seen.has(key))return false;seen.add(key);return true;}).slice(0,4):hit||!landing?[{x,y}]:[];
     let accepted=false;
     // One flat spread at the real landing replaces the upright miss burst; hit sparks stay on accepted contacts only.
     if(landing){
       const size=Math.min(144,radius*1.2),args={x,y,color,size,angle,ground:true,alpha:.82,sourceRadius:radius,artKind:'rifle-deposition',tint:COLOR_HEX[color],start,skillContact};
       if(this.push('deposition',args)||(size>84&&this.push('deposition',{...args,size:84}))){if(!hit)this.stats.ground++;accepted=true;}
     }
-    for(const p of points){
+    for(const [index,p] of points.entries()){
       const direction=radial&&Math.hypot(p.x-x,p.y-y)>.001?Math.atan2(p.y-y,p.x-x):angle;
-      const drawn=this.push(hit?'impact':'burst',{x:p.x,y:p.y,color,
+      // Keep the large illustrated hits to two. Up to four confirmed enemies can retain a local core.
+      const drawn=index<2&&this.push(hit?'impact':'burst',{x:p.x,y:p.y,color,
         size:hit?{sakura:44,kai:58,enjo:64}[this.id]:Math.min(84,radius*.8),
         artKind:duo?'duo-contact':secondary&&this.scene.textures?.exists(HEAVY_WEAPON_FX.key)?'heavy':contact?'contact':kaiContact?'kai-contact':hit?WEAPONS[this.id]:'burst',
         origin:duo&&this.id==='enjo'?[.5,.625]:!contact&&hit&&this.id==='sakura'?[.875,.5]:undefined,
@@ -344,10 +348,11 @@ export class UserWeaponFx{
         extent:!contact&&hit&&this.id==='sakura'?.7:undefined,
         angle:hit&&this.id!=='enjo'?direction:0,ground:!hit,alpha:hit?(secondary?.66:.88):.38,sourceRadius:radius,
         skillContact,releaseContact:secondary,start});
-      if(drawn){
-        if(hit&&(!releaseContact||skillContact))this.contactFragments.add({x:p.x,y:p.y,angle:direction,color:COLOR_HEX[color],start,skill:skillContact});
-        this.stats[hit?'impacts':'ground']++;accepted=true;
+      const enemyCore=hit&&p.kind==='enemy'&&this.ready()&&this.scene.oldStreet?.clearLine(p,p,1)!==false;
+      if(enemyCore||drawn&&hit&&(!releaseContact||skillContact)){
+        this.contactFragments.add({x:p.x,y:p.y,angle:direction,color:COLOR_HEX[color],start,skill:skillContact,enemy:enemyCore,coreOnly:!drawn});
       }
+      if(drawn||enemyCore){this.stats[hit?'impacts':'ground']++;accepted=true;}
     }
     return accepted;
   }

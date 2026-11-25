@@ -157,3 +157,13 @@ for(const signal of ['shutdown','destroy'])test(signal+' removes listeners and p
   assert.equal(w.nodes.length,1);assert.equal(w.events.listenerCount('postupdate'),0);
   assert.deepEqual(w.log.slice(-3),['circle','gate','progress'],'disposed owner falls back to the original circle');
 });
+
+test('a crowded completion mounts the small stamp on the open shoulder, away from nearby faces',()=>{
+ const w=world(),device=w.device(1);
+ w.scene.player={x:device.x-24,y:device.y-9,active:true};w.scene.enemies={getChildren:()=>[]};
+ w.scene._facilityCompletionFx.play(device);
+ assert.equal(w.nodes.length,1);assert(w.nodes[0].x>device.x);assert(w.nodes[0].y<device.y);
+ assert.deepEqual(w.nodes[0].display,[54,54]);
+ const both=w.device(2);w.scene.enemies.getChildren=()=>[{x:both.x+27,y:both.y-13,active:true}];
+ w.scene._facilityCompletionFx.play(both);assert.equal(w.nodes.length,1);
+});

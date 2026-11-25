@@ -30,21 +30,55 @@ function drawSkillMark(g,r,performer,age,clear){
 
 // Secondary ink only. Accepted contacts, damage and clocks remain with their original owners.
 export class ContactInkFragments{
- constructor(scene, performer='sakura'){this.scene=scene;this.performer=performer;this.motionPreference=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');this.shards=SPRAYS[performer]??SPRAYS.sakura;this.rows=[];this.graphics=null;}
- add({x,y,angle,color,start,skill=false}){
+ constructor(scene, performer='sakura'){this.scene=scene;this.performer=performer;this.motionPreference=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');this.shards=SPRAYS[performer]??SPRAYS.sakura;this.rows=[];this.cancelled=[];this.graphics=null;}
+ add({x,y,angle,color,start,skill=false,enemy=false,coreOnly=false}){
   if(![x,y,angle,start].every(Number.isFinite)||!Number.isInteger(color)||color<0||color>0xffffff)return;
   // Successive contacts share the same cloud while each retains its own visible impact core.
   const crowded=this.rows.some(row=>start>=row.start && start-row.start<80 && Math.hypot(x-row.x,y-row.y)<32);
-  this.rows.push({x,y,angle,color,start,crowded,skill});if(this.rows.length>MAX_CONTACTS)this.rows.shift();
+  this.rows.push({x,y,angle,color,start,crowded,skill,enemy,coreOnly});if(this.rows.length>MAX_CONTACTS)this.rows.shift();
+ }
+ clearBullet(x,y,start){
+  if(![x,y,start].every(Number.isFinite))return;
+  this.cancelled.push({x,y,start});
+  if(this.cancelled.length>8)this.cancelled.shift();
  }
  update(now,depth=9.8){
   if(!Number.isFinite(now))return;
   this.graphics?.clear();this.rows=this.rows.filter(r=>now>=r.start&&now-r.start<LIFE);
-  if(!this.rows.length)return;
+  this.cancelled=this.cancelled.filter(r=>now>=r.start&&now-r.start<250);
+  if(!this.rows.length&&!this.cancelled.length)return;
   const g=this.graphics??=this.scene.add?.graphics?.();if(!g)return;g.setDepth(depth+.00001);
+  for(const r of this.cancelled){
+   const progress=(now-r.start)/250,radius=this.motionPreference?.matches?7:6+5*progress;
+   // Broken pairs sit exactly where a live bullet disappeared. No marker is issued for a miss.
+   for(const side of [-1,1]){
+    const tipX=r.x+side*radius;
+    for(const [width,color] of [[3.2,0x263139],[1.55,0xffec9e]]){
+     g.lineStyle(width,color,1-progress);
+     g.lineBetween(tipX-side*3,r.y-4,tipX,r.y);
+     g.lineBetween(tipX,r.y,tipX-side*3,r.y+4);
+    }
+   }
+  }
   for(const r of this.rows){
    const p=(now-r.start)/LIFE,ease=1-(1-Math.min(1,p*2.6))**3,alpha=.84*(1-p),clear=this.scene.oldStreet?.clearLine?.bind(this.scene.oldStreet);
    const quiet=this.motionPreference?.matches===true;
+   if(r.enemy && p<.74){
+    // A compact two-tone star stays on the confirmed contact while the spray travels away.
+    // Both silhouettes live inside a short cover-tested diamond; wall hits never receive it.
+    const extent=(quiet?6:10)*(1-.38*p);
+    const dx=Math.cos(r.angle)*extent,dy=Math.sin(r.angle)*extent;
+    if(!clear||[[dx,dy],[-dx,-dy],[-dy,dx],[dy,-dx]].every(([x,y])=>clear(r,{x:r.x+x,y:r.y+y},1)!==false)){
+     for(const [size,core] of [[1,0x312237],[.64,0xfff4cb]]){
+      const ex=dx*size,ey=dy*size,wing=.38;
+      g.fillStyle(core,1-p*.38).fillTriangle(r.x+ex,r.y+ey,r.x-ey*wing,r.y+ex*wing,r.x+ey*wing,r.y-ex*wing);
+      g.fillTriangle(r.x-ex,r.y-ey,r.x-ey*wing,r.y+ex*wing,r.x+ey*wing,r.y-ex*wing);
+      g.fillTriangle(r.x-ey,r.y+ex,r.x+ex*wing,r.y+ey*wing,r.x-ex*wing,r.y-ey*wing);
+      g.fillTriangle(r.x+ey,r.y-ex,r.x+ex*wing,r.y+ey*wing,r.x-ex*wing,r.y-ey*wing);
+     }
+    }
+   }
+   if(r.coreOnly)continue;
    if(r.skill&&!quiet&&!r.crowded&&p<.52)drawSkillMark(g,r,this.performer,p,clear);
    this.shards.forEach(([offset,distance,length],i)=>{
     if((quiet||r.crowded)&&i%2===1)return;
@@ -78,5 +112,5 @@ export class ContactInkFragments{
    });
   }
  }
- clear(){this.rows=[];this.graphics?.destroy();this.graphics=null;}
+ clear(){this.rows=[];this.cancelled=[];this.graphics?.destroy();this.graphics=null;}
 }

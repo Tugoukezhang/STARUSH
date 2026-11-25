@@ -62,13 +62,29 @@ export class FacilityCompletionFx{
     if(this.played.has(device))return true;
     this.played.add(device);
     if(!Number.isFinite(device.x+device.y))return true;
-    const size=this.sizeFor(device);if(size<52)return true;
+    // Give the device its own small completion stamp above the housing in a close fight.
+    // Keep the contact point of an enemy hit free, even if the device and enemy share a tile.
+    const crowd=[s.player,...(s.enemies?.getChildren?.()||[])].filter(actor=>actor&&actor.active!==false
+      &&Math.hypot(actor.x-device.x,actor.y-device.y)<75);
+    let anchor=device,limit=art.display;
+    if(crowd.length){
+      limit=54;
+      let bestGap=0;
+      for(const side of [-1,1]){
+        const candidate={x:device.x+side*27,y:device.y-32};
+        const gap=Math.min(...crowd.map(actor=>Math.hypot(actor.x-candidate.x,actor.y-19-candidate.y)));
+        if(gap>bestGap&&this.sizeFor(candidate)>=34){bestGap=gap;anchor=candidate;}
+      }
+      // A restored device already changes its own art. Keep both crowded shoulders clear of faces.
+      if(bestGap<24)return true;
+    }
+    const size=Math.min(limit,this.sizeFor(anchor));if(size<(crowd.length?34:52))return true;
     const color=[device.paintColor,s.publicPerformerRun?.member?.color]
       .find(value=>typeof value==='string'&&Object.hasOwn(COLOR_HEX,value));
     // Phaser.CANVAS (1) cannot multiply-tint images; retain a readable neutral check there.
     const tint=s.game?.renderer?.type===1||color===undefined?0xffffff:COLOR_HEX[color];
     while(this.rows.length>=art.max)this.rows.shift().node.destroy();
-    const node=s.add.image(device.x,device.y,art.key,0).setOrigin(...art.origin)
+    const node=s.add.image(anchor.x,anchor.y,art.key,0).setOrigin(...art.origin)
       .setDisplaySize(size,size).setDepth(art.depth).setTint(tint);
     this.rows.push({node,start:this.now(),frame:0});
     return true;
