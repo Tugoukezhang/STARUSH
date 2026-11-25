@@ -5,6 +5,9 @@ import os from 'node:os';
 import test from 'node:test';
 import { EventEmitter } from 'node:events';
 import { beginSceneLoading } from '../src/systems/GameLoadRecovery.mjs';
+import { resolvePublicChapterId } from '../src/utils/publicRunProgression.mjs';
+import { GROUND_ECHO_ART } from '../src/systems/GroundEchoField278.mjs';
+import { SWORD_ECHO_ART } from '../src/systems/SwordEchoField291.mjs';
 const moduleUrl=new URL('../scripts/runtime-payload.mjs',import.meta.url);
 assert.ok(fs.existsSync(moduleUrl),'release needs an explicit runtime payload boundary');
 const {RUNTIME_PAYLOAD,validateRuntimePayload,runtimePayloadPlugin}=await import(moduleUrl.href);
@@ -50,7 +53,15 @@ test('release inventory is exact, categorized, unique and covers existing runtim
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>admitted.includes(a.file)).map(a=>a.file).sort(),[...admitted].sort());
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.file.startsWith('art/portrait-base-20261101/')),[],'retired portraits must not ship');
  for(const file of ['portraits/enjo-286/source.png','portraits/kai-287/source.png',...['guidance','phase','action','danger'].map(n=>'art/battle-signals-b293/'+n+'.webp')])assert.ok(RUNTIME_PAYLOAD.some(a=>a.file===file),file);
- assert.equal(RUNTIME_PAYLOAD.length,726);assert.equal(new Set(RUNTIME_PAYLOAD.map(a=>a.file)).size,726);
+ const printroomFiles=['primary.webp','paper.webp','ink.webp','motif.webp','dressing.webp','gear.webp',
+  'records.webp','rehearsal.webp','chime-icon.png','book-icon.png'].map(name=>'art/printroom/'+name);
+ assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='printroom-surfaces').map(a=>a.file).sort(),printroomFiles.sort());
+ // The normal Vite build ships the separate home-space manifest alongside the main game.
+ const homePayload=JSON.parse(fs.readFileSync(new URL('../home-payload.json',import.meta.url),'utf8'));
+ const release=[...RUNTIME_PAYLOAD,...homePayload];
+ assert.equal(RUNTIME_PAYLOAD.length,778);
+ assert.equal(release.length,844);
+ assert.equal(new Set(release.map(a=>a.file)).size,release.length);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='mobile-lobby').map(a=>a.file),['art/mobile-lobby-20261014/home-background.webp']);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='owner-character-walk').map(a=>a.file),['art/rifle-walk-volume-20261022/walk.png']);
   assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='ui-surface-art').map(a=>a.file),['art/ui-system-20261015/primary-action-sakura-stage.webp','art/ui-system-20261015/secondary-panel-clean-sakura.webp']);
@@ -74,7 +85,7 @@ test('release inventory is exact, categorized, unique and covers existing runtim
  assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group==='public-scenes').length,7);
  assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group==='shared-audio').length,7);
  assert.ok(RUNTIME_PAYLOAD.every(a=>Object.isFrozen(a)));
- const rows=validateRuntimePayload(new URL('../public/',import.meta.url));assert.equal(rows.length,726);
+ const rows=validateRuntimePayload(new URL('../public/',import.meta.url),release);assert.equal(rows.length,844);
  assert.ok(rows.every(a=>a.bytes>0&&/^[a-f0-9]{64}$/.test(a.sha256)));
  assert.ok(!rows.some(a=>/base-gray|gray-plaza|sakura-hud-portrait|art\/desk|art\/phase15/.test(a.file)));
 });
@@ -108,11 +119,44 @@ test('missing, duplicate, unsafe paths and output inside sources fail closed',()
 test('public preload contains only current chapter, actor, UI and shared audio; hidden keeps legacy assets',()=>{
  const source=fs.readFileSync(new URL('../src/scenes/BattleScene.js',import.meta.url),'utf8');
  const method=source.slice(source.indexOf('  preload() {'),source.indexOf('\n  create()',source.indexOf('  preload() {')));
- const run=(data)=>{const calls=[];const scene={initialBattleData:data,events:new EventEmitter(),load:Object.assign(new EventEmitter(),{image:(...a)=>calls.push(['image',...a]),atlas:(...a)=>calls.push(['atlas',...a])})};
-  const fn=new Function('beginSceneLoading','getBattleBackgroundConfig','preloadP17AudioCues','preloadChapterScenePresentation','preloadActorPresentation','preloadPublicBattleUi','preloadFacilityCompletionFx','isOptionalFacilityCompletionFile','isOptionalQRebaseTrialFile','preloadP48ResultReplayDecorAssets','NOTE_ART_ATLAS_KEY','NOTE_ART_BASE_PATH',`return function() ${method.slice(method.indexOf('{'))}`)(beginSceneLoading,()=>({key:'old-background',imagePath:'old.png'}),()=>calls.push(['audio']),()=>calls.push(['chapter']),()=>calls.push(['actor']),()=>calls.push(['ui']),()=>calls.push(['facility']),()=>false,()=>false,()=>calls.push(['legacy-result']),'note','legacy');
-  fn.call(scene);scene._loadRecovery.dispose();return calls;};
- assert.deepEqual(run({stageId:1,performerId:'sakura'}),[['audio'],['chapter'],['actor'],['ui'],['facility']]);
- const hidden=run({stageId:1,practiceMode:true});assert.ok(hidden.some(a=>a[1]==='old-background'));assert.ok(hidden.some(a=>a[0]==='legacy-result'));assert.ok(!hidden.some(a=>['actor','chapter','ui','facility'].includes(a[0])));
+ function run(data){
+  const calls=[];
+  const record=type=>(...args)=>calls.push([type,...args]);
+  const scene={initialBattleData:data,events:new EventEmitter(),load:Object.assign(new EventEmitter(),{
+   image:record('image'),atlas:record('atlas'),spritesheet:record('spritesheet'),
+  })};
+  const publicAssets=kind=>(target,entry)=>{
+   assert.equal(target,scene);
+   assert.equal(entry.performerId,data.performerId);
+   calls.push([kind,entry.campaignChapterId]);
+  };
+  const deps={
+   beginSceneLoading,resolvePublicChapterId,GROUND_ECHO_ART,SWORD_ECHO_ART,
+   getBattleBackgroundConfig:()=>({key:'old-background',imagePath:'old.png'}),
+   preloadP17AudioCues:loader=>{assert.equal(loader,scene.load);calls.push(['audio']);},
+   preloadChapterScenePresentation:publicAssets('chapter'),preloadActorPresentation:publicAssets('actor'),
+   preloadPublicBattleUi:publicAssets('ui'),preloadFacilityCompletionFx:publicAssets('facility'),
+   isOptionalFacilityCompletionFile:()=>false,isOptionalQRebaseTrialFile:()=>false,
+   preloadP48ResultReplayDecorAssets:()=>calls.push(['legacy-result']),
+   NOTE_ART_ATLAS_KEY:'note',NOTE_ART_BASE_PATH:'legacy',
+  };
+  const preload=new Function(...Object.keys(deps),'return function() '+method.slice(method.indexOf('{')))(...Object.values(deps));
+  preload.call(scene);
+  scene._loadRecovery.dispose();
+  return calls;
+ }
+ const chapterAssets=[['audio'],...['chapter','actor','ui','facility'].map(kind=>[kind,'opening'])];
+ assert.deepEqual(run({stageId:1,performerId:'sakura'}),chapterAssets);
+ for(const [performerId,art] of [['kai',SWORD_ECHO_ART],['enjo',GROUND_ECHO_ART]]){
+  const sheet=['spritesheet',art.key,art.path,{frameWidth:art.frameWidth,frameHeight:art.frameHeight}];
+  assert.deepEqual(run({stageId:1,campaignChapterId:'invalid',performerId}),[sheet,...chapterAssets]);
+ }
+ const legacyAssets=[['audio'],['atlas','particles-impact','particles-impact-atlas.png','particles-impact-atlas.json'],
+  ['image','old-background','old.png'],
+  ['atlas','note','legacy/bullet-note-vfx-v5-1-gameplay-512x256.png','legacy/bullet-note-vfx-v5-1-gameplay-512x256.json'],
+  ['legacy-result']];
+ assert.deepEqual(run({stageId:1,practiceMode:true}),legacyAssets);
+ assert.deepEqual(run({stageId:2,performerId:'sakura'}),legacyAssets);
 });
 test('output junctions are rejected before the bundler can empty a source directory',()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'starush-payload-link-'));

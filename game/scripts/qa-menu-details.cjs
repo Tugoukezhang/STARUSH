@@ -49,7 +49,7 @@ async function measure(locator) {
       const r = target.getBoundingClientRect();
       const name = control.dataset.action || control.getAttribute('aria-label') || control.textContent.trim().slice(0,30) || control.id;
       const hit = document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);
-      commands.push({name,height:Math.round(r.height),width:Math.round(r.width),reachable:target.contains(hit)});
+      commands.push({name,height:r.height,width:r.width,reachable:target.contains(hit)});
     }
     return commands;
   });
@@ -83,6 +83,11 @@ async function checkButtonStates(page) {
   const all=page.locator('[data-action=bag-filter-all]');
   const owned=page.locator('[data-action=bag-filter-owned]');
   await all.click();
+  const art=await page.locator('button[data-inventory-item] .equipment-art').evaluateAll(async images=>{
+    await Promise.all(images.map(image=>image.decode()));
+    return images.map(image=>({src:image.currentSrc,visible:!image.hidden && image.offsetWidth>0 && image.naturalWidth>0}));
+  });
+  assert(art.length===7 && art.every(image=>image.visible),'七张演出配件图应可见且解码成功 '+JSON.stringify(art));
   const selected=await all.evaluate(el=>getComputedStyle(el).backgroundColor);
   const idle=await owned.evaluate(el=>getComputedStyle(el).backgroundColor);
   assert.notEqual(selected,idle,'仓库筛选需要可见的选中态');
@@ -131,7 +136,7 @@ async function runScreen(browser, screen) {
   async function check(loc, route) {
     const commands = await measure(loc);
     for (const command of commands) {
-      assert(command.reachable && Math.min(command.height,command.width)>=40,
+      assert(command.reachable && Math.min(command.height,command.width)>=44-0.01,
         screen.name+' '+route+' '+JSON.stringify(command));
     }
     rows.push({route,commands});
@@ -169,6 +174,14 @@ async function runScreen(browser, screen) {
         const dialog=page.locator('dialog[open],#player-session-dialog').last();
         await dialog.waitFor();
         await check(dialog,id+'/'+branch);
+        if (id==='tour' && branch==='[data-chapter=opening]') {
+          const rule=dialog.locator('.journey-rule-details > summary');
+          await rule.scrollIntoViewIfNeeded();
+          const wasOpen=await rule.evaluate(el=>el.parentElement.open);
+          const box=await rule.boundingBox();
+          await rule.click({position:{x:box.width/2,y:box.height-2}});
+          assert.notEqual(await rule.evaluate(el=>el.parentElement.open),wasOpen,'点击场地规则行下缘应能切换');
+        }
         const session=page.locator('#player-session-dialog');
         if (await session.count()) {
           if (await session.getAttribute('data-mode')==='story') {
