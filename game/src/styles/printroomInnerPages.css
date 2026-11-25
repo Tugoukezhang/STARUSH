@@ -802,8 +802,14 @@
     width:90px;min-width:90px;height:44px;min-height:44px;padding:4px 6px;
     border:0;border-radius:2px;background:#27363f;border-image:var(--set-monitor) 42 fill / 7px stretch;
     box-shadow:0 2px 4px #1a29363d;color:#fff9e9;
-    &[data-action=actor-switch] {--tool-icon:url('/art/hierarchy-ui-20261101/icons-switch.webp')}
+    &[data-action=actor-switch] {
+      --tool-icon:url('/art/hierarchy-ui-20261101/icons-switch.webp');
+      background:#353247;border-image-source:var(--set-strip);
+    }
     &[data-action=workshop-sheet-equipment] {--tool-icon:url('/art/hierarchy-ui-20261101/icons-equipment.webp')}
+    &[data-action=workshop-sheet-info] {
+      background:#f8edd4;color:#303c43;border-image-source:var(--set-note);
+    }
     & > .ui-glyph {display:none}
     &::before {content:'';position:static;display:block;flex:0 0 17px;width:17px;height:17px;background:var(--tool-icon) center/contain no-repeat}
     &::after {content:attr(aria-label);position:static;display:block;width:auto;height:auto;background:none;color:inherit;font:750 12px/17px system-ui,sans-serif}
