@@ -29,7 +29,7 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   const scene=view.element('div','ui-home-scene',undefined,view.root.parentNode);
   scene.setAttribute('aria-hidden','true');
   const background=view.element('img','ui-room-background',undefined,scene);
-  background.src='art/showbill/openair.webp';background.alt='';background.draggable=false;
+  background.src='art/setdesign/foyer.webp';background.alt='';background.draggable=false;
   view.homeSceneDispose=()=>scene.remove();
   const spaces=view.element('div','ui-home-spaces',undefined,main);
   view.button(spaces,'巡演后台',()=>view.showPage('backstage'),{className:'home-backstage',icon:'clapperboard',lineIcon:true,action:'home-open-backstage'});
@@ -85,7 +85,10 @@ export function renderCompactInventory(view,main,model){
   const status=view.element('p','ui-command-status',view.workshopMessage,main);status.setAttribute('role','status');
   const grid=view.element('section','ui-item-grid',undefined,main);grid.setAttribute('aria-label','演出配件');
   const next=items.find(item=>!item.owned&&item.compatible);
-  const empty=view.element('p','ui-inventory-empty',`暂无配件 · 已拥有 ${owned.length} / ${items.length}`+(next?` · 下一件 ${next.name}：${next.unlock}`:''),main);
+  const empty=view.element('p','ui-inventory-empty',undefined,main);
+  view.element('strong','', '暂无配件',empty);
+  view.element('span','',`已拥有 ${owned.length} / ${items.length}`,empty);
+  if(next)view.element('small','',`下一件 ${next.name}：${next.unlock}`,empty);
   empty.setAttribute('role','status');
   const rules={all:()=>true,owned:item=>item.owned,compatible:item=>item.compatible};
   const show=id=>{
