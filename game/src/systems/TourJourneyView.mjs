@@ -8,11 +8,6 @@ import {getChapterRewardPreview} from '../utils/publicPreparation.mjs';
 import {PUBLIC_MENU_ART} from './PublicMenuArt.mjs';
 import {getEquipmentIconArt} from './EquipmentIconArt.mjs';
 
-const ART='art/chapter-journey-20261101/';
-function lettering(view,parent,key,label){
- const image=view.element('img','journey-letter',undefined,parent);image.src=ART+'letter-'+key+'.webp';image.alt=label;image.draggable=false;return image;
-}
-
 export function mountTourJourney(view,main,model){
  main.dataset.tourView='journey';
  const box=main.querySelector('[data-holder=tour]'),sequence=main.querySelector('.tour-stop-sequence');
@@ -26,7 +21,10 @@ export function mountTourJourney(view,main,model){
   const content=getChapterContent(row.dataset.chapter);row.classList.add('journey-chapter');row.style.setProperty('--journey-row',String(model.chapters.length-content.ordinal+1));
   row.dataset.journeySide=content.ordinal%2===1?'left':'right';
   const art=view.element('img','journey-landmark',undefined,row);art.src='art/showbill/stop-'+content.id+'.webp';art.alt='';art.draggable=false;
-  row.replaceChildren(art,row.querySelector('.shell-chapter-copy'),row.querySelector('.shell-chapter-number'));
+  const copy=row.querySelector('.shell-chapter-copy');
+  row.replaceChildren(art,copy,row.querySelector('.shell-chapter-number'));
+  const statusIcon={locked:'lock',cleared:'check',available:'arrow-right'}[row.dataset.state];
+  view.icon(statusIcon,copy.querySelector('.shell-chapter-state'),true);
  }
  const current=model.chapters.find(row=>row.id===view.selection.chapterId&&row.unlocked)||model.chapter;
  const target=sequence.querySelector(`[data-chapter=${current.id}]`);
@@ -79,9 +77,9 @@ export function mountTourJourney(view,main,model){
    const session=view.scene._sessionExperience;
    session.showStory(chapter.id,phase,{complete:()=>{session.close();if(view.disposed||view.page!=='tour')return;view.journeyDetails=true;view.journeyStoryReturn=true;view.render();}});
   },{className:'journey-story',action:'journey-story-'+phase});
-  button.dataset.storyPhase=phase;button.disabled=!allowed;button.replaceChildren();lettering(view,button,phase,label);
+  button.dataset.storyPhase=phase;button.disabled=!allowed;button.replaceChildren();view.element('strong','journey-story-phase',label,button);
   view.element('small','',allowed?reading:'通关后开放',button);
-  const glyph=view.element('img','journey-story-status',undefined,button);glyph.alt='';glyph.src=allowed?'art/screen-rebuild-20261101/story.webp':'art/hierarchy-ui-20261101/widget-lock.webp';
+  view.icon(allowed?'arrow-right':'lock',button,true);
   if(allowed&&reading!=='已读')sections.story.button.setAttribute('aria-label','故事，有未读片段');
  }
  const goals=view.element('section','journey-objective-section',undefined,sections.mission.panel);
@@ -111,8 +109,8 @@ export function mountTourJourney(view,main,model){
  }
  const commands=view.element('footer','journey-commands',undefined,content);
  const goalButton=main.querySelector('[data-action=chapter-goals]');goalButton.hidden=true;
- const prepare=view.button(commands,'前往准备 · '+chapter.name,()=>{view.hierarchySheetDispose();confirm.click();},{className:'journey-prepare',action:'journey-prepare'});
- prepare.dataset.uiLetter='tour-confirm';
+ const prepare=view.button(commands,'前往准备',()=>{view.hierarchySheetDispose();confirm.click();},{className:'journey-prepare',action:'journey-prepare'});
+ prepare.setAttribute('aria-label','前往准备 · '+chapter.name);view.icon('arrow-right',prepare,true);
  const dialog=openHierarchySheet(view,{title:chapter.name,content,trigger});dialog.dataset.sheetKind='chapter';
  dialog.dataset.chapterPresentation='briefing294';
  const title=dialog.querySelector('.ui-sheet-title');title.dataset.uiLetter='chapter-'+chapter.id;

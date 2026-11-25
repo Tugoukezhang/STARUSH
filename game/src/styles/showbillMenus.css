@@ -725,3 +725,62 @@
     & .ui-sheet .ui-sheet-close::after {content:'×';width:auto;height:auto;background:none;color:ButtonText}
   }
 }
+
+/* The map uses landmark colour for playable stops. Status text and symbols
+   remain readable in grayscale, including the reason a later stop is locked. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page=tour] {
+  & .journey-route .journey-chapter[data-state=locked]::after {
+    background:#e1e4db;border:1px solid #566666;box-shadow:2px 2px 0 #72807a;
+  }
+  & .journey-route .journey-chapter[data-state=locked] .journey-landmark {
+    filter:saturate(.28) drop-shadow(1px 2px 0 #fff9e7);
+  }
+  & .journey-route .journey-chapter:disabled .shell-chapter-number {
+    color:white;background:#475b61;
+  }
+  & .journey-route .journey-chapter .shell-chapter-state {
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    max-width:100%;padding:1px 6px;border-radius:5px;
+    background:#1e3942;color:#fafaf0;font:650 12px/17px system-ui,sans-serif;
+  }
+  & .journey-route .journey-chapter[data-state=cleared] .shell-chapter-state {
+    color:#194f40;background:#d5ebda;
+  }
+  & .journey-route .journey-chapter:disabled .shell-chapter-state {
+    color:#334a50;background:transparent;
+  }
+  & .journey-route .journey-chapter .shell-chapter-state svg {
+    display:block;position:static;flex:none;order:-1;width:13px;height:13px;stroke-width:2.5;
+  }
+  & .journey-route .journey-chapter[aria-pressed=true]::after {
+    background:linear-gradient(113deg,#eff4b5 0 69%,#dcea85 69.3%);border-color:#173741;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-detail-tabs {
+    gap:3px;padding:3px;border-radius:9px;background:#26373c;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-detail-tab {
+    border-radius:6px;color:#e3e9db;background:none;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-detail-tab[aria-selected=true] {
+    color:#183939;background:#d2e9d8;box-shadow:inset 0 -3px #71b4a1;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-detail-tab[aria-selected=true] .journey-unread {color:#485b2b}
+  & .ui-sheet[data-sheet-kind=chapter] .journey-story {
+    grid-template-columns:minmax(3em,1fr) auto 18px;gap:8px;padding-inline:12px;
+    border:1px solid #62867c;border-radius:8px 3px;background:#254341;color:#f8fbef;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-story-phase {text-align:left;font:700 15px/21px system-ui,sans-serif}
+  & .ui-sheet[data-sheet-kind=chapter] .journey-story svg {position:static;display:block;width:17px;height:17px;stroke-width:2.3}
+  & .ui-sheet[data-sheet-kind=chapter] .journey-story small {color:#d8ebe1}
+  & .ui-sheet[data-sheet-kind=chapter] .journey-story:disabled {
+    background:#222f33;border:1px dashed #506567;filter:none;opacity:1;color:#c0ccc7;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-story:disabled small {color:#c0ccc7}
+  & .ui-sheet[data-sheet-kind=chapter] .journey-commands .journey-prepare {
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    background:var(--pass-lime);color:var(--pass-ink);border:2px solid #172f37;
+    border-radius:12px 4px;box-shadow:inset 0 2px #f8ffd6,0 2px #111c20;font:750 17px/22px system-ui,sans-serif;
+  }
+  & .ui-sheet[data-sheet-kind=chapter] .journey-prepare svg {display:block;position:static;width:19px;height:19px;stroke-width:2.6}
+  & .ui-sheet[data-sheet-kind=chapter] :is(.journey-story,.journey-prepare):enabled:active {filter:brightness(.9)}
+}
