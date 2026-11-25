@@ -166,6 +166,9 @@ export class PlayerSessionExperience {
       }
       this.root.addEventListener('keydown', event => {
         event.stopPropagation();
+        if(event.key==='Escape' && this.root.dataset.mode==='story-journal'){
+          event.preventDefault();this.root.querySelector('[data-action=story-close]')?.click();return;
+        }
         if(event.key==='Escape'&&['settings','profile-backup'].includes(this.root.dataset.mode)){
           event.preventDefault();this.root.querySelector('.session-footer')?.querySelector('.session-primary')?.click();return;
         }

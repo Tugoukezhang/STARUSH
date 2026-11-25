@@ -615,3 +615,10 @@
   & .pg-goal-status p {color:#44565a;font-size:13px;line-height:19px}
   & .pg-goal-status .challenge-selection {color:#203a40}
 }
+
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-core-journey][data-page] dialog.ui-sheet :is(.tour-dossier,.challenge-guide) > summary {
+  box-sizing:border-box;
+  min-height:44px;
+  align-content:center;
+  cursor:pointer;
+}

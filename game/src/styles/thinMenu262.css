@@ -55,7 +55,7 @@
  & .rehearsal-focus-options .arrangement-option{flex:1;padding:6px 8px;min-height:36px;border:0;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;box-shadow:none;color:#e3e8dc;font-size:12px}
  & .rehearsal-focus-options .arrangement-option[aria-pressed=true]{background-image:url('/art/thin-ui-20261101/selected.webp')}
  & :is(.challenge-guide,.rehearsal-build){padding:0;margin:10px 0;background:none;border:0;box-shadow:none;color:#dce5d9}
- & :is(.challenge-guide,.rehearsal-build)>summary{padding:10px 12px;min-height:38px;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;border:0;color:#e7e9de;font-size:12px;line-height:18px}
+ & :is(.challenge-guide,.rehearsal-build)>summary{padding:10px 12px;min-height:44px;background:transparent url('/art/thin-ui-20261101/row.webp') center/100% 100% no-repeat;border:0;color:#e7e9de;font-size:12px;line-height:18px}
  & :is(.challenge-guide,.rehearsal-build) .system-context{font-size:12px;line-height:20px;color:#c7d6cf}
  & .ui-sheet .challenge-brief{margin:0;padding:0;border:0;background:none;color:#f4eadf}
  & .ui-sheet .challenge-brief>div{display:grid;grid-template-columns:60px minmax(0,1fr);gap:10px;padding:10px 0;border:0;background:none;font-size:12px;line-height:20px}

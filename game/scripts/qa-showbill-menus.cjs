@@ -115,6 +115,27 @@ async function inspectNavigation(page, output) {
   assert.equal(await page.locator('dialog[open]').count(),0);
 }
 
+async function inspectDisclosureTargets(page) {
+  for (const [route, commands, selector] of [
+    ['tour', ['tour-reference','tour-sheet-route'], '.tour-dossier'],
+    ['rehearsal', ['challenge-rules'], '.challenge-guide'],
+  ]) {
+    await page.evaluate(id => window.qaMenu().showPage(id), route);
+    for (const command of commands) await page.locator('[data-action="'+command+'"]:visible').first().tap();
+    const details = page.locator('dialog[open] '+selector);
+    const summary = details.locator(':scope > summary');
+    await summary.scrollIntoViewIfNeeded();
+    const box = await summary.boundingBox();
+    assert(box.height >= 44, route+' disclosure hit height '+box.height);
+    await page.touchscreen.tap(box.x+box.width-12, box.y+box.height-4);
+    assert(await details.evaluate(node => node.open));
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await details.evaluate(node => node.open), false);
+    await page.keyboard.press('Escape');
+  }
+}
+
 async function inspectRotation(page) {
   await page.evaluate(()=>window.qaMenu().showPage('roster'));
   await page.locator('[data-action=actor-switch]').tap();
@@ -176,7 +197,7 @@ async function main() {
         await page.locator('[data-action=confirm-goal]').tap();
         await page.waitForSelector('#public-shell[data-page=preflight]');
       }
-      if(width===390) { await inspectRotation(page); await inspectNavigation(page,output); }
+      if(width===390) { await inspectDisclosureTargets(page); await inspectRotation(page); await inspectNavigation(page,output); }
       assert.deepEqual(errors,[]);
       console.log(width+'×'+height+' · '+routes.length+' pages · '+commands+' control centres');
       await page.close();

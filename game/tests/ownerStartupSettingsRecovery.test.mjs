@@ -73,3 +73,17 @@ test('Escape closes settings and returns backup to settings, without releasing t
 test('Escape cannot bypass mandatory first-entry briefing',()=>{
  const {e,h,ui}=settings();ui.close();ui.showBriefing(true);assert.equal(ui.root.dataset.mode,'first-briefing');ui.root.dispatchEvent({type:'keydown',key:'Escape'});assert.equal(ui.root.dataset.mode,'first-briefing');assert.equal(ui.lease.active,true);h.shutdown();
 });
+
+test('Escape follows the journal return button and keeps a parent settings dialog open',()=>{
+ const {h,ui}=settings();
+ ui.showStoryJournal({fromSettings:true});
+ assert.equal(ui.root.dataset.mode,'story-journal');
+ ui.root.dispatchEvent({type:'keydown',key:'Escape'});
+ assert.equal(ui.root.dataset.mode,'settings');
+ assert.equal(ui.lease.active,true);
+ ui.close();
+ ui.showStoryJournal();
+ ui.root.dispatchEvent({type:'keydown',key:'Escape'});
+ assert.equal(ui.root,null);
+ h.shutdown();
+});
