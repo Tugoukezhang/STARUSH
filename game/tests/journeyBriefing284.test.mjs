@@ -2,8 +2,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {existsSync,readFileSync} from 'node:fs';
 import {loadScenes,plain} from './helpers/publicShellHarness.mjs';
 
-const CHAPTERS=['opening','neon','encore','raincheck'],ACTORS=['sakura','kai','enjo'];
-const SCENE_ART={opening:'art/chapter-journey-20261101/opening.webp',neon:'art/chapter-journey-20261101/neon.webp',encore:'art/chapter-journey-20261101/encore.webp',raincheck:'art/rooftop-20261103/landmark.webp'};
+const CHAPTERS=['opening','neon','encore','raincheck','homecoming'],ACTORS=['sakura','kai','enjo'];
+const SCENE_ART={opening:'art/chapter-journey-20261101/opening.webp',neon:'art/chapter-journey-20261101/neon.webp',encore:'art/chapter-journey-20261101/encore.webp',raincheck:'art/rooftop-20261103/landmark.webp',homecoming:'art/chapter-journey-20261101/encore.webp'};
 const source=path=>readFileSync(new URL(path,import.meta.url),'utf8');
 
 // Test fixture unlocks prerequisite chapters through the harness seed; this is not earned progression.
@@ -31,7 +31,7 @@ function assertSelected(ui,index){
 }
 function press(target,key){const event={type:'keydown',key,bubbles:true};target.dispatchEvent(event);return event;}
 
-test('all 4 chapters and 3 actors open one scene, one visible step and an unlocked start',()=>{
+test('all registered chapters and all 3 actors open one scene, one visible step and an unlocked start',()=>{
  for(const chapter of CHAPTERS)for(const actor of ACTORS){
   const {s,ui,guide}=setup(chapter,actor);ui.showBriefing(true);
   const label=chapter+'/'+actor,root=ui.root;
@@ -146,7 +146,7 @@ test('terminal copy is 本轮巡演 and no chapter promises a three-stop tour',(
  for(const chapter of CHAPTERS){
   const {ui}=setup(chapter);ui.showBriefing(true);
   const note=ui.root.querySelector('.session-save-note').textContent;
-  assert.match(note,chapter==='raincheck'?/通关后完成本轮巡演/:/通关后解锁下一站/,chapter);
+  assert.match(note,chapter==='homecoming'?/通关后完成本轮巡演/:/通关后解锁下一站/,chapter);
   assert.doesNotMatch(ui.root.textContent,/三站/,chapter);ui.destroy();
  }
 });

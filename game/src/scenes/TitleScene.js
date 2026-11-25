@@ -11,7 +11,7 @@ import { readP15Stage1ClearCount } from '../utils/p15BridgeState.mjs';
 import { readP47Stage1ReplayObjectiveIndex } from '../utils/p41LightObjectives.mjs';
 import { getP43ResultPreviewFromQuery, withP43ResultPreviewBattleData } from '../utils/p43ResultPreview.mjs';
 import { loadPublicProfile, getPublicCampaignProgress, resolvePublicChapterId,selectPublicPerformer } from '../utils/publicRunProgression.mjs';
-import { getUiPerformer as getPublicPerformer } from '../utils/userCast.mjs';
+import { getUiPerformer as getPublicPerformer, isUserCastEnabled } from '../utils/userCast.mjs';
 import { getPublicChapter } from '../utils/publicCampaign.mjs';
 import { getPreparationSnapshot } from '../utils/publicPreparation.mjs';
 import { reuseChapterScenePreview } from '../systems/ChapterScenePresentation.mjs';
@@ -52,6 +52,7 @@ export class TitleScene extends Phaser.Scene {
         const profile=loadPublicProfile(),visible=getPublicPerformer(profile.selectedId);
         if(visible.id!==profile.selectedId)selectPublicPerformer(visible.id);
         const data=this._buildRecommendedBattleData(suppressDebugAutoStart ? new URLSearchParams() : undefined);
+        if (this._publicShell.page==='preflight' && isUserCastEnabled()) data.preflightChapterId=data.campaignChapterId;
         reuseChapterScenePreview(this,data,this._publicShell?.root);
         this.scene.start('BattleScene',data);
       },

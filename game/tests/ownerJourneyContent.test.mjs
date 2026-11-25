@@ -13,16 +13,28 @@ test('entry is concise, optional intro returns to the same borrowed pause and do
  assert.equal(ui.root.querySelector('.story-passage'),null,'Full story must not precede the first goal');
  const story=ui.root.querySelector('[data-action=entry-story]');assert(story,'Missing optional story command');
  assert.equal(ui.root.querySelectorAll('[data-journey-step]').length,3);assert.equal(s._battlePaused,true);
- const before=e.storage.getItem('starush.public-profile');story.click();assert(ui.root.querySelector('.story-passage'));assert.equal(s.input.enabled,false);
+ const before=e.storage.getItem('starush.public-profile');story.click();assert(ui.root.querySelector('.performance-story-line').textContent);assert.equal(s.input.enabled,false);
  ui.root.querySelector('[data-action=story-close]').click();assert.equal(ui.root.dataset.mode,'first-briefing');assert.equal(s._battlePaused,true);
  assert.deepEqual(plain(e.loadRuntime('utils/playerPreferences.mjs').playerPreferences.read().seenChapters),[]);
  assert.equal(e.storage.getItem('starush.public-profile'),before);
  ui.root.querySelector('[data-action=entry-ready]').click();assert.equal(ui.root.dataset.performanceStory,'true');assert.equal(s._battlePaused,true);ui.root.querySelector('[data-action=story-close]').click();assert.equal(ui.root,null);assert.equal(s._battlePaused,false);
  assert.deepEqual(plain(e.loadRuntime('utils/playerPreferences.mjs').playerPreferences.read().seenChapters),['opening']);ui.destroy();
 });
+test('a prepared chapter enters play without marking unread story as read; rules and story stay accessible',()=>{
+ const {e,s,ui}=setup();
+ s.battleData.preflightChapterId='opening';
+ ui.showFirstBriefing();
+ assert.equal(ui.isBlocking(),false);
+ assert.deepEqual(plain(e.loadRuntime('utils/playerPreferences.mjs').playerPreferences.read().seenStoryIntros),[]);
+ ui.showSettings();ui.root.querySelector('[data-action=settings-rules]').click();
+ assert.equal(ui.root.querySelectorAll('[data-journey-step]').length,3);
+ ui.root.querySelector('[data-action=entry-story]').click();assert(ui.root.querySelector('.performance-story-line').textContent);
+ ui.root.querySelector('[data-action=story-close]').click();assert.equal(ui.root.dataset.mode,'rules');
+ ui.destroy();
+});
 test('guides cover all current chapter/member pairs with strict input and actual grammar',()=>{
  const {e}=setup(),api=e.loadRuntime('utils/publicJourneyContent.mjs');assert.equal(typeof api.getPublicJourneyGuide,'function');
- for(const chapter of ['opening','neon','encore'])for(const id of ['sakura','kai','enjo']){
+ for(const {id:chapter} of e.loadRuntime('utils/publicCampaign.mjs').PUBLIC_CHAPTERS)for(const id of ['sakura','kai','enjo']){
   const g=api.getPublicJourneyGuide(chapter,id);assert.equal(g.chapterId,chapter);assert.equal(g.steps.length,3);assert.equal(g.member.id,id);assert(g.goal&&g.retry);assert(g.action.includes(g.member.actionName));
  }
  assert.equal(api.getPublicJourneyGuide('unknown','sakura'),null);assert.equal(api.getPublicJourneyGuide('opening','venus'),null);
@@ -31,7 +43,7 @@ test('guides cover all current chapter/member pairs with strict input and actual
 });
 test('journal shows chapter gates without leaking locked dialogue; directory preserves pause',()=>{
  const {e,s,ui}=setup('opening');ui.showStoryJournal();
- assert.equal(ui.root.querySelectorAll('[data-journal-chapter]').length,4);
+ assert.equal(ui.root.querySelectorAll('[data-journal-chapter]').length,e.loadRuntime('utils/publicCampaign.mjs').PUBLIC_CHAPTERS.length);
  assert.equal(ui.root.querySelectorAll('[data-story-id]').length,1);assert.match(ui.root.textContent,/尚未开放|通关后/);
  assert.doesNotMatch(ui.root.textContent,/三张节目单被风吹/);
  ui.root.querySelector('[data-story-id="opening:intro"]').click();assert(ui.root.querySelector('[data-action=story-directory]'));

@@ -175,6 +175,19 @@ export function renderCompactPreflight(view,main,model,{start}){
   const holder=view.element('div','ui-sheet-holder',undefined,main);holder.hidden=true;
   // One summary layer: who/saved loadout, three config tools, then stateful second-level entries.
   const brief=view.element('section','ui-preflight-brief',undefined,main);brief.setAttribute('aria-label','本场出战配置');
+  const mission=view.element('section','preflight-mission',undefined,brief);
+  const direction=view.element('div','preflight-mission-direction',undefined,mission);
+  const firstAction={
+    opening:'移动并涂亮南口音箱',neon:'先接通试听店与咖啡亭的门灯',
+    encore:'涂满甲板双灯，靠近各校准 1 秒',raincheck:'先接通两侧支路，再到中央校音',
+    homecoming:'从码头集合灯沿线接通'
+  };
+  view.element('strong','',firstAction[model.chapter.id],direction);
+  view.element('small','','通关 · 10 处设施、4 站串场与压轴',direction);
+  view.button(mission,'看开场故事',()=>{
+    const session=view.scene._sessionExperience;
+    session?.showStory(model.chapter.id,'intro',{complete:()=>session.close()});
+  },{className:'preflight-read-story',action:'preflight-story',icon:'book-open'});
   const head=view.element('header','ui-preflight-brief-head',undefined,brief);
   const title=view.element('h2','ui-preflight-brief-title','本场配置',head);title.dataset.flightLetter='loadout';
   const tools=view.element('nav','ui-preflight-tools',undefined,head);tools.setAttribute('aria-label','演出配置');

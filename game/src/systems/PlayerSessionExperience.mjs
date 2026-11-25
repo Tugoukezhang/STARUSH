@@ -130,6 +130,9 @@ export class PlayerSessionExperience {
     if(this.scene._isFinaleTrialRound?.())return;
     if (this.scene._isPublicStage1Round?.() !== true) return;
     const chapter=this.chapterId(),prefs=playerPreferences.read();
+    // The player already had the directions and optional story in the preflight screen.
+    // A resumed show must also return to the saved field without replaying the introduction.
+    if (isUserCastEnabled() && (this.scene.battleData?.preflightChapterId===chapter || this.scene.battleData?.publicBattleResume)) return;
     if (!prefs.seenChapters.includes(chapter)) this.showBriefing(true);
     else if(isUserCastEnabled()&&!prefs.seenStoryIntros.includes(chapter))this.showStory(chapter,'intro',{complete:()=>this.completeChapterIntro(chapter)});
   }

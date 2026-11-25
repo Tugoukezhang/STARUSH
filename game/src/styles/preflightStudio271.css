@@ -366,3 +366,17 @@
     }
   }
 }
+
+#public-shell[data-page=preflight] .preflight-mission {
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:4px 0 6px; border-bottom:1px solid #a99d87; color:#232b34;
+}
+#public-shell[data-page=preflight] .preflight-mission-direction {display:grid;gap:2px;min-width:0}
+#public-shell[data-page=preflight] .preflight-mission-direction strong {font:800 14px/1.28 system-ui,sans-serif}
+#public-shell[data-page=preflight] .preflight-mission-direction small {font:600 11px/1.35 system-ui,sans-serif;color:#3e4949}
+#public-shell[data-page=preflight] button.preflight-read-story {
+  flex:none;display:inline-flex;align-items:center;justify-content:center;gap:4px;
+  min-height:44px;padding:3px 7px;border:1px solid #928570;border-radius:3px;
+  color:#263740;background:#fff7df;font:700 12px/1.25 system-ui,sans-serif;
+}
+#public-shell[data-page=preflight] button.preflight-read-story svg {width:16px;height:16px}
