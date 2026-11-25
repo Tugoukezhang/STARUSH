@@ -1,0 +1,194 @@
+/* A single printed heading, a quiet reading surface, and one accent for the action. */
+#game-container :is(#public-shell[data-edition=showbill] dialog.ui-sheet, #player-session-dialog[data-mode]) {
+  --sheet-ivory:#fff8e8;
+  --sheet-ink:#24233d;
+  --sheet-muted:#585465;
+  --sheet-coral:#ff755f;
+  --sheet-lime:#e5f65c;
+  --sheet-edge:#bab3a6;
+}
+
+/* Match the active menu generation so archived layouts keep their own typography. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] dialog.ui-sheet[data-sheet-kind] {
+  padding:0;
+  color:var(--sheet-ink);
+  background:var(--sheet-ivory);
+  border:2px solid var(--sheet-ink);
+  border-image:none;
+  border-radius:3px 15px 3px 3px;
+  box-shadow:4px 5px 0 var(--sheet-ink);
+  &::backdrop {background:rgb(24 22 39 / 62%)}
+  & .ui-sheet-header {
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    min-height:54px;height:auto;margin:0;padding:4px 6px 4px 14px;
+    background:var(--sheet-ink);border:0;border-bottom:4px solid var(--sheet-coral);
+  }
+  & .ui-sheet-title {
+    display:block;min-width:0;width:auto;height:auto;margin:0;padding:0;
+    background:none;border:0;color:var(--sheet-ivory);text-align:left;letter-spacing:.02em;
+    text-shadow:none;font:850 20px/1.25 system-ui,sans-serif!important;
+  }
+  & .ui-sheet-title :is(img,.ui-letter-art) {display:none!important}
+  & .ui-sheet-close {
+    flex:none;width:44px;height:44px;min-width:44px;min-height:44px;
+    background:#36334c;border:1px solid #a6a0ab;border-radius:2px 8px 2px 2px;box-shadow:none;
+  }
+  & .ui-sheet-body {
+    min-width:0;padding:12px;color:var(--sheet-ink);background:var(--sheet-ivory);
+    scrollbar-color:#aaa1ac var(--sheet-ivory);
+  }
+  & .ui-sheet-body :is(.system-context,.challenge-guide,.arrangement-guide,.tour-dossier,.tour-chapter-plan,
+    .shell-performance-record,.shell-tour-reward,.tour-coverage,.archive-history,.library-guide,
+    .shell-action-detail,.roster-action-copy,.shell-member-dossier,.inv-detail,.tour-plan-ticket,
+    .sec-records-info,.ui-tour-detail,.roster-reference-list,.tour-reference-list) {
+    color:var(--sheet-ink);background:transparent;border-image:none;box-shadow:none;
+  }
+  & .ui-sheet-body :is(h3,h4,p,dt,dd,li,caption,td,th,summary) {color:var(--sheet-ink);text-shadow:none}
+  & .ui-sheet-body :is(p,li,dt,dd,caption,td,th,summary) {font-size:14px;line-height:1.5}
+  & .ui-sheet-body summary {padding-inline:8px;background:#f1ebdb;border:0;border-left:3px solid #777084}
+  & .ui-sheet-body details[open]>summary {border-left-color:var(--sheet-coral);font-weight:750}
+  & .ui-sheet-body :is(.tour-reference-list,.roster-reference-list) button {
+    min-height:48px;background:var(--sheet-ivory);border:0;border-bottom:1px solid var(--sheet-edge);box-shadow:none;
+  }
+  & .ui-sheet-body :is(.tour-reference-list,.roster-reference-list) button::after {color:var(--sheet-ink)}
+  & :is(button,summary):focus-visible {outline:3px solid #6f4fce;outline-offset:-3px}
+
+  &[data-sheet-kind=actors] .ui-actor-grid {display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:0}
+  &[data-sheet-kind=actors] .ui-actor-grid button {
+    display:flex;flex-flow:row nowrap;align-items:center;justify-content:flex-start;gap:12px;position:relative;
+    height:auto;min-height:57px;width:100%;padding:4px 12px 4px 5px;
+    border:1px solid var(--sheet-edge);border-radius:2px;background:#f4efdf;box-shadow:none;color:var(--sheet-ink);
+  }
+  &[data-sheet-kind=actors] .ui-actor-grid button[aria-pressed=true] {
+    background:var(--sheet-ink);border-color:var(--sheet-ink);box-shadow:inset 4px 0 var(--sheet-lime);color:var(--sheet-ivory);
+  }
+  &[data-sheet-kind=actors] .ui-actor-grid button > img:first-child {position:static;width:47px;height:47px;object-fit:contain;flex:none}
+  &[data-sheet-kind=actors] .ui-actor-name {position:static!important;order:1;color:inherit!important;font:750 16px/22px system-ui,sans-serif!important}
+  &[data-sheet-kind=actors] .member-option-state {position:static;order:2;margin-left:auto;color:var(--sheet-lime)}
+  &[data-sheet-kind=actors] .ui-actor-grid button > :is(.roster-headshot,.ui-actor-name) {transform:none;margin:0}
+  & .member-sheet-name {color:var(--sheet-ivory)!important}
+  & .member-sheet-identity {background:var(--sheet-ink);color:var(--sheet-ivory);border-left:4px solid var(--sheet-coral);border-radius:3px;padding-inline:8px}
+  & .inv-detail-head {background:#eee8dc;border-left:4px solid var(--sheet-coral);padding:7px}
+  & .inv-effect-row {border-bottom:1px solid var(--sheet-edge);background:none}
+  & .inv-equip:disabled {border:1px dashed #8a8290;border-radius:2px;background:#e7e2d7;color:var(--sheet-muted);opacity:1}
+  & .inv-detail :is(.shell-primary,.ui-primary-command):enabled {background:var(--sheet-lime);color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:2px}
+  & .inv-detail :is(.inv-equip,.shell-primary) > * {display:none!important}
+  & .inv-detail :is(.inv-equip,.shell-primary)::after {
+    content:attr(aria-label);position:static;display:block;width:auto;height:auto;
+    background:none;color:inherit;font:750 15px/22px system-ui,sans-serif;
+  }
+  & .inv-effect-row {background:#e8e3d8}
+  & .inv-effects {color:var(--sheet-ink);background:#e8e3d8}
+  & .inv-source > summary {display:flex;align-items:center;justify-content:space-between;min-height:44px}
+  & .inv-source > summary img {display:none!important}
+  & .inv-source > summary .inv-command-label {
+    display:block!important;position:static!important;width:auto!important;height:auto!important;
+    clip-path:none!important;overflow:visible;color:var(--sheet-ink);font:700 14px/21px system-ui,sans-serif;
+  }
+  & .inv-source > summary::after {content:'⌄';font:700 18px/20px system-ui,sans-serif}
+  & .inv-source[open] > summary::after {transform:rotate(180deg)}
+  & .ui-sheet-body :is(.workshop-inventory [data-equipment],.growth-equipment-pool .arrangement-option,
+    .pg-stop,.pg-goal) {
+    background:#f1ebde;color:var(--sheet-ink);border-color:#b4a99d;opacity:1;
+  }
+  & .ui-sheet-body :is(.workshop-inventory [data-equipment],.growth-equipment-pool .arrangement-option,
+    .pg-stop,.pg-goal) :is(strong,span,b,small) {color:var(--sheet-ink)}
+  & .ui-sheet-body :is(.growth-equipment-pool [aria-pressed=true],.pg-stop[aria-current],
+    .pg-goal[data-availability=available]) {border-inline-start:4px solid #cb5143;background:#e9e2c8}
+  & .ui-sheet-body .ps-sheet-count {background:var(--sheet-ink);color:var(--sheet-ivory);padding:1px 5px}
+  & .ui-sheet-body :is(.pg-stop-index,.ps-goal-availability) {background:transparent}
+  & .ui-sheet-body .ui-actor-grid .member-mark {background:#39344d;color:var(--sheet-ivory)}
+  & .ui-sheet-body .journey-detail {color:var(--sheet-ink);background:var(--sheet-ivory)}
+  & .journey-detail .journey-detail-tabs {background:#e8e1d2;border:1px solid var(--sheet-edge);border-radius:3px}
+  & .journey-detail .journey-detail-tab {color:var(--sheet-muted);border-radius:2px}
+  & .journey-detail .journey-detail-tab[aria-selected=true] {background:var(--sheet-ink);color:var(--sheet-ivory);box-shadow:inset 0 -3px var(--sheet-lime)}
+  & .journey-reward-item :is(strong,small,span) {color:var(--sheet-ink)}
+  & .journey-detail-tab:not([aria-selected=true]) .journey-unread {color:#75412f}
+  & .journey-objectives li::marker {color:#803d44;font-weight:800}
+  & .journey-detail-tab[aria-selected=true] .journey-unread {color:var(--sheet-lime)}
+  & .journey-detail :is(.journey-detail-panel,.journey-objective-section,.journey-reward-strip,.journey-commands) {background:var(--sheet-ivory);color:var(--sheet-ink)}
+  & .journey-detail .journey-reward-item {background:#eae5d7;color:var(--sheet-ink);border:1px solid var(--sheet-edge)}
+  & .journey-detail .journey-commands .journey-prepare {
+    background:var(--sheet-lime) var(--print-primary-face, none) center/100% 100% no-repeat;color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:2px;box-shadow:inset 0 -2px #b2bb46;
+  }
+}
+
+#game-container #player-session-dialog[data-mode][data-reading-family]:is([data-mode=settings],[data-mode=profile-backup],[data-mode=story-journal],[data-mode=interruption]) {
+  background:rgb(31 29 47 / 68%);
+  & .session-panel {padding:0;background:var(--sheet-ivory);color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:3px 15px 3px 3px;box-shadow:4px 5px 0 var(--sheet-ink)}
+  & .session-header {
+    min-height:58px;padding:14px 64px 12px 16px;
+    background:var(--sheet-ink);border:0;border-bottom:4px solid var(--sheet-coral);
+  }
+  & .session-header h2 {color:var(--sheet-ivory);background:none;border:0;margin:0;padding:0;font:850 21px/28px system-ui,sans-serif!important;text-align:left;text-shadow:none}
+  & .session-header h2 img {display:none}
+  & .session-content {background:var(--sheet-ivory);color:var(--sheet-ink);padding:10px 16px}
+  & .session-content :is(p,h3,strong,label,output) {color:var(--sheet-ink)}
+  & .session-settings-group {border-bottom:1px solid var(--sheet-edge);padding:0 0 8px}
+  & .session-setting {border-color:var(--sheet-edge)}
+  & .session-setting output {font-weight:760}
+  & .session-setting input {accent-color:#6350a3}
+  & .session-footer {background:#eee8da;border:0;border-top:1px solid var(--sheet-edge)}
+  & .session-footer .session-primary, & .session-content button[data-action=backup-restore] {
+    color:var(--sheet-ink);background:var(--sheet-lime);border:2px solid var(--sheet-ink);border-radius:2px;box-shadow:none;
+  }
+  & .session-primary[data-console-return=close] {background:var(--sheet-ivory);border-radius:2px 7px 2px 2px}
+  & .profile-backup :is(button[data-action=backup-export],.profile-backup-file) {color:var(--sheet-ink);border:1px solid #797187;background:#ede7d8;border-radius:3px;box-shadow:none}
+  & .profile-backup [data-console-letter], & .session-footer [data-console-letter] {
+    font:720 15px/22px system-ui,sans-serif!important;color:var(--sheet-ink);
+  }
+  & .profile-backup [data-console-letter] > img, & .session-footer [data-console-letter] > img {display:none}
+  & .profile-backup .profile-backup-file {padding:8px 10px}
+  & .profile-backup button:disabled {color:var(--sheet-muted);background:#e7e2d7;border:1px dashed #8a8290;opacity:1}
+  & .session-footer .session-primary:not([data-console-return]) {background-image:var(--print-primary-face,none);background-size:100% 100%}
+  & .profile-backup input[type=file] {color:var(--sheet-ink)}
+  & .profile-backup input[type=file]::file-selector-button {
+    min-height:44px;padding:6px 12px;background:var(--sheet-ivory);color:var(--sheet-ink);
+    border:1px solid #797187;border-radius:2px;font-weight:700;
+  }
+  & .journal-chapter {background:transparent;border:0;border-bottom:1px solid var(--sheet-edge)}
+  & .journal-chapter h3 {font:780 17px/25px system-ui,sans-serif}
+  & .journal-chapter .session-secondary {background:#f2eddf;color:var(--sheet-ink);border:1px solid #aaa18e;border-radius:2px}
+  & :is(button,input):focus-visible {outline:3px solid #7656bc;outline-offset:-3px}
+}
+
+#game-container #player-session-dialog[data-mode=story][data-performance-story=true][data-reading=true] {
+  & .performance-story-dialogue {padding:13px 16px 10px;background:var(--sheet-ivory);border:2px solid var(--sheet-ink);border-top:5px solid var(--sheet-coral);color:var(--sheet-ink)}
+  & .performance-story-speaker {display:inline-block;color:var(--sheet-ink);font-weight:850}
+  & .performance-story-line {color:var(--sheet-ink);text-shadow:none;font-weight:550}
+  & .performance-story-count {top:14px;color:var(--sheet-muted)}
+  & .session-footer {background:var(--sheet-ink)}
+  & .session-footer .session-primary {background:var(--sheet-lime);border:2px solid var(--sheet-lime);border-radius:2px;color:var(--sheet-ink);padding-inline:14px;font-weight:780}
+  & .story-toolbar .story-icon {color:var(--sheet-ivory);background:var(--sheet-ink);border:1px solid var(--sheet-ivory);border-radius:2px}
+  & .story-toolbar .story-icon[aria-pressed=true] {color:var(--sheet-lime);border-color:var(--sheet-lime)}
+  & .story-history {background:var(--sheet-ink);color:var(--sheet-ivory)}
+  & .story-history-row strong {color:var(--sheet-lime)}
+}
+
+/* The pre-battle briefing keeps its venue card and the chapter-specific instructions. */
+#game-container #player-session-dialog[data-mode]:is([data-mode=first-briefing],[data-mode=rules])[data-reading-family] {
+  & .session-panel {border:2px solid var(--sheet-ink);border-radius:3px 14px 3px 3px;background:var(--sheet-ivory)}
+  & .session-header {background:var(--sheet-ink);border-bottom:4px solid var(--sheet-coral)}
+  & .session-header h2 {color:var(--sheet-ivory);text-shadow:none}
+  & .session-content {color:var(--sheet-ink);background:var(--sheet-ivory)}
+  & .session-content .session-goal {color:var(--sheet-ink);padding-top:6px}
+  & .session-content .journey-control-hint {color:var(--sheet-muted)}
+  & .session-content .journey-rules {color:var(--sheet-ink);background:#f0eada}
+  & .journey-rules :is(summary,p,.session-note,.session-member) {color:var(--sheet-ink)}
+  & .journey-ticket {
+    height:auto;grid-template-rows:auto auto;background:#eee8d8;border:1px solid var(--sheet-ink);
+    border-radius:2px 10px 2px 2px;overflow:hidden;
+  }
+  & .journey-step-tabs {align-self:stretch;background:var(--sheet-ink);padding:3px;gap:3px}
+  & .session-content .journey-step-tab {color:var(--sheet-ivory);padding:6px 1px;font-size:14px}
+  & .session-content .journey-step-tab[aria-selected=true] {
+    border-color:var(--sheet-lime);color:var(--sheet-ink);background:var(--sheet-lime);
+  }
+  & .session-journey-steps {padding:10px 12px}
+  & .session-journey-steps :is(h3,p,.journey-step-count) {color:var(--sheet-ink)}
+  & .session-footer {background:var(--sheet-ink)}
+  & .session-footer .session-primary {
+    color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:2px;
+    background:var(--sheet-lime) var(--print-primary-face,none) center/100% 100% no-repeat;
+  }
+}
