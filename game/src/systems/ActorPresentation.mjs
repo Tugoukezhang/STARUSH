@@ -16,6 +16,7 @@ import {ENJO_ART,hasEnjoLayered,preloadEnjoLayered,EnjoLayeredPresentation} from
 import {PerformerShotFeedback} from './PerformerShotFeedback.mjs';
 import {drawEnemyStateCue} from './EnemyAttackPresentation.mjs';
 import {canEnemyBePublicStage1PaintTarget} from './PublicStage1EnemyRoles.mjs';
+import {CREW_POSES,crewPoseFrame,preloadPerformancePoses} from './PerformancePoseBank.mjs';
 import {createEnemyMotion,advanceEnemyMotion,notifyEnemyMotionRelease} from './EnemyEnsembleMotion.mjs';
 import {enemyGroundPose,performerGroundFeet,WorldGroundContacts} from './WorldGroundingPresentation.mjs';
 import {qRebaseTrialRequested,preloadQRebaseTrial,QRebaseTrialView} from './QRebaseTrialPresentation.mjs';
@@ -88,6 +89,7 @@ export function preloadActorPresentation(scene, data = {}) {
     scene._userCastPresentation=true;scene._qRebaseTrialRequested=false;
     scene.load.image(ownerArt.key,ownerArt.battle);
     scene.load.spritesheet(ownerArt.motion.key,ownerArt.motion.path,{frameWidth:ownerArt.motion.frameWidth,frameHeight:ownerArt.motion.frameHeight});
+    if(ownerArt.confirmedDesign)preloadPerformancePoses(scene,ownerArt.id);
     if(ownerArt.motion.walk)scene.load.spritesheet(ownerArt.motion.walk.key,ownerArt.motion.walk.path,{frameWidth:ownerArt.motion.frameWidth,frameHeight:ownerArt.motion.frameHeight});
     if(ownerArt.motion.hurt)scene.load.spritesheet(ownerArt.motion.hurt.key,ownerArt.motion.hurt.path,{frameWidth:ownerArt.motion.frameWidth,frameHeight:ownerArt.motion.frameHeight});
     if(ownerArt.motion.shoot)scene.load.spritesheet(ownerArt.motion.shoot.key,ownerArt.motion.shoot.path,{frameWidth:ownerArt.motion.frameWidth,frameHeight:ownerArt.motion.frameHeight});
@@ -446,6 +448,12 @@ export class ActorPresentation {
     if(this.disposed || !gfx || !art || !this.scene.textures?.exists(art.key))return false;
     let item=this.enemies.get(gfx);
     if(!item){
+      const crew=this.scene._userCastPresentation&&this.scene.textures.exists(CREW_POSES)
+        &&this.scene.textures.get?.(CREW_POSES)?.has(15)&&role!=='finale-weak-point';
+      if(crew){
+        art.baseSize=art.size;
+        art.size={'unlit-chaser':71,'stage-cue-emitter':73,'objective-disruptor':70,'spotlight-captain':96,'finale-boss':136}[role];
+      }
       const image=this.scene.add.image(gfx.x+art.offset,gfx.y+art.offset,art.key)
         .setDisplaySize(art.size,art.size).setDepth(gfx.depth-0.01);
       // Source-alpha backing separates the existing silhouette, without a target ring or new art.
@@ -454,7 +462,7 @@ export class ActorPresentation {
           .setDisplaySize(art.size+padding,art.size+padding).setTintFill(color).setDepth(image.depth-0.000002+index*0.000001)) : [];
       const dispose=()=>{gfx.off('destroy',dispose);for(const n of contrastImages)n.destroy();image.destroy();this.enemies.delete(gfx);};
       const now=this.scene.publicPerformerRun?.now() ?? this.scene.time?.now ?? 0;
-      gfx.once('destroy',dispose);item={image,contrastImages,art,dispose,role,state,
+      gfx.once('destroy',dispose);item={image,contrastImages,art,dispose,role,state,crew,
         motion:createEnemyMotion(role,{now,x:gfx.x,y:gfx.y,state})};this.enemies.set(gfx,item);
     }
     item.state=state;
@@ -464,8 +472,9 @@ export class ActorPresentation {
     const {offset,radius}=art, color=COLORS[reactionColor] || 0x77D6C3;
     gfx.clear();
     gfx.lineStyle(2,color,0.95);
-    gfx.lineBetween(offset-10,offset-radius-8,offset-3,offset-radius-8);
-    gfx.lineBetween(offset+3,offset-radius-8,offset+10,offset-radius-8);
+    const cueY=offset-radius-8-(item.crew?(item.art.size-item.art.baseSize)*.66:0);
+    gfx.lineBetween(offset-10,cueY,offset-3,cueY);
+    gfx.lineBetween(offset+3,cueY,offset+10,cueY);
     drawEnemyStateCue(gfx,{role,state,radius,offset});
     const ratio=Math.max(0,Math.min(1,Number(paintRatio)||0));
     if(ratio>0){
@@ -516,6 +525,14 @@ export class ActorPresentation {
         chaserState:owner?.chapterChaserMotion?.state ?? null,
         capture:owner?.publicStage1CueCapture ?? null,
         paused:this.scene._battlePaused===true || this.scene._battleEnded===true});
+      if(item.crew){
+        const frame=crewPoseFrame(item.role,pose,item.motion.state,owner?.chapterChaserMotion?.state);
+        if(item.image.texture?.key!==CREW_POSES||item.image.frame?.name!==frame){
+          item.image.setTexture(CREW_POSES,frame).setDisplaySize(item.art.size,item.art.size);
+          item.contrastImages?.forEach((n,index)=>n.setTexture(CREW_POSES,frame)
+            .setDisplaySize(item.art.size+(index===0?12:8),item.art.size+(index===0?12:8)));
+        }
+      }
       const position=enemyGroundPose(item.art,gfx,pose.rotation);
       item.ground=position.ground;
       item.image.setRotation?.(pose.rotation);

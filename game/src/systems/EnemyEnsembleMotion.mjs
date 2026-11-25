@@ -47,7 +47,10 @@ export function advanceEnemyMotion(m,{now,x,y,state,pulse=null,capture=null,chas
  }else if(state==='recovery'){
   rotation=m.fromRotation*(1-clamp(age/300,0,1))**2;
  }
- m.lastNow=now;m.x=x;m.y=y;m.pose={rotation:clamp(rotation,-rad(10),rad(10))||0};
+ m.lastNow=now;m.x=x;m.y=y;
+ m.pose={rotation:clamp(rotation,-rad(10),rad(10))||0,
+  step:m.role==='unlit-chaser'&&distance>.001?(Math.sin(m.travel)>=0?1:2):0,
+  releasing:releaseAge>=0&&releaseAge<135};
  return m.pose;
 }
 

@@ -13,7 +13,7 @@ test('only the three selected motion atlases enter the release allowlist',()=>{
     assert.equal(buffer.subarray(8,12).toString(),'WEBP');assert(buffer.length>20000&&buffer.length<1200000);}
 });
 
-function fixture(id='sakura'){
+function fixture(id='sakura', expanded=false){
   const nodes=[];
   const node=()=>{const n={x:0,y:0,alpha:1,frame:{name:0},destroyed:0,
     setPosition(x,y){this.x=x;this.y=y;return this;},setOrigin(){return this;},setDisplaySize(){return this;},
@@ -23,7 +23,7 @@ function fixture(id='sakura'){
     getBounds(){return {x:this.x-80,y:this.y-100,right:this.x+80,bottom:this.y};},destroy(){this.destroyed++;}};
     nodes.push(n);return n;};
   const scene={player:{x:500,y:1000},playerGfx:{alpha:1},battleRecord:{playerHitCount:0},
-    publicPerformerRun:{actions:0},textures:{exists:()=>true},add:{ellipse:node,image:node}};
+    publicPerformerRun:{actions:0},textures:{exists:()=>true,get:()=>({has:()=>expanded})},add:{ellipse:node,image:node}};
   const view=new UserCastPresentation(scene,id);
   return {scene,view,nodes};
 }
@@ -34,7 +34,10 @@ test('three production actors preload their own animation atlas, never the other
   for(const id of ['sakura','kai','enjo']){
     const sheets=[],scene={load:{image(){},spritesheet:(...args)=>sheets.push(args)}};
     preloadActorPresentation(scene,{stageId:1,performerId:id});
-    assert.equal(sheets.length,id==='sakura'?9:7);assert.equal(sheets.filter(row=>row[0]==='melee-directional-20261026-'+id).length,0);const art=getUserCastArt(id);
+    assert.equal(sheets.filter(([key])=>key.startsWith('stage-performer-')).length,1);
+    assert(sheets.some(([key])=>key==='stage-performer-'+id));
+    assert.equal(sheets.some(([key])=>key==='stage-rifle-stride'),id==='sakura');
+    assert(sheets.some(([key])=>key==='stage-equipment-performance'));assert.equal(sheets.filter(row=>row[0]==='melee-directional-20261026-'+id).length,0);const art=getUserCastArt(id);
     assert.equal(sheets.filter(row=>row[0]==='enjo-north-rig-20261029').length,0,'rear bank belongs only to the heavy');
     assert.equal(sheets.filter(row=>row[0]==='melee-heavy-bridge-20261028-enjo').length,0,'new heavy bank is never loaded for rifle or sword');
     assert.equal(sheets.filter(row=>row[0]==='melee-authored-20261026-'+id).length,0);
@@ -45,17 +48,18 @@ test('three production actors preload their own animation atlas, never the other
       id==='sakura'?['user-rifle-projectile-20261021','user-rifle-contact-20261021']:[]);
     assert.equal(sheets[0][0],art.motion.key);assert.equal(sheets[0][1],art.motion.path);
     assert.equal(sheets[0][2].frameWidth,256);assert.equal(sheets[0][2].frameHeight,256);
-    preloadActorPresentation(scene,{stageId:1,performerId:id,practiceMode:true});
-    assert.equal(sheets.length,id==='sakura'?9:7);assert.equal(scene._userCastPresentation,false);
+    const activeLoads=sheets.length;preloadActorPresentation(scene,{stageId:1,performerId:id,practiceMode:true});
+    assert.equal(sheets.length,activeLoads);assert.equal(scene._userCastPresentation,false);
   }
 });
 
 test('walk phases follow actual distance, continue while shooting, and stop when position stops',()=>{
-  const {scene:s,view:v}=fixture();v.update(0,false);s.player.x+=15;v.update(60,false);
+  const {scene:s,view:v}=fixture('sakura',true);v.update(0,false);s.player.x+=15;v.update(60,false);
   assert.equal(v.state,'move');assert.equal(v.image.texture.key,getUserCastArt('sakura').motion.key);
   const first=v.image.frame.name;assert.equal(first,7,'15px advances one cel in the six-frame 90px walk cycle');v.beginShot(61,1);s.player.x+=15;v.update(120,false);
   assert.equal(v.state,'move-attack');assert.notEqual(v.image.frame.name,first);
-  assert.equal(v.image.frame.name,8,'walking cels survive automatic fire');assert.equal(v.image.texture.key,getUserCastArt('sakura').motion.key);
+  assert.equal(v.image.frame.name%6,2,'the rendered shot includes the current pair of feet');
+  assert.equal(v.image.texture.key,'stage-rifle-stride');
   const distance=v.walkDistance;v.update(150,false);v.update(360,false);
   assert.equal(v.walkDistance,distance);assert.equal(v.state,'idle');
 });
@@ -102,12 +106,12 @@ test('confirmed wind character facing and camera-only image motion never alter p
 
 test('confirmed skill poses register the three rifle beats, the dash end and the instant spell',()=>{
  const samples={
-  sakura:[[0,14],[60,15],[100,14],[160,15],[200,14],[268,16],[305,17]],
-  kai:[[0,14],[80,15],[159,15],[160,16],[250,17]],
-  enjo:[[0,14],[80,15],[160,16],[220,17]],
+  sakura:[[0,9],[60,8],[100,9],[160,8],[200,9],[268,11],[305,12]],
+  kai:[[0,8],[80,9],[159,10],[160,10],[250,11]],
+  enjo:[[0,9],[80,10],[160,11],[220,11]],
  };
  for(const [id,checks] of Object.entries(samples)){
-  const {scene,view}=fixture(id);
+  const {scene,view}=fixture(id,true);
   view.update(0,false);scene.publicPerformerRun.actions++;
   for(const [age,cel] of checks){
    view.update(10+age,false);
@@ -116,4 +120,32 @@ test('confirmed skill poses register the three rifle beats, the dash end and the
   assert.equal(scene.publicPerformerRun.actions,1);
   view.destroy();
  }
+});
+
+test('each performer faces travel, plants feet on release, and returns to a distinct recovery cel',()=>{
+  for(const id of ['sakura','kai','enjo']){
+    const {scene,view}=fixture(id,true);
+    scene.player.hp=5;
+    view.update(0,false);
+    scene.player.y-=18;view.update(50,false);
+    assert.equal(view.image.texture.key,'stage-performer-'+id);
+    assert(view.image.frame.name>=0&&view.image.frame.name<4);
+    const planted=view.image.frame.name;
+    view.update(72,false);assert.equal(view.image.frame.name,planted);
+    view.update(190,false);assert.equal(view.image.frame.name,0);
+    scene.player.y+=18;view.update(245,false);
+    assert(view.image.frame.name>=4&&view.image.frame.name<8);
+    view.beginShot(245,1,0,500);view.update(245,false);
+    view.update(245+view.shotDuration*.93,false);
+    assert.equal(view.image.texture.key,'stage-performer-'+id);
+    assert.equal(view.image.frame.name,12);
+    scene.battleRecord.lastPlayerHit={source:{position:{x:scene.player.x-20,y:scene.player.y}}};
+    scene.battleRecord.playerHitCount++;scene.playerGfx.alpha=.3;view.update(620,false);
+    assert(view.image.x>scene.player.x);assert(view.image.angle>0);assert(view.image.alpha>=.67);
+    scene.player.active=true;scene.player.hp=0;
+    const pose=view.captureDefeat();assert.deepEqual(pose.frames,[18,13,14,15]);
+    assert.equal(pose.keys[0],getUserCastArt(id).motion.key);
+    assert.equal(pose.keys[3],'stage-performer-'+id);
+    view.destroy();
+  }
 });

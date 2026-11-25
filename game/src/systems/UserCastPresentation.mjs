@@ -1,3 +1,4 @@
+import {loadedPerformancePose,PerformerStride,RIFLE_STRIDE} from './PerformancePoseBank.mjs';
 import { getUserCastArt } from '../utils/userCast.mjs';
 import { SHOOT_CONFIG } from '../utils/config.js';
 import {UserWeaponFx} from './UserWeaponFx.mjs';
@@ -52,6 +53,10 @@ export class UserCastPresentation {
     this.height=this.art.motion.frameHeight*this.scale;this.width=this.art.motion.frameWidth*this.scale;this.clock=0;this.lastNow=null;this.wasFrozen=false;this.walkDistance=0;
     this.shotDuration={sakura:270,kai:240,enjo:260}[this.art.id];
     this.skill=getPublicPerformerAction(this.art.id);
+    this.expanded=this.art.confirmedDesign?loadedPerformancePose(scene,id):null;
+    this.stride=new PerformerStride();
+    this.hitDirection={x:0,y:0};
+    this.shotVertical=0;
     this.actionDuration=this.skill?.presentationMs??320;
     this.shotClock=-Infinity;this.actionClock=-Infinity;this.hurtClock=-Infinity;this.streakUntil=-Infinity;this.idleClock=0;
     this.actions=scene.publicPerformerRun?.actions||0;this.hits=scene.battleRecord?.playerHitCount||0;
@@ -68,6 +73,7 @@ export class UserCastPresentation {
     const rifle=this.art.id==='sakura',paced=Number.isFinite(interval)&&interval>0;
     const duration={sakura:270,kai:240,enjo:260}[this.art.id];
     this.shotDuration=paced?Math.min(duration,Math.max(80,interval*(rifle ? .82 : .8))):duration;
+    this.shotVertical=Number.isFinite(dy)&&Math.abs(dy)>Math.abs(dx)*1.3?Math.sign(dy):0;
     const activeTime=s.publicPerformerRun?.now?.()??now;
     // Physical shot origins retain their existing 140ms facing contract.
     this.handShotClock=this.clock;
@@ -100,9 +106,15 @@ export class UserCastPresentation {
         const action=run.getActionPresentation(activeTime);
         this.actionClock=action?.memberId===this.art.id?this.clock-action.age:-Infinity;
       }else if(startedAction)this.actionClock=this.clock;
-      if(hits>this.hits)this.hurtClock=this.clock;
+      if(hits>this.hits){
+        this.hurtClock=this.clock;
+        const source=s.battleRecord?.lastPlayerHit?.source?.position;
+        const distance=source?Math.hypot(p.x-source.x,p.y-source.y):0;
+        this.hitDirection=distance>.01?{x:(p.x-source.x)/distance,y:(p.y-source.y)/distance}:{x:0,y:0};
+      }
       this.actions=actions;this.hits=hits;
       if(moved>.05&&!this.wasFrozen)this.walkDistance+=Math.min(moved,40);
+      this.stride.advance(dx,dy,moved>.05&&!this.wasFrozen,this.clock,this.walkDistance);
       this.state=this.clock-this.hurtClock<240?'hurt':this.clock-this.actionClock<this.actionDuration?'action'
         :moved>.05?(shooting?'move-attack':'move'):shooting?'attack':'idle';
       if(this.state==='idle'&&previousState!=='idle')this.idleClock=this.clock;
@@ -165,12 +177,57 @@ export class UserCastPresentation {
       else if(idle&&s.textures?.exists(idle.key)&&age>=BLINK_AT&&age<BLINK_AT+BLINK_FOR){key=idle.key;frame=0;}
       else if(rest&&age>=REST_AT&&age<REST_AT+3*REST_FOR&&s.textures?.exists(rest.key)){key=rest.key;frame=1+Math.floor((age-REST_AT)/REST_FOR);}
     }
+    let displayFlip=this.flip;
+    const reduced=this.weaponFx.motionPreference?.matches===true;
+    let angle=0,offsetX=0,offsetY=0,heightFactor=1;
+    if(this.expanded){
+      const stride=this.stride,skillAge=t-this.actionClock,rifle=this.art.id==='sakura';
+      const forwardStep=Math.floor(this.walkDistance/15)%6;
+      const backpedal=rifle&&stride.axis==='side'&&stride.lastSide!==(this.flip?-1:1);
+      const strideFrame=backpedal?(6-forwardStep)%6:forwardStep;
+      const vertical=stride.axis!=='side';
+      const bank=this.expanded.key;
+      if(this.state==='action'){
+        const phase=skillCel(this.art.id,skillAge,this.skill);
+        const specialFrame=rifle?({13:8,14:9,15:10,16:11,17:12})[phase]
+          :this.art.id==='kai'?(skillAge<30?8:skillAge<112?9:skillAge<205?10:11)
+          :(skillAge<52?9:skillAge<152?10:11);
+        key=bank;frame=specialFrame;
+        if(rifle&&stride.moving&&this.expanded.strideBounds){
+          const recoil=phase===14?1:phase===15?2:phase===16?3:0;
+          key=RIFLE_STRIDE;frame=recoil*6+strideFrame;
+        }
+      }else if(rifle&&this.state==='move-attack'&&vertical&&this.shotVertical){
+        key=bank;frame=(this.shotVertical<0?0:4)+stride.lastFrame;displayFlip=false;
+        const recoil=[0,1,.5,.1][shotCel()]*(reduced ? .4 : 1);
+        offsetY=-this.shotVertical*2*recoil;
+      }else if(rifle&&this.state==='move-attack'&&this.expanded.strideBounds){
+        key=RIFLE_STRIDE;frame=shotCel()*6+strideFrame;
+      }else if((this.state==='move'||this.state==='idle')&&vertical){
+        key=bank;frame=stride.verticalFrame(t);displayFlip=false;
+      }else if(key===this.art.motion.key&&frame===17){
+        key=bank;frame=12;
+      }else if(this.state==='idle'&&!stride.moving&&t-stride.changedAt<84){
+        // Keep the planting foot for the first moment after releasing the stick.
+        frame=6+strideFrame;
+      }
+      if(this.state==='move'||this.state==='idle'){
+        const weight=stride.settle(t,reduced);
+        heightFactor=1-weight*.052;
+        angle=vertical?0:weight*stride.lastSide*(stride.moving?3:-5);
+      }else if(this.state==='hurt'){
+        const kick=Math.max(0,1-(t-this.hurtClock)/240)*(reduced ? .4 : 1);
+        angle=this.hitDirection.x*8*kick;
+        offsetX=this.hitDirection.x*3*kick;
+        offsetY=this.hitDirection.y*3*kick;
+      }
+    }
     const actionArt=this.meleePose?.art||MELEE_ATTACK_BODY[this.art.id],tallAction=actionArt&&key===actionArt.key;
     const place=(node,k,f)=>node.setTexture(k,f)
-      .setOrigin(this.flip?1-(tallAction?actionArt.originX:this.art.motion.originX):(tallAction?actionArt.originX:this.art.motion.originX),tallAction?actionArt.originY:this.art.motion.originY)
-      .setPosition(p.x,p.y+26)
-      .setDisplaySize(tallAction?actionArt.frameWidth*(actionArt.scale??.5):this.width,tallAction?actionArt.frameHeight*(actionArt.scale??.5):this.height).setFlipX(this.flip).setAngle(0)
-      .setAlpha(s.playerGfx?.alpha??1).setTint(this.state==='hurt'?0xffb7bf:0xffffff);
+      .setOrigin(displayFlip?1-(tallAction?actionArt.originX:this.art.motion.originX):(tallAction?actionArt.originX:this.art.motion.originX),tallAction?actionArt.originY:this.art.motion.originY)
+      .setPosition(p.x+offsetX,p.y+26+offsetY)
+      .setDisplaySize(tallAction?actionArt.frameWidth*(actionArt.scale??.5):this.width,tallAction?actionArt.frameHeight*(actionArt.scale??.5):this.height*heightFactor).setFlipX(displayFlip).setAngle(angle)
+      .setAlpha(this.expanded&&p.hp>0?Math.max(reduced ? .88 : .67,s.playerGfx?.alpha??1):(s.playerGfx?.alpha??1)).setTint(this.state==='hurt'?0xffb7bf:0xffffff);
     place(this.image,key,frame);
     if(upperCel>=0){
       const shootKey=this.art.motion.shoot.key;
@@ -221,7 +278,11 @@ export class UserCastPresentation {
   muzzleWorld(){
     if(this.disposed||this.art.id!=='sakura'||this.state==='hurt'||this.state==='action')return null;
     const shoot=this.art.motion.shoot,idle=this.art.motion.idle,rest=this.art.motion.rest,walk=this.art.motion.walk,texture=this.image.texture?.key;
-    const marker=this.upperCel>=0?shoot.muzzles[this.upperCel]
+    const cel=Number(this.image.frame.name),stride=texture===RIFLE_STRIDE;
+    if(this.expanded&&texture===this.expanded.key)return null;
+    // Registered moving-shot shoulders recoil over the current step, keeping the visible tip anchored.
+    const walkMarker=stride?this.art.motion.muzzles[6+cel%6]:null;
+    const marker=walkMarker?[walkMarker[0]-[0,10,5,1][Math.floor(cel/6)],walkMarker[1]]:this.upperCel>=0?shoot.muzzles[this.upperCel]
       :(this.art.motion.muzzles|| (shoot&&texture===shoot.key?shoot.muzzles:idle&&texture===idle.key?idle.muzzles:rest&&texture===rest.key?rest.muzzles:walk&&texture===walk.key?walk.muzzles:RIFLE_MUZZLES))?.[this.image.frame.name];if(!marker)return null;
     const [x,y]=marker,p=this.scene.player,m=this.art.motion;
     return {x:p.x+(this.flip?-1:1)*(x-m.originX*m.frameWidth)*this.width/m.frameWidth,
@@ -232,12 +293,22 @@ export class UserCastPresentation {
     if(this.heavyRig?.active)return this.heavyRig.bounds();
     const motion=this.art.motion,walk=motion.walk,hurt=motion.hurt,shoot=motion.shoot,idle=motion.idle,rest=motion.rest;
     const vertical=MELEE_VERTICAL_BODY[this.art.id],attack=this.meleePose?.art||(vertical&&this.image.texture?.key===vertical.key?vertical:MELEE_ATTACK_BODY[this.art.id]);
-    const b=this.image.getBounds(),r=this.upperCel>=0?this.layerBounds()
+    const b=this.image.getBounds(),r=this.expanded&&this.image.texture?.key===this.expanded.key
+      ?this.expanded.bounds[this.image.frame.name]:this.image.texture?.key===RIFLE_STRIDE?this.expanded.strideBounds[this.image.frame.name]:this.upperCel>=0?this.layerBounds()
       :(attack&&this.image.texture?.key===attack.key?attack.bounds:shoot&&this.image.texture?.key===shoot.key?shoot.bounds:idle&&this.image.texture?.key===idle.key?idle.bounds:rest&&this.image.texture?.key===rest.key?rest.bounds:hurt&&this.image.texture?.key===hurt.key?hurt.bounds:walk&&this.image.texture?.key===walk.key?walk.bounds:motion.bounds)?.[this.image.frame.name];
     if(!r)return {x:b.x,y:b.y,right:b.right,bottom:b.bottom};
     const frameWidth=attack&&this.image.texture?.key===attack.key?attack.frameWidth:motion.frameWidth;
-    const left=this.flip?frameWidth-r[2]:r[0],right=this.flip?frameWidth-r[0]:r[2];
-    const scale=attack&&this.image.texture?.key===attack.key?(attack.scale??.5):this.scale;
+    const flip=this.image.flipX??this.flip;
+    const left=flip?frameWidth-r[2]:r[0],right=flip?frameWidth-r[0]:r[2];
+    if(this.expanded&&this.image.getWorldTransformMatrix){
+      // Include the planted-foot lean, hurt displacement and vertical compression.
+      const matrix=this.image.getWorldTransformMatrix(),ox=this.image.displayOriginX,oy=this.image.displayOriginY;
+      const a=matrix.transformPoint(left-ox,r[1]-oy),c=matrix.transformPoint(right-ox,r[3]-oy);
+      const d=matrix.transformPoint(left-ox,r[3]-oy),e=matrix.transformPoint(right-ox,r[1]-oy);
+      return {x:Math.min(a.x,c.x,d.x,e.x),y:Math.min(a.y,c.y,d.y,e.y),
+        right:Math.max(a.x,c.x,d.x,e.x),bottom:Math.max(a.y,c.y,d.y,e.y)};
+    }
+    const scale=attack&&this.image.texture?.key===attack.key?(attack.scale??.5):(this.scale??motion.scale??.5);
     return {x:b.x+left*scale,y:b.y+r[1]*scale,right:b.x+right*scale,bottom:b.y+r[3]*scale};
   }
   // Union of the visible clipped upper and lower bands, in native frame pixels.
@@ -248,7 +319,9 @@ export class UserCastPresentation {
   captureDefeat(){
     const p=this.scene.player,m=this.art.motion;
     if(this.disposed||!m.defeatFrames||!p?.active||!(p.hp<=0)||!Number.isFinite(p.x+p.y))return null;
-    return Object.freeze({x:p.x,y:p.y+26,art:m,frames:m.defeatFrames,size:this.height,
+    const stage=this.expanded;
+    return Object.freeze({x:p.x,y:p.y+26,art:m,frames:stage?[18,13,14,15]:m.defeatFrames,
+      keys:stage?[m.key,stage.key,stage.key,stage.key]:null,size:this.height,
       originX:this.flip?1-m.originX:m.originX,originY:m.originY,flipX:this.flip});
   }
   destroy(){if(this.disposed)return;this.disposed=true;this.heavyRig?.destroy();this.weaponFx.destroy();this.image.destroy();this.upper?.destroy();this.shadow.destroy();}

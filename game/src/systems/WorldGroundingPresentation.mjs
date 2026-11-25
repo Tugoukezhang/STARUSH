@@ -16,7 +16,8 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export function enemyGroundPose(art,host,rotation=0){
  const name=art.key.replace('stage-actor-',''),base=ENEMY_BASES[name];
  const contactDistance=base===undefined?art.radius:(base-128)*art.size/256;
- const ground={x:host.x+art.offset,y:host.y+art.offset+contactDistance};
+ const plantedDistance=base===undefined?art.radius:(base-128)*(art.baseSize??art.size)/256;
+ const ground={x:host.x+art.offset,y:host.y+art.offset+plantedDistance};
  return {x:ground.x+contactDistance*Math.sin(rotation),y:ground.y-contactDistance*Math.cos(rotation),ground,contactDistance};
 }
 

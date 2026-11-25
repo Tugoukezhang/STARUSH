@@ -89,7 +89,9 @@ export class SakuraDefeatPresentation {
     this.image.setFlipX?.(pose.flipX===true);
     FRAME_TIMES.forEach((time, index) => {
       this.timers.push(scene.time.delayedCall(time, () => {
-        if (!this.disposed) this.image.setFrame(frames[index+1]);
+        if (this.disposed) return;
+        if(pose.keys)this.image.setTexture(pose.keys[index+1],frames[index+1]);
+        else this.image.setFrame(frames[index+1]);
       }));
     });
     this.timers.push(scene.time.delayedCall(SAKURA_DEFEAT_DURATION, () => {

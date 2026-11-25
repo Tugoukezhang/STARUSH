@@ -32,9 +32,9 @@ test('six coherent exports replace only the six enemy paths, keeping keys, sizes
  }
  assert.equal(new Set(roles.map(r=>getEnemyArt(r).key)).size,6);
  assert.deepEqual(roles.map(r=>[getEnemyArt(r).size,getEnemyArt(r).radius]),[[36,12],[42,14],[42,13],[48,16],[64,20],[36,12]]);
- const laterGroups=['owner-enemy-attack','owner-heavy-material','owner-dash-material','owner-dash-contrast-material','owner-character-gait','owner-character-hurt','owner-character-shoot','owner-character-idle','owner-character-walk'];
- for(const group of laterGroups)assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group===group).length,group==='owner-character-idle'?3:group==='owner-character-hurt'?2:1);
- assert.equal(RUNTIME_PAYLOAD.filter(a=>!['owner-menu-portrait','owner-character-cast','owner-character-motion','owner-weapon-fx','owner-ui','owner-world-ground','owner-facility-fx',...laterGroups].includes(a.group)&&!['fonts/NotoSansSC-UI.woff2','licenses/noto-sans-sc.txt'].includes(a.file)).length,213);
+ const crew=RUNTIME_PAYLOAD.filter(a=>a.file.startsWith('art/enemy-ensemble-20261009/'));
+ assert.deepEqual(crew.map(a=>a.file).sort(),roles.map(role=>getEnemyArt(role).path).sort());
+ assert.equal(RUNTIME_PAYLOAD.filter(a=>a.file==='art/performance-poses/stage-crew.webp').length,1);
  assert(!RUNTIME_PAYLOAD.some(r=>r.file.startsWith('art/phase16/p16-074-actors/')));
 });
 test('contact runner rocks only with actual displacement; stationary is grounded, never an idle march',()=>{
@@ -128,3 +128,18 @@ test('motion has no combat timers, tweens, physics, input or gameplay writes',()
  assert.doesNotMatch(s,/setTimeout|delayedCall|tweens|\.physics|\.input|\.hp\s*=|damage|supportGain|velocity/);
 });
 
+
+test('each equipment telegraph changes its body state, while the open relay stays planted',async()=>{
+ const {crewPoseFrame}=await import('../src/systems/PerformancePoseBank.mjs');
+ for(const role of ['stage-cue-emitter','objective-disruptor','spotlight-captain','finale-boss']){
+   const prepare=crewPoseFrame(role,{},'windup');
+   const release=crewPoseFrame(role,{releasing:true},'recovery');
+   assert.equal(release,prepare+1);
+   assert.equal(crewPoseFrame(role,{},'recovery'),prepare+2);
+ }
+ assert.equal(crewPoseFrame('finale-weak-point',{},'recovery'),null);
+ assert.equal(crewPoseFrame('unlit-chaser',{},'windup','guard'),0);
+ assert.equal(crewPoseFrame('unlit-chaser',{step:0},'approach','approach'),15);
+ assert.equal(crewPoseFrame('unlit-chaser',{},'recovery','rush'),1);
+ assert.equal(crewPoseFrame('unlit-chaser',{},'recovery','recovery'),2);
+});

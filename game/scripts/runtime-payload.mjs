@@ -19,6 +19,7 @@ export const RUNTIME_PAYLOAD = Object.freeze([
   ...group('printroom-surfaces','art/printroom/',['primary.webp','paper.webp','ink.webp','motif.webp','dressing.webp','gear.webp','records.webp','rehearsal.webp','chime-icon.png','book-icon.png',
     'item-sound.webp','item-pulse.webp','item-focus.webp','item-rain.webp','item-delay.webp','item-echo.webp','item-leaf.webp']),
   ...group('tour-landmarks','art/showbill/',['stop-opening.webp','stop-neon.webp','stop-encore.webp','stop-raincheck.webp','stop-homecoming.webp']),
+  ...group('performer-and-enemy-poses','art/performance-poses/',['sakura.webp','kai.webp','enjo.webp','rifle-stride.webp','stage-crew.webp']),
   ...group('owner-weapon-fx','art/infield/',['ground-footprints.webp','wet-splash.webp']),
   ...group('concert-navigation','art/infield/',['nav-desk.webp','nav-roster.webp','nav-tour.webp','nav-inventory.webp']),
   ...group('showbill-environments','art/showbill/',['stage.webp','console.webp','city.webp','archive.webp','openair.webp','harbor-map.webp']),

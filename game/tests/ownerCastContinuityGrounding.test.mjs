@@ -74,13 +74,13 @@ test('matching committed action direction owns the body while automatic shots ke
  for(const id of ['sakura','kai','enjo']){
   const {scene,setTime}=fixture(id),v=new UserCastPresentation(scene,id);v.update(0,false);
   scene.publicPerformerRun.actions=1;scene.publicPerformerRun.actionPresentation={sequence:1,direction:'left'};
-  setTime(10);v.update(10,false);assert.equal(v.state,'action');assert.equal(v.flip,id!=='kai');
+  setTime(10);v.update(10,false);assert.equal(v.state,'action');assert.equal(v.flip,!v.facesLeft);
   setTime(20);v.beginShot(20,1,0,400);scene.player.x+=3;setTime(30);v.update(30,false);
-  assert.equal(v.flip,id!=='kai',id+' action interrupted by ordinary fire');assert.equal(v.handWorld().x,scene.player.x+16);
-  setTime(250);scene.player.x+=3;v.update(250,false);assert.equal(v.flip,id!=='kai','movement cannot turn an unfinished action');
+  assert.equal(v.flip,!v.facesLeft,id+' action interrupted by ordinary fire');assert.equal(v.handWorld().x,scene.player.x+16);
+  setTime(250);scene.player.x+=3;v.update(250,false);assert.equal(v.flip,!v.facesLeft,'movement cannot turn an unfinished action');
   v.beginShot(250,1,0,400);setTime(340);v.update(340,false);
-  assert.equal(v.state,'attack');assert.equal(v.flip,id==='kai','recovery must hand body facing back to the ongoing real shot');
-  setTime(400);v.beginShot(400,1,0,400);v.update(400,false);assert.equal(v.flip,id==='kai','expired action must not keep body facing locked');
+  assert.equal(v.state,'attack');assert.equal(v.flip,v.facesLeft,'recovery must hand body facing back to the ongoing real shot');
+  setTime(400);v.beginShot(400,1,0,400);v.update(400,false);assert.equal(v.flip,v.facesLeft,'expired action must not keep body facing locked');
   v.destroy();
  }
 });
