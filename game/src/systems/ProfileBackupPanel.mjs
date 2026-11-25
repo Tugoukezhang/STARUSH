@@ -39,8 +39,9 @@ export class ProfileBackupPanel {
     this.status.textContent=result.status==='checkpoint-saved'?'替换前备份已保留，可重新选择文件。':messages[result.status]||'备份仍在暂存，未改变当前进度。';
    },'backup-checkpoint',controls);
   }
-  const label=this.element('label','profile-backup-file','选择备份文件',this.root);label.htmlFor='profile-backup-file';
-  this.input=this.element('input',null,undefined,this.root);this.input.type='file';this.input.id='profile-backup-file';this.input.accept='.json,application/json';
+  const picker=this.element('div','profile-backup-picker',undefined,this.root);
+  const label=this.element('label','profile-backup-file','选择备份文件',picker);label.htmlFor='profile-backup-file';
+  this.input=this.element('input',null,undefined,picker);this.input.type='file';this.input.id='profile-backup-file';this.input.accept='.json,application/json';
   this.input.addEventListener('change',()=>{const file=this.input.files?.[0];if(file)this.readFile(file);});
   this.preview=this.element('div','profile-backup-preview',undefined,this.root);
   this.fileControls=[label,this.input,...[...this.root.querySelectorAll('button')].filter(button=>button.dataset.action.startsWith('backup-export'))];

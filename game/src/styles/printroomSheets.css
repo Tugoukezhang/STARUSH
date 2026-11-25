@@ -13,16 +13,24 @@
   padding:0;
   color:var(--sheet-ink);
   background:var(--sheet-ivory);
-  border:2px solid var(--sheet-ink);
-  border-image:none;
-  border-radius:3px 15px 3px 3px;
-  box-shadow:4px 5px 0 var(--sheet-ink);
+  --sheet-scene:url('/art/setdesign/archive.webp');
+  border:8px solid var(--sheet-ink);
+  border-image:var(--set-dialog) 42 fill / 12px stretch;
+  border-radius:5px;
+  box-shadow:0 12px 28px #17162870;
+  &[data-sheet-kind=actors], &[data-sheet-kind^=member-] {--sheet-scene:url('/art/setdesign/wardrobe.webp')}
+  &[data-inventory-sheet=item], &:has(.workshop-inventory,.growth-equipment-pool) {--sheet-scene:url('/art/setdesign/workbench.webp')}
+  &[data-sheet-kind=chapter], &:has(.ui-tour-detail,.tour-reference-list) {--sheet-scene:url('/art/setdesign/route.webp')}
+  &:has(.challenge-guide,.library-guide,.arrangement-guide) {--sheet-scene:url('/art/setdesign/rehearsal.webp')}
+  &:has(.pg-goal,.pg-stop,.ps-sheet-count), &[data-venue-sheet] {--sheet-scene:url('/art/setdesign/office.webp')}
   &::backdrop {background:rgb(24 22 39 / 62%)}
   &[data-sheet-kind=chapter] .journey-rule-details > summary {min-height:44px}
   & .ui-sheet-header {
     display:flex;align-items:center;justify-content:space-between;gap:8px;
-    min-height:54px;height:auto;margin:0;padding:4px 6px 4px 14px;
-    background:var(--sheet-ink);border:0;border-bottom:4px solid var(--sheet-coral);
+    min-height:58px;height:auto;margin:0;padding:5px 7px 5px 14px;
+    background:#28263a linear-gradient(90deg,#242238 6%,#242238ee 36%,#24223830 100%);
+    background-image:linear-gradient(90deg,#242238 0%,#242238ed 33%,#19182933 80%),var(--sheet-scene);
+    background-size:cover;background-position:center 42%;border:0;
   }
   & .ui-sheet-title {
     display:block;min-width:0;width:auto;height:auto;margin:0;padding:0;
@@ -35,7 +43,7 @@
     background:#36334c;border:1px solid #a6a0ab;border-radius:2px 8px 2px 2px;box-shadow:none;
   }
   & .ui-sheet-body {
-    min-width:0;padding:12px;color:var(--sheet-ink);background:var(--sheet-ivory);
+    min-width:0;padding:10px 10px 12px;color:var(--sheet-ink);background:transparent;
     scrollbar-color:#aaa1ac var(--sheet-ivory);
   }
   & .ui-sheet-body :is(.system-context,.challenge-guide,.arrangement-guide,.tour-dossier,.tour-chapter-plan,
@@ -112,10 +120,92 @@
   & .journey-detail .journey-commands .journey-prepare {
     background:var(--sheet-lime) var(--print-primary-face, none) center/100% 100% no-repeat;color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:2px;box-shadow:inset 0 -2px #b2bb46;
   }
+  & .ui-sheet-title :is(.pg-sr,.pm-sr,.ui-sr-label,.vs-sr-label) {
+    position:static!important;clip:auto!important;clip-path:none!important;width:auto!important;height:auto!important;
+    overflow:visible!important;color:inherit!important;font:inherit!important;
+  }
+  & .ui-sheet-body blockquote {
+    margin:10px 0 3px;padding:10px 14px;color:#443543;background:#f0e6d7;
+    border:0;border-inline-start:3px solid #945467;font-weight:600;line-height:1.55;
+  }
+  & .inv-source .inv-source-unlock, & .ps-sheet-content > p {
+    color:#414049;background:#f0e9d7;padding:6px 11px;
+  }
+  & .ps-sheet-content .pg-command .pg-command-copy {
+    color:#243538;background:#f2ecd7;border:0;border-image:var(--set-note) 42 fill / 9px stretch;
+  }
+  & .ps-sheet-content .pg-command .pg-command-copy :is(strong,small,span) {color:#243538}
+  & .sec-venue-editor .pm-room-draft {color:#343e3f;background:#e8eee1;padding:6px 10px}
+  & .sec-venue-editor .pm-room-program {
+    color:var(--sheet-ink);background:#f4edda;border:0;border-image:var(--set-card) 42 fill / 8px stretch;
+  }
+  & .sec-venue-editor .pm-room-program[aria-pressed=true] {color:#fff8e6;border-image-source:var(--set-monitor)}
+  & .pm-companion-record :is(.pm-record-empty,li) {padding:13px 15px;color:#443b3d;border-image:var(--set-note) 42 fill / 10px stretch}
+  & .ui-sheet-body .cs-service-state {color:#394848;background:#e0e9dc;padding:2px 6px;border-radius:2px}
+  /* Folded directory, running order, annotated proof and artist passes use different stocks. */
+  & .ui-sheet-body > :is(.system-context,.sec-records-info,.ui-tour-detail,.library-guide,.arrangement-guide,.shell-member-dossier,.shell-action-detail) {
+    padding:12px 14px;border:0;border-image:var(--set-note) 42 fill / 10px stretch;
+  }
+  & .ui-sheet-body > :is(.library-guide,.sec-records-info,.ui-tour-detail) {padding:14px 16px}
+  & .ui-sheet-body :is(.tour-reference-list,.roster-reference-list) {display:grid;gap:8px}
+  & .ui-sheet-body :is(.tour-reference-list,.roster-reference-list) button {
+    padding:10px 13px;color:var(--sheet-ink);border:0;border-image:var(--set-card) 42 fill / 9px stretch;
+  }
+  & .ui-sheet-body :is(.growth-equipment-pool [data-equipment],.pg-stop,.pg-goal,.workshop-inventory [data-equipment]) {
+    border:0;border-image:var(--set-card) 42 fill / 8px stretch;
+  }
+  & .ui-sheet-body :is(.growth-equipment-pool [aria-pressed=true],.pg-stop[aria-current],.pg-goal[data-availability=available]) {
+    border-image-source:var(--set-stub);
+  }
+  & .ui-sheet-body :is(.system-context,.library-guide,.arrangement-guide,.tour-dossier) p {margin-block:7px}
+  & .ui-sheet-body :is(.roster-action-copy,.shell-member-dossier,.archive-history,.tour-plan-ticket) :is(h3,h4) {
+    font-weight:800;line-height:1.4;border:0;border-bottom:1px solid #b0a795;padding-bottom:4px;
+  }
+  & .ui-sheet-body summary {
+    min-height:44px;padding:10px 12px;color:var(--sheet-ink);border:0;border-image:var(--set-card) 42 fill / 8px stretch;
+  }
+  & .ui-sheet-body details[open]>summary {border-image-source:var(--set-stub)}
+  &[data-sheet-kind=actors] .ui-sheet-body {padding:10px}
+  &[data-sheet-kind=actors] .ui-actor-grid {gap:7px}
+  &[data-sheet-kind=actors] .ui-actor-grid button {
+    gap:9px;min-height:65px;padding:6px 14px 6px 9px;border:0;border-image:var(--set-card) 42 fill / 10px stretch;
+  }
+  &[data-sheet-kind=actors] .ui-actor-grid button[aria-pressed=true] {
+    border-image-source:var(--set-monitor);color:#fff8e5;box-shadow:none;
+  }
+  &[data-sheet-kind=actors] .ui-actor-grid button > img:first-child {
+    width:50px;height:50px;min-height:50px;max-height:50px;object-fit:contain;background:#f9e8d8;border:1px solid #afa6a3;border-radius:50%;
+  }
+  & .member-sheet-identity {border:0;border-image:var(--set-monitor) 42 fill / 9px stretch;padding:8px 12px}
+  & .inv-detail {padding:0}
+  & .inv-detail-head {
+    display:flex;gap:12px;align-items:center;border:0;padding:9px 13px;background:transparent;
+    border-image:var(--set-card) 42 fill / 11px stretch;
+  }
+  & .inv-detail-emblem {border-radius:50%;background:#cfdbd5;border:2px solid #283c43}
+  & .inv-detail-facts {min-width:0}
+  & .inv-effects {padding:5px 10px;background:transparent;border:0;border-image:var(--set-note) 42 fill / 9px stretch}
+  & .inv-effect-row {background:transparent;border:0}
+  & .inv-detail .inv-detail-reason {padding:6px 9px;border-inline-start:3px solid #a1654a;background:#f5e9d3}
+  & .inv-detail :is(.inv-equip,.shell-primary):enabled {border:0;border-image:var(--set-stub) 42 fill / 9px stretch}
+  & .inv-detail :is(.inv-equip,.shell-primary):disabled {border:1px dashed #807b77;background:#ede8dc;color:#504b50}
+  & .journey-detail .journey-detail-tabs {padding:3px;background:#e4dac4;border:0;border-radius:3px}
+  & .journey-detail .journey-detail-tab[aria-selected=true] {border:0;border-image:var(--set-monitor) 42 fill / 9px stretch;box-shadow:none}
+  & .journey-detail :is(.journey-objective-section,.journey-reward-strip) {
+    padding:8px 10px;border:0;border-image:var(--set-note) 42 fill / 10px stretch;
+  }
+  & .journey-detail :is(.journey-detail-panel,.journey-commands) {background:transparent}
+  & .journey-detail .journey-reward-item {padding:6px;border:0;border-image:var(--set-card) 42 fill / 7px stretch}
+  & .journey-detail .journey-commands .journey-prepare {border:0;border-image:var(--set-stub) 42 fill / 11px stretch}
+
 }
 
 #game-container #player-session-dialog[data-mode][data-reading-family]:is([data-mode=settings],[data-mode=profile-backup],[data-mode=story-journal],[data-mode=interruption]) {
-  background:rgb(31 29 47 / 68%);
+  inset:auto;left:var(--menu-shell-left,0);top:var(--menu-shell-top,0);
+  width:var(--menu-shell-width,100%);height:var(--menu-shell-height,100%);
+  max-width:none;max-height:none;box-sizing:border-box;
+  transform:scale(var(--menu-shell-compensation,1));transform-origin:0 0;
+  background:rgb(29 27 47 / 75%);
   & .session-panel {padding:0;background:var(--sheet-ivory);color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:3px 15px 3px 3px;box-shadow:4px 5px 0 var(--sheet-ink)}
   & .session-header {
     min-height:58px;padding:14px 64px 12px 16px;
@@ -151,6 +241,62 @@
   & .journal-chapter h3 {font:780 17px/25px system-ui,sans-serif}
   & .journal-chapter .session-secondary {background:#f2eddf;color:var(--sheet-ink);border:1px solid #aaa18e;border-radius:2px}
   & :is(button,input):focus-visible {outline:3px solid #7656bc;outline-offset:-3px}
+  & .session-panel {
+    max-width:100%;max-height:100%;border:8px solid var(--sheet-ink);border-image:var(--set-dialog) 42 fill / 14px stretch;
+    border-radius:5px;box-shadow:0 13px 38px #17152880;
+  }
+  & .session-header {
+    min-height:59px;background:#242938 linear-gradient(90deg,#25263b 8%,#24263bef 38%,#25303530 85%);
+    background-image:linear-gradient(90deg,#25263b 8%,#24263bed 42%,#25303525 92%),url('/art/setdesign/office.webp');
+    background-size:cover;background-position:center 43%;border:0;
+  }
+  & .session-content {padding:10px;background:transparent}
+  & .session-footer {padding:4px 10px 8px;background:transparent;border:0}
+  & .session-footer:has([data-console-return=close]) {padding:0;height:0;min-height:0}
+  & .session-primary[data-console-return=close] {color:#fdf7e3;border:1px solid #b1aea1;background:#292a3e}
+  & .session-primary[data-console-return=close] svg {stroke:currentColor}
+  & .session-settings-group[data-settings-group=audio] {
+    display:grid;grid-template-columns:minmax(0,1fr);gap:0;padding:12px 14px;
+    color:#fff6e4;background:#212d33;border:0;border-image:var(--set-monitor) 42 fill / 13px stretch;
+  }
+  & .session-settings-group[data-settings-group=audio] :is(h3,label,output,p,span) {color:#fff6e4}
+  & .session-settings-group[data-settings-group=audio] h3 {margin:1px 0 9px}
+  & .session-settings-group[data-settings-group=audio] .session-setting {border:0;margin:0;min-height:31px}
+  & .session-settings-group[data-settings-group=audio] .session-setting:has(input[type=checkbox]) {min-height:44px}
+  & .session-settings-group[data-settings-group=audio] output {
+    min-width:48px;text-align:center;background:#e2f15d;border-radius:3px;padding:1px 5px;
+    color:#252a30;font-variant-numeric:tabular-nums;
+  }
+  & .session-settings-group[data-settings-group=audio] input {accent-color:#def456}
+  & .session-settings-group[data-settings-group=audio] input[type=range] {
+    width:100%;height:44px;margin:0;appearance:none;background:transparent;cursor:pointer;
+  }
+  & input[type=range]::-webkit-slider-runnable-track {height:7px;border-radius:6px;background:#829099;border:1px solid #a7b5ac}
+  & input[type=range]::-moz-range-track {height:5px;border-radius:6px;background:#829099;border:1px solid #a7b5ac}
+  & input[type=range]::-webkit-slider-thumb {
+    appearance:none;width:19px;height:23px;margin-top:-9px;border:2px solid #f9f5da;border-radius:3px;background:#a4bb35;box-shadow:0 2px 0 #192227;
+  }
+  & input[type=range]::-moz-range-thumb {width:16px;height:20px;border:2px solid #f9f5da;border-radius:3px;background:#a4bb35}
+  & input[type=range]:disabled {opacity:.65;cursor:default}
+  & .session-settings-group[data-settings-group=audio] .session-note {margin:4px 0 0;color:#e4e4d2}
+  & .profile-backup .session-note {padding:10px 14px;margin:0;border-image:var(--set-note) 42 fill / 8px stretch}
+  & .profile-backup-picker {display:grid}
+  & .profile-backup-picker:has(input[hidden]) {display:none}
+  & .profile-backup-picker :is(label,input) {grid-area:1/1;margin:0!important;min-height:48px}
+  & .profile-backup-picker input {align-self:stretch;width:100%;height:100%;opacity:0;cursor:pointer}
+  & .profile-backup-picker:focus-within {outline:3px solid #6851b4;outline-offset:1px}
+  & .profile-backup .profile-backup-file {
+    display:flex;align-items:center;gap:8px;padding:11px 13px;border:0;border-image:var(--set-card) 42 fill / 9px stretch;
+  }
+  & .profile-backup .profile-backup-file::before {content:'↑';font:800 20px/1 system-ui;color:#405758}
+  & .profile-backup button[data-action=backup-export]:enabled,
+  & .session-content button[data-action=backup-restore] {border:0;border-image:var(--set-stub) 42 fill / 10px stretch}
+  & .profile-backup .profile-backup-warning {color:#773b2a;border-inline-start:3px solid #a76444;background:#f5e7d0}
+  & .journal-chapter {padding:8px 10px 8px 14px;margin:0 0 6px;border:0;border-image:var(--set-note) 42 fill / 9px stretch}
+  & .journal-chapter h3 {margin:2px 0;color:#3d403e}
+  & .journal-chapter:not(:has(button:enabled)) {border-image-source:none;border-bottom:1px solid #c4bba6;padding-block:4px}
+  & .journal-chapter .session-secondary {border:0;border-image:var(--set-card) 42 fill / 8px stretch}
+
 }
 
 #game-container #player-session-dialog[data-mode=story][data-performance-story=true][data-reading=true] {
@@ -164,6 +310,23 @@
   & .story-toolbar .story-icon[aria-pressed=true] {color:var(--sheet-lime);border-color:var(--sheet-lime)}
   & .story-history {background:var(--sheet-ink);color:var(--sheet-ivory)}
   & .story-history-row strong {color:var(--sheet-lime)}
+  & .performance-story-location {
+    top:59px;left:14px;right:auto;max-width:calc(100% - 82px);padding:4px 10px;
+    background:#24283c;color:#fff8e8;border:0;border-inline-start:3px solid #e7ea94;
+    font:650 13px/19px system-ui,sans-serif;text-shadow:none;
+  }
+  & .performance-story-dialogue {
+    position:absolute;inset:auto 6px 64px;margin:0;padding:17px 17px 13px;
+    border:0;border-image:var(--set-note) 42 fill / 14px stretch;
+  }
+  & .performance-story-speaker {
+    padding:3px 12px;color:#fff8e5;background:#29343f;border:0;border-image:var(--set-monitor) 42 fill / 7px stretch;
+  }
+  & .performance-story-line {max-width:42ch;margin:7px 0 0;line-height:1.62}
+  & .performance-story-count {inset-inline-end:17px;top:17px}
+  & .session-footer {background:#272434}
+  & .session-footer .session-primary {border:0;border-image:var(--set-stub) 42 fill / 9px stretch}
+
 }
 
 /* The pre-battle briefing keeps its venue card and the chapter-specific instructions. */
@@ -192,4 +355,19 @@
     color:var(--sheet-ink);border:2px solid var(--sheet-ink);border-radius:2px;
     background:var(--sheet-lime) var(--print-primary-face,none) center/100% 100% no-repeat;
   }
+  & .session-panel {border:6px solid transparent;border-image:var(--set-dialog) 42 fill / 12px stretch}
+  & .session-header {background:#243240;border:0;border-image:var(--set-strip) 42 fill / 11px stretch}
+  & .session-content {background:transparent}
+  & .journey-ticket {border:0;border-image:var(--set-card) 42 fill / 11px stretch;padding:6px}
+  & .journey-step-tabs {border:0;border-image:var(--set-monitor) 42 fill / 8px stretch}
+  & .journey-step-tab[aria-selected=true] {border:0;border-image:var(--set-stub) 42 fill / 7px stretch}
+  & .session-journey-steps {border:0;border-image:var(--set-note) 42 fill / 8px stretch}
+  & .session-content .journey-rules {padding:7px 10px;border:0;border-image:var(--set-note) 42 fill / 9px stretch}
+  & .session-footer {background:transparent}
+  & .session-footer .session-primary {border:0;border-image:var(--set-stub) 42 fill / 9px stretch}
+}
+
+@media (forced-colors:active) {
+  #game-container .profile-backup-picker:focus-within {outline-color:Highlight}
+  #game-container #player-session-dialog input[type=range] {appearance:auto}
 }

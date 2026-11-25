@@ -1,3 +1,65 @@
-import test from'node:test';import assert from'node:assert/strict';import{loadScenes}from'./helpers/publicShellHarness.mjs';
-test('growth actor sheet uses the actual growth-member IDs and never requests undefined lettering',()=>{const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.seed([]);const h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'growth'});h.scene.create();const v=h.scene._publicShell,{openHierarchySheet}=e.loadRuntime('systems/HierarchySheets.mjs');openHierarchySheet(v,{title:'切换成员',content:h.query('.shell-member-strip'),trigger:h.query('[data-action=actor-switch]')});assert.deepEqual(h.all('.ui-actor-name').map(n=>n.dataset.uiLetter),['sakura','kai','enjo']);h.shutdown();});
-test('roster profession glyph matches each performer and training command names its actual destination',()=>{for(const[id,role]of[['sakura','rifle'],['kai','sword'],['enjo','hammer']]){const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.profile.selectPublicPerformer(id);e.seed([]);const h=e.harness(e.IdolRosterScene);h.scene.create();assert.equal(h.query('.shell-content').dataset.memberStudio,'roster');assert.equal(h.query('[data-action=roster-sheet-ability]').querySelector('.ui-glyph').src,'art/member-studio-20261101/role-'+role+'.webp');const training=h.query('[data-action=roster-sheet-preparation]');assert.equal(training.dataset.uiIcon,'train');assert.equal(training.getAttribute('aria-label'),'成员训练与配件');const before=e.storage.getItem('starush.public-profile');h.click('[data-action=roster-sheet-preparation]');assert.equal(h.root.dataset.page,'workshop');assert.equal(h.scene._publicShell.selection.memberId,id);assert.equal(e.storage.getItem('starush.public-profile'),before);h.shutdown();}});
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {loadScenes} from './helpers/publicShellHarness.mjs';
+
+const performers=[
+  {id:'sakura',name:'战术女武神',art:'red-valkyrie-20261123'},
+  {id:'kai',name:'翡翠风歌',art:'green-windsong-20261123'},
+  {id:'enjo',name:'蔚蓝魔法师',art:'blue-academy-20261123'},
+];
+function ownerSession(){
+  const e=loadScenes();
+  e.loadRuntime('utils/userCast.mjs').configureUserCast(true);
+  e.seed([]);
+  return e;
+}
+
+test('growth member picker shows each confirmed name and thumbnail, and previews without saving',()=>{
+  const e=ownerSession();
+  const h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'growth'});
+  h.scene.create();
+  const profile=e.storage.getItem('starush.public-profile');
+  for(const chosen of performers){
+    h.click('[data-action=actor-switch]');
+    const dialog=h.query('dialog');
+    const buttons=dialog.querySelectorAll('[data-growth-member]');
+    assert.deepEqual(buttons.map(button=>button.dataset.growthMember),performers.map(p=>p.id));
+    for(const [i,button] of buttons.entries()){
+      const performer=performers[i],avatar=button.querySelector('img');
+      assert.equal(button.querySelector('.ui-actor-name').textContent,performer.name);
+      assert.equal(avatar.srcset,'art/setdesign/avatar-'+performer.id+'.webp 1x');
+      assert.equal(avatar.src,'art/'+performer.art+'/avatar.png');
+    }
+    buttons.find(button=>button.dataset.growthMember===chosen.id).click();
+    assert.equal(h.query('dialog'),null);
+    assert.equal(h.scene._publicShell.selection.memberId,chosen.id);
+    assert.equal(e.storage.getItem('starush.public-profile'),profile);
+  }
+  h.shutdown();
+});
+
+test('roster ability shows the confirmed weapon and training opens for the previewed member without changing the deployed member',()=>{
+  for(const performer of performers){
+    const e=ownerSession(),h=e.harness(e.IdolRosterScene);
+    h.scene.create();
+    const profile=e.storage.getItem('starush.public-profile');
+    h.click('[data-action=actor-switch]');
+    h.click('[data-member='+performer.id+']');
+    assert.equal(h.query('.shell-content').dataset.memberStudio,'roster');
+    h.click('[data-action=roster-reference]');
+    const directory=h.query('dialog');
+    const ability=directory.querySelector('[data-action=roster-sheet-ability]');
+    assert.equal(ability.querySelector('.ui-glyph').src,'art/'+performer.art+'/weapon.png');
+    ability.click();
+    assert.equal(h.query('dialog').dataset.member,performer.id);
+    h.click('[data-action=sheet-close]');
+    const training=h.query('[data-action=roster-sheet-preparation]');
+    assert.equal(training.dataset.uiIcon,'train');
+    assert.equal(training.getAttribute('aria-label'),'成员训练与配件');
+    training.click();
+    assert.equal(h.root.dataset.page,'workshop');
+    assert.equal(h.scene._publicShell.selection.memberId,performer.id);
+    assert.equal(e.storage.getItem('starush.public-profile'),profile);
+    h.shutdown();
+  }
+});

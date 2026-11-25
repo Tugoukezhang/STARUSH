@@ -4,7 +4,7 @@ import {getCompanionQuestion} from '../utils/publicCompanionDialogue.mjs';
 import {loadPublicProfile} from '../utils/publicRunProgression.mjs';
 import {UI_CAST, getUiPerformer, isUserCastEnabled} from '../utils/userCast.mjs';
 import {renderProgramEvents, renderPracticeTools} from './ProgramMenuPages.mjs';
-import {getMenuAvatarArt, mountMenuAvatar} from './MenuPortraitAvatar.mjs';
+import {getMenuAvatarArt, mountMenuAvatar, setMemberPickerAvatar} from './MenuPortraitAvatar.mjs';
 import {mountPortraitInteraction} from './HomePortraitInteraction.mjs';
 import {openHierarchySheet} from './HierarchySheets.mjs';
 import {mountConsoleUiArt} from './HierarchyUiArt.mjs';
@@ -97,7 +97,8 @@ function castStrip(view, root, selected, prefix, onSelect) {
     const button = command(view, strip, member.name, () => onSelect(member.id), {className: 'pm-cast-option', action: `${prefix}-member-${member.id}`});
     button.setAttribute('aria-pressed', String(member.id === selected)); button.replaceChildren();
     const headshot=view.element('img','pm-member-headshot',undefined,button);
-    headshot.src=getMenuAvatarArt(member.id).src;headshot.width=160;headshot.height=160;headshot.alt='';headshot.draggable=false;
+    if(prefix==='companion')setMemberPickerAvatar(headshot,member.id);
+    else{headshot.src=getMenuAvatarArt(member.id).src;headshot.width=160;headshot.height=160;headshot.alt='';headshot.draggable=false;}
     view.element('span', '', member.name, button);
   }
   return strip;

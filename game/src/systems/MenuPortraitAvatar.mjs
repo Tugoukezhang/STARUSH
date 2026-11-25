@@ -5,6 +5,19 @@ import {GREEN_WINDSONG_AVATAR} from '../utils/greenWindsongArt.mjs';
 // All three confirmed replacement identities own their decoded avatar assets.
 const ART=Object.freeze({sakura:RED_VALKYRIE_AVATAR,kai:GREEN_WINDSONG_AVATAR,enjo:BLUE_ACADEMY_AVATAR});
 export const getMenuAvatarArt=id=>Object.hasOwn(ART,id)?ART[id]:null;
+// A list portrait stays at 60 CSS pixels, including in three-density displays.
+export function setMemberPickerAvatar(image,id) {
+  const art=getMenuAvatarArt(id);
+  if(!art||!image)return false;
+  image.addEventListener('error',()=>{
+    image.removeAttribute('srcset');
+    image.src=art.src;
+  },{once:true});
+  image.alt='';image.draggable=false;image.width=art.width;image.height=art.height;
+  image.srcset='art/setdesign/avatar-'+id+'.webp 1x';
+  image.src=art.src;
+  return true;
+}
 export function mountMenuAvatar(view,parent,id,fallback){
  const art=getMenuAvatarArt(id);if(!art||!parent||!view?.doc||view.disposed)return null;
  const image=view.element('img','menu-head-avatar',undefined,parent);image.alt='';image.setAttribute('aria-hidden','true');image.width=art.width;image.height=art.height;image.hidden=true;image.draggable=false;

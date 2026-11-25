@@ -42,7 +42,7 @@ import {mountCompanionRig} from './CompanionRigPresentation.mjs';
 import {mountEnjoContinuousPortrait} from './EnjoContinuousPortrait.mjs';
 import {mountKaiContinuousPortrait} from './KaiContinuousPortrait.mjs';
 import {getCompanionRig} from './CompanionRigRegistry.mjs';
-import {mountMenuAvatar,getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
+import {mountMenuAvatar,setMemberPickerAvatar} from './MenuPortraitAvatar.mjs';
 import {PUBLIC_SHELL_ROUTES,PUBLIC_SHELL_ROOTS,getPublicShellRoute,getPublicShellRootId,isPublicShellPage as validPage} from '../utils/publicShellNavigation.mjs';
 import {copyPublicRehearsalSetup,createPublicShellSceneEntry} from '../utils/publicShellSceneEntry.mjs';
 import {mountSystemScreenFrame} from './SystemScreenFrame.mjs';
@@ -558,10 +558,17 @@ export class PublicShellView {
       mark.style.setProperty('--cel-row',String(Math.floor(visual.frame/visual.columns)));
       mark.style.setProperty('--cel-column',String(visual.frame%visual.columns));
     }
-    const portrait=this.element('img','member-portrait',undefined,frame);
-    portrait.src=visual?.source || art?.avatar;portrait.alt='';portrait.draggable=false;
-    portrait.width=visual?.width || 128;portrait.height=visual?.height || 128;portrait.decoding='async';
-    if(!large&&isUserCastEnabled())mountMenuAvatar(this,mark,member.id,portrait);
+    let portrait;
+    if(!large && isUserCastEnabled() && parent.parentNode?.classList.contains('shell-member-strip')){
+      mark.replaceChildren();
+      portrait=this.element('img','member-portrait menu-head-avatar',undefined,mark);
+      setMemberPickerAvatar(portrait,member.id);
+    }else{
+      portrait=this.element('img','member-portrait',undefined,frame);
+      portrait.src=visual?.source || art?.avatar;portrait.alt='';portrait.draggable=false;
+      portrait.width=visual?.width || 128;portrait.height=visual?.height || 128;portrait.decoding='async';
+      if(!large&&isUserCastEnabled())mountMenuAvatar(this,mark,member.id,portrait);
+    }
     if(large&&isUserCastEnabled()){
       const rig=motionOptions?.animate===true&&!art?.confirmedDesign?getCompanionRig(member.id):null;
       if(art?.confirmedDesign)this.homePortraitDispose=mountHomePortrait(this,mark,member.id,portrait,motionOptions?.background);
@@ -589,8 +596,8 @@ export class PublicShellView {
       button.dataset.member = member.id;button.setAttribute('aria-pressed',String(member.id===this.selection.memberId));
       button.replaceChildren();
       if(owner){
-        const art=getMenuAvatarArt(member.id),image=this.element('img','roster-headshot',undefined,button);
-        image.src=art.src;image.alt='';image.width=art.width;image.height=art.height;image.draggable=false;
+        const image=this.element('img','roster-headshot',undefined,button);
+        setMemberPickerAvatar(image,member.id);
       }else this.mark(button,member);
       this.element('span','',member.name,button);
       if(isUserCastEnabled()&&(member.id===model.member.id||member.id===this.selection.memberId))
@@ -798,11 +805,8 @@ export class PublicShellView {
       button.dataset.member=candidate.id;button.setAttribute('aria-pressed',String(candidate.id===member.id));
       button.replaceChildren();
       if(isUserCastEnabled()){
-        const art=getMenuAvatarArt(candidate.id);
-        if(art){
-          const image=this.element('img','training-headshot',undefined,button);
-          image.src=art.src;image.alt='';image.width=art.width;image.height=art.height;image.draggable=false;
-        }
+        const image=this.element('img','training-headshot',undefined,button);
+        setMemberPickerAvatar(image,candidate.id);
       }else this.mark(button,candidate);
       this.element('span','',candidate.name,button);
     }
