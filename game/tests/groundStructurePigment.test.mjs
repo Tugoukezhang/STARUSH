@@ -50,3 +50,15 @@ test('only actual three-owner material loader opts in; earlier presentation bran
  for(const performerId of ['sakura','kai','enjo']){const image=loadGraffitiMaterial({_userCastPresentation:true,battleData:{performerId},textures:{exists:()=>true,get:()=>({getSourceImage:()=>source})}});assert.equal(image.groundRelief,true);assert.equal(image.screenPrint,true);}
  assert.equal(loadGraffitiMaterial({_userCastPresentation:false}),null);assert.equal(loadGraffitiMaterial({_userCastPresentation:true,battleData:{performerId:'venus'}}),null);
 });
+
+test('a directional imprint exposes its stored body and the original street value, with unchanged ownership',()=>{
+ const {r,m}=fixture();
+ const mat=createComicPigmentMaterial(r,{...m.image,strokeRelief:true});
+ const output=new Uint8ClampedArray(r.pixels.length);
+ const a=(5*r.pixelWidth+2)*4,b=a+4;
+ r.pixels.set([245,118,165,255],a);r.pixels.set([152,76,100,255],b);
+ const before=r.pixels.slice(),owners=r.paintColors.slice();
+ finishComicPigment(r,output,{x:0,y:0,width:r.pixelWidth,height:r.pixelHeight},mat);
+ assert(output[a]>output[b]+10);
+ assert.equal(output[a+3],output[b+3]);assert.deepEqual(r.pixels,before);assert.deepEqual(r.paintColors,owners);
+});

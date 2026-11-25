@@ -266,10 +266,18 @@ export function finishComicPigment(raster, target, rect, material) {
       const value = local?tone:material.bodyPattern ? bodyTone(material,x,y) : colors[p] === owner ? tone : NEUTRAL;
       const luma = substrate?.[i + 3] ? (2126 * substrate[i] + 7152 * substrate[i + 1] + 722 * substrate[i + 2]) / 2550000 : 1;
       if(material.image.screenPrint===true){
+        // The stored pigment already follows the actual directional imprint and clipped footprint.
+        // Carry its body value and the underlying street light into the finished display.
+        let bed=.94+.06*luma;
+        if(material.image.strokeRelief){
+          const peak=Math.max(owner>>>16,(owner>>>8)&255,owner&255)*strength+255*(1-strength);
+          const deposited=peak>0?Math.min(1,Math.max(pixels[i],pixels[i+1],pixels[i+2])/peak):1;
+          bed=(.72+.28*luma)*(.62+.38*deposited);
+        }
         if(local){
           const amount=Math.max(-1,Math.min(1,(value-128)/127));
           for(let c=0;c<3;c++){
-            const base=(((owner>>>(16-c*8))&255)*strength+255*(1-strength))*(.94+.06*luma)*(relief?relief[p]/255:1);
+            const base=(((owner>>>(16-c*8))&255)*strength+255*(1-strength))*bed*(relief?relief[p]/255:1);
             const ink=amount<0?base*(1+.28*amount):base+(255-base)*.22*amount;
             target[i+c]=Math.round((markings?ink+(SCREEN_PAPER[c]-ink)*markings[p]/255:ink)*(edge?.9:1));
           }
@@ -282,7 +290,7 @@ export function finishComicPigment(raster, target, rect, material) {
         // Ink the outside of a connected patch. Same-colour overlaps have no seam;
         // a narrow lower edge separates pigment from grey paving and enemy bullets.
         let contour = edge ? .9 : 1;
-        if (flat && edge) contour = .64;
+        if (flat && edge) contour = material.image.strokeRelief ? .81 : .64;
         else if (flat && ((y+2<h && foreign(pixels,paintColors,p+2*w,owner))
           || (x+2<w && foreign(pixels,paintColors,p+2,owner)))) contour = .86;
         const bodyProfile=material.image.poolBody===true;
@@ -291,13 +299,13 @@ export function finishComicPigment(raster, target, rect, material) {
         // Sampling the union keeps a single reflection across overlapping shots.
         let lip=0;
         if(wet&&!edge){
-          if(y>=2&&foreign(pixels,paintColors,p-2*w,owner))lip=.38;
-          else if(x>=2&&foreign(pixels,paintColors,p-2,owner))lip=.21;
+          if(y>=2&&foreign(pixels,paintColors,p-2*w,owner))lip=material.image.strokeRelief ? .22 : .38;
+          else if(x>=2&&foreign(pixels,paintColors,p-2,owner))lip=material.image.strokeRelief ? .14 : .21;
         }else if(bodyProfile&&!flat){
           lip=poolEdgeTone(pixels,paintColors,w,h,x,y,owner)*(1-ink)*(1-paper);
         }
         for(let c=0;c<3;c++){
-          const base=(((owner>>>(16-c*8))&255)*strength+255*(1-strength))*(.94+.06*luma)*ground;
+          const base=(((owner>>>(16-c*8))&255)*strength+255*(1-strength))*bed*ground;
           const body=mid<0?base*(1+(flat ? .10 : .16)*mid):base+(255-base)*(flat ? .12 : .18)*mid;
           const shaped=lip<0?body*(1+lip):body+(255-body)*lip;
           const road=markings?shaped+(SCREEN_PAPER[c]-shaped)*markings[p]/255:shaped;

@@ -40,21 +40,30 @@ export function createGraffitiBrush({data,width,height},performer='sakura',merge
 }
 
 // Four registered silhouettes share the same tint and merge into continuous ground paint.
-export function createCompactPoolBrush(image,grid=1){
+// One broad draw through the wet pigment. The two sides taper toward the tip at different rates.
+function strokeLight(u,v){
+  const along=Math.min(1,Math.max(0,u));
+  const cross=v-.52+.12*along*along;
+  const edge=Math.min(1,Math.abs(cross)/(.15+.21*(1-along)));
+  const body=.79+.18*along;
+  return body+.17*(1-edge)*(1-edge)-.1*edge*(1-along);
+}
+
+export function createCompactPoolBrush(image,grid=1,directional=false){
   const {data,width,height}=image??{};
   let footprint=false;
   if(data&&Number.isInteger(width)&&width>0&&width===height&&data.length===width*height*4)
     for(let i=3;i<data.length&&!footprint;i+=4)footprint=data[i]>0;
   if(!footprint)throw new Error('Invalid compact pool image');
   const cell=width/grid;
-  return {mergeOpaque:true,preserveSubstrate:true,
+  return {mergeOpaque:true,preserveSubstrate:true,strokeLight:directional?strokeLight:null,
     variantAt(x,y){return grid===1?0:(Math.floor(x/19)*3+Math.floor(y/23))&3;},
     sample(u,v,ink=false,variant=0){
       if(!Number.isFinite(u+v)||u<0||v<0||u>=1||v>=1)return 0;
       const x=(variant%grid)*cell+Math.floor(u*cell),y=Math.floor(variant/grid)*cell+Math.floor(v*cell);
       const i=(y*width+x)*4,value=Math.max(data[i],data[i+1],data[i+2]);
       return ink==='tone'?value/255:ink?Math.max(0,1-value/128):data[i+3]/255;
-    },tone(u,v,variant){return this.sample(u,v,'tone',variant);}};
+    },tone(u,v,variant){return this.sample(u,v,'tone',variant)*(directional?strokeLight(u,v):1);}};
 }
 
 function readGround(scene,key,width,height,missing,invalid){
@@ -69,7 +78,7 @@ function readGround(scene,key,width,height,missing,invalid){
 export function loadGraffitiBrush(scene){
   if(scene._userCastPresentation!==true)return null;
   const performer=scene.publicPerformerRun?.member?.id??scene.battleData?.performerId??'sakura';
-  if(['sakura','kai','enjo'].includes(performer))return createCompactPoolBrush(readGround(scene,COMPACT_POOL_GROUND.key,512,512,'Required compact pool ground is missing','Invalid compact pool ground dimensions'),2);
+  if(['sakura','kai','enjo'].includes(performer))return createCompactPoolBrush(readGround(scene,COMPACT_POOL_GROUND.key,512,512,'Required compact pool ground is missing','Invalid compact pool ground dimensions'),2,true);
   return createGraffitiBrush(readGround(scene,GRAFFITI_GROUND.key,1024,256,'Required graffiti ground atlas is missing','Invalid graffiti ground atlas dimensions'),performer,false);
 }
 
@@ -85,6 +94,7 @@ export function loadGraffitiMaterial(scene){
   image.printFloor=true;
   image.screenPrint=true;
   image.groundRelief=true;
+  image.strokeRelief=true;
   image.groundMarkings=true;
   image.poolBody=true;
   image.paintBodyTexture=true;

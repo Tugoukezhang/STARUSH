@@ -176,7 +176,7 @@ export class StreetPigmentRaster {
       const reach = denominator ? (ax * ey - ay * ex) / denominator : 0;
       if(this.brush)return distance<=Math.min(fan.radius,reach)?sample(dx,dy):0;
       return smooth(side / feather) * smooth((Math.min(fan.radius, reach) - distance) / feather);
-    }, bounds,fan.solidFootprint===true,fan.solidFootprint?null:this.brush?(dx,dy)=>sample(dx,dy,true):null,fan.solidFootprint?()=>1:this.brush?.tone?(dx,dy)=>sample(dx,dy,'tone'):null);
+    }, bounds,fan.solidFootprint===true,fan.solidFootprint?null:this.brush?(dx,dy)=>sample(dx,dy,true):null,fan.solidFootprint?(dx,dy)=>this.brush?.strokeLight?.((dx*cos+dy*sin)/fan.radius,.5+(dy*cos-dx*sin)/(2*fan.radius*sinHalf))??1:this.brush?.tone?(dx,dy)=>sample(dx,dy,'tone'):null);
   }
   consumeDirty() {
     const rect = this.dirty;this.dirty = null;
