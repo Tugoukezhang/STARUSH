@@ -12,7 +12,7 @@ test('companion preview distinguishes the saved deployment label from the visibl
  const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);
  const h=e.harness(e.TitleScene,{suppressDebugAutoStart:true,openPage:'lounge'});h.scene.create();
  const before=e.storage.getItem('starush.public-profile');h.click('[data-action=companion-member-enjo]');
- assert.equal(h.query('.pm-scene').dataset.member,'enjo');assert.match(h.query('.shell-session-context').querySelector('strong').textContent,/出战 · 步枪手/);
+ assert.equal(h.query('.pm-scene').dataset.member,'enjo');assert.match(h.query('.shell-session-context').querySelector('strong').textContent,/出战 · 战术女武神/);
  assert.equal(h.query('.shell-session-context').dataset.currentPerformer,'sakura');assert.equal(e.storage.getItem('starush.public-profile'),before);h.shutdown();
 });
 
@@ -35,7 +35,7 @@ function interaction(external = true) {
   const bubble = external ? view.element('section', 'pm-dialogue', undefined, root) : null;
   const line = external ? view.element('p', 'pm-response', 'initial', bubble) : null;
   if (bubble) bubble.hidden = false;
-  const timer = clock(doc), dispose = mountPortraitInteraction(view, button, stage, 'sakura', external ? {output: {bubble, line}} : undefined);
+  const timer = clock(doc), dispose = mountPortraitInteraction(view, button, stage, 'sakura', external ? {output: {bubble, line},topicDock:true} : undefined);
   return {view, doc, root, stage, button, rig, canvas, bubble: bubble || stage.querySelector('.portrait-dialogue'), line: line || stage.querySelector('.portrait-dialogue-line'), dispose, ...timer, alpha(value) {alpha = value;}};
 }
 
@@ -141,6 +141,8 @@ function screen(page = 'lounge', owner = true) {
       const button = view.root.querySelector('[data-action="companion-touch"]');
       if (button) {
         button.dataset.portraitState = 'ready'; button.dataset.menuPortraitState = 'ready';
+        const artHost = button.querySelector('.member-mark');
+        if (artHost) { artHost.dataset.portraitState = 'ready'; artHost.dataset.menuPortraitState = 'ready'; }
         const rig = button.querySelector('.home-portrait-rig') || view.element('span', 'menu-portrait-motion', undefined, button);
         if (!rig.querySelector('canvas')) view.element('canvas', '', undefined, rig);
       }

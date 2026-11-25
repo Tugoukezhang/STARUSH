@@ -4,7 +4,7 @@ import {loadScenes} from './helpers/publicShellHarness.mjs';
 
 const ECHO=Object.freeze({
   sakura:{label:'回响追加',delta:'第3次有效命中后 200ms 补色',detail:'原落点、不追踪；空击不计数，不递归。',tactic:/回响/},
-  kai:{label:'回响回斩',delta:'每3次有效挥剑 → 延迟回斩',detail:'200ms后回斩125范围、140度；每目标14点，不追踪、不穿墙。',tactic:/延迟回斩/},
+  kai:{label:'风铃回响',delta:'每3次有效挥铃 → 延迟回风',detail:'200ms后回风扫过125范围、140度；每目标14点，不追踪、不穿墙。',tactic:/延迟回风/},
   enjo:{label:'星页回响',delta:'每3次命中 → 扩散震波',detail:'从原施法点扩散至150范围，每个目标14点；不穿墙、不递归。',tactic:/扩散震波/},
 });
 const ROLES=Object.keys(ECHO);

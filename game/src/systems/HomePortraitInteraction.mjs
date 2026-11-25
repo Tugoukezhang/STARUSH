@@ -22,12 +22,13 @@ export function mountPortraitInteraction(view,button,stage,id,options={}){
  }
  let disposed=false,timer=null,last=-Infinity,sequence=0,press=null,dragged=false,activeRig=null;
  const live=()=>!disposed&&!view.disposed&&!view.navigating&&button.parentNode===stage&&(!view.root||view.root.contains(button));
- // One readiness gate for pointer, keyboard and topic speech: a loading or unavailable portrait never answers.
+ // Direct touches wait for a decoded portrait. The separate conversation dock can display its text immediately.
  const settled=()=>{const host=button.querySelector('.member-mark');
   return !UNSETTLED.has(button.dataset.portraitState)&&!UNSETTLED.has(button.dataset.menuPortraitState)
    &&!UNSETTLED.has(host?.dataset.portraitState)&&!UNSETTLED.has(host?.dataset.menuPortraitState);};
- const available=()=>live()&&settled()&&!view.doc.hidden&&!view.scene?._sessionExperience?.isBlocking?.()&&!view.root?.inert;
- const dismiss=()=>{if(timer!==null)cancel(timer);timer=null;if(!external)bubble.hidden=true;delete stage.dataset.portraitSpeaking;if(activeRig){delete activeRig.dataset.reaction;delete activeRig.dataset.reactionSequence;activeRig=null;}};
+ const canAddress=()=>live()&&!view.doc.hidden&&!view.scene?._sessionExperience?.isBlocking?.()&&!view.root?.inert;
+ const available=()=>canAddress()&&settled();
+ const dismiss=()=>{options.reaction?.clear();if(timer!==null)cancel(timer);timer=null;if(!external)bubble.hidden=true;delete stage.dataset.portraitSpeaking;if(activeRig){delete activeRig.dataset.reaction;delete activeRig.dataset.reactionSequence;activeRig=null;}};
  const key=e=>{if(e.key==='Escape'&&(external?timer!==null:!bubble.hidden)){dismiss();e.preventDefault?.();}};
  const visibility=()=>{if(view.doc.hidden)dismiss();};
  const down=e=>{press={x:e.clientX,y:e.clientY};dragged=false;};
@@ -37,19 +38,23 @@ export function mountPortraitInteraction(view,button,stage,id,options={}){
  // Pointer and topic speech share output, reaction sequence and the single expiry clock.
  const present=(text,area,rig)=>{
   line.textContent=text;bubble.hidden=false;bubble.dataset.performer=id;stage.dataset.portraitSpeaking=id;
+  options.reaction?.show(area);
   button.dataset.interactionSequence=String(++sequence);
   if(rig){activeRig=rig;rig.dataset.reaction=area;rig.dataset.reactionSequence=String(sequence);}
   if(timer!==null)cancel(timer);
   timer=after(dismiss,Math.max(2600,Math.min(4200,1400+line.textContent.length*60)));
   return true;
  };
- const speak=(text,area='body')=>available()?present(text,area,portraitRig()):false;
+ const speak=(text,area='body')=>canAddress()&&(options.topicDock===true||settled())?present(text,area,settled()?portraitRig():null):false;
  const click=e=>{
   if(!available()||e.defaultPrevented||now()-last<260)return;
   if(dragged&&e.detail!==0){dragged=false;return;}
   let area='body';const rig=portraitRig(),canvas=rig?.querySelector('canvas');
   if(e.detail!==0&&Number.isFinite(e.clientX)&&Number.isFinite(e.clientY)){
-   if(typeof rig?.portraitHitTest==='function'){
+   const reactionHit = options.reaction?.hitTest(e.clientX,e.clientY);
+   if(reactionHit !== undefined){
+    if(reactionHit===null)return;area=reactionHit;
+   }else if(typeof rig?.portraitHitTest==='function'){
     area=rig.portraitHitTest(e.clientX,e.clientY);if(area===null)return;
    }else{
    const box=(canvas||rig||button).getBoundingClientRect?.();

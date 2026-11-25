@@ -7,6 +7,7 @@ import {UI_CAST, getUiPerformer, isUserCastEnabled} from '../utils/userCast.mjs'
 import {renderProgramEvents, renderPracticeTools} from './ProgramMenuPages.mjs';
 import {mountMenuAvatar, setMemberPickerAvatar} from './MenuPortraitAvatar.mjs';
 import {mountPortraitInteraction} from './HomePortraitInteraction.mjs';
+import {mountCompanionReaction} from './CompanionReactionArt.mjs';
 import {openHierarchySheet} from './HierarchySheets.mjs';
 import {mountConsoleUiArt} from './HierarchyUiArt.mjs';
 import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
@@ -172,7 +173,8 @@ function lounge(view, root, member, profile, loaded) {
   const line = statusLine(view, response, open ? questions.get(open.topicId).prompt : resting(), 'pm-response');
   response.hidden = false; line.setAttribute('aria-atomic', 'true');
   const stage = root.querySelector('.pm-scene'), portrait = stage.querySelector('[data-action="companion-touch"]');
-  const interaction = mountPortraitInteraction(view, portrait, stage, member.id, {output: {bubble: response, line},topicDock:true});
+  const reaction = isUserCastEnabled() ? mountCompanionReaction(view, portrait, member.id) : null;
+  const interaction = mountPortraitInteraction(view, portrait, stage, member.id, {output: {bubble: response, line},topicDock:true,reaction});
   view.portraitInteractionDispose = interaction;
   // One contextual dock: either the topic toolbar or the open question's answers, never both.
   const choices = view.element('div', 'pm-choices', undefined, root);
@@ -193,7 +195,7 @@ function lounge(view, root, member, profile, loaded) {
   for (const topic of BACKSTAGE_TOPICS) {
     const button = command(view, topics, topic.label, () => {
       if (view.doc.hidden || view.root.inert) return;
-      present(topic.id); interaction.speak(questions.get(topic.id).prompt);
+      present(topic.id); interaction.speak(questions.get(topic.id).prompt, topic.id);
       answerGroups.get(topic.id).children[0].focus();
     }, {className: 'pm-topic', icon: topic.id === 'greeting' ? 'users' : topic.id === 'rehearsal' ? 'clapperboard' : 'route', lineIcon: true, action: `companion-topic-${topic.id}`});
     topicButtons.set(topic.id, button); button.disabled = !ready;
@@ -211,7 +213,7 @@ function lounge(view, root, member, profile, loaded) {
         status.textContent = view.productModuleMessage.text;
         if (!accepted(result.status)) return;
         memory = result.state; record();
-        interaction.speak(getCompanionLine(member.id, topic.id, profile, memory));
+        interaction.speak(getCompanionLine(member.id, topic.id, profile, memory), topic.id);
       }, {className: 'pm-answer', action: `companion-answer-${reply.id}`});
       answer.dataset.companionReply = reply.id;
     }
@@ -245,7 +247,7 @@ function lounge(view, root, member, profile, loaded) {
       control.setAttribute('aria-pressed', String(recent));
       const seen=recent || memory.topicHistory?.[member.id]?.includes(id);
       control.dataset.lastTopic = String(recent);
-      control.dataset.topicState = recent ? '最近' : seen ? '聊过' : '可聊';
+      control.dataset.topicState = recent ? '最近' : seen ? '聊过' : '首次';
       control.setAttribute('aria-label', BACKSTAGE_TOPICS.find(topic=>topic.id===id).label+' · '+control.dataset.topicState);
     }
     for (const [id, group] of answerGroups) for (const control of group.children) {

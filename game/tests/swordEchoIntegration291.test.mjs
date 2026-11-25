@@ -17,7 +17,7 @@ test('other actors keep their distinct existing echo owners',()=>{
  const hammer=fixture('enjo');for(let i=0;i<3;i++)hammer.run.onImpact(540,620,'blue',null);assert.equal(hammer.run.groundEcho.rows.length,1);assert.equal(hammer.run.swordEcho,undefined);hammer.run.destroy();
 });
 test('choice and build model disclose directional geometry and real limits',()=>{
- const {e}=fixture(),m=e.loadRuntime('utils/publicBuildContent.mjs'),b=m.getPublicBuildModel(null,'kai',['tempo']);const choice=m.getPublicBuildOption(b,'echo');assert.match(choice.delta,/回斩/);assert.match(choice.detail,/125/);assert.match(choice.detail,/140/);assert.match(choice.detail,/不追踪/);assert.match(choice.after.tactic,/回斩/);
+ const {e}=fixture(),m=e.loadRuntime('utils/publicBuildContent.mjs'),b=m.getPublicBuildModel(null,'kai',['tempo']);const choice=m.getPublicBuildOption(b,'echo');assert.match(choice.delta,/回风/);assert.match(choice.detail,/125/);assert.match(choice.detail,/140/);assert.match(choice.detail,/不追踪/);assert.match(choice.after.tactic,/回风/);
 });
 test('integration captures melee release frame, updates and disposes the sweep and publishes its texture',()=>{
  const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');

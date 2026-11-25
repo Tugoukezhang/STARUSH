@@ -627,7 +627,11 @@ export class PublicShellView {
     const name = this.element('div','shell-performer-name'+(owner?' roster-stage-identity':''),undefined,detail);
     if(!isUserCastEnabled())this.element('span','shell-eyebrow',member.id.toUpperCase(),name);
     const memberHeading=this.element('h2','',member.name,name);
-    if(owner)memberHeading.setAttribute('aria-label',member.name);
+    if(owner){
+      memberHeading.setAttribute('aria-label',member.name);
+      const ink=this.element('span','roster-ink-swatch',member.inkName,name);
+      ink.style.setProperty('--member-ink',`#${member.colorHex.toString(16).padStart(6,'0')}`);
+    }
     this.element('p','',member.id===model.member.id ? '当前出战成员' : '候选出战成员',name);
     name.dataset.memberPreview=member.id;name.setAttribute('role','status');name.setAttribute('aria-live','polite');
     if(owner)this.element('span','roster-role',roles[member.id],name);

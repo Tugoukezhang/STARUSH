@@ -32,3 +32,31 @@
  & .planning-command-footer .sec-growth-preflight .member-flow-letter{display:block;position:static;width:auto;height:18px;max-width:45%;object-fit:contain;clip-path:none}
  @media(prefers-reduced-motion:reduce){& .ui-sheet[data-sheet-kind=actors] .ui-actor-grid>button{transition:none}}
 }
+#game-container #public-shell[data-page=roster] .roster-portrait-stage .shell-selection-footer .roster-ink-swatch {
+  display:inline-flex; align-items:center; gap:4px; white-space:nowrap;
+  font:700 clamp(11px,3vw,14px)/1.25 system-ui,sans-serif; color:#302331;
+}
+.roster-ink-swatch::before {
+  content:""; width:.78em; height:.94em; transform:rotate(36deg);
+  border-radius:60% 12% 55% 55%; border:1px solid #352f3e; background:var(--member-ink);
+}
+#game-container #public-shell[data-page=lounge] .pm-scene-portrait {
+  container-type: size;
+}
+#game-container #public-shell[data-page=lounge] .pm-cast-reaction {
+  position:absolute; width:min(133cqw,92cqh); height:min(133cqw,92cqh);
+  left:50%; bottom:4%; transform:translateX(-50%); pointer-events:none;
+}
+#game-container #public-shell[data-page=lounge] .pm-cast-reaction[hidden] {display:none}
+#game-container #public-shell[data-page=lounge] .pm-scene-portrait[data-conversation-pose] .member-mark {visibility:hidden}
+
+#game-container #public-shell[data-page=lounge] .pm-topic {position:relative}
+#game-container #public-shell[data-page=lounge] .pm-topic[data-topic-state]::after {
+  content:attr(data-topic-state); position:absolute; top:1px; right:2px;
+  font:700 10px/12px system-ui,sans-serif; border-radius:2px; padding:0 2px;
+}
+#game-container #public-shell[data-page=lounge] .pm-topic[data-topic-state="首次"]::after {color:#675c51}
+
+#game-container #public-shell[data-page=lounge] .pm-topic[data-topic-state="最近"] {box-shadow:inset 0 -4px 0 #588e8a}
+#game-container #public-shell[data-page=lounge] .pm-topic[data-topic-state="最近"]::after {color:white;background:#245d60}
+#game-container #public-shell[data-page=lounge] .pm-topic[data-topic-state="聊过"] {box-shadow:inset 0 -2px 0 #859c90}

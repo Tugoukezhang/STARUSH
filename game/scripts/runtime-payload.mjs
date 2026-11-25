@@ -164,6 +164,8 @@ export const RUNTIME_PAYLOAD = Object.freeze([
   ...group('owner-dash-material', 'art/kai-dash-20261021/', ['dash.png']),
   ...group('owner-dash-contrast-material', 'art/kai-dash-contrast-20261021/', ['dash.png']),
   ...group('owner-character-motion', 'art/three-cast-actions-20261018/', ['cat-rifle.webp','mecha-sword.webp','hammer-cat.webp']),
+  ...group('cast-encounters', 'art/cast-encounters-20261125/',
+    ['sakura','kai','enjo'].flatMap(id=>['room','victory','defeat','dialogue'].map(state=>`${id}-${state}.webp`))),
   ...group('owner-red-valkyrie', 'art/red-valkyrie-20261123/', ['motion.png','portrait.png','avatar.png','weapon.png']),
   ...group('owner-green-windsong', 'art/green-windsong-20261123/', ['motion.png','portrait.png','avatar.png','weapon.png','wind.png']),
   ...group('owner-character-gait', 'art/enjo-gait-20261021/', ['walk.png']),

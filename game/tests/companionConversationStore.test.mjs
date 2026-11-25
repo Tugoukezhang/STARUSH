@@ -24,3 +24,22 @@ test('a foreign reply/topic, corrupt context or future state never writes or inv
 test('storage failure keeps prior confirmed answer and does not claim a new memory',async()=>{
  const {getCompanionQuestion}=await import('../src/utils/publicCompanionDialogue.mjs'),s=memory(),q=getCompanionQuestion('sakura','greeting');updateBackstageProgress({type:'reply',memberId:'sakura',topicId:'greeting',replyId:q.choices[0].id},s);const before=s.data.get(KEY);s.setItem=()=>{throw new DOMException('full','QuotaExceededError');};const r=updateBackstageProgress({type:'reply',memberId:'sakura',topicId:'greeting',replyId:q.choices[1].id},s);assert.equal(r.status,'storage-error');assert.equal(s.data.get(KEY),before);assert.equal(r.state.conversations.sakura.replyId,q.choices[0].id);
 });
+
+test('topic history starts with known visits from older saves and stays separate for each member', () => {
+ const legacy=loadBackstageProgress(memory()).state;
+ legacy.visits.enjo=4;
+ legacy.topics.enjo='rehearsal';
+ const storage=memory(JSON.stringify(legacy));
+ assert.equal(loadBackstageProgress(storage).state.topicHistory,undefined);
+ assert.equal(storage.writes.length,0);
+ const talk=(memberId,topicId)=>updateBackstageProgress({type:'talk',memberId,topicId},storage);
+ assert.equal(talk('kai','encore').status,'saved');
+ talk('enjo','greeting');
+ talk('enjo','rehearsal');
+ const history=loadBackstageProgress(storage).state.topicHistory;
+ assert.deepEqual(history,{sakura:[],enjo:['rehearsal','greeting'],kai:['encore']});
+ assert.equal(validateBackstageBackup(storage.getItem(KEY)),true);
+ const corrupt=JSON.parse(storage.getItem(KEY));
+ corrupt.topicHistory.enjo.push('greeting');
+ assert.equal(validateBackstageBackup(JSON.stringify(corrupt)),false);
+});

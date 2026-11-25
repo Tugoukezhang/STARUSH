@@ -45,12 +45,24 @@ function createState() {
 
 function validState(state) {
   const current=record(state)&&state.version===2;
-  if (!exact(state, current?['version','visits','topics','rooms','selectedCompanionId','conversations']:['version', 'visits', 'topics', 'rooms']) || ![1,2].includes(state.version)
+  const tracksTopics = current && Object.hasOwn(state, 'topicHistory');
+  const fields = current ? ['version','visits','topics','rooms','selectedCompanionId','conversations'] : ['version','visits','topics','rooms'];
+  if (tracksTopics) fields.push('topicHistory');
+  if (!exact(state, fields) || ![1,2].includes(state.version)
     || !exact(state.visits, MEMBERS) || !exact(state.topics, MEMBERS) || !exact(state.rooms, ROOM_IDS)) return false;
   for (const id of MEMBERS) {
     const count = state.visits[id], topic = state.topics[id];
     if (!Number.isSafeInteger(count) || count < 0 || count > 999
       || (count === 0 ? topic !== null : !TOPIC_IDS.includes(topic))) return false;
+  }
+  if (tracksTopics) {
+    if (!exact(state.topicHistory, MEMBERS)) return false;
+    for (const id of MEMBERS) {
+      const topics = state.topicHistory[id];
+      if (!Array.isArray(topics) || topics.length > TOPIC_IDS.length || topics.length > state.visits[id]
+        || new Set(topics).size !== topics.length || topics.some(topic => !TOPIC_IDS.includes(topic))
+        || (state.topics[id] && !topics.includes(state.topics[id]))) return false;
+    }
   }
   const assigned = new Set();
   for (const definition of BACKSTAGE_ROOMS) {
@@ -135,6 +147,10 @@ export function updateBackstageProgress(command, storage) {
   }
   const before = JSON.stringify(loaded.state), next = JSON.parse(before);
   if (command.type === 'talk'||command.type==='reply') {
+    // Older saves only recorded a most recent topic. Recover only that known visit.
+    next.topicHistory ??= Object.fromEntries(MEMBERS.map(id => [id,next.topics[id] ? [next.topics[id]] : []]));
+    const history = next.topicHistory[command.memberId];
+    if (!history.includes(command.topicId)) history.push(command.topicId);
     next.visits[command.memberId] = Math.min(999, next.visits[command.memberId] + 1);
     next.topics[command.memberId] = command.topicId;
     next.selectedCompanionId=command.memberId;
@@ -175,11 +191,11 @@ const LINES = {
     defeat: '最近一次公演未通关。不必着急，先把枪械检查和瞄准分开练。',
   },
   enjo: {
-    greeting: '来了就击个掌！我想试试重锤的落点，先从一记干脆的重音开始！',
-    rehearsal: '爆拍不是只比谁用力！收住前半拍，再把重音打准，这段就有劲儿了！',
-    encore: '返场当然要热烈！不过先把落点站稳，最后那一下才够响亮！',
+    greeting: '来了！帮我按住这页，小鸟又把橙墨书签叼跑啦。',
+    rehearsal: '把练习谱摊开吧。我翻到有星记的那页，你数第三拍，我让脚边的橙墨亮起来。',
+    encore: '返场那页我折了个角。灯亮时我来数拍，让最后一圈星纹从这里展开。',
     victory: '最近一次公演已通关！漂亮，把这股劲儿带进排练！',
-    defeat: '最近一次公演未通关。别急着硬冲，拆开难点再来一轮！',
+    defeat: '最近一次公演未通关。我给那一页夹上书签，下回一起再试。',
   },
   kai: {
     greeting: '你好。先检查脚下的空间，再确定起步方向。节奏可以从四拍开始。',

@@ -1,15 +1,14 @@
 import { equipPublicPerformer, getRunChoice } from '../utils/publicRunProgression.mjs';
 import { getDisplayPerformer as getPublicPerformer, getActiveUserCastArt,isUserCastEnabled } from '../utils/userCast.mjs';
-import {BLUE_ACADEMY_PORTRAIT,BLUE_ACADEMY_ART} from '../utils/blueAcademyArt.mjs';
-import {RED_VALKYRIE_PORTRAIT} from '../utils/redValkyrieArt.mjs';
-import {GREEN_WINDSONG_PORTRAIT,GREEN_WINDSONG_ART} from '../utils/greenWindsongArt.mjs';
+import {BLUE_ACADEMY_ART} from '../utils/blueAcademyArt.mjs';
+import {getCastResultArt} from '../utils/castResultArt.mjs';
+import {GREEN_WINDSONG_ART} from '../utils/greenWindsongArt.mjs';
 import {getPublicJourneyResult} from '../utils/publicJourneyContent.mjs';
 import { getPublicChapter,PUBLIC_CHAPTERS } from '../utils/publicCampaign.mjs';
 import { releaseSessionInput, resumePlayerAudioFromGesture } from './PlayerSessionExperience.mjs';
 import { shellIcons } from '../vendor/shellIcons.mjs';
 import {gameplayIcons} from '../vendor/gameplayIcons.mjs';
 import {getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
-import {getPortraitBase,portraitBaseMetrics} from './PortraitBaseRegistration.mjs';
 import {CHAPTER_VENUE_ART} from './ChapterVenueArt.mjs';
 import { getPreparationSnapshot, PUBLIC_EQUIPMENT } from '../utils/publicPreparation.mjs';
 import { getChapterStory } from '../utils/publicStory.mjs';
@@ -57,13 +56,6 @@ const OPTION_COUNT=['','一','二','三','四'];
 const ROLE_ECHO_ART=Object.freeze({
  kai:{src:GREEN_WINDSONG_ART.weaponIcon,size:256,category:'风铃回响',ink:'#76e0bf'},
  enjo:{src:BLUE_ACADEMY_ART.weaponIcon,size:256,category:'星页回响',ink:'#8bbfff'},
-});
-// Owned full-body sources. head = crown-to-chin / source width; face = face centre as source fractions,
-// so CSS renders every role with the same head height at the same anchor. Static art, not Live2D.
-const RESULT_PORTRAITS=Object.freeze({
- sakura:RED_VALKYRIE_PORTRAIT,
- kai:GREEN_WINDSONG_PORTRAIT,
- enjo:BLUE_ACADEMY_PORTRAIT,
 });
 // Original AI lettering 公演完成; victory only, decorative beside the native h2.
 const RESULT_TITLE_ART=Object.freeze({src:'art/result-stage-20261031/complete.webp',width:984,height:268});
@@ -394,7 +386,7 @@ export class BattleSurfaceView {
     const header=this.element('header','battle-performance-header');this.content.append(header);
     if(stage){
       this.root.dataset.resultStage='chapter';
-      const art=RESULT_PORTRAITS[m.member.id],gate=(img,source,state,label,onFail)=>{
+      const art=getCastResultArt(m.member.id,m.victory),gate=(img,source,state,label,onFail)=>{
         const failed=()=>{
           if(this.disposed)return;
           img.remove();header.dataset[state]='unavailable';

@@ -7,9 +7,9 @@ import {USER_CAST_MOTION_BOUNDS,ENJO_WALK_ART,ENJO_HURT_ART,ENJO_REST_ART,KAI_HU
 const BASE='art/user-cast-20261015/';
 // IDs preserve existing saves; these are the owner's replacement designs.
 export const USER_CAST=Object.freeze([
-  {id:'sakura',designId:'red-valkyrie',name:'战术女武神',actionName:'扇面扫射',actionSummary:'向前方三条路线扫射，留下连续涂色区域',identityMark:'枪'},
-  {id:'kai',designId:'green-windsong',name:'翡翠风歌',actionName:'乘风突进',actionSummary:'沿移动方向乘风突进，留下宽幅涂色轨迹，期间仍会受伤',identityMark:'风'},
-  {id:'enjo',designId:'blue-academy',name:'蔚蓝魔法师',actionName:'星页绽放',actionSummary:'展开魔法书，集中涂染近身区域',identityMark:'书'},
+  {id:'sakura',designId:'red-valkyrie',name:'战术女武神',actionName:'扇面扫射',actionSummary:'向前方三条路线扫射，留下连续涂色区域',identityMark:'枪',inkName:'粉色颜料'},
+  {id:'kai',designId:'green-windsong',name:'翡翠风歌',actionName:'乘风突进',actionSummary:'沿移动方向乘风突进，留下宽幅涂色轨迹，期间仍会受伤',identityMark:'风',inkName:'青色颜料'},
+  {id:'enjo',designId:'blue-academy',name:'蔚蓝魔法师',actionName:'星页绽放',actionSummary:'展开魔法书，集中涂染近身区域',identityMark:'书',inkName:'橙色颜料'},
 ].map(row=>Object.freeze({...getPublicPerformer(row.id),...row})));
 
 let enabled=false;

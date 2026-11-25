@@ -24,12 +24,12 @@ const DIALOGUES={
  enjo:{
   greeting:{prompt:'魔法书合好啦！你想陪我整理一下书页，还是先占住沙发的好位置？',choices:[
    {id:'check-first',label:'一起整理书页',response:'帮我按住这一页！小鸟总爱把书签叼走，两个人一起找就快多啦。'},
-   {id:'rest-first',label:'先占个沙发位置',response:'那我把靠垫给你！重音先歇一歇，现在只要坐下来，听听窗外的声音就好。'}]},
+   {id:'rest-first',label:'先占个沙发位置',response:'那我把靠垫给你！书页先合上，现在只要坐下来，听听窗外的声音就好。'}]},
   rehearsal:{prompt:'下一次施法我想接得更顺。先练稳稳的落点，还是先找出场的路线？',choices:[
-   {id:'steady-first',label:'先把落点练稳',response:'好！这一记先收住前半拍，等你数到四，再把重音落下去。劲儿要用在对的地方！'},
+   {id:'steady-first',label:'先把落点练稳',response:'就照你数的拍子翻页。看，橙色的星纹落在谱架下，连最外圈也清清楚楚！'},
    {id:'route-first',label:'先找出场的路线',response:'那我先绕一圈，不施法！等脚下的路顺了，再把这股劲儿一起带上。'}]},
-  encore:{prompt:'返场当然要热烈！不过开演之前，是再确认一记落点，还是一起缓口气？',choices:[
-   {id:'confirm-encore',label:'再确认那记重音',response:'站稳、蓄力、落下！好，最后一下有数了。等真正开演，再把这声重音送出去！'},
+  encore:{prompt:'书签夹在返场的那一页。要一起核对星纹落点，还是先靠着沙发缓口气？',choices:[
+   {id:'confirm-encore',label:'再确认星纹落点',response:'你指的地方正好！我把谱页的星纹描清楚，等灯亮了就从这里展开。'},
    {id:'rest-encore',label:'一起缓口气',response:'收到！书本放好，肩膀放松。热烈不是一直喊着往前冲，休息好了，下一拍才响亮。'}]}
  }
 };

@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>STARUSH | 星光居所</title>  <script type="module" crossorigin src="./assets/companion-C4Vt18es.js"></script>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>STARUSH | 星光居所</title>  <script type="module" crossorigin src="./assets/room-scene.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/companion-Caut8jIA.css">
 </head>
 <body><main id="home"><canvas id="scene" aria-label="星光居所" tabindex="0"></canvas>
-<header><a id="game-return" href="../?fromHome=1" title="返回陪伴" aria-label="返回陪伴"><img src="./studio/back.webp" alt=""></a><div class="heading">星光居所<small>ENJO / HOME</small></div><button id="mood" title="切换日夜" aria-label="切换日夜"><img src="./assets/icon-lamp.webp" alt=""></button><button id="view" title="切换视角" aria-label="切换视角">◉</button></header>
-<nav class="actor-actions" aria-label="角色互动"><button id="greet" title="打招呼" aria-label="打招呼" disabled><img src="./chibi/action-wave-v2.webp" alt=""></button><button id="rest" title="地毯小憩" aria-label="地毯小憩" disabled><img src="./chibi/action-sit-v2.webp" alt=""></button><button id="portrait-open" title="重锤手立绘" aria-label="重锤手立绘" disabled><img src="./studio/portrait-icon.webp" alt=""></button></nav>
+<header><a id="game-return" href="../?fromHome=1" title="返回陪伴" aria-label="返回陪伴"><img src="./studio/back.webp" alt=""></a><div class="heading">星光居所<small>成员居所</small></div><button id="mood" title="切换日夜" aria-label="切换日夜"><img src="./assets/icon-lamp.webp" alt=""></button><button id="view" title="切换视角" aria-label="切换视角">◉</button></header>
+<nav class="actor-actions" aria-label="角色互动"><button id="greet" title="打招呼" aria-label="打招呼" disabled><img src="./chibi/action-wave-v2.webp" alt=""></button><button id="rest" title="地毯小憩" aria-label="地毯小憩" disabled><img src="./chibi/action-sit-v2.webp" alt=""></button><button id="portrait-open" title="成员立绘" aria-label="成员立绘" disabled><img  alt=""></button></nav>
 <div id="loading" role="status">正在布置居所</div><div id="message" role="status"></div>
 <footer><nav aria-label="居所设备"><button data-device="computer" title="电脑" aria-label="电脑" disabled><img src="./assets/icon-computer.webp" alt=""></button><button data-device="tv" title="电视" aria-label="电视" disabled><img src="./assets/icon-tv.webp" alt=""></button><button data-device="lamp" title="落地灯" aria-label="落地灯" disabled><img src="./assets/icon-lamp.webp" alt=""></button><button data-device="fan" title="风扇" aria-label="风扇" disabled><img src="./assets/icon-fan.webp" alt=""></button></nav></footer>
 </main>
 <dialog id="portrait-sheet" class="portrait-sheet" aria-labelledby="portrait-title">
- <h1 id="portrait-title">重锤手<small>ENJO / PORTRAIT STUDY</small></h1>
+ <h1 id="portrait-title">成员立绘</h1>
  <button class="portrait-close" title="关闭立绘" aria-label="关闭立绘"><img src="./studio/close.webp" alt=""></button>
- <div class="portrait-stage" data-zoom="false"><img src="./studio/enjo-study.webp" alt="重锤手全身立绘，红黑白服装，手扶落地工业重锤" draggable="false"></div>
- <div class="portrait-name">安可 · 重锤手</div><button id="portrait-zoom" title="放大立绘" aria-label="放大立绘" aria-pressed="false">2x</button>
+ <div class="portrait-stage" data-zoom="false"><img alt="成员全身立绘" draggable="false"></div>
+ <div class="portrait-name"></div><button id="portrait-zoom" title="放大立绘" aria-label="放大立绘" aria-pressed="false">2x</button>
 </dialog></body></html>

@@ -5,12 +5,12 @@ import {loadScenes,plain} from './helpers/publicShellHarness.mjs';
 test('current three-character stories are authored independently and keep unlock gates',()=>{
   const env=loadScenes();env.loadRuntime('utils/userCast.mjs').configureUserCast(true);
   const story=env.loadRuntime('utils/publicStory.mjs');
-  const speakers=new Set(['旁白','步枪手','机甲剑士','重锤手']);
+  const speakers=new Set(['旁白','战术女武神','翡翠风歌','蔚蓝魔法师']);
   for(const id of ['sakura','kai','enjo']){
     const d=story.getCharacterDossier(id);
     assert.match(d.motive+d.relationship,/喷|通路|音箱/);
     assert.doesNotMatch(JSON.stringify(d),/绯樱|苍海|金星|幻夜|炎上/);
-    for(const chapter of ['opening','neon','encore'])for(const phase of ['intro','midpoint','outro']){
+    for(const chapter of ['opening','neon','encore','raincheck','homecoming'])for(const phase of ['intro','midpoint','outro']){
       const beat=story.getChapterStory(chapter,phase,id);
       assert.equal(beat.id,`${chapter}:${phase}`);
       assert.ok(beat.lines.every(l=>speakers.has(l.speaker)));
@@ -65,7 +65,7 @@ test('inventory handoff stays local and explicit equip does not change deploymen
   const shell=env.harness(env.TitleScene,{suppressDebugAutoStart:true,openPage:'inventory',earnedEquipment:{memberId:'kai',equipmentId:'wide_nozzle'}});
   shell.scene.create();
   assert.equal(shell.scene._publicShell.selection.memberId,'kai');
-  assert.equal(shell.scene._publicShell.inventoryId,'wide_nozzle');assert.match(shell.text,/机甲剑士/);
+  assert.equal(shell.scene._publicShell.inventoryId,'wide_nozzle');assert.match(shell.text,/翡翠风歌/);
   assert.equal(env.storage.getItem('starush.public-profile'),before);
   shell.click('[data-action="equip-selected"]');const after=env.profile.loadPublicProfile();
   assert.equal(after.selectedId,'sakura');assert.equal(after.preparation.equipmentByPerformer.kai,'wide_nozzle');

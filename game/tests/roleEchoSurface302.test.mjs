@@ -12,7 +12,7 @@ function fixture(id){
  return {e,view,scene,calls};
 }
 
-for(const [id,label,category] of [['kai','回响回斩','风铃回响'],['enjo','星页回响','星页回响']]){
+for(const [id,label,category] of [['kai','风铃回响','风铃回响'],['enjo','星页回响','星页回响']]){
  test(id+' choice conveys its actual melee echo and keeps the canonical echo command',()=>{
   const f=fixture(id),row=f.view.root.querySelector('[data-choice=echo]'),image=row.querySelector('img.battle-choice-art');
   assert.equal(image.src,(id==='kai'?'art/green-windsong-20261123/weapon.png':'art/blue-academy-20261123/weapon.png'));assert.equal(image.width,256);assert.equal(image.height,256);

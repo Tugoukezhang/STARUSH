@@ -22,7 +22,13 @@ test('three cast curtain calls show one chapter heading and no repeated outcome/
   for(const text of ['演出记录','本场通关',model.member.actionName])assert(!hero.textContent.includes(text));
   assert.equal(hero.querySelector('.battle-visual-copy').textContent,model.member.name);
   const portrait=hero.querySelector('.result-hero-portrait'),ratio=Number(portrait.style['--portrait-head']);
-  assert(ratio>.18&&ratio<.26,'crown-to-chin scale, not face-only height: '+id);view.destroy();
+  assert.equal(portrait.src,'art/cast-encounters-20261125/'+id+'-victory.webp');
+  assert.equal(portrait.width,512);assert.equal(portrait.height,512);
+  assert(ratio>.28&&ratio<.34,'half-body reaction anchor: '+id);view.destroy();
+  const defeat=fixture(id,{victory:false}).view,other=defeat.root.querySelector('.result-hero-portrait');
+  assert.equal(other.src,'art/cast-encounters-20261125/'+id+'-defeat.webp');
+  assert.notEqual(other.style['--portrait-face-y'],portrait.style['--portrait-face-y']);
+  defeat.destroy();
  }
 });
 

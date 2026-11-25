@@ -25,14 +25,14 @@ test('desk and candidate roster expose the actual independent preparation snapsh
 });
 
 test('workshop preview remains local until explicit deploy; training and return do not silently deploy',()=>{
- const e=loadScenes();e.seed(['opening']);const h=e.harness(e.TitleScene,{openPreparation:true,suppressDebugAutoStart:true});h.scene.create();
+ const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.seed(['opening']);const h=e.harness(e.TitleScene,{openPreparation:true,suppressDebugAutoStart:true});h.scene.create();
  h.click('[data-member=kai]');assert.equal(h.query('.workshop-member-context').dataset.selection,'candidate');
  assert.match(h.query('.workshop-member-context').textContent,/尚未出战/);
  h.click('[data-action=train]');assert.equal(e.profile.loadPublicProfile().preparation.trainingLevels.kai,2);assert.equal(e.model().member.id,'sakura');
- assert.match(h.query('[data-action=confirm-preparation]').textContent,/确认苍海出战/);
- h.click('[data-action=confirm-preparation]');assert.equal(e.model().member.id,'kai');assert.equal(h.starts[0][0],'TitleScene');
+ assert.match(h.query('[data-action=confirm-preparation]').textContent,/确认翡翠风歌出战/);
+ h.click('[data-action=confirm-preparation]');assert.equal(e.model().member.id,'kai');assert.equal(h.starts[0][0],'IdolRosterScene');
  assert.equal(h.starts.length,1);h.shutdown();
- const returned=e.harness(e.TitleScene);returned.scene.create();assert.match(returned.query('.shell-preparation-values').textContent,/阶位 2/);returned.shutdown();
+ const [scene,data]=h.starts[0];const returned=e.harness(e[scene],data);returned.scene.create();const snapshot=returned.query('.shell-member-preparation');assert.equal(snapshot.dataset.performer,'kai');assert.match(snapshot.textContent,/阶位 2/);returned.shutdown();
 });
 
 test('failed explicit workshop deployment is not reported as a saved selection',()=>{
