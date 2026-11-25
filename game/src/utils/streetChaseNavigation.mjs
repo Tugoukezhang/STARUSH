@@ -5,7 +5,12 @@ import {CHAPTER_CHASER_TUNING} from './chapterChaserContent.mjs';
 const CELL=20,RADIUS=CHAPTER_CHASER_TUNING.radius;
 const COLS=Math.ceil(WIDTH/CELL),ROWS=Math.ceil(HEIGHT/CELL);
 const finite=p=>Number.isFinite(p?.x)&&Number.isFinite(p?.y);
-const center=(x,y)=>({x:(x+.5)*CELL,y:(y+.5)*CELL});
+// The last grid cell can be narrower than CELL. Keep its node inside the playfield
+// at body clearance so the narrow walkway behind the harbor shed stays connected.
+const center=(x,y)=>({
+ x:Math.max(RADIUS,Math.min(WIDTH-RADIUS,(x+.5)*CELL)),
+ y:Math.max(RADIUS,Math.min(HEIGHT-RADIUS,(y+.5)*CELL)),
+});
 
 // Only approach routing. Exact street collision still owns every movement step.
 export class StreetChaseNavigation {
@@ -35,10 +40,20 @@ export class StreetChaseNavigation {
  waypoint(from,target,owner,now,minY=RADIUS){
   if(!this.state||!owner||typeof owner!=='object'||!finite(target)||!Number.isFinite(now)||!Number.isFinite(minY)
    ||!this.valid(from,minY))return null;
+  if(this.valid(target,minY)&&this.state.clearLine(from,target,RADIUS)){
+   this.routes.delete(owner);
+   return {x:target.x,y:target.y};
+  }
   this.refresh(minY);
-  if(this.valid(target,minY)&&this.state.clearLine(from,target,RADIUS))return {x:target.x,y:target.y};
   let route=this.routes.get(owner);
-  if(!route||now<route.at||now-route.at>=400||Math.hypot(target.x-route.target.x,target.y-route.target.y)>=CELL*2){
+  const targetDrift=route?Math.hypot(target.x-route.target.x,target.y-route.target.y):Infinity;
+  if(route&&now-route.at>=400){
+   // Keep a working detour while it still leads to the same destination.
+   const advanced=Math.hypot(from.x-route.from.x,from.y-route.from.y)>4;
+   if(!advanced||targetDrift>4)route=null;
+   else {route.at=now;route.from={x:from.x,y:from.y};}
+  }
+  if(!route||now<route.at||targetDrift>=CELL*2){
    const start=this.nearest(from,true),end=this.nearest(target,false);
    // Search mutates Grid nodes; never reuse the cached collision grid as search state.
    const points=start&&end?this.finder.findPath(start.x,start.y,end.x,end.y,this.grid.clone()).map(([x,y])=>center(x,y)):[];
@@ -51,7 +66,7 @@ export class StreetChaseNavigation {
     }
     if(lo>0)points.push({x:last.x+(target.x-last.x)*lo,y:last.y+(target.y-last.y)*lo});
    }
-   route={at:now,target:{x:target.x,y:target.y},points,index:0};this.routes.set(owner,route);
+   route={at:now,from:{x:from.x,y:from.y},target:{x:target.x,y:target.y},points,index:0};this.routes.set(owner,route);
   }
   while(route.index<route.points.length){
    const corner=route.points[route.index],next=route.points[route.index+1];

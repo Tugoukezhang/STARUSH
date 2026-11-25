@@ -46,7 +46,46 @@ test('grid cache clones mutable A-star state, bounds replans and invalidates on 
  assert(nav.grid.nodes.flat().every(n=>!n.opened&&!n.closed),'cached grid was polluted by mutable search');
  assert(nav.waypoint(a,b,owner,400,960));assert.equal(searches,2);
  const oldGrid=nav.grid;f.state.opened.add('south-screen');const direct=nav.waypoint(a,b,owner,401,960);
- assert.notEqual(nav.grid,oldGrid);assert.deepEqual({...direct},b);
+ assert.deepEqual({...direct},b);assert.equal(searches,2);
+ const next=nav.waypoint({x:320,y:1580},{x:320,y:1764},owner,402,960);
+ assert(next);assert(nav.grid!==oldGrid,'first obstructed request must pick up changed cover');
+});
+
+function advanceChaser(nav,body,player,tick){
+ const step=nav.waypoint(body,player,body,tick*16,948);
+ assert(step,'walkable body failed to acquire a route');
+ const dx=step.x-body.x,dy=step.y-body.y,length=Math.hypot(dx,dy);
+ if(length===0)return;
+ const fraction=Math.min(1,48*.016/length);
+ const next={x:body.x+dx*fraction,y:body.y+dy*fraction};
+ assert(nav.state.clearLine(body,next,12),'body crossed solid cover');
+ Object.assign(body,next);
+}
+
+test('a return-harbor chaser reaches the player in the walkway behind the entry warehouse',()=>{
+ const f=fixture('encore'),{HOMECOMING_STAGE_CONFIG:config}=f.e.loadRuntime('utils/harborStageMap.mjs');
+ const {OldStreetState}=f.e.loadRuntime('utils/oldStreetMap.mjs');
+ const state=new OldStreetState(config.props,config.terrain),nav=navigation(f.e,state);
+ const body={x:227,y:1554},player={x:240,y:1751};
+ assert(state.clearLine(player,player,8));assert(!state.clearLine(body,player,12));
+ for(let tick=0;tick<1000&&Math.hypot(body.x-player.x,body.y-player.y)>24;tick++){
+  advanceChaser(nav,body,player,tick);
+ }
+ assert(Math.hypot(body.x-player.x,body.y-player.y)<=24);
+});
+
+test('four moving chasers keep useful detours and respond once to a new destination',()=>{
+ const f=fixture(),nav=navigation(f.e,f.state),bodies=[470,500,530,555].map(x=>({x,y:1245}));
+ const find=nav.finder.findPath.bind(nav.finder);let searches=0;
+ nav.finder.findPath=(...args)=>{searches++;return find(...args);};
+ let player={x:530,y:1160};
+ for(let tick=0;tick<600;tick++){
+  if(tick===60)player={x:570,y:1160};
+  for(const body of bodies)advanceChaser(nav,body,player,tick);
+  if(bodies.every(body=>Math.hypot(body.x-player.x,body.y-player.y)<=24))break;
+ }
+ assert(bodies.every(body=>Math.hypot(body.x-player.x,body.y-player.y)<=24));
+ assert(searches>0 && searches<=2*bodies.length,'unnecessary route rebuilds: '+searches);
 });
 
 test('water/world/zone and unavailable routes fail closed without teleport or wall passage',()=>{
