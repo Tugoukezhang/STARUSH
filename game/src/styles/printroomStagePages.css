@@ -49,6 +49,24 @@
       padding:12px 14px;color:#fff6d9;background:#302c3d;
       border:0 solid transparent;border-image:var(--set-strip) 42 fill / 10px stretch;
     }
+    & .ui-home-primary .showbill-start {
+      display:grid;grid-template-columns:clamp(31px,10vw,48px) minmax(0,1fr);
+      grid-template-rows:auto auto;grid-template-areas:"art chapter" "art action";
+      align-content:center;align-items:center;justify-items:start;gap:3px 7px;
+      min-height:62px;padding:7px 12px;
+    }
+    & .ui-home-primary .showbill-start .home-ticket-art {
+      grid-area:art;position:static;inset:auto;display:block;width:100%;height:44px;
+      object-fit:contain;align-self:center;pointer-events:none;
+    }
+    & .ui-home-primary .showbill-start .ui-home-chapter {
+      grid-area:chapter;min-width:0;max-width:100%;height:auto;min-height:0;margin:0;padding:0;opacity:1;
+      font:750 12px/17px system-ui,sans-serif;text-align:start;white-space:normal;overflow-wrap:anywhere;
+    }
+    & .ui-home-primary .showbill-start .showbill-play-label {
+      grid-area:action;margin:0;padding:0;text-align:start;
+      font:900 clamp(17px,4.8vw,22px)/1.18 system-ui,sans-serif;white-space:nowrap;
+    }
     & .ui-home-primary .ui-secondary-command {
       padding:8px 12px;border:0 solid transparent;border-image:var(--set-note) 42 fill / 8px stretch;
       background:#fff1d5;color:#282a35;
@@ -286,7 +304,7 @@
     & .ui-preflight-brief-head .ui-icon-command::after {
       content:attr(aria-label);position:static;display:block;width:auto;height:auto;
       margin:0;padding:0;background:none;color:inherit;
-      font:750 12px/16px system-ui,sans-serif;white-space:normal;letter-spacing:0;
+      font:750 12px/17px system-ui,sans-serif;white-space:normal;letter-spacing:0;
     }
     & .ui-preflight-plans {grid-template-columns:minmax(0,1fr);gap:0}
     & .ui-preflight-plans .ui-preflight-entry {
