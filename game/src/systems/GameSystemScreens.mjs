@@ -119,7 +119,18 @@ export function renderGrowthCatalog(view,main) {
  for(const [label,field,format]of [['攻击涂染范围','paintRadiusBonus',n=>`+${n}`],['行动充能','chargeMultiplier',percent],['行动涂染威力','actionPower',percent]]){const r=view.element('div','',undefined,table);view.element('dt','',label,r);view.element('dd','',format(model.current.effects[field]),r);view.element('dd','',format(model.preview.effects[field]),r);}
  table.setAttribute('aria-label','当前效果与规划效果');
  const gear=view.element('section','arrangement-pool growth-equipment-pool',undefined,main);view.element('h2','','演出配件',gear);const options=view.element('div','arrangement-options',undefined,gear);options.setAttribute('role','group');options.setAttribute('aria-label','规划配件');
- for(const item of [{id:'none',name:'未装备',description:'无配件加成',owned:true},...model.equipment]){const id=item.id==='none'?null:item.id;const b=view.button(options,item.name,()=>{view.workshopMessage='';view.growthEquipmentId=id;view.render(isUserCastEnabled()?'[data-action=growth-gear]':`[data-growth-equipment="${item.id}"]`);},{className:'arrangement-option'});b.dataset.growthEquipment=item.id;b.dataset.equipmentState=item.id==='none'?'none':item.equipped?'equipped':item.owned?'owned':'locked';b.setAttribute('aria-pressed',String(id===model.preview.equipmentId));b.replaceChildren();view.element('strong','',item.name,b);view.element('small','',item.description,b);view.element('small','',item.id==='none'?'':item.equipped?'当前装备':item.owned?'已拥有':item.unlock,b);}
+ for(const item of [{id:'none',name:'未装备',description:'无配件加成',owned:true},...model.equipment]){const id=item.id==='none'?null:item.id;const b=view.button(options,item.name,()=>{view.workshopMessage='';view.growthEquipmentId=id;view.render(isUserCastEnabled()?'[data-action=growth-gear]':`[data-growth-equipment="${item.id}"]`);},{className:'arrangement-option'});b.dataset.growthEquipment=item.id;b.dataset.equipmentState=item.id==='none'?'none':item.equipped?'equipped':item.owned?'owned':'locked';b.setAttribute('aria-pressed',String(id===model.preview.equipmentId));b.replaceChildren();view.element('strong','',item.name,b);view.element('small','',item.description,b);view.element('small','',item.id==='none'?'':item.equipped?'当前装备':item.owned?'已拥有':item.unlock,b);
+   if(isUserCastEnabled()){
+    const proposed=getPreparationCatalog(profile,memberId,{trainingLevel:model.current.trainingLevel,equipmentId:id});
+    const effects=proposed.preview.effects,current=model.current.effects;
+    const difference=[];
+    for(const [key,label,scale] of [['paintRadiusBonus','范围',1],['chargeMultiplier','充能',100],['actionPower','主动涂染',100]]){
+     const amount=Math.round((effects[key]-current[key])*scale);
+     if(amount)difference.push(label+' '+(amount>0?'+':'')+amount+(scale===100?'%':''));
+    }
+    const note=difference.join(' · ')||(id===model.current.equipmentId?'当前配置':item.behavior||item.performerId?'替换为此特殊效果':'基础数值相同');
+    view.element('small','growth-option-delta',note,b);
+   }}
  const application=view.element('section','growth-application',undefined,main);
  view.element('p','system-context',`当前 → 规划 · 需 ${model.preview.cost} 练习笔记${model.preview.owned?'':' · 配件未拥有'}`,application);
  const selected=model.equipment.find(row=>row.id===model.preview.equipmentId);
@@ -167,6 +178,7 @@ export function renderGrowthCatalog(view,main) {
 export function renderRunGoals(view,main,model) {
   const profile=loadPublicProfile(),goal=capturePublicRunGoal(profile),key=model.member.id+':'+model.chapter.id;
   if(view.goalContext!==key){view.goalContext=key;view.goalKind=goal?.kind||'standard';}
+  main.dataset.committedGoal=goal?.kind||'standard';
   const rows=getPublicRunGoalOptions(profile);
   view.element('h2','shell-page-heading','本场目标',main);view.element('p','system-context',`${model.member.name} · ${model.chapter.name}`,main);
   const choices=view.element('div','run-goal-options',undefined,main);choices.setAttribute('role','group');choices.setAttribute('aria-label','本场目标');

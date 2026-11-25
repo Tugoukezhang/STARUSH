@@ -1,6 +1,12 @@
 // Second-level sheet for owner menus. The sheet borrows an existing, already-wired node
 // (its handlers stay intact) and always returns it to its original parent and hidden state.
 // One live native dialog per view; render/destroy call view.hierarchySheetDispose first.
+import {loadPublicProfile} from '../utils/publicRunProgression.mjs';
+import {getPreparationSnapshot} from '../utils/publicPreparation.mjs';
+import {getPublicPerformanceRecord} from '../utils/publicPerformanceRecords.mjs';
+import {PUBLIC_CHAPTERS} from '../utils/publicCampaign.mjs';
+import {PUBLIC_RULESET_ID} from '../utils/releaseIdentity.mjs';
+import {loadBackstageProgress} from '../utils/publicBackstageProgress.mjs';
 import {mountHierarchyUi} from './HierarchyUiArt.mjs';
 import {getMenuAvatarArt} from './MenuPortraitAvatar.mjs';
 
@@ -20,8 +26,21 @@ export function openHierarchySheet(view,{title,content,trigger}) {
   }
   if(actors){
     content.classList.add('ui-actor-grid');
+    const profile=loadPublicProfile();
+    const visits=view.page==='lounge'?loadBackstageProgress().state.visits:null;
     for(const button of content.children){
       const id=content.classList.contains('shell-member-strip')?(view.page==='growth'?button.dataset.growthMember:button.dataset.member):button.dataset.action.slice('companion-member-'.length);
+      let context;
+      if(view.page==='records'){
+        const count=PUBLIC_CHAPTERS.filter(chapter=>getPublicPerformanceRecord(profile,chapter.id,id,PUBLIC_RULESET_ID)).length;
+        context=count?'成绩 '+count+' / '+PUBLIC_CHAPTERS.length+' 站':'尚无已记录成绩';
+      }else if(view.page==='workshop'||view.page==='growth')context='当前阶位 '+getPreparationSnapshot(profile,id).trainingLevel;
+      else if(visits)context=visits[id]?'已交谈 '+visits[id]+' 次':'尚未交谈';
+      if(context){
+        const note=button.querySelector('.picker-context')||view.element('small','picker-context',undefined,button);
+        note.textContent=context;
+        const name=button.getAttribute('aria-label').split('，')[0];button.setAttribute('aria-label',name+'，'+context);
+      }
       if(!button.querySelector('.ui-actor-name')){const name=view.element('span','ui-actor-name',undefined,button);name.dataset.uiLetter=id;}
     }
   }

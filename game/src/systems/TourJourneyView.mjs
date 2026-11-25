@@ -24,7 +24,20 @@ export function mountTourJourney(view,main,model){
   const copy=row.querySelector('.shell-chapter-copy');
   row.replaceChildren(art,copy,row.querySelector('.shell-chapter-number'));
   const statusIcon={locked:'lock',cleared:'check',available:'arrow-right'}[row.dataset.state];
-  view.icon(statusIcon,copy.querySelector('.shell-chapter-state'),true);
+  const state=copy.querySelector('.shell-chapter-state');
+  if(row.dataset.state==='locked'){
+    const condition=state.textContent;
+    state.replaceChildren();
+    row.disabled=false;
+    const info=view.element('div','locked-tour-condition',undefined,box);
+    info.hidden=true;
+    const chapterName=copy.querySelector('strong').textContent;
+    row.setAttribute('aria-label',chapterName+'，查看开放条件');
+    const place=view.element('img','',undefined,info);place.src=art.src;place.alt='';
+    view.element('p','',condition,info);
+    row.addEventListener('click',()=>openHierarchySheet(view,{title:chapterName+' · 开放条件',content:info,trigger:row}));
+  }
+  view.icon(statusIcon,state,true);
  }
  const current=model.chapters.find(row=>row.id===view.selection.chapterId&&row.unlocked)||model.chapter;
  const target=sequence.querySelector(`[data-chapter=${current.id}]`);

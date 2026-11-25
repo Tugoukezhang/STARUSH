@@ -69,6 +69,15 @@ function growth(view,main,model) {
     rank.dataset.rankStep=String(index+1);
   });
   const preview=main.querySelector('.growth-preview');preview.classList.add('sec-growth-compare');body.append(preview);
+  const comparison=preview.querySelector('.growth-effects');
+  const rows=[...comparison.children],unchanged=rows.filter(row=>row.children[1].textContent===row.children[2].textContent);
+  if(unchanged.length){
+    const more=view.element('details','growth-static-values',undefined,preview);
+    view.element('summary','',unchanged.length===rows.length?'查看当前三项效果':'其余 '+unchanged.length+' 项效果不变',more);
+    const values=view.element('dl','growth-effects',undefined,more);
+    for(const row of unchanged)values.append(row);
+  }
+  for(const changed of comparison.children)changed.dataset.growthChange='true';
   const pool=main.querySelector('.growth-equipment-pool');srOnly(pool.querySelector('h2'));box.append(pool);
   // Choosing stays in the sheet; each option gains its registered identity art beside the native name.
   for(const option of pool.querySelectorAll('[data-growth-equipment]')){
@@ -106,6 +115,7 @@ function growth(view,main,model) {
     sheetTool(view,tools,'获取途径','route',sources,'growth-sheet-sources');
   }
   const info=view.element('div','sec-growth-info',undefined,box);
+  view.element('p','',caption.textContent+' · '+(chosen?.querySelector('strong')?.textContent||'未装备'),info);
   info.append(main.querySelector('[data-action=growth-training]').parentNode);
   sheetTool(view,tools,'成长资料','info',info,'growth-sheet-info');
   view.root.querySelector('[data-action=growth-apply]').dataset.secondaryLetter='apply';
@@ -126,7 +136,7 @@ function growth(view,main,model) {
   for(const src of sources){const image=view.element('img','member-flow-letter',undefined,preflight);image.src=src;image.alt='';image.draggable=false;image.setAttribute('aria-hidden','true');}
 }
 
-function library(view,main) {
+function library(view,main,model) {
   main.dataset.planningStudio='270';
   const heading=main.querySelector('h2.shell-page-heading'),intro=heading.nextSibling;
   const {stage,body,box}=frame(view,main,'library');
@@ -147,19 +157,21 @@ function library(view,main) {
     const group=panel.querySelector('.arrangement-options');group.classList.add('sec-library-choices');
     group.dataset.planningChoices=String(group.querySelectorAll('[data-arrangement]').length);
     for(const description of group.querySelectorAll('small'))srOnly(description);
-    const chosen=group.querySelector('[data-arrangement][aria-pressed=true]');
-    if(chosen){
-      const pick=view.element('p','sec-library-pick',undefined,panel);pick.setAttribute('aria-hidden','true');
-      view.element('span','sec-library-pick-label','已选',pick).dataset.planningLetterPending='pick';
-      view.element('strong','',chosen.querySelector('strong').textContent,pick);
-      view.element('span','sec-library-pick-text',chosen.querySelector('small').textContent,pick);
-    }
   }
   const studies=main.querySelector('.library-studies');srOnly(studies.querySelector('h2'));box.append(studies);
+  const pair=[...tabs.querySelectorAll('strong')].map(choice=>choice.textContent).join(' ＋ ');
+  const selection=view.element('p','menu-sheet-key','先选第一段，再选第二段 · '+pair,studies);studies.insertBefore(selection,studies.firstChild);
   sheetTool(view,tools,'搭配思路','skill',studies,'library-sheet-study');
   // Guide exists only for a valid preview; it is prose, so it lives in its own sheet.
   const guide=main.querySelector('.library-guide');
-  if(guide){guide.open=true;box.append(guide);sheetTool(view,tools,'编排与场地说明','info',guide,'library-sheet-guide');}
+  if(guide){
+    if(model.chapter){
+    const place=view.element('figure','library-guide-place',undefined,guide);
+    const venue=view.element('img','',undefined,place);venue.src='art/showbill/stop-'+model.chapter.id+'.webp';venue.alt='';
+    view.element('figcaption','','当前场地 · '+model.chapter.name,place);
+    guide.insertBefore(place,guide.querySelector('summary')?.nextSibling||guide.firstChild);
+    }
+    guide.open=true;box.append(guide);sheetTool(view,tools,'编排与场地说明','info',guide,'library-sheet-guide');}
   const preview=main.querySelector('.library-preview');srOnly(preview.querySelector('h2'));body.append(preview);
   // Unchosen rows ("未选择…", values untouched) move into a closed lower layer inside the same preview.
   // "pending" letter hosts have no bitmap yet, so their native text must stay visible until art is registered.
@@ -197,6 +209,12 @@ export function compactTrainingPage(view,main) {
     const art=view.element('span','equipment-art-slot',undefined,row);mountEquipmentIcon(view,art,row.dataset.equipment);
     row.insertBefore(art,row.children[0]);
   }
+  const locked=[...inventory.querySelectorAll('[data-equipment][data-state=locked]')];
+  if(locked.length){
+    const more=view.element('details','workshop-locked-gear',undefined,inventory);
+    view.element('summary','','查看 '+locked.length+' 件未获得配件',more);
+    for(const item of locked)more.append(item);
+  }
   sheetTool(view,tools,'演出配件','equipment',inventory,'workshop-sheet-equipment');
   training.querySelector('h2').classList.add('sec-training-rank');
   // One required cost (the effects ledger row) and one owned balance (wallet); the command's cost span
@@ -207,6 +225,13 @@ export function compactTrainingPage(view,main) {
   wallet.insertBefore(material,wallet.children[0]);
   // Where notes come from and the growth catalog are reference detail, not the training decision.
   const info=view.element('div','ui-workshop-info',undefined,box);
+  const shortage=training.querySelector('small.workshop-muted');
+  if(shortage){
+    const balance=Number(wallet.querySelector('strong').textContent);
+    const cost=Number(training.querySelector('[data-training-effect=cost]')?.querySelector('dd')?.textContent?.match(/\d+/)?.[0]);
+    const runs=Number.isFinite(cost)?Math.ceil(Math.max(0,cost-balance)/3):0;
+    view.element('p','menu-sheet-key',shortage.textContent+(runs?' · 再通关 '+runs+' 场即可付清本阶消耗':''),info);
+  }
   info.append(wallet.querySelector('small'));
   const catalog=main.querySelector('[data-action=training-catalog]');
   catalog.dataset.secondaryLetter='growth';catalog.classList.add('sec-small-command');info.append(catalog);
@@ -250,6 +275,10 @@ function records(view,main) {
   // Each ticket opens that chapter's field record read-only: no selection, no save.
   list.querySelectorAll('.archive-record').forEach((row,index)=>{
     row.dataset.recordIndex=String(index+1).padStart(2,'0');
+    if(row.dataset.recordState==='empty'&&row.dataset.recordChapter!==view.selection.chapterId){
+      row.dataset.recordCompact='true';
+      row.querySelector('.archive-empty').hidden=true;
+    }
     const open=view.button(row,'查阅',()=>{view.reportChapterId=row.dataset.recordChapter;view.showPage('chapterArchive');},
       {className:'sec-records-open',action:'records-open-chapter-'+row.dataset.recordChapter});
     open.dataset.recordOpen=row.dataset.recordChapter;
@@ -258,7 +287,10 @@ function records(view,main) {
   });
   // History is moved, never dropped; each chapter's block keeps the chapter name it belonged to.
   const info=view.element('div','sec-records-info',undefined,box);
-  info.append(main.querySelector('.archive-overview'));
+  const overview=main.querySelector('.archive-overview');
+  const measured=[...list.querySelectorAll('.archive-record')].filter(row=>row.dataset.recordState==='measured');
+  view.element('p','menu-sheet-key',measured.length?'已有实测成绩 · '+measured.map(row=>row.querySelector('h2').textContent).join('、'):'此成员尚无实测成绩。完成一场公演后可在这里查阅用时和受击次数。',info);
+  info.append(overview);
   info.append(main.querySelector('.archive-rules-label'));
   for(const row of list.querySelectorAll('.archive-record')){
     const history=row.querySelector('.archive-history');

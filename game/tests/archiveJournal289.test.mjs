@@ -35,14 +35,14 @@ const selectedChapter = s => s.profile.getPublicCampaignProgress().selectedChapt
 test('selector: renders every public chapter, derives the total and selects the fourth without writing', () => {
   const {s, h, view, before} = open(['opening', 'neon', 'encore'], 'opening');
   const chapters = plain(s.campaign.PUBLIC_CHAPTERS.map(c => c.id));
-  assert.equal(chapters.length, 4); assert.equal(chapters[3], 'raincheck');
+  assert.equal(chapters[3], 'raincheck');
   const total = String(chapters.length).padStart(2, '0');
   assert.deepEqual(h.all('[data-report-chapter]').map(t => t.dataset.reportChapter), chapters);
   assert.equal(h.query('.chapter-report-heading').querySelector('small').textContent, `巡演 01 / ${total}`);
   const selected = selectedChapter(s);
   h.click('[data-report-chapter=raincheck]');
   assert.equal(view.reportChapterId, 'raincheck');
-  assert.deepEqual(h.all('[data-report-chapter]').map(t => t.getAttribute('aria-pressed')), ['false', 'false', 'false', 'true']);
+  assert.deepEqual(h.all('[data-report-chapter]').map(t => t.getAttribute('aria-pressed')), chapters.map(id=>String(id==='raincheck')));
   assert.equal(h.query('.chapter-report-heading').querySelector('small').textContent, `巡演 04 / ${total}`);
   assert.equal(h.query('.chapter-report-heading').querySelector('h3').dataset.archiveLetter, 'chapter-raincheck');
   assert.equal(h.query('.chapter-venue-art').src, 'art/rooftop-20261103/venue.webp');
@@ -57,8 +57,12 @@ test('page: uses the 289 studio, keeps one prepare command and places stories ab
   assert.equal(main.dataset.archiveStudio, '289'); assert.equal(main.dataset.archivePage, 'chapter');
   assert.equal(main.querySelector('h2.shell-page-heading').dataset.archiveLetter, 'chapterArchive');
   const position = selector => main.children.indexOf(main.querySelector(selector));
-  const order = ['.chapter-report-tabs', '.chapter-report-heading', '.chapter-report-stories', '.chapter-report-recent', '.chapter-report-guide'].map(position);
+  const order = ['.chapter-report-tabs', '.chapter-report-heading', '.chapter-report-stories', '.chapter-report-unplayed'].map(position);
   assert.ok(order.every(index => index >= 0), 'all page sections are direct children');
+  const unplayed=main.querySelector('.chapter-report-unplayed');
+  assert.notEqual(unplayed.open,true);
+  assert.ok(unplayed.querySelector('.chapter-report-recent'));
+  assert.ok(unplayed.querySelector('.chapter-report-guide'));
   assert.deepEqual(order, [...order].sort((a, b) => a - b));
   assert.equal(h.all('[data-action=report-prepare]').length, 1);
   for (const row of h.query('.chapter-report-stories').querySelectorAll('button')) {
@@ -125,7 +129,7 @@ test('locked: shows venue, state and the gate, with no story or record content a
   assert.ok(heading.querySelector('.chapter-report-venue'), 'existing venue art stays visible');
   assert.equal(heading.querySelector('.chapter-report-status').textContent, '尚未开放');
   assert.equal(h.query('.chapter-report-locked').textContent, '完成「星光初演」后开放本章。');
-  for (const selector of ['.chapter-report-stories', '.chapter-report-recent', '.chapter-report-guide']) assert.equal(h.query(selector), null, selector);
+  for (const selector of ['.chapter-report-stories', '.chapter-report-unplayed']) assert.equal(h.query(selector), null, selector);
   const main = h.query('main.shell-content');
   for (const phase of ['intro', 'midpoint', 'outro']) assert.ok(!main.textContent.includes(getChapterStory('neon', phase, 'sakura').title), phase);
   const prepare = h.query('[data-action=report-prepare]');

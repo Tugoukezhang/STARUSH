@@ -8,6 +8,7 @@ export function composeSecondaryScene(view,main){
     const stage=main.querySelector('.sec-growth-stage');
     const portrait=view.element('div','sec-growth-portrait',undefined,stage);
     view.mark(portrait,getUiPerformer(view.selection.memberId),true);
+    portrait.style.setProperty('--growth-face','url("art/setdesign/avatar-'+view.selection.memberId+'.webp")');
     const prepare=view.root.querySelector('[data-action=prepared-preflight]');
     prepare.dataset.uiIcon='route';prepare.classList.add('ui-icon-command');
     for(const span of prepare.querySelectorAll('span'))span.classList.add('ui-sr-label');
@@ -91,11 +92,13 @@ export function composeSecondaryScene(view,main){
       dialog.addEventListener('cancel',cancel);
       return dialog;
     };
-    const edit=view.button(summary,'编辑排班',openEditor,{className:'sec-venue-edit',action:'venue-edit'});
+    const occupied=current.dataset.roomState!=='empty';
+    const edit=view.button(summary,occupied?'编辑排班':'先安排成员',openEditor,{className:'sec-venue-edit',action:'venue-edit'});
     edit.dataset.venueGlyph='schedule';
     if(!edit.querySelector('span'))view.element('span','',undefined,edit);
-    edit.querySelector('span').dataset.venueLetter='schedule';
-    const prepare=reskin(row.querySelector(`[data-action=venue-prepare-${roomId}]`),'prepare');dock.append(prepare);
+    if(occupied)edit.querySelector('span').dataset.venueLetter='schedule';
+    else edit.querySelector('span').textContent='先安排成员';
+    const prepare=reskin(row.querySelector(`[data-action=venue-prepare-${roomId}]`),'prepare');prepare.hidden=!occupied;dock.append(prepare);
     const status=screen.querySelector('.pm-save-status');if(status)dock.append(status);
     // An in-editor command re-rendered the page: bring the same editor back over the new nodes.
     if(screen.dataset.venueEditor==='open')openEditor(true);

@@ -1,3 +1,4 @@
+import {appendMemberActionPreview} from './MemberActionPreview.mjs';
 import {getProductHubSections} from '../utils/publicProductHub.mjs';
 import {BACKSTAGE_ROOMS, BACKSTAGE_TOPICS, loadBackstageProgress, updateBackstageProgress, getCompanionLine} from '../utils/publicBackstageProgress.mjs';
 import {getCompanionQuestion} from '../utils/publicCompanionDialogue.mjs';
@@ -148,7 +149,7 @@ function lounge(view, root, member, profile, loaded) {
     returnUrl.searchParams.set('fromHome', '1');
     view.doc.defaultView.history.replaceState(view.doc.defaultView.history.state, '', returnUrl);
   });
-  homeEntry.href = 'home-space/companion.html';
+  homeEntry.href = 'home-space/companion.html' + '?member=' + encodeURIComponent(member.id);
   homeEntry.setAttribute('aria-label', '安可居所'); homeEntry.title = '安可居所';
   homeEntry.draggable = false;
   const homeGlyph = view.element('img', 'pm-home-glyph', undefined, homeEntry);
@@ -171,7 +172,7 @@ function lounge(view, root, member, profile, loaded) {
   const line = statusLine(view, response, open ? questions.get(open.topicId).prompt : resting(), 'pm-response');
   response.hidden = false; line.setAttribute('aria-atomic', 'true');
   const stage = root.querySelector('.pm-scene'), portrait = stage.querySelector('[data-action="companion-touch"]');
-  const interaction = mountPortraitInteraction(view, portrait, stage, member.id, {output: {bubble: response, line}});
+  const interaction = mountPortraitInteraction(view, portrait, stage, member.id, {output: {bubble: response, line},topicDock:true});
   view.portraitInteractionDispose = interaction;
   // One contextual dock: either the topic toolbar or the open question's answers, never both.
   const choices = view.element('div', 'pm-choices', undefined, root);
@@ -219,7 +220,7 @@ function lounge(view, root, member, profile, loaded) {
   const archive = view.element('section', 'pm-companion-record', undefined, root);
   archive.hidden = true; archive.setAttribute('aria-label', '相处记录');
   if (!ready) view.element('p', 'pm-record-status', readMessage(loaded.status), archive);
-  const empty = view.element('p', 'pm-record-empty', '还没有保存的交谈。选一个话题并回应后，这里会记下最近一次。', archive);
+  const empty = view.element('p', 'pm-record-empty', '还没有相处记录。回到休息室，选“打个招呼”并回应'+member.name+'。', archive);
   const rows = view.element('dl', 'pm-record-rows', undefined, archive);
   const record = () => {
     rows.replaceChildren();
@@ -239,7 +240,14 @@ function lounge(view, root, member, profile, loaded) {
     const topicId = memory.topics[member.id], saved = memory.conversations[member.id];
     visits.textContent = `本机交谈 ${memory.visits[member.id]} 次`;
     recent.textContent = topicId ? `最近话题 ${BACKSTAGE_TOPICS.find(topic => topic.id === topicId).label}` : '尚未交谈';
-    for (const [id, control] of topicButtons) control.setAttribute('aria-pressed', String(id === topicId));
+    for (const [id, control] of topicButtons) {
+      const recent = id === topicId;
+      control.setAttribute('aria-pressed', String(recent));
+      const seen=recent || memory.topicHistory?.[member.id]?.includes(id);
+      control.dataset.lastTopic = String(recent);
+      control.dataset.topicState = recent ? '最近' : seen ? '聊过' : '可聊';
+      control.setAttribute('aria-label', BACKSTAGE_TOPICS.find(topic=>topic.id===id).label+' · '+control.dataset.topicState);
+    }
     for (const [id, group] of answerGroups) for (const control of group.children) {
       const chosen = saved?.topicId === id && saved.replyId === control.dataset.companionReply;
       control.setAttribute('aria-pressed', String(chosen)); control.disabled = !ready || chosen;
@@ -334,7 +342,7 @@ function venue(view, root) {
       assign.disabled = !ready || !draft.memberId || !dirty;
       prepare.disabled = !ready || !saved.memberId || saved.prepared || dirty;
       draftLine.dataset.draftState = dirty ? 'dirty' : 'clean';
-      draftLine.textContent = dirty ? `未保存 · 本机记录：${saved.memberId ? `${memberName(saved.memberId)} · ${programName(room, saved.programId)}` : '未排班'}`
+      draftLine.textContent = dirty ? `待保存 · ${memberName(draft.memberId)} · ${programName(room,draft.programId)}`
         : saved.prepared ? '与本机记录一致 · 已筹备' : '与本机记录一致';
     }
   }
@@ -352,6 +360,7 @@ function recruitment(view, root, member) {
   heading(view, dossier, member.name, '初始成员', 'users');
   view.element('strong', 'pm-role-name', member.actionName, dossier);
   view.element('p', '', member.actionSummary, dossier);
+  appendMemberActionPreview(view,dossier,member.id);
   command(view, root, '查看成员阵容', () => {
     view.selection.previewMember(member.id); view.showPage('roster');
   }, {className: 'pm-service-command', icon: 'users', action: 'recruitment-open-roster'});
@@ -397,6 +406,7 @@ function services(view, root, model) {
   }
   const holder = view.element('div', 'ui-sheet-holder', undefined, root); holder.hidden = true;
   const offline = view.element('section', 'pm-offline-services', undefined, holder);
+  view.element('p','service-local-summary','当前使用本机存档。以下服务尚未接入。',offline);
   for (const [id, label, reason] of [
     ['cloud', '账号与云存档', '未接入账号认证与云端存储服务'],
     ['social', '好友与联机', '未接入好友服务与联机会话服务器'],

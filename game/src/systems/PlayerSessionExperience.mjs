@@ -425,8 +425,14 @@ export class PlayerSessionExperience {
     const entries=getReadableStoryEntries(loadPublicProfile());
     if(isUserCastEnabled()&&playerPreferences.pending)this.paragraph(panel,'本机设置与阅读记录有未保存的修改。','session-note story-save-notice');
     if(isUserCastEnabled()){
+      let unopened;
       for(const chapter of PUBLIC_CHAPTERS){
-        const section=document.createElement('section');section.className='journal-chapter';section.dataset.journalChapter=chapter.id;panel.append(section);
+        if(!entries.some(beat=>beat.chapterId===chapter.id)&&!unopened){
+          unopened=document.createElement('details');unopened.className='journal-unopened';panel.append(unopened);
+          const sum=document.createElement('summary');sum.textContent='查看未开放章节';unopened.append(sum);
+        }
+        const section=document.createElement('section');section.className='journal-chapter';section.dataset.journalChapter=chapter.id;
+        (entries.some(beat=>beat.chapterId===chapter.id)?panel:unopened).append(section);
         const title=document.createElement('h3');title.textContent=chapter.ordinal+'. '+chapter.name;section.append(title);
         const readable=entries.filter(beat=>beat.chapterId===chapter.id);
         this.paragraph(section,!readable.length?'通关上一站后开放。':readable.length<3?'开场已开放；本章通关后可重看途中与章尾。':'本章故事已全部开放。','session-note');

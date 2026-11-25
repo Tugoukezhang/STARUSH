@@ -1,4 +1,5 @@
 import {getActiveUserCastArt} from '../utils/userCast.mjs';
+import {appendMemberActionPreview} from './MemberActionPreview.mjs';
 import {openHierarchySheet} from './HierarchySheets.mjs';
 import {compactSecondaryPage,compactTrainingPage} from './SecondaryMenuHierarchy.mjs';
 import {framePlayModes,frameRunGoals} from './ProgramMenuPages.mjs';
@@ -72,12 +73,37 @@ function roster(view,main) {
   srOnly(identity.querySelector('p'));
   // Utility lane above the figure: no control lands on hands, tail or weapon of any actor.
   const lane=view.element('div','ui-roster-lane',undefined,stage);
-  actorSwitch(view,lane,main.querySelector('.shell-member-strip'),box);
+  const strip=main.querySelector('.shell-member-strip');
+  actorSwitch(view,lane,strip,box);
+  const cast=view.element('div','roster-cast-rail',undefined,stage);
+  cast.setAttribute('role','group');cast.setAttribute('aria-label','预览成员');
+  for(const option of strip.querySelectorAll('[data-member]')){
+    const id=option.dataset.member,art=getActiveUserCastArt(id);
+    const preview=view.button(cast,option.getAttribute('aria-label'),()=>{
+      option.click();
+      view.root.querySelector('[data-cast-preview="'+id+'"]')?.focus({preventScroll:true});
+    },{className:'roster-cast-preview'});
+    preview.dataset.castPreview=id;preview.replaceChildren();
+    preview.setAttribute('aria-pressed',option.getAttribute('aria-pressed'));
+    const face=view.element('img','',undefined,preview);
+    face.src=option.querySelector('img').src;face.alt='';face.draggable=false;
+    if(art?.weaponIcon){
+      const weapon=view.element('img','cast-preview-weapon',undefined,preview);
+      weapon.src=art.weaponIcon;weapon.alt='';
+    }
+    if(option.querySelector('.member-option-state')?.textContent==='出战'){
+      preview.dataset.deployed='true';preview.setAttribute('aria-label',option.getAttribute('aria-label')+'，当前出战');
+    }
+  }
   const inspector=main.querySelector('.roster-inspector');box.append(inspector);
   hide(inspector.querySelector('.roster-inspector-tabs'));
+  appendMemberActionPreview(view,inspector.querySelector('[data-roster-panel=ability]'),view.selection.memberId);
   const tools=view.element('div','ui-roster-actions roster-reference-list',undefined,box);
   const directory=view.button(lane,'成员资料',()=>openHierarchySheet(view,{title:'成员资料',content:tools,trigger:directory}),{action:'roster-reference',className:'roster-reference'});
   tools.setAttribute('role','toolbar');tools.setAttribute('aria-label','成员资料');
+  const memberCaption=view.element('p','menu-directory-caption',undefined,tools);
+  const portrait=view.element('img','',undefined,memberCaption);portrait.src=strip.querySelector('[aria-pressed=true]').querySelector('img').src;portrait.alt='';
+  view.element('strong','',identity.querySelector('h2').textContent,memberCaption);
   for(const [id,uiIcon] of [['ability','skill'],['dossier','info']]){
     const tab=inspector.querySelector(`[data-roster-tab=${id}]`),panel=inspector.querySelector(`[data-roster-panel=${id}]`);
     // Clicking the hidden original tab keeps view.rosterPanel and the tab/panel state authoritative.
@@ -131,6 +157,10 @@ function tour(view,main,model) {
   const tools=view.element('div','tour-reference-list',undefined,box);
   const launch=view.button(main,'巡演资料',()=>openHierarchySheet(view,{title:'巡演资料',content:tools,trigger:launch}),{className:'tour-reference-button',action:'tour-reference',icon:'book-open',lineIcon:true});
   view.button(tools,'路线与收获',()=>openHierarchySheet(view,{title:'路线与收获',content:detail,trigger:launch}),{action:'tour-sheet-route'});
+  const current=model.chapters.find(c=>c.id===view.selection.chapterId)||model.chapter;
+  const context=view.element('p','menu-directory-caption',undefined,tools);
+  const landmark=view.element('img','',undefined,context);landmark.src='art/showbill/stop-'+current.id+'.webp';landmark.alt='';
+  view.element('strong','','本站 · '+current.name,context);tools.insertBefore(context,tools.firstChild);
   const session=view.scene._sessionExperience;
   const story=view.button(tools,'巡演手记',()=>{
     view.hierarchySheetDispose({restoreFocus:true});
@@ -152,7 +182,7 @@ function workshop(view,main) {
     const row=main.querySelector(selector),host=key==='notes'?row.querySelector('span'):row.querySelector('dt'),label=host.textContent;
     host.replaceChildren();view.element('span','ui-sr-label',label,host);
     const art=view.element('img','member-studio-letter',undefined,host);art.src='art/member-studio-20261101/letter-'+key+'.webp';art.alt='';art.draggable=false;art.setAttribute('aria-hidden','true');
-    if(key!=='notes')view.element('span','member-effect-caption','涂染增益',host);
+    if(key!=='notes')view.element('span','member-effect-caption','主动涂染威力',host);
   }
   const train=view.root.querySelector('[data-action=train]');
   if(train.dataset.trainingBlocked!=='complete')train.dataset.secondaryLetter='train';
@@ -208,6 +238,10 @@ function backstage(view,main) {
     const button=grid.querySelector(`[data-category=${page}]`);
     button.querySelector('small')?.remove();
     utility.append(button);
+  }
+  const objects={recruitment:'hierarchy-ui-20261101/icons-member',services:'console-studio-20261102/icon-backup',lounge:'hierarchy-ui-20261101/icons-companion',venue:'hierarchy-ui-20261101/icons-venue'};
+  for(const button of utility.children){
+    const object=view.element('img','backstage-object',undefined,button);object.src='art/'+objects[button.dataset.category]+'.webp';object.alt='';object.draggable=false;
   }
   screen.querySelector('.pm-ledger').classList.add('cs-readout');
 }

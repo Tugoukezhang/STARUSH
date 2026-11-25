@@ -93,6 +93,11 @@ export function renderProgramEvents(view, root, model, profile) {
   const preview = view.element('figure', 'ps-current-venue', undefined, track);
   const previewArt = view.element('img', 'pg-venue-art', undefined, preview);
   previewArt.src = art.src; previewArt.alt = model.chapter.name + '场地'; previewArt.draggable = false;
+  const next=catalog.chapters.find(access=>access.state==='locked')||catalog.chapters.find(access=>!access.cleared);
+  if(next){
+    const nextName=model.chapters.find(chapter=>chapter.id===next.chapterId)?.name;
+    if(nextName)view.element('p','menu-sheet-key',(next.state==='locked'?'下一开放站 · ':'下一站 · ')+nextName,track);
+  }
   const stops = view.element('ol', 'pg-stops', undefined, track);
   for (const [index, access] of catalog.chapters.entries()) {
     const state = access.cleared ? 'cleared' : access.state;
@@ -109,13 +114,15 @@ export function renderProgramEvents(view, root, model, profile) {
   const goalHead = view.element('header', 'pg-heading', undefined, goals);
   letter(view, view.element('h3', '', undefined, goalHead), 'goals', '开演目标');
   view.element('b', 'ps-sheet-count', `可选 ${options.filter(goal => goal.available).length}/${options.length}`, goalHead);
+  const blocked=options.filter(goal=>!goal.available);
+  if(blocked.length)view.element('p','goal-record-condition',blocked.map(goal=>goal.label).join('、')+'需保存当前成员的本章纪录。',goals);
   const list = view.element('ul', 'pg-goal-list', undefined, goals);
   for (const goal of options) {
     const row = view.element('li', 'pg-goal', undefined, list);
     row.dataset.eventGoal = goal.id; row.dataset.availability = goal.available ? 'available' : 'locked';
     view.element('strong', '', goal.label, row);
-    view.element('b', 'ps-goal-availability', goal.available ? '可设定' : '需本章纪录', row);
-    view.element('small', '', goal.available ? goal.description : goal.id === 'steady' ? '保存当前成员本章纪录后，挑战无伤或更少受击' : '保存当前成员本章纪录后，挑战更短通关用时', row);
+    view.element('b', 'ps-goal-availability', goal.available ? '可设定' : '未开放', row);
+    view.element('small', '', goal.available ? goal.description : goal.id === 'steady' ? '挑战无伤或更少受击' : '挑战更短通关用时', row);
   }
   const choose=go(view, goals, 'set-goal', '设置本场目标', '选定后在备战页确认本场条件', 'goals', 'events-open-goals', 'selected', 'pg-command pg-primary');
   choose.setAttribute('aria-label','设置本场目标');
@@ -147,6 +154,10 @@ export function renderPracticeTools(view, root, model, profile) {
     const image = view.element('img', 'ps-entry-art', undefined, null);
     image.src = `${STUDIO_ART}/${picture}.webp`; image.alt = ''; image.draggable = false;
     button.insertBefore(image, button.children[0]);
+    const symbol=view.element('span','practice-illustration',undefined,null);
+    symbol.dataset.practice=page;symbol.setAttribute('aria-hidden','true');
+    for(let index=0;index<(page==='library'?2:1);index++)view.element('i','',undefined,symbol);
+    button.insertBefore(symbol,image);
     button.querySelector('.pg-glyph').remove();
     view.element('span','ps-entry-enter',undefined,button).dataset.uiIcon = 'back';
   }
@@ -196,7 +207,13 @@ export function frameRunGoals(view, main) {
   // Draft (预选) and confirmed (当前已确认) stay two separate status lines in one compact block.
   const status = view.element('div', 'pg-goal-status', undefined, main);
   main.insertBefore(status, main.querySelector('.challenge-selection'));
-  status.append(main.querySelector('.challenge-selection'), confirmed);
+  const draft=main.querySelector('.challenge-selection');
+  const same=view.goalKind===(main.dataset.committedGoal||'standard');
+  draft.hidden=same;
+  status.append(draft, confirmed);
+  if(same)confirmed.textContent=confirmed.textContent.replace('当前已确认','当前');
+  const threshold=view.element('strong','goal-window-threshold',confirmed.textContent,rule);
+  rule.insertBefore(threshold,rule.firstChild);
   // The fixed-threshold rule is read on demand in the shared sheet instead of a prose slab.
   rule.hidden = true;
   const info = view.button(context, '目标规则', () => openHierarchySheet(view, {title: '目标规则', content: rule, trigger: info}),

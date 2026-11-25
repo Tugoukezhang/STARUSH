@@ -22,7 +22,8 @@ export class ProfileBackupPanel {
   this.view=view;this.doc=doc;this.onRestored=onRestored;this.generation=0;this.disposed=false;this.urls=new Map();
   this.root=this.element('section','profile-backup',undefined,parent);this.root.setAttribute('aria-label','本机存档');
   this.status=this.element('p','session-note','',this.root);this.status.setAttribute('role','status');this.status.setAttribute('aria-live','polite');
-  const current=capturePublicSaveBundle();this.status.textContent=current.status==='ready'?summary(current.profile):messages[current.status];
+  const current=capturePublicSaveBundle();this.root.dataset.exportState=current.status;
+  this.status.textContent=current.status==='ready'?summary(current.profile):current.status==='no-save'?'本机暂无公演存档可导出。已有备份可从下方选择。':messages[current.status];
   this.exportButton=this.command('导出完整存档',()=>this.download(false),'backup-export');this.exportButton.disabled=current.status!=='ready';
   const fullPrevious=capturePublicSaveBundle({previous:true});
   if(fullPrevious.status==='ready')this.command('下载替换前完整备份',()=>this.download(true,false,true),'backup-export-full-previous');

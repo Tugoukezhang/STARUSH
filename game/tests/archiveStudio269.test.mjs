@@ -75,15 +75,15 @@ test('records: member switch previews without deploy; info sheet keeps overview,
   h.shutdown();
 });
 
-test('chapterArchive: current studio, four native tabs with state, keyed static hosts and one prepare', () => {
+test('chapterArchive: current studio, five native tabs with state, keyed static hosts and one prepare', () => {
   const {s, h, before} = open('chapterArchive', {cleared: ['opening', 'neon'], chapterId: 'opening'});
   const main = h.query('main.shell-content');
   assert.equal(main.dataset.archiveStudio, '289'); assert.equal(main.dataset.archivePage, 'chapter');
   const tabs = h.all('[data-report-chapter]');
-  assert.deepEqual(tabs.map(t => t.dataset.reportChapter), ['opening', 'neon', 'encore', 'raincheck']);
-  assert.deepEqual(tabs.map(t => t.getAttribute('aria-pressed')), ['true', 'false', 'false', 'false']);
-  assert.deepEqual(tabs.map(t => t.dataset.chapterState), ['cleared', 'cleared', 'open', 'locked']);
-  assert.deepEqual(tabs.map(t => t.querySelector('span').dataset.archiveLetter), ['chapter-opening', 'chapter-neon', 'chapter-encore', 'chapter-raincheck']);
+  assert.deepEqual(tabs.map(t => t.dataset.reportChapter), ['opening', 'neon', 'encore', 'raincheck', 'homecoming']);
+  assert.deepEqual(tabs.map(t => t.getAttribute('aria-pressed')), ['true', 'false', 'false', 'false', 'false']);
+  assert.deepEqual(tabs.map(t => t.dataset.chapterState), ['cleared', 'cleared', 'open', 'locked', 'locked']);
+  assert.deepEqual(tabs.map(t => t.querySelector('span').dataset.archiveLetter), ['chapter-opening', 'chapter-neon', 'chapter-encore', 'chapter-raincheck', 'chapter-homecoming']);
   assert.equal(main.querySelector('h2.shell-page-heading').dataset.archiveLetter, 'chapterArchive');
   assert.equal(main.querySelector('.chapter-report-heading').querySelector('h3').dataset.archiveLetter, 'chapter-opening');
   assert.ok(main.querySelector('.chapter-report-venue'), 'existing chapter art is the hero');

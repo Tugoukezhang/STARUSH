@@ -65,7 +65,7 @@ test('growth: visible gear summary reflects the real planned selection and opens
   for (const option of dialog.querySelectorAll('[data-growth-equipment]')) {
     const art = option.querySelector('.sec-growth-gear-art');
     if (option.dataset.growthEquipment === 'none') assert.equal(art, null);
-    else assert.match(art.querySelector('img.equipment-art').src, new RegExp(`equipment-identity-20261025/${option.dataset.growthEquipment}\\.png$`));
+    else assert.equal(art.querySelector('img.equipment-art').src,s.loadRuntime('systems/EquipmentIconArt.mjs').getEquipmentIconArt(option.dataset.growthEquipment).src);
   }
   dialog.querySelector('[data-growth-equipment=wide_nozzle]').click();
   assert.equal(view.growthEquipmentId, 'wide_nozzle', 'original option handler');
@@ -165,18 +165,14 @@ test('library: tabs show chosen icon+name; current panel is a compact icon row w
   assert.ok(first.querySelector('.sec-selected-art')); assert.equal(first.querySelector('strong').textContent, '宽幅涂染');
   const panel = h.query('#library-panel-first');
   assert.equal(panel.querySelector('.sec-library-choices').dataset.planningChoices, String(panel.querySelectorAll('[data-arrangement]').length));
-  const pick = panel.querySelector('.sec-library-pick');
-  assert.ok(shown(pick));
-  assert.equal(pick.getAttribute('aria-hidden'), 'true', 'the pressed button already announces its description');
-  assert.equal(pick.querySelector('[data-planning-letter-pending=pick]').textContent, '已选');
-  assert.equal(pick.querySelector('strong').textContent, '宽幅涂染');
-  assert.equal(pick.querySelector('.sec-library-pick-text').textContent, '攻击涂染范围增加40');
+  assert.equal(panel.querySelector('.sec-library-pick'),null,'the active tab and the single results panel already show this choice');
+  assert.ok(h.query('.library-preview').textContent.includes('+40'));
   const pressed = panel.querySelector('[data-arrangement=wide_brush]');
   assert.equal(pressed.getAttribute('aria-label'), '宽幅涂染：攻击涂染范围增加40');
   h.click('[data-arrangement=relay]');
   assert.equal(view.arrangementFirst, 'relay', 'original choice handler');
   assert.equal(tabs(h)[0].querySelector('strong').textContent, '接力涂染');
-  assert.equal(h.query('#library-panel-first').querySelector('.sec-library-pick').querySelector('strong').textContent, '接力涂染');
+  assert.equal(h.query('#library-panel-first').querySelector('[data-arrangement=relay]').getAttribute('aria-pressed'),'true');
   assert.equal(view.arrangementPlan, null);
   unchanged(s, before, 'choosing is a draft'); h.shutdown();
 });
@@ -191,7 +187,7 @@ test('library: role=tab keyboard switching keeps aria and shows the second panel
   const panel = h.query('#library-panel-second');
   assert.ok(shown(panel)); assert.equal(shown(h.query('#library-panel-first')), false);
   assert.equal(panel.getAttribute('role'), 'tabpanel'); assert.equal(panel.getAttribute('aria-labelledby'), 'library-tab-second');
-  assert.equal(panel.querySelector('.sec-library-pick').querySelector('strong').textContent, '回响追加');
+  assert.equal(panel.querySelector('[data-arrangement=echo]').getAttribute('aria-pressed'),'true');
   key(second, 'Home');
   assert.equal(tabs(h)[0].getAttribute('aria-selected'), 'true');
   unchanged(s, before); h.shutdown();

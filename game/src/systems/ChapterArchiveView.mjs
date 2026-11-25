@@ -79,6 +79,13 @@ export function renderChapterArchive(view,main,model){
   const guide=view.element('details','archive-history chapter-report-guide',undefined,main);view.element('summary','','目标事件',guide).dataset.archiveLetter='events';
   const map=view.map(guide,chapter,'rehearsal-map chapter-report-map');map.setAttribute('aria-label',chapter.subtitle);
   view.element('p','',getChapterObjectiveSummary(chapter.id),guide);view.element('p','',getChapterEncounterSummary(chapter.id),guide);
+  if(isUserCastEnabled()){
+   if(!review){
+    const grouped=view.element('details','chapter-report-unplayed',undefined,main);
+    view.element('summary','','尚无现场记录 · 查看目标事件',grouped);
+    grouped.append(recent,guide);
+   }else main.insertBefore(recent,main.querySelector('.chapter-report-stories'));
+  }
  }else view.element('p','system-context chapter-report-locked','完成「'+PUBLIC_CHAPTERS[chapter.ordinal-2].name+'」后开放本章。',main);
  const footer=view.element('footer','shell-selection-footer');
  // Reuse the original explicit venue confirmation; merely reading a report never writes.

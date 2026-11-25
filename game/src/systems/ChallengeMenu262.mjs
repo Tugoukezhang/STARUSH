@@ -9,6 +9,9 @@ export function compactChallengeMenu(view,main,model){
  for(const row of main.children)if(row.classList.contains('system-context'))row.hidden=true;
  view.element('p','thin-challenge-summary',model.member.name+' · '+model.preparation.trainingLevel+'阶 · '+(trial?'三站连续，生命继承':'单站练习，本轮初始状态'),hero);
  const rules=trial?main.querySelector('.challenge-brief'):main.querySelector('.challenge-guide');rules.hidden=true;
+ const focus=main.querySelector('.rehearsal-focus')?.querySelector('[aria-pressed=true]');
+ const key=view.element('p','menu-sheet-key',trial?'跨站生命继承 · 抵达下一站时沿用上一站剩余生命。':'本次课题 · '+(focus?.textContent?.trim()||'完成该站演出'),rules);
+ rules.insertBefore(key,rules.firstChild);
  const info=view.button(hero,'演出规则',()=>openHierarchySheet(view,{title:'演出规则',content:rules,trigger:info}),{className:'thin-challenge-info',iconOnly:true,action:'challenge-rules'});info.dataset.uiIcon='info';
  if(!trial)main.querySelector('.rehearsal-member').hidden=true;
  if(!ready){
@@ -22,13 +25,17 @@ export function compactChallengeMenu(view,main,model){
    const required=trial?access.requiredChapterIds:[view.rehearsalSetup.chapterId];
    for(const id of required){
     const chapter=model.chapters.find(row=>row.id===id);
-    const stop=view.element('li','',undefined,list);
+    const stop=view.element('li','',undefined,list);stop.dataset.stop=id;
     const missing=trial?access.missingChapterIds.includes(id):true;
     stop.dataset.state=missing?'pending':'cleared';
     const image=view.element('img','',undefined,stop);
     image.src='art/showbill/stop-'+id+'.webp';image.alt='';
     view.element('strong','',chapter.name,stop);
     view.element('span','',missing?'待通关':'已通关',stop);
+    if(trial&&id!==required[required.length-1]){
+      const carry=view.element('i','trial-health-carry','♥ →',stop);
+      carry.setAttribute('aria-label','剩余生命带入下一站');
+    }
    }
    main.insertBefore(list,gate.nextSibling);
   }

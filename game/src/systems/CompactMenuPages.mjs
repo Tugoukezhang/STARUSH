@@ -1,3 +1,4 @@
+import {ChapterSideSet} from '../utils/chapterSideSets.mjs';
 import {getUiPerformer} from '../utils/userCast.mjs';
 import {loadPublicProfile,getRunChoice} from '../utils/publicRunProgression.mjs';
 import {PUBLIC_EQUIPMENT} from '../utils/publicPreparation.mjs';
@@ -54,7 +55,8 @@ export function renderCompactHome(view,main,model,{start,renderContinue}){
   view.icon('arrow-right',play,true);
   if(hasResume){play.title='开始新公演：确认后替换中途记录';}
   renderContinue(view,dock,actions,model);
-  const progress=view.element('div','home-tour-progress',undefined,dock);
+  const progress=view.element('div','home-tour-progress',undefined,null);
+  actions.insertBefore(progress,play);
   view.element('span','','巡演通关',progress);
   const meter=view.element('progress','',undefined,progress);
   meter.max=model.chapters.length;meter.value=model.clearedCount;meter.setAttribute('aria-label','巡演通关章节');
@@ -107,7 +109,7 @@ export function renderCompactInventory(view,main,model){
   const percent=value=>`+${Math.round((value-1)*100)}%`;
   for(const item of items){
     const state=!item.owned?'locked':!item.compatible?'incompatible':item.equipped?'equipped':'owned';
-    const stateText={locked:'未解锁',incompatible:item.ownerName+'专用',equipped:'已装备',owned:'可装备'}[state];
+    const stateText={locked:item.id==='wide_nozzle'?'首章首通可得':item.performerId===member.id?'成员首通可得':'未解锁',incompatible:item.ownerName+'专用',equipped:'已装备',owned:'可装备'}[state];
     const button=view.button(grid,`${item.name} · ${stateText}`,()=>{
       holder.replaceChildren();
       if(view.inventoryId!==item.id)view.workshopMessage='';
@@ -118,7 +120,7 @@ export function renderCompactInventory(view,main,model){
       const facts=view.element('div','inv-detail-facts',undefined,head);
       view.element('p','inv-detail-role',item.performerId?item.ownerName+'专用':'通用配件 · 全员可用',facts);
       view.element('p','inv-detail-state',stateText,facts);
-      view.element('p','inv-detail-target',`装备对象 · ${member.name}（${deployed?'出战中':'未出战'}）`,facts);
+      if(item.compatible)view.element('p','inv-detail-target',`装备对象 · ${member.name}（${deployed?'出战中':'未出战'}）`,facts);
       // Generic items carry numeric fields that ARE their description; personal items only have behaviour prose.
       const effects=[['paintRadiusBonus','攻击涂染范围',value=>'+'+value],['chargeMultiplier','特殊行动充能',percent],['actionPower','主动行动涂染威力',percent]]
         .filter(([key])=>Object.hasOwn(item,key));
@@ -126,9 +128,22 @@ export function renderCompactInventory(view,main,model){
         const list=view.element('dl','inv-effects',undefined,detail);
         for(const [key,label,format]of effects){
           const row=view.element('div','inv-effect-row',undefined,list);
-          view.element('dt','',label,row);view.element('dd','',format(item[key]),row);
+          const term=view.element('dt','',label,row);
+          const symbol=view.element('img','inv-effect-symbol',undefined,term);
+          symbol.src='art/formal-ui-20261016/'+({paintRadiusBonus:'nozzle',chargeMultiplier:'tempo',actionPower:'lens'})[key]+'.webp';symbol.alt='';
+          view.element('dd','',format(item[key]),row);
         }
-      }else view.element('p','inv-detail-description',item.description,detail);
+      }else{
+        const steps={
+          rain_relay:['安可','近处设施','另一设施'],travelling_nozzle:['首拍','移动','同向再射'],
+          return_edge:['起点','突进','起点回风'],delayed_hammer:['落点','350 ms','原地回响'],
+        }[item.id];
+        if(steps){
+          const figure=view.element('div','inv-trajectory',undefined,detail);figure.dataset.trajectory=item.id;
+          for(const label of steps){const phase=view.element('span','',undefined,figure);view.element('i','',undefined,phase).setAttribute('aria-hidden','true');view.element('small','',label,phase);}
+        }
+        view.element('p','inv-detail-description',item.description,detail);
+      }
       const reason=!item.owned?'解锁条件：'+item.unlock:!item.compatible?`${item.ownerName}专用，${member.name}不能装备`:!model.persisted?'记录尚未保存，暂不能更换装备':'';
       if(reason)view.element('p','inv-detail-reason',reason,detail);
       if(view.workshopMessage){
@@ -210,10 +225,18 @@ export function renderCompactPreflight(view,main,model,{start}){
   const data={stageId:1,performerId:model.member.id,campaignChapterId:model.chapter.id};
   const current=normalizePublicRoutePlan(view.routeSelection,data);
   const routes=view.element('div','ui-route-options',undefined,holder);
+  const stations=new ChapterSideSet(model.chapter.id).definitions;
   for(const [id,label,description]of [['auto','现场选线','不预选；在地图中决定串场方向'],['west','西侧串场','南北两区均走西侧，各完成两站'],['east','东侧串场','南北两区均走东侧，各完成两站']]){
     const option=view.button(routes,label,()=>{view.routeSelection=createPublicRoutePlan(id,data);view.render('[data-action=preflight-route]');},{className:'ui-route-choice',action:'route-'+id});
     option.setAttribute('aria-pressed',String((current?.id||'auto')===id));view.element('small','',description,option);
     option.dataset.routeChoice=id;
+    const map=view.element('span','route-station-mini',undefined,option);map.setAttribute('aria-hidden','true');
+    for(const station of stations){
+      const point=view.element('i','',undefined,map);
+      point.dataset.branch=station.sideBranch;
+      point.dataset.selected=String(id==='auto'||id===station.sideBranch);
+      point.style.left=(6+station.x/1000*88)+'%';point.style.top=(5+station.y/1700*90)+'%';
+    }
   }
   const routeName=current?(current.id==='west'?'西侧串场':'东侧串场'):'现场选线';
   let route;route=entry('串场路线','route','route',routeName,()=>openSheet(view,'串场路线',routes,route),'preflight-route');
@@ -230,6 +253,11 @@ export function renderCompactPreflight(view,main,model,{start}){
   const goalEntry=entry('演出目标','goal','modes',goalState,()=>view.showPage('goals'),'preflight-goals');
   goalEntry.setAttribute('aria-description',describePublicRunGoal(goal));goalEntry.title=describePublicRunGoal(goal);
   const venue=view.element('div','ui-preflight-info',undefined,holder);
+  if(model.chapter.id==='opening'){
+    const sample=view.element('figure','menu-hazard-example',undefined,venue);
+    const shot=view.element('img','',undefined,sample);shot.src='art/menu-plays/opening-warning.webp';shot.alt='实战中瞄准线从首领延伸到街面';
+    view.element('figcaption','','旧街实战 · 移出瞄准线，再回到设施旁涂色。',sample);
+  }
   view.element('p','',getChapterObjectiveSummary(model.chapter.id),venue);view.element('p','',getChapterEncounterSummary(model.chapter.id),venue);
   let details;details=iconTool(view,head,'场地资料','info',()=>openSheet(view,'场地资料',venue,details),'preflight-info');
   for(const button of tools.children)button.dataset.uiWidget='true';
