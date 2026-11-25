@@ -140,6 +140,18 @@
     color:var(--sheet-ink);background:#f4edda;border:0;border-image:var(--set-card) 42 fill / 8px stretch;
   }
   & .sec-venue-editor .pm-room-program[aria-pressed=true] {color:#fff8e6;border-image-source:var(--set-monitor)}
+  &[data-venue-sheet=editor] .vs-editor-footer button[data-action^="venue-assign-"] {
+    display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;
+    padding:8px 13px;border:0;border-image:var(--set-stub) 42 fill / 11px stretch;background:#e4ed9a;
+    color:#202a34;box-shadow:none;
+  }
+  &[data-venue-sheet=editor] .vs-editor-footer button[data-action^="venue-assign-"]::before {
+    content:'';width:13px;height:7px;border-left:3px solid currentColor;border-bottom:3px solid currentColor;
+    transform:rotate(-45deg) translateY(-2px);flex:none;
+  }
+  &[data-venue-sheet=editor] .vs-editor-footer [data-venue-letter=assign] {display:inline;position:static;color:inherit;font:800 15px/22px system-ui,sans-serif!important}
+  &[data-venue-sheet=editor] .vs-editor-footer [data-venue-letter=assign] img {display:none}
+  &[data-venue-sheet=editor] .vs-editor-footer button:disabled {filter:grayscale(.8);opacity:.72}
   & .pm-companion-record :is(.pm-record-empty,li) {padding:13px 15px;color:#443b3d;border-image:var(--set-note) 42 fill / 10px stretch}
   & .ui-sheet-body .cs-service-state {color:#394848;background:#e0e9dc;padding:2px 6px;border-radius:2px}
   /* Folded directory, running order, annotated proof and artist passes use different stocks. */
@@ -297,6 +309,30 @@
   & .journal-chapter:not(:has(button:enabled)) {border-image-source:none;border-bottom:1px solid #c4bba6;padding-block:4px}
   & .journal-chapter .session-secondary {border:0;border-image:var(--set-card) 42 fill / 8px stretch}
 
+  /* File inspection and reading are the work inside these windows. Back is a quiet exit. */
+  &:is([data-mode=profile-backup],[data-mode=story-journal]) .session-footer {
+    display:flex;justify-content:flex-start;align-items:center;padding:4px 11px 7px;
+  }
+  &:is([data-mode=profile-backup],[data-mode=story-journal]) .session-footer .session-primary,
+  &[data-mode=settings] .session-footer .session-primary:not([data-console-return=close]) {
+    width:auto;min-width:78px;max-width:100%;min-height:44px;gap:5px;padding:5px 8px;
+    justify-content:flex-start;background:transparent;border:0;border-image:none;box-shadow:none;color:#3f4654;
+  }
+  &[data-mode=profile-backup] .session-footer .session-primary:not(:has(svg))::before {
+    content:'←';font:750 17px/1 system-ui,sans-serif;color:currentColor;
+  }
+  & .profile-backup button[data-action=backup-export]:enabled {border-image-source:var(--set-card)}
+  & .profile-backup .profile-backup-picker label.profile-backup-file {
+    color:#fff9e7;background:#26383b;border:0;border-image:var(--set-monitor) 42 fill / 10px stretch;
+  }
+  & .profile-backup-picker .profile-backup-file::before {color:#e7f4a0}
+  & .profile-backup-preview button[data-action=backup-restore]:enabled {
+    min-height:48px;color:#232635;border:0;border-image:var(--set-stub) 42 fill / 11px stretch;
+  }
+  & .profile-backup-preview button[data-action=backup-preview-cancel] {
+    min-height:44px;color:#343847;border:0;border-image:var(--set-card) 42 fill / 9px stretch;
+  }
+
 }
 
 #game-container #player-session-dialog[data-mode=story][data-performance-story=true][data-reading=true] {
@@ -315,6 +351,22 @@
     background:#24283c;color:#fff8e8;border:0;border-inline-start:3px solid #e7ea94;
     font:650 13px/19px system-ui,sans-serif;text-shadow:none;
   }
+  & .story-toolbar {
+    display:flex;gap:1px;padding:2px;background:#20292e;border:1px solid #d8d8bb;border-radius:10px 3px 8px 3px;
+  }
+  & .story-toolbar .story-icon {
+    display:grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:6px;
+    border:0;border-image:var(--set-card) 42 fill / 7px stretch;color:#283544;background:#f4ead6;
+  }
+  & .story-toolbar .story-icon svg {width:22px;height:22px;stroke-width:2.1}
+  & .story-toolbar .story-icon[aria-pressed=true] {color:#262b32;background:#dfe99d;border:0;border-image:var(--set-stub) 42 fill / 7px stretch}
+  & .session-footer button[data-action=story-close] {
+    min-width:78px;min-height:44px;padding:6px 9px;display:flex;gap:5px;align-items:center;justify-content:center;
+    border:0;border-image:var(--set-monitor) 42 fill / 8px stretch;background:#27363d;color:#fff8df;font:700 12px/18px system-ui,sans-serif;
+  }
+  & .session-footer button[data-action=story-close]::before {content:'‹';font:750 19px/1 system-ui,sans-serif}
+  & .story-history {background:#243039;border:5px solid #243039;border-image:var(--set-monitor) 42 fill / 13px stretch;color:#fff8e5}
+  & .story-history-row p, & .story-history-header h3 {color:#fff8e5}
   & .performance-story-dialogue {
     position:absolute;inset:auto 6px 64px;margin:0;padding:17px 17px 13px;
     border:0;border-image:var(--set-note) 42 fill / 14px stretch;
@@ -366,6 +418,26 @@
   & .session-footer {background:transparent}
   & .session-footer .session-primary {border:0;border-image:var(--set-stub) 42 fill / 9px stretch}
 }
+
+/* The visible cap is smaller than the 44px target. Its X stays clear on illustrated headers. */
+#game-container #public-shell[data-edition=showbill][data-cast=owner-three][data-shell-family][data-inner-family][data-core-journey][data-home-demo][data-ui-pass][data-page] dialog.ui-sheet[data-sheet-kind] .ui-sheet-close,
+#game-container #player-session-dialog[data-mode=settings][data-reading-family] .session-primary[data-console-return=close],
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-header [data-action=story-history-close] {
+  width:44px;height:44px;min-width:44px;min-height:44px;isolation:isolate;
+  background:transparent;border:0;border-radius:0;box-shadow:none;
+  & > :is(img,svg) {display:none}
+  &::before {
+    content:'';position:absolute;inset:4px;z-index:-1;
+    background:#fff3d4;border:2px solid #28283b;border-radius:50%;box-shadow:1px 2px 0 #29283b;
+  }
+  &::after {
+    content:'';position:absolute;inset:14px;
+    background:linear-gradient(45deg,transparent 42%,#432c40 44% 56%,transparent 58%),
+               linear-gradient(-45deg,transparent 42%,#432c40 44% 56%,transparent 58%);
+  }
+}
+#game-container #public-shell[data-edition=showbill] dialog.ui-sheet[data-sheet-kind] .ui-sheet-header .ui-sheet-close,
+#game-container #player-session-dialog[data-performance-story=true][data-reading=true] .story-history-header [data-action=story-history-close] {position:relative}
 
 @media (forced-colors:active) {
   #game-container .profile-backup-picker:focus-within {outline-color:Highlight}
