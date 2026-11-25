@@ -131,3 +131,26 @@
   & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready] > :is(#special-state,#encore-state) {color:var(--command-ink)}
   & .skill-orb[data-art=stage][data-command-feedback=staged] .battle-command-phase {inset:auto 8px 6px;width:auto;height:3px}
 }
+
+/* A charged action gets a light keycap; a charging action keeps a dark face.
+   The lower strip still follows the actual charge and action phase. */
+#game-container[data-battle-mode=public] #hud[data-layout=stage-v2][data-performer] {
+  & .skill-orb[data-art=stage][data-command-feedback=staged] {
+    border:2px solid #c2d2ca;background:#223b46;border-radius:19px 7px 17px 7px;
+    box-shadow:0 3px 0 #172934;
+  }
+  & #skill-encore[data-command-feedback=staged] {border-radius:28px 28px 12px 12px}
+  & .skill-orb[data-art=stage][data-command-feedback=staged]::after {
+    inset:4px 7px auto;height:36px;border-radius:12px 5px;background:#405963;
+  }
+  & #skill-encore[data-command-feedback=staged]::after {inset-inline:10px;border-radius:24px 24px 8px 8px}
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready] {
+    border:2px solid #203741;color:#17323c;background:#deef88;
+    box-shadow:inset 0 2px #f6ffcd,0 3px 0 #172934;
+  }
+  & #skill-encore[data-command-feedback=staged][data-charge-state=ready] {background:#ffdf8d}
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready]::after {background:#fff7d5}
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready] > :is(#special-state,#encore-state,#special-label,#encore-label) {color:#17323c;text-shadow:none}
+  & .skill-orb[data-art=stage][data-command-feedback=staged][data-charge-state=ready]:active {filter:brightness(.91)}
+  & .skill-orb:focus-visible {outline:3px solid #fff;outline-offset:2px}
+}
