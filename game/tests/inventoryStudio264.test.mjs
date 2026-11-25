@@ -13,8 +13,12 @@ function owner(cleared = ['opening']) {
   return s;
 }
 function bag(s, data = {}) {
-  const h = s.harness(s.TitleScene, {suppressDebugAutoStart: true, openPage: 'inventory', ...data});
+  // The reward button hands the bag a performer and an item. Ordinary visits use the lobby navigation.
+  const entry = data.earnedEquipment ? {openPage: 'inventory', ...data} : data;
+  const h = s.harness(s.TitleScene, {suppressDebugAutoStart: true, ...entry});
   h.scene.create();
+  if (!entry.openPage) h.click('[data-nav=inventory]');
+  assert.equal(h.root.dataset.page, 'inventory');
   return h;
 }
 const writes = s => JSON.stringify([[...s.storage.values].sort(), [...s.sessionStorage.values].sort()]);
@@ -98,6 +102,7 @@ test('grid shows native name and state per object; one context row, no actor por
   s.profile.equipPublicPerformer('sakura', items.find(item => item.owned && item.compatible).id);
   const h = bag(s), now = inventoryOf(s);
   const grid = h.query('.ui-item-grid');
+  assert.equal(now.items.length, 7);
   assert.equal(h.all('.ui-item-slot').length, now.items.length);
   for (const selector of ['.member-mark', '.shell-member-strip', '[data-member]', '.ui-actor-grid', '[data-action=prepared-preflight]', 'dialog'])
     assert.equal(h.all(selector).length, 0, selector);
@@ -115,7 +120,7 @@ test('grid shows native name and state per object; one context row, no actor por
   assert.equal(grid.querySelectorAll('img').every(img => img.className.includes('equipment-art') || img.className.includes('ui-glyph')), true);
   const context = h.all('.inv-context');
   assert.equal(context.length, 1);
-  assert.match(context[0].textContent, /步枪手/);
+  assert.equal(context[0].querySelector('.inv-context-actor').textContent, '战术女武神');
   assert.match(context[0].textContent, new RegExp(now.equippedItem.name));
   assert.equal(context[0].dataset.deployed, 'true');
   h.shutdown();
@@ -157,12 +162,22 @@ test('detail sheet: one name, emblem, effect rows, source disclosure; Escape and
 
 test('personal items describe behaviour without inventing numeric rows', () => {
   const s = owner();
-  const h = bag(s);
-  slot(h, 'travelling_nozzle').click();
-  const detail = sheet(h).querySelector('.ui-item-detail');
-  assert.equal(detail.querySelectorAll('.inv-effect-row').length, 0);
-  assert.match(detail.querySelector('.inv-detail-description').textContent, /扫射/);
-  assert.match(detail.querySelector('.inv-detail-role').textContent, /步枪手专用/);
+  const h = bag(s), before = writes(s);
+  const items = [
+    ['travelling_nozzle', '战术女武神', '扫射'],
+    ['return_edge', '翡翠风歌', '回风'],
+    ['delayed_hammer', '蔚蓝魔法师', '魔法回响'],
+  ];
+  for (const [id, name, action] of items) {
+    slot(h, id).click();
+    const detail = sheet(h).querySelector('.ui-item-detail');
+    assert.equal(detail.querySelectorAll('.inv-effect-row').length, 0);
+    assert.ok(detail.querySelector('.inv-detail-description').textContent.includes(action), id);
+    assert.equal(detail.querySelector('.inv-detail-role').textContent, name + '专用');
+    h.click('[data-action=sheet-close]');
+    assert.equal(s.document.activeElement, slot(h, id));
+  }
+  assert.equal(writes(s), before);
   h.shutdown();
 });
 
@@ -192,13 +207,15 @@ test('equip and unequip use the existing callback for the shown actor only; word
   slot(h, 'wide_nozzle').click();
   let equip = sheet(h).querySelector('[data-action=equip-selected]');
   assert.equal(equip.dataset.inventoryLetter, 'equip');
-  assert.equal(equip.getAttribute('aria-label'), '装备给步枪手');
+  assert.equal(equip.getAttribute('aria-label'), '装备给战术女武神');
   assert.ok(shown(equip.querySelector('.inv-command-label')));
   equip.click();
   assert.deepEqual(calls, [['sakura', 'wide_nozzle']]);
   assert.match(h.query('.ui-command-status').textContent, /装备配置已保存/);
   assert.equal(slot(h, 'wide_nozzle').dataset.state, 'equipped');
-  slot(h, 'wide_nozzle').click();
+  assert.equal(inventoryOf(s).equippedItem.id, 'wide_nozzle');
+  assert.equal(inventoryOf(s, 'kai').equippedItem, null);
+  assert.equal(sheet(h).open, true);
   equip = sheet(h).querySelector('[data-action=equip-selected]');
   assert.equal(equip.dataset.inventoryLetter, 'unequip');
   assert.equal(equip.getAttribute('aria-label'), '卸下配件');
@@ -243,16 +260,21 @@ test('browsing a non-deployed actor never deploys; its route asks explicitly', (
   s.profile.recordPublicRun({runId: 'b264-kai', chapterId: 'opening', performerId: 'kai', victory: true});
   const h = bag(s, {earnedEquipment: {memberId: 'kai', equipmentId: 'return_edge'}}), before = writes(s);
   const context = h.query('.inv-context');
-  assert.match(context.textContent, /机甲剑士/);
+  assert.equal(context.querySelector('.inv-context-actor').textContent, '翡翠风歌');
   assert.equal(context.dataset.deployed, 'false');
   assert.match(context.textContent, /未出战/);
   h.click('[data-action=bag-filter-compatible]');
   slot(h, 'return_edge').click();
-  assert.equal(sheet(h).querySelector('[data-action=equip-selected]').getAttribute('aria-label'), '装备给机甲剑士');
-  assert.equal(sheet(h).querySelector('[data-action=prepared-preflight]').getAttribute('aria-label'), '确认机甲剑士出战并查看准备');
+  assert.equal(sheet(h).querySelector('[data-action=equip-selected]').getAttribute('aria-label'), '装备给翡翠风歌');
+  assert.equal(sheet(h).querySelector('[data-action=prepared-preflight]').getAttribute('aria-label'), '确认翡翠风歌出战并查看准备');
   h.click('[data-action=sheet-close]');
   assert.equal(writes(s), before);
   assert.equal(s.profile.loadPublicProfile().selectedId, 'sakura');
+  slot(h, 'return_edge').click();
+  sheet(h).querySelector('[data-action=prepared-preflight]').click();
+  assert.equal(h.root.dataset.page, 'preflight');
+  assert.equal(s.profile.loadPublicProfile().selectedId, 'kai');
+  assert.equal(inventoryOf(s, 'kai').equippedItem, null, 'deployment does not equip the previewed item');
   h.shutdown();
 });
 
