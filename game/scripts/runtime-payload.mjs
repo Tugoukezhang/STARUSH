@@ -11,7 +11,8 @@ export const ENJO_VISUAL_STUDY_PAYLOAD = Object.freeze(group('enjo-visual-study'
   ['atlas-gait.webp','atlas-gait.json','avatar.webp','portrait.webp','victory.webp','defeat.webp','lobby.webp']));
 // Explicit filenames only: adding source art must never silently enlarge a release.
 export const RUNTIME_PAYLOAD = Object.freeze([
-  ...group('printroom-surfaces','art/printroom/',['primary.webp','paper.webp','ink.webp','motif.webp','dressing.webp','gear.webp','records.webp','rehearsal.webp','chime-icon.png','book-icon.png']),
+  ...group('printroom-surfaces','art/printroom/',['primary.webp','paper.webp','ink.webp','motif.webp','dressing.webp','gear.webp','records.webp','rehearsal.webp','chime-icon.png','book-icon.png',
+    'item-sound.webp','item-pulse.webp','item-focus.webp','item-rain.webp','item-delay.webp','item-echo.webp','item-leaf.webp']),
   ...group('tour-landmarks','art/showbill/',['stop-opening.webp','stop-neon.webp','stop-encore.webp','stop-raincheck.webp','stop-homecoming.webp']),
   ...group('owner-weapon-fx','art/infield/',['ground-footprints.webp','wet-splash.webp']),
   ...group('concert-navigation','art/infield/',['nav-desk.webp','nav-roster.webp','nav-tour.webp','nav-inventory.webp']),

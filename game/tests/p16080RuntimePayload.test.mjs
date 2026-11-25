@@ -54,13 +54,14 @@ test('release inventory is exact, categorized, unique and covers existing runtim
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.file.startsWith('art/portrait-base-20261101/')),[],'retired portraits must not ship');
  for(const file of ['portraits/enjo-286/source.png','portraits/kai-287/source.png',...['guidance','phase','action','danger'].map(n=>'art/battle-signals-b293/'+n+'.webp')])assert.ok(RUNTIME_PAYLOAD.some(a=>a.file===file),file);
  const printroomFiles=['primary.webp','paper.webp','ink.webp','motif.webp','dressing.webp','gear.webp',
-  'records.webp','rehearsal.webp','chime-icon.png','book-icon.png'].map(name=>'art/printroom/'+name);
+  'records.webp','rehearsal.webp','chime-icon.png','book-icon.png',
+  'item-sound.webp','item-pulse.webp','item-focus.webp','item-rain.webp','item-delay.webp','item-echo.webp','item-leaf.webp'].map(name=>'art/printroom/'+name);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='printroom-surfaces').map(a=>a.file).sort(),printroomFiles.sort());
  // The normal Vite build ships the separate home-space manifest alongside the main game.
  const homePayload=JSON.parse(fs.readFileSync(new URL('../home-payload.json',import.meta.url),'utf8'));
  const release=[...RUNTIME_PAYLOAD,...homePayload];
- assert.equal(RUNTIME_PAYLOAD.length,778);
- assert.equal(release.length,844);
+ assert.equal(RUNTIME_PAYLOAD.length,785);
+ assert.equal(release.length,851);
  assert.equal(new Set(release.map(a=>a.file)).size,release.length);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='mobile-lobby').map(a=>a.file),['art/mobile-lobby-20261014/home-background.webp']);
  assert.deepEqual(RUNTIME_PAYLOAD.filter(a=>a.group==='owner-character-walk').map(a=>a.file),['art/rifle-walk-volume-20261022/walk.png']);
@@ -85,7 +86,7 @@ test('release inventory is exact, categorized, unique and covers existing runtim
  assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group==='public-scenes').length,7);
  assert.equal(RUNTIME_PAYLOAD.filter(a=>a.group==='shared-audio').length,7);
  assert.ok(RUNTIME_PAYLOAD.every(a=>Object.isFrozen(a)));
- const rows=validateRuntimePayload(new URL('../public/',import.meta.url),release);assert.equal(rows.length,844);
+ const rows=validateRuntimePayload(new URL('../public/',import.meta.url),release);assert.equal(rows.length,851);
  assert.ok(rows.every(a=>a.bytes>0&&/^[a-f0-9]{64}$/.test(a.sha256)));
  assert.ok(!rows.some(a=>/base-gray|gray-plaza|sakura-hud-portrait|art\/desk|art\/phase15/.test(a.file)));
 });

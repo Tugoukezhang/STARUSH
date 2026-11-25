@@ -140,28 +140,45 @@
       color:inherit;border:1px solid currentColor;border-radius:3px;
     }
     & .ui-item-grid {
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;gap:9px;
-      align-content:start;padding:0 2px 9px 0;
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;gap:10px 8px;
+      align-content:start;padding:0 2px 11px 0;
     }
+    & [data-inventory-item=wide_nozzle] {--gear-print:url('/art/printroom/item-sound.webp');--gear-stock:#f5af98}
+    & [data-inventory-item=rhythm_sync] {--gear-print:url('/art/printroom/item-pulse.webp');--gear-stock:#cddc83}
+    & [data-inventory-item=focus_lens] {--gear-print:url('/art/printroom/item-focus.webp');--gear-stock:#a1c5e2}
+    & [data-inventory-item=rain_relay] {--gear-print:url('/art/printroom/item-rain.webp');--gear-stock:#a3d8c8}
+    & [data-inventory-item=travelling_nozzle] {--gear-print:url('/art/printroom/item-delay.webp');--gear-stock:#f5c68a}
+    & [data-inventory-item=return_edge] {--gear-print:url('/art/printroom/item-echo.webp');--gear-stock:#b1decf}
+    & [data-inventory-item=delayed_hammer] {--gear-print:url('/art/printroom/item-leaf.webp');--gear-stock:#bad6e9}
     & .ui-item-grid .ui-item-slot {
-      grid-template-columns:minmax(0,1fr);grid-template-rows:56px auto auto;
-      justify-items:center;align-content:start;gap:3px;min-height:111px;height:auto;padding:5px 2px 7px;
-      border:1px solid #9e9a8f;border-radius:3px;background:#fff9e9;box-shadow:2px 2px #beb7a6;text-align:center;
+      grid-template-columns:minmax(0,1fr);grid-template-rows:clamp(74px,22vw,96px) auto auto;
+      align-content:start;justify-items:center;gap:0;min-height:0;height:auto;padding:0 0 8px;
+      overflow:hidden;border:0;border-bottom:2px solid #918890;border-radius:3px 9px 4px 4px;
+      background:#fffaee;box-shadow:0 2px 2px #2a234c25;text-align:center;
     }
-    & .ui-item-grid .ui-item-slot .equipment-art-slot {
-      grid-area:1/1;width:100%;height:56px;display:grid;place-items:center;align-self:center;
-      border:0;border-radius:0;background:transparent;
+    & .ui-item-grid .ui-item-slot > .equipment-art-slot {
+      position:relative;isolation:isolate;grid-area:1/1;width:100%;height:100%;max-width:none;
+      display:grid;place-items:center;align-self:stretch;overflow:hidden;
+      border:0;border-radius:0;background:var(--gear-stock) var(--gear-print) center/cover no-repeat;
     }
-    & .ui-item-grid .ui-item-slot .equipment-art {max-width:100%;height:53px;width:61px;object-fit:contain}
     & .ui-item-grid .ui-item-slot[data-state=locked] > .equipment-art-slot {
-      opacity:1;filter:none;background:var(--gear-well,linear-gradient(130deg,#f1ebd8,#ece8da));
+      opacity:1;filter:none;background:var(--gear-stock) var(--gear-print) center/cover no-repeat;
     }
-    & .ui-item-grid .ui-item-slot[data-state=locked] .equipment-art {filter:saturate(.8);opacity:1}
-    & .ui-item-grid [data-inventory-item=return_edge] {--gear-well:#c3dfcf}
-    & .ui-item-grid [data-inventory-item=delayed_hammer] {--gear-well:#cfddf1}
-    & .ui-item-grid .ui-item-slot .ui-item-name {grid-area:2/1;align-self:center;text-align:center;color:var(--stage-ink);font:800 13px/17px system-ui,sans-serif}
-    & .ui-item-grid .ui-item-slot .ui-item-state {grid-area:3/1;justify-self:center;text-align:center}
-    & .ui-item-grid .ui-item-slot[data-state=equipped] {border:2px solid #364637;background:#eff5d2}
+    & .ui-item-grid .ui-item-slot .equipment-art {
+      width:77px;height:67px;max-width:88%;object-fit:contain;opacity:1;
+      filter:drop-shadow(1px 1px 0 #fff5de) drop-shadow(0 2px 1px #2320307a);
+    }
+    & .ui-item-grid .ui-item-slot .ui-item-name {
+      grid-area:2/1;align-self:center;margin:6px 2px 0;color:var(--stage-ink);
+      text-align:center;font:850 clamp(13px,3.7vw,16px)/1.22 system-ui,sans-serif;
+    }
+    & .ui-item-grid .ui-item-slot .ui-item-state {
+      grid-area:3/1;justify-self:center;margin-top:3px;padding:0 4px;border:0;border-radius:2px;
+      background:transparent;color:#4d5158;text-align:center;font:650 12px/16px system-ui,sans-serif;
+    }
+    & .ui-item-grid .ui-item-slot[data-state=equipped] {border-color:#1b5942;background:#e8f1dc}
+    & .ui-item-grid .ui-item-slot[data-state=equipped] .ui-item-state {background:#1b5942;color:#fffaf0}
+
   }
 
   &[data-page=preflight] {

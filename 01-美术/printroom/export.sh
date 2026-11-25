@@ -27,3 +27,12 @@ gear_thumbnail() {
 }
 gear_thumbnail green-windsong-20261123 chime
 gear_thumbnail blue-academy-20261123 book
+
+# Leave the neutral eighth proof on the source sheet; the live inventory has seven items.
+sprite items item-sound '441x441+1+1' '240x240' 84
+sprite items item-pulse '440x441+445+1' '240x240' 84
+sprite items item-focus '440x441+888+1' '240x240' 84
+sprite items item-rain '440x441+1332+1' '240x240' 84
+sprite items item-delay '441x440+1+445' '240x240' 84
+sprite items item-echo '440x440+445+445' '240x240' 84
+sprite items item-leaf '440x440+888+445' '240x240' 84
