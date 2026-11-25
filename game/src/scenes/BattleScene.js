@@ -1598,7 +1598,8 @@ export class BattleScene extends Phaser.Scene {
         }
       }
       if (effect.anchorPaint > 0) {
-        this.paintZone?.applyPaintAt(enemy.x, enemy.y, effect.anchorPaint, 136);
+        const pigment = this.paintZone?.chapterObjectives ? selectedColor : undefined;
+        this.paintZone?.applyPaintAt(enemy.x, enemy.y, effect.anchorPaint, 136, pigment);
       }
       if (effect.consumedPrime) this._spawnPublicStage1ColorReactionFx(enemy, selectedColor, '转调');
       if (secondary) this._spawnPublicStage1ColorReactionFx(enemy, selectedColor, '连染');
@@ -1656,7 +1657,7 @@ export class BattleScene extends Phaser.Scene {
         }
       } else {
         this._drawUnlitBlobGfx(enemy.gfx, hex, ratio, enemy.publicStage1ReactionColor);
-        if (enemy.hp <= 0) this._onUnlitBlobKilled(enemy, imprint);
+        if (enemy.hp <= 0) this._onUnlitBlobKilled(enemy, imprint, selectedColor);
       }
       if (enemy.active && enemy.publicStage1EnemyRole !== PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER) {
         this._drawPublicStage1ColorCue(enemy);
@@ -2671,12 +2672,13 @@ export class BattleScene extends Phaser.Scene {
     return Boolean(enemy || pulse);
   }
 
-  _onUnlitBlobKilled(enemy, imprint = null) {
+  _onUnlitBlobKilled(enemy, imprint = null, hitColor = this.currentColor) {
     if (!enemy?.active) return;
     this._awardPublicSakuraActionCharge(PUBLIC_STAGE1_SAKURA_CHARGE_EVENTS.THREAT_RESOLVED);
     const appearance = imprint ? [imprint] : [];
-    this._stampGroundSplat(enemy.x, enemy.y, this.currentColor, 86, true, ...appearance);
-    this.paintZone?.applyPaintAt(enemy.x, enemy.y, 10, 86);
+    const chapterPigment = this.paintZone?.chapterObjectives ? hitColor : undefined;
+    this._stampGroundSplat(enemy.x, enemy.y, chapterPigment ?? this.currentColor, 86, true, ...appearance);
+    this.paintZone?.applyPaintAt(enemy.x, enemy.y, 10, 86, chapterPigment);
     this.score += Number.isFinite(enemy.score) ? enemy.score : 40;
     if (Number.isFinite(enemy.supportValueOverride)) this.support?.addValue?.(enemy.supportValueOverride);
     if (enemy.chaseTimer) { enemy.chaseTimer.remove(false); enemy.chaseTimer = null; }
@@ -5215,7 +5217,7 @@ export class BattleScene extends Phaser.Scene {
   _onEnemyKilled(enemy, killColor) {
     if (!enemy.active) return;  // 防止重复击杀（双弹命中/burn计时器竞态）
     if (enemy.unlitBlob === true) {
-      this._onUnlitBlobKilled(enemy);
+      this._onUnlitBlobKilled(enemy, null, killColor);
       return;
     }
     if (enemy === this._p15ManualFocusTarget) this._clearP15ManualFocusTarget();

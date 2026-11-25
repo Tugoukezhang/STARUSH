@@ -100,3 +100,29 @@ test('contact accents require actual immutable contacts and cannot survive expir
  view.pose.state='hurt';fx.update(181,view);assert.equal(fx.rows.length,0);assert.equal(commands.length,0);
  fx.destroy();fx.destroy();assert(node.dead);
 });
+
+test('enemy splashes advance visible chapter facilities using the issued pigment',()=>{
+ const scene=new BattleScene();
+ const target={x:100,y:200,active:true,hp:10,maxHp:10,unlitBlob:true,publicStage1EnemyRole:'unlit-chaser',
+   destroy(){this.active=false;}};
+ Object.assign(scene,{time:{now:100},currentColor:'blue',score:0,_userCastPresentation:true,
+   battleData:{stageId:1,campaignChapterId:'opening'},oldStreet:{clearLine:(_from,to)=>to.x<135},
+   enemies:{children:{iterate:fn=>fn(target)}}});
+ const ground=[];
+ scene._stampGroundSplat=(x,y,color)=>ground.push(color);
+ scene._awardPublicSakuraActionCharge=scene._spawnImpactNoteFx=scene._drawUnlitBlobGfx=()=>{};
+ scene._resolvePublicStage1TargetColorReaction=(_enemy,_color,amount)=>({totalPaint:amount});
+ const zone=scene.paintZone=new PaintZoneSystem(scene);
+ zone._redrawDevice=zone._emitProgress=()=>{};
+ const lamp={id:'lamp',x:115,y:200,required:true,paintPolicy:'performer',paint:0,paintMax:52,zone:0};
+ const blocked={...lamp,id:'wall',x:140},suppressed={...lamp,id:'jammed',publicStage1Suppressed:true};
+ zone.devices=[lamp,blocked,suppressed];
+ scene._paintPublicStage1TargetsAt(100,200,1,10,'orange',target);
+ assert.equal(lamp.paint,7,'orange contact spreads to a nearby legal facility');
+ scene._paintPublicStage1TargetsAt(100,200,20,10,'pink',target);
+ assert.equal(lamp.paint,17,'defeating a chaser contributes its ten units once');
+ assert.equal(lamp.paintColor,'pink');assert.deepEqual(ground,['pink']);
+ assert.equal(blocked.paint,0);assert.equal(suppressed.paint,0);
+ scene._onUnlitBlobKilled(target);
+ assert.equal(lamp.paint,17);
+});

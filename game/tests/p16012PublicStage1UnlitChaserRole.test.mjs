@@ -44,11 +44,11 @@ PUBLIC_STAGE1_ENCOUNTER_PHASES.forEach((phase) => {
 });
 
 const battleSource = readFileSync(new URL('../src/scenes/BattleScene.js', import.meta.url), 'utf8');
-const spawnBlock = sourceBlock(battleSource, '  _spawnUnlitBlob() {', '  _onUnlitBlobKilled(enemy, imprint = null) {');
-const killBlock = sourceBlock(battleSource, '  _onUnlitBlobKilled(enemy, imprint = null) {', '  _clearUnlitBlobs() {');
+const spawnBlock = sourceBlock(battleSource, '  _spawnUnlitBlob() {', '  _onUnlitBlobKilled(');
+const killBlock = sourceBlock(battleSource, '  _onUnlitBlobKilled(', '  _clearUnlitBlobs() {');
 const clearBlock = sourceBlock(battleSource, '  _clearUnlitBlobs() {', '  _spawnPaintDanmaku(origin = null) {');
 const collisionBlock = sourceBlock(battleSource, '  _setupCollisions() {', '  _onBulletHitEnemy(bullet, enemy) {');
-const contactBlock = sourceBlock(battleSource, '  _onEnemyContactPlayer(enemy) {', '  _onEnemyHitPlayer(sourceBullet = null) {');
+const contactBlock = sourceBlock(battleSource, '  _onEnemyContactPlayer(enemy) {', '  _onEnemyHitPlayer(');
 
 assert.ok(spawnBlock.includes('enemy.publicStage1EnemyRole = PUBLIC_STAGE1_ENEMY_ROLES.UNLIT_CHASER'));
 assert.equal(spawnBlock.includes('shootTimer'), false, 'unlit chaser must not own a ranged-fire timer');
@@ -59,7 +59,7 @@ assert.equal(clearBlock.includes('shootTimer'), false, 'unlit scene cleanup must
 
 assert.ok(collisionBlock.includes('(_player, enemy) => this._onEnemyContactPlayer(enemy)'));
 assert.ok(contactBlock.includes('canEnemyDealContactDamage({'));
-assert.ok(contactBlock.includes('this._onEnemyHitPlayer()'));
+assert.ok(/this\._onEnemyHitPlayer\(null,\s*enemy\)/.test(contactBlock));
 assert.ok(contactBlock.includes('isPublicStage1: this._isPublicStage1Round()'));
 
 console.log('p16012 public Stage 1 unlit chaser role: all assertions passed');

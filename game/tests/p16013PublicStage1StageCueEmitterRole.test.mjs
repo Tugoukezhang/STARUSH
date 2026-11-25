@@ -97,7 +97,7 @@ const pulseBlock = sourceBlock(
 const clearBlock = sourceBlock(
   battleSource,
   '  _clearPublicStage1StageCueEmitter(reason = \'cleared\', { preservePulse = false } = {}) {',
-  '  _onUnlitBlobKilled(enemy, imprint = null) {'
+  '  _onUnlitBlobKilled('
 );
 const targetBlock = sourceBlock(
   battleSource,
