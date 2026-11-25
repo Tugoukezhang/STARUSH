@@ -51,11 +51,18 @@ const stories={
     replies:{sakura:'第一句由我来。后面的声部，交给大家。',kai:'先接稳，再向前。最后一拍不需要抢。',venus:'听见了吗？这次每一个声部都在。',genya:'我会把回响留下，等你们接上最后一句。',enjo:'这次不提前。等信号，我们一起落拍。'}},
 };
 const phaseNames={intro:'开场',midpoint:'途中',outro:'章尾'};
+const performanceBeatTitles={
+  opening:{intro:'唱片店的旧节目牌',midpoint:'亮起的橱窗',outro:'节目单背面的地址'},
+  neon:{intro:'街口断开的灯线',midpoint:'两家门灯的回应',outro:'夹进箱里的节目单'},
+  encore:{intro:'甲板上的三张节目单',midpoint:'双亭点亮，帆顶待校',outro:'音箱下的节目单'},
+  raincheck:{intro:'被雨泡皱的点歌条',midpoint:'收音机的第一声',outro:'窗框上的两下回应'},
+  homecoming:{intro:'工具箱上的第一排',midpoint:'来自帆顶的电流声',outro:'把最后一拍还给舞台'},
+};
 export function getChapterStory(chapterId,phase,memberId='sakura'){
   if(isUserCastEnabled()&&USER_CAST.some(row=>row.id===memberId)){
     const current=USER_CAST_STORIES[chapterId];
     if(!current||!phaseNames[phase])return null;
-    return {id:`${chapterId}:${phase}`,chapterId,phase,title:current.title,place:current.place,label:phaseNames[phase],
+    return {id:`${chapterId}:${phase}`,chapterId,phase,title:current.title,eventTitle:performanceBeatTitles[chapterId]?.[phase]||current.title,place:current.place,label:phaseNames[phase],
       lines:current[phase].map(([speaker,text])=>({speaker,text}))};
   }
   const s=stories[chapterId],d=getCharacterDossier(memberId);

@@ -23,12 +23,15 @@ test('primary and title use protected endcaps instead of whole-raster nonuniform
  assert(!/playable-ui-20261018\/(?:primary|secondary|title)\.webp[^;]*100% 100%/.test(css));
  assert.match(css,/\.lobby-background[^}]*height:100%/);
 });
-test('live candidate preserves five navigation roots, actual preparation tools and read-only previews',()=>{
+test('live candidate keeps a single four-button navigation and read-only preparation tools',()=>{
  const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);
  const h=e.harness(e.TitleScene);h.scene.create();const before=plain(e.profile.loadPublicProfile());
- for(const nav of ['desk','roster','tour','inventory','records'])assert(h.query('[data-nav='+nav+']'));
- h.click('[data-action=preflight]');
- for(const action of ['preflight-member','preflight-training','preflight-inventory','preflight-goals','preflight-library'])assert(h.query('[data-action='+action+']'));
+ assert.equal(h.all('.shell-navigation').length,1);
+ assert.deepEqual(h.query('.shell-navigation').children.map(button=>button.dataset.nav),['desk','roster','tour','inventory']);
+ h.click('[data-action=start]');
+ for(const action of ['preflight-member','preflight-training','preflight-equipment','preflight-goals','preflight-arrangement'])assert(h.query('[data-action='+action+']'));
+ h.click('[data-action=preflight-arrangement]');
+ assert(h.query('[data-action=preflight-library]'));
  assert.deepEqual(plain(e.profile.loadPublicProfile()),before);assert.equal(h.starts.length,0);h.shutdown();
 });
 test('settings image failure retains a visible standard icon and the real command',()=>{
@@ -36,5 +39,5 @@ test('settings image failure retains a visible standard icon and the real comman
  const button=h.query('[data-action=settings]'),image=button.querySelector('img');assert(image);
  image.dispatchEvent({type:'error'});
  assert(!button.querySelector('img'),'broken bitmap must be removed');assert(button.querySelector('svg'),'settings needs a visible fallback');
- assert.equal(button.getAttribute('aria-label'),'声音与公演规则');h.shutdown();
+ assert.equal(button.getAttribute('aria-label'),'声音与演出设置');h.shutdown();
 });

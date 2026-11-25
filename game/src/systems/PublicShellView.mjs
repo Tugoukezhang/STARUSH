@@ -431,7 +431,7 @@ export class PublicShellView {
       const balance=this.element('strong','',String(model.resources.balance),wallet);balance.dataset.resource='notes';
       if(this.page==='desk'&&isUserCastEnabled())mountHomeConceptArt(this,wallet,'ticket');
     }
-    const settings=this.button(header,'声音与公演规则',()=>this.scene._sessionExperience?.showSettings(),{
+    const settings=this.button(header,'声音与演出设置',()=>this.scene._sessionExperience?.showSettings(),{
       className:'shell-icon-button',icon:'settings-2',iconOnly:true,action:'settings',lineIcon:isUserCastEnabled() });
     if(owner)settings.hidden=this.page!=='desk';
     // The public settings key already has a live line icon on its own panel.
@@ -838,6 +838,8 @@ export class PublicShellView {
     training.dataset.trainingPrimary='true';
     this.element('h2','',`训练阶位 ${rank}`,training);
     const cost=getTrainingCost(rank);
+    const powerAt=level=>Math.round((getPreparationEffects({...prepared,trainingLevel:level},member.id).actionPower-1)*1000)/10;
+    const currentPower=powerAt(rank), nextPower=cost===null?null:powerAt(rank+1);
     if(isUserCastEnabled()){
       const track=this.element('ol','workshop-rank-track',undefined,training);
       track.setAttribute('aria-label','训练阶位进度');
@@ -850,11 +852,10 @@ export class PublicShellView {
         this.element('span','',level<rank?'已完成':level===rank?'当前阶位':level===rank+1?'下一阶位':'待训练',step);
         if(getTrainingCost(level)===null)break;
       }
-      const power=snapshot=>`+${Math.round((getPreparationEffects(snapshot,member.id).actionPower-1)*1000)/10}%`;
       const effects=this.element('dl','workshop-effects',undefined,training);
       for(const[key,label,value]of [
-        ['current','当前涂染增益',power(prepared)],
-        ['next','下阶涂染增益',cost===null?'已满阶':power({...prepared,trainingLevel:rank+1})],
+        ['current','当前主动涂染威力',`+${currentPower}%`],
+        ['next','下阶主动涂染威力',cost===null?'已满阶':`+${nextPower}%`],
         ['cost','本次消耗',cost===null?'无需消耗':`${cost} 练习笔记`],
       ]){const row=this.element('div','',undefined,effects);row.dataset.trainingEffect=key;this.element('dt','',label,row);this.element('dd','',value,row);}
     }else this.element('p','',`主动行动涂染威力 +${(rank-1)*10}%`,training);
@@ -863,11 +864,12 @@ export class PublicShellView {
     },{className:'shell-primary',icon:'clapperboard',action:'train'});
     train.querySelector('span').className='workshop-train-command';
     if(cost!==null){
+      const benefit=`主动涂染威力 ${currentPower}% → +${nextPower}%`;
       this.element('span','workshop-train-cost',`${cost} 练习笔记`,train);
-      train.setAttribute('aria-label',`训练至阶位 ${rank+1} · ${cost} 练习笔记`);
+      train.setAttribute('aria-label',`训练至阶位 ${rank+1} · ${benefit} · ${cost} 练习笔记`);
     }
     train.disabled=cost===null||model.resources.balance<cost||!model.persisted;
-    if(cost!==null&&model.resources.balance<cost)this.element('small','workshop-muted',`还需 ${cost-model.resources.balance} 练习笔记`,training);
+    if(cost!==null&&model.resources.balance<cost)this.element('small','workshop-muted',`还差 ${cost-model.resources.balance} 笔记 · 通关公演可得`,training);
     const wallet=this.element('section','workshop-wallet',undefined,main);
     this.element('span','','练习笔记',wallet);
     const balance=this.element('strong','',String(model.resources.balance),wallet);balance.dataset.resource='notes';

@@ -113,8 +113,8 @@ export class PlayerSessionExperience {
     button.id = 'player-settings-button';
     button.type = 'button';
     button.textContent = '\u2699\uFE0E';
-    button.title = '声音与公演规则';
-    button.setAttribute('aria-label', '声音与公演规则');
+    button.title = '声音与演出设置';
+    button.setAttribute('aria-label', '声音与演出设置');
     button.addEventListener('click', () => this.showSettings());
     document.getElementById('game-container')?.append(button);
     this.titleButton = button;
@@ -224,7 +224,7 @@ export class PlayerSessionExperience {
     return button;
   }
   showSettings() {
-    const panel = this.open('声音与公演', 'settings');
+    const panel = this.open('声音与演出设置', 'settings');
     const prefs = playerPreferences.read();
     const group=(id,title)=>{const section=document.createElement('section');section.className='session-settings-group';section.dataset.settingsGroup=id;const heading=document.createElement('h3');heading.textContent=title;section.append(heading);panel.append(section);return section;};
     const audio=group('audio','声音设置');
@@ -402,7 +402,7 @@ export class PlayerSessionExperience {
     const beat=getChapterStory(chapter,phase,this.scene.battleData?.performerId||profile.selectedId);
     if(!beat)return false;
     const ownerPlayback=isUserCastEnabled()&&isOwnerStoryBeat(beat);
-    const panel=this.open(beat.title,'story');
+    const panel=this.open(beat.eventTitle||beat.title,'story');
     if(ownerPlayback){
       this.sequenceDispose=mountStorySequence(this,panel,beat,()=>complete?complete():back?back():this.close(),{
         performerId:this.scene.battleData?.performerId||profile.selectedId,
@@ -430,7 +430,7 @@ export class PlayerSessionExperience {
         const title=document.createElement('h3');title.textContent=chapter.ordinal+'. '+chapter.name;section.append(title);
         const readable=entries.filter(beat=>beat.chapterId===chapter.id);
         this.paragraph(section,!readable.length?'通关上一站后开放。':readable.length<3?'开场已开放；本章通关后可重看途中与章尾。':'本章故事已全部开放。','session-note');
-        for(const beat of readable)this.command(section,beat.title+' · '+beat.label+(isOwnerStoryBeat(beat)?' · '+getStoryReadingLabel(beat.id,playerPreferences.read().storyProgress):''),()=>this.showStory(beat.chapterId,beat.phase,{
+        for(const beat of readable)this.command(section,beat.label+' · '+(beat.eventTitle||beat.title)+(isOwnerStoryBeat(beat)?' · '+getStoryReadingLabel(beat.id,playerPreferences.read().storyProgress):''),()=>this.showStory(beat.chapterId,beat.phase,{
           directory:()=>this.showStoryJournal({fromSettings,focusStoryId:beat.id})}),true).dataset.storyId=beat.id;
       }
     }else for(const beat of entries){

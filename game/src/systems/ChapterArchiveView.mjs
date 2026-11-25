@@ -45,7 +45,7 @@ export function renderChapterArchive(view,main,model){
   if(isUserCastEnabled()&&playerPreferences.pending)view.element('p','shell-save-notice story-save-notice','本机设置与阅读记录有未保存的修改。',stories);
   for(const beat of getReadableStoryEntries(profile).filter(b=>b.chapterId===chapter.id)){
    const reading=isUserCastEnabled()&&isOwnerStoryBeat(beat)?getStoryReadingLabel(beat.id,playerPreferences.read().storyProgress):null;
-   const name=beat.label+' · '+beat.title,label=name+(reading?' · '+reading:'');
+   const name=beat.label+' · '+(beat.eventTitle||beat.title),label=name+(reading?' · '+reading:'');
    const row=view.button(stories,label,()=>{const session=view.scene._sessionExperience;session?.showStory(beat.chapterId,beat.phase,{complete:()=>{
     session.close();if(!view.disposed&&view.page==='chapterArchive')view.render('[data-action=report-story-'+beat.phase+']');
    }});},{icon:'book-open',action:'report-story-'+beat.phase});
