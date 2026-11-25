@@ -46,6 +46,7 @@ export const RUNTIME_PAYLOAD = Object.freeze([
   ...group('owner-preflight-console','art/preflight-console-20261103/',['choice.webp','clear.webp']),
   ...group('owner-roof-broadcast','art/roof-broadcast-20261103/',['stage.webp']),
   ...group('owner-member-training-console','art/member-training-20261103/',['console.webp','command.webp']),
+  ...group('chapter-landmarks','art/chapter-landmarks/',['record.webp','headphones.webp','cup.webp','shed.webp','shed-muted.webp','sail-left.webp','sail-right.webp','roof-console.webp']),
   ...group('owner-rooftop','art/rooftop-20261103/',['color.webp','neutral.webp','venue.webp','title.webp','landmark.webp']),
   ...group('owner-homecoming-300','art/homecoming-300/',['title.webp']),
   ...group('owner-preflight-studio','art/preflight-studio-20261102/',['letter-loadout.webp','letter-route.webp','letter-arrangement.webp','letter-goal.webp','letter-details.webp','letter-equipment.webp','letter-train.webp','letter-start.webp','letter-keep.webp','letter-restart.webp','letter-choose.webp','letter-preflight.webp']),

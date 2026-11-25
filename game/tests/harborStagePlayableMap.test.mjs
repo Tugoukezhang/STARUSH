@@ -60,8 +60,9 @@ for(const x of [350,400,450,500,550,600,650])for(const y of [360,370,400,430,480
 }
 assert.equal(getChapterScenePresentation(data).groundPath,'art/map-presentation-20261018/encore-neutral.webp');
 const loads=[];preloadChapterScenePresentation({load:{image:(key,url)=>loads.push({key,url})}},data);
-assert.equal(loads.length,assets.length+1);assert.equal(assets.length,11);
-assert.ok(loads.every(x=>(x.key.startsWith('chapter-ground-')?x.url===`art/map-presentation-20261018/encore-${x.key.includes('color-')?'color':'neutral'}.webp`:x.url.startsWith('art/harbor-cohesion-20261009/'))&&x.url.endsWith('.webp')));
+assert.deepEqual(loads.filter(x=>x.key.startsWith('chapter-sign-')).map(x=>x.url),['art/chapter-landmarks/sail-left.webp','art/chapter-landmarks/sail-right.webp']);
+assert.equal(loads.length,assets.length+3);assert.equal(assets.length,11);
+assert.ok(loads.filter(x=>!x.key.startsWith('chapter-sign-')).every(x=>(x.key.startsWith('chapter-ground-')?x.url===`art/map-presentation-20261018/encore-${x.key.includes('color-')?'color':'neutral'}.webp`:x.url.startsWith('art/harbor-cohesion-20261009/'))&&x.url.endsWith('.webp')));
 const source=fs.readFileSync(new URL('../src/scenes/BattleScene.js',import.meta.url),'utf8');
 assert.match(source,/new OldStreetScene\(this,this\.battleData\.campaignChapterId==='homecoming'\?HOMECOMING_STAGE_CONFIG:HARBOR_STAGE_CONFIG\)/);
 assert.deepEqual(scene.finaleOrigin(),config.finaleOrigin,'Harbor keeps its authored forecourt origin');

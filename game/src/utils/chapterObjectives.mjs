@@ -1,5 +1,5 @@
 import {hasCompletedChapterSideBranch} from './chapterSideSets.mjs';
-const NEON_LINKS=Object.freeze({
+export const NEON_LINKS=Object.freeze({
   'neonstreet-crossing':['neonstreet-listening','neonstreet-cafe'],
   'neonstreet-plaza-left':['neonstreet-echo-shop','neonstreet-north-cafe'],
   'neonstreet-plaza-right':['neonstreet-echo-shop','neonstreet-north-cafe'],

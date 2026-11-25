@@ -60,8 +60,10 @@ assert.equal(getChapterScenePresentation(data).groundPath,'art/map-presentation-
 assert.equal(getDevicePresentation(NEON_STREET_DEVICES[0]).texture,'neonstreet-signal');
 assert.equal(getChapterScenePresentation({...data,practiceMode:true}),null);
 const loads=[];preloadChapterScenePresentation({load:{image:(key,url)=>loads.push({key,url})}},data);
-assert.equal(loads.length,NEON_STREET_ASSETS.length+2);
-assert.ok(loads.every(v=>(v.key.startsWith('chapter-ground-')?v.url===`art/map-presentation-20261018/neon-${v.key.includes('color-')?'color':'neutral'}.webp`:v.url.startsWith('art/neon-cohesion-20261009/')||v.url==='art/harbor-cohesion-20261009/barrier.webp')&&!v.url.includes('preview')));
+assert.equal(loads.length,NEON_STREET_ASSETS.length+4);
+assert.deepEqual(loads.filter(v=>v.key.startsWith('chapter-sign-')).map(v=>v.url),
+  ['art/chapter-landmarks/headphones.webp','art/chapter-landmarks/cup.webp']);
+assert.ok(loads.filter(v=>!v.key.startsWith('chapter-sign-')).every(v=>(v.key.startsWith('chapter-ground-')?v.url===`art/map-presentation-20261018/neon-${v.key.includes('color-')?'color':'neutral'}.webp`:v.url.startsWith('art/neon-cohesion-20261009/')||v.url==='art/harbor-cohesion-20261009/barrier.webp')&&!v.url.includes('preview')));
 const source=fs.readFileSync(new URL('../src/scenes/BattleScene.js',import.meta.url),'utf8');
 assert.match(source,/isNeonStreetChapter\(this\.battleData\)/);
 assert.match(source,/new OldStreetScene\(this,\s*NEON_STREET_CONFIG\)/);

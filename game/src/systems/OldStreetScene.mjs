@@ -1,3 +1,4 @@
+import { createShopCircuit } from './HarborCircuitPresentation.mjs';
 import { OldStreetState } from '../utils/oldStreetMap.mjs';
 import { restorationProgress,createStreetMutedTexture } from './StreetRestorationSurface.mjs';
 import { PERFORMER_GROUND_OFFSET } from '../utils/performerVisualMetrics.mjs';
@@ -16,7 +17,9 @@ export class OldStreetScene {
     this.lastPlayer={x:scene.player.x,y:scene.player.y};this.enemyPositions=new WeakMap();
     this.walls=scene.physics.add.staticGroup();
     for(const definition of this.state.props) {
-      const p=definition, colorTexture=`${config?.prefix||'oldstreet'}-${p.materialVariant||p.art}`;
+      const p=definition;
+      const returnBay=config?.chapterId==='homecoming'&&p.id==='frontage-west-entry';
+      const colorTexture=returnBay?'return-bay-shed':`${config?.prefix||'oldstreet'}-${p.materialVariant||p.art}`;
       const neutralTexture=p.neutralFromColor===true?createStreetMutedTexture(scene,colorTexture):`${colorTexture}-muted`;
       const texture=p.restorable?neutralTexture:colorTexture;
       const image=scene.add.image(p.x,p.y,texture).setOrigin(0.5,1)
@@ -300,6 +303,9 @@ export class OldStreetScene {
   sync() {
     this.flushPaintSurfaces();
     if(this.disposed)return;
+    if(!this.circuit && this.config?.chapterId==='neon' && this.scene.paintZone?.devices.length){
+      this.circuit=createShopCircuit(this.scene,this.scene.paintZone.devices);
+    }
     if(this.circuit){
       const s=this.scene,z=s.paintZone;
       this.circuit.update(z.devices,z.currentZone,s.publicPerformerRun.now(),!s._battlePaused&&!s._battleEnded&&!s.publicPerformerRun.choiceOpen&&!s._sessionExperience.isBlocking());

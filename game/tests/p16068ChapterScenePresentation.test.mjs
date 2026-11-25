@@ -84,9 +84,9 @@ test('battle entry does not repeat the chapter briefing over targets; zone direc
 test('preload is limited to the actual public chapter and its authored objects',()=>{
   const calls=[],scene={load:{image:(...args)=>calls.push(args)}};
   presentation.preloadChapterScenePresentation(scene,{stageId:1,campaignChapterId:'neon'});
-  assert.equal(calls.length,13);assert.ok(calls[0][1].endsWith('map-presentation-20261018/neon-neutral.webp'));
+  assert.equal(calls.length,15);assert.ok(calls.some(([key])=>key==='chapter-sign-cup'));assert.ok(calls.some(([key])=>key==='chapter-sign-headphones'));assert.ok(calls[0][1].endsWith('map-presentation-20261018/neon-neutral.webp'));
   assert.equal(calls.filter(c=>c[0].startsWith('chapter-ground-')).length,2);
-  presentation.preloadChapterScenePresentation(scene,{stageId:1,practiceMode:true});assert.equal(calls.length,13);
+  presentation.preloadChapterScenePresentation(scene,{stageId:1,practiceMode:true});assert.equal(calls.length,15);
   assert.equal(presentation.createChapterGround({textures:{exists:()=>false}},{stageId:1},-12),null);
   assert.equal(presentation.createDeviceSprite({textures:{exists:()=>false}},{}),null);
 });

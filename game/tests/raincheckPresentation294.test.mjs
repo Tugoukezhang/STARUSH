@@ -1,3 +1,4 @@
+import {PUBLIC_CHAPTER_CONTENT} from '../src/utils/publicChapterContent.mjs';
 import test,{before,after} from 'node:test';import assert from 'node:assert/strict';
 import {createDocument} from './helpers/publicShellHarness.mjs';
 import {loadBattleScene} from './helpers/loadBattleScene.mjs';
@@ -47,7 +48,9 @@ const text=(doc,name)=>strip(doc)?.querySelector('.public-boss-'+name)?.textCont
 test('raincheck has its own boss identity on the strip',()=>{
   const doc=dom(),s=scene();
   assert.equal(typeof PUBLIC_BOSS_LABELS.raincheck,'string');
-  assert.equal(new Set(Object.values(PUBLIC_BOSS_LABELS)).size,4,'no chapter reuses another boss name');
+  const chapters=PUBLIC_CHAPTER_CONTENT.map(chapter=>chapter.id);
+  assert.deepEqual(Object.keys(PUBLIC_BOSS_LABELS).sort(),chapters.toSorted());
+  assert.equal(new Set(Object.values(PUBLIC_BOSS_LABELS)).size,chapters.length,'no chapter reuses another boss name');
   assert.ok(s.publicStage1Finale.begin({now:0}));
   assert.ok(syncPublicBossPresentation(s,s.publicStage1Finale.snapshot(10),{doc}));
   assert.equal(text(doc,'name'),PUBLIC_BOSS_LABELS.raincheck);

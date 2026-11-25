@@ -1,3 +1,4 @@
+import { drawChapterCalibrationDial } from './ChapterCalibrationDial.mjs';
 import { attachChapterFloorDetails } from './ChapterFloorDetails.mjs';
 import { COLOR_HEX } from '../utils/config.js';
 import { getBattleChapter, getChapterDeviceLabel, getCumulativeChapterPaintProgress, PUBLIC_CHAPTER_COLORS } from '../utils/publicCampaign.mjs';
@@ -10,6 +11,14 @@ import { preloadChapterGroundColor } from './ChapterGroundSubstrate.mjs';
 import { oldStreetMaterialPath } from './StreetMaterialPresentation.mjs';
 import { getPublicGroundAprons } from '../utils/publicCameraFrame.mjs';
 
+const landmarkPath = 'art/chapter-landmarks/';
+const fixtureArt = {
+  'oldstreet-records':'record',
+  'neonstreet-listening':'headphones', 'neonstreet-echo-shop':'headphones',
+  'neonstreet-cafe':'cup', 'neonstreet-north-cafe':'cup',
+  'harbor-stage-left':'sail-left', 'harbor-stage-right':'sail-right',
+  'rooftop-south-center':'roof-console', 'rooftop-north-center':'roof-console',
+};
 const BASE = 'art/phase16/p16-068-scenes/';
 export const CHAPTER_DEVICE_ART = Object.freeze(['speaker', 'projector', 'display', 'case']);
 
@@ -33,16 +42,23 @@ function chapterSceneImages(data) {
   const images = [[config.groundKey, config.groundPath]];
   if(config.groundColorPath)images.push([config.groundColorKey,config.groundColorPath]);
   if(isOldStreetChapter(data)) {
+    images.push(['chapter-sign-record',landmarkPath+'record.webp']);
     images.push(['street-zone-gate',`${HARBOR_STAGE_ART}barrier.webp`]);
     for(const id of OLD_STREET_ASSETS.filter(id=>id!=='ground'))images.push([`oldstreet-${id}`,oldStreetMaterialPath(id)]);
     return images;
   }
   if(isNeonStreetChapter(data)) {
+    for(const sign of ['headphones','cup'])images.push(['chapter-sign-'+sign,landmarkPath+sign+'.webp']);
     images.push(['street-zone-gate',`${HARBOR_STAGE_ART}barrier.webp`]);
     for(const id of NEON_STREET_ASSETS.filter(id=>id!=='ground'))images.push([`neonstreet-${id}`,`${NEON_STREET_ART}${id}.webp`]);
     return images;
   }
   if(isHarborStageChapter(data)||isRooftopChapter(data)) {
+    const fixtures=isRooftopChapter(data)?['roof-console']:['sail-left','sail-right'];
+    for(const lamp of fixtures)images.push(['chapter-sign-'+lamp,landmarkPath+lamp+'.webp']);
+    if(config.id==='homecoming'){
+      for(const name of ['shed','shed-muted'])images.push(['return-bay-'+name,landmarkPath+name+'.webp']);
+    }
     if(isRooftopChapter(data))images.push(['harbor-broadcast','art/roof-broadcast-20261103/stage.webp']);
     for(const id of HARBOR_STAGE_ASSETS.filter(id=>id!=='ground'))images.push([`harbor-${id}`,`${HARBOR_STAGE_ART}${id}.webp`]);
     return images;
@@ -156,10 +172,12 @@ export function getDevicePresentation(device, currentZone = 0) {
   const label = !device.required&&!device.chapterSideSet ? '' : device.complete
     ? `${device.sourceLabel || (typeof device.label === 'string' ? device.label : '')}\n已点亮`
     : getChapterDeviceLabel(device);
+  const landmark=fixtureArt[device.id];
   return {
     state, progress, requiredColor, label,
-    texture: device.sceneArt ? `${device.scenePrefix||'oldstreet'}-${device.sceneArt}` : `chapter-device-${deviceArt(device)}`,
-    width: device.sceneArt ? 42 : device.required ? 76 : 38, height: device.sceneArt ? 60 : device.required ? 76 : 38,
+    texture: landmark ? 'chapter-sign-'+landmark : device.sceneArt ? `${device.scenePrefix||'oldstreet'}-${device.sceneArt}` : `chapter-device-${deviceArt(device)}`,
+    width: landmark==='roof-console' ? 76 : landmark ? 56 : device.sceneArt ? 42 : device.required ? 76 : 38,
+    height: landmark==='roof-console' ? 64 : landmark ? 74 : device.sceneArt ? 60 : device.required ? 76 : 38,
     alpha: locked ? 0.38 : suppressed ? 0.65 : 1,
     tint: locked || suppressed ? 0x89969F : mixColor(0xCED5D8, pigment, device.complete ? 0.72 : progress * 0.6),
     accent: device.complete || (device.paintPolicy === 'performer' && state === 'painting')
@@ -221,9 +239,13 @@ export function drawDevicePresentation(device, currentZone) {
   const { x, y, gfx } = device;
   device.sprite.setTint(view.tint).setAlpha(view.alpha);
   gfx.clear().setDepth(2.41);
-  if(device.continuousCalibration&&device.chapterAwaitingCalibration&&view.state!=='locked'){
-    gfx.lineStyle(2,view.state==='suppressed'?0xF09090:0x53b9ad,0.8);
-    gfx.strokeCircle(x,y,device.chapterCalibrationRadius);
+  drawChapterCalibrationDial(gfx,device,view.state,view.progress);
+  if(device.chapterLocked && device.zone<=currentZone && device.required){
+    // Padlock sits on the housing; its base stays legible even when the lamp is grey.
+    gfx.lineStyle(3,0x423e37,.95).strokeRoundedRect(x+7,y+8,11,12,4);
+    gfx.fillStyle(0xf6d18b,1).fillRoundedRect(x+5,y+14,15,11,2);
+    gfx.lineStyle(1.5,0x423e37,1).strokeRoundedRect(x+5,y+14,15,11,2);
+    gfx.lineStyle(2,0x423e37,1).lineBetween(x+12.5,y+17,x+12.5,y+21);
   }
   // State marks stay local to the actual paint contact, never create a second target.
   if ((device.required||device.chapterSideSet) && view.state !== 'locked') {
