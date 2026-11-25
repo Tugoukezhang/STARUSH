@@ -3582,14 +3582,18 @@ export class BattleScene extends Phaser.Scene {
 
   _createMoveJoystick() {
     const publicRound = this._isPublicStage1Round();
+    this._printJoystick = publicRound && this._userCastPresentation === true;
+    const baseInk = publicRound ? 0x26383C : 0xFFFFFF;
+    const baseOutline = publicRound ? 0xAACDC8 : 0xFFFFFF;
+    const knobOutline = publicRound ? 0x82999F : 0xFFFFFF;
     this._joystickRest = { x: JOYSTICK_REST_X, y: JOYSTICK_REST_Y };
     this._joystickOrigin = { ...this._joystickRest };
-    this._joystickBase = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_BASE_RADIUS + (publicRound ? 0 : 14), publicRound ? 0x26383C : 0xFFFFFF, publicRound ? 0.28 : 0.18)
+    this._joystickBase = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_BASE_RADIUS + (publicRound ? 0 : 14), this._printJoystick ? 0x20213B : baseInk, publicRound ? 0.28 : 0.18)
       .setDepth(124)
-      .setStrokeStyle(publicRound ? 2 : 4, publicRound ? 0xAACDC8 : 0xFFFFFF, publicRound ? 0.65 : 0.5));
-    this._joystickKnob = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_KNOB_RADIUS + (publicRound ? 0 : 6), 0xFFFFFF, publicRound ? 0.95 : 0.82)
+      .setStrokeStyle(publicRound ? 2 : 4, this._printJoystick ? 0xFFF3D7 : baseOutline, publicRound ? 0.65 : 0.5));
+    this._joystickKnob = this._pinHud(this.add.circle(JOYSTICK_REST_X, JOYSTICK_REST_Y, JOYSTICK_KNOB_RADIUS + (publicRound ? 0 : 6), this._printJoystick ? 0xFFF3D7 : 0xFFFFFF, publicRound ? 0.95 : 0.82)
       .setDepth(125)
-      .setStrokeStyle(publicRound ? 1.5 : 3, publicRound ? 0x82999F : 0xFFFFFF, 0.7));
+      .setStrokeStyle(publicRound ? 1.5 : 3, this._printJoystick ? 0x20213B : knobOutline, 0.7));
     this._joystickHint = this._pinHud(this.add.text(JOYSTICK_REST_X, JOYSTICK_REST_Y + 58, publicRound ? '' : '拖动', {
       fontSize: '13px',
       color: '#FFFFFF',
@@ -3616,7 +3620,7 @@ export class BattleScene extends Phaser.Scene {
     }
     if (this._joystickKnob && this._joystickKnob.active !== false) {
       this._joystickKnob.setPosition(rest.x, rest.y);
-      this._joystickKnob.setFillStyle?.(0xFFFFFF, .95);
+      this._joystickKnob.setFillStyle?.(this._printJoystick ? 0xFFF3D7 : 0xFFFFFF, .95);
     }
   }
 
@@ -3630,7 +3634,7 @@ export class BattleScene extends Phaser.Scene {
     }
     if (this._joystickKnob && this._joystickKnob.active !== false) {
       this._joystickKnob.setPosition(target.x, target.y);
-      this._joystickKnob.setFillStyle?.(0xBDF5E7, 1);
+      this._joystickKnob.setFillStyle?.(this._printJoystick ? 0xDCF45B : 0xBDF5E7, 1);
     }
   }
 

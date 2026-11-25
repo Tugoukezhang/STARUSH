@@ -51,6 +51,7 @@ import './styles/performanceInterface.css';
 import './styles/showbillMenus.css';
 import './styles/showbillBattle.css';
 import './styles/printroomFoundation.css';
+import './styles/printroomBattle.css';
 import { createPublicProfileSession } from './utils/publicProfileSession.mjs';
 import { configurePublicProfileWriteAuthority } from './utils/publicRunProgression.mjs';
 import { bindGraphicsRecovery } from './utils/graphicsRecovery.mjs';
