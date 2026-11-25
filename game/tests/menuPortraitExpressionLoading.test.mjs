@@ -8,6 +8,17 @@ import {mountMenuPortrait} from '../src/systems/MenuPortraitPresentation.mjs';
 const flush = () => new Promise(resolve => setImmediate(resolve));
 function fixture({id = 'kai', cached = false, reduced = false, canvas = true, presentation = false} = {}) {
  const doc = createDocument(), parent = doc.createElement('button'), body = doc.createElement('img');
+ // The registered static renderer samples its hit mask on an offscreen canvas.
+ if (presentation) {
+  const create=doc.createElement.bind(doc);
+  doc.createElement=tag=>{
+   const element=create(tag);
+   if(tag==='canvas')element.getContext=()=>({
+    drawImage(){},getImageData(_x,_y,width,height){return {data:new Uint8ClampedArray(width*height*4).fill(255)};},
+   });
+   return element;
+  };
+ }
  const background = doc.createElement('img'), jobs = new Map(), controls = [], draws = [], listeners = new Set();
  doc.body.append(parent); parent.append(body); body.hidden = false; background.style.transform = 'scale(1.02)';
  let next = 0;
@@ -67,15 +78,15 @@ test('cached patches still decode exactly once and cannot reveal early', async (
  assert(f.controls.every(c => c.calls === 1)); assert.equal(f.parent.dataset.menuMotionState, 'ready'); f.dispose();
 });
 
-test('actual B252 presentation decodes one source-static body with explicit errors and no legacy expression mounts or Q revival', async () => {
+test('registered historical presentation decodes one source-static body with explicit errors and no legacy expression mounts or Q revival', async () => {
  for (const id of ['kai', 'enjo']) for (const mode of ['ready', 'network', 'dimensions', 'decode', 'sync-decode', 'late-error']) {
   const f = fixture({id, presentation: true}); assert.equal(f.controls.length, 1); assert(f.body.hidden);
   const neutral = f.controls[0];
-  assert.equal(neutral.node.src, `art/portrait-base-20261101/${id}.webp`);
-  assert.deepEqual([neutral.node.width, neutral.node.height], [1152, 1664]);
+  assert.equal(neutral.node.src, id==='kai'?'portraits/kai-287/source.png':'portraits/enjo-286/source.png');
+  assert.deepEqual([neutral.node.width, neutral.node.height], [1024, 1536]);
   assert.equal(f.parent.dataset.menuPortraitState, 'loading'); assert(neutral.node.hidden);
-  assert.equal(f.parent.dataset.portraitBase, 'b252'); assert.equal(f.parent.dataset.portraitMotion, 'source-static');
-  neutral.node.naturalWidth = mode === 'dimensions' ? 1 : 1152; neutral.node.naturalHeight = 1664;
+  assert.equal(f.parent.dataset.portraitBase, 'b255'); assert.equal(f.parent.dataset.portraitMotion, 'source-static');
+  neutral.node.naturalWidth = mode === 'dimensions' ? 1 : 1024; neutral.node.naturalHeight = 1536;
   if (mode === 'network') neutral.node.dispatchEvent({type: 'error'});
   else {
    if (mode === 'sync-decode') neutral.node.decode = () => {throw new DOMException('bad source', 'EncodingError');};
@@ -93,7 +104,13 @@ test('actual B252 presentation decodes one source-static body with explicit erro
   }
   assert(f.body.hidden, 'Q proxy remains suppressed');
   assert.equal(f.parent.dataset.menuPortraitState, mode === 'ready' ? 'ready' : 'unavailable');
-  if (mode === 'ready') {assert.equal(neutral.node.hidden, false); assert.equal(neutral.node.parentNode, f.parent); assert.equal(f.parent.querySelector('.menu-portrait-error'), null);}
+  if (mode === 'ready') {
+   const surface = f.parent.querySelector('.menu-portrait-surface');
+   assert.equal(neutral.node.hidden, false);
+   assert.equal(neutral.node.parentNode, surface);
+   assert.equal(surface.dataset.hitMask, '128x192');
+   assert.equal(f.parent.querySelector('.menu-portrait-error'), null);
+  }
   else {assert.equal(neutral.node.parentNode, null); const status = f.parent.querySelector('.menu-portrait-error'); assert(status); assert.equal(status.getAttribute('role'), 'status'); assert(status.textContent.length > 0);}
   assert.equal(f.controls.length, 1); assert.equal(f.parent.dataset.menuMotionState, undefined);
   assert.equal(f.rig, null); assert.equal(f.parent.querySelector('canvas'), null); assert.equal(f.parent.querySelector('.menu-expression-source'), null);

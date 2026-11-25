@@ -14,9 +14,14 @@ export function getHomePortraitArt(id){return id==='sakura'?RIFLE:null;}
 export function mountHomePortrait(view,parent,id,fallback,background=null,options={}){
  const replacement=getActiveUserCastArt(id);
  if(replacement?.confirmedDesign){
-  let disposed=false,loading=false;
-  const live=()=>!disposed&&!view.disposed&&fallback.parentNode===parent;
-  const fail=()=>{if(!live())return;fallback.hidden=true;parent.dataset.portraitState='unavailable';};
+  let disposed=false,loading=false,failed=false;
+  const live=()=>!disposed&&!failed&&!view.disposed&&fallback.parentNode===parent;
+  const fail=()=>{
+   if(!live())return;
+   failed=true;
+   fallback.hidden=true;
+   parent.dataset.portraitState='unavailable';
+  };
   const ready=async()=>{if(!live()||loading)return;loading=true;
    if(fallback.naturalWidth!==replacement.width||fallback.naturalHeight!==replacement.height){fail();return;}
    try{await fallback.decode?.();if(live()){fallback.hidden=false;parent.dataset.portraitState='static';}}catch{fail();}

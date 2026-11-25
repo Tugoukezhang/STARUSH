@@ -7,11 +7,11 @@ const RECTS={logo:[0,0,435,151],backstage:[40,153,246,45],'nav-desk':[32,1542,13
  'nav-tour':[409,1542,136,110],'nav-inventory':[598,1542,136,110],'nav-records':[787,1542,136,110],
  'name-sakura':[0,990,410,240],start:[30,1408,650,115],resume:[684,1410,245,100],ticket:[652,85,67,66],settings:[838,76,76,74],
  preflight:[0,235,214,185],prepare:[0,420,214,160],'story-journal':[0,590,214,174]};
-const NAV={desk:'主页',roster:'成员',tour:'巡演',inventory:'背包',records:'档案'};
+const NAV={desk:'主页',roster:'成员',tour:'巡演',inventory:'背包'};
 
 function shell(Scene='TitleScene',currentCast=true){
  const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(currentCast);
- const h=e.harness(e[Scene]);h.scene.create();return {e,h};
+ const h=e.harness(e[Scene],{suppressDebugAutoStart:true});h.scene.create();return {e,h};
 }
 const helper=e=>e.loadRuntime('systems/HomeConceptArt.mjs');
 const concept=(node,key)=>node.children.find(child=>child.dataset?.conceptArt===key)??null;
@@ -71,54 +71,109 @@ test('load readies only the owning parent; error removes only the decor and read
  h.shutdown();
 });
 
-test('owner desk header keeps native logo and eyebrow fallbacks beneath concept crops',()=>{
- const {h}=shell();
+test('home logo falls back to its original crop and finally its accessible name',()=>{
+ const {e,h}=shell();
  const heading=h.query('.shell-brand').querySelector('h1');
- assert(heading.querySelector('img.shell-brand-art'),'existing logo fallback retained');
+ const native=heading.querySelector('.shell-brand-art');
+ const standalone=concept(heading,'logo');
+ assert.equal(heading.getAttribute('aria-label'),'ST☆RUSH');
  assert.equal(heading.querySelector('.shell-brand-copy').textContent,'ST☆RUSH');
- assert.equal(heading.children.at(-1),concept(heading,'logo'));
- const eyebrow=h.query('.shell-eyebrow');assert.equal(eyebrow.textContent,'巡演后台');
- assert.equal(eyebrow.children.at(-1),concept(eyebrow,'backstage'));
- assert.equal(h.all('.home-concept-art').filter(n=>['logo','backstage',...Object.keys(NAV).map(p=>'nav-'+p)].includes(n.dataset.conceptArt)).length,7);
- heading.querySelector('img.shell-brand-art').onerror();
- assert.equal(heading.querySelector('img.shell-brand-art'),null);assert(concept(heading,'logo'),'logo fallback error keeps concept crop');
- assert(heading.textContent.includes('ST☆RUSH'));
+ assert.equal(standalone.querySelector('image').getAttribute('href'),'art/setdesign/home-logo.webp');
+ assert.equal(native.hidden,true);
+ assert(!native.src);
+ assert.equal(h.query('.shell-eyebrow').hidden,true);
+ assert.equal(h.query('.shell-eyebrow').querySelector('.home-concept-art'),null);
+ standalone.querySelector('img').dispatchEvent({type:'error'});
+ const original=concept(heading,'logo');
+ assert.notEqual(original,standalone);
+ assert.equal(original.querySelector('svg').getAttribute('viewBox'),RECTS.logo.join(' '));
+ assert.equal(original.querySelector('image').getAttribute('href'),helper(e).HOME_CONCEPT_RENDER_PATH);
+ assert.equal(native.hidden,false);
+ native.onerror();
+ assert.equal(heading.querySelector('.shell-brand-art'),null);
+ assert.equal(concept(heading,'logo'),original);
+ original.querySelector('img').dispatchEvent({type:'error'});
+ assert.equal(concept(heading,'logo'),null);
+ assert.equal(heading.textContent,'ST☆RUSH');
+ assert.equal(heading.getAttribute('aria-label'),'ST☆RUSH');
  h.shutdown();
 });
 
-test('all five owner nav buttons keep native icon, label, state and callback beside their crop',()=>{
- const {h}=shell();const nav=h.query('.shell-navigation');
- for(const [page,label]of Object.entries(NAV)){
-  const button=nav.querySelector('[data-nav='+page+']');
-  assert.equal(button.getAttribute('aria-label'),label);
-  const frame=concept(button,'nav-'+page);assert(frame,page);assert.equal(button.children.at(-1),frame);
-  assert(button.querySelector('svg')||button.querySelector('img.menu-art'),'native icon kept: '+page);
-  assert.equal(button.querySelector('span').textContent,label);
+test('one four-button root navigation opens its named destinations without writing the profile',()=>{
+ const destinations={roster:'IdolRosterScene',tour:'TourRouteScene'};
+ for(const page of Object.keys(NAV)){
+  const {e,h}=shell();
+  const saved=e.storage.getItem('starush.public-profile');
+  const write=e.storage.setItem;
+  e.storage.setItem=function(key,value){
+   assert.notEqual(key,'starush.public-profile','browsing the roots must not save');
+   return write.call(this,key,value);
+  };
+  assert.equal(h.all('.shell-navigation').length,1);
+  const nav=h.query('.shell-navigation');
+  assert.deepEqual(nav.children.map(button=>button.dataset.nav),Object.keys(NAV));
+  for(const [id,label] of Object.entries(NAV)){
+   const button=nav.querySelector('[data-nav='+id+']');
+   assert.equal(button.tagName,'BUTTON');
+   assert.equal(button.getAttribute('aria-label'),label);
+   assert.equal(button.querySelector('.showbill-nav-label').textContent,label);
+   const sticker=button.querySelector('img.nav-sticker');
+   assert.equal(sticker.src,'art/infield/nav-'+id+'.webp');
+   assert.equal(sticker.alt,'');
+   assert.equal(button.disabled,id==='desk');
+   assert.equal(button.getAttribute('aria-current'),id==='desk'?'page':null);
+  }
+  h.click('[data-nav='+page+']');
+  if(destinations[page]){
+   assert.equal(h.starts.length,1);
+   assert.equal(h.starts[0][0],destinations[page]);
+  }else{
+   assert.equal(h.starts.length,0);
+   assert.equal(h.root.dataset.page,page);
+   assert.equal(h.query('[data-nav='+page+']').getAttribute('aria-current'),'page');
+  }
+  assert.equal(e.storage.getItem('starush.public-profile'),saved);
+  h.shutdown();
  }
- const desk=nav.querySelector('[data-nav=desk]');assert.equal(desk.getAttribute('aria-current'),'page');assert.equal(desk.disabled,true);
- nav.querySelector('[data-nav=roster]').click();assert.equal(h.starts[0][0],'IdolRosterScene');
- h.shutdown();
 });
 
-test('rerender binds fresh parents and stale image events cannot mark them',()=>{
+test('late logo events cannot request fallback art after a home rerender or shutdown',()=>{
  const {h}=shell();
- const stale=concept(h.query('.shell-eyebrow'),'backstage').children[0];
+ const getHeading=()=>h.query('.shell-brand').querySelector('h1');
+ const oldHeading=getHeading();
+ const oldImage=concept(oldHeading,'logo').querySelector('img');
  h.scene._publicShell.render();
- const eyebrow=h.query('.shell-eyebrow');const fresh=concept(eyebrow,'backstage').children[0];
- assert.notEqual(fresh,stale);
- stale.dispatchEvent({type:'load'});assert.equal(eyebrow.dataset.conceptState,undefined);
- stale.dispatchEvent({type:'error'});assert.equal(concept(eyebrow,'backstage').children[0],fresh);
- fresh.dispatchEvent({type:'load'});assert.equal(eyebrow.dataset.conceptState,'ready');
+ const heading=getHeading();
+ const fresh=concept(heading,'logo').querySelector('img');
+ assert.notEqual(heading,oldHeading);
+ oldImage.dispatchEvent({type:'load'});
+ assert.equal(oldHeading.dataset.conceptState,undefined);
+ oldImage.dispatchEvent({type:'error'});
+ assert(!oldHeading.querySelector('.shell-brand-art').src,'detached heading cannot start a new fallback request');
+ assert.equal(heading.dataset.conceptState,undefined);
+ assert.equal(concept(heading,'logo').querySelector('img'),fresh);
+ fresh.dispatchEvent({type:'load'});
+ assert.equal(heading.dataset.conceptState,'ready');
  h.shutdown();
- fresh.dispatchEvent({type:'error'});assert.equal(eyebrow.dataset.conceptState,'ready','no mutation after destroy');
+ fresh.dispatchEvent({type:'error'});
+ assert.equal(heading.dataset.conceptState,'ready');
+ assert(!heading.querySelector('.shell-brand-art').src);
 });
 
-test('legacy cast and redesigned nonhome roster have no concept crops; home retains its own composition',()=>{
- const legacy=shell('TitleScene',false);assert.equal(legacy.h.all('.home-concept-art').length,0);legacy.h.shutdown();
- const roster=shell('IdolRosterScene');assert(roster.h.query('.shell-navigation'));
- assert.equal(roster.h.all('.home-concept-art').length,0);
- assert.equal(roster.h.all('.roster-headshot').length,3);
- assert.equal(roster.h.query('.shell-performer-name').querySelector('h2').textContent,'步枪手');roster.h.shutdown();
+test('legacy home stays native and the owner roster retains the three current identities',()=>{
+ const legacy=shell('TitleScene',false);
+ assert.equal(legacy.h.all('.home-concept-art').length,0);
+ assert.equal(legacy.h.query('.shell-brand').querySelector('h1').textContent,'ST☆RUSH');
+ legacy.h.shutdown();
+ const {h}=shell('IdolRosterScene');
+ assert.equal(h.all('.shell-navigation').length,1);
+ assert.equal(h.all('.home-concept-art').length,0);
+ const portraits=h.all('.roster-headshot');
+ assert.deepEqual(portraits.map(image=>image.parentNode.dataset.member),['sakura','kai','enjo']);
+ assert.deepEqual(portraits.map(image=>image.parentNode.querySelector('span').textContent),
+  ['战术女武神','翡翠风歌','蔚蓝魔法师']);
+ assert.equal(h.query('.shell-performer-name').querySelector('h2').textContent,'战术女武神');
+ h.shutdown();
 });
 
 test('helper has no imports, timers or global handlers',()=>{

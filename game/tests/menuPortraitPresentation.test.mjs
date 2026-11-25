@@ -2,34 +2,139 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createDocument,loadScenes} from './helpers/publicShellHarness.mjs';
-import * as portraits from '../src/systems/MenuPortraitPresentation.mjs';
-const tick=()=>new Promise(r=>setImmediate(r));
-function fixture({cached=false,noDecode=false}={}){
- const doc=createDocument(),parent=doc.createElement('button'),fallback=doc.createElement('img');parent.append(fallback);
- let resolve,reject,calls=0;const pending=new Promise((a,b)=>{resolve=a;reject=b;});
- const view={doc,element(tag,cls,text,host){const n=doc.createElement(tag);n.className=cls;host.append(n);if(!noDecode)n.decode=()=>{calls++;return pending;};if(cached){n.complete=true;n.naturalWidth=1152;n.naturalHeight=1664;}return n;}};
- const dispose=portraits.mountMenuPortrait(view,parent,'kai',fallback),image=parent.querySelector('.menu-portrait-image');
- return{doc,parent,fallback,view,dispose,image,resolve,reject,get calls(){return calls;},load(w=1152,h=1664){image.naturalWidth=w;image.naturalHeight=h;image.dispatchEvent({type:'load'});}};
+import {configureUserCast,getActiveUserCastArt} from '../src/utils/userCast.mjs';
+import {getMenuAvatarArt,mountMenuAvatar} from '../src/systems/MenuPortraitAvatar.mjs';
+import {mountHomePortrait} from '../src/systems/HomePortraitPresentation.mjs';
+import {getMenuPortraitArt} from '../src/systems/MenuPortraitPresentation.mjs';
+
+const members = [
+  {id:'sakura',folder:'red-valkyrie-20261123',width:1070,height:1470},
+  {id:'kai',folder:'green-windsong-20261123',width:1086,height:1448},
+  {id:'enjo',folder:'blue-academy-20261123',width:1085,height:1450},
+];
+const tick=()=>new Promise(resolve=>setImmediate(resolve));
+
+function pendingImage(node,hasDecoder) {
+  let resolve,reject,calls=0;
+  const pending=new Promise((yes,no)=>{resolve=yes;reject=no;});
+  if(hasDecoder)node.decode=()=>{calls++;return pending;};
+  return {node,resolve,reject,get calls(){return calls;}};
 }
-test('two immutable full-height menu illustrations have explicit high resolution and unsupported ids stay untouched',()=>{
- assert.deepEqual(['sakura','bogus',null].map(portraits.getMenuPortraitArt),[null,null,null]);
- for(const[id,w,h]of [['kai',1152,1664],['enjo',1152,1664]]){const a=portraits.getMenuPortraitArt(id);assert(Object.isFrozen(a));assert.equal(a.width,w);assert.equal(a.height,h);assert.equal(a.src,`art/portrait-base-20261101/${id}.webp`);}
+function load(image,width,height) {
+  image.naturalWidth=width;image.naturalHeight=height;image.dispatchEvent({type:'load'});
+}
+function bodyFixture(member,{cached=false,hasDecoder=true}={}) {
+  configureUserCast(true);
+  const doc=createDocument(),parent=doc.createElement('span'),node=doc.createElement('img');
+  doc.body.append(parent);parent.append(node);
+  const view={doc},image=pendingImage(node,hasDecoder);
+  if(cached){node.complete=true;node.naturalWidth=member.width;node.naturalHeight=member.height;}
+  const dispose=mountHomePortrait(view,parent,member.id,node);
+  return {doc,parent,view,image,dispose};
+}
+
+test('three official full portraits and their square avatar sources match their native PNG dimensions',()=>{
+  configureUserCast(true);
+  for(const member of members){
+    const art=getActiveUserCastArt(member.id),avatar=getMenuAvatarArt(member.id);
+    assert(Object.isFrozen(art)&&Object.isFrozen(avatar));
+    const entries=[
+      [art.portrait,'portrait.png',art.width,art.height,member.width,member.height],
+      [avatar.src,'avatar.png',avatar.naturalWidth,avatar.naturalHeight,1254,1254],
+    ];
+    for(const [file,name,width,height,expectedWidth,expectedHeight] of entries){
+      assert.equal(file,'art/'+member.folder+'/'+name);
+      const bytes=fs.readFileSync(new URL('../public/'+file,import.meta.url));
+      assert.equal(bytes.readUInt32BE(12),0x49484452,'PNG header');
+      assert.deepEqual([width,height,bytes.readUInt32BE(16),bytes.readUInt32BE(20)],
+        [expectedWidth,expectedHeight,expectedWidth,expectedHeight]);
+    }
+  }
+  for(const id of ['bogus',null,'toString'])assert.equal(getMenuAvatarArt(id),null);
+  assert.equal(getMenuPortraitArt('sakura'),null,'the historical two-candidate registry is separate');
+  assert.equal(getMenuPortraitArt('kai').src,'portraits/kai-287/source.png');
+  assert.equal(getMenuPortraitArt('enjo').src,'portraits/enjo-286/source.png');
 });
-test('load waits for successful decoding before an atomic reveal; duplicate loads decode only once',async()=>{
- const f=fixture();assert.equal(f.image.hidden,true);f.load();f.load();assert.equal(f.calls,1);assert.equal(f.fallback.hidden,true);f.resolve();await tick();assert.equal(f.image.hidden,false);assert.equal(f.fallback.hidden,true);assert.equal(f.parent.dataset.menuPortraitState,'ready');f.dispose();assert.equal(f.parent.dataset.menuPortrait,undefined);assert.equal(f.fallback.hidden,false);
+
+test('all three full portraits stay hidden until one successful decode, including cached bodies',async()=>{
+  for(const member of members)for(const cached of [false,true]){
+    const {image,parent,dispose}=bodyFixture(member,{cached});
+    assert.equal(parent.dataset.portraitState,'loading');assert(image.node.hidden);
+    load(image.node,member.width,member.height);load(image.node,member.width,member.height);
+    assert.equal(image.calls,1);assert(image.node.hidden);
+    image.resolve();await tick();
+    assert.equal(parent.dataset.portraitState,'static');assert.equal(image.node.hidden,false);
+    dispose();assert.equal(parent.dataset.portraitState,undefined);
+  }
 });
-test('cached images still decode; rejection and incorrect dimensions explicitly fail without Q',async()=>{
- const f=fixture({cached:true});assert.equal(f.calls,1);f.reject(Error('corrupt'));await tick();assert.equal(f.parent.dataset.menuPortraitState,'unavailable');assert.equal(f.parent.querySelector('.menu-portrait-image'),null);assert.equal(f.fallback.hidden,true);assert(f.parent.querySelector('.menu-portrait-error'));f.dispose();
- const g=fixture();g.load(100,100);assert.equal(g.calls,0);assert.equal(g.parent.dataset.menuPortraitState,'unavailable');g.dispose();
+
+test('thumbnail errors retry the official full avatar; only a valid decoded fallback becomes visible',async()=>{
+  for(const member of members)for(const mode of ['decode','wrong-size','network']){
+    const doc=createDocument(),parent=doc.createElement('span'),fallback=doc.createElement('img');
+    doc.body.append(parent);parent.append(fallback);
+    const view={doc,root:parent,element(tag,cls,text,host){const node=doc.createElement(tag);node.className=cls;host.append(node);return node;}};
+    const avatar=mountMenuAvatar(view,parent,member.id,fallback);
+    assert.equal(avatar.srcset,'art/setdesign/avatar-'+member.id+'.webp 1x');assert(avatar.hidden);
+    const compact=pendingImage(avatar,true);
+    if(mode==='network')avatar.dispatchEvent({type:'error'});
+    else if(mode==='wrong-size')load(avatar,160,160);
+    else{load(avatar,180,180);assert.equal(compact.calls,1);compact.reject(new DOMException('bad thumbnail','EncodingError'));await tick();}
+    assert.equal(avatar.src,'art/'+member.folder+'/avatar.png');
+    assert.equal(parent.dataset.avatarState,'loading');assert(avatar.hidden);
+    const original=pendingImage(avatar,true);
+    load(avatar,1254,1254);assert.equal(original.calls,1);assert(avatar.hidden);
+    original.resolve();await tick();assert.equal(parent.dataset.avatarState,'ready');assert.equal(avatar.hidden,false);assert(fallback.hidden);
+  }
 });
-test('errors and late decode after disposal, movement or shell shutdown cannot revive a portrait',async()=>{
- for(const mode of ['error','dispose','move','shutdown']){const f=fixture();f.load();if(mode==='error')f.image.dispatchEvent({type:'error'});if(mode==='dispose')f.dispose();if(mode==='move')f.doc.createElement('div').append(f.image);if(mode==='shutdown')f.view.disposed=true;f.resolve();await tick();assert.notEqual(f.parent.dataset.menuPortraitState,'ready');assert.equal(f.fallback.hidden,mode!=='dispose');f.dispose();assert.equal(f.fallback.hidden,false);}
+
+test('a pending body decode cannot revive an invalid, detached, disposed or shut down portrait',async()=>{
+  const member=members[1];
+  for(const mode of ['network','wrong-size','decode','move','dispose','shutdown']){
+    const {doc,parent,view,image,dispose}=bodyFixture(member);
+    if(mode==='wrong-size')load(image.node,100,100);
+    else load(image.node,member.width,member.height);
+    if(mode==='network')image.node.dispatchEvent({type:'error'});
+    if(mode==='decode')image.reject(new DOMException('bad portrait','EncodingError'));
+    if(mode==='move')doc.body.append(image.node);
+    if(mode==='dispose')dispose();
+    if(mode==='shutdown')view.disposed=true;
+    if(mode!=='decode')image.resolve();
+    await tick();
+    if(['network','wrong-size','decode'].includes(mode))assert.equal(parent.dataset.portraitState,'unavailable',mode);
+    assert.notEqual(parent.dataset.portraitState,'static',mode);assert(image.node.hidden,mode);
+    dispose();
+  }
 });
-test('without decode, only the exact fully loaded image can replace the original',()=>{const f=fixture({noDecode:true});f.load();assert.equal(f.image.hidden,false);assert.equal(f.fallback.hidden,true);f.dispose();});
-test('native lobby and only the large roster slot use new art; battle and small avatars keep originals',()=>{
- for(const id of ['kai','enjo']){const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.loadRuntime('utils/publicRunProgression.mjs').selectPublicPerformer(id);const h=e.harness(e.TitleScene);h.scene.create();const v=h.scene._publicShell;
-  const image=h.query('.menu-portrait-image');assert(image);assert(image.src.endsWith('/'+id+'.webp'));const original=h.query('.lobby-character').src;assert(!original.includes('menu-portraits'));v.showPage('roster');assert.equal(image.parentNode,null);assert.equal(h.all('.menu-portrait-image').length,1);assert(h.query('.member-mark-full').querySelector('.menu-portrait-image'));for(const m of h.query('.shell-member-strip').querySelectorAll('img'))assert(!m.src.includes('menu-portraits'));v.showPage('inventory');assert.equal(h.all('.menu-portrait-image').length,0);h.shutdown();
- }
- const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);const h=e.harness(e.TitleScene);h.scene.create();assert(h.query('.home-portrait-rig'));assert.equal(h.all('.menu-portrait-image').length,0);h.shutdown();
- for(const file of ['UiPerformerArt','BattleSurfaceView','HomePortraitPresentation'])assert(!fs.readFileSync(new URL('../src/systems/'+file+'.mjs',import.meta.url),'utf8').includes('menu-key-art-20261025'));
+
+test('without an image decoder only the exact-size loaded official full portrait is shown',async()=>{
+  for(const member of members)for(const valid of [true,false]){
+    const {parent,image,dispose}=bodyFixture(member,{hasDecoder:false});
+    assert(image.node.hidden);load(image.node,valid?member.width:128,valid?member.height:128);await tick();
+    assert.equal(parent.dataset.portraitState,valid?'static':'unavailable');
+    assert.equal(image.node.hidden,!valid);dispose();
+  }
+});
+
+test('home and roster use the selected full portrait, while the real picker uses three compact sources',()=>{
+  for(const member of members){
+    const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);
+    e.profile.selectPublicPerformer(member.id);
+    const desk=e.harness(e.TitleScene);desk.scene.create();
+    const src='art/'+member.folder+'/portrait.png';
+    assert.equal(desk.query('.ui-home-portrait').querySelector('.member-portrait').src,src);
+    desk.click('[data-nav=roster]');
+    const [scene,parameters]=desk.starts.at(-1);assert.equal(scene,'IdolRosterScene');desk.shutdown();
+    const h=e.harness(e.IdolRosterScene,parameters);h.scene.create();
+    assert.equal(h.query('.roster-portrait-stage').querySelector('.member-portrait').src,src);
+    const switcher=h.click('[data-action=actor-switch]'), dialog=h.query('dialog');
+    for(const candidate of members){
+      const button=dialog.querySelector('[data-member='+candidate.id+']'),icon=button.querySelector('img');
+      assert(!button.disabled&&button.getAttribute('aria-label'));
+      assert.equal(icon.src,'art/'+candidate.folder+'/avatar.png');
+      assert.equal(icon.srcset,'art/setdesign/avatar-'+candidate.id+'.webp 1x');
+    }
+    h.click('[data-action=sheet-close]');assert.equal(e.document.activeElement,switcher);
+    const art=h.query('.roster-portrait-stage').querySelector('.member-portrait');
+    h.shutdown();art.dispatchEvent({type:'load'});assert.equal(art.parentNode.dataset.portraitState,undefined);
+  }
 });

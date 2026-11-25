@@ -1,8 +1,34 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import{createRequire}from'node:module';
-import{createDocument}from'./helpers/publicShellHarness.mjs';import{mountHomeConceptArt}from'../src/systems/HomeConceptArt.mjs';import{homePortraitPose,mountHomePortraitCanvas}from'../src/systems/HomePortraitCanvas.mjs';import{getHomePortraitArt}from'../src/systems/HomePortraitPresentation.mjs';
-const sharp=createRequire('C:/Users/1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json')('sharp');
+import{createDocument,loadScenes}from'./helpers/publicShellHarness.mjs';import{mountHomeConceptArt}from'../src/systems/HomeConceptArt.mjs';import{homePortraitPose,mountHomePortraitCanvas}from'../src/systems/HomePortraitCanvas.mjs';import{getHomePortraitArt}from'../src/systems/HomePortraitPresentation.mjs';
+const sharp=createRequire(import.meta.url)(process.env.STARUSH_SHARP_MODULE || 'sharp');
 const sourceFor=key=>{const doc=createDocument(),parent=doc.createElement('button');return mountHomeConceptArt({doc},parent,key).querySelector('image').getAttribute('href');};
-test('transparent header keeps the actual note balance legible without restoring an opaque plate',()=>{const css=fs.readFileSync(new URL('../src/styles/homeDemo.css',import.meta.url),'utf8');assert.match(css,/\[data-page=desk\] \.shell-wallet strong \{[^}]*text-shadow:[^}]*#fff/);});
+test('the visible wallet names the actual balance without occupying other pages',()=>{
+ const e=loadScenes();e.loadRuntime('utils/userCast.mjs').configureUserCast(true);e.seed(['opening']);
+ const h=e.harness(e.TitleScene,{suppressDebugAutoStart:true});h.scene.create();
+ const balance=e.model().resources.balance;
+ assert(balance>0,'verify a visible earned balance, not a default placeholder');
+ const wallet=h.query('.shell-wallet');
+ assert.equal(wallet.hidden,false);
+ assert.equal(wallet.getAttribute('role'),'status');
+ assert.equal(wallet.getAttribute('aria-label'),'练习笔记 '+balance);
+ assert.equal(wallet.querySelector('[data-resource=notes]').textContent,String(balance));
+ h.click('[data-nav=inventory]');
+ assert.equal(h.query('.shell-wallet').hidden,true);
+ h.shutdown();
+});
+
+test('the standalone logo matches every visible pixel of its original atlas crop',async()=>{
+ const art=new URL('../public/art/',import.meta.url);
+ const original=await sharp(fs.readFileSync(new URL('home-transparent-components-20261024/components.png',art)))
+  .extract({left:0,top:0,width:435,height:151}).ensureAlpha().raw().toBuffer();
+ const {data,info}=await sharp(fs.readFileSync(new URL('setdesign/home-logo.webp',art)))
+  .ensureAlpha().raw().toBuffer({resolveWithObject:true});
+ assert.deepEqual([info.width,info.height,info.channels],[435,151,4]);
+ for(let i=0;i<data.length;i+=4){
+  assert.equal(data[i+3],original[i+3]);
+  if(original[i+3]>0)assert.equal(data.readUInt32BE(i),original.readUInt32BE(i));
+ }
+});
 test('low-DPI portrait supersamples within original pixels; background uses same owned clock and restores on dispose',()=>{
  const doc=createDocument(),rig=doc.createElement('span'),background=doc.createElement('img'),jobs=new Map(),listeners=new Set(),media={matches:false,addEventListener(t,f){listeners.add(f);},removeEventListener(t,f){listeners.delete(f);}};let seq=0;
  const ctx={setTransform(){},clearRect(){},save(){},restore(){},translate(){},rotate(){},drawImage(){}};

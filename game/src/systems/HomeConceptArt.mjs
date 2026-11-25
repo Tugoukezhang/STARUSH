@@ -51,8 +51,10 @@ export function mountHomeConceptArt(view,parent,key,{standalone,onUnavailable}={
   for(const [key,value]of Object.entries({x,y,width:w,height:h}))crop.setAttribute(key,String(value));
   clip.append(crop);defs.append(clip);viewport.append(defs);picture.setAttribute('clip-path',`url(#${clipId})`);
   viewport.append(picture);frame.append(viewport);frame.dataset.fit='contain';image.hidden=true;
-  // Connection is not required (initial render may load first); a destroyed view or a moved/replaced frame is inert.
-  const owned=()=>!view.disposed&&image.parentNode===frame&&frame.parentNode===parent;
+  // A detached composition may be built before insertion. A mounted one must stay in its original view.
+  const mountedRoot = view.root?.contains(parent) ? view.root : null;
+  const owned = () => !view.disposed && image.parentNode === frame && frame.parentNode === parent
+    && (!mountedRoot || mountedRoot.contains(parent));
   const fail=()=>{
     if(!owned())return;
     frame.remove();delete parent.dataset.conceptState;
