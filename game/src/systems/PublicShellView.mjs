@@ -388,8 +388,14 @@ export class PublicShellView {
         image.remove();const concept=heading.querySelector('.home-concept-art');
         heading.textContent=title;if(concept)heading.append(concept);
       };
-      image.src='art/comic-ui-20261021/logo.png';
-      mountHomeConceptArt(this,heading,'logo');
+      image.hidden=true;
+      mountHomeConceptArt(this,heading,'logo',{
+        standalone:{src:'art/setdesign/home-logo.webp',width:435,height:151},
+        onUnavailable:()=>{
+          image.hidden=false;image.src='art/comic-ui-20261021/logo.png';
+          mountHomeConceptArt(this,heading,'logo');
+        },
+      });
     }
     const titleRow=isUserCastEnabled()?PUBLIC_TITLE_ART.rows[this.page]:undefined;
     const singleTitle=isUserCastEnabled()?PUBLIC_TITLE_ART.single[this.page]:undefined;
@@ -428,7 +434,7 @@ export class PublicShellView {
     const settings=this.button(header,'声音与公演规则',()=>this.scene._sessionExperience?.showSettings(),{
       className:'shell-icon-button',icon:'settings-2',iconOnly:true,action:'settings',lineIcon:isUserCastEnabled() });
     if(owner)settings.hidden=this.page!=='desk';
-    if(homeConcept)mountHomeConceptArt(this,settings,'settings');
+    // The public settings key already has a live line icon on its own panel.
     const context=this.element('div','shell-session-context');
     context.dataset.currentPerformer=model.member.id;context.dataset.currentChapter=model.chapter.id;
     context.setAttribute('aria-label','当前出战配置');
@@ -565,7 +571,9 @@ export class PublicShellView {
       setMemberPickerAvatar(portrait,member.id);
     }else{
       portrait=this.element('img','member-portrait',undefined,frame);
-      portrait.src=visual?.source || art?.avatar;portrait.alt='';portrait.draggable=false;
+      if(large||!isUserCastEnabled())portrait.src=visual?.source || art?.avatar;
+      else setMemberPickerAvatar(portrait,member.id);
+      portrait.alt='';portrait.draggable=false;
       portrait.width=visual?.width || 128;portrait.height=visual?.height || 128;portrait.decoding='async';
       if(!large&&isUserCastEnabled())mountMenuAvatar(this,mark,member.id,portrait);
     }

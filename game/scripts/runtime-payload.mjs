@@ -14,7 +14,7 @@ export const RUNTIME_PAYLOAD = Object.freeze([
   ...group('setdesign-art','art/setdesign/',[
     'foyer.webp','wardrobe.webp','route.webp','workbench.webp','archive.webp','rehearsal.webp','office.webp','observatory.webp',
     'card.webp','note.webp','monitor.webp','dialog.webp','strip.webp','stub.webp',
-    'avatar-sakura.webp','avatar-kai.webp','avatar-enjo.webp',
+    'avatar-sakura.webp','avatar-kai.webp','avatar-enjo.webp','home-logo.webp',
   ]),
   ...group('printroom-surfaces','art/printroom/',['primary.webp','paper.webp','ink.webp','motif.webp','dressing.webp','gear.webp','records.webp','rehearsal.webp','chime-icon.png','book-icon.png',
     'item-sound.webp','item-pulse.webp','item-focus.webp','item-rain.webp','item-delay.webp','item-echo.webp','item-leaf.webp']),

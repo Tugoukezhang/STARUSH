@@ -36,3 +36,7 @@ headshot() {
 headshot sakura red-valkyrie-20261123
 headshot kai green-windsong-20261123
 headshot enjo blue-academy-20261123
+
+# The header shows only this original 435x151 cell of a 941x1672 atlas.
+convert ../../game/public/art/home-transparent-components-20261024/components.png \
+  -crop '435x151+0+0' +repage -strip -define webp:lossless=true "$out/home-logo.webp"

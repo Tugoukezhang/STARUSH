@@ -4,7 +4,7 @@ import {getCompanionQuestion} from '../utils/publicCompanionDialogue.mjs';
 import {loadPublicProfile} from '../utils/publicRunProgression.mjs';
 import {UI_CAST, getUiPerformer, isUserCastEnabled} from '../utils/userCast.mjs';
 import {renderProgramEvents, renderPracticeTools} from './ProgramMenuPages.mjs';
-import {getMenuAvatarArt, mountMenuAvatar, setMemberPickerAvatar} from './MenuPortraitAvatar.mjs';
+import {mountMenuAvatar, setMemberPickerAvatar} from './MenuPortraitAvatar.mjs';
 import {mountPortraitInteraction} from './HomePortraitInteraction.mjs';
 import {openHierarchySheet} from './HierarchySheets.mjs';
 import {mountConsoleUiArt} from './HierarchyUiArt.mjs';
@@ -97,8 +97,7 @@ function castStrip(view, root, selected, prefix, onSelect) {
     const button = command(view, strip, member.name, () => onSelect(member.id), {className: 'pm-cast-option', action: `${prefix}-member-${member.id}`});
     button.setAttribute('aria-pressed', String(member.id === selected)); button.replaceChildren();
     const headshot=view.element('img','pm-member-headshot',undefined,button);
-    if(prefix==='companion')setMemberPickerAvatar(headshot,member.id);
-    else{headshot.src=getMenuAvatarArt(member.id).src;headshot.width=160;headshot.height=160;headshot.alt='';headshot.draggable=false;}
+    setMemberPickerAvatar(headshot,member.id);
     view.element('span', '', member.name, button);
   }
   return strip;
@@ -290,7 +289,7 @@ function venue(view, root) {
     for(const candidate of UI_CAST){
       const button=command(view,members,candidate.name,()=>{draft.memberId=candidate.id;edited(`[data-room-member-option="${candidate.id}"]`);},{className:'pm-room-member'});
       button.dataset.roomMemberOption=candidate.id;button.setAttribute('aria-pressed',String(draft.memberId===candidate.id));button.disabled=!ready;button.replaceChildren();
-      const image=view.element('img','pm-member-headshot',undefined,button);image.src=getMenuAvatarArt(candidate.id).src;image.width=160;image.height=160;image.alt='';
+      const image=view.element('img','pm-member-headshot',undefined,button);setMemberPickerAvatar(image,candidate.id);
       view.element('span','',candidate.name,button).dataset.uiLetter=candidate.id;
     }
     const programs=view.element('div','pm-room-programs',undefined,fields);programs.setAttribute('role','group');programs.setAttribute('aria-label',`${room.name}节目`);

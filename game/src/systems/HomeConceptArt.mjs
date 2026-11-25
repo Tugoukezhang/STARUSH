@@ -24,9 +24,9 @@ const CLEAN=Object.freeze({start:Object.freeze({src:'art/venue-shell-20261026/st
 const percent=value=>`${Number(value.toFixed(4))}%`;
 let cropSequence=0;
 
-export function mountHomeConceptArt(view,parent,key){
+export function mountHomeConceptArt(view,parent,key,{standalone,onUnavailable}={}){
   const identity=Object.hasOwn(HOME_IDENTITY_RECTS,key);
-  const clean=Object.hasOwn(CLEAN,key)?CLEAN[key]:null;
+  const clean=standalone || (Object.hasOwn(CLEAN,key)?CLEAN[key]:null);
   const rect=clean?[0,0,clean.width,clean.height]:identity?HOME_IDENTITY_RECTS[key]:Object.hasOwn(HOME_CONCEPT_RECTS,key)?HOME_CONCEPT_RECTS[key]:Object.hasOwn(CHAPTER_RECTS,key)?CHAPTER_RECTS[key]:null;
   if(!rect||!parent||!view?.doc||view.disposed)return null;
   const [x,y,w,h]=rect;
@@ -56,6 +56,7 @@ export function mountHomeConceptArt(view,parent,key){
   const fail=()=>{
     if(!owned())return;
     frame.remove();delete parent.dataset.conceptState;
+    onUnavailable?.();
   };
   const ready=()=>{
     if(!owned())return;
