@@ -92,3 +92,11 @@ test('tight cover retains the actual enemy contact and omits wall or fixture sta
  fx.contactFragments.update(530,12);
  for(const {x,y} of enemies)assert(triangles.some(t=>t.color===0xfff4cb&&Math.hypot(t.points[0]-x,t.points[1]-y)<9));
 });
+
+test('a shot stopped by cover scuffs the near wall face and never produces an enemy contact',()=>{
+ const {fx,scene}=fixture();scene.oldStreet.clearLine=(from,to)=>from.x<125&&to.x<125;
+ assert(fx.wallContact({x:100,y:80},{x:140,y:80}));assert.equal(fx.rows.length,1);
+ assert.equal(fx.rows[0].kind,'blocked');assert(Math.abs(fx.rows[0].x-125)<.05);assert.equal(fx.rows[0].y,80);
+ assert.equal(fx.contactFragments.rows.length,0);assert.equal(fx.stats.impacts,0);
+ assert.equal(fx.wallContact({x:100,y:80},{x:118,y:80}),false);
+});

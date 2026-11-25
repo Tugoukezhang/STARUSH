@@ -27,7 +27,9 @@ test('four explicit bitmap FX sheets are preloaded only through the selected pub
   const env=loadScenes();env.loadRuntime('utils/userCast.mjs').configureUserCast(true);
   const {preloadActorPresentation}=env.loadRuntime('systems/ActorPresentation.mjs');
   const sheets=[],s={load:{image(){},spritesheet:(...a)=>sheets.push(a)}};
-  preloadActorPresentation(s,{stageId:1,performerId:'sakura'});assert.equal(sheets.length,9);assert.equal(sheets.filter(row=>row[0]==='user-rifle-shoot-20261021').length,0);
+  preloadActorPresentation(s,{stageId:1,performerId:'sakura'});
+  for(const art of Object.values(USER_WEAPON_FX))assert.equal(sheets.filter(([key])=>key===art.key).length,1);
+  assert.equal(sheets.filter(row=>row[0]==='user-rifle-shoot-20261021').length,0);
   assert.deepEqual(sheets.slice(-3).map(row=>row[0]),['user-rifle-projectile-20261021','user-rifle-contact-20261021','user-rifle-deposition-20261023']);
   sheets.length=0;preloadActorPresentation(s,{stageId:1,practiceMode:true});assert.equal(sheets.length,0);
 });

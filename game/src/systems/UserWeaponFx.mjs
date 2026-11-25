@@ -306,14 +306,32 @@ export class UserWeaponFx{
   encoreClearAt(x,y){
     if(this.ready())this.contactFragments.clearBullet(x,y,this.now());
   }
-  blocked({x,y,angle=0,start=this.now()}){
+  wallContact(from,to){
+    if(!this.ready()||!Number.isFinite(from?.x+from?.y+to?.x+to?.y))return false;
+    const street=this.scene.oldStreet,dx=to.x-from.x,dy=to.y-from.y;
+    if(!street||!Math.hypot(dx,dy)||street.clearLine(from,from,2)===false||street.clearLine(from,to,2)!==false)return false;
+    let low=0,high=1;
+    for(let i=0;i<10;i++){
+      const t=(low+high)/2,point={x:from.x+dx*t,y:from.y+dy*t};
+      if(street.clearLine(from,point,2)===false)high=t;else low=t;
+    }
+    return this.blocked({x:from.x+dx*low,y:from.y+dy*low,angle:Math.atan2(dy,dx),wall:true});
+  }
+  blocked({x,y,angle=0,start=this.now(),wall=false}){
     if(!this.ready()||!Number.isFinite(x+y+angle+start)||typeof this.scene.add?.graphics!=='function'
       ||this.scene.oldStreet?.clearLine({x,y},{x,y},1)===false)return false;
     const node=this.scene.add.graphics().setPosition(x,y).setRotation(angle).setDepth(9.80002).setAlpha(.92);
-    node.fillStyle(0x17212a,.95).fillTriangle(-2,-2,-19,-14,-11,1).fillTriangle(-2,2,-17,15,-7,5);
-    node.fillStyle(0xf5ffff,1).fillTriangle(-6,-4,-15,-10,-10,-2);
-    node.fillStyle(0x5df5ed,1).fillTriangle(-5,3,-13,11,-7,4);
-    node.lineStyle(2,0xf5ffff,1).lineBetween(-2,-6,-2,6);
+    if(wall){
+      // Paper scuffs point back from cover; this contact has no enemy flash or damage.
+      for(const [width,ink] of [[3.5,0x282d35],[1.6,0xffefbd]]){
+        node.lineStyle(width,ink,1).lineBetween(-3,-2,-12,-6).lineBetween(-2,1,-8,5);
+      }
+    }else{
+      node.fillStyle(0x17212a,.95).fillTriangle(-2,-2,-19,-14,-11,1).fillTriangle(-2,2,-17,15,-7,5);
+      node.fillStyle(0xf5ffff,1).fillTriangle(-6,-4,-15,-10,-10,-2);
+      node.fillStyle(0x5df5ed,1).fillTriangle(-5,3,-13,11,-7,4);
+      node.lineStyle(2,0xf5ffff,1).lineBetween(-2,-6,-2,6);
+    }
     this.track({kind:'blocked',node,x,y,angle,start,alpha:.92,ground:false,sourceRadius:null});
     this.stats.blocks++;return true;
   }

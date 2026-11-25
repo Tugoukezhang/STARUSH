@@ -23,7 +23,8 @@ test('hostile corridor is shape-distinct from restored pigment without widening 
  for(const l of hatches(g))for(const [x,y]of [[l.x1,l.y1],[l.x2,l.y2]]){
   assert(x>=p.origin.x&&x<=p.end.x);assert(Math.abs(y-p.origin.y)<=p.radius-2);
  }
- assert(g.fills.filter(f=>f[0]==='style').every(f=>f[2]<=.18));
+ const lane=g.fills.find(f=>f[0]==='style'&&f[1]===INK);
+ assert(lane[2]>=.30&&lane[2]<=.42,'keep the colored road visible through the shaded path');
 });
 test('every diagonal stroke stays in an existing body-excluded span, including angled lanes',()=>{
  for(const capture of [{capturedX:900,capturedY:100},{capturedX:900,capturedY:900},{capturedX:100,capturedY:900}]){
@@ -48,4 +49,13 @@ test('pattern is bounded, world-anchored and absent on fully excluded or short p
 test('projectile silhouette remains the original 7px owner, not a new warning object',()=>{
  const g=graphics();drawHostilePulse(g);assert.deepEqual(g.fills.filter(f=>f[0]==='circle').map(f=>f[3]),[7,5.5,2.5]);
  assert.equal(hatches(g).length,0);
+});
+
+test('the first visible piece of a body-clipped threat has its own two-tone arrow',()=>{
+ const p=path(),g=graphics(),body={x:80,y:70,right:230,bottom:125};
+ drawCapturedAttackCue(g,p,null,body);
+ const arrows=g.lines.filter(line=>line.color===0xffe5a1&&line.width===1.75);
+ assert(arrows.length>=2);
+ assert(arrows[0].x1>body.right&&arrows[0].x2<body.right+36);
+ assert(arrows.every(line=>line.x2>line.x1));
 });

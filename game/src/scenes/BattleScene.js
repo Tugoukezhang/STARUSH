@@ -8001,7 +8001,10 @@ export class BattleScene extends Phaser.Scene {
         if(b.paintShot && this._isPublicStage1Round())b.body.updateFromGameObject();
       }
       if(b.paintShot && this._isPublicStage1Round())this.paintZone?.paintAttackTrail?.(previous,b,b.color);
-      if(this.oldStreet?.clearLine(previous,b,2)===false){this._disposePlayerProjectile(b,'street-cover');return;}
+      if(this.oldStreet?.clearLine(previous,b,2)===false){
+        if(b.paintShot)this.actorPresentation?.userCastView?.weaponFx?.wallContact?.(previous,b);
+        this._disposePlayerProjectile(b,'street-cover');return;
+      }
       if (b.gfx) b.gfx.setPosition(b.x + (b.gfxOffsetX ?? -3), b.y + (b.gfxOffsetY ?? -3));
       // 弹幕拖尾粒子
       if (this.textures.exists('particles-trail') && (!b._lastTrail || time - b._lastTrail > 80)) {

@@ -3,9 +3,8 @@ import assert from 'node:assert/strict';
 import {createComicPigmentMaterial,stampComicPigmentMaterial,finishComicPigment} from '../src/systems/ComicPigmentFinish.mjs';
 import {SHARED_COMIC_MATERIAL} from '../src/systems/GraffitiPaintBrush.mjs';
 import {RUNTIME_PAYLOAD} from '../scripts/runtime-payload.mjs';
-import fs from 'node:fs';import {createHash} from 'node:crypto';import {createRequire} from 'node:module';
+import fs from 'node:fs';import {createHash} from 'node:crypto';
 
-const bodyPath='art/pigment-cel-tile-20261028/body.png';
 function fixture(body=true){
   const w=180,h=92,r={width:w*2,height:h*2,pixelWidth:w,pixelHeight:h,pixels:new Uint8ClampedArray(w*h*4),paintColors:new Uint32Array(w*h)};
   for(let p=0;p<w*h;p++){r.pixels.set([255,140,0,255],p*4);r.paintColors[p]=0xff8c00;}
@@ -47,12 +46,11 @@ test('body lookup cannot be overwritten through an aliased upload target',()=>{
   const f=fixture();f.m.bodyPattern=new Uint8Array(new ArrayBuffer(f.r.pixels.byteLength));
   assert.throws(()=>f.render(undefined,new Uint8ClampedArray(f.m.bodyPattern.buffer)),/alias/);
 });
-test('candidate material is exact neutral opaque source with bounded unchanged decoded allocation',async()=>{
-  const bytes=fs.readFileSync(new URL('../public/'+bodyPath,import.meta.url));
-  assert.equal(createHash('sha256').update(bytes).digest('hex'),'8dcbb9362b2f18f37ec1b0ea9cf9d44fb8d994e55376a2f8dcd6d4e277fd9e32');
-  const sharp=createRequire('C:/Users/1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json')('sharp'),{data,info}=await sharp(bytes).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-  assert.equal(info.width,1254);assert.equal(info.height,1254);assert.equal(data.length,6290064);
-  for(let i=0;i<data.length;i+=4){assert.equal(data[i],data[i+1]);assert.equal(data[i],data[i+2]);assert.equal(data[i+3],255);}
-  const old=fs.readFileSync(new URL('../public/art/comic-screenprint-floor-20261024/planes.png',import.meta.url));
-  assert.equal(createHash('sha256').update(old).digest('hex'),'56ed582618fcc61d32ac3df29cac357fb0143faceb675aa2c891947b0cfa97db');
+test('the shipped four-channel street material keeps its reviewed pixels and decoded allocation',()=>{
+  const bytes=fs.readFileSync(new URL('../public/'+SHARED_COMIC_MATERIAL.path,import.meta.url));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),'576ce7d147f17934c9a21f47aa106a648a3871668a346b8baa1d0709a486d7dc');
+  assert.equal(bytes.toString('ascii',12,16),'IHDR');
+  const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20);
+  assert.equal(width,SHARED_COMIC_MATERIAL.size);assert.equal(height,width);
+  assert.equal(bytes[24],8);assert.equal(bytes[25],6,'eight-bit RGBA');assert.equal(width*height*4,6290064);
 });

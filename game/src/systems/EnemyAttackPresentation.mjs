@@ -3,6 +3,7 @@ import {canEnemyBePublicStage1PaintTarget} from './PublicStage1EnemyRoles.mjs';
 const DANGER = 0xD84961;
 const INK = 0x302A38;
 const OPEN = 0x77D6C3;
+const SIGNAL = 0xffe5a1;
 
 export function resolveCapturedAttackPath({origin,capture,distance,width,height,clearLine} = {}) {
   if (![origin?.x,origin?.y,capture?.capturedX,capture?.capturedY,distance,width,height].every(Number.isFinite)
@@ -93,7 +94,7 @@ export function drawCapturedAttackCue(gfx,path,view=null,exclusion=null,startDis
   const spans=resolveAttackCueSpans(path,exclusion,startDistance);
   for(const [start,finish]of spans){
     const a={x:origin.x+unit.x*start,y:origin.y+unit.y*start},b={x:origin.x+unit.x*finish,y:origin.y+unit.y*finish};
-    gfx.fillStyle(DANGER,0.14);
+    gfx.fillStyle(INK,0.36);
     gfx.fillTriangle(a.x+n.x,a.y+n.y,b.x+n.x,b.y+n.y,b.x-n.x,b.y-n.y);
     gfx.fillTriangle(a.x+n.x,a.y+n.y,b.x-n.x,b.y-n.y,a.x-n.x,a.y-n.y);
     for(const [width,color,alpha]of [[3.25,INK,0.82],[1.5,DANGER,0.95]]){
@@ -115,15 +116,21 @@ export function drawCapturedAttackCue(gfx,path,view=null,exclusion=null,startDis
   // Direction changes only when the real pulse starts its return leg; geometry stays frozen.
   const returning=path.returning&&(path.travelLeg==='return'||path.travelLeg==='origin-contact');
   const direction=returning?-1:1;
-  const head=path.returning?6:4,maxBack=path.returning?10:7;
-  for (let t=Math.min(18,length);t<=length;t+=72) {
-    const at=returning?length-t:t;
-    const x=origin.x+unit.x*at,y=origin.y+unit.y*at,back=Math.min(maxBack,t);
-    const tail=at-direction*back;
-    if(!spans.some(([start,finish])=>Math.min(at,tail)>=start&&Math.max(at,tail)<=finish))continue;
-    gfx.lineStyle(t<=18?2.5:1.6,DANGER,t<=18?1:0.8);
-    gfx.lineBetween(x-unit.x*direction*back-unit.y*head,y-unit.y*direction*back+unit.x*head,x,y);
-    gfx.lineBetween(x-unit.x*direction*back+unit.y*head,y-unit.y*direction*back-unit.x*head,x,y);
+  // A pale, ink-backed arrow at the first visible part of each lane also reads on pink paint.
+  // If the performer hides the muzzle, the next arrow starts beyond the body exclusion.
+  for(const [start,finish] of spans){
+    for(let distance=start+10;distance<finish-1;distance+=56){
+      const at=returning?finish-(distance-start):distance;
+      const x=origin.x+unit.x*at,y=origin.y+unit.y*at;
+      const baseX=x-unit.x*direction*7,baseY=y-unit.y*direction*7;
+      const wing=Math.min(path.returning?6:5,radius-1);
+      const lines=[[baseX-unit.y*wing,baseY+unit.x*wing,x,y],[baseX+unit.y*wing,baseY-unit.x*wing,x,y]];
+      if(!markerVisible(lines,3.5))continue;
+      for(const [width,color] of [[3.5,INK],[1.75,SIGNAL]]){
+        gfx.lineStyle(width,color,1);
+        for(const line of lines)gfx.lineBetween(...line);
+      }
+    }
   }
   const source=resolveOffscreenAttackSource(path,view);
   if(path.returning){
@@ -143,7 +150,7 @@ export function drawCapturedAttackCue(gfx,path,view=null,exclusion=null,startDis
     const {x,y,direction:d}=source;
     const lines=[[x-d.x*5-d.y*5,y-d.y*5+d.x*5,x+d.x*5,y+d.y*5],
       [x-d.x*5+d.y*5,y-d.y*5-d.x*5,x+d.x*5,y+d.y*5]];
-    if(markerVisible(lines,4))for (const [width,color] of [[4,INK],[2,DANGER]]) {
+    if(markerVisible(lines,4))for (const [width,color] of [[4,INK],[2,SIGNAL]]) {
       gfx.lineStyle(width,color,1);
       for(const line of lines)gfx.lineBetween(...line);
     }
@@ -176,8 +183,8 @@ export function drawChaserWindupTiming(gfx,path,ageMs,durationMs,exclusion=null)
 
 export function drawHostilePulse(gfx) {
   if (!gfx) return;
-  gfx.lineStyle(3,INK,0.72);gfx.lineBetween(0,9,0,25);
-  gfx.lineStyle(1.5,DANGER,0.82);gfx.lineBetween(0,9,0,25);
+  gfx.lineStyle(4,INK,0.9);gfx.lineBetween(0,6,0,25);
+  gfx.lineStyle(1.75,SIGNAL,0.94);gfx.lineBetween(0,7,0,20);
   gfx.fillStyle(INK,1);gfx.fillCircle(0,0,7);
   gfx.fillStyle(DANGER,1);gfx.fillCircle(0,0,5.5);
   gfx.fillStyle(0xFFFFFF,1);gfx.fillCircle(0,-1,2.5);
