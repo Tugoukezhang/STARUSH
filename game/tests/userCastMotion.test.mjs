@@ -149,3 +149,18 @@ test('each performer faces travel, plants feet on release, and returns to a dist
     view.destroy();
   }
 });
+
+test('a sideways shot carries the real north and south steps under the aiming shoulder',()=>{
+  const {scene,view}=fixture('sakura',true);
+  view.update(0,false);view.beginShot(1,1,0,500);
+  scene.player.y-=18;view.update(30,false);
+  assert.equal(view.image.texture.key,'stage-rifle-stride');
+  const up=view.image.frame.name;
+  assert(up>=24&&(up-24)%8<4);assert(view.muzzleWorld());
+  scene.player.y+=18;view.update(65,false);
+  const down=view.image.frame.name;
+  assert(down>=24&&(down-24)%8>=4);assert(view.muzzleWorld());
+  view.beginShot(70,0,-1,500);scene.player.y-=18;view.update(80,false);
+  assert.equal(view.image.texture.key,'stage-performer-sakura');
+  assert(view.image.frame.name<4);
+});

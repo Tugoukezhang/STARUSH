@@ -47,6 +47,25 @@ def registered_frame(source, index):
     return source.crop((x, y, x + CELL, y + CELL))
 
 
+# Four small shifts of the original aiming shoulder pair with the four vertical steps.
+CROSS_SHOULDERS = (6, 7, 9, 10)
+
+
+def turning_stride(upper, feet):
+    # Register the two belts on their opaque centerline. The soft eight-pixel seam
+    # falls under the jacket tails. Each sole comes entirely from the painted gait.
+    waist = 168
+    def center(tile):
+        belt = tile.getchannel('A').crop((78, waist-6, 192, waist+5))
+        left, _, right, _ = belt.point(lambda a: 255 if a > 100 else 0).getbbox()
+        return 78 + (left + right) / 2
+    lower = Image.new('RGBA', (CELL, CELL))
+    lower.alpha_composite(feet, (round(center(upper)-center(feet)), 0))
+    blend = Image.new('L', (1, CELL))
+    blend.putdata([max(0, min(255, round((waist+4-y)*255/8))) for y in range(CELL)])
+    return Image.composite(upper, lower, blend.resize((CELL, CELL)))
+
+
 def rifle_stride(tile, kick):
     # One live step, registered at the hips. Gun/shoulder absorb recoil, soles keep
     # the original step; a continuous falloff prevents a seam along the belt.
@@ -93,7 +112,10 @@ def export_cast(name, config):
     if name == 'sakura':
         stride = [rifle_stride(registered_frame(original, step), kick)
                   for kick in (0, 10, 5, 1) for step in range(6, 12)]
-        pack(stride, OUTPUT / 'rifle-stride.webp', 6)
+        cross = [turning_stride(registered_frame(original, CROSS_SHOULDERS[index % 4]), feet)
+                 for index, feet in enumerate(tiles[:8])]
+        stride.extend(rifle_stride(step, kick) for kick in (0, 10, 5, 1) for step in cross)
+        pack(stride, OUTPUT / 'rifle-stride.webp', 7)
         banks['rifleStride'] = stride
     return {bank: [list(tile.getchannel('A').point(lambda a: 255 if a >= 48 else 0).getbbox())
                    for tile in frames] for bank, frames in banks.items()}

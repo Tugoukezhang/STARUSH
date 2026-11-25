@@ -143,3 +143,16 @@ test('each equipment telegraph changes its body state, while the open relay stay
  assert.equal(crewPoseFrame('unlit-chaser',{},'recovery','rush'),1);
  assert.equal(crewPoseFrame('unlit-chaser',{},'recovery','recovery'),2);
 });
+
+test('the first presented frame shows a real discharge even after a slow frame, and the boss closes its arms',async()=>{
+ const {crewPoseFrame}=await import('../src/systems/PerformancePoseBank.mjs');
+ const state='windup',capture={},m=motion.createEnemyMotion('finale-boss',{state});
+ motion.advanceEnemyMotion(m,{now:50,x:0,y:0,state,capture});
+ motion.notifyEnemyMotionRelease(m,{now:60,pulse:{},capture});
+ const late=motion.advanceEnemyMotion(m,{now:300,x:0,y:0,state,capture});
+ assert.equal(crewPoseFrame('finale-boss',late,state),13);
+ const recovered=motion.advanceEnemyMotion(m,{now:320,x:0,y:0,state,capture});
+ assert.equal(crewPoseFrame('finale-boss',recovered,state),14);
+ const recaptured=motion.advanceEnemyMotion(m,{now:340,x:0,y:0,state,capture:{}});
+ assert.equal(crewPoseFrame('finale-boss',recaptured,state),12);
+});

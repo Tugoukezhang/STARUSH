@@ -7,14 +7,14 @@ const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
 
 export function createEnemyMotion(role,{now=0,x=0,y=0,state=null}={}) {
  return {role,state,stateAt:now,lastNow:now,x,y,travel:0,pulse:null,releasedAt:null,
-  capture:null,fromRotation:0,pose:{rotation:0}};
+  capture:null,releasePending:false,fromRotation:0,pose:{rotation:0}};
 }
 
 export function notifyEnemyMotionRelease(m,{now,pulse,capture=null,state=null}={}) {
  if(!m||!Number.isFinite(now)||pulse===null||pulse===undefined)return false;
  if(pulse===m.pulse)return false;
  if(state!==null&&state!==m.state){m.fromRotation=m.pose.rotation;m.state=state;m.stateAt=now;}
- m.pulse=pulse;m.releasedAt=now;
+ m.pulse=pulse;m.releasedAt=now;m.releasePending=true;
  if(capture!==null)m.capture=capture;
  return true;
 }
@@ -24,10 +24,10 @@ export function advanceEnemyMotion(m,{now,x,y,state,pulse=null,capture=null,chas
  const distance=Math.hypot(x-m.x,y-m.y);
  if(state!==m.state){
   m.fromRotation=m.pose.rotation;m.state=state;m.stateAt=now;
-  if(state==='windup')m.releasedAt=null;
+  if(state==='windup'){m.releasedAt=null;m.releasePending=false;}
  }
  if(capture!==null&&capture!==m.capture){
-  m.capture=capture;m.stateAt=now;m.releasedAt=null;m.fromRotation=m.pose.rotation;
+  m.capture=capture;m.stateAt=now;m.releasedAt=null;m.releasePending=false;m.fromRotation=m.pose.rotation;
  }
  // A new real projectile is the release edge. Elapsed windup never creates one.
  if(pulse!==null&&pulse!==m.pulse)notifyEnemyMotionRelease(m,{now,pulse,capture});
@@ -50,7 +50,8 @@ export function advanceEnemyMotion(m,{now,x,y,state,pulse=null,capture=null,chas
  m.lastNow=now;m.x=x;m.y=y;
  m.pose={rotation:clamp(rotation,-rad(10),rad(10))||0,
   step:m.role==='unlit-chaser'&&distance>.001?(Math.sin(m.travel)>=0?1:2):0,
-  releasing:releaseAge>=0&&releaseAge<135};
+  releasing:m.releasePending||(releaseAge>=0&&releaseAge<135),discharged:m.releasedAt!==null};
+ m.releasePending=false;
  return m.pose;
 }
 

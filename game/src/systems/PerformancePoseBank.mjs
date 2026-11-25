@@ -20,7 +20,7 @@ export function preloadPerformancePoses(scene, id) {
 export function loadedPerformancePose(scene, id) {
   const key = castKey(id), bounds = PERFORMANCE_POSE_BOUNDS[id];
   if (!bounds || !scene.textures?.exists(key) || !scene.textures.get?.(key)?.has(bounds.length-1)) return null;
-  const stride = id === 'sakura' && scene.textures.exists(RIFLE_STRIDE) && scene.textures.get?.(RIFLE_STRIDE)?.has(23);
+  const stride = id === 'sakura' && scene.textures.exists(RIFLE_STRIDE) && scene.textures.get?.(RIFLE_STRIDE)?.has(55);
   return {key, bounds, strideBounds:stride ? PERFORMANCE_POSE_BOUNDS.rifleStride : null};
 }
 
@@ -35,7 +35,7 @@ export function crewPoseFrame(role, pose, state, chaserState) {
     return first + (pose.step || 0);
   }
   if (pose.releasing || state === 'disrupting') return first + 1;
-  if (state === 'windup') return first;
+  if (state === 'windup' && !pose.discharged) return first;
   return first + 2;
 }
 

@@ -15,6 +15,11 @@ const RIFLE_MUZZLES=[
 ];
 // Rifle shoot-bank cel ends as fractions of the shot: release, kick, half recovery, ready (27/121.5/81/40.5ms of 270).
 const RIFLE_SHOT_CELS=[.1,.55,.85,1];
+const CROSS_SHOULDERS=[6,7,9,10];
+function rifleStrideFrame(recoil, stride, sideFrame) {
+  if(stride.axis==='side')return recoil*6+sideFrame;
+  return 24+recoil*8+(stride.axis==='up'?0:4)+stride.lastFrame;
+}
 // Rifle idle keeps ready12 open; the closed-eye cel shows briefly once idle has settled.
 const BLINK_AT=3420,BLINK_FOR=120,BLINK_EVERY=3600;
 // Rest cels 1..3 hold 600ms each after 400ms of ready12; rest cel0 equals ready12 and is source proof only.
@@ -195,14 +200,14 @@ export class UserCastPresentation {
         key=bank;frame=specialFrame;
         if(rifle&&stride.moving&&this.expanded.strideBounds){
           const recoil=phase===14?1:phase===15?2:phase===16?3:0;
-          key=RIFLE_STRIDE;frame=recoil*6+strideFrame;
+          key=RIFLE_STRIDE;frame=rifleStrideFrame(recoil,stride,strideFrame);
         }
       }else if(rifle&&this.state==='move-attack'&&vertical&&this.shotVertical){
         key=bank;frame=(this.shotVertical<0?0:4)+stride.lastFrame;displayFlip=false;
         const recoil=[0,1,.5,.1][shotCel()]*(reduced ? .4 : 1);
         offsetY=-this.shotVertical*2*recoil;
       }else if(rifle&&this.state==='move-attack'&&this.expanded.strideBounds){
-        key=RIFLE_STRIDE;frame=shotCel()*6+strideFrame;
+        key=RIFLE_STRIDE;frame=rifleStrideFrame(shotCel(),stride,strideFrame);
       }else if((this.state==='move'||this.state==='idle')&&vertical){
         key=bank;frame=stride.verticalFrame(t);displayFlip=false;
       }else if(key===this.art.motion.key&&frame===17){
@@ -281,8 +286,10 @@ export class UserCastPresentation {
     const cel=Number(this.image.frame.name),stride=texture===RIFLE_STRIDE;
     if(this.expanded&&texture===this.expanded.key)return null;
     // Registered moving-shot shoulders recoil over the current step, keeping the visible tip anchored.
-    const walkMarker=stride?this.art.motion.muzzles[6+cel%6]:null;
-    const marker=walkMarker?[walkMarker[0]-[0,10,5,1][Math.floor(cel/6)],walkMarker[1]]:this.upperCel>=0?shoot.muzzles[this.upperCel]
+    const cross=cel>=24,step=cross?CROSS_SHOULDERS[(cel-24)%4]:6+cel%6;
+    const recoil=cross?Math.floor((cel-24)/8):Math.floor(cel/6);
+    const walkMarker=stride?this.art.motion.muzzles[step]:null;
+    const marker=walkMarker?[walkMarker[0]-[0,10,5,1][recoil],walkMarker[1]]:this.upperCel>=0?shoot.muzzles[this.upperCel]
       :(this.art.motion.muzzles|| (shoot&&texture===shoot.key?shoot.muzzles:idle&&texture===idle.key?idle.muzzles:rest&&texture===rest.key?rest.muzzles:walk&&texture===walk.key?walk.muzzles:RIFLE_MUZZLES))?.[this.image.frame.name];if(!marker)return null;
     const [x,y]=marker,p=this.scene.player,m=this.art.motion;
     return {x:p.x+(this.flip?-1:1)*(x-m.originX*m.frameWidth)*this.width/m.frameWidth,
