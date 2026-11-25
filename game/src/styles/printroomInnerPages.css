@@ -877,15 +877,10 @@
   & dialog.ui-sheet .pm-offline-service :is(strong,small) {color:#283a43}
   & dialog.ui-sheet .pm-offline-service .cs-service-state {display:none}
   &[data-page=sideplay] .product-module-screen[data-practice-studio] {
-    & .ps-entry:has(.practice-illustration) .ps-entry-art {display:none}
-    & .practice-illustration {position:relative;grid-area:1/1;display:grid;place-content:center;gap:6px;height:clamp(84px,16dvh,145px);overflow:hidden}
-    & .practice-illustration[data-practice=library] {background:repeating-linear-gradient(95deg,#ffffff12 0 2px,transparent 2px 19px),linear-gradient(135deg,#303558 8%,#52527d 62%,#313c50)}
-    & .practice-illustration[data-practice=library] i {position:relative;display:block;width:clamp(75px,21vw,112px);height:19px;transform:rotate(-9deg);border:2px solid #222e3b;border-radius:3px;background:repeating-linear-gradient(to right,#c9e4b4 0 12px,#829cb6 12px 16px,#e9e9ba 16px 30px,#9c9ab9 30px 32px);box-shadow:3px 4px #1d293cb0}
-    & .practice-illustration[data-practice=library] i:nth-child(2) {left:10px;background:repeating-linear-gradient(to right,#eea99b 0 18px,#a27b92 18px 22px,#ffd3a6 22px 42px,#c3838d 42px 45px)}
-    & .practice-illustration[data-practice=goals] {background:repeating-linear-gradient(-45deg,#ffffff12 0 2px,transparent 2px 14px),linear-gradient(135deg,#22655e,#448374 65%,#9db6a0)}
-    & .practice-illustration[data-practice=goals] i {position:relative;display:block;width:clamp(54px,14vw,76px);aspect-ratio:1;border:3px solid #293c45;border-radius:50%;box-shadow:4px 6px #243d4070;background:radial-gradient(circle,#ed815d 0 13%,#f8edc2 14% 35%,#cd6556 36% 53%,#ffeabb 54% 72%,#885650 73%)}
-    & .practice-illustration[data-practice=goals] i::after {content:'';position:absolute;width:57%;height:4px;border:1px solid #483e46;background:#53acab;bottom:48%;left:48%;transform:rotate(-40deg);transform-origin:0 50%;box-shadow:0 2px #484b50}
-    & .practice-illustration[data-practice=goals] i::before {content:'';position:absolute;width:18px;height:11px;left:79%;top:5%;transform:rotate(-40deg) skew(-20deg);background:#f4b361;border:2px solid #544e50}
+    & .ps-entry img.ps-entry-art {
+      display:block;grid-area:1/1;width:100%;height:clamp(84px,16dvh,145px);
+      object-fit:cover;object-position:50% 49%;border:0;border-radius:0;pointer-events:none;
+    }
   }
 }
 

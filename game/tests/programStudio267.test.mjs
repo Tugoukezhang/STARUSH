@@ -90,9 +90,10 @@ test('goal info sheet reads all goals without preselecting; its footer opens the
   const rows = sheet.querySelectorAll('[data-event-goal]');
   assert.deepEqual(rows.map(r => r.dataset.eventGoal), plain(options.map(o => o.id)));
   assert.deepEqual(rows.map(r => r.dataset.availability), plain(options.map(o => o.available ? 'available' : 'locked')));
-  assert.deepEqual(rows.map(r => r.querySelector('small').textContent), plain(options.map(o => o.available ? o.description : o.id === 'steady' ? '保存当前成员本章纪录后，挑战无伤或更少受击' : '保存当前成员本章纪录后，挑战更短通关用时')), 'distinct challenge rules live in the sheet');
-  assert.deepEqual(rows.map(r => r.querySelector('.ps-goal-availability').textContent), plain(options.map(o => o.available ? '可设定' : '需本章纪录')));
+  assert.deepEqual(rows.map(r => r.querySelector('small').textContent), plain(options.map(o => o.available ? o.description : o.id === 'steady' ? '挑战无伤或更少受击' : '挑战更短通关用时')), 'distinct challenge rules live in the sheet');
+  assert.deepEqual(rows.map(r => r.querySelector('.ps-goal-availability').textContent), plain(options.map(o => o.available ? '可设定' : '未开放')));
   assert.equal(sheet.querySelectorAll('button[data-goal]').length, 0, 'no selectable options in the info sheet');
+  assert.match(sheet.querySelector('.goal-record-condition').textContent,/保存当前成员的本章纪录/);
   const footer = sheet.querySelector('[data-action=events-open-goals]');
   assert.ok(footer.classList.contains('pg-primary'));
   assert.equal(view.goalKind, goalKind, 'reading never preselects');
@@ -129,6 +130,10 @@ test('practice directory surfaces training access, two illustrated preparation t
   const options = goals.getPublicRunGoalOptions(profile);
   const entries = page.querySelectorAll('.ps-entry');
   assert.deepEqual(entries.map(b => b.dataset.action), ['sideplay-open-library', 'sideplay-open-goals']);
+  for(const entry of entries){
+    assert.equal(entry.querySelectorAll('img.ps-entry-art').length,1);
+    assert.equal(entry.querySelector('.practice-illustration'),null,'the scene painting fills the card');
+  }
   assert.deepEqual(entries.map(b => b.querySelector('img.ps-entry-art').src), [`${STUDIO}/practice-score.webp`, `${STUDIO}/practice-target.webp`]);
   assert.deepEqual(entries.map(b => b.querySelector('img.pg-letter').src), [`${JOURNEY}/letter-plan.webp`, `${JOURNEY}/letter-goals.webp`]);
   assert.ok(entries[0].querySelector('small').textContent.includes(`${catalog.first.length * catalog.second.length} 种组合`));

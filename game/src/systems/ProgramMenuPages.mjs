@@ -154,10 +154,6 @@ export function renderPracticeTools(view, root, model, profile) {
     const image = view.element('img', 'ps-entry-art', undefined, null);
     image.src = `${STUDIO_ART}/${picture}.webp`; image.alt = ''; image.draggable = false;
     button.insertBefore(image, button.children[0]);
-    const symbol=view.element('span','practice-illustration',undefined,null);
-    symbol.dataset.practice=page;symbol.setAttribute('aria-hidden','true');
-    for(let index=0;index<(page==='library'?2:1);index++)view.element('i','',undefined,symbol);
-    button.insertBefore(symbol,image);
     button.querySelector('.pg-glyph').remove();
     view.element('span','ps-entry-enter',undefined,button).dataset.uiIcon = 'back';
   }
